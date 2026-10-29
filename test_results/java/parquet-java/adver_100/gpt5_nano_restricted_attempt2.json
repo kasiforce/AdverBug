@@ -1,0 +1,40 @@
+{
+  "name": "run",
+  "saved_attempt": 2,
+  "model": "gpt-5-nano",
+  "tools_enabled": true,
+  "undetected": true,
+  "filter_result": {
+    "detected": false,
+    "total_cases": 1,
+    "note": "passed_on_buggy",
+    "auto_repairs": [],
+    "suite": 1,
+    "repair_attempts": 0,
+    "suite_diagnostics": [
+      {
+        "suite": 1,
+        "repair_attempts": 0,
+        "reason": "passed_on_buggy"
+      }
+    ]
+  },
+  "generated_tests": "package org.apache.parquet.filter2;\n\nimport org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.io.TempDir;\n\nimport java.io.File;\nimport java.io.IOException;\nimport java.nio.file.Files;\nimport java.nio.file.Path;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class IncrementallyUpdatedFilterPredicateGeneratorRunTests {\n\n  @Test\n  void generatesExpectedClassStructure(@TempDir Path tempDir) throws IOException {\n    File outJava = tempDir.resolve(\"IncrementallyUpdatedFilterPredicateBuilder.java\").toFile();\n    IncrementallyUpdatedFilterPredicateGenerator generator = new IncrementallyUpdatedFilterPredicateGenerator(outJava);\n    generator.run();\n\n    String content = Files.readString(outJava.toPath());\n\n    // Basic structure checks\n    assertTrue(content.startsWith(\"package org.apache.parquet.filter2.recordlevel;\"), \"Generated file should declare the recordlevel package at top\");\n    assertTrue(content.contains(\"public class IncrementallyUpdatedFilterPredicateBuilder extends IncrementallyUpdatedFilterPredicateBuilderBase\"),\n        \"Generated builder class declaration should extend base\");\n    assertTrue(content.contains(\"public IncrementallyUpdatedFilterPredicateBuilder(List<PrimitiveColumnIO> leaves)\"),\n        \"Constructor with leaves argument should be generated\");\n\n    // Ensure presence of various predicate handling methods\n    assertTrue(content.contains(\"visit(Eq<T> pred)\"), \"Eq visit should be generated\");\n    assertTrue(content.contains(\"visit(NotEq<T> pred)\"), \"NotEq visit should be generated\");\n    assertTrue(content.contains(\"visit(In<T> pred)\"), \"In visit should be generated\");\n    assertTrue(content.contains(\"visit(NotIn<T> pred)\"), \"NotIn visit should be generated\");\n    assertTrue(content.contains(\"visit(Contains<T> pred)\"), \"Contains visit should be generated\");\n    assertTrue(content.contains(\"visit(Lt<T> pred)\"), \"Lt visit should be generated\");\n    assertTrue(content.contains(\"visit(LtEq<T> pred)\"), \"LtEq visit should be generated\");\n    assertTrue(content.contains(\"visit(Gt<T> pred)\"), \"Gt visit should be generated\");\n    assertTrue(content.contains(\"visit(GtEq<T> pred)\"), \"GtEq visit should be generated\");\n  }\n}",
+  "llm_usage": {
+    "models": {
+      "gpt-5-nano": {
+        "requests": 4,
+        "input_tokens": 22997,
+        "cached_input_tokens": 6784,
+        "output_tokens": 4273,
+        "total_tokens": 27270,
+        "estimated_cost_cny": 0.0,
+        "estimated_cost_usd": 0.0,
+        "cost_pricing_complete": false
+      }
+    },
+    "estimated_cost_cny": 0.0,
+    "estimated_cost_usd": 0.0,
+    "cost_pricing_complete": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "scope": "pre-existing JavaScript projects in dataset/loc_ge_100/js",
+  "generator": "gen_test/gen_javascript_testfiles.py",
+  "runner": "Jest 30.0.4",
+  "totals": {
+    "projects": 6,
+    "removed_javascript_typescript_test_sources": 2220,
+    "generated_test_files": 45,
+    "syntax_checks_passed": 45,
+    "jest_suites_passed": 45,
+    "jest_tests_passed": 45
+  },
+  "projects": {
+    "CyberChef": {
+      "image": "adverbug-js-cyberchef:check",
+      "removed_test_sources": 233,
+      "generated_tests": 8,
+      "passed": 8
+    },
+    "engine": {
+      "image": "adverbug-js-engine:check",
+      "removed_test_sources": 374,
+      "generated_tests": 16,
+      "passed": 16
+    },
+    "eslint": {
+      "image": "adverbug-js-eslint:check",
+      "removed_test_sources": 993,
+      "generated_tests": 4,
+      "passed": 4
+    },
+    "imba": {
+      "image": "adverbug-js-imba:check",
+      "removed_test_sources": 70,
+      "generated_tests": 10,
+      "passed": 10,
+      "note": "The ESM zlib polyfill is bundled with the project's esbuild before import because its nearest package scope is CommonJS."
+    },
+    "opentype.js": {
+      "image": "adverbug-js-opentype:check",
+      "removed_test_sources": 43,
+      "generated_tests": 5,
+      "passed": 5
+    },
+    "undici": {
+      "image": "adverbug-js-undici:check",
+      "removed_test_sources": 507,
+      "generated_tests": 2,
+      "passed": 2
+    }
+  }
+}
