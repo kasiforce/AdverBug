@@ -1,0 +1,68 @@
+O[m] [1m--- [0;32mmaven-surefire-plugin:3.6.0:test[m [1m(default-test)[m @ [36mjackson-databind[0;1m ---[m
+[[1;33mWARNING[m] useSystemClassLoader setting has no effect when not forking
+[[1;33mWARNING[m] The parameter forkCount should likely not be 0. Forking a JVM for tests improves test accuracy. Ensure to have a <forkCount> >= 1.
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] Running tools.jackson.databind.deser.jdk.DeserializeFromObjectTests
+[[1;31mERROR[m] Tests run: 24, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0.247 s <<< FAILURE! -- in tools.jackson.databind.deser.jdk.DeserializeFromObjectTests
+[[1;31mERROR[m] tools.jackson.databind.deser.jdk.DeserializeFromObjectTests.testMissingConstructorsFail -- Time elapsed: 0.151 s <<< FAILURE!
+java.lang.AssertionError: Should have failed without usable constructors
+	at org.junit.Assert.fail(Assert.java:89)
+	at tools.jackson.databind.deser.jdk.DeserializeFromObjectTests.testMissingConstructorsFail(DeserializeFromObjectTests.java:293)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.jdk.DeserializeFromObjectTests.testCauseAfterMessage -- Time elapsed: 0.004 s <<< ERROR!
+tools.jackson.databind.exc.MismatchedInputException: 
+Trailing token (`JsonToken.END_OBJECT`) found after value (bound as `java.lang.Exception`): not allowed as per `DeserializationFeature.FAIL_ON_TRAILING_TOKENS`
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+	at tools.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:70)
+	at tools.jackson.databind.DeserializationContext.reportTrailingTokens(DeserializationContext.java:2057)
+	at tools.jackson.databind.ObjectMapper._verifyNoTrailingTokens(ObjectMapper.java:2809)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2701)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at tools.jackson.databind.deser.jdk.DeserializeFromObjectTests.testCauseAfterMessage(DeserializeFromObjectTests.java:95)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.jdk.DeserializeFromObjectTests.testStackTraceAfterMessage -- Time elapsed: 0.002 s <<< ERROR!
+tools.jackson.databind.exc.MismatchedInputException: 
+Cannot deserialize value of type `java.lang.Exception` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+	at tools.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:66)
+	at tools.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1979)
+	at tools.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1775)
+	at tools.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1724)
+	at tools.jackson.databind.deser.bean.BeanDeserializer._handleUnexpectedWithin(BeanDeserializer.java:1570)
+	at tools.jackson.databind.deser.jdk.ThrowableDeserializer.deserializeFromObject(ThrowableDeserializer.java:374)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserialize(BeanDeserializer.java:200)
+	at tools.jackson.databind.deser.DeserializationContextExt.readRootValue(DeserializationContextExt.java:352)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2696)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at tools.jackson.databind.deser.jdk.DeserializeFromObjectTests.testStackTraceAfterMessage(DeserializeFromObjectTests.java:129)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Failures: 
+[[1;31mERROR[m]   DeserializeFromObjectTests.testMissingConstructorsFail:293 Should have failed without usable constructors
+[[1;31mERROR[m] Errors: 
+[[1;31mERROR[m]   DeserializeFromObjectTests.testCauseAfterMessage:95 » MismatchedInput Trailing token (`JsonToken.END_OBJECT`) found after value (bound as `java.lang.Exception`): not allowed as per `DeserializationFeature.FAIL_ON_TRAILING_TOKENS`
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+[[1;31mERROR[m]   DeserializeFromObjectTests.testStackTraceAfterMessage:129 » MismatchedInput Cannot deserialize value of type `java.lang.Exception` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 24, Failures: 1, Errors: 2, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  18.421 s
+[[1;34mINFO[m] Finished at: 2026-10-05T15:07:46Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

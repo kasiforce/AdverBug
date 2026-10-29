@@ -1,0 +1,75 @@
+faultImplUsedWhenTypeIdMissing -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: Expected IntWrapper from defaultImpl, got: null
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at tools.jackson.databind.deser.impl.CompleteTests.testDefaultImplUsedWhenTypeIdMissing(CompleteTests.java:267)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testNaturalStringValueWithoutTypeId -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: expected:<plain> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at tools.jackson.databind.deser.impl.CompleteTests.testNaturalStringValueWithoutTypeId(CompleteTests.java:213)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testExplicitNullValueWithoutTypeIdIsAccepted -- Time elapsed: 0.002 s <<< ERROR!
+tools.jackson.databind.exc.MismatchedInputException: 
+Missing external type id property 'type'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: tools.jackson.databind.deser.impl.CompleteTests$SimpleCreatorBean["value"])
+	at tools.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:70)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2012)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2027)
+	at tools.jackson.databind.deser.impl.ExternalTypeHandler.complete(ExternalTypeHandler.java:343)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeUsingPropertyBasedWithExternalTypeId(BeanDeserializer.java:1534)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeWithExternalTypeId(BeanDeserializer.java:1369)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:627)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserialize(BeanDeserializer.java:200)
+	at tools.jackson.databind.deser.DeserializationContextExt.readRootValue(DeserializationContextExt.java:352)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2696)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at tools.jackson.databind.deser.impl.CompleteTests.testExplicitNullValueWithoutTypeIdIsAccepted(CompleteTests.java:231)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testNaturalNumberValueWithoutTypeId -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: Expected natural number value, got: null
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at tools.jackson.databind.deser.impl.CompleteTests.testNaturalNumberValueWithoutTypeId(CompleteTests.java:223)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testMissingTypeIdForStructuredValueFails -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: Expected MismatchedInputException for missing external type id
+	at org.junit.Assert.fail(Assert.java:89)
+	at tools.jackson.databind.deser.impl.CompleteTests.testMissingTypeIdForStructuredValueFails(CompleteTests.java:255)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Failures: 
+[[1;31mERROR[m]   CompleteTests.testDefaultImplUsedWhenTypeIdMissing:267 Expected IntWrapper from defaultImpl, got: null
+[[1;31mERROR[m]   CompleteTests.testMissingTypeIdForStructuredValueFails:255 Expected MismatchedInputException for missing external type id
+[[1;31mERROR[m]   CompleteTests.testNaturalNumberValueWithoutTypeId:223 Expected natural number value, got: null
+[[1;31mERROR[m]   CompleteTests.testNaturalStringValueWithoutTypeId:213 expected:<plain> but was:<null>
+[[1;31mERROR[m]   CompleteTests.testNaturalStringValueWithoutTypeIdNonCreatorProperty:336 expected:<plain> but was:<null>
+[[1;31mERROR[m]   CompleteTests.testViewIncludedExternalTypePropertyIsDeserialized:313 Expected IntWrapper, got: null
+[[1;31mERROR[m] Errors: 
+[[1;31mERROR[m]   CompleteTests.testExplicitNullValueWithoutTypeIdIsAccepted:231 » MismatchedInput Missing external type id property 'type'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: tools.jackson.databind.deser.impl.CompleteTests$SimpleCreatorBean["value"])
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 15, Failures: 6, Errors: 1, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  17.464 s
+[[1;34mINFO[m] Finished at: 2026-10-05T15:08:23Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

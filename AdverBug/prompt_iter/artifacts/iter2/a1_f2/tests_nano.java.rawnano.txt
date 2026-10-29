@@ -1,0 +1,69 @@
+package tools.jackson.databind.deser.jdk;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import java.util.EnumMap;
+
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.ObjectMapper;
+
+public class DeserializeTests {
+
+    enum SampleEnum { A, B }
+
+    private final ObjectMapper MAPPER = new ObjectMapper();
+
+    @Test
+    public void testBasicDeserialization() throws Exception {
+        JavaType type = MAPPER.getTypeFactory()
+                .constructMapType(EnumMap.class, SampleEnum.class, Integer.class);
+        String json = "{\"A\":1,\"B\":2}";
+
+        EnumMap<SampleEnum, Integer> map = MAPPER.readValue(json, type);
+
+        assertEquals(2, map.size());
+        assertEquals(Integer.valueOf(1), map.get(SampleEnum.A));
+        assertEquals(Integer.valueOf(2), map.get(SampleEnum.B));
+    }
+
+    @Test
+    public void testEmptyObjectDeserialization() throws Exception {
+        JavaType type = MAPPER.getTypeFactory()
+                .constructMapType(EnumMap.class, SampleEnum.class, Integer.class);
+        String json = "{}";
+
+        EnumMap<SampleEnum, Integer> map = MAPPER.readValue(json, type);
+
+        assertTrue(map.isEmpty());
+    }
+
+    @Test
+    public void testUnknownEnumKeyThrows() throws Exception {
+        JavaType type = MAPPER.getTypeFactory()
+                .constructMapType(EnumMap.class, SampleEnum.class, Integer.class);
+        String json = "{\"C\":1}";
+
+        try {
+            MAPPER.readValue(json, type);
+            fail("Expected deserialization to fail on unknown enum key");
+        } catch (Exception e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testUnknownEnumKeyIgnoredWhenConfigured() throws Exception {
+        ObjectMapper mapperWithNullUnknownEnum = new ObjectMapper();
+        mapperWithNullUnknownEnum.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
+
+        JavaType type = mapperWithNullUnknownEnum.getTypeFactory()
+                .constructMapType(EnumMap.class, SampleEnum.class, Integer.class);
+        String json = "{\"C\":1}";
+
+        EnumMap<SampleEnum, Integer> map = mapperWithNullUnknownEnum.readValue(json, type);
+
+        assertTrue(map.isEmpty());
+    }
+}

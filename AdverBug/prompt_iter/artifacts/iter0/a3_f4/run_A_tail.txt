@@ -1,0 +1,68 @@
+kson.databind.deser.BeanDeserializerFactory.buildBeanDeserializer(BeanDeserializerFactory.java:258)
+	at tools.jackson.databind.deser.BeanDeserializerFactory.createBeanDeserializer(BeanDeserializerFactory.java:153)
+	at tools.jackson.databind.deser.DeserializerCache._createDeserializer2(DeserializerCache.java:426)
+	at tools.jackson.databind.deser.DeserializerCache._createDeserializer(DeserializerCache.java:373)
+	at tools.jackson.databind.deser.DeserializerCache._createAndCache2(DeserializerCache.java:270)
+	at tools.jackson.databind.deser.DeserializerCache._createAndCacheValueDeserializer(DeserializerCache.java:249)
+	at tools.jackson.databind.deser.DeserializerCache.findValueDeserializer(DeserializerCache.java:163)
+	at tools.jackson.databind.DeserializationContext.findRootValueDeserializer(DeserializationContext.java:752)
+	at tools.jackson.databind.ObjectMapper._findRootDeserializer(ObjectMapper.java:2881)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2697)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at tools.jackson.databind.deser.impl.CompleteTests.testNaturalScalarValueWithoutTypeId(CompleteTests.java:234)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testViewIncludedExternalTypePropertyDeserialized -- Time elapsed: 0.027 s <<< FAILURE!
+java.lang.AssertionError: expected:<5> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at tools.jackson.databind.deser.impl.CompleteTests.testViewIncludedExternalTypePropertyDeserialized(CompleteTests.java:315)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testMissingValueWithTypeIdPresentBuildsEmptyInstance -- Time elapsed: 0.001 s <<< ERROR!
+tools.jackson.databind.exc.MismatchedInputException: 
+Missing property 'value' for external type id 'type'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: tools.jackson.databind.deser.impl.CompleteTests$MixedBean["value"])
+	at tools.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:70)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2012)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2027)
+	at tools.jackson.databind.deser.impl.ExternalTypeHandler.complete(ExternalTypeHandler.java:356)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeUsingPropertyBasedWithExternalTypeId(BeanDeserializer.java:1534)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeWithExternalTypeId(BeanDeserializer.java:1369)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:627)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserialize(BeanDeserializer.java:200)
+	at tools.jackson.databind.deser.DeserializationContextExt.readRootValue(DeserializationContextExt.java:352)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2696)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at tools.jackson.databind.deser.impl.CompleteTests.testMissingValueWithTypeIdPresentBuildsEmptyInstance(CompleteTests.java:252)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Failures: 
+[[1;31mERROR[m]   CompleteTests.testViewIncludedExternalTypePropertyDeserialized:315 expected:<5> but was:<0>
+[[1;31mERROR[m] Errors: 
+[[1;31mERROR[m]   CompleteTests.testMissingValueWithTypeIdPresentBuildsEmptyInstance:252 » MismatchedInput Missing property 'value' for external type id 'type'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: tools.jackson.databind.deser.impl.CompleteTests$MixedBean["value"])
+[[1;31mERROR[m]   CompleteTests.testNaturalScalarValueWithoutTypeId:234 » InvalidDefinition Configured `PolymorphicTypeValidator` (of type `tools.jackson.databind.jsontype.DefaultBaseTypeLimitingValidator`) denies resolution of all subtypes of base type `java.lang.Object` as using too generic base type can open a security hole without checks on subtype: please configure a custom `PolymorphicTypeValidator` for this use case
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 13, Failures: 1, Errors: 2, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  18.280 s
+[[1;34mINFO[m] Finished at: 2026-10-06T18:00:02Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

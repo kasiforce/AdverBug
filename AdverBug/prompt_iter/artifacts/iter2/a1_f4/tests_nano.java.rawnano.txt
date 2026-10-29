@@ -1,0 +1,65 @@
+package tools.jackson.databind.deser.impl;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.deser.BeanDeserializer;
+import tools.jackson.databind.deser.bean.PropertyBasedCreator;
+import tools.jackson.databind.deser.bean.PropertyValueBuffer;
+import tools.jackson.databind.type.TypeFactory;
+import tools.jackson.databind.util.TokenBuffer;
+
+/**
+ * Tests for ExternalTypeHandler.complete(...) focusing on the zero-properties path.
+ * This test uses reflection to instantiate the protected ExternalTypeHandler constructor
+ * with empty property arrays and verifies that the provided PropertyBasedCreator is invoked.
+ */
+public class CompleteTests {
+
+    // Simple bean class to derive a JavaType from
+    public static class DummyBean {
+        public String name;
+    }
+
+    @Test
+    public void testComplete_WithZeroPropertiesInvokesCreator() throws Exception {
+        // Prepare an empty ExternalTypeHandler
+        JavaType beanType = TypeFactory.defaultInstance().constructType(DummyBean.class);
+        ExtTypedProperty[] properties = new ExtTypedProperty[0];
+        Map<String, Object> nameToPropertyIndex = new HashMap<>();
+        String[] typeIds = new String[0];
+        TokenBuffer[] tokens = new TokenBuffer[0];
+
+        // Access the protected constructor via reflection
+        java.lang.reflect.Constructor<ExternalTypeHandler> ctor =
+                ExternalTypeHandler.class.getDeclaredConstructor(JavaType.class, ExtTypedProperty[].class,
+                        Map.class, String[].class, TokenBuffer[].class);
+        ctor.setAccessible(true);
+        ExternalTypeHandler handler = ctor.newInstance(beanType, properties, nameToPropertyIndex, typeIds, tokens);
+
+        // Create a dummy creator that marks itself as invoked
+        final boolean[] built = new boolean[] { false };
+        PropertyBasedCreator creator = new PropertyBasedCreator() {
+            @Override
+            public Object build(DeserializationContext ctxt, PropertyValueBuffer buffer) {
+                built[0] = true;
+                return new DummyBean();
+            }
+        };
+
+        // We don't need a real JsonParser or TokenBuffer for zero properties; pass nulls
+        JsonParser p = null;
+        PropertyValueBuffer buffer = null; // not used in zero-properties path
+
+        Object result = handler.complete(p, null, buffer, creator);
+
+        assertNotNull("Result should not be null", result);
+        assertTrue("Creator.build(...) should have been invoked", built[0]);
+    }
+}

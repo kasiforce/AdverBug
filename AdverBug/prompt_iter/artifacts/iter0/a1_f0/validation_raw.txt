@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "The buggy code swaps the precedence of the two lenient unknown-enum-value features in the catch block of _factory.callOnWith: the original checks READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE first (returning _defaultValue when a @JsonEnumDefaultValue constant exists), while the buggy version checks READ_UNKNOWN_ENUM_VALUES_AS_NULL first. When both features are enabled and the creator throws an IllegalArgumentException for an unknown enum value on an enum that has a default constant, the original returns the default enum constant while the buggy version returns null, which is an observable behavioral difference (e.g. input '\"ZZZ\"' for an enum with a @JsonEnumDefaultValue constant yields OTHER vs null)."
+}

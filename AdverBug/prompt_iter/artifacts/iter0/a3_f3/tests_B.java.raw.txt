@@ -1,0 +1,339 @@
+```java
+package tools.jackson.databind.deser.jdk;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.junit.Test;
+
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.json.JsonMapper;
+
+import static org.junit.Assert.*;
+
+/**
+ * Tests for {@link ThrowableDeserializer#deserializeFromObject}, exercised
+ * end-to-end by deserializing JSON into Throwable types. Covers basic message
+ * handling, standard properties (cause, stackTrace, suppressed,
+ * localizedMessage), deferred ("pending") properties, view filtering,
+ * ignored/unknown/any-set properties, and error handling.
+ */
+public class DeserializeFromObjectTests
+{
+    // Marker classes used with @JsonView
+    public static class Views {
+        public static class Public { }
+        public static class Extended extends Public { }
+    }
+
+    @SuppressWarnings("serial")
+    public static class SimpleException extends Exception {
+        public SimpleException() { }
+        public SimpleException(String msg) { super(msg); }
+    }
+
+    @SuppressWarnings("serial")
+    public static class CodeException extends Exception {
+        public int code;
+
+        public CodeException() { }
+        public CodeException(String msg) { super(msg); }
+    }
+
+    @SuppressWarnings("serial")
+    public static class ViewedException extends Exception {
+        @JsonView(Views.Extended.class)
+        public int code;
+
+        public ViewedException() { }
+        public ViewedException(String msg) { super(msg); }
+    }
+
+    @SuppressWarnings("serial")
+    @JsonIgnoreProperties({ "ignoredProp" })
+    public static class IgnoringException extends Exception {
+        public IgnoringException() { }
+        public IgnoringException(String msg) { super(msg); }
+    }
+
+    @SuppressWarnings("serial")
+    public static class AnySetterException extends Exception {
+        public Map<String, Object> extra = new LinkedHashMap<String, Object>();
+
+        public AnySetterException() { }
+        public AnySetterException(String msg) { super(msg); }
+
+        @JsonAnySetter
+        public void setAny(String key, Object value) {
+            extra.put(key, value);
+        }
+    }
+
+    @SuppressWarnings("serial")
+    public static abstract class AbstractException extends Exception {
+        public AbstractException() { }
+        public AbstractException(String msg) { super(msg); }
+    }
+
+    @SuppressWarnings("serial")
+    public static class NoDefaultException extends Exception {
+        public NoDefaultException(int code) { super("code " + code); }
+    }
+
+    // // // Basic functionality
+
+    @Test
+    public void testBasicMessageOnly() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        Exception e = mapper.readValue("{\"message\":\"boom\"}", Exception.class);
+        assertNotNull(e);
+        assertEquals("boom", e.getMessage());
+        assertNull(e.getCause());
+        assertEquals(0, e.getSuppressed().length);
+    }
+
+    @Test
+    public void testMessageAsNullValue() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        Exception e = mapper.readValue("{\"message\":null}", Exception.class);
+        assertNotNull(e);
+        assertNull(e.getMessage());
+        assertNull(e.getCause());
+    }
+
+    @Test
+    public void testEmptyJsonObject() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        Exception e = mapper.readValue("{}", Exception.class);
+        assertNotNull(e);
+        assertNull(e.getMessage());
+        assertNull(e.getCause());
+        assertEquals(0, e.getSuppressed().length);
+    }
+
+    @Test
+    public void testMessageAndNestedCauseChain() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        Exception e = mapper.readValue(
+                "{\"message\":\"outer\",\"cause\":{\"message\":\"inner\",\"cause\":{\"message\":\"root\"}}}",
+                Exception.class);
+        assertEquals("outer", e.getMessage());
+        assertEquals("inner", e.getCause().getMessage());
+        assertEquals("root", e.getCause().getCause().getMessage());
+    }
+
+    @Test
+    public void testStackTraceDeserialization() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        Exception e = mapper.readValue(
+                "{\"message\":\"boom\",\"stackTrace\":"
+                        + "[{\"className\":\"java.lang.String\",\"methodName\":\"isEmpty\","
+                        + "\"fileName\":\"String.java\",\"lineNumber\":42}]}",
+                Exception.class);
+        assertEquals(1, e.getStackTrace().length);
+        StackTraceElement ste = e.getStackTrace()[0];
+        assertEquals("java.lang.String", ste.getClassName());
+        assertEquals("isEmpty", ste.getMethodName());
+        assertEquals("String.java", ste.getFileName());
+        assertEquals(42, ste.getLineNumber());
+    }
+
+    @Test
+    public void testSuppressedDeserialization() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        SimpleException e = mapper.readValue(
+                "{\"message\":\"main\",\"suppressed\":[{\"message\":\"s1\"},{\"message\":\"s2\"}]}",
+                SimpleException.class);
+        assertEquals("main", e.getMessage());
+        assertEquals(2, e.getSuppressed().length);
+        assertEquals("s1", e.getSuppressed()[0].getMessage());
+        assertEquals("s2", e.getSuppressed()[1].getMessage());
+    }
+
+    // // // Null values for standard properties must be skipped
+
+    @Test
+    public void testNullCauseIsSkipped() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        SimpleException e = mapper.readValue(
+                "{\"message\":\"boom\",\"cause\":null}",
+                SimpleException.class);
+        assertEquals("boom", e.getMessage());
+        assertNull(e.getCause());
+    }
+
+    @Test
+    public void testNullStackTraceIsSkipped() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        SimpleException e = mapper.readValue(
+                "{\"message\":\"boom\",\"stackTrace\":null}",
+                SimpleException.class);
+        assertEquals("boom", e.getMessage());
+        assertTrue(e.getStackTrace().length > 0);
+    }
+
+    @Test
+    public void testNullEntryInSuppressedIsSkipped() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        SimpleException e = mapper.readValue(
+                "{\"message\":\"main\",\"suppressed\":[null,{\"message\":\"only\"}]}",
+                SimpleException.class);
+        assertEquals(1, e.getSuppressed().length);
+        assertEquals("only", e.getSuppressed()[0].getMessage());
+    }
+
+    @Test
+    public void testNullSuppressedIsIgnored() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        SimpleException e = mapper.readValue(
+                "{\"message\":\"main\",\"suppressed\":null}",
+                SimpleException.class);
+        assertEquals("main", e.getMessage());
+        assertEquals(0, e.getSuppressed().length);
+    }
+
+    // // // Ordering / deferred ("pending") properties
+
+    @Test
+    public void testSuppressedBeforeMessage() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        SimpleException e = mapper.readValue(
+                "{\"suppressed\":[{\"message\":\"s1\"}],\"message\":\"main\"}",
+                SimpleException.class);
+        assertEquals("main", e.getMessage());
+        assertEquals(1, e.getSuppressed().length);
+        assertEquals("s1", e.getSuppressed()[0].getMessage());
+    }
+
+    @Test
+    public void testCustomPropertyBeforeMessageIsApplied() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        CodeException e = mapper.readValue(
+                "{\"code\":5,\"message\":\"m\"}",
+                CodeException.class);
+        assertEquals("m", e.getMessage());
+        assertEquals(5, e.code);
+    }
+
+    @Test
+    public void testCustomPropertyAfterMessageIsApplied() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        CodeException e = mapper.readValue(
+                "{\"message\":\"m\",\"code\":7}",
+                CodeException.class);
+        assertEquals("m", e.getMessage());
+        assertEquals(7, e.code);
+    }
+
+    // // // Unknown / ignored / any-set properties
+
+    @Test
+    public void testUnknownPropertyFailsWhenConfigured() throws Exception {
+        JsonMapper mapper = JsonMapper.builder()
+                .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .build();
+        try {
+            mapper.readValue("{\"message\":\"m\",\"bogusProp\":3}", Exception.class);
+            fail("Should have failed on unknown property");
+        } catch (DatabindException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testUnknownPropertyIgnoredWhenDisabled() throws Exception {
+        JsonMapper mapper = JsonMapper.builder()
+                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .build();
+        Exception e = mapper.readValue(
+                "{\"message\":\"m\",\"bogusProp\":3}", Exception.class);
+        assertEquals("m", e.getMessage());
+    }
+
+    @Test
+    public void testClassLevelIgnoredPropertyIsSkipped() throws Exception {
+        JsonMapper mapper = JsonMapper.builder()
+                .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .build();
+        IgnoringException e = mapper.readValue(
+                "{\"message\":\"m\",\"ignoredProp\":1}", IgnoringException.class);
+        assertEquals("m", e.getMessage());
+    }
+
+    @Test
+    public void testAnySetterReceivesUnknownProperties() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        AnySetterException e = mapper.readValue(
+                "{\"message\":\"m\",\"k1\":\"v1\",\"k2\":\"v2\"}",
+                AnySetterException.class);
+        assertEquals("m", e.getMessage());
+        assertEquals(2, e.extra.size());
+        assertEquals("v1", e.extra.get("k1"));
+        assertEquals("v2", e.extra.get("k2"));
+    }
+
+    // // // Standard read-only property must be skipped, never reported
+
+    @Test
+    public void testLocalizedMessageIsSkipped() throws Exception {
+        JsonMapper mapper = JsonMapper.builder()
+                .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                .build();
+        Exception e = mapper.readValue(
+                "{\"message\":\"m\",\"localizedMessage\":\"localized\"}", Exception.class);
+        assertEquals("m", e.getMessage());
+        assertEquals("m", e.getLocalizedMessage());
+    }
+
+    // // // View handling
+
+    @Test
+    public void testViewIncludesInViewProperty() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        ViewedException e = mapper.readerFor(ViewedException.class)
+                .withView(Views.Extended.class)
+                .readValue("{\"message\":\"m\",\"code\":42}");
+        assertEquals("m", e.getMessage());
+        assertEquals(42, e.code);
+    }
+
+    @Test
+    public void testViewExcludesOutOfViewProperty() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        ViewedException e = mapper.readerFor(ViewedException.class)
+                .withView(Views.Public.class)
+                .readValue("{\"message\":\"m\",\"code\":42}");
+        assertEquals("m", e.getMessage());
+        assertEquals(0, e.code);
+    }
+
+    // // // Error handling
+
+    @Test
+    public void testAbstractThrowableTypeFails() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        try {
+            mapper.readValue("{\"message\":\"m\"}", AbstractException.class);
+            fail("Should have failed for abstract type");
+        } catch (DatabindException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testNoUsableConstructorFails() throws Exception {
+        JsonMapper mapper = JsonMapper.builder().build();
+        try {
+            mapper.readValue("{\"message\":\"m\"}", NoDefaultException.class);
+            fail("Should have failed without default or single-String-arg constructor");
+        } catch (DatabindException e) {
+            // expected
+        }
+    }
+}
+```

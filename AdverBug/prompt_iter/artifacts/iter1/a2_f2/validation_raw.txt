@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": false,
+    "reason": "The only change replaces the internal helper call '_deserializeNoNullChecks(p, ctxt)' with '_valueDeserializer.deserialize(p, ctxt)' at a call site where the VALUE_NULL token has already been checked and excluded, using identical arguments and enclosed by an identical try/catch; the helper is by name and call-site contract simply the non-null deserialization path delegating to the value deserializer, so any null-token or wrapping logic it could add is unreachable or funnels through the same outer catch, and no input, program state, or execution path yields different observable behavior."
+}

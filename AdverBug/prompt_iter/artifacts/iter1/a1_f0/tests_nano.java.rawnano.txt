@@ -1,0 +1,121 @@
+package tools.jackson.databind.deser.jdk;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+
+import org.junit.Test;
+
+import tools.jackson.core.JsonFactory;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.EnumFeature;
+import tools.jackson.databind.deser.ValueDeserializer;
+import tools.jackson.databind.deser.ValueInstantiator;
+import tools.jackson.databind.deser.SettableBeanProperty;
+import tools.jackson.databind.introspect.AnnotatedMethod;
+
+public class DeserializeTests {
+
+    public enum Color { RED, GREEN, BLUE }
+
+    @Test
+    public void testDelegationPath() throws Exception {
+        // Setup: delegation path via _deser copy constructor
+        AnnotatedMethod mockFactory = mock(AnnotatedMethod.class);
+        ValueDeserializer<Color> mockDeser = mock(ValueDeserializer.class);
+        Color expected = Color.GREEN;
+
+        when(mockDeser.deserialize(any(JsonParser.class), any(DeserializationContext.class)))
+                .thenReturn(expected);
+
+        FactoryBasedEnumDeserializer base = new FactoryBasedEnumDeserializer(Color.class, mockFactory);
+        FactoryBasedEnumDeserializer des = new FactoryBasedEnumDeserializer(base, mockDeser);
+
+        // Execute
+        JsonParser p = mock(JsonParser.class);
+        DeserializationContext ctxt = mock(DeserializationContext.class);
+        Color result = (Color) des.deserialize(p, ctxt);
+
+        // Verify
+        assertEquals(expected, result);
+        verify(mockDeser).deserialize(any(JsonParser.class), any(DeserializationContext.class));
+    }
+
+    @Test
+    public void testScalarStringPath() throws Exception {
+        // Setup: hasArgs path with scalar string input
+        AnnotatedMethod mockFactory = mock(AnnotatedMethod.class);
+        JavaType mockParamType = mock(JavaType.class);
+        when(mockParamType.hasRawClass(String.class)).thenReturn(true);
+
+        when(mockFactory.callOnWith(eq(Color.class), eq("RED"))).thenReturn(Color.RED);
+
+        FactoryBasedEnumDeserializer des = new FactoryBasedEnumDeserializer(Color.class, mockFactory,
+                mockParamType, null, null, null);
+
+        JsonFactory jf = new JsonFactory();
+        JsonParser p = jf.createParser("\"RED\"");
+        p.nextToken(); // move to VALUE_STRING
+
+        DeserializationContext ctxt = mock(DeserializationContext.class);
+
+        Color result = (Color) des.deserialize(p, ctxt);
+        assertEquals(Color.RED, result);
+    }
+
+    @Test
+    public void testObjectPathScalarFromObject() throws Exception {
+        // Setup: object-based scalar via START_OBJECT path
+        AnnotatedMethod mockFactory = mock(AnnotatedMethod.class);
+        JavaType mockParamType = mock(JavaType.class);
+        when(mockParamType.hasRawClass(String.class)).thenReturn(true);
+
+        FactoryBasedEnumDeserializer des = new FactoryBasedEnumDeserializer(Color.class, mockFactory,
+                mockParamType, null, null, null);
+
+        JsonFactory jf = new JsonFactory();
+        JsonParser p = jf.createParser("{\"color\":\"SCALAR\"}");
+        p.nextToken(); // START_OBJECT
+
+        DeserializationContext ctxt = mock(DeserializationContext.class);
+
+        when(ctxt.extractScalarFromObject(any(JsonParser.class), any(Object.class), eq(Color.class)))
+                .thenReturn("SCALAR");
+        when(mockFactory.callOnWith(eq(Color.class), eq("SCALAR"))).thenReturn(Color.GREEN);
+
+        Color result = (Color) des.deserialize(p, ctxt);
+        assertEquals(Color.GREEN, result);
+    }
+
+    @Test
+    public void testUnknownEnumValueUsesDefault() throws Exception {
+        // Setup: unknown value triggers default value path
+        AnnotatedMethod mockFactory = mock(AnnotatedMethod.class);
+        JavaType mockParamType = mock(JavaType.class);
+        when(mockParamType.hasRawClass(String.class)).thenReturn(true);
+        ValueInstantiator mockValueInstantiator = mock(ValueInstantiator.class);
+
+        EnumResolver mockEnumResolver = mock(EnumResolver.class);
+        when(mockEnumResolver.getDefaultValue()).thenReturn(Color.BLUE);
+
+        // Build deserializer with default value
+        FactoryBasedEnumDeserializer des = new FactoryBasedEnumDeserializer(Color.class, mockFactory,
+                mockParamType, mockValueInstantiator, null, mockEnumResolver);
+
+        JsonFactory jf = new JsonFactory();
+        JsonParser p = jf.createParser("\"UNKNOWN\"");
+        p.nextToken(); // VALUE_STRING
+
+        DeserializationContext ctxt = mock(DeserializationContext.class);
+        when(ctxt.isEnabled(EnumFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)).thenReturn(true);
+        when(ctxt.isEnabled(EnumFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)).thenReturn(false);
+        when(mockFactory.callOnWith(eq(Color.class), eq("UNKNOWN")))
+                .thenThrow(new IllegalArgumentException("Unknown"));
+
+        Color result = (Color) des.deserialize(p, ctxt);
+        assertEquals(Color.BLUE, result);
+    }
+
+}

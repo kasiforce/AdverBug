@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "The post-deserialization null handling condition was changed from `if (value == null)` in the original to `if (t == JsonToken.VALUE_NULL)` in the buggy code, so when a non-null JSON token deserializes to null (e.g., an enum value with READ_UNKNOWN_ENUM_VALUES_AS_NULL, or any value deserializer returning null), the original still applies the _nullProvider.getNullValue(ctxt) replacement and the _skipNullValues skip (entry dropped), while the buggy version stores the raw null entry, producing different map contents and size for the same input."
+}

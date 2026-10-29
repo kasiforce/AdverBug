@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "The buggy version drops the '_skipNullValues' guard: original has 'if (value == null && _skipNullValues) continue;' while the buggy code has 'if (value == null) continue;'. When the null provider's null value is null and '_skipNullValues' is false (e.g., the default configuration where JSON null values are kept as map entries, or any non-skip NullValueProvider that returns null), the original code inserts the entry with a null value (result.put(key, null)), whereas the buggy code skips the entry entirely. For example, deserializing '{\"A\": null, \"B\": 2}' into an EnumMap yields a map containing A->null in the original but only {B=2} in the buggy version, an observable difference in size, containsKey, and containsValue."
+}

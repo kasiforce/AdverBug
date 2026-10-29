@@ -1,0 +1,59 @@
+DeserializerNR.java:70)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:165)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:135)
+	at tools.jackson.databind.deser.jdk.DeserializeTests.mergedMapUpdatesExistingValuesAndKeepsOthers(DeserializeTests.java:46)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.jdk.DeserializeTests.nestedMapsAreMergedInPlace -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:70)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:165)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:135)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:135)
+	at tools.jackson.databind.deser.jdk.DeserializeTests.nestedMapsAreMergedInPlace(DeserializeTests.java:89)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.jdk.DeserializeTests.newPropertyWithObjectValueIsAddedAsMap -- Time elapsed: 0 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "tools.jackson.databind.DeserializationContext.isEnabled(tools.jackson.core.StreamReadCapability)" because "ctxt" is null
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:57)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:137)
+	at tools.jackson.databind.deser.jdk.DeserializeTests.newPropertyWithObjectValueIsAddedAsMap(DeserializeTests.java:247)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.jdk.DeserializeTests.mergingSameInputTwiceIsIdempotent -- Time elapsed: 0 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:70)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:165)
+	at tools.jackson.databind.deser.jdk.UntypedObjectDeserializerNR.deserialize(UntypedObjectDeserializerNR.java:135)
+	at tools.jackson.databind.deser.jdk.DeserializeTests.mergingSameInputTwiceIsIdempotent(DeserializeTests.java:287)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Errors: 
+[[1;31mERROR[m]   DeserializeTests.malformedJsonSurfacesAsJacksonException:268 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.mergedCollectionAppendsElements:111 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.mergedMapAddsNewProperties:66 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.mergedMapUpdatesExistingValuesAndKeepsOthers:46 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.mergingSameInputTwiceIsIdempotent:287 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.nestedMapsAreMergedInPlace:89 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.newPropertyWithObjectValueIsAddedAsMap:247 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.isEnabled(tools.jackson.core.StreamReadCapability)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.nonMergingDeserializerReturnsNewValueWithoutMutatingTarget:197 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.isEnabled(tools.jackson.core.StreamReadCapability)" because "ctxt" is null
+[[1;31mERROR[m]   DeserializeTests.nullIntoValueIsPopulatedByDefaultDeserialization:228 » NullPointer Cannot invoke "tools.jackson.databind.DeserializationContext.hasSomeOfFeatures(int)" because "ctxt" is null
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 12, Failures: 0, Errors: 9, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  16.935 s
+[[1;34mINFO[m] Finished at: 2026-10-05T15:12:31Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31m[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,76 @@
+package tools.jackson.databind.deser.jdk;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.core.JsonProcessingException;
+import tools.jackson.annotation.JsonCreator;
+import tools.jackson.annotation.JsonEnumDefaultValue;
+
+public class DeserializeTests {
+
+    public enum Color {
+        RED("R"),
+        BLUE("B"),
+        @JsonEnumDefaultValue
+        DEFAULT(null);
+
+        private final String code;
+
+        Color(String code) {
+            this.code = code;
+        }
+
+        @JsonCreator
+        public static Color fromCode(String code) {
+            if (code == null) {
+                throw new IllegalArgumentException("null");
+            }
+            for (Color c : Color.values()) {
+                if (c.code != null && c.code.equals(code)) {
+                    return c;
+                }
+            }
+            throw new IllegalArgumentException("Unknown code " + code);
+        }
+    }
+
+    @Test
+    public void testBasicDeserialization() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        Color color = mapper.readValue("\"R\"", Color.class);
+        assertEquals(Color.RED, color);
+    }
+
+    @Test
+    public void testUnknownValueThrowsException() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.readValue("\"X\"", Color.class);
+            fail("Expected exception for unknown enum value");
+        } catch (JsonProcessingException e) {
+            // Expected: the input is unknown and no special feature is enabled
+            assertTrue(e.getMessage().toLowerCase().contains("unknown"));
+        }
+    }
+
+    @Test
+    public void testUnknownValueReturnsNullWhenConfigured() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE); // ensure standard path
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
+        Color color = mapper.readValue("\"X\"", Color.class);
+        assertNull(color);
+    }
+
+    @Test
+    public void testUnknownValueUsingDefaultValue() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE);
+        Color color = mapper.readValue("\"X\"", Color.class);
+        assertEquals(Color.DEFAULT, color);
+    }
+}

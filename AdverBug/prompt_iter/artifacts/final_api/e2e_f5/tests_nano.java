@@ -1,0 +1,139 @@
+package tools.jackson.databind.deser.jdk;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+import tools.jackson.core.JsonFactory;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.deser.std.StdDeserializer;
+
+public class DeserializeTests {
+
+    // A test-specific subclass to avoid needing a full DeserializationContext
+    // and to provide a lightweight primitive deserializer for the inner calls.
+    public static class TestDeserializer extends UntypedObjectDeserializerNR {
+        public TestDeserializer(boolean nonMerging) {
+            super(nonMerging);
+        }
+
+        @Override
+        public Object deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
+            JsonToken t = p.getCurrentToken();
+            if (t == null) {
+                t = p.nextToken();
+            }
+            if (t == null) {
+                return null;
+            }
+
+            switch (t) {
+                case VALUE_STRING:
+                    return p.getText();
+                case VALUE_NUMBER_INT:
+                    // Use boxed Integer to align with typical Jackson behavior
+                    return Integer.valueOf(p.getIntValue());
+                case VALUE_NUMBER_FLOAT:
+                    return Double.valueOf(p.getDoubleValue());
+                case VALUE_TRUE:
+                    return Boolean.TRUE;
+                case VALUE_FALSE:
+                    return Boolean.FALSE;
+                case VALUE_NULL:
+                    return null;
+                default:
+                    // Fallback for other token types
+                    return p.getText();
+            }
+        }
+    }
+
+    @Test
+    public void testMergeIntoMapPreservesIdentityAndUpdatesValue() throws Exception {
+        JsonFactory f = new JsonFactory();
+        JsonParser p = f.createParser("{\"a\":2}");
+        // Move to START_OBJECT
+        p.nextToken();
+
+        // intoValue contains existing value for key "a"
+        LinkedHashMap<String, Object> intoValue = new LinkedHashMap<>();
+        Object oldRef = Integer.valueOf(1); // old value for "a"
+        intoValue.put("a", oldRef);
+
+        TestDeserializer deser = new TestDeserializer(false);
+        Object result = deser.deserialize(p, null, intoValue);
+
+        assertSame("Result should be the same Map instance as intoValue", intoValue, result);
+        assertNotSame("Old value should be replaced when new value differs", oldRef, intoValue.get("a"));
+        assertEquals(Integer.valueOf(2), intoValue.get("a"));
+    }
+
+    @Test
+    public void testMergeIntoMapNoUpdateWhenValueSameReference() throws Exception {
+        JsonFactory f = new JsonFactory();
+        JsonParser p = f.createParser("{\"a\":2}");
+        // Move to START_OBJECT
+        p.nextToken();
+
+        // intoValue contains existing value for key "a" that should be the same reference as new value
+        LinkedHashMap<String, Object> intoValue = new LinkedHashMap<>();
+        Object sameRef = Integer.valueOf(2); // cached value for 2
+        intoValue.put("a", sameRef);
+
+        TestDeserializer deser = new TestDeserializer(false);
+        Object result = deser.deserialize(p, null, intoValue);
+
+        assertSame("Result should be the same Map instance as intoValue", intoValue, result);
+        assertSame("Value should not be replaced when new value is the same reference", sameRef, intoValue.get("a"));
+    }
+
+    @Test
+    public void testArrayAppendToCollection() throws Exception {
+        JsonFactory f = new JsonFactory();
+        JsonParser p = f.createParser("[1,2,3]");
+        // Move to START_ARRAY
+        p.nextToken();
+
+        Collection<Object> intoValue = new ArrayList<>();
+        TestDeserializer deser = new TestDeserializer(false);
+        Object result = deser.deserialize(p, null, intoValue);
+
+        assertSame("Result should be the same Collection instance", intoValue, result);
+        assertEquals(3, intoValue.size());
+        assertEquals(Arrays.asList(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)), new ArrayList<>(intoValue));
+    }
+
+    @Test
+    public void testEmptyArrayReturnsSameInstance() throws Exception {
+        JsonFactory f = new JsonFactory();
+        JsonParser p = f.createParser("[]");
+        // Move to START_ARRAY
+        p.nextToken();
+
+        Collection<Object> intoValue = new ArrayList<>();
+        TestDeserializer deser = new TestDeserializer(false);
+        Object result = deser.deserialize(p, null, intoValue);
+
+        assertSame("Should return the same ArrayList instance for empty array", intoValue, result);
+        assertEquals(0, intoValue.size());
+    }
+
+    @Test
+    public void testEmptyObjectReturnsSameInstance() throws Exception {
+        JsonFactory f = new JsonFactory();
+        JsonParser p = f.createParser("{}");
+        // Move to START_OBJECT
+        p.nextToken();
+
+        Map<String, Object> intoValue = new LinkedHashMap<>();
+        TestDeserializer deser = new TestDeserializer(false);
+        Object result = deser.deserialize(p, null, intoValue);
+
+        assertSame("Should return the same Map instance for empty object", intoValue, result);
+        assertTrue(intoValue.isEmpty());
+    }
+}

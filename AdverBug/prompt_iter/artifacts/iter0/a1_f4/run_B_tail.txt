@@ -1,0 +1,75 @@
+kson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:70)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2012)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2027)
+	at tools.jackson.databind.deser.impl.ExternalTypeHandler.complete(ExternalTypeHandler.java:356)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeUsingPropertyBasedWithExternalTypeId(BeanDeserializer.java:1534)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeWithExternalTypeId(BeanDeserializer.java:1369)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:627)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserialize(BeanDeserializer.java:200)
+	at tools.jackson.databind.deser.DeserializationContextExt.readRootValue(DeserializationContextExt.java:352)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2696)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at CompleteTests.testPresentTypeIdWithMissingValue(CompleteTests.java:259)
+
+[[1;31mERROR[m] CompleteTests.testExplicitNullValueWithoutTypeIdAccepted -- Time elapsed: 0.002 s <<< ERROR!
+tools.jackson.databind.exc.MismatchedInputException: 
+Missing external type id property 'petType'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: CompleteTests$PetOwnerBean["pet"])
+	at tools.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:70)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2012)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2027)
+	at tools.jackson.databind.deser.impl.ExternalTypeHandler.complete(ExternalTypeHandler.java:343)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeUsingPropertyBasedWithExternalTypeId(BeanDeserializer.java:1534)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeWithExternalTypeId(BeanDeserializer.java:1369)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:627)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserialize(BeanDeserializer.java:200)
+	at tools.jackson.databind.deser.DeserializationContextExt.readRootValue(DeserializationContextExt.java:352)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2696)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at CompleteTests.testExplicitNullValueWithoutTypeIdAccepted(CompleteTests.java:240)
+
+[[1;31mERROR[m] CompleteTests.testDefaultImplUsedWhenTypeIdMissing -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at CompleteTests.testDefaultImplUsedWhenTypeIdMissing(CompleteTests.java:293)
+
+[[1;31mERROR[m] CompleteTests.testMissingTypeIdWithPresentObjectValueFails -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: Expected an exception for missing external type id
+	at org.junit.Assert.fail(Assert.java:89)
+	at CompleteTests.testMissingTypeIdWithPresentObjectValueFails(CompleteTests.java:279)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Failures: 
+[[1;31mERROR[m]   CompleteTests.testDefaultImplUsedWhenTypeIdMissing:293
+[[1;31mERROR[m]   CompleteTests.testMissingTypeIdWithPresentObjectValueFails:279 Expected an exception for missing external type id
+[[1;31mERROR[m]   CompleteTests.testNaturalScalarValueWithoutTypeId:253 expected:<plain> but was:<null>
+[[1;31mERROR[m] Errors: 
+[[1;31mERROR[m]   CompleteTests.testExplicitNullValueWithoutTypeIdAccepted:240 » MismatchedInput Missing external type id property 'petType'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: CompleteTests$PetOwnerBean["pet"])
+[[1;31mERROR[m]   CompleteTests.testPresentTypeIdWithMissingValue:259 » MismatchedInput Missing property 'pet' for external type id 'petType'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: CompleteTests$PetOwnerBean["pet"])
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 13, Failures: 3, Errors: 2, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  17.467 s
+[[1;34mINFO[m] Finished at: 2026-10-05T15:26:58Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

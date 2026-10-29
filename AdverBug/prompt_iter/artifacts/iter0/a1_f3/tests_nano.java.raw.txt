@@ -1,0 +1,56 @@
+```java
+package tools.jackson.databind.deser.jdk;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import tools.jackson.databind.ObjectMapper;
+
+public class DeserializeFromObjectTests {
+
+    private ObjectMapper mapper() {
+        return new ObjectMapper();
+    }
+
+    @Test
+    public void testDeserializeFromObject_WithMessageOnly() throws Exception {
+        ObjectMapper mapper = mapper();
+        Throwable t = mapper.readValue("{\"message\":\"boom\"}", Throwable.class);
+        assertNotNull("Throwable should not be null", t);
+        assertEquals("boom", t.getMessage());
+        // Suppressed should be present (empty by default) or non-null
+        assertNotNull("Suppressed array should not be null", t.getSuppressed());
+        assertEquals(0, t.getSuppressed().length);
+    }
+
+    @Test
+    public void testDeserializeFromObject_WithMessageAndSuppressed() throws Exception {
+        ObjectMapper mapper = mapper();
+        Throwable t = mapper.readValue(
+                "{\"message\":\"outer\",\"suppressed\":[{\"message\":\"inner\"}]}",
+                Throwable.class);
+        assertEquals("outer", t.getMessage());
+        Throwable[] suppressed = t.getSuppressed();
+        assertNotNull(suppressed);
+        assertEquals(1, suppressed.length);
+        assertEquals("inner", suppressed[0].getMessage());
+    }
+
+    @Test
+    public void testDeserializeFromObject_IgnoresLocalizedMessage() throws Exception {
+        ObjectMapper mapper = mapper();
+        Throwable t = mapper.readValue("{\"localizedMessage\":\"ignored\"}", Throwable.class);
+        assertNotNull(t);
+        // localizedMessage should be ignored; message remains null
+        assertNull(t.getMessage());
+    }
+
+    @Test
+    public void testDeserializeFromObject_EmptyObject_MessageNull() throws Exception {
+        ObjectMapper mapper = mapper();
+        Throwable t = mapper.readValue("{}", Throwable.class);
+        assertNotNull(t);
+        assertNull(t.getMessage());
+    }
+}
+```

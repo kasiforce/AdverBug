@@ -1,0 +1,154 @@
+```java
+package tools.jackson.databind.deser.jdk;
+
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.cfg.EnumFeature;
+import tools.jackson.databind.json.JsonMapper;
+
+import static org.junit.Assert.*;
+
+public class _deserializeUsingPropertiesTests
+{
+    private static final JsonMapper MAPPER = JsonMapper.builder().build();
+
+    private static final JsonMapper UNKNOWN_ENUM_KEY_AS_NULL_MAPPER = JsonMapper.builder()
+            .enable(EnumFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)
+            .build();
+
+    enum TestEnum { A, B, C }
+
+    public static class CreatorEnumMap extends EnumMap<TestEnum, String> {
+        @JsonCreator
+        public CreatorEnumMap(@JsonProperty("A") String a) {
+            super(TestEnum.class);
+            if (a != null) {
+                put(TestEnum.A, a);
+            }
+        }
+    }
+
+    @Test
+    public void testBasicEnumMapDeserialization() throws Exception {
+        EnumMap<TestEnum, String> result = MAPPER.readValue("{\"A\":\"alpha\",\"B\":\"beta\"}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        assertEquals(2, result.size());
+        assertEquals("alpha", result.get(TestEnum.A));
+        assertEquals("beta", result.get(TestEnum.B));
+    }
+
+    @Test
+    public void testRepeatedDeserializationIsIdempotent() throws Exception {
+        EnumMap<TestEnum, String> first = MAPPER.readValue("{\"A\":\"alpha\",\"B\":\"beta\"}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        EnumMap<TestEnum, String> second = MAPPER.readValue("{\"A\":\"alpha\",\"B\":\"beta\"}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        assertEquals(first, second);
+    }
+
+    @Test
+    public void testIterationOrderFollowsEnumOrdinals() throws Exception {
+        EnumMap<TestEnum, String> result = MAPPER.readValue("{\"B\":\"beta\",\"A\":\"alpha\"}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        Iterator<TestEnum> it = result.keySet().iterator();
+        assertEquals(TestEnum.A, it.next());
+        assertEquals(TestEnum.B, it.next());
+        assertFalse(it.hasNext());
+    }
+
+    @Test
+    public void testEmptyJsonObjectYieldsEmptyMap() throws Exception {
+        EnumMap<TestEnum, String> result = MAPPER.readValue("{}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        assertTrue(result.isEmpty());
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    public void testUnknownEnumKeyFailsByDefault() throws Exception {
+        try {
+            MAPPER.readValue("{\"A\":\"alpha\",\"UNKNOWN\":\"x\"}",
+                    new TypeReference<EnumMap<TestEnum, String>>() { });
+            fail("Unknown Enum key should cause deserialization to fail");
+        } catch (JacksonException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testUnknownEnumKeySkippedWhenReadUnknownAsNullEnabled() throws Exception {
+        EnumMap<TestEnum, String> result = UNKNOWN_ENUM_KEY_AS_NULL_MAPPER.readValue(
+                "{\"A\":\"alpha\",\"UNKNOWN\":{\"nested\":1},\"B\":\"beta\"}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        assertEquals(2, result.size());
+        assertEquals("alpha", result.get(TestEnum.A));
+        assertEquals("beta", result.get(TestEnum.B));
+        assertFalse(result.containsKey(TestEnum.C));
+    }
+
+    @Test
+    public void testNullValueStoredAsNullEntry() throws Exception {
+        EnumMap<TestEnum, String> result = MAPPER.readValue("{\"A\":null,\"B\":\"beta\"}",
+                new TypeReference<EnumMap<TestEnum, String>>() { });
+        assertEquals(2, result.size());
+        assertTrue(result.containsKey(TestEnum.A));
+        assertNull(result.get(TestEnum.A));
+        assertEquals("beta", result.get(TestEnum.B));
+    }
+
+    @Test
+    public void testInvalidValueFailsDeserialization() throws Exception {
+        try {
+            MAPPER.readValue("{\"A\":\"not-a-number\"}",
+                    new TypeReference<EnumMap<TestEnum, Integer>>() { });
+            fail("Invalid value should cause deserialization to fail");
+        } catch (JacksonException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testStructuredValuesDeserialized() throws Exception {
+        EnumMap<TestEnum, List<Integer>> result = MAPPER.readValue("{\"A\":[1,2],\"B\":[]}",
+                new TypeReference<EnumMap<TestEnum, List<Integer>>>() { });
+        assertEquals(2, result.size());
+        assertEquals(Arrays.asList(1, 2), result.get(TestEnum.A));
+        assertTrue(result.get(TestEnum.B).isEmpty());
+    }
+
+    @Test
+    public void testPropertyBasedCreatorConsumesCreatorPropertyAndContinues() throws Exception {
+        CreatorEnumMap result = MAPPER.readValue("{\"A\":\"alpha\",\"B\":\"beta\"}", CreatorEnumMap.class);
+        assertEquals(2, result.size());
+        assertEquals("alpha", result.get(TestEnum.A));
+        assertEquals("beta", result.get(TestEnum.B));
+    }
+
+    @Test
+    public void testPropertyBasedCreatorWithOnlyBufferedEntries() throws Exception {
+        CreatorEnumMap result = MAPPER.readValue("{\"B\":\"beta\",\"C\":\"gamma\"}", CreatorEnumMap.class);
+        assertEquals(2, result.size());
+        assertEquals("beta", result.get(TestEnum.B));
+        assertEquals("gamma", result.get(TestEnum.C));
+        assertFalse(result.containsKey(TestEnum.A));
+    }
+
+    @Test
+    public void testCreatorTypeUnknownEnumKeySkippedWhenReadUnknownAsNullEnabled() throws Exception {
+        CreatorEnumMap result = UNKNOWN_ENUM_KEY_AS_NULL_MAPPER.readValue(
+                "{\"UNKNOWN\":\"x\",\"A\":\"alpha\"}", CreatorEnumMap.class);
+        assertEquals(1, result.size());
+        assertEquals("alpha", result.get(TestEnum.A));
+    }
+}
+```

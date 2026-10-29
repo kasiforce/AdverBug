@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "The buggy code passes MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS instead of MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES to PropertyBasedCreator.construct, so property-based enum creators are built with the wrong case-insensitivity flag: for example, with ACCEPT_CASE_INSENSITIVE_PROPERTIES enabled (but not ENUMS), input like {\"LABEL\":\"red\",\"code\":1} would deserialize in the original code but fail in the buggy code, and conversely enabling only ACCEPT_CASE_INSENSITIVE_ENUMS would make the buggy code accept case-variant property names the original rejects."
+}

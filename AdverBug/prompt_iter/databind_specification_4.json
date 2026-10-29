@@ -1,0 +1,171 @@
+[
+  {
+    "project_root": "projects/jackson-databind",
+    "name": "deserialize",
+    "src_file": "src/main/java/tools/jackson/databind/ext/javatime/deser/YearMonthDeserializer.java",
+    "test_file": "src/test/java/tools/jackson/databind/ext/javatime/deser/DeserializeTests.java",
+    "code": "@Override\n    public YearMonth deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException\n    {\n        if (p.hasToken(JsonToken.VALUE_STRING)) {\n            return _fromString(p, ctxt, p.getString());\n        }\n        // 30-Sep-2020, tatu: New! \"Scalar from Object\" (mostly for XML)\n        if (p.isExpectedStartObjectToken()) {\n            final String str = ctxt.extractScalarFromObject(p, this, handledType());\n            // 17-May-2025, tatu: [databind#4656] need to check for `null`\n            if (str != null) {\n                return _fromString(p, ctxt, str);\n            }\n            // fall through\n        } else if (p.isExpectedStartArrayToken()) {\n            JsonToken t = p.nextToken();\n            if (t == JsonToken.END_ARRAY) {\n                return null;\n            }\n            if ((t == JsonToken.VALUE_STRING || t == JsonToken.VALUE_EMBEDDED_OBJECT)\n                    && ctxt.isEnabled(DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS)) {\n                final YearMonth parsed = deserialize(p, ctxt);\n                if (p.nextToken() != JsonToken.END_ARRAY) {\n                    handleMissingEndArrayForSingle(p, ctxt);\n                }\n                return parsed;            \n            }\n            if (t != JsonToken.VALUE_NUMBER_INT) {\n                _reportWrongToken(ctxt, JsonToken.VALUE_NUMBER_INT, \"years\");\n            }\n            int year = p.getIntValue();\n            int month = p.nextIntValue(-1);\n            if (month == -1) {\n                if (!p.hasToken(JsonToken.VALUE_NUMBER_INT)) {\n                    _reportWrongToken(ctxt, JsonToken.VALUE_NUMBER_INT, \"months\");\n                }\n                month = p.getIntValue();\n            }\n            if (p.nextToken() != JsonToken.END_ARRAY) {\n                throw ctxt.wrongTokenException(p, handledType(), JsonToken.END_ARRAY,\n                        \"Expected array to end\");\n            }\n            try {\n                return YearMonth.of(year, month);\n            } catch (DateTimeException e) {\n                throw DateTimeParseException.from(p,\n                        \"Failed to deserialize %s from array value [%d,%d]: %s\".formatted(\n                                handledType().getName(), year, month, e.getMessage()),\n                        \"[%d,%d]\".formatted(year, month),\n                        handledType(), e);\n            }\n        } else if (p.hasToken(JsonToken.VALUE_EMBEDDED_OBJECT)) {\n            return (YearMonth) p.getEmbeddedObject();\n        }\n        return _handleUnexpectedToken(ctxt, p,\n                JsonToken.VALUE_STRING, JsonToken.START_ARRAY);\n    }",
+    "is_async": false,
+    "is_static": false,
+    "type": "method",
+    "loc": 53,
+    "complexity": 16,
+    "start_line": 82,
+    "end_line": 138,
+    "class_name": "YearMonthDeserializer",
+    "full_class_name": "YearMonthDeserializer",
+    "class_constructor": [
+      "public YearMonthDeserializer() // public since 2.12\n    {\n        this(DateTimeFormatter.ofPattern(\"u-MM\"));\n    }",
+      "public YearMonthDeserializer(DateTimeFormatter formatter)\n    {\n        super(YearMonth.class, formatter);\n    }",
+      "protected YearMonthDeserializer(YearMonthDeserializer base, Boolean leniency) {\n        super(base, leniency);\n    }",
+      "public YearMonthDeserializer(YearMonthDeserializer base,\n            Boolean leniency,\n            DateTimeFormatter formatter,\n            JsonFormat.Shape shape) {\n        super(base, leniency, formatter, shape);\n    }"
+    ],
+    "class_fields": [
+      "public static final YearMonthDeserializer INSTANCE = new YearMonthDeserializer();"
+    ],
+    "imports": [
+      "import java.time.DateTimeException;",
+      "import java.time.YearMonth;",
+      "import java.time.format.DateTimeFormatter;",
+      "import com.fasterxml.jackson.annotation.JsonFormat;",
+      "import tools.jackson.core.JacksonException;",
+      "import tools.jackson.core.JsonParser;",
+      "import tools.jackson.databind.DeserializationContext;",
+      "import tools.jackson.databind.DeserializationFeature;",
+      "import tools.jackson.core.JsonToken;",
+      "import tools.jackson.databind.ext.javatime.DateTimeParseException;"
+    ],
+    "specification": [
+      "Functional Description: Deserializes JSON input into a YearMonth object, handling various JSON token types including strings, objects, arrays, and embedded objects. It supports both scalar values and structured arrays, ensuring proper parsing of year and month values while managing potential exceptions during the conversion process.\n\nArgs:\np: JsonParser - The parser for reading JSON tokens and values from the input stream\nctxt: DeserializationContext - The context for deserialization, providing configuration and utility methods\n\nReturns: YearMonth - A YearMonth object representing the parsed year and month, or null if the input is an empty array\n\nPreconditions:\n1. The JsonParser must be properly initialized and positioned at a valid JSON token before calling deserialize()\n2. The DeserializationContext must be valid and configured for the expected deserialization behavior\n\nPostconditions:\n1. Returns a YearMonth object or null based on the input JSON structure\n2. The state of the JsonParser and DeserializationContext remains unchanged except for the advancement of the parser token\n\nInvariants:\n1. The method can handle various input formats (string, object, array, embedded object)\n2. Year and month values must be valid integers within the acceptable range for YearMonth\n3. The method will throw exceptions for unexpected tokens or parsing errors, ensuring robust error handling\n\nException:\nJacksonException - If the input JSON structure does not match expected formats or if parsing fails due to invalid data types or values"
+    ]
+  },
+  {
+    "project_root": "projects/jackson-databind",
+    "name": "_parseFloat",
+    "src_file": "src/main/java/tools/jackson/databind/deser/jdk/NumberDeserializers.java",
+    "test_file": "src/test/java/tools/jackson/databind/deser/jdk/_parseFloatTests.java",
+    "code": "protected final Float _parseFloat(JsonParser p, DeserializationContext ctxt)\n            throws JacksonException\n        {\n            String text;\n            switch (p.currentTokenId()) {\n            case JsonTokenId.ID_STRING:\n                text = p.getString();\n                break;\n            case JsonTokenId.ID_NULL: // null fine for non-primitive\n                return (Float) getNullValue(ctxt);\n            case JsonTokenId.ID_NUMBER_INT:\n                final CoercionAction act = _checkIntToFloatCoercion(p, ctxt, _valueClass);\n                if (act == CoercionAction.AsNull) {\n                    return (Float) getNullValue(ctxt);\n                }\n                if (act == CoercionAction.AsEmpty) {\n                    return (Float) getEmptyValue(ctxt);\n                }\n                // fall through to coerce\n            case JsonTokenId.ID_NUMBER_FLOAT:\n                return p.getFloatValue();\n            case JsonTokenId.ID_START_ARRAY:\n                return _deserializeFromArray(p, ctxt);\n            // 29-Jun-2020, tatu: New! \"Scalar from Object\" (mostly for XML)\n            case JsonTokenId.ID_START_OBJECT:\n                text = ctxt.extractScalarFromObject(p, this, _valueClass);\n                // 17-May-2025, tatu: [databind#4656] need to check for `null`\n                if (text != null) {\n                    break;\n                }\n                // fall through\n            default:\n                return (Float) ctxt.handleUnexpectedToken(getValueType(ctxt), p);\n            }\n\n            // 18-Nov-2020, tatu: Special case, Not-a-Numbers as String need to be\n            //     considered \"native\" representation as JSON does not allow as numbers,\n            //     and hence not bound by coercion rules\n            {\n                Float nan = _checkFloatSpecialValue(text);\n                if (nan != null) {\n                    return nan;\n                }\n            }\n            final CoercionAction act = _checkFromStringCoercion(ctxt, text);\n            if (act == CoercionAction.AsNull) {\n                return (Float) getNullValue(ctxt);\n            }\n            if (act == CoercionAction.AsEmpty) {\n                return (Float) getEmptyValue(ctxt);\n            }\n            text = text.trim();\n            if (_checkTextualNull(ctxt, text)) {\n                return (Float) getNullValue(ctxt);\n            }\n            // 09-Dec-2023, tatu: To avoid parser having to validate input, pre-validate:\n            if (NumberInput.looksLikeValidNumber(text)) {\n                p.streamReadConstraints().validateFPLength(text.length());\n                try {\n                    return NumberInput.parseFloat(text, p.isEnabled(StreamReadFeature.USE_FAST_DOUBLE_PARSER));\n                } catch (IllegalArgumentException iae) { }\n            }\n            return (Float) ctxt.handleWeirdStringValue(_valueClass, text,\n                    \"not a valid `Float` value\");\n        }",
+    "is_async": false,
+    "is_static": false,
+    "type": "method",
+    "loc": 56,
+    "complexity": 16,
+    "start_line": 666,
+    "end_line": 730,
+    "class_name": "FloatDeserializer",
+    "full_class_name": "FloatDeserializer",
+    "class_constructor": [
+      "public FloatDeserializer(Class<Float> cls, Float nvl) {\n            super(cls, LogicalType.Float, nvl, 0.f);\n        }"
+    ],
+    "class_fields": [
+      "final static FloatDeserializer primitiveInstance = new FloatDeserializer(Float.TYPE, 0.f);",
+      "final static FloatDeserializer wrapperInstance = new FloatDeserializer(Float.class, null);"
+    ],
+    "imports": [
+      "import java.math.BigDecimal;",
+      "import java.math.BigInteger;",
+      "import java.util.HashSet;",
+      "import tools.jackson.core.*;",
+      "import tools.jackson.core.io.NumberInput;",
+      "import tools.jackson.databind.*;",
+      "import tools.jackson.databind.annotation.JacksonStdImpl;",
+      "import tools.jackson.databind.cfg.CoercionAction;",
+      "import tools.jackson.databind.cfg.CoercionInputShape;",
+      "import tools.jackson.databind.deser.std.NullifyingDeserializer;",
+      "import tools.jackson.databind.deser.std.StdScalarDeserializer;",
+      "import tools.jackson.databind.jsontype.TypeDeserializer;",
+      "import tools.jackson.databind.type.LogicalType;",
+      "import tools.jackson.databind.util.AccessPattern;",
+      "import tools.jackson.databind.util.ClassUtil;"
+    ],
+    "specification": [
+      "Functional Description: Parses a JSON token into a Float value, handling various token types such as strings, nulls, integers, and floats. It also manages coercion actions for converting integers to floats and handles special cases for Not-a-Numbers (NaN) and unexpected tokens, ensuring robust deserialization of float values from JSON input.\n\nArgs:\np: JsonParser - The parser instance used to read the JSON input and retrieve the current token.\nctxt: DeserializationContext - The context for deserialization, providing access to configuration and utility methods.\n\nReturns: Float - The parsed Float value from the JSON input, or null if the value is determined to be null or empty based on coercion rules.\n\nPreconditions:\n1. The JsonParser must be properly initialized and positioned at a valid JSON token.\n2. The DeserializationContext must be valid and configured for the deserialization process.\n3. The _valueClass field should be set to the expected Float type.\n\nPostconditions:\n1. Returns a Float value or null based on the input token and coercion rules.\n2. The state of the JsonParser and DeserializationContext remains unchanged except for the advancement of the parser position.\n3. Any unexpected tokens are handled gracefully, returning null or an appropriate error.\n\nInvariants:\n1. The method consistently returns null for null or empty values based on coercion rules.\n2. The method handles both primitive and wrapper Float types.\n3. The method validates the input string format before attempting to parse it as a Float.\n4. The method is idempotent; repeated calls with the same input produce the same output.\n\nException:\nJacksonException - If the JSON token is unexpected or cannot be converted to a Float value, or if parsing fails due to invalid input."
+    ]
+  },
+  {
+    "project_root": "projects/jackson-databind",
+    "name": "_parseByte",
+    "src_file": "src/main/java/tools/jackson/databind/deser/jdk/NumberDeserializers.java",
+    "test_file": "src/test/java/tools/jackson/databind/deser/jdk/_parseByteTests.java",
+    "code": "protected Byte _parseByte(JsonParser p, DeserializationContext ctxt)\n                throws JacksonException\n        {\n            String text;\n\n            switch (p.currentTokenId()) {\n            case JsonTokenId.ID_STRING: // let's do implicit re-parse\n                text = p.getString();\n                break;\n            case JsonTokenId.ID_NUMBER_FLOAT:\n                final CoercionAction act = _checkFloatToIntCoercion(p, ctxt, _valueClass);\n                if (act == CoercionAction.AsNull) {\n                    return (Byte) getNullValue(ctxt);\n                }\n                if (act == CoercionAction.AsEmpty) {\n                    return (Byte) getEmptyValue(ctxt);\n                }\n                // 11-Oct-2025, tatu: [databind#5240] Cumbersome as there is no\n                //  `getValueAsByte()` that'd avoid checks. So need to work around.\n                int i = p.getValueAsInt();\n                if (_byteOverflow(i)) {\n                    // Let's trigger overflow handling\n                    return p.getByteValue();\n                }\n                return (byte) i;\n            case JsonTokenId.ID_NULL: // null fine for non-primitive\n                return (Byte) getNullValue(ctxt);\n            case JsonTokenId.ID_NUMBER_INT:\n                return p.getByteValue();\n            case JsonTokenId.ID_START_ARRAY:\n                return (Byte) _deserializeFromArray(p, ctxt);\n            // 29-Jun-2020, tatu: New! \"Scalar from Object\" (mostly for XML)\n            case JsonTokenId.ID_START_OBJECT:\n                text = ctxt.extractScalarFromObject(p, this, _valueClass);\n                // 17-May-2025, tatu: [databind#4656] need to check for `null`\n                if (text != null) {\n                    break;\n                }\n                // fall through\n            default:\n                return (Byte) ctxt.handleUnexpectedToken(getValueType(ctxt), p);\n            }\n\n            // Rest of the processing is for coercion from String\n            final CoercionAction act = _checkFromStringCoercion(ctxt, text);\n            if (act == CoercionAction.AsNull) {\n                return (Byte) getNullValue(ctxt);\n            }\n            if (act == CoercionAction.AsEmpty) {\n                return (Byte) getEmptyValue(ctxt);\n            }\n            text = text.trim();\n            if (_checkTextualNull(ctxt, text)) {\n                return (Byte) getNullValue(ctxt);\n            }\n            int value;\n            try {\n                value = NumberInput.parseInt(text);\n            } catch (IllegalArgumentException iae) {\n                return (Byte) ctxt.handleWeirdStringValue(_valueClass, text,\n                        \"not a valid Byte value\");\n            }\n            // So far so good: but does it fit?\n            // as per [JACKSON-804], allow range up to 255, inclusive\n            if (_byteOverflow(value)) {\n                return (Byte) ctxt.handleWeirdStringValue(_valueClass, text,\n                        \"overflow, value cannot be represented as 8-bit value\");\n                // fall-through for deferred fails\n            }\n            return Byte.valueOf((byte) value);\n        }",
+    "is_async": false,
+    "is_static": false,
+    "type": "method",
+    "loc": 59,
+    "complexity": 16,
+    "start_line": 288,
+    "end_line": 358,
+    "class_name": "ByteDeserializer",
+    "full_class_name": "ByteDeserializer",
+    "class_constructor": [
+      "public ByteDeserializer(Class<Byte> cls, Byte nvl)\n        {\n            super(cls, LogicalType.Integer, nvl, (byte) 0);\n        }"
+    ],
+    "class_fields": [
+      "final static ByteDeserializer primitiveInstance = new ByteDeserializer(Byte.TYPE, (byte) 0);",
+      "final static ByteDeserializer wrapperInstance = new ByteDeserializer(Byte.class, null);"
+    ],
+    "imports": [
+      "import java.math.BigDecimal;",
+      "import java.math.BigInteger;",
+      "import java.util.HashSet;",
+      "import tools.jackson.core.*;",
+      "import tools.jackson.core.io.NumberInput;",
+      "import tools.jackson.databind.*;",
+      "import tools.jackson.databind.annotation.JacksonStdImpl;",
+      "import tools.jackson.databind.cfg.CoercionAction;",
+      "import tools.jackson.databind.cfg.CoercionInputShape;",
+      "import tools.jackson.databind.deser.std.NullifyingDeserializer;",
+      "import tools.jackson.databind.deser.std.StdScalarDeserializer;",
+      "import tools.jackson.databind.jsontype.TypeDeserializer;",
+      "import tools.jackson.databind.type.LogicalType;",
+      "import tools.jackson.databind.util.AccessPattern;",
+      "import tools.jackson.databind.util.ClassUtil;"
+    ],
+    "specification": [
+      "Functional Description: Parses a JSON token into a Byte value, handling various token types such as strings, numbers, nulls, arrays, and objects. It performs coercion and validation to ensure the parsed value fits within the valid range for a Byte, returning appropriate null or empty values when necessary.\n\nArgs:\np: JsonParser - The parser instance used to read the JSON token and extract its value.\nctxt: DeserializationContext - The context for deserialization that provides methods for handling nulls, empty values, and unexpected tokens.\n\nReturns: Byte - The parsed Byte value or null if the token represents a null value or an empty value.\n\nPreconditions:\n1. The JsonParser must be properly initialized and positioned at a valid JSON token.\n2. The DeserializationContext must be valid and configured for the deserialization process.\n3. The _valueClass field must be set to the expected Byte class type.\n\nPostconditions:\n1. The method returns a Byte value that corresponds to the parsed JSON token or null if applicable.\n2. The state of the JsonParser and DeserializationContext remains unchanged after method execution.\n3. Any unexpected tokens are handled gracefully, returning null or an appropriate error response.\n\nInvariants:\n1. The method handles various JSON token types consistently, returning valid Byte values or null.\n2. The method ensures that values parsed from strings are trimmed and validated for nullity.\n3. Overflow conditions are checked to ensure the parsed value fits within the Byte range.\n4. The method is idempotent; calling it with the same token will yield the same result.\n\nException:\nJacksonException - If an unexpected token is encountered that cannot be processed or if parsing fails due to invalid input."
+    ]
+  },
+  {
+    "project_root": "projects/jackson-databind",
+    "name": "deserialize",
+    "src_file": "src/main/java/tools/jackson/databind/deser/jdk/StringArrayDeserializer.java",
+    "test_file": "src/test/java/tools/jackson/databind/deser/jdk/DeserializeTests.java",
+    "code": "@Override\n    public String[] deserialize(JsonParser p, DeserializationContext ctxt,\n            String[] intoValue) throws JacksonException\n    {\n        // Ok: must point to START_ARRAY (or equivalent)\n        if (!p.isExpectedStartArrayToken()) {\n            String[] arr = handleNonArray(p, ctxt);\n            if (arr == null) {\n                return intoValue;\n            }\n            final int offset = intoValue.length;\n            String[] result = Arrays.copyOf(intoValue, offset + arr.length);\n            System.arraycopy(arr, 0, result, offset, arr.length);\n            return result;\n        }\n\n        if (_elementDeserializer != null) {\n            return _deserializeCustom(p, ctxt, intoValue);\n        }\n        final ObjectBuffer buffer = ctxt.leaseObjectBuffer();\n        int ix = intoValue.length;\n        Object[] chunk = buffer.resetAndStart(intoValue, ix);\n\n        try {\n            while (true) {\n                String value = p.nextStringValue();\n                if (value == null) {\n                    JsonToken t = p.currentToken();\n                    if (t == JsonToken.END_ARRAY) {\n                        break;\n                    }\n                    if (t == JsonToken.VALUE_NULL) {\n                        // 03-Feb-2017, tatu: Should we skip null here or not?\n                        value = null;\n                    } else {\n                        value = _parseString(p, ctxt, _nullProvider);\n                    }\n\n                    if (value == null) {\n                        value = (String) _nullProvider.getNullValue(ctxt);\n\n                        if (value == null && _skipNullValues) {\n                            continue;\n                        }\n                    }\n                }\n                if (ix >= chunk.length) {\n                    chunk = buffer.appendCompletedChunk(chunk);\n                    ix = 0;\n                }\n                chunk[ix++] = value;\n            }\n        } catch (Exception e) {\n            throw DatabindException.wrapWithPath(ctxt, e,\n                    new JacksonException.Reference(chunk, buffer.bufferedSize() + ix));\n        }\n        String[] result = buffer.completeAndClearBuffer(chunk, ix, String.class);\n        ctxt.returnObjectBuffer(buffer);\n        return result;\n    }",
+    "is_async": false,
+    "is_static": false,
+    "type": "method",
+    "loc": 53,
+    "complexity": 13,
+    "start_line": 257,
+    "end_line": 316,
+    "class_name": "StringArrayDeserializer",
+    "full_class_name": "StringArrayDeserializer",
+    "class_constructor": [
+      "public StringArrayDeserializer() {\n        this(null, null, null);\n    }",
+      "@SuppressWarnings(\"unchecked\")\n    protected StringArrayDeserializer(ValueDeserializer<?> deser,\n            NullValueProvider nuller, Boolean unwrapSingle) {\n        super(String[].class);\n        _elementDeserializer = (ValueDeserializer<String>) deser;\n        _nullProvider = nuller;\n        _unwrapSingle = unwrapSingle;\n        _skipNullValues = NullsConstantProvider.isSkipper(nuller);\n    }"
+    ],
+    "class_fields": [
+      "public final static StringArrayDeserializer instance = new StringArrayDeserializer();"
+    ],
+    "imports": [
+      "import java.util.Arrays;",
+      "import java.util.Objects;",
+      "import com.fasterxml.jackson.annotation.JsonFormat;",
+      "import tools.jackson.core.*;",
+      "import tools.jackson.databind.*;",
+      "import tools.jackson.databind.annotation.JacksonStdImpl;",
+      "import tools.jackson.databind.cfg.CoercionAction;",
+      "import tools.jackson.databind.cfg.CoercionInputShape;",
+      "import tools.jackson.databind.deser.NullValueProvider;",
+      "import tools.jackson.databind.deser.impl.NullsConstantProvider;",
+      "import tools.jackson.databind.deser.std.StdDeserializer;",
+      "import tools.jackson.databind.jsontype.TypeDeserializer;",
+      "import tools.jackson.databind.type.LogicalType;",
+      "import tools.jackson.databind.util.AccessPattern;",
+      "import tools.jackson.databind.util.ObjectBuffer;"
+    ],
+    "specification": [
+      "Functional Description: Deserializes a JSON array into a String array, handling both standard array tokens and non-array cases. If the JSON parser does not point to a START_ARRAY token, it attempts to handle the input accordingly, potentially merging results into the provided array. The method also supports custom deserialization logic if an element deserializer is defined.\n\nArgs:\np: JsonParser - The parser for reading JSON content, expected to provide array values or handle non-array scenarios.\nctxt: DeserializationContext - The context for deserialization, providing access to configuration and utility methods.\nintoValue: String[] - The existing array to which deserialized values will be appended; may be modified or returned as a new array.\n\nReturns: String[] - An array of strings containing the deserialized values from the JSON input, potentially including values from the provided array.\n\nPreconditions:\n1. The JsonParser must be properly initialized and positioned at the start of a JSON array or a valid token.\n2. The DeserializationContext must be valid and capable of managing object buffers.\n3. The provided intoValue array must be initialized and not null.\n\nPostconditions:\n1. Returns a new String array or modifies the provided array with deserialized values.\n2. The state of the DeserializationContext is preserved, and the object buffer is returned after use.\n3. The input parameters remain unchanged unless the intoValue array is modified.\n\nInvariants:\n1. The method can handle both START_ARRAY tokens and non-array inputs gracefully.\n2. If the input is null or not an array, it will return the original intoValue array if no valid values are found.\n3. The method ensures that null values are handled according to the _skipNullValues setting.\n4. The deserialization process is idempotent for the same input JSON structure.\n\nException:\nJacksonException - If an error occurs during parsing or deserialization, particularly if the JSON structure is invalid or unexpected."
+    ]
+  }
+]

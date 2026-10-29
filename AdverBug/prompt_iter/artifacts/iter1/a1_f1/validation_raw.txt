@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "The buggy code replaces _nullProvider.getNullValue(ctxt) with _valueDeserializer.getNullValue(ctxt) when a JSON null value is encountered, bypassing the configured content-null provider: under null-handling settings such as Nulls.FAIL the original code throws an exception via the NullValueProvider and under Nulls.AS_EMPTY it substitutes an empty value, whereas the buggy version silently stores the value deserializer's plain null (bufferMapProperty(key, null)), producing different observable behavior for valid inputs/contexts where the null provider is not the deserializer itself."
+}

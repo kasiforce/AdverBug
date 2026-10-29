@@ -1,0 +1,6 @@
+```json
+{
+    "is_valid_bug": true,
+    "reason": "The buggy code drops the 'break' after the Map-handling block in case ID_PROPERTY_NAME, so when the merge target is a Collection rather than a Map (reached via the ID_START_OBJECT fall-through while merging a non-empty JSON object, e.g. merging {\"k\":1} into an existing list [9]), execution falls through into the ID_START_ARRAY branch: the object's first property value is deserialized and appended to the collection (mutating [9] to [9,1]) and token consumption continues until an unexpected token (END_OBJECT/FIELD_NAME) finally throws, whereas the original code breaks out and delegates immediately, throwing with the list still unchanged at [9]; the corrupted collection state after the exception and the different failure point/message are observable behavioral differences."
+}
+```

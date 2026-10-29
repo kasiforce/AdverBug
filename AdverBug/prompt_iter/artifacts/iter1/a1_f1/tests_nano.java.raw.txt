@@ -1,0 +1,80 @@
+package tools.jackson.databind.deser.jdk;
+
+import org.junit.Test;
+
+import java.util.EnumMap;
+
+import static org.junit.Assert.*;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.JavaType;
+
+public class _deserializeUsingPropertiesTests {
+
+    enum Color {
+        RED, GREEN, BLUE
+    }
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    @Test
+    public void testBasicDeserialization() throws Exception {
+        String json = "{\"RED\":1, \"GREEN\":2}";
+        JavaType mapType = mapper.getTypeFactory().constructMapType(EnumMap.class, Color.class, Integer.class);
+        EnumMap<Color, Integer> result = mapper.readValue(json, mapType);
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals(Integer.valueOf(1), result.get(Color.RED));
+        assertEquals(Integer.valueOf(2), result.get(Color.GREEN));
+        assertFalse(result.containsKey(Color.BLUE));
+    }
+
+    @Test
+    public void testEmptyObjectReturnsEmptyEnumMap() throws Exception {
+        String json = "{}";
+        JavaType mapType = mapper.getTypeFactory().constructMapType(EnumMap.class, Color.class, Integer.class);
+        EnumMap<Color, Integer> result = mapper.readValue(json, mapType);
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    public void testUnknownEnumKeyThrowsException() {
+        String json = "{\"YELLOW\":3}";
+        JavaType mapType = mapper.getTypeFactory().constructMapType(EnumMap.class, Color.class, Integer.class);
+        try {
+            mapper.readValue(json, mapType);
+            fail("Expected exception due to unknown enum key");
+        } catch (JacksonException e) {
+            // expected
+        } catch (Throwable t) {
+            fail("Unexpected exception type: " + t);
+        }
+    }
+
+    @Test
+    public void testInvalidValueTypeThrowsException() {
+        String json = "{\"RED\":\"not-a-number\"}";
+        JavaType mapType = mapper.getTypeFactory().constructMapType(EnumMap.class, Color.class, Integer.class);
+        try {
+            mapper.readValue(json, mapType);
+            fail("Expected exception due to invalid value type");
+        } catch (JacksonException e) {
+            // expected
+        } catch (Throwable t) {
+            fail("Unexpected exception type: " + t);
+        }
+    }
+
+    @Test
+    public void testNullValueDeserialization() throws Exception {
+        String json = "{\"RED\":null}";
+        JavaType mapType = mapper.getTypeFactory().constructMapType(EnumMap.class, Color.class, Integer.class);
+        EnumMap<Color, Integer> result = mapper.readValue(json, mapType);
+        assertNotNull(result);
+        assertTrue(result.containsKey(Color.RED));
+        assertNull(result.get(Color.RED));
+    }
+
+}

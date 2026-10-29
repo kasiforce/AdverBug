@@ -1,0 +1,88 @@
+package tools.jackson.databind.deser.jdk;
+
+import org.junit.Test;
+
+import java.util.EnumMap;
+
+import static org.junit.Assert.*;
+
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.cfg.EnumFeature;
+
+public class _deserializeUsingPropertiesTests {
+
+    public enum MyEnum { A, B, C }
+
+    public static class EnumMapHolder {
+        public EnumMap<MyEnum, Integer> map;
+    }
+
+    @Test
+    public void testBasicDeserialization() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        EnumMapHolder holder = mapper.readValue("{\"map\":{\"A\":1,\"B\":2}}", EnumMapHolder.class);
+
+        assertNotNull("Map should not be null", holder.map);
+        assertEquals("Map should contain 2 entries", 2, holder.map.size());
+        assertEquals(Integer.valueOf(1), holder.map.get(MyEnum.A));
+        assertEquals(Integer.valueOf(2), holder.map.get(MyEnum.B));
+    }
+
+    @Test
+    public void testUnknownEnumKeyThrowsException() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.readValue("{\"map\":{\"Z\":1}}", EnumMapHolder.class);
+            fail("Expected JacksonException due to unknown enum key");
+        } catch (JacksonException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testUnknownEnumKeysAreNullWhenConfigured() throws Exception {
+        ObjectMapper mapper = JsonMapper.builder()
+
+                .enable(EnumFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL)
+
+                .build();
+        // Enable reading unknown enum values as null values
+
+
+        try {
+            EnumMapHolder holder = mapper.readValue("{\"map\":{\"A\":1,\"Z\":5}}", EnumMapHolder.class);
+            assertNotNull("Map should not be null", holder.map);
+            // Should contain only known keys; unknown key should be skipped
+            assertTrue("Map should contain key A", holder.map.containsKey(MyEnum.A));
+            assertFalse("Map should not contain unknown key Z as a key", holder.map.containsKey(null));
+            assertEquals("Map should have size 1 after skipping unknown key", 1, holder.map.size());
+            assertEquals(Integer.valueOf(1), holder.map.get(MyEnum.A));
+        } catch (Exception e) {
+            fail("Deserialization with unknown keys as null should not fail, but threw: " + e);
+        }
+    }
+
+    @Test
+    public void testNullValueDeserialization() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        EnumMapHolder holder = mapper.readValue("{\"map\":{\"A\":null}}", EnumMapHolder.class);
+
+        assertNotNull("Map should not be null", holder.map);
+        assertEquals("Map should contain 1 entry", 1, holder.map.size());
+        assertTrue("Map should contain key A", holder.map.containsKey(MyEnum.A));
+        assertNull("Value for key A should be null", holder.map.get(MyEnum.A));
+    }
+
+    @Test
+    public void testRootNotObjectThrows() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.readValue("\"string\"", EnumMapHolder.class);
+            fail("Expected exception when root is not an object");
+        } catch (Exception e) {
+            // Expected: either JacksonException or JsonParseException
+        }
+    }
+}

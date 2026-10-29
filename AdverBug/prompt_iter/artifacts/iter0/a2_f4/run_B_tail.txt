@@ -1,0 +1,76 @@
+
+[[1;33mWARNING[m] The parameter forkCount should likely not be 0. Forking a JVM for tests improves test accuracy. Ensure to have a <forkCount> >= 1.
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] Running tools.jackson.databind.deser.impl.CompleteTests
+[[1;31mERROR[m] Tests run: 17, Failures: 3, Errors: 1, Skipped: 0, Time elapsed: 0.220 s <<< FAILURE! -- in tools.jackson.databind.deser.impl.CompleteTests
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testViewIncludedExternalTypeIdDeserialized -- Time elapsed: 0.010 s <<< FAILURE!
+java.lang.AssertionError: expected:<bob> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at tools.jackson.databind.deser.impl.CompleteTests.testViewIncludedExternalTypeIdDeserialized(CompleteTests.java:317)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testViewFilteredExternalTypeIdWithoutTypeId -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: expected:<bob> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at tools.jackson.databind.deser.impl.CompleteTests.testViewFilteredExternalTypeIdWithoutTypeId(CompleteTests.java:306)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testViewFilteredExternalTypeIdIsSkipped -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: expected:<bob> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at tools.jackson.databind.deser.impl.CompleteTests.testViewFilteredExternalTypeIdIsSkipped(CompleteTests.java:295)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testMissingValuePropertyWithTypeIdPresent -- Time elapsed: 0.002 s <<< ERROR!
+tools.jackson.databind.exc.MismatchedInputException: 
+Missing property 'value' for external type id 'type'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: tools.jackson.databind.deser.impl.CompleteTests$BasicCreatorBean["value"])
+	at tools.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:70)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2012)
+	at tools.jackson.databind.DeserializationContext.reportPropertyInputMismatch(DeserializationContext.java:2027)
+	at tools.jackson.databind.deser.impl.ExternalTypeHandler.complete(ExternalTypeHandler.java:356)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeUsingPropertyBasedWithExternalTypeId(BeanDeserializer.java:1534)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeWithExternalTypeId(BeanDeserializer.java:1369)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:627)
+	at tools.jackson.databind.deser.bean.BeanDeserializer.deserialize(BeanDeserializer.java:200)
+	at tools.jackson.databind.deser.DeserializationContextExt.readRootValue(DeserializationContextExt.java:352)
+	at tools.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2696)
+	at tools.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1556)
+	at tools.jackson.databind.deser.impl.CompleteTests.testMissingValuePropertyWithTypeIdPresent(CompleteTests.java:217)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Failures: 
+[[1;31mERROR[m]   CompleteTests.testViewFilteredExternalTypeIdIsSkipped:295 expected:<bob> but was:<null>
+[[1;31mERROR[m]   CompleteTests.testViewFilteredExternalTypeIdWithoutTypeId:306 expected:<bob> but was:<null>
+[[1;31mERROR[m]   CompleteTests.testViewIncludedExternalTypeIdDeserialized:317 expected:<bob> but was:<null>
+[[1;31mERROR[m] Errors: 
+[[1;31mERROR[m]   CompleteTests.testMissingValuePropertyWithTypeIdPresent:217 » MismatchedInput Missing property 'value' for external type id 'type'
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN] (through reference chain: tools.jackson.databind.deser.impl.CompleteTests$BasicCreatorBean["value"])
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 17, Failures: 3, Errors: 1, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  17.093 s
+[[1;34mINFO[m] Finished at: 2026-10-06T12:47:19Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

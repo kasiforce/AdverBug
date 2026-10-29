@@ -1,0 +1,63 @@
+@SuppressWarnings("unchecked")
+    @Override
+    public Object deserialize(JsonParser p, DeserializationContext ctxt, Object intoValue)
+        throws JacksonException
+    {
+        if (_nonMerging) {
+            return deserialize(p, ctxt);
+        }
+        switch (p.currentTokenId()) {
+        case JsonTokenId.ID_END_OBJECT:
+        case JsonTokenId.ID_END_ARRAY:
+            return intoValue != null ? intoValue : deserialize(p, ctxt);
+        case JsonTokenId.ID_START_OBJECT:
+            {
+                JsonToken t = p.nextToken(); // to get to FIELD_NAME or END_OBJECT
+                if (t == JsonToken.END_OBJECT) {
+                    return intoValue;
+                }
+            }
+            // fall through
+        case JsonTokenId.ID_PROPERTY_NAME:
+            if (intoValue instanceof Map<?,?>) {
+                Map<Object,Object> m = (Map<Object,Object>) intoValue;
+                // NOTE: we are guaranteed to point to FIELD_NAME
+                String key = p.currentName();
+                do {
+                    p.nextToken();
+                    // and possibly recursive merge here
+                    Object old = m.get(key);
+                    Object newV;
+                    if (old != null) {
+                        newV = deserialize(p, ctxt, old);
+                    } else {
+                        newV = deserialize(p, ctxt);
+                    }
+                    if (newV != old) {
+                        m.put(key, newV);
+                    }
+                } while ((key = p.nextName()) != null);
+                return intoValue;
+            }
+            break;
+        case JsonTokenId.ID_START_ARRAY:
+            if (intoValue instanceof Collection<?>) {
+                JsonToken t = p.nextToken(); // to get to END_OBJECT
+                if (t == JsonToken.END_ARRAY) {
+                    return intoValue;
+                }
+                Collection<Object> c = (Collection<Object>) intoValue;
+                // NOTE: merge for arrays/Collections means append, can't merge contents
+                do {
+                    c.add(deserialize(p, ctxt));
+                } while (p.nextToken() != JsonToken.END_ARRAY);
+                return intoValue;
+            }
+            // 21-Apr-2017, tatu: Should we try to support merging of Object[] values too?
+            //    ... maybe future improvement
+
+            break;
+        }
+        // Easiest handling for the rest, delegate. Only (?) question: how about nulls?
+        return deserialize(p, ctxt);
+    }

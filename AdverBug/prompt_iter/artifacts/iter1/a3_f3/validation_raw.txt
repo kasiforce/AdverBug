@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "In the `_anySetter` branch, the original code instantiates the Throwable with a null message (`_instantiate(ctxt, hasStringCreator, null)`), while the buggy code passes `p.getValueAsString()`, which at that point is the value of the current unknown property. For input where an unknown property is encountered before \"message\" and an any-setter is configured (e.g. `{\"unknownProp\":\"value\"}` with a Throwable type having `@JsonAnySetter` and a single-String constructor), the original produces a Throwable whose message is null, whereas the buggy version produces one whose message is \"value\" — a directly observable difference in `getMessage()` and in any downstream error/reporting behavior that depends on it."
+}

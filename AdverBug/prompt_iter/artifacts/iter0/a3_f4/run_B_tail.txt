@@ -1,0 +1,67 @@
+ and marked for removal
+[[1;33mWARNING[m] /testbed/src/test/java/tools/jackson/databind/misc/AccessFixTest.java:[55,23] setSecurityManager(java.lang.SecurityManager) in java.lang.System has been deprecated and marked for removal
+[[1;33mWARNING[m] /testbed/src/test/java/tools/jackson/databind/ser/CustomSerializersTest.java:[462,36] BeanPropertyWriter(tools.jackson.databind.introspect.BeanPropertyDefinition,tools.jackson.databind.introspect.AnnotatedMember,tools.jackson.databind.util.Annotations,tools.jackson.databind.JavaType,tools.jackson.databind.ValueSerializer<?>,tools.jackson.databind.jsontype.TypeSerializer,tools.jackson.databind.JavaType,boolean,java.lang.Object,java.lang.Class<?>[],com.fasterxml.jackson.annotation.JsonInclude.Value) in tools.jackson.databind.ser.BeanPropertyWriter has been deprecated
+[[1;33mWARNING[m] /testbed/src/test/java/tools/jackson/databind/type/RecursiveTypeTest.java:[187,46] StdTypeResolverBuilder(com.fasterxml.jackson.annotation.JsonTypeInfo.Id,com.fasterxml.jackson.annotation.JsonTypeInfo.As,java.lang.String) in tools.jackson.databind.jsontype.impl.StdTypeResolverBuilder has been deprecated
+[[1;33mWARNING[m] /testbed/src/test/java/tools/jackson/databind/util/TokenBufferReadConstraintsTest.java:[72,27] TokenBuffer(boolean) in tools.jackson.databind.util.TokenBuffer has been deprecated
+[[1;33mWARNING[m] /testbed/src/test/java/tools/jackson/databind/util/internal/PrivateMaxEntriesMapStressTest.java:[38,21] attempt to synchronize on an instance of a value-based class
+[[1;33mWARNING[m] /testbed/src/test/java/tools/jackson/databind/util/internal/PrivateMaxEntriesMapStressTest.java:[48,21] attempt to synchronize on an instance of a value-based class
+[[1;34mINFO[m] /testbed/src/main/java/tools/jackson/databind/DeserializationContext.java: Some input files use unchecked or unsafe operations.
+[[1;34mINFO[m] /testbed/src/main/java/tools/jackson/databind/DeserializationContext.java: Recompile with -Xlint:unchecked for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.6.0:test[m [1m(default-test)[m @ [36mjackson-databind[0;1m ---[m
+[[1;33mWARNING[m] useSystemClassLoader setting has no effect when not forking
+[[1;33mWARNING[m] The parameter forkCount should likely not be 0. Forking a JVM for tests improves test accuracy. Ensure to have a <forkCount> >= 1.
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] Running tools.jackson.databind.deser.impl.CompleteTests
+[[1;31mERROR[m] Tests run: 13, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.189 s <<< FAILURE! -- in tools.jackson.databind.deser.impl.CompleteTests
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testMissingValueWithTypeUsesEmptyValue -- Time elapsed: 0.005 s <<< FAILURE!
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at tools.jackson.databind.deser.impl.CompleteTests.testMissingValueWithTypeUsesEmptyValue(CompleteTests.java:209)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testExternalTypeIdFilteredOutByView -- Time elapsed: 0.005 s <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at tools.jackson.databind.deser.impl.CompleteTests.testExternalTypeIdFilteredOutByView(CompleteTests.java:290)
+
+[[1;31mERROR[m] tools.jackson.databind.deser.impl.CompleteTests.testExternalTypeIdVisibleInView -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at tools.jackson.databind.deser.impl.CompleteTests.testExternalTypeIdVisibleInView(CompleteTests.java:277)
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Failures: 
+[[1;31mERROR[m]   CompleteTests.testExternalTypeIdFilteredOutByView:290 expected:<1> but was:<0>
+[[1;31mERROR[m]   CompleteTests.testExternalTypeIdVisibleInView:277 expected:<1> but was:<0>
+[[1;31mERROR[m]   CompleteTests.testMissingValueWithTypeUsesEmptyValue:209
+[[1;34mINFO[m] 
+[[1;31mERROR[m] Tests run: 13, Failures: 3, Errors: 0, Skipped: 0
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  17.373 s
+[[1;34mINFO[m] Finished at: 2026-10-06T18:00:40Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:3.6.0:test[m [1m(default-test)[m on project [36mjackson-databind[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mSee /testbed/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] [1;31mSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

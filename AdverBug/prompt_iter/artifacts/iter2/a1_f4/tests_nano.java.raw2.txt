@@ -1,0 +1,105 @@
+package tools.jackson.databind.deser.impl;
+
+import static org.junit.Assert.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Test;
+
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.deser.SettableBeanProperty;
+import tools.jackson.databind.deser.bean.PropertyBasedCreator;
+import tools.jackson.databind.deser.bean.PropertyValueBuffer;
+import tools.jackson.databind.util.TokenBuffer;
+import tools.jackson.databind.ext EXT_TBD; // placeholder to ensure imports resolve in various environments
+
+/**
+ * Comprehensive tests for ExternalTypeHandler.complete(...) behavior.
+ * Note: Tests use lightweight, minimal stubs to exercise the control flow
+ * without requiring a full JSON payload.
+ */
+public class CompleteTests {
+
+    // Lightweight bean used by tests
+    static class TestBean {
+        public String named;
+    }
+
+    // Minimal ExtTypedProperty stub to satisfy constructor requirements
+    // and provide controlled behavior for the test.
+    static class StubExtTypedProperty {
+        private final SettableBeanProperty property;
+        private final String typePropertyName;
+        public StubExtTypedProperty(SettableBeanProperty property, String typePropertyName) {
+            this.property = property;
+            this.typePropertyName = typePropertyName;
+        }
+        public SettableBeanProperty getProperty() { return property; }
+        public String getTypePropertyName() { return typePropertyName; }
+        public boolean hasDefaultType() { return false; }
+        public String getDefaultTypeId(DeserializationContext ctxt) { return null; }
+        public SettableBeanProperty getTypeProperty() { return null; }
+        public boolean visibleInView(Class<?> view) { return true; }
+    }
+
+    // Dummy implementation of a creator that builds a simple TestBean
+    static class DummyCreator extends PropertyBasedCreator {
+        public DummyCreator() {
+            super(new TestBean(), new HashMap<>(), null);
+        }
+
+        @Override
+        public Object build(DeserializationContext ctxt, PropertyValueBuffer buffer) {
+            return new TestBean();
+        }
+    }
+
+    // Minimal Dummy DeserializationContext that should satisfy compilation
+    // and provide necessary stubs for methods used by ExternalTypeHandler.complete
+    static class DummyContext extends DeserializationContext {
+        protected DummyContext() {
+            super(null, null, null);
+        }
+
+        @Override
+        public Class<?> getActiveView() { return null; }
+
+        @Override
+        public boolean isEnabled(DeserializationFeature f) { return false; }
+
+        // The methods below are part of the API surface; they return defaults
+        // to keep the dummy lightweight for tests that don't hit those code paths.
+        @Override
+        public Object findInjectableValue(Object valueId) { return null; }
+
+        @Override
+        public com.fasterxml.jackson.databind.jsontype.TypeDeserializer findTypeDeserializer(com.fasterxml.jackson.databind.JavaType baseType) {
+            return null;
+        }
+    }
+
+    @Test
+    public void testComplete_Basic_WithNoProperties_ReturnsCreatedBean() throws Exception {
+        // Setup: zero properties, so the method should directly invoke the creator
+        ExtTypedProperty[] props = new ExtTypedProperty[0];
+        Map<String, Object> nameToProp = new HashMap<>();
+        String[] typeIds = new String[0];
+        TokenBuffer[] tokens = new TokenBuffer[0];
+
+        JavaType beanType = null; // not used in this zero-property path
+        ExternalTypeHandler handler = new ExternalTypeHandler(beanType, props, nameToProp, typeIds, tokens);
+
+        DummyContext ctxt = new DummyContext();
+        JsonParser p = null;
+        PropertyValueBuffer buffer = new PropertyValueBuffer(null, null); // minimal placeholder
+
+        DummyCreator creator = new DummyCreator();
+
+        Object bean = handler.complete(p, ctxt, buffer, creator);
+        assertNotNull("Bean should be created by creator when there are no properties", bean);
+        assertTrue(bean instanceof TestBean);
+    }
+}

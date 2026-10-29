@@ -1,0 +1,4 @@
+{
+    "is_valid_bug": true,
+    "reason": "The buggy code replaces the container's configured NullValueProvider with the value deserializer's own null value: for JSON null entries, the original uses _nullProvider.getNullValue(ctxt), which honors content-null handling (failing with an exception for Nulls.FAIL_ON_NULL, returning the empty value for Nulls.AS_EMPTY, or plain null by default), while the buggy version calls _valueDeserializer.getNullValue(ctxt), which ignores that configuration and returns the deserializer-specific null value (e.g., null by default, or NullNode/Optional.empty for deserializers that override getNullValue), so inputs such as {\"A\": null} under FAIL_ON_NULL/AS_EMPTY content-nulls or with a getNullValue-overriding value deserializer produce different observable results (exception vs. stored null value, or a different stored value)."
+}
