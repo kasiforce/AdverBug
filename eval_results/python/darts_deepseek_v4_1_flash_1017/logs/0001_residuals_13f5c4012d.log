@@ -1,0 +1,61 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (260 kB)
+Downloading pytest_asyncio-1.4.1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.0 pytest-asyncio-1.4.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_single_series_default
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_values_only_returns_ndarray
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_multivariate_preserves_components
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_last_points_only_false_returns_one_series_per_forecast
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_forecast_horizon_and_multi_step_residuals
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_multiple_series_and_values_only
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_start_and_stride_with_position_format
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_overlap_end_adds_nan_residuals_beyond_series_end
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_with_precomputed_last_points_only_forecasts
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_with_precomputed_multiple_forecasts
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_rejects_historical_forecasts_with_wrong_last_points_only
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_quantile_metric_component_names[err-metric_kwargs0-forecast_columns0-forecast_values0-expected_components0-expected_values0]
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_quantile_metric_component_names[err-metric_kwargs1-forecast_columns1-forecast_values1-expected_components1-expected_values1]
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_quantile_metric_component_names[iw-metric_kwargs2-forecast_columns2-forecast_values2-expected_components2-expected_values2]
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_quantile_metric_component_names[iw-metric_kwargs3-forecast_columns3-forecast_values3-expected_components3-expected_values3]
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_forces_no_reduction_and_does_not_mutate_metric_kwargs
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_rejects_metric_with_unexpected_output_shape
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_with_data_transformer
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_with_fitted_global_model_and_retrain_false
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_enable_optimization_matches_non_optimized_path
+tests/darts/models/forecasting/Testforecasting_model/test_residuals.py::test_residuals_with_sample_weight
+
+[32m[32m21 tests collected[0m[32m in 1.52s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                                                    [100%][0m
+[32m[32m[1m21 passed[0m[32m in 2.44s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

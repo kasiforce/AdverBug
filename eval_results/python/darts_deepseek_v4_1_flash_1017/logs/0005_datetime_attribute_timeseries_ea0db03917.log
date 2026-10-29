@@ -1,0 +1,122 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (260 kB)
+Downloading pytest_asyncio-1.4.1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.0 pytest-asyncio-1.4.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_plain_returns_univariate_timeseries_with_expected_metadata
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_plain_values_track_time_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_accepts_timeseries_as_time_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_indexed_attributes_are_shifted_to_zero_index[month]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_indexed_attributes_are_shifted_to_zero_index[day]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_indexed_attributes_are_shifted_to_zero_index[quarter]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_indexed_attributes_are_shifted_to_zero_index[dayofyear]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_indexed_attributes_are_shifted_to_zero_index[day_of_year]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_zero_indexed_attributes_are_not_shifted[weekday]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_zero_indexed_attributes_are_not_shifted[dayofweek]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_zero_indexed_attributes_are_not_shifted[day_of_week]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_zero_indexed_attributes_are_not_shifted[hour]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_zero_indexed_attributes_are_not_shifted[minute]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_zero_indexed_attributes_are_not_shifted[second]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_week_attributes_are_iso_weeks_shifted_by_one[week]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_week_attributes_are_iso_weeks_shifted_by_one[weekofyear]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_week_attributes_are_iso_weeks_shifted_by_one[week_of_year]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_dtype_is_respected[float64]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_dtype_is_respected[float32]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_custom_component_name_for_plain_output
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_non_string_with_columns_without_encoding_raises[bad_columns0]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_non_string_with_columns_without_encoding_raises[bad_columns1]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_non_string_with_columns_without_encoding_raises[1]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_index_name_is_preserved
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_repeated_calls_are_independent
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_month_layout
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_fills_columns_absent_from_the_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_columns_are_sorted_numerically
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[month-12]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[quarter-4]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[day-31]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[weekday-7]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[dayofweek-7]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[day_of_week-7]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[hour-24]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[minute-60]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[second-60]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[week-52]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[weekofyear-52]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_number_of_components[week_of_year-52]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_dayofyear_has_366_columns_for_leap_year
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_dayofyear_has_365_columns_for_non_leap_year
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_week_handles_years_with_53_iso_weeks
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_week_stays_at_52_columns_for_short_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_custom_column_names
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_wrong_number_of_custom_columns_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_hour_has_sin_and_cos_components
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_values_are_bounded
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_month_uses_shifted_values
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_quarter_uses_four_periods
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_day_uses_days_in_month_as_period
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_custom_component_names
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_wrong_number_of_custom_columns_raises[bad_columns0]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_wrong_number_of_custom_columns_raises[bad_columns1]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_wrong_number_of_custom_columns_raises[bad_columns2]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_values_are_binary
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_week_with_week_53_in_short_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_cyclic_encoding_on_extended_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_plain_higher_frequency_attributes[minute-2020-01-01 10:58-4-min]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_plain_higher_frequency_attributes[second-2020-01-01 10:00:58-4-s]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_and_cyclic_together_raise
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_unknown_attribute_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_attributes_not_supported_by_encoding_raise[kwargs0]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_attributes_not_supported_by_encoding_raise[kwargs1]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_non_datetime_index_raises[bad_time_index0]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_non_datetime_index_raises[bad_time_index1]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_non_datetime_index_raises[bad_time_index2]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_timeseries_with_range_index_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_time_zone_aware_index_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_time_zone_aware_index_with_tz_argument_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_add_length_extends_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_until_extends_index[2020-01-05]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_until_extends_index[until1]
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_add_length_and_until_produce_equivalent_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_one_hot_uses_extended_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_add_length_and_until_together_raise
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_until_in_the_past_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_negative_add_length_raises
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_tz_converts_attributes_but_keeps_naive_time_index
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_tz_can_change_the_day_attribute
+tests/darts/utils/Testtimeseries_generation/test_datetime_attribute_timeseries.py::test_tz_with_one_hot_encoding
+
+[32m[32m81 tests collected[0m[32m in 0.54s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m [ 88%]
+[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                                                                [100%][0m
+[33m[32m81 passed[0m, [33m[1m12 warnings[0m[33m in 0.92s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

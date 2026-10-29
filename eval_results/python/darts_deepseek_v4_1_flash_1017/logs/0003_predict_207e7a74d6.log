@@ -1,0 +1,60 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (260 kB)
+Downloading pytest_asyncio-1.4.1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.0 pytest-asyncio-1.4.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_without_series_or_fitted_training_series_raises
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_without_series_after_fitting_multiple_series_raises
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_uses_training_series_and_preserves_metadata
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_with_explicit_series_forecasts_after_that_series
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_sequence_returns_sequence_with_individual_forecasts
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_multivariate_series_returns_components_in_input_order
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_autoregressive_horizon_longer_than_output_chunk[1-True]
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_autoregressive_horizon_longer_than_output_chunk[1-False]
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_autoregressive_horizon_longer_than_output_chunk[3-True]
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_autoregressive_horizon_longer_than_output_chunk[3-False]
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_output_chunk_shift_metadata_and_autoregression_rejection
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_uses_covariates_saved_during_fit_and_allows_override
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_rejects_component_count_mismatch
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_rejects_too_short_target_series
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_rejects_too_short_covariates
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_forwards_kwargs_to_underlying_model_for_each_chunk
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_requires_probabilistic_support_for_samples_and_parameters
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_likelihood_parameters_for_classifier_likelihood
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_preserves_and_validates_static_covariates
+tests/darts/models/forecasting/Testsklearn_model/test_predict.py::test_predict_generates_future_encodings_for_configured_model
+
+[32m[32m20 tests collected[0m[32m in 1.53s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                                                     [100%][0m
+[33m[32m20 passed[0m, [33m[1m5 warnings[0m[33m in 2.57s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

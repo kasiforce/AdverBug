@@ -1,0 +1,76 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (260 kB)
+Downloading pytest_asyncio-1.4.1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.0 pytest-asyncio-1.4.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_deterministic_line_on_supplied_axis
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_uses_current_axis_when_ax_is_none_and_new_plot_false
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_new_plot_creates_axis_and_ignores_supplied_axis
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_uses_series_time_dimension_for_x_label
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_limits_components_and_uses_label_prefix
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_max_nr_components_minus_one_plots_all_components
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_single_component_uses_string_as_exact_label
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_custom_label_sequence_is_mapped_in_component_order
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_custom_label_sequence_can_match_number_of_plotted_components
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_single_point_series_uses_marker
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_empty_series_creates_empty_line
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_series_plots_median_and_confidence_interval
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_series_supports_mean_without_confidence_interval
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_series_does_not_draw_ci_with_a_missing_bound[None-0.95]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_series_does_not_draw_ci_with_a_missing_bound[0.05-None]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_series_accepts_quantile_boundaries[0.0-expected_values0]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_series_accepts_quantile_boundaries[1.0-expected_values1]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_stochastic_single_timestamp_draws_point_and_ci_line
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_alpha_is_used_for_deterministic_line
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_forwards_keyword_arguments_to_line
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_accepts_single_and_per_component_colors[color_kwargs0-expected_colors0]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_accepts_single_and_per_component_colors[color_kwargs1-expected_colors1]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_accepts_single_and_per_component_colors[color_kwargs2-expected_colors2]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_color_sequence_can_match_number_of_plotted_components
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_color_and_c_together
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_color_sequence_with_wrong_length
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_label_sequence_with_wrong_length
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_central_quantile[median]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_central_quantile[-0.01]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_central_quantile[1.01]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_central_quantile[0]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_central_quantile[1]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_confidence_interval_quantiles[-0.01-0.95-confidence interval low and high quantiles must be between 0 and 1]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_confidence_interval_quantiles[0.05-1.01-confidence interval low and high quantiles must be between 0 and 1]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_confidence_interval_quantiles[0.8-0.2-must be less than high_quantile]
+tests/darts/utils/Test_plotting/test_plot.py::test_plot_rejects_invalid_confidence_interval_quantiles[0.5-0.5-must be less than high_quantile]
+
+[32m[32m36 tests collected[0m[32m in 0.98s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                                     [100%][0m
+[32m[32m[1m36 passed[0m[32m in 2.04s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

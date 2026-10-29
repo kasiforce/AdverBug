@@ -1,0 +1,80 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (260 kB)
+Downloading pytest_asyncio-1.4.1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.0 pytest-asyncio-1.4.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_returns_self_fits_model_and_sets_input_dimensions
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_accepts_sequence_of_series_and_concatenates_samples
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_with_past_and_future_covariates_sets_flags_and_features
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_native_multioutput_model_is_not_wrapped
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_non_native_multivariate_model_is_wrapped_with_requested_jobs
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_multiple_output_chunk_length_wraps_univariate_model
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_single_model_multi_output_chunk_is_not_wrapped
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_covariate_lag_presence_mismatch[model_kwargs0-fit_kwargs0-`past_covariates` is None in `fit()` method call, but `lags_past_covariates` is not None in constructor.]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_covariate_lag_presence_mismatch[model_kwargs1-fit_kwargs1-`past_covariates` not None in `fit()` method call, but `lags_past_covariates` is None in constructor.]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_covariate_lag_presence_mismatch[model_kwargs2-fit_kwargs2-`future_covariates` is None in `fit()` method call, but `lags_future_covariates` is not None in constructor.]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_covariate_lag_presence_mismatch[model_kwargs3-fit_kwargs3-`future_covariates` not None in `fit()` method call, but `lags_future_covariates` is None in constructor.]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_target_component_mismatch_across_series
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_covariate_component_mismatch_across_series[covariate_kwargs0-past_covariates]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_covariate_component_mismatch_across_series[covariate_kwargs1-future_covariates]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_target_component_lags_with_unknown_component
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_missing_target_component_lags
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_resolves_default_lags_and_reorders_components_like_series
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_missing_covariate_component_lags[lags_kwargs0-past_covariates-lags_past_covariates]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_missing_covariate_component_lags[lags_kwargs1-future_covariates-lags_future_covariates]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_generates_past_covariates_from_encoders
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_builds_validation_set_for_validation_enabled_subclass
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_uses_numeric_static_covariates
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_ignores_static_covariates_when_disabled
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_static_covariate_dimension_mismatch
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_passes_time_series_sample_weights_to_estimator
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_generates_builtin_sample_weights[linear]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_generates_builtin_sample_weights[exponential]
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_unknown_builtin_sample_weight
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_broadcasts_single_component_weights_and_slices_component_weights
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_raises_for_incompatible_sample_weight_width
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_warns_and_ignores_weights_when_estimator_does_not_support_them
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_wraps_native_multioutput_model_when_sample_weight_is_used
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_warns_when_multioutput_jobs_argument_is_unused
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_limits_samples_per_time_series
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_respects_stride_when_creating_training_samples
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_forwards_verbose_and_extra_keyword_arguments
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_consumes_validation_arguments_instead_of_forwarding_them
+tests/darts/models/forecasting/Testsklearn_model/test_fit.py::test_fit_calls_likelihood_fit_with_fitted_model
+
+[32m[32m38 tests collected[0m[32m in 1.56s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[31mF[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[31m                                   [100%][0m
+[36m[1m=========================== short test summary info ============================[0m
+[31mFAILED[0m tests/darts/models/forecasting/Testsklearn_model/test_fit.py::[1mtest_fit_raises_for_unknown_builtin_sample_weight[0m - assert "Invalid `sam...', 'linear'}." == "Invalid `sam...xponential'}."
+[31m[31m[1m1 failed[0m, [32m37 passed[0m[31m in 4.96s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

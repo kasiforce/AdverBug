@@ -1,0 +1,57 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (8.4.2)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: coverage in /usr/local/lib/python3.11/site-packages (7.16.2)
+Requirement already satisfied: pytest-asyncio in /usr/local/lib/python3.11/site-packages (1.4.0)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=20 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: pytest-timeout, pytest-mock, pytest-metadata, pytest-json-report
+
+Successfully installed pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+test/textual/Test_resolve/test_resolve_box_models.py::test_empty_input_returns_empty_list
+test/textual/Test_resolve/test_resolve_box_models.py::test_non_fraction_dimensions_return_fixed_box_models
+test/textual/Test_resolve/test_resolve_box_models.py::test_widget_margin_is_preserved_in_box_model
+test/textual/Test_resolve/test_resolve_box_models.py::test_equal_fraction_widths_share_available_width
+test/textual/Test_resolve/test_resolve_box_models.py::test_fraction_width_uses_space_left_by_fixed_widget
+test/textual/Test_resolve/test_resolve_box_models.py::test_fraction_weights_are_proportional
+test/textual/Test_resolve/test_resolve_box_models.py::test_container_margin_is_removed_before_resolving_fractions
+test/textual/Test_resolve/test_resolve_box_models.py::test_height_fractions_use_remaining_container_height
+test/textual/Test_resolve/test_resolve_box_models.py::test_overlay_widgets_do_not_consume_fraction_space
+test/textual/Test_resolve/test_resolve_box_models.py::test_overlay_fraction_styles_are_excluded_from_fraction_unit_resolution
+test/textual/Test_resolve/test_resolve_box_models.py::test_max_width_constraint_limits_a_fraction_widget
+test/textual/Test_resolve/test_resolve_box_models.py::test_min_width_constraint_expands_a_fraction_widget
+test/textual/Test_resolve/test_resolve_box_models.py::test_zero_remaining_space_falls_back_to_one_cell_fraction_unit
+test/textual/Test_resolve/test_resolve_box_models.py::test_none_dimension_is_treated_as_non_fraction_and_returns_early
+test/textual/Test_resolve/test_resolve_box_models.py::test_negative_available_fraction_space_is_clamped_to_zero
+test/textual/Test_resolve/test_resolve_box_models.py::test_greedy_controls_fraction_width_behavior[True-expected_width0]
+test/textual/Test_resolve/test_resolve_box_models.py::test_greedy_controls_fraction_width_behavior[False-expected_width1]
+
+17 tests collected in 0.16s
+
+=== test.log ===
+.................                                                        [100%]
+17 passed in 0.08s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json
