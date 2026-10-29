@@ -1,0 +1,19 @@
+2026-10-20 10:37:36,788 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c5229964 -w /testbed --rm adverbug-sktime-check:latest sleep 30m
+2026-10-20 10:37:37,946 - minisweagent.environment - INFO - Started container minisweagent-c5229964 with ID 2a358c72d81fc0367ecb76462de29f251ffb1e10e3fdea1c0c6015423c58f035
+2026-10-20 10:39:37,743 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-66373def -w /testbed --rm adverbug-sktime-check:latest sleep 30m
+2026-10-20 10:39:46,842 - minisweagent - ERROR - Error processing sktime__plot_critical_difference_diagram__544__1: Command '['docker', 'run', '-d', '--name', 'minisweagent-66373def', '-w', '/testbed', '--rm', 'adverbug-sktime-check:latest', 'sleep', '30m']' returned non-zero exit status 130.
+Traceback (most recent call last):
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py", line 357, in process_instance
+    env = get_environment(environment_config, default_type="docker")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+             ^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-66373def', '-w', '/testbed', '--rm', 'adverbug-sktime-check:latest', 'sleep', '30m']' returned non-zero exit status 130.
