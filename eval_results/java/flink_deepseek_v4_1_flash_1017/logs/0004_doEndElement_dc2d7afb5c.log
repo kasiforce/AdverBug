@@ -1,0 +1,79 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.flink:flink-s3-fs-base >------------------
+[INFO] Building Flink : FileSystems : S3 FS Base 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-s3-fs-base ---
+[INFO] Deleting /testbed/flink-filesystems/flink-s3-fs-base/target
+[INFO] Deleting /testbed/flink-filesystems/flink-s3-fs-base (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-s3-fs-base ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-s3-fs-base ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 17 files clean - 1 needs changes to be clean, 16 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  36.228 s
+[INFO] Finished at: 2026-10-28T06:42:30Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-s3-fs-base: The following files had format violations:
+[ERROR]     src/test/java/com/amazonaws/services/s3/model/transform/XmlResponsesSaxParserDoEndElementTests.java
+[ERROR]         @@ -41,8 +41,8 @@
+[ERROR]          import·static·org.assertj.core.api.Assertions.assertThat;
+[ERROR]          
+[ERROR]          /**
+[ERROR]         -·*·Tests·for·the·{@code·doEndElement}·implementation·of
+[ERROR]         -·*·{@link·XmlResponsesSaxParser.ListBucketAnalyticsConfigurationHandler}.
+[ERROR]         +·*·Tests·for·the·{@code·doEndElement}·implementation·of·{@link
+[ERROR]         +·*·XmlResponsesSaxParser.ListBucketAnalyticsConfigurationHandler}.
+[ERROR]          ·*
+[ERROR]          ·*·<p>The·handler·is·package·private·in·its·inherited·API,·so·the·tests·drive·it·through·the·public
+[ERROR]          ·*·{@link·XmlResponsesSaxParser#parseListBucketAnalyticsConfigurationResponse(java.io.InputStream)}
+[ERROR]         @@ -124,8 +124,7 @@
+[ERROR]          ················result.getAnalyticsConfigurationList().get(0).getFilter().getPredicate();
+[ERROR]          ········assertThat(predicate).isInstanceOf(AnalyticsAndOperator.class);
+[ERROR]          
+[ERROR]         -········List<AnalyticsFilterPredicate>·operands·=
+[ERROR]         -················((AnalyticsAndOperator)·predicate).getOperands();
+[ERROR]         +········List<AnalyticsFilterPredicate>·operands·=·((AnalyticsAndOperator)·predicate).getOperands();
+[ERROR]          ········assertThat(operands).hasSize(2);
+[ERROR]          
+[ERROR]          ········assertThat(operands.get(0)).isInstanceOf(AnalyticsPrefixPredicate.class);
+[ERROR]         @@ -148,8 +147,7 @@
+[ERROR]          ········AnalyticsFilterPredicate·predicate·=
+[ERROR]          ················result.getAnalyticsConfigurationList().get(0).getFilter().getPredicate();
+[ERROR]          ········assertThat(predicate).isInstanceOf(AnalyticsAndOperator.class);
+[ERROR]         -········List<AnalyticsFilterPredicate>·operands·=
+[ERROR]         -················((AnalyticsAndOperator)·predicate).getOperands();
+[ERROR]         +········List<AnalyticsFilterPredicate>·operands·=·((AnalyticsAndOperator)·predicate).getOperands();
+[ERROR]          ········assertThat(operands).hasSize(1);
+[ERROR]          ········assertThat(((AnalyticsPrefixPredicate)·operands.get(0)).getPrefix()).isEqualTo("solo/");
+[ERROR]          ····}
+[ERROR]         @@ -239,8 +237,7 @@
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]          ····void·testIsTruncatedOnlyTrueForExactTrueText()·throws·Exception·{
+[ERROR]         -········ListBucketAnalyticsConfigurationsResult·result·=
+[ERROR]         -················parse("<IsTruncated>true</IsTruncated>");
+[ERROR]         +········ListBucketAnalyticsConfigurationsResult·result·=·parse("<IsTruncated>true</IsTruncated>");
+[ERROR]          ········assertThat(result.isTruncated()).isTrue();
+[ERROR]          ····}
+[ERROR]          
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

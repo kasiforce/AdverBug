@@ -1,0 +1,163 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.flink:flink-sql-gateway >-----------------
+[INFO] Building Flink : Table : SQL Gateway 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-sql-gateway ---
+[INFO] Deleting /testbed/flink-table/flink-sql-gateway/target
+[INFO] Deleting /testbed/flink-table/flink-sql-gateway (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-sql-gateway ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-sql-gateway ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 121 files clean - 0 needs changes to be clean, 121 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-sql-gateway ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-sql-gateway ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-sql-gateway ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-sql-gateway ---
+[INFO] Compiling 120 source files with javac [debug target 17] to target/classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /testbed/flink-table/flink-sql-gateway/src/main/java/org/apache/flink/table/gateway/service/context/SessionContext.java: /testbed/flink-table/flink-sql-gateway/src/main/java/org/apache/flink/table/gateway/service/context/SessionContext.java uses or overrides a deprecated API.
+[INFO] /testbed/flink-table/flink-sql-gateway/src/main/java/org/apache/flink/table/gateway/service/context/SessionContext.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/flink-table/flink-sql-gateway/src/main/java/org/apache/flink/table/gateway/service/materializedtable/MaterializedTableManager.java: /testbed/flink-table/flink-sql-gateway/src/main/java/org/apache/flink/table/gateway/service/materializedtable/MaterializedTableManager.java uses unchecked or unsafe operations.
+[INFO] /testbed/flink-table/flink-sql-gateway/src/main/java/org/apache/flink/table/gateway/service/materializedtable/MaterializedTableManager.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-sql-gateway ---
+[INFO] Copying 21 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-sql-gateway ---
+[INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  48.147 s
+[INFO] Finished at: 2026-10-28T07:02:31Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.flink:flink-sql-gateway >-----------------
+[INFO] Building Flink : Table : SQL Gateway 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ flink-sql-gateway ---
+[INFO] flink.surefire.baseArgLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:+UseG1GC -Xms256m -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED -Djunit.platform.reflection.search.useLegacySemantics=true
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-sql-gateway ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-sql-gateway ---
+[INFO] Spotless.Java is keeping 121 files clean - 0 needs changes to be clean, 0 were already clean, 121 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-sql-gateway ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-sql-gateway ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-sql-gateway ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-sql-gateway ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-sql-gateway ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-sql-gateway ---
+[INFO] Copying 21 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-sql-gateway ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.2:test (default-test) @ flink-sql-gateway ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.flink.table.gateway.service.result.ResultFetcherFetchResultsTests
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.329 s -- in org.apache.flink.table.gateway.service.result.ResultFetcherFetchResultsTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.198 s
+[INFO] Finished at: 2026-10-28T07:02:50Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.flink:flink-sql-gateway >-----------------
+[INFO] Building Flink : Table : SQL Gateway 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ flink-sql-gateway ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Flink : Table : SQL Gateway' with 131 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.031 s
+[INFO] Finished at: 2026-10-28T07:02:53Z
+[INFO] ------------------------------------------------------------------------

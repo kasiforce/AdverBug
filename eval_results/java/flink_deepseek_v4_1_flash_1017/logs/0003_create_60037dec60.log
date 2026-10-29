@@ -1,0 +1,161 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.flink:flink-hadoop-fs >------------------
+[INFO] Building Flink : FileSystems : Hadoop FS 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-hadoop-fs ---
+[INFO] Deleting /testbed/flink-filesystems/flink-hadoop-fs/target
+[INFO] Deleting /testbed/flink-filesystems/flink-hadoop-fs (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-hadoop-fs ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-hadoop-fs ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 15 files clean - 0 needs changes to be clean, 15 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-hadoop-fs ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-hadoop-fs ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-hadoop-fs ---
+[INFO] skip non existing resourceDirectory /testbed/flink-filesystems/flink-hadoop-fs/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-hadoop-fs ---
+[INFO] Compiling 14 source files with javac [debug target 17] to target/classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /testbed/flink-filesystems/flink-hadoop-fs/src/main/java/org/apache/flink/runtime/fs/hdfs/HadoopFsFactory.java: Some input files use or override a deprecated API.
+[INFO] /testbed/flink-filesystems/flink-hadoop-fs/src/main/java/org/apache/flink/runtime/fs/hdfs/HadoopFsFactory.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-hadoop-fs ---
+[INFO] Copying 4 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-hadoop-fs ---
+[INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23.611 s
+[INFO] Finished at: 2026-10-28T06:41:48Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.flink:flink-hadoop-fs >------------------
+[INFO] Building Flink : FileSystems : Hadoop FS 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ flink-hadoop-fs ---
+[INFO] flink.surefire.baseArgLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:+UseG1GC -Xms256m -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.util=ALL-UNNAMED --add-exports=java.security.jgss/sun.security.krb5=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-hadoop-fs ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-hadoop-fs ---
+[INFO] Spotless.Java is keeping 15 files clean - 0 needs changes to be clean, 0 were already clean, 15 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-hadoop-fs ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-hadoop-fs ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-hadoop-fs ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-hadoop-fs ---
+[INFO] skip non existing resourceDirectory /testbed/flink-filesystems/flink-hadoop-fs/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-hadoop-fs ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-hadoop-fs ---
+[INFO] Copying 4 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-hadoop-fs ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.2:test (default-test) @ flink-hadoop-fs ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.flink.runtime.fs.hdfs.HadoopFsFactoryCreateTests
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.471 s -- in org.apache.flink.runtime.fs.hdfs.HadoopFsFactoryCreateTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.329 s
+[INFO] Finished at: 2026-10-28T06:42:04Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.flink:flink-hadoop-fs >------------------
+[INFO] Building Flink : FileSystems : Hadoop FS 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ flink-hadoop-fs ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Flink : FileSystems : Hadoop FS' with 15 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.969 s
+[INFO] Finished at: 2026-10-28T06:42:07Z
+[INFO] ------------------------------------------------------------------------

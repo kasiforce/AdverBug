@@ -1,0 +1,88 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< org.apache.flink:flink-runtime >-------------------
+[INFO] Building Flink : Runtime 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-runtime ---
+[INFO] Deleting /testbed/flink-runtime/target
+[INFO] Deleting /testbed/flink-runtime (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-runtime ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-runtime ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 3267 files clean - 1 needs changes to be clean, 3266 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:09 min
+[INFO] Finished at: 2026-10-28T06:47:51Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-runtime: The following files had format violations:
+[ERROR]     src/test/java/org/apache/flink/runtime/checkpoint/metadata/MetadataV2V3SerializerBaseDeserializeKeyedStateHandleTests.java
+[ERROR]         @@ -35,6 +35,8 @@
+[ERROR]          
+[ERROR]          import·org.junit.jupiter.api.Test;
+[ERROR]          
+[ERROR]         +import·javax.annotation.Nullable;
+[ERROR]         +
+[ERROR]          import·java.io.ByteArrayInputStream;
+[ERROR]          import·java.io.ByteArrayOutputStream;
+[ERROR]          import·java.io.DataInputStream;
+[ERROR]         @@ -44,8 +46,6 @@
+[ERROR]          import·java.util.List;
+[ERROR]          import·java.util.UUID;
+[ERROR]          
+[ERROR]         -import·javax.annotation.Nullable;
+[ERROR]         -
+[ERROR]          import·static·org.assertj.core.api.Assertions.assertThat;
+[ERROR]          import·static·org.assertj.core.api.Assertions.assertThatThrownBy;
+[ERROR]          
+[ERROR]         @@ -247,8 +247,7 @@
+[ERROR]          ····························//·private·state:·one·handle
+[ERROR]          ····························dos.writeInt(1);
+[ERROR]          ····························dos.writeUTF("private-local-path");
+[ERROR]         -····························writeByteStreamStateHandle(
+[ERROR]         -····································dos,·"private",·new·byte[]·{9,·8,·7});
+[ERROR]         +····························writeByteStreamStateHandle(dos,·"private",·new·byte[]·{9,·8,·7});
+[ERROR]          ····························dos.writeInt(TRAILING_SENTINEL);
+[ERROR]          ························});
+[ERROR]          
+[ERROR]         @@ -375,8 +374,7 @@
+[ERROR]          ········assertThat(delta).hasSize(1);
+[ERROR]          ········assertThat(delta.get(0)).isInstanceOf(InMemoryChangelogStateHandle.class);
+[ERROR]          
+[ERROR]         -········assertThat(handle.getStateHandleId())
+[ERROR]         -················.isEqualTo(new·StateHandleID("changelog-handle-id"));
+[ERROR]         +········assertThat(handle.getStateHandleId()).isEqualTo(new·StateHandleID("changelog-handle-id"));
+[ERROR]          ········assertThat(dis.available()).isZero();
+[ERROR]          ····}
+[ERROR]          
+[ERROR]         @@ -492,8 +490,7 @@
+[ERROR]          ········assertThat(handle.getKeyGroupRange()).isEqualTo(KeyGroupRange.of(5,·6));
+[ERROR]          ········assertThat(handle.getFrom()).isEqualTo(13L);
+[ERROR]          ········assertThat(handle.getTo()).isEqualTo(17L);
+[ERROR]         -········assertThat(handle.getStateHandleId())
+[ERROR]         -················.isEqualTo(new·StateHandleID("byte-increment-id"));
+[ERROR]         +········assertThat(handle.getStateHandleId()).isEqualTo(new·StateHandleID("byte-increment-id"));
+[ERROR]          
+[ERROR]          ········final·List<StateChange>·changes·=·handle.getChanges();
+[ERROR]          ········assertThat(changes).hasSize(2);
+[ERROR]         @@ -623,8 +620,7 @@
+[ERROR]     ... (55 more lines that didn't fit)
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

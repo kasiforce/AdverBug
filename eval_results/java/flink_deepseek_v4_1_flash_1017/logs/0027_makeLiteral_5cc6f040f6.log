@@ -1,0 +1,93 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.flink:flink-table-planner_2.12:jar:2.4-SNAPSHOT
+[WARNING] 'artifactId' contains an expression but should be a constant. @ org.apache.flink:flink-table-planner_${scala.binary.version}:2.4-SNAPSHOT, /testbed/flink-table/flink-table-planner/pom.xml, line 29, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -------------< org.apache.flink:flink-table-planner_2.12 >--------------
+[INFO] Building Flink : Table : Planner 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-table-planner_2.12 ---
+[INFO] Deleting /testbed/flink-table/flink-table-planner/target
+[INFO] Deleting /testbed/flink-table/flink-table-planner (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-table-planner_2.12 ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-table-planner_2.12 ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 880 files clean - 1 needs changes to be clean, 879 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:26 min
+[INFO] Finished at: 2026-10-28T07:03:41Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-table-planner_2.12: The following files had format violations:
+[ERROR]     src/test/java/org/apache/calcite/rex/RexBuilderMakeLiteralTests.java
+[ERROR]         @@ -474,8 +474,7 @@
+[ERROR]          ········RexNode·node·=·literal(120,·sqlType(SqlTypeName.DATE));
+[ERROR]          
+[ERROR]          ········assertEquals(
+[ERROR]         -················DateString.fromDaysSinceEpoch(120),
+[ERROR]         -················asLiteral(node).getValueAs(DateString.class));
+[ERROR]         +················DateString.fromDaysSinceEpoch(120),·asLiteral(node).getValueAs(DateString.class));
+[ERROR]          ····}
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]         @@ -624,8 +623,7 @@
+[ERROR]          ········assertEquals(SqlTypeName.ARRAY,·call.getType().getSqlTypeName());
+[ERROR]          ········assertEquals(3,·call.getOperands().size());
+[ERROR]          ········for·(int·i·=·0;·i·<·call.getOperands().size();·i++)·{
+[ERROR]         -············assertEquals(
+[ERROR]         -····················0,·new·BigDecimal(i·+·1).compareTo(decimalOf(call.getOperands().get(i))));
+[ERROR]         +············assertEquals(0,·new·BigDecimal(i·+·1).compareTo(decimalOf(call.getOperands().get(i))));
+[ERROR]          ········}
+[ERROR]          ····}
+[ERROR]          
+[ERROR]         @@ -635,14 +633,12 @@
+[ERROR]          
+[ERROR]          ········//·the·element·type·of·an·array·value·constructor·with·no·elements·cannot·be·derived
+[ERROR]          ········assertThrows(
+[ERROR]         -················IllegalArgumentException.class,
+[ERROR]         -················()·->·literal(Collections.emptyList(),·arrayType));
+[ERROR]         +················IllegalArgumentException.class,·()·->·literal(Collections.emptyList(),·arrayType));
+[ERROR]          ····}
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]          ····void·testMultisetValueWithoutCastProducesLiteral()·{
+[ERROR]         -········RelDataType·multisetType·=
+[ERROR]         -················typeFactory.createMultisetType(sqlType(SqlTypeName.INTEGER),·-1);
+[ERROR]         +········RelDataType·multisetType·=·typeFactory.createMultisetType(sqlType(SqlTypeName.INTEGER),·-1);
+[ERROR]          
+[ERROR]          ········RexNode·node·=·literal(Arrays.asList(new·BigDecimal(1),·new·BigDecimal(2)),·multisetType);
+[ERROR]          
+[ERROR]         @@ -655,8 +651,7 @@
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]          ····void·testMultisetValueWithCastProducesCall()·{
+[ERROR]         -········RelDataType·multisetType·=
+[ERROR]         -················typeFactory.createMultisetType(sqlType(SqlTypeName.INTEGER),·-1);
+[ERROR]         +········RelDataType·multisetType·=·typeFactory.createMultisetType(sqlType(SqlTypeName.INTEGER),·-1);
+[ERROR]          
+[ERROR]          ········RexNode·node·=·castableLiteral(Arrays.asList(1,·2),·multisetType);
+[ERROR]          
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

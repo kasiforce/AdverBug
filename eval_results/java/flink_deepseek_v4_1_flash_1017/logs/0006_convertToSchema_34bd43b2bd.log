@@ -1,0 +1,175 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.apache.flink:flink-avro >---------------------
+[INFO] Building Flink : Formats : Avro 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ flink-avro ---
+[INFO] Deleting /testbed/flink-formats/flink-avro/target
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-avro ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-avro ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 35 files clean - 0 needs changes to be clean, 35 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-avro ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-avro ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- avro:1.11.5:schema (default) @ flink-avro ---
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-avro ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-avro ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-avro ---
+[INFO] Compiling 34 source files with javac [debug target 17] to target/classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /testbed/flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/AvroOutputFormat.java: Some input files use or override a deprecated API.
+[INFO] /testbed/flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/AvroOutputFormat.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/AvroInputFormat.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/AvroInputFormat.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-avro ---
+[INFO] Copying 63 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-avro ---
+[INFO] Compiling 13 source files with javac [debug target 17] to target/test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /testbed/flink-formats/flink-avro/src/test/java/org/apache/flink/formats/avro/typeutils/AvroSchemaConverterConvertToSchemaTests.java: /testbed/flink-formats/flink-avro/src/test/java/org/apache/flink/formats/avro/typeutils/AvroSchemaConverterConvertToSchemaTests.java uses or overrides a deprecated API.
+[INFO] /testbed/flink-formats/flink-avro/src/test/java/org/apache/flink/formats/avro/typeutils/AvroSchemaConverterConvertToSchemaTests.java: Recompile with -Xlint:deprecation for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  47.060 s
+[INFO] Finished at: 2026-10-28T06:43:48Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.apache.flink:flink-avro >---------------------
+[INFO] Building Flink : Formats : Avro 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ flink-avro ---
+[INFO] flink.surefire.baseArgLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:+UseG1GC -Xms256m -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-avro ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-avro ---
+[INFO] Spotless.Java is keeping 35 files clean - 0 needs changes to be clean, 0 were already clean, 35 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-avro ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-avro ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-avro ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- avro:1.11.5:schema (default) @ flink-avro ---
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-avro ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-avro ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-avro ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-avro ---
+[INFO] Copying 63 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-avro ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- assembly:3.8.0:single (create-test-dependency) @ flink-avro ---
+[INFO] Reading assembly descriptor: src/test/assembly/test-assembly.xml
+[INFO] Building jar: /testbed/flink-formats/flink-avro/target/maven-test-jar.jar
+[INFO] 
+[INFO] --- clean:2.5:clean (remove-avroexternalprogram) @ flink-avro ---
+[INFO] Deleting /testbed/flink-formats/flink-avro/target/test-classes (includes = [**/testjar/*.class], excludes = [])
+[INFO] 
+[INFO] --- surefire:3.2.2:test (default-test) @ flink-avro ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.flink.formats.avro.typeutils.AvroSchemaConverterConvertToSchemaTests
+[INFO] Tests run: 32, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.730 s -- in org.apache.flink.formats.avro.typeutils.AvroSchemaConverterConvertToSchemaTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 32, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.488 s
+[INFO] Finished at: 2026-10-28T06:44:04Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.apache.flink:flink-avro >---------------------
+[INFO] Building Flink : Formats : Avro 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ flink-avro ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Flink : Formats : Avro' with 64 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.019 s
+[INFO] Finished at: 2026-10-28T06:44:07Z
+[INFO] ------------------------------------------------------------------------

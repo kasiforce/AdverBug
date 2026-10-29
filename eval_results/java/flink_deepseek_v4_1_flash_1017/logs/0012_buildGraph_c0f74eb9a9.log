@@ -1,0 +1,33 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< org.apache.flink:flink-runtime >-------------------
+[INFO] Building Flink : Runtime 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-runtime ---
+[INFO] Deleting /testbed/flink-runtime/target
+[INFO] Deleting /testbed/flink-runtime (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-runtime ---
+[INFO] There are 2 errors reported by Checkstyle 10.18.2 with /tools/maven/checkstyle.xml ruleset.
+[ERROR] src/test/java/org/apache/flink/runtime/executiongraph/DefaultExecutionGraphBuilderBuildGraphTests.java:[66,1] (imports) IllegalImport: org.mockito.Mockito.mock; Mocking is discouraged. Please refer to the coding guidelines: https://flink.apache.org/how-to-contribute/code-style-and-quality-common/#avoid-mockito---use-reusable-test-implementations.
+[ERROR] src/test/java/org/apache/flink/runtime/executiongraph/DefaultExecutionGraphBuilderBuildGraphTests.java:[67,1] (imports) IllegalImport: org.mockito.Mockito.when; Mocking is discouraged. Please refer to the coding guidelines: https://flink.apache.org/how-to-contribute/code-style-and-quality-common/#avoid-mockito---use-reusable-test-implementations.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  44.928 s
+[INFO] Finished at: 2026-10-28T06:47:36Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:3.3.1:check (validate) on project flink-runtime: You have 2 Checkstyle violations. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
