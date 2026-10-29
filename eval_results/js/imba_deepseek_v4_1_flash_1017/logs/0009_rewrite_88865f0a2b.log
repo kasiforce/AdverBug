@@ -1,0 +1,82 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/selparse/rewrite.test.js
+  rewrite
+    non ruleSet input
+      ✓ returns a non-ruleSet object unchanged (4 ms)
+      ✓ rewrites every selector in a selectors wrapper and returns it unchanged (4 ms)
+      ✓ passes the selectors wrapper as context to transition selectors (2 ms)
+    ruleSet normalisation
+      ✓ resets ruleSet metadata while preserving unrelated properties (1 ms)
+      ✓ marks ordinary selectors as scoped (1 ms)
+      ✓ does not mark body or html selectors as scoped (1 ms)
+      ✓ marks html and :root selectors as root selectors (1 ms)
+      ✓ turns self into a scope part without a tag name (1 ms)
+      ✓ turns self in a descendant selector into the outer scope (1 ms)
+      ✓ injects a deep scope part for a leading universal selector (1 ms)
+      ✓ injects a scope part for a bare universal selector (1 ms)
+      ✓ recognises an implicit scope part
+    up references
+      ✓ moves an item marked with up to the next shallower part
+    deep combinators
+      ✓ translates >> into a child combinator and records the original operator (1 ms)
+      ✓ translates >>> into an unscoped deep combinator (1 ms)
+      ✓ leaves ordinary child combinators scoped
+    modifier translation
+      ✓ adds named media modifiers to the item and the ruleSet
+      ✓ collects multiple media modifiers in order (1 ms)
+      ✓ uses the negative media variant for negated named modifiers
+      ✓ uses the negative media variant for named theme modifiers (1 ms)
+      ✓ derives min and max width media queries from numeric modifiers (1 ms)
+      ✓ recognises the width and height suffixes on numeric modifiers
+      ✓ wraps an explicit media modifier value in parentheses (1 ms)
+      ✓ uses a container query for scroll state modifiers
+      ✓ maps directional scroll state modifiers to container queries
+      ✓ uses the container branch for numeric modifiers on closest selectors
+      ✓ uses the negated container branch for negated numeric closest modifiers
+      ✓ expands odd and even into nth-child selectors (1 ms)
+      ✓ marks important modifiers and increases specificity (1 ms)
+      ✓ force behaves like important (1 ms)
+      ✓ adds a class for local modifiers when namespacing is active
+      ✓ records scoped modifiers through the supplied scope (1 ms)
+      ✓ falls back to an undefined scope id when cssid is unavailable (1 ms)
+      ✓ records scope-to modifiers through their value (9 ms)
+    transition states
+      ✓ marks @in rules as transition styles
+      ✓ marks @out rules as transition styles (1 ms)
+      ✓ marks @off rules as transition styles
+      ✓ stores transition flags on the supplied context instead of the ruleSet (1 ms)
+      ✓ combines off-state specificity with important modifiers
+    scope classes
+      ✓ adds the namespace class to a scoped selector (2 ms)
+      ✓ adds namespace classes to every scoped part (1 ms)
+      ✓ uses the css id for an injected universal scope (1 ms)
+      ✓ falls back to the namespace when an injected scope has no css id
+      ✓ uses an explicit id when injecting a scope for an unconfined selector (1 ms)
+    specificity
+      ✓ uses the number of class-bearing parts, capped at one (1 ms)
+      ✓ overrides specificity for inline styles (1 ms)
+      ✓ uses component specificity rules
+      ✓ uses scoped specificity rules
+      ✓ allows specificity to be suppressed explicitly
+      ✓ suppresses even computed off-state specificity when respecify is false (1 ms)
+      ✓ accumulates specificity for repeated important modifiers
+
+Test Suites: 1 passed, 1 total
+Tests:       51 passed, 51 total
+Snapshots:   0 total
+Time:        0.911 s
+Ran all test suites within paths "test/packages/imba/src/compiler/selparse/rewrite.test.js".
+Test results written to: ../results/report.json

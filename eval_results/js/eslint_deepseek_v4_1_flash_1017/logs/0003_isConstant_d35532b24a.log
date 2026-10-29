@@ -1,0 +1,105 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/rules/utils/ast-utils/isConstant.test.js
+  isConstant
+    empty nodes
+      ✓ returns true for a null node (sparse array holes) (2 ms)
+      ✓ returns true for an undefined node
+    node types that are always constant
+      ✓ returns true for a number literal (4 ms)
+      ✓ returns true for a string literal
+      ✓ returns true for a empty string literal
+      ✓ returns true for a boolean literal (1 ms)
+      ✓ returns true for a null literal (1 ms)
+      ✓ returns true for a regular expression literal (1 ms)
+      ✓ returns true for a bigint literal
+      ✓ returns true for a arrow function (1 ms)
+      ✓ returns true for a function expression (1 ms)
+      ✓ returns true for a object expression with computed values (1 ms)
+      ✓ returns true for a object expression with no properties (1 ms)
+      ✓ returns true for a class expression (1 ms)
+    TemplateLiteral
+      ✓ returns true when used in a boolean position and a quasi is non-empty (1 ms)
+      ✓ returns true when used in a boolean position and the template starts with text
+      ✓ returns true when every expression is constant and no quasi has text (1 ms)
+      ✓ returns false when an expression is not constant, even if a quasi has text
+      ✓ returns false when no quasi has text and an expression is not constant (1 ms)
+      ✓ returns false when a nested non-constant expression is embedded
+    ArrayExpression
+      ✓ returns true in a boolean position regardless of the elements (1 ms)
+      ✓ returns true when every element is constant in a non-boolean position (1 ms)
+      ✓ returns false when an element is not constant in a non-boolean position
+      ✓ treats sparse array holes as constant
+    UnaryExpression
+      ✓ returns true for `void` in both positions (1 ms)
+      ✓ returns true for `typeof` only in a boolean position
+      ✓ returns true for `typeof` of a constant in a non-boolean position
+      ✓ checks the argument of `!` in a boolean position (1 ms)
+      ✓ checks the argument of other operators in a non-boolean position
+    BinaryExpression
+      ✓ returns true when both operands are constant
+      ✓ returns false when an operand is not constant
+      ✓ returns false for the `in` operator even when both operands are constant (1 ms)
+      ✓ does not treat a binary expression as boolean-position dependent
+    LogicalExpression
+      ✓ returns true when both operands are constant (1 ms)
+      ✓ returns false when both operands are not constant
+      ✓ returns true when the left operand short-circuits the whole expression (1 ms)
+      ✓ returns false when the left operand is constant but not an identity element
+      ✓ returns true when the right operand short-circuits in a boolean position (1 ms)
+      ✓ does not consider right-hand short-circuiting outside a boolean position
+      ✓ returns false when the right operand is not an identity element
+      ✓ propagates short-circuiting through nested logical expressions (1 ms)
+    NewExpression
+      ✓ returns true only in a boolean position (1 ms)
+    AssignmentExpression
+      ✓ returns true for `=` when the right side is constant (1 ms)
+      ✓ returns false for `=` when the right side is not constant
+      ✓ returns false for compound assignments that are not logical
+      ✓ returns true for logical assignments whose right side is an identity element in a boolean position
+      ✓ returns false for logical assignments that are not identity elements
+      ✓ returns false for logical assignments outside a boolean position
+      ✓ returns false for nullish logical assignments (1 ms)
+    SequenceExpression
+      ✓ uses the last expression of the sequence
+      ✓ passes the boolean position down to the last expression
+    SpreadElement
+      ✓ checks the spread argument using the current boolean position
+    CallExpression
+      ✓ returns true for a global `Boolean()` call with no arguments (1 ms)
+      ✓ returns true for a global `Boolean(<constant>)` call
+      ✓ returns true for a global `Boolean(<constant in boolean position>)` call
+      ✓ returns true for a global `Boolean(<global undefined>)` call (1 ms)
+      ✓ returns false when the argument is not constant
+      ✓ returns false when `Boolean` is shadowed by a local binding (1 ms)
+      ✓ returns false when `Boolean` has no matching reference in the scope
+      ✓ returns false for calls to other functions (1 ms)
+      ✓ returns false for member calls named Boolean
+    Identifier
+      ✓ returns true for `undefined` that resolves to a global variable
+      ✓ returns false for a local `undefined` (1 ms)
+      ✓ returns false for `undefined` with no matching reference
+      ✓ returns false for other identifiers even when they are global
+    unsupported node types
+      ✓ returns false for a this
+      ✓ returns false for a member expression (1 ms)
+      ✓ returns false for a conditional expression
+      ✓ returns false for a chain expression (1 ms)
+      ✓ returns false for a tagged template
+    nested expressions
+      ✓ returns true for deeply nested constant collections
+      ✓ returns false when a deeply nested value is not constant (1 ms)
+      ✓ combines logical and assignment handling
+      ✓ handles binary expressions inside boolean positions
+
+Test Suites: 1 passed, 1 total
+Tests:       74 passed, 74 total
+Snapshots:   0 total
+Time:        1.06 s
+Ran all test suites within paths "test/lib/rules/utils/ast-utils/isConstant.test.js".
+Test results written to: ../results/report.json

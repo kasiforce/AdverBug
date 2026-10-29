@@ -1,0 +1,26 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/glyf/pruneCompositeGlyphCycles.test.js
+  pruneCompositeGlyphCycles
+    ✓ handles an empty glyph table (4 ms)
+    ✓ leaves simple, empty, short, and acyclic composite glyphs unchanged (1 ms)
+    ✓ drops a glyph whose only component is a self-reference (1 ms)
+    ✓ records the back edge of a two-glyph cycle without changing bytes
+    ✓ drops a glyph when all of its components are back edges
+    ✓ removes back edges, compacts components, fixes flags, and clears the tail (2 ms)
+    ✓ clamps loca end offsets to the actual glyf table length
+    ✓ ignores component gids outside numGlyphs
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        3.788 s
+Ran all test suites within paths "test/core/glyf/pruneCompositeGlyphCycles.test.js".
+Test results written to: ../results/report.json

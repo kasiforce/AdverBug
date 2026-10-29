@@ -1,0 +1,102 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/nodes/accessors/MaterialNode/setup.test.js
+  MaterialNode.setup()
+    COLOR
+      ✓ returns a zero vec3 when no color is defined (3 ms)
+      ✓ returns the material color reference when no map is defined (1 ms)
+      ✓ multiplies the color reference by the map texture (1 ms)
+      ✓ treats a map without isTexture as absent (1 ms)
+      ✓ multiplies the zero color by a map when color is undefined
+    OPACITY
+      ✓ returns the opacity reference without an alpha map
+      ✓ multiplies opacity by the alpha map texture (1 ms)
+      ✓ ignores a non-texture alpha map
+    SPECULAR_STRENGTH
+      ✓ returns the red channel of the specular map (13 ms)
+      ✓ returns one when no specular map exists
+      ✓ returns one for a non-texture specular map
+    SPECULAR_INTENSITY
+      ✓ returns the specular intensity reference without a map
+      ✓ multiplies by the alpha channel of the specular intensity map (1 ms)
+    SPECULAR_COLOR
+      ✓ returns the specular color reference without a map
+      ✓ multiplies by the rgb channels of the specular color map (1 ms)
+    ROUGHNESS
+      ✓ returns the roughness reference without a map
+      ✓ multiplies by the green channel of the roughness map (1 ms)
+    DIFFUSE_ROUGHNESS
+      ✓ returns the diffuse roughness reference without a map
+      ✓ multiplies by the red channel of the diffuse roughness map (1 ms)
+    METALNESS
+      ✓ returns the metalness reference without a map (1 ms)
+      ✓ multiplies by the blue channel of the metalness map
+    EMISSIVE
+      ✓ multiplies emissive color by emissive intensity (1 ms)
+      ✓ multiplies the emissive result by the emissive map (1 ms)
+    NORMAL
+      ✓ returns a normal map node for a normal map (1 ms)
+      ✓ enables RG normal unpacking for RGFormat
+      ✓ enables RG normal unpacking for RED_GREEN_RGTC2_Format
+      ✓ enables RG normal unpacking for RG11_EAC_Format
+      ✓ returns a bump map node when only a bump map is defined (1 ms)
+      ✓ prefers the normal map over the bump map
+      ✓ returns the view normal when no normal or bump map exists
+    CLEARCOAT
+      ✓ returns the clearcoat reference without a map
+      ✓ multiplies by the red channel of the clearcoat map (1 ms)
+    CLEARCOAT_ROUGHNESS
+      ✓ returns the clearcoat roughness reference without a map
+      ✓ multiplies by the green channel of the clearcoat roughness map (1 ms)
+    CLEARCOAT_NORMAL
+      ✓ returns the view normal without a clearcoat normal map
+      ✓ returns a normal map node for a clearcoat normal map
+    SHEEN
+      ✓ multiplies sheen color by sheen intensity (1 ms)
+      ✓ multiplies the sheen result by the rgb channels of the sheen color map (1 ms)
+    SHEEN_ROUGHNESS
+      ✓ clamps the sheen roughness reference between 0.0001 and 1
+      ✓ clamps sheen roughness multiplied by the alpha channel of its map (1 ms)
+    ANISOTROPY
+      ✓ returns the shared material anisotropy vector without a map (1 ms)
+      ✓ builds the anisotropic tangent from the anisotropy map
+    IRIDESCENCE_THICKNESS
+      ✓ returns the maximum thickness reference without a map
+      ✓ maps the green channel of the thickness map into the configured range (1 ms)
+    TRANSMISSION
+      ✓ returns the transmission reference without a map
+      ✓ multiplies by the red channel of the transmission map (1 ms)
+    THICKNESS
+      ✓ returns the thickness reference without a map
+      ✓ multiplies by the green channel of the thickness map (1 ms)
+    IOR
+      ✓ returns the ior material reference
+    LIGHT_MAP
+      ✓ returns zero when no light map exists
+      ✓ multiplies light map rgb by light map intensity (1 ms)
+    AO
+      ✓ returns one when no ao map exists
+      ✓ applies the ao map red channel and intensity (1 ms)
+    LINE_DASH_OFFSET
+      ✓ returns the dash offset reference for a truthy dash offset
+      ✓ returns zero for a zero dash offset (1 ms)
+      ✓ returns zero when dash offset is undefined
+    fallback scope
+      ✓ caches a material reference using the node output type (2 ms)
+    property cache
+      ✓ reuses cached reference nodes across material node instances
+      ✓ maps texture property names to their material map suffix (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       59 passed, 59 total
+Snapshots:   0 total
+Time:        3.591 s
+Ran all test suites within paths "test/nodes/accessors/MaterialNode/setup.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,101 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/util/cache/parseCacheControlHeader.test.js
+  parseCacheControlHeader
+    empty and trivial input
+      ✓ returns an empty object for an empty header (4 ms)
+      ✓ returns an empty object for a header that is only separators and whitespace
+      ✓ returns a fresh object for every call (1 ms)
+    numeric delta-seconds directives
+      ✓ parses max-age=100
+      ✓ parses min-fresh=30 (1 ms)
+      ✓ parses max-stale=45
+      ✓ parses s-maxage=60 (1 ms)
+      ✓ parses stale-while-revalidate=15
+      ✓ parses stale-if-error=25 (1 ms)
+      ✓ accepts zero as a valid delta
+      ✓ accepts values with leading zeros (1 ms)
+      ✓ accepts a quoted numeric value
+      ✓ clamps values to the maximum delta of 2147483647
+      ✓ is case insensitive for directive names
+      ✓ keeps the smallest value when a directive repeats (1 ms)
+      ✓ keeps the largest value for min-fresh when it repeats
+      ✓ parses several different numeric directives in one header (1 ms)
+      ✓ ignores the invalid numeric directive in max-age=abc and records it as invalid
+      ✓ ignores the invalid numeric directive in max-age=1.5 and records it as invalid
+      ✓ ignores the invalid numeric directive in max-age=+100 and records it as invalid
+      ✓ ignores the invalid numeric directive in max-age=-100 and records it as invalid
+      ✓ ignores the invalid numeric directive in max-age= and records it as invalid (1 ms)
+      ✓ ignores the invalid numeric directive in max-age and records it as invalid
+      ✓ ignores the invalid numeric directive in min-fresh and records it as invalid
+      ✓ ignores the invalid numeric directive in stale-while-revalidate=abc and records it as invalid
+      ✓ rejects a quoted value that only partially looks numeric
+      ✓ rejects whitespace around the delimiter of a numeric directive
+      ✓ drops a previously parsed value when a later occurrence is invalid (1 ms)
+      ✓ ignores subsequent occurrences after an invalid one
+      ✓ does not let the invalidation of one directive affect another (1 ms)
+      ✓ does not mark a valid numeric directive as invalid
+    private and no-cache directives
+      ✓ parses unqualified directives as true (1 ms)
+      ✓ parses a directive with an empty value as true
+      ✓ parses a single unquoted field name into an array (1 ms)
+      ✓ parses a single quoted field name into an array
+      ✓ parses a quoted comma separated field list (1 ms)
+      ✓ continues parsing after a quoted field list
+      ✓ trims optional whitespace around field names
+      ✓ lower cases field names
+      ✓ concatenates field names from repeated qualified directives
+      ✓ treats the directive as true when it appears both qualified and unqualified (1 ms)
+      ✓ treats the directive as true when a field name is not a valid token
+      ✓ treats the directive as true when the quoted list is unterminated (1 ms)
+    directives that must not have an argument
+      ✓ parses public as true
+      ✓ parses must-revalidate as true
+      ✓ parses proxy-revalidate as true (1 ms)
+      ✓ parses immutable as true
+      ✓ parses no-transform as true
+      ✓ parses must-understand as true
+      ✓ parses only-if-cached as true
+      ✓ is case insensitive for directive names
+      ✓ ignores the malformed qualified directive in public=1
+      ✓ ignores the malformed qualified directive in immutable=yes (1 ms)
+      ✓ ignores the malformed qualified directive in only-if-cached=""
+      ✓ removes an earlier occurrence when a later one is qualified
+      ✓ ignores later occurrences once the directive was malformed
+      ✓ does not affect valid directives that follow (1 ms)
+    no-store directive
+      ✓ parses no-store as true
+      ✓ ignores an argument given to no-store (1 ms)
+    unknown directives
+      ✓ ignores unknown directives
+      ✓ keeps parsing known directives around unknown ones
+    malformed restrictive directive names
+      ✓ treats no-cache( as the restrictive directive no-cache (1 ms)
+      ✓ treats private: as the restrictive directive private
+      ✓ treats no-store} as the restrictive directive no-store
+      ✓ treats no-cache/1 as the restrictive directive no-cache
+      ✓ does not confuse a longer but valid token with a restrictive directive (1 ms)
+    malformed quoted directives
+      ✓ ignores a numeric directive that starts an unterminated quoted string
+      ✓ does not consume following directives from a quoted numeric value
+    array input
+      ✓ joins array values before parsing (1 ms)
+      ✓ joins array values that contain quoted field lists
+      ✓ applies the numeric merging rules across array entries (1 ms)
+    combined realistic headers
+      ✓ parses a full cache-control response header
+      ✓ parses every supported no-argument directive in one header (1 ms)
+      ✓ keeps a valid directive while another one is invalid
+      ✓ handles a quoted field list appearing between numeric directives (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       75 passed, 75 total
+Snapshots:   0 total
+Time:        1.396 s
+Ran all test suites within paths "test/lib/util/cache/parseCacheControlHeader.test.js".
+Test results written to: ../results/report.json

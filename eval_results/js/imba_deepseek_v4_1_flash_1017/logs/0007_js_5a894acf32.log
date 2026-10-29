@@ -1,0 +1,116 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+[BABEL] Note: The code generator has deoptimised the styling of /testbed/packages/imba/src/compiler/nodes.mjs as it exceeds the max of 500KB.
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/nodes/js.test.js
+  TagAttr#js (web platform)
+    ✓ the produced node is an actual TagAttr (26 ms)
+    ✓ compiles plain property (4 ms)
+    ✓ compiles empty property value (2 ms)
+    ✓ compiles valueless property (autovalue) (2 ms)
+    ✓ compiles tabindex is camel-cased (3 ms)
+    ✓ compiles tabindex zero boundary (2 ms)
+    ✓ compiles negative tabindex boundary (2 ms)
+    ✓ compiles spellCheck is routed through set$ in lowercase (4 ms)
+    ✓ compiles contentEditable is routed through set$ in lowercase (2 ms)
+    ✓ compiles aria-* uses set$ (3 ms)
+    ✓ compiles valueless aria-* uses the full key as value (2 ms)
+    ✓ compiles data-* uses setAttribute (1 ms)
+    ✓ compiles valueless data-* uses the full key as value (1 ms)
+    ✓ compiles style is assigned as a property on web (2 ms)
+    ✓ compiles for uses set$ (2 ms)
+    ✓ compiles global attributes use set$ (1 ms)
+    ✓ compiles value on input becomes richValue (2 ms)
+    ✓ compiles value on select becomes richValue (1 ms)
+    ✓ compiles value on textarea becomes richValue (2 ms)
+    ✓ compiles value on option becomes richValue (1 ms)
+    ✓ compiles value on button becomes richValue (1 ms)
+    ✓ compiles value on a non-form tag stays value (1 ms)
+    ✓ compiles css: attribute uses css$ (1 ms)
+    ✓ compiles --* custom property uses css$var (2 ms)
+    ✓ compiles valueless --* custom property uses the key as value (1 ms)
+    ✓ compiles html: namespace forces setAttribute (1 ms)
+    ✓ compiles valueless html: attribute uses the full key as value (1 ms)
+    ✓ compiles unknown namespace uses setns$ (1 ms)
+    ✓ compiles namespaced aria-* uses setns$ (1 ms)
+    ✓ compiles namespaced for uses setns$ (1 ms)
+    ✓ compiles namespaced data-* still uses setAttribute (2 ms)
+    ✓ compiles SVG attributes use set$ on web (1 ms)
+    ✓ compiles bind: a variable emits a getter/setter pair (6 ms)
+    ✓ compiles bind: an array emits the tuple (3 ms)
+  TagAttr#js (node platform)
+    ✓ compiles plain property stays a property (1 ms)
+    ✓ compiles aria-* uses setAttribute (2 ms)
+    ✓ compiles data-* uses setAttribute (1 ms)
+    ✓ compiles style uses setAttribute (1 ms)
+    ✓ compiles SVG attributes use setAttribute (2 ms)
+    ✓ compiles value on input is not richValue (1 ms)
+    ✓ compiles value on a div stays value (1 ms)
+    ✓ compiles global attributes use set$ (1 ms)
+    ✓ compiles html: namespace uses setAttribute (1 ms)
+    ✓ compiles css: attribute still uses css$ (1 ms)
+    ✓ compiles unknown namespace uses setns$ (1 ms)
+    ✓ compiles custom properties use css$var (2 ms)
+    ✓ compiles bind: a variable emits a getter/setter pair (2 ms)
+    ✓ asset attributes reference the imported asset instead of setAttribute (2 ms)
+  TagAttr#js with dynamic values
+    ✓ web aria-* value is cached (2 ms)
+    ✓ web input value becomes richValue (1 ms)
+    ✓ web plain property assignment (1 ms)
+    ✓ node aria-* uses setAttribute (2 ms)
+    ✓ node input value stays value (2 ms)
+  TagAttr#js (tsc platform)
+    ✓ compiles plain property (3 ms)
+    ✓ compiles empty property (1 ms)
+    ✓ compiles valueless property (1 ms)
+    ✓ compiles tabindex uses the raw attribute name (2 ms)
+    ✓ compiles aria-* uses String(...) in setAttribute (1 ms)
+    ✓ compiles data-* uses String(...) in setAttribute (1 ms)
+    ✓ compiles valueless data-* uses String(...) in setAttribute (1 ms)
+    ✓ compiles style uses String(...) in setAttribute (1 ms)
+    ✓ compiles global attributes use String(...) in setAttribute (2 ms)
+    ✓ compiles input value is annotated as any (1 ms)
+    ✓ compiles select value is annotated as any (1 ms)
+    ✓ compiles non-form value is a plain assignment (1 ms)
+    ✓ compiles custom properties use a mangled property name (1 ms)
+    ✓ compiles unknown namespace falls back to the bare key (1 ms)
+    ✓ asset attributes reference the tsc asset placeholder (2 ms)
+  TagAttr#js side effects on STACK.meta().universal
+    ✓ web plain property keeps universal output (1 ms)
+    ✓ web aria-* keeps universal output (1 ms)
+    ✓ web style keeps universal output (1 ms)
+    ✓ web SVG keeps universal output (1 ms)
+    ✓ web custom property keeps universal output (1 ms)
+    ✓ web html: attribute is node-only (1 ms)
+    ✓ node plain property keeps universal output (1 ms)
+    ✓ node aria-* is node-only (2 ms)
+    ✓ node data-* is node-only (1 ms)
+    ✓ node style is node-only (1 ms)
+    ✓ node SVG is node-only (1 ms)
+    ✓ node html: attribute is node-only (2 ms)
+    ✓ node form value keeps universal output (1 ms)
+    ✓ node asset keeps universal output (1 ms)
+    ✓ tsc aria-* keeps universal output (1 ms)
+    ✓ tsc data-* keeps universal output (1 ms)
+    ✓ tsc title keeps universal output (1 ms)
+  TagAttr#js runtime helper registration
+    ✓ custom properties register the styles helper (1 ms)
+    ✓ bind: attributes register the dom_bind helper (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       87 passed, 87 total
+Snapshots:   0 total
+Time:        5.153 s
+Ran all test suites within paths "test/packages/imba/src/compiler/nodes/js.test.js".
+Test results written to: ../results/report.json

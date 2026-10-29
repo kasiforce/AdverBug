@@ -1,0 +1,116 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+info: Error while parsing relative date {"info":"Time should either start with 'in' or end with 'ago'","status":"error"}
+PASS test/Adapters/Storage/Mongo/MongoTransform/transformConstraint.test.js (63.451 s)
+  transformConstraint
+    general contract
+      ✓ returns the CannotTransform sentinel for non-object constraints (4 ms)
+      ✓ returns the same CannotTransform sentinel for an object that is not a constraint
+      ✓ returns an empty object for an empty constraint object (1 ms)
+      ✓ throws for an unknown operator beginning with $ (1 ms)
+    comparison operators
+      ✓ passes a primitive value through for $lt (1 ms)
+      ✓ passes a primitive value through for $lte (1 ms)
+      ✓ passes a primitive value through for $gt (1 ms)
+      ✓ passes a primitive value through for $gte
+      ✓ passes a primitive value through for $exists
+      ✓ passes a primitive value through for $ne (1 ms)
+      ✓ passes a primitive value through for $eq
+      ✓ transforms a pointer object into a className$objectId string at the top level
+      ✓ prefixes a top-level string with the field target class for pointer fields (1 ms)
+      ✓ transforms a date JSON atom into a Date
+      ✓ transforms a GeoPoint JSON atom into a [longitude, latitude] pair (1 ms)
+      ✓ transforms a File JSON atom into its name
+      ✓ throws when a top-level atom cannot be transformed (1 ms)
+      ✓ uses the interior atom transformer for nested query keys
+      ✓ does not add the target class prefix for nested pointer-field keys (1 ms)
+      ✓ uses the interior atom transformer for Array fields
+      ✓ turns a $regex wrapper into a RegExp for nested keys
+    $relativeTime
+      ✓ resolves a future relative time for $lt (3 ms)
+      ✓ resolves a future relative time for $lte (1 ms)
+      ✓ resolves a past relative time for $gt
+      ✓ resolves a past relative time for $gte (1 ms)
+      ✓ resolves a relative time when no field is supplied (1 ms)
+      ✓ rejects relative times used on a non-Date field (1 ms)
+      ✓ rejects relative times with $exists (1 ms)
+      ✓ rejects relative times with $ne (1 ms)
+      ✓ rejects relative times with $eq (1 ms)
+      ✓ rejects a malformed relative time string (161 ms)
+    $in and $nin
+      ✓ passes an array of primitives through for $in (1 ms)
+      ✓ passes an array of primitives through for $nin
+      ✓ flattens one level of nested arrays for $in (1 ms)
+      ✓ flattens one level of nested arrays for $nin
+      ✓ transforms pointer atoms in $in with a top-level transformer (1 ms)
+      ✓ uses the interior atom transformer in $in for Array fields
+      ✓ transforms date atoms in $nin
+      ✓ rejects a non-array value for $in
+      ✓ rejects a non-array value for $nin
+    $all
+      ✓ passes an array of primitives through
+      ✓ transforms interior atoms such as dates and pointers
+      ✓ accepts $all values that are all regexes
+      ✓ rejects a mix of regex and non-regex values
+      ✓ rejects regex values that are not anchored start-of-string regexes (1 ms)
+      ✓ rejects a non-array value
+    $regex and $options
+      ✓ retains a regex string and its options (1 ms)
+      ✓ rejects a non-string regex
+    $containedBy
+      ✓ turns a containedBy constraint into an elemMatch/nin expression
+      ✓ transforms containedBy values with the interior atom transformer for Array fields
+      ✓ rejects a non-array value
+    $text
+      ✓ transforms a minimal text search (1 ms)
+      ✓ includes supported text options
+      ✓ omits falsy text options
+      ✓ rejects a non-object $search value (1 ms)
+      ✓ rejects a missing $search object
+      ✓ rejects a missing or non-string $term (1 ms)
+      ✓ rejects a non-string $language
+      ✓ rejects a non-boolean $caseSensitive
+      ✓ rejects a non-boolean $diacriticSensitive
+    $nearSphere and distance constraints
+      ✓ converts $nearSphere to a coordinate pair alongside $maxDistance by default
+      ✓ converts $nearSphere to $geoWithin/$centerSphere when count is true
+      ✓ drops $maxDistance when count is true (1 ms)
+      ✓ maps $maxDistanceInRadians to $maxDistance
+      ✓ converts $maxDistanceInMiles to radians
+      ✓ converts $maxDistanceInKilometers to radians
+    $select and $dontSelect
+      ✓ rejects the unsupported $select constraint (5 ms)
+      ✓ rejects the unsupported $dontSelect constraint
+    $within
+      ✓ converts a box of GeoPoints into coordinate pairs (1 ms)
+      ✓ rejects a missing $box
+      ✓ rejects a $box without exactly two points (1 ms)
+    $geoWithin
+      ✓ accepts an array of at least three coordinate pairs
+      ✓ accepts a Polygon object with coordinate pairs
+      ✓ converts GeoPoint atoms inside a Polygon object to coordinate pairs
+      ✓ rejects a Polygon object with fewer than three coordinate pairs (1 ms)
+      ✓ rejects a polygon array with fewer than three points
+      ✓ rejects a polygon value that is neither a Polygon object nor an array (1 ms)
+      ✓ rejects an invalid point inside a polygon array
+      ✓ converts a centerSphere coordinate pair and distance (1 ms)
+      ✓ converts a centerSphere GeoPoint atom and distance
+      ✓ rejects a centerSphere that is not an array of at least two values (1 ms)
+      ✓ rejects an invalid centerSphere point (1 ms)
+      ✓ rejects a negative or non-numeric centerSphere distance
+      ✓ returns an empty result when neither $polygon nor $centerSphere is provided (1 ms)
+    $geoIntersects
+      ✓ converts a GeoPoint atom into a Point geometry
+      ✓ rejects a non-GeoPoint $point value (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       86 passed, 86 total
+Snapshots:   0 total
+Time:        67.724 s
+Ran all test suites within paths "test/Adapters/Storage/Mongo/MongoTransform/transformConstraint.test.js".
+Test results written to: ../results/report.json

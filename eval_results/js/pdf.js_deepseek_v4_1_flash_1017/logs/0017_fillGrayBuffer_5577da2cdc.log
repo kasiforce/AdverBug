@@ -1,0 +1,52 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/image/fillGrayBuffer.test.js
+  PDFImage.fillGrayBuffer
+    8 bits per component without resampling
+      ✓ writes the full image and requests the exact source byte count (3 ms)
+      ✓ inverts output when invertOutput is set
+      ✓ honours offset and stride without touching other entries (1 ms)
+      ✓ accepts explicit destination dimensions equal to the source size
+    maxRows handling
+      ✓ writes only the requested number of rows
+      ✓ writes nothing when maxRows is zero (1 ms)
+      ✓ clamps maxRows to the image height
+    1 bit per component inline conversion
+      ✓ needsDecode=false invertOutput=false produces [255,0,255,255,0,0,0,255]
+      ✓ needsDecode=false invertOutput=true produces [0,255,0,0,255,255,255,0]
+      ✓ needsDecode=true invertOutput=false produces [0,255,0,0,255,255,255,0] (1 ms)
+      ✓ needsDecode=true invertOutput=true produces [255,0,255,255,0,0,0,255]
+      ✓ uses offset and stride for row-major 1 bpc output
+      ✓ resamples 1 bpc pixels with x and y mapping (1 ms)
+      ✓ applies inline inversion to resampled 1 bpc pixels
+    higher bit depths
+      ✓ scales 4 bpc samples to the full 0..255 range (1 ms)
+      ✓ scales and inverts 4 bpc samples
+      ✓ scales 2 bpc samples
+      ✓ truncates fractional scale results before writing clamped bytes
+      ✓ decodes components before scaling when needsDecode is set (1 ms)
+    nearest-neighbour resampling
+      ✓ upscales both dimensions
+      ✓ downscales both dimensions (1 ms)
+      ✓ resamples only the width when only destWidth changes
+      ✓ resamples only the height when only destHeight changes
+      ✓ supports maxRows together with offset and stride (1 ms)
+      ✓ inverts resampled output
+    argument validation
+      ✓ rejects arrays that are not Uint8ClampedArray instances (67 ms)
+      ✓ rejects non-gray images with a FormatError (1 ms)
+      ✓ throws a FormatError instance for non-gray images
+
+Test Suites: 1 passed, 1 total
+Tests:       28 passed, 28 total
+Snapshots:   0 total
+Time:        2.044 s
+Ran all test suites within paths "test/core/image/fillGrayBuffer.test.js".
+Test results written to: ../results/report.json

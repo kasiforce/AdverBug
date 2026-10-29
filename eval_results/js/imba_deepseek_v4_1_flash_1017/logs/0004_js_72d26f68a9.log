@@ -1,0 +1,46 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+[BABEL] Note: The code generator has deoptimised the styling of /testbed/packages/imba/src/compiler/nodes.mjs as it exceeds the max of 500KB.
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/nodes/js.test.js
+  TagDeclaration.js
+    runtime JavaScript output
+      ✓ emits a Component subclass and defineTag registration for a plain tag (37 ms)
+      ✓ resolves a named superclass variable without a runtime lookup (9 ms)
+      ✓ wraps an unresolved superclass with runtime getSuperTagType (5 ms)
+      ✓ uses runtime multi$ when the tag has mixins (6 ms)
+      ✓ adds the declared class name to the defineTag config (4 ms)
+      ✓ adds css namespace and id to the defineTag config in hmr mode (4 ms)
+      ✓ applies named export to the generated class (4 ms)
+      ✓ applies default export to the generated class (4 ms)
+      ✓ emits an anonymous class expression for extension tags (4 ms)
+      ✓ resolves a self reference through the tag scope context (4 ms)
+      ✓ reports an error when a native HTML tag is redeclared (4 ms)
+    TypeScript declaration output
+      ✓ emits a global namespace declaration for lowercase tags (5 ms)
+      ✓ emits a top-level exported class for class-style tags (2 ms)
+      ✓ uses the declared superclass name in TypeScript output (4 ms)
+      ✓ adds declared mixins to the TypeScript interface (3 ms)
+      ✓ does not inject dataForTagName when a data field exists (5 ms)
+      ✓ does not inject dataForTagName when a data method exists (4 ms)
+      ✓ emits a global interface extension for a lowercase extension tag (3 ms)
+      ✓ emits a local interface extension for a class-style extension tag (3 ms)
+      ✓ emits a module augmentation when an extension tag is imported (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        5.168 s
+Ran all test suites within paths "test/packages/imba/src/compiler/nodes/js.test.js".
+Test results written to: ../results/report.json

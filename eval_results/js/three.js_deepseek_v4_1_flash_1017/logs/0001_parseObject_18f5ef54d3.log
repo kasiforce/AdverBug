@@ -1,0 +1,102 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/loaders/ObjectLoader/parseObject.test.js (17.978 s)
+  ObjectLoader.parseObject() - type dispatch
+    ✓ creates the expected instance for type "Scene" (4 ms)
+    ✓ creates the expected instance for type "PerspectiveCamera" (1 ms)
+    ✓ creates the expected instance for type "OrthographicCamera" (1 ms)
+    ✓ creates the expected instance for type "AmbientLight" (1 ms)
+    ✓ creates the expected instance for type "DirectionalLight" (1 ms)
+    ✓ creates the expected instance for type "PointLight" (1 ms)
+    ✓ creates the expected instance for type "RectAreaLight"
+    ✓ creates the expected instance for type "SpotLight" (1 ms)
+    ✓ creates the expected instance for type "HemisphereLight" (1 ms)
+    ✓ creates the expected instance for type "SkinnedMesh" (1 ms)
+    ✓ creates the expected instance for type "Mesh"
+    ✓ creates the expected instance for type "Line" (1 ms)
+    ✓ creates the expected instance for type "LineLoop" (1 ms)
+    ✓ creates the expected instance for type "LineSegments"
+    ✓ creates the expected instance for type "Points" (1 ms)
+    ✓ creates the expected instance for type "Sprite" (1 ms)
+    ✓ creates the expected instance for type "Group" (1 ms)
+    ✓ creates the expected instance for type "Bone"
+    ✓ maps the legacy type "PointCloud" to Points
+    ✓ falls back to Object3D for an unknown type
+    ✓ uses Object3D when no type is provided
+  ObjectLoader.parseObject() - common properties
+    ✓ always assigns the serialized uuid
+    ✓ copies name, visibility and rendering flags
+    ✓ keeps the default flags when they are not serialized
+    ✓ assigns userData and copies morph target data (2 ms)
+    ✓ applies the layers mask
+    ✓ applies the up vector (1 ms)
+    ✓ applies position, rotation, quaternion and scale when no matrix is serialized (1 ms)
+    ✓ decomposes the matrix into position, quaternion and scale when matrixAutoUpdate is enabled (1 ms)
+    ✓ keeps the decomposed rotation from the matrix (1 ms)
+    ✓ does not decompose the matrix when matrixAutoUpdate is disabled
+    ✓ applies the pivot to the decomposed position (1 ms)
+    ✓ assigns the pivot even without a serialized matrix
+  ObjectLoader.parseObject() - Scene
+    ✓ converts an integer background into a Color (1 ms)
+    ✓ resolves a texture background from the texture library (1 ms)
+    ✓ resolves the environment texture
+    ✓ creates a Fog instance including its name (1 ms)
+    ✓ creates a FogExp2 instance
+    ✓ does not create fog when none is serialized (1 ms)
+    ✓ applies background and environment settings
+  ObjectLoader.parseObject() - cameras
+    ✓ configures a PerspectiveCamera (1 ms)
+    ✓ copies the camera view into a new object
+    ✓ configures an OrthographicCamera
+    ✓ keeps the default camera parameters when only required fields are serialized (1 ms)
+  ObjectLoader.parseObject() - lights
+    ✓ configures an AmbientLight
+    ✓ configures a DirectionalLight and assigns the serialized target (1 ms)
+    ✓ falls back to an empty string when no DirectionalLight target is serialized
+    ✓ configures a PointLight (1 ms)
+    ✓ configures a RectAreaLight
+    ✓ configures a SpotLight and assigns the serialized target (1 ms)
+    ✓ falls back to an empty string when no SpotLight target is serialized
+    ✓ configures a HemisphereLight
+    ✓ configures a LightProbe from spherical harmonics coefficients (1 ms)
+  ObjectLoader.parseObject() - meshes and geometries
+    ✓ resolves geometry and material from the libraries
+    ✓ supports an array of materials (1 ms)
+    ✓ warns about undefined geometry and material uuids (1 ms)
+    ✓ falls back to default geometry and material when the uuids are unknown
+    ✓ does not warn when no material is serialized at all (1 ms)
+    ✓ warns once per unknown material inside a material array
+    ✓ resolves geometry and material for lines and points (15 ms)
+    ✓ configures a SkinnedMesh
+    ✓ configures an InstancedMesh (1 ms)
+    ✓ leaves instanceColor unset when it is not serialized
+    ✓ restores a BatchedMesh (2 ms)
+    ✓ restores the per geometry bounding volumes of a BatchedMesh (1 ms)
+  ObjectLoader.parseObject() - hierarchies, animations and LOD
+    ✓ parses children recursively and passes the resource libraries down (1 ms)
+    ✓ creates an empty children array when no children are serialized (1 ms)
+    ✓ resolves animations from the animation library
+    ✓ restores LOD levels from existing children (1 ms)
+    ✓ ignores LOD levels that reference unknown objects (1 ms)
+    ✓ throws when a LOD is restored without serialized levels (36 ms)
+  ObjectLoader.parseObject() - shadows
+    ✓ applies the serialized shadow settings and parses the shadow camera (1 ms)
+    ✓ keeps the default shadow camera when none is serialized (1 ms)
+  ObjectLoader.parseObject() - textures and warnings
+    ✓ warns about an undefined background texture
+    ✓ warns about an undefined environment texture (1 ms)
+    ✓ does not warn for a fully resolved object
+
+Test Suites: 1 passed, 1 total
+Tests:       76 passed, 76 total
+Snapshots:   0 total
+Time:        20.208 s
+Ran all test suites within paths "test/loaders/ObjectLoader/parseObject.test.js".
+Test results written to: ../results/report.json

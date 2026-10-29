@@ -1,0 +1,49 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/Routers/UsersRouter/handleChallenge.test.js (7.74 s)
+  UsersRouter handleChallenge
+    request validation
+      ✓ rejects a missing challengeData value of undefined (5 ms)
+      ✓ rejects a missing challengeData value of null (1 ms)
+      ✓ rejects a missing challengeData value of "" (1 ms)
+      ✓ rejects a missing challengeData value of 0
+      ✓ rejects a non-object challengeData value of "not-an-object"
+      ✓ rejects a non-object challengeData value of 42
+      ✓ rejects a non-object challengeData value of true (1 ms)
+      ✓ requires a password when username is supplied (1 ms)
+      ✓ requires a password when email is supplied (1 ms)
+      ✓ rejects a non-object authData value of "not-an-object"
+      ✓ rejects a non-object authData value of 42
+      ✓ rejects a non-object authData value of true (1 ms)
+      ✓ rejects a non-object google authData entry
+      ✓ rejects a non-object facebook authData entry
+      ✓ rejects a non-object apple authData entry (1 ms)
+      ✓ rejects multiple auth providers that both provide an id (1 ms)
+      ✓ rejects combining username/password authentication with authData
+    authData user lookup
+      ✓ reports OBJECT_NOT_FOUND for no user from the lookup (1 ms)
+      ✓ reports OBJECT_NOT_FOUND for more than one user from the lookup (1 ms)
+      ✓ rewrites a lookup error to OBJECT_NOT_FOUND and logs it (1 ms)
+      ✓ validates the supplied provider credentials before running the challenge (2 ms)
+      ✓ rewrites a provider credential validation failure to OBJECT_NOT_FOUND
+      ✓ rewrites a validation error thrown by the secondary validator
+    challenge execution
+      ✓ authenticates a username/password user and supplies it to the challenge (1 ms)
+      ✓ runs providers in sorted order regardless of challengeData insertion order (6 ms)
+      ✓ uses true when a challenge returns a falsy value (1 ms)
+      ✓ skips providers without an adapter or challenge function (1 ms)
+      ✓ preserves a Parse.Error thrown by a challenge (1 ms)
+      ✓ converts an unknown challenge failure to SCRIPT_FAILED and logs challenge context (1 ms)
+      ✓ stops executing challenges after the first failure (15 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       30 passed, 30 total
+Snapshots:   0 total
+Time:        8.02 s
+Ran all test suites within paths "test/Routers/UsersRouter/handleChallenge.test.js".
+Test results written to: ../results/report.json

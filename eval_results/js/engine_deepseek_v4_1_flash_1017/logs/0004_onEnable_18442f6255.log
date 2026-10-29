@@ -1,0 +1,35 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/particle-system/component/onEnable.test.js
+  ParticleSystemComponent#onEnable
+    ✓ loads every unloaded Asset instance referenced by an asset property (5 ms)
+    ✓ resolves positive asset ids through the asset registry before loading them (1 ms)
+    ✓ skips negative and non-numeric asset ids without querying the asset registry (1 ms)
+    ✓ treats zero as a valid asset id (1 ms)
+    ✓ does not reload assets which already have a resource (1 ms)
+    ✓ does not load an id whose registry lookup returns no asset (1 ms)
+    ✓ stops after asset handling when the graphics device disables particle systems (1 ms)
+    ✓ constructs an emitter with all component settings and binds it to the entity (2 ms)
+    ✓ keeps an existing emitter and avoids overwriting its draw order or node (1 ms)
+    ✓ pauses a newly created emitter and hides its mesh when autoPlay is false (1 ms)
+    ✓ adds the emitter mesh instance to layers only when it has a color map (1 ms)
+    ✓ subscribes to scene layer changes and layer collection changes
+    ✓ subscribes only to scene layer changes when the scene has no layer collection
+    ✓ requests the scene depth layer when enabled with depth softening (1 ms)
+    ✓ does not request depth when the component is disabled
+    ✓ does not request depth when the entity is disabled (1 ms)
+    ✓ does not request depth when depth softening is disabled
+
+Test Suites: 1 passed, 1 total
+Tests:       17 passed, 17 total
+Snapshots:   0 total
+Time:        2.04 s
+Ran all test suites within paths "test/framework/components/particle-system/component/onEnable.test.js".
+Test results written to: ../results/report.json

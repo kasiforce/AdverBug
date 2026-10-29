@@ -1,0 +1,54 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/web/waiters/BindingsWaiter/parseInput.test.js (40.363 s)
+  BindingsWaiter.parseInput
+    modifier-key gating
+      ✓ does nothing when Ctrl is not held (52 ms)
+      ✓ uses Alt as the platform modifier when useMetaKey is false (8 ms)
+      ✓ does not accept the Meta modifier when useMetaKey is false (7 ms)
+      ✓ uses Meta as the platform modifier when useMetaKey is true (7 ms)
+      ✓ does not accept the Alt modifier when useMetaKey is true (7 ms)
+    editor focus shortcuts
+      ✓ focuses the search field on KeyF (11 ms)
+      ✓ focuses the input editor on KeyI (7 ms)
+      ✓ focuses the output editor on KeyO (7 ms)
+    operation navigation and toggles
+      ✓ focuses the first argument of the next operation on Period (17 ms)
+      ✓ wraps to the first operation's first argument when Period is used on the last operation (11 ms)
+      ✓ falls back to the first recipe operation when focus is outside an operation (10 ms)
+      ✓ silently ignores Period when no operation can be found (7 ms)
+      ✓ toggles a breakpoint and dispatches a statechange event on KeyB (11 ms)
+      ✓ silently ignores KeyB when the active element is not in an operation (7 ms)
+      ✓ toggles an operation's disabled state and dispatches a statechange event on KeyD (9 ms)
+      ✓ silently ignores KeyD when the active element is not in an operation (7 ms)
+    global command shortcuts
+      ✓ handles Space (6 ms)
+      ✓ handles Quote (6 ms)
+      ✓ handles KeyC (5 ms)
+      ✓ handles KeyS (5 ms)
+      ✓ handles KeyL (5 ms)
+      ✓ handles KeyM (6 ms)
+      ✓ handles KeyT (6 ms)
+      ✓ handles ArrowLeft (6 ms)
+      ✓ handles ArrowRight (6 ms)
+      ✓ closes the active input tab on KeyW (6 ms)
+    numbered operation selection
+      ✓ focuses the first argument of the selected operation for Digit keys (17 ms)
+      ✓ silently ignores a Digit shortcut when no matching operation exists (8 ms)
+      ✓ ignores unassigned modified keys (5 ms)
+    contextual help
+      ✓ shows contextual help on F1 without modifiers (6 ms)
+      ✓ shows contextual help on F1 when only Ctrl is held (5 ms)
+      ✓ does not treat F1 as contextual help when the full shortcut modifier is held (6 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        40.441 s
+Ran all test suites within paths "test/web/waiters/BindingsWaiter/parseInput.test.js".
+Test results written to: ../results/report.json

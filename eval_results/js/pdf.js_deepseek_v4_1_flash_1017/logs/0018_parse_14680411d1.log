@@ -1,0 +1,37 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/jpg/parse.test.js
+  JpegImage.parse
+    ✓ throws a JpegError when the SOI marker is missing (31 ms)
+    ✓ throws a JpegError when no frame data is present (1 ms)
+    ✓ decodes a baseline scan and exposes the parsed image (5 ms)
+    ✓ parses JFIF and Adobe application metadata (2 ms)
+    ✓ uses dnlScanLines to override the frame height (1 ms)
+    ✓ computes component scaling and buffers from sampling factors (1 ms)
+    ✓ accepts 16-bit quantization tables (1 ms)
+    ✓ decodes a three-component baseline scan (2 ms)
+    ✓ accepts a extended sequential frame marker
+    ✓ accepts a progressive frame marker (1 ms)
+    ✓ honours a restart interval while decoding multiple MCUs (1 ms)
+    ✓ re-parses at a DNL marker found inside scan data (1 ms)
+    ✓ stops at an EOI marker encountered inside scan data (1 ms)
+    ✓ recovers from unexpected bytes by finding the next valid marker (1 ms)
+    ✓ finishes parsing when the end of data is reached without EOI (1 ms)
+    ✓ handles 0xFF fill bytes before the EOI marker
+    ✓ rejects an invalid quantization-table specification (1 ms)
+    ✓ rejects JPEGs containing more than one frame
+    ✓ throws when a frame component has no quantization table (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        1.837 s
+Ran all test suites within paths "test/core/jpg/parse.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,63 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/binary_cmap/process.test.js
+  BinaryCMapReader.process
+    ✓ parses a mixed stream of several record types (1 ms)
+    header handling
+      ✓ sets vertical to false for header byte 0x00 (4 ms)
+      ✓ sets vertical to true for header byte 0x01 (1 ms)
+      ✓ sets vertical to false for header byte 0x02 (1 ms)
+      ✓ sets vertical to true for header byte 0x03 (1 ms)
+      ✓ sets vertical to false for header byte 0xfe
+      ✓ sets vertical to true for header byte 0xff (1 ms)
+      ✓ treats an empty buffer as a vertical CMap without records (1 ms)
+    codespacerange records (type 0)
+      ✓ parses a single range of 1-byte codes (1 ms)
+      ✓ parses a range of 16-byte codes, i.e. the maximum dataSize (1 ms)
+      ✓ parses several consecutive ranges within a single record
+    notdefrange records (type 1)
+      ✓ skips the ranges and keeps parsing the following records
+    cidchar records (type 2)
+      ✓ parses consecutive chars with explicit deltas when not sequenced
+      ✓ increments the char without extra delta data when sequenced (1 ms)
+    cidrange records (type 3)
+      ✓ parses several ranges with explicit deltas when not sequenced
+      ✓ chains ranges without extra start deltas when sequenced (1 ms)
+    bfchar records (type 4)
+      ✓ maps a single entry with a 1-byte destination string
+      ✓ maps a single entry with a 2-byte destination string (1 ms)
+      ✓ maps a single entry with a 3-byte destination string
+      ✓ maps a single entry with a 4-byte destination string
+      ✓ parses several entries when not sequenced
+      ✓ applies negative destination deltas
+    bfrange records (type 5)
+      ✓ maps a single range
+      ✓ maps several ranges with explicit deltas when not sequenced (1 ms)
+      ✓ chains ranges without extra start deltas when sequenced
+    metadata records (type 7)
+      ✓ skips comment records (1 ms)
+      ✓ skips long comment records that use multi-byte lengths
+      ✓ ignores unknown metadata sub-types
+      ✓ returns the result of extend for the use-cmap name (1 ms)
+      ✓ parses the remaining records before extending the use-cmap
+      ✓ does not call extend when no use-cmap record is present (1 ms)
+    invalid input
+      ✓ throws for the unknown record type in 0xc0 (23 ms)
+      ✓ throws for the unknown record type in 0xc5 (1 ms)
+      ✓ throws for the unknown record type in 0xcf (1 ms)
+      ✓ throws a FormatError when the subitemsCount is missing (39 ms)
+      ✓ throws a FormatError when a record payload is truncated (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        0.849 s
+Ran all test suites within paths "test/core/binary_cmap/process.test.js".
+Test results written to: ../results/report.json

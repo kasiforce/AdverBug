@@ -1,0 +1,37 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/operations/ShowBase64Offsets/run.test.js
+  ShowBase64Offsets.run
+    input validation
+      ✓ throws an OperationError for an empty byte array (14 ms)
+      ✓ throws an OperationError when the Base64 alphabet is invalid (44 ms)
+    raw input with variables and padding shown
+      ✓ renders all three offsets for a one-byte input (2 ms)
+      ✓ renders all three offsets for a two-byte input (1 ms)
+      ✓ renders all three offsets for a three-byte input
+    raw input with only static sections
+      ✓ returns one static Base64 fragment per offset for a one-byte input
+      ✓ returns one static Base64 fragment per offset for a two-byte input (1 ms)
+      ✓ returns one static Base64 fragment per offset for a three-byte input
+      ✓ uses the supplied custom alphabet (1 ms)
+    Base64 input format
+      ✓ decodes Base64 input before displaying offsets (1 ms)
+      ✓ produces the same output as the equivalent raw input (1 ms)
+      ✓ ignores non-alphabet characters while decoding Base64 input (1 ms)
+    HTML escaping
+      ✓ escapes characters decoded into tooltip titles and static text (1 ms)
+      ✓ replaces null bytes with the visible escape character
+
+Test Suites: 1 passed, 1 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        1.379 s
+Ran all test suites within paths "test/core/operations/ShowBase64Offsets/run.test.js".
+Test results written to: ../results/report.json

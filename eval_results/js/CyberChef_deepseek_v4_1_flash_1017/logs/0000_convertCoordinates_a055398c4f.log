@@ -1,0 +1,99 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/lib/ConvertCoordinates/convertCoordinates.test.js (36.535 s)
+  convertCoordinates
+    degree-based output formats
+      ✓ converts 51.5,-0.11 to Decimal Degrees with precision 2 (4 ms)
+      ✓ converts 51.5,-0.11 to Degrees Decimal Minutes with precision 2 (1 ms)
+      ✓ converts 51.5,-0.11 to Degrees Minutes Seconds with precision 2 (1 ms)
+      ✓ converts 51.5074,-0.1278 to Decimal Degrees with precision 3
+      ✓ uses the Comma output delimiter for a pair (1 ms)
+      ✓ uses the Space output delimiter for a pair
+      ✓ uses the \n output delimiter for a pair (1 ms)
+      ✓ uses the Colon output delimiter for a pair
+      ✓ uses the Semi-colon output delimiter for a pair (1 ms)
+    compass directions
+      ✓ includes the direction at position None
+      ✓ includes the direction at position Before
+      ✓ includes the direction at position After
+      ✓ derives S/E directions from negative decimal latitude (1 ms)
+      ✓ derives W direction from negative decimal longitude
+      ✓ interprets explicit directions (S)
+      ✓ interprets explicit directions (Before)
+      ✓ interprets explicit directions (lowercase Before)
+      ✓ appends the direction after the delimiter-free value
+    input formats
+      ✓ converts Degrees Minutes Seconds from '51° 30' 0" N, 0° 6' 36" W' to Decimal Degrees
+      ✓ converts Degrees Minutes Seconds from '51 30 0,0 6 36' to Decimal Degrees
+      ✓ converts Degrees Decimal Minutes from '51° 30' N, 0° 6.6' W' to Decimal Degrees
+      ✓ converts Degrees Decimal Minutes from '51 30,0 6.6' to Decimal Degrees
+      ✓ converts Decimal Degrees from '51.5,-0.11' to Decimal Degrees (1 ms)
+      ✓ converts Geohash from 'gcpuvrrc' to Decimal Degrees
+      ✓ converts Military Grid Reference System from '30U YC 005 093' to Decimal Degrees (2 ms)
+      ✓ converts Ordnance Survey National Grid from 'TQ 30000 80000' to Decimal Degrees (1 ms)
+      ✓ converts Universal Transverse Mercator from '30 N 700000 5700000' to Decimal Degrees (1 ms)
+      ✓ converts direction-delimited DMS (Direction Following)
+      ✓ converts direction-delimited DMS (Direction Preceding)
+      ✓ converts direction-delimited DDM
+      ✓ honours the \n input delimiter
+      ✓ honours the Semi-colon input delimiter
+      ✓ honours the Colon input delimiter
+      ✓ honours the Space input delimiter
+    non-degree output formats
+      ✓ converts Decimal Degrees to Geohash with precision 8
+      ✓ converts Decimal Degrees to Universal Transverse Mercator with precision 3 (1 ms)
+      ✓ converts Decimal Degrees to Universal Transverse Mercator with precision 0
+      ✓ converts Decimal Degrees to Military Grid Reference System with precision 5 (1 ms)
+      ✓ converts Decimal Degrees to Military Grid Reference System with precision 3 (1 ms)
+      ✓ converts Decimal Degrees to Military Grid Reference System with precision 24
+      ✓ converts Decimal Degrees to Ordnance Survey National Grid with precision 5 (1 ms)
+      ✓ converts Decimal Degrees to Ordnance Survey National Grid with precision 3
+      ✓ converts Decimal Degrees to Ordnance Survey National Grid with precision 12
+      ✓ appends a single output delimiter for non-degree formats
+      ✓ ignores compass direction selection for Geohash output (1 ms)
+      ✓ ignores compass direction selection for Military Grid Reference System output
+      ✓ ignores compass direction selection for Ordnance Survey National Grid output
+      ✓ round-trips a Geohash value
+    automatic detection
+      ✓ detects both the input delimiter and input format (1 ms)
+      ✓ detects the input delimiter in '51.5;-0.11'
+      ✓ detects the input delimiter in '51.5:-0.11'
+      ✓ detects the input delimiter in '51.5N,0.11W'
+      ✓ detects the input format of '51° 30' 0" N, 0° 6' 36" W' (1 ms)
+      ✓ detects the input format of '51° 30' N, 0° 6.6' W'
+      ✓ detects the input format of 'gcpuvrrc'
+      ✓ detects the input format of '30U YC 005 093'
+      ✓ detects the input format of '30 N 700000 5700000'
+    single co-ordinate input
+      ✓ converts a lone value to Decimal Degrees
+      ✓ converts a lone value to Degrees Decimal Minutes
+      ✓ converts a lone value to Degrees Minutes Seconds
+      ✓ includes a direction for a lone value
+    precision handling
+      ✓ treats negative precision as zero (1 ms)
+      ✓ rounds DDM minutes at zero precision
+      ✓ does not round beyond the available decimal digits
+    error handling
+      ✓ throws when the input delimiter cannot be detected
+      ✓ throws when the input format cannot be detected (1 ms)
+      ✓ throws for an unknown input format
+      ✓ throws for an unknown output format (1 ms)
+      ✓ throws for invalid Degrees Minutes Seconds input
+      ✓ throws for invalid Degrees Decimal Minutes input (1 ms)
+      ✓ throws for invalid Decimal Degrees input
+      ✓ throws when the co-ordinates cannot be represented on the OS National Grid (1 ms)
+      ✓ throws for an invalid MGRS precision of zero (37 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       73 passed, 73 total
+Snapshots:   0 total
+Time:        38.421 s
+Ran all test suites within paths "test/core/lib/ConvertCoordinates/convertCoordinates.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,58 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/platform/graphics/webgl/webgl-render-target/init.test.js
+  WebglRenderTarget#init
+    initialization state
+      ✓ reports not initialized before init and initialized afterwards (5 ms)
+      ✓ logs an assertion when initialized twice but keeps the render target usable (1 ms)
+    supplied color framebuffer
+      ✓ uses the supplied framebuffer without creating or binding a new one (1 ms)
+      ✓ accepts null as the supplied framebuffer (default framebuffer) (1 ms)
+    non multisampled render target
+      ✓ creates and binds a framebuffer and passes an empty draw buffers list (1 ms)
+      ✓ attaches an already uploaded color texture without re-uploading it (1 ms)
+      ✓ uploads missing color textures clamped to maxRenderBufferSize (2 ms)
+      ✓ does not clamp color textures that fit within maxRenderBufferSize (1 ms)
+      ✓ attaches a cubemap color texture face using the render target layer (1 ms)
+      ✓ attaches an array color texture with framebufferTextureLayer using layer and mip level (1 ms)
+      ✓ attaches multiple color buffers to consecutive attachment points (1 ms)
+      ✓ skips color buffer slots that hold no buffer
+      ✓ creates a depth renderbuffer when depth is requested without a depth buffer (1 ms)
+      ✓ uses a depth/stencil renderbuffer when stencil is requested (1 ms)
+      ✓ attaches a provided depth buffer texture instead of allocating a renderbuffer (1 ms)
+      ✓ uploads and clamps a provided depth buffer without a GL texture (1 ms)
+      ✓ does not allocate a depth renderbuffer when depth is not requested
+    multisampled render target
+      ✓ creates a resolve framebuffer plus a multisampled framebuffer and color renderbuffers (1 ms)
+      ✓ creates one multisampled color renderbuffer per color buffer with its own internal format (1 ms)
+      ✓ creates a multisampled color renderbuffer for a supplied framebuffer using RGBA8 (1 ms)
+      ✓ uses RGB8 for a supplied framebuffer when the back buffer is not RGBA8 (1 ms)
+      ✓ allocates a multisampled depth renderbuffer that can be destroyed (1 ms)
+      ✓ uses a depth/stencil attachment for the multisampled depth buffer when stencil is requested (1 ms)
+      ✓ does not create a multisampled depth buffer when depth is not requested (1 ms)
+      ✓ shares a cached multisampled depth buffer between render targets using the same depth buffer (1 ms)
+      ✓ does not share the multisampled depth buffer when the sample count differs (1 ms)
+      ✓ creates per-color-buffer resolve framebuffers when MSAA and MRT are combined (1 ms)
+      ✓ does not create MRT framebuffers for a single color buffer (1 ms)
+    validation
+      ✓ warns once about an invalid render target size (1 ms)
+      ✓ warns about negative render target dimensions (1 ms)
+      ✓ warns only once for the same invalid render target size (1 ms)
+      ✓ logs an assertion when the framebuffer is incomplete (1 ms)
+      ✓ logs an assertion for an unsupported framebuffer configuration
+      ✓ validates each distinct framebuffer configuration only once per device (1 ms)
+      ✓ does not log an assertion for a complete framebuffer (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        0.982 s
+Ran all test suites within paths "test/platform/graphics/webgl/webgl-render-target/init.test.js".
+Test results written to: ../results/report.json

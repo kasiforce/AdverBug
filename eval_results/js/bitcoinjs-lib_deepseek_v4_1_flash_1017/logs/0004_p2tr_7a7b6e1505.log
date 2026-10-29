@@ -1,0 +1,100 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/esm/payments/p2tr/p2tr.test.js
+  p2tr data requirements
+    ✓ throws when no usable data is supplied (32 ms)
+    ✓ throws when witness is an empty array (1 ms)
+    ✓ throws when witness contains a single element
+    ✓ throws when only a signature is supplied
+    ✓ accepts a witness with an annex and derives the signature (4 ms)
+  p2tr derivation from address
+    ✓ derives pubkey, output and address metadata (3 ms)
+    ✓ derives a testnet address given a testnet network (2 ms)
+    ✓ accepts an address and a matching pubkey (1 ms)
+    ✓ rejects a pubkey that does not match the address (1 ms)
+  p2tr derivation from output
+    ✓ derives pubkey and address from an output script (1 ms)
+    ✓ accepts an output and a matching pubkey (1 ms)
+    ✓ derives a testnet address from an output (1 ms)
+  p2tr derivation from pubkey
+    ✓ derives address and output from a tweaked pubkey (1 ms)
+  p2tr derivation from internalPubkey
+    ✓ tweaks an internal pubkey without a merkle root (3 ms)
+    ✓ tweaks an internal pubkey with a merkle root (2 ms)
+    ✓ respects a testnet network when deriving the address (2 ms)
+    ✓ defaults to the bitcoin network (1 ms)
+  p2tr scriptTree handling
+    ✓ computes the merkle root and tweaked key for a single leaf (3 ms)
+    ✓ computes the merkle root for a two-leaf tree (3 ms)
+    ✓ accepts an explicit hash matching the scriptTree root (2 ms)
+    ✓ constructs a script-path witness for a single-leaf tree (2 ms)
+    ✓ constructs a script-path witness with the sibling path for a tree (2 ms)
+    ✓ rejects a scriptTree that is not a valid tap tree (3 ms)
+    ✓ rejects a redeem script that is not present in the tree (2 ms)
+  p2tr redeemVersion resolution
+    ✓ defaults to LEAF_VERSION_TAPSCRIPT (1 ms)
+    ✓ uses an explicit redeemVersion (1 ms)
+    ✓ falls back to redeem.redeemVersion (1 ms)
+    ✓ prefers the top-level redeemVersion (1 ms)
+    ✓ preserves an explicit zero redeemVersion from the input (1 ms)
+    ✓ honours a zero redeem.redeemVersion (1 ms)
+  p2tr witness parsing
+    ✓ derives all fields from a script-path witness (2 ms)
+    ✓ parses the redeem leaf from a control block for the other leaf (2 ms)
+    ✓ separates redeem stack items from the script-path witness (1 ms)
+    ✓ ignores a trailing annex when parsing a script-path witness (2 ms)
+    ✓ derives a signature from a key-path witness when a pubkey is present
+    ✓ accepts a matching explicit signature for a key-path witness
+    ✓ accepts matching redeem data against a script-path witness (2 ms)
+  p2tr address validation errors
+    ✓ rejects an address with an invalid checksum (28 ms)
+    ✓ rejects an address prefix that does not match the network (1 ms)
+    ✓ rejects a non-taproot witness version
+    ✓ rejects taproot address data that is not 32 bytes
+  p2tr output and pubkey validation errors
+    ✓ rejects an output whose version byte is not OP_1
+    ✓ rejects an output whose push length byte is not 0x20
+    ✓ rejects a pubkey that does not match the output
+    ✓ rejects a pubkey that does not match a tweaked internal pubkey (1 ms)
+    ✓ rejects a 32-byte value that is not an x-only point (1 ms)
+  p2tr hash and redeem validation errors
+    ✓ rejects a hash that does not match the scriptTree root (2 ms)
+    ✓ rejects an empty redeem.output script (1 ms)
+    ✓ rejects a redeem.output that differs from the witness leaf (1 ms)
+    ✓ rejects redeem.witness that differs from the witness stack (1 ms)
+    ✓ rejects a redeemVersion that differs from the control block (1 ms)
+  p2tr witness validation errors
+    ✓ rejects a control block that is too small (1 ms)
+    ✓ rejects a control block with an invalid length
+    ✓ rejects a script path that is too long (1 ms)
+    ✓ rejects an internal pubkey that differs from the control block (1 ms)
+    ✓ rejects a control block with a non-x-only internal pubkey (1 ms)
+    ✓ rejects a pubkey that does not match the witness output key (1 ms)
+    ✓ rejects a control block with the wrong parity bit (2 ms)
+    ✓ rejects a signature that differs from the key-path witness (1 ms)
+  p2tr schema validation
+    ✓ rejects a pubkey of the wrong length (1 ms)
+    ✓ rejects an output of the wrong length (1 ms)
+    ✓ rejects a hash of the wrong length (1 ms)
+    ✓ rejects an internalPubkey of the wrong length (1 ms)
+    ✓ rejects a signature of an invalid length (1 ms)
+    ✓ rejects non-byte witness elements (1 ms)
+    ✓ rejects a non-numeric redeemVersion
+  p2tr options and side effects
+    ✓ skips extended validation when validate is false (1 ms)
+    ✓ skips output validation when validate is false
+    ✓ does not mutate the input data object or options (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       69 passed, 69 total
+Snapshots:   0 total
+Time:        1.755 s
+Ran all test suites within paths "test/esm/payments/p2tr/p2tr.test.js".
+Test results written to: ../results/report.json

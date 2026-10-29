@@ -1,0 +1,49 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scripting_api/initialization/initSandbox.test.js
+  initSandbox
+    sandbox bootstrap
+      ✓ removes the bootstrap globals used to set up the sandbox (2 ms)
+      ✓ resets the event global and creates an empty global object (1 ms)
+      ✓ exposes the Acrobat constants (1 ms)
+      ✓ exposes the global constants as non writable properties (3 ms)
+      ✓ does not let a script overwrite a global constant (62 ms)
+      ✓ exposes the color helpers as writable properties (1 ms)
+      ✓ avoids the Acrobat update popup
+      ✓ exposes the AF functions but not the private AForm helpers (2 ms)
+      ✓ exposes the document properties and methods on the global scope (1 ms)
+      ✓ exposes app, color, console and util through proxies
+    document fields
+      ✓ registers the fields in the document (16 ms)
+      ✓ creates a text field with its value and document (1 ms)
+      ✓ creates a checkbox field
+      ✓ creates a radio button field with all its widgets (1 ms)
+      ✓ creates a field for a container without annotations
+      ✓ sends the value with the ids of the sibling widgets (1 ms)
+      ✓ sends the new value of a text field
+      ✓ sends the new value of a checkbox field (1 ms)
+      ✓ forwards console output to the embedder
+    sandbox callback
+      ✓ dispatches a document event (2 ms)
+      ✓ dispatches an event on an annotation
+      ✓ reports an error thrown by an action (26 ms)
+      ✓ dispatches an event on a container field
+      ✓ ignores events sent to unknown objects
+      ✓ reports an error thrown while dispatching an event (1 ms)
+      ✓ runs a registered timeout callback
+      ✓ accepts the user activation callback id
+      ✓ serializes an error when an unknown function is called
+
+Test Suites: 1 passed, 1 total
+Tests:       28 passed, 28 total
+Snapshots:   0 total
+Time:        1.591 s
+Ran all test suites within paths "test/scripting_api/initialization/initSandbox.test.js".
+Test results written to: ../results/report.json

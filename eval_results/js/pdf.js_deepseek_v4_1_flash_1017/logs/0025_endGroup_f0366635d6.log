@@ -1,0 +1,33 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/canvas/endGroup.test.js
+  CanvasGraphics#endGroup
+    ✓ does nothing when the content is not visible (3 ms)
+    ✓ closes a simple group by restoring the parent state only (3 ms)
+    ✓ keeps the group nesting balanced for direct-drawing groups (1 ms)
+    ✓ frees the pooled knockout mask when the KO group ends (1 ms)
+    groups rendered on an intermediate canvas
+      ✓ draws the group canvas back onto the parent and frees it (2 ms)
+      ✓ places the group canvas with the recorded group transform (2 ms)
+      ✓ keeps the soft mask canvas for the later compose step (1 ms)
+      ✓ pops the dependency tracker base transform (1 ms)
+      ✓ uses the copy operator for groups that replace their backdrop (1 ms)
+      ✓ converts gray groups pixel by pixel without canvas filters (1 ms)
+      ✓ converts gray groups with the canvas grayscale filter when available (1 ms)
+    subgroups nested inside a knockout group
+      ✓ masks a non-isolated subgroup with its element footprint (2 ms)
+      ✓ composites an isolated KO subgroup against the parent backdrop (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       13 passed, 13 total
+Snapshots:   0 total
+Time:        1.922 s
+Ran all test suites within paths "test/display/canvas/endGroup.test.js".
+Test results written to: ../results/report.json

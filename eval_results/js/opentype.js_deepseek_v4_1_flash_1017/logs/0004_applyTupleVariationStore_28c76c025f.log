@@ -1,0 +1,55 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/variationprocessor/applyTupleVariationStore.test.js
+  VariationProcessor.applyTupleVariationStore
+    gvar flavor
+      ✓ applies deltas with a factor of 1 at the axis maximum and returns rounded copies (4 ms)
+      ✓ defaults to the gvar flavor when no flavor is provided
+      ✓ uses font variation coordinates when coords are not provided (1 ms)
+      ✓ uses the provided coords instead of the font variation coordinates
+      ✓ falls back to the axis default when a coordinate is missing
+      ✓ produces a negligible factor at the default coordinate (1 ms)
+      ✓ skips tuples whose peak is outside the normalized coordinate range
+      ✓ scales deltas proportionally to the normalized coordinate (1 ms)
+      ✓ supports negative tuple peaks
+      ✓ reads tuple coordinates from the gvar sharedTuples when peakTuple is absent (1 ms)
+      ✓ prefers header privatePoints over sharedPoints (1 ms)
+      ✓ falls back to sharedPoints when privatePoints is empty
+      ✓ ignores tuple point indexes beyond the number of points
+      ✓ applies multiple headers additively
+      ✓ multiplies the factors of all axes
+      ✓ skips a tuple when any axis is outside its peak range
+      ✓ treats a zero peak coordinate as an ignored axis with a factor of 1 (1 ms)
+      ✓ uses normalized coordinates remapped by the avar table
+      ✓ interpolates the ascending side of an intermediate tuple
+      ✓ interpolates the descending side of an intermediate tuple (1 ms)
+      ✓ skips an intermediate tuple when the coordinate is outside its start and end
+      ✓ interpolates points that have no deltas within their contour
+      ✓ shifts the remaining points of a contour when a single point has a delta
+      ✓ applies deltas directly for non-composite glyphs
+      ✓ delegates composite glyphs to transformComponents
+      ✓ does not delegate composite glyphs for headers whose factor is zero (1 ms)
+      ✓ returns fresh copies when there are no headers
+    cvar flavor
+      ✓ applies deltas to all values and returns a new rounded array (1 ms)
+      ✓ rounds values at the default coordinate
+      ✓ applies deltas only to the listed shared points
+      ✓ skips tuples whose peak is outside the normalized coordinate range
+      ✓ scales deltas with an intermediate tuple
+      ✓ uses font variation coordinates when coords are not provided
+      ✓ does not delegate composite glyphs to transformComponents
+      ✓ returns a new array when there are no headers
+
+Test Suites: 1 passed, 1 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        1.31 s
+Ran all test suites within paths "test/variationprocessor/applyTupleVariationStore.test.js".
+Test results written to: ../results/report.json

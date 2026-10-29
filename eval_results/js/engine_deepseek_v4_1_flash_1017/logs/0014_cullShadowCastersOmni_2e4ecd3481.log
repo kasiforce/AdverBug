@@ -1,0 +1,29 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/renderer/shadow-renderer/cullShadowCastersOmni.test.js
+  ShadowRenderer#cullShadowCastersOmni
+    ✓ clears every face list and emits the precull/postcull events around sorting (8 ms)
+    ✓ classifies casters into the correct positive and negative axis faces (2 ms)
+    ✓ adds a caster to every face whose frustum it overlaps (2 ms)
+    ✓ uses the light position as the origin of the caster classification (1 ms)
+    ✓ rejects casters inside the near planes, beyond the far planes, or outside the bounds (1 ms)
+    ✓ skips casters which do not cast shadows or are not visible (2 ms)
+    ✓ adds a culling-disabled caster to all faces without testing its bounds (1 ms)
+    ✓ evaluates custom visibility once per face and only adds the caster to visible faces (2 ms)
+    ✓ collects casters from each unique layer containing the light when no caster array is supplied (2 ms)
+    ✓ works without a scene while still sorting every face list (1 ms)
+    ✓ reports an assertion when given a non-omni light (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        3.408 s
+Ran all test suites within paths "test/scene/renderer/shadow-renderer/cullShadowCastersOmni.test.js".
+Test results written to: ../results/report.json

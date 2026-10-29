@@ -1,0 +1,30 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/type1_parser/extractFontProgram.test.js
+  Type1Parser.extractFontProgram
+    ✓ returns an empty program and lenIV default when no data is present (5 ms)
+    ✓ parses scalar and array entries in the private dictionary (3 ms)
+    ✓ preserves non-zero expansion factors and maps false booleans to zero (1 ms)
+    ✓ decodes charstrings and puts .notdef at index zero (2 ms)
+    ✓ handles a zero-length charstring without calling the stream (1 ms)
+    ✓ uses the default lenIV to decrypt encrypted charstrings (2 ms)
+    ✓ parses subrs by their declared index and uses them during conversion (1 ms)
+    ✓ ignores duplicate Subrs and CharStrings blocks (1 ms)
+    ✓ recovers when the ND token after a charstring is missing (1 ms)
+    ✓ replaces missing widths within the built-in encoding range (1 ms)
+    ✓ falls back to an endchar for a malformed charstring
+    ✓ reports seac data only when seac analysis is enabled (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        1.306 s
+Ran all test suites within paths "test/core/type1_parser/extractFontProgram.test.js".
+Test results written to: ../results/report.json

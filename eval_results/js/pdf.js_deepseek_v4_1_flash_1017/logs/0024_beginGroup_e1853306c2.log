@@ -1,0 +1,64 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/canvas/beginGroup.test.js
+  CanvasGraphics.beginGroup
+    content visibility
+      ✓ does nothing at all when content is not visible (5 ms)
+    direct (no intermediate canvas) path
+      ✓ saves, pushes a null sentinel and increments the group level (1 ms)
+      ✓ clips the group bbox directly onto the parent context (2 ms)
+      ✓ applies the group matrix to the bbox clip (1 ms)
+      ✓ uses the direct path for a non-isolated group needing isolation without a soft mask (1 ms)
+      ✓ supports several direct-path groups stacked on the same context
+      falls back to an intermediate canvas when
+        ✓ the group is isolated (needsIsolation) (2 ms)
+        ✓ the non-isolated group has a soft mask (1 ms)
+        ✓ the group is a knockout group (1 ms)
+        ✓ the group is gray (1 ms)
+        ✓ the parent context is translucent (1 ms)
+        ✓ the parent context has a non-default blend mode
+    intermediate canvas geometry
+      ✓ sizes the canvas from the bbox and translates both contexts (2 ms)
+      ✓ uses the whole current canvas when there is no bbox (1 ms)
+      ✓ floors offsets and ceils dimensions (1 ms)
+      ✓ clamps the bbox to the canvas
+      ✓ clamps a bbox with negative coordinates (1 ms)
+      ✓ falls back to a 1x1 canvas for an empty bbox
+      ✓ falls back to a 1x1 canvas when the bbox is outside the canvas
+      ✓ applies the group matrix before computing the bbox size (1 ms)
+    graphics state of the group context
+      ✓ inherits the parent state but resets blend mode, alpha and filters (1 ms)
+    backdrop copying for non-isolated soft-mask groups
+      ✓ copies the parent canvas before drawing a qualifying group (1 ms)
+      ✓ does not copy the backdrop when the parent context is translucent
+      ✓ does not copy the backdrop when the parent context has a non-default blend mode (1 ms)
+      ✓ does not copy the backdrop for a gray group
+      ✓ does not copy the backdrop when transfer maps are active
+      ✓ does not copy the backdrop with the transfer-map fallback active (1 ms)
+      ✓ does not copy the backdrop for a group with its own soft mask
+    knockout groups
+      ✓ allocates a pooled mask canvas for knockout groups (1 ms)
+      ✓ prevents the direct path for nested groups while in a knockout group (1 ms)
+      ✓ does not copy the backdrop for soft-mask groups nested in knockout groups
+      ✓ resets the knockout level inside a non-knockout group (1 ms)
+    soft-mask groups
+      ✓ records the scratch canvas and smask state
+      ✓ repositions the parent context when a dependency tracker is present
+    soft mask (SMask) mode
+      ✓ ends SMask mode, restores the suspended context and copies its backdrop (1 ms)
+    group objects
+      ✓ does not mutate the caller-provided group (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        2.014 s
+Ran all test suites within paths "test/display/canvas/beginGroup.test.js".
+Test results written to: ../results/report.json

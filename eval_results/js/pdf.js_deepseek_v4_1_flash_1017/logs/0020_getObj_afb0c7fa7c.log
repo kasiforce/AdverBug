@@ -1,0 +1,71 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/parser/getObj.test.js
+  Lexer.getObj
+    whitespace and comments
+      ✓ returns EOF for empty input (2 ms)
+      ✓ skips all supported PDF whitespace and NUL bytes
+      ✓ skips a comment terminated by LF
+      ✓ skips a comment terminated by CR and returns EOF at the end (1 ms)
+      ✓ skips a comment that reaches EOF without a line ending
+      ✓ does not treat a comment marker inside a string as a comment (1 ms)
+      ✓ treats a comment marker after a number as a token separator
+    numbers
+      ✓ parses 0 as 0 (1 ms)
+      ✓ parses 9 as 9
+      ✓ parses +7 as 7
+      ✓ parses -7 as -7 (1 ms)
+      ✓ parses .25 as 0.25
+      ✓ parses -12.75 as -12.75
+      ✓ stops a number at a delimiter and leaves it for the next call (1 ms)
+    strings and names
+      ✓ parses a literal string
+      ✓ parses nested parentheses and escapes in a literal string
+      ✓ parses a name and removes its leading slash (1 ms)
+      ✓ parses a name containing a hexadecimal escape
+    punctuation
+      ✓ handles array delimiters in sequence
+      ✓ handles dictionary delimiters in sequence (1 ms)
+      ✓ returns the [ command and consumes its complete token
+      ✓ returns the ] command and consumes its complete token (1 ms)
+      ✓ returns the { command and consumes its complete token
+      ✓ returns the } command and consumes its complete token
+      ✓ returns the > command and consumes its complete token
+      ✓ returns the >> command and consumes its complete token
+      ✓ returns the << command and consumes its complete token
+    hexadecimal strings
+      ✓ parses pairs of hexadecimal digits
+      ✓ ignores whitespace inside a hexadecimal string
+      ✓ pads an odd final digit with zero
+    commands and literals
+      ✓ returns the literal true
+      ✓ returns the literal false
+      ✓ returns the literal null
+      ✓ returns a command rather than a literal for trueish
+      ✓ returns a command rather than a literal for falsey
+      ✓ returns a command rather than a literal for nullable
+      ✓ reads a command up to a delimiter
+      ✓ uses comments and whitespace as command delimiters
+      ✓ stops at the first known command when the next character is not part of it (1 ms)
+      ✓ continues while the accumulated string is a known command
+      ✓ reads non-visible characters as one-character commands: A
+      ✓ reads non-visible characters as one-character commands: A (1 ms)
+      ✓ records the stream position after a BI command
+      ✓ does not record an inline-image position for other commands
+      ✓ throws for a command longer than the permitted length (1 ms)
+    illegal input
+      ✓ throws for a closing parenthesis and consumes it before throwing
+
+Test Suites: 1 passed, 1 total
+Tests:       46 passed, 46 total
+Snapshots:   0 total
+Time:        2.679 s
+Ran all test suites within paths "test/core/parser/getObj.test.js".
+Test results written to: ../results/report.json

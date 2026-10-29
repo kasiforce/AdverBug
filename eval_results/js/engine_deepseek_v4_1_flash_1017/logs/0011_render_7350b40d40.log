@@ -1,0 +1,32 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/lighting/world-clusters-debug/render.test.js
+  WorldClustersDebug render
+    grid lines
+      ✓ draws one line pair per cell boundary on every axis (13 ms)
+      ✓ places the grid on the light volume bounds (2 ms)
+      ✓ uses the debug grid color for the vertices (5 ms)
+      ✓ keeps the existing grid colors when the vertex count does not change (1 ms)
+      ✓ rebuilds the grid colors when the vertex count changes (2 ms)
+    cell occupancy mesh
+      ✓ creates the occupancy mesh but no mesh instance when no cell is occupied (2 ms)
+      ✓ builds a cube per occupied cell using the cluster index layout (24 ms)
+      ✓ colors each cube from the occupancy ratio between the low and high colors (5 ms)
+      ✓ creates the mesh instance with the additive debug material and publishes it (3 ms)
+      ✓ reuses the mesh and mesh instance on later renders (3 ms)
+      ✓ drops the pending mesh instance when the new frame has no occupied cells (2 ms)
+      ✓ updates an existing pending mesh instance instead of creating a new one (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        4.921 s
+Ran all test suites within paths "test/scene/lighting/world-clusters-debug/render.test.js".
+Test results written to: ../results/report.json

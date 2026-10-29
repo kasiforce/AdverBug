@@ -1,0 +1,69 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/cff_parser/parseCharString.test.js
+  CFFParser.parseCharString
+    input and nesting guards
+      ✓ returns false when the charstring data is missing (5 ms)
+      ✓ accepts an empty charstring (1 ms)
+      ✓ rejects subroutine nesting deeper than the maximum (1 ms)
+    operand decoding
+      ✓ decodes single-byte integer operands (2 ms)
+      ✓ decodes positive two-byte operands
+      ✓ decodes negative two-byte operands
+      ✓ decodes signed 16-bit operands
+      ✓ decodes signed 32-bit fixed-point operands
+      ✓ honors the byteOffset of a charstring subarray (1 ms)
+    operators
+      ✓ rewrites the deprecated dotsection operator to hmoveto (1 ms)
+      ✓ executes arithmetic operators and updates stack values (1 ms)
+      ✓ executes the unary neg operator
+      ✓ applies drop and dup stack deltas
+      ✓ stops processing at the return operator (1 ms)
+      ✓ preserves a stack that already contains values
+    endchar and seac analysis
+      ✓ captures the last four operands as seac and returns false
+      ✓ processes endchar normally when seac analysis is disabled (1 ms)
+      ✓ does not run seac analysis with fewer than four operands
+    stack clearing and stem hints
+      ✓ extracts an optional width before the first rmoveto (1 ms)
+      ✓ extracts an optional width and counts stems
+      ✓ warns about too many parameters for a stack-clearing command (1 ms)
+      ✓ replaces hstem with vstem when vstem was seen first (1 ms)
+      ✓ replaces hstemhm with vstemhm when vstem was seen first
+      ✓ marks hasVStems for vstem and vstemhm (1 ms)
+      ✓ returns false for too few non-zero operands
+      ✓ replaces a zero-operand command by endchar and returns true (1 ms)
+    hint masks
+      ✓ skips the hint mask flag bytes for hintmask
+      ✓ skips the hint mask flag bytes for cntrmask (1 ms)
+      ✓ removes a hintmask with zero hints at the end of the charstring
+    invalid and terminator operators
+      ✓ replaces a trailing zero operator by endchar (1 ms)
+      ✓ leaves a non-trailing zero operator untouched
+      ✓ removes an invalid 9 operator at the end of the charstring
+      ✓ removes an invalid 9 operator in the middle of the charstring (1 ms)
+    subroutines
+      ✓ calls a local subroutine and restores the nesting state
+      ✓ calls a global subroutine (1 ms)
+      ✓ uses the medium bias for subroutine indexes
+      ✓ uses the large bias for subroutine indexes
+      ✓ returns false and warns when a local subr index is missing (1 ms)
+      ✓ returns false and warns when a global subr index is missing
+      ✓ returns false for a positive out-of-bounds subr index
+      ✓ returns false for a negative out-of-bounds subr index (1 ms)
+      ✓ returns false for a NaN subr index
+      ✓ stops recursive subroutine calls at the nesting limit
+
+Test Suites: 1 passed, 1 total
+Tests:       43 passed, 43 total
+Snapshots:   0 total
+Time:        1.159 s
+Ran all test suites within paths "test/core/cff_parser/parseCharString.test.js".
+Test results written to: ../results/report.json

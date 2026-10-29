@@ -1,0 +1,46 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+[BABEL] Note: The code generator has deoptimised the styling of /testbed/packages/imba/src/compiler/nodes.mjs as it exceeds the max of 500KB.
+(node:20) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/nodes/js.test.js
+  AmperFunc.js memoization analysis
+    ✓ emits a plain arrow without memoization in TypeScript mode (4133 ms)
+    ✓ hoists a capture-free amperfunction as a shared global memofunc (4 ms)
+    ✓ reuses one hoisted definition for identical capture-free source (4 ms)
+    ✓ normalizes double quotes in the memoization key but not in code (3 ms)
+    ✓ memoizes explicit self references per instance (10 ms)
+    ✓ treats implicit self access as an instance-bound reference (3 ms)
+    ✓ uses the capture-slot helper for a single effectively-final capture (3 ms)
+    ✓ includes every capture name and value in the capture key (4 ms)
+    ✓ finds captures inside index accesses (3 ms)
+    ✓ memoizes an instance-bound amperfunction together with its captures (3 ms)
+    ✓ refuses to memoize when a captured variable has a assignment (4 ms)
+    ✓ refuses to memoize when a captured variable has a compound assignment (2 ms)
+    ✓ refuses to memoize when a captured variable has a increment (3 ms)
+    ✓ refuses to memoize when a captured variable has a destructuring assignment (2 ms)
+    ✓ refuses to memoize a capture whose value is declared later (2 ms)
+    ✓ refuses to memoize a captured arguments binding (2 ms)
+    ✓ refuses to memoize across an unresolved forward reference in the body (2 ms)
+    ✓ ignores an unresolved reference outside the amperfunction body (2 ms)
+    ✓ does not memoize when the body source region is unavailable (1 ms)
+    ✓ accepts a body source region of exactly 1024 characters (2 ms)
+    ✓ rejects a body source region one character over the limit (2 ms)
+    ✓ reports an analysis failure only once per amperfunction (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       22 passed, 22 total
+Snapshots:   0 total
+Time:        4.933 s
+Ran all test suites within paths "test/packages/imba/src/compiler/nodes/js.test.js".
+Test results written to: ../results/report.json

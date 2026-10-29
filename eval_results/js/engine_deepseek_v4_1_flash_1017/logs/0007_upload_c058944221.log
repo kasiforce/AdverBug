@@ -1,0 +1,65 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/platform/graphics/webgl/webgl-texture/upload.test.js
+  WebglTexture#upload
+    guards and early exit
+      ✓ returns without uploading when nothing needs to be uploaded or mipmaps uploaded (5 ms)
+      ✓ logs an assertion error and still uploads when the texture has no device (2 ms)
+    2D textures from browser sources
+      ✓ uploads an image with texImage2D and updates dimensions on first upload (1 ms)
+      ✓ uses texSubImage2D fast path when dimensions match an existing texture (1 ms)
+      ✓ re-uploads with texImage2D when source dimensions changed (1 ms)
+      ✓ never uses texSubImage2D fast path for video sources (1 ms)
+      ✓ uploads an HTML element via texElementImage2D and uses its rect size (1 ms)
+      ✓ falls back to current dimensions when an HTML element has a zero-sized rect (1 ms)
+      ✓ downsamples oversized images before uploading (2 ms)
+    2D textures from byte arrays
+      ✓ uploads uncompressed data with texImage2D on first upload (1 ms)
+      ✓ uploads uncompressed data with texSubImage2D on an existing texture (1 ms)
+      ✓ uploads compressed data with compressedTexImage2D on first upload (1 ms)
+      ✓ uploads compressed data with compressedTexSubImage2D on an existing texture
+      ✓ falls back to compressedTexImage2D when existing texture has no data (1 ms)
+    mip levels
+      ✓ generates a mipmap when a single level is marked for mipmap upload
+      ✓ skips mip 0 when only mipmaps need uploading (1 ms)
+      ✓ stops at mip 1 when mipmaps are not requested (1 ms)
+      ✓ generates a mipmap chain before assigning custom mips when incomplete (1 ms)
+      ✓ does not generate mipmaps for compressed textures
+      ✓ does not generate mipmaps for integer formats (1 ms)
+    cubemap textures
+      ✓ uploads only updated browser-interface faces with texImage2D (1 ms)
+      ✓ uses texSubImage2D for browser faces on an existing cubemap (1 ms)
+      ✓ uploads uncompressed face byte arrays with texSubImage2D when existing (1 ms)
+      ✓ uploads compressed face data with compressedTexImage2D (1 ms)
+      ✓ uploads compressed face data with compressedTexSubImage2D when existing (1 ms)
+    volume textures
+      ✓ uploads compressed volume data with compressedTexImage3D
+      ✓ uploads uncompressed volume data with texImage3D and unpack settings (1 ms)
+    array textures
+      ✓ reserves storage and uploads each layer with texSubImage3D (1 ms)
+      ✓ does not reserve storage when the implementation was already created (1 ms)
+      ✓ uploads compressed array layers with compressedTexSubImage3D
+      ✓ skips layer uploads when the mip data is null
+      ✓ skips layer uploads when the layer count does not match (1 ms)
+    bookkeeping and side effects
+      ✓ resets the updated flags of mip 0 when an upload was required
+      ✓ does not reset updated flags when no upload was required (1 ms)
+      ✓ updates vram tracking by removing the old size and adding the new one
+      ✓ only adds vram when there was no previously tracked size (1 ms)
+      ✓ releases image sources after upload when requested
+      ✓ does not release image sources by default (1 ms)
+      ✓ marks the implementation as created after a successful upload
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        0.827 s
+Ran all test suites within paths "test/platform/graphics/webgl/webgl-texture/upload.test.js".
+Test results written to: ../results/report.json

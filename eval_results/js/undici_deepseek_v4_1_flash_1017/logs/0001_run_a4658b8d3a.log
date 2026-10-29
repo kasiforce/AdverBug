@@ -1,0 +1,82 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/web/websocket/receiver/run.test.js
+  ByteParser run()
+    when the header is not complete yet
+      ✓ invokes the callback without consuming the pending byte (4 ms)
+      ✓ invokes the callback when no bytes at all are buffered (1 ms)
+      ✓ resumes parsing once the remaining header and payload arrive (2 ms)
+    data frames
+      ✓ delivers a text frame with a short payload (1 ms)
+      ✓ delivers a binary frame (1 ms)
+      ✓ delivers an empty text frame
+      ✓ delivers every frame contained in a single chunk (1 ms)
+      ✓ delivers a frame that is dribbled in byte by byte
+      ✓ waits for the whole payload before invoking onMessage
+      ✓ resets the parser so a second frame is parsed afterwards (1 ms)
+    16 bit extended payload length
+      ✓ parses a payload larger than 125 bytes (1 ms)
+      ✓ parses a payload of exactly 126 bytes through the extended length field (1 ms)
+      ✓ waits for the extended length field to be complete
+      ✓ waits for the payload once the extended length has been parsed (1 ms)
+    64 bit extended payload length
+      ✓ parses a frame with a valid 64 bit length
+      ✓ waits for the eight byte length field to be complete
+      ✓ fails the connection when the upper 32 bits are non zero (2 ms)
+      ✓ fails the connection when the length exceeds 2^31-1
+      ✓ accepts the largest allowed 64 bit length value (1 ms)
+    protocol violations
+      ✓ fails the connection on an invalid opcode (1 ms)
+      ✓ fails the connection on a masked frame (1 ms)
+      ✓ fails the connection when RSV1 is set without permessage-deflate
+      ✓ fails the connection when RSV2 is set (1 ms)
+      ✓ fails the connection when RSV3 is set (1 ms)
+      ✓ fails the connection when a control frame is fragmented (1 ms)
+      ✓ accepts a control frame with a payload of exactly 125 bytes
+      ✓ fails the connection when a control frame announces a payload above 125 bytes
+      ✓ fails the connection on an unexpected continuation frame (1 ms)
+      ✓ fails the connection when a data frame arrives while a message is fragmented (1 ms)
+      ✓ stops parsing the remaining bytes of the chunk after a violation
+      ✓ reports the connection through onSocketClose when not yet established (1 ms)
+    fragmentation
+      ✓ reassembles a fragmented text message (1 ms)
+      ✓ reassembles fragments that arrive in separate chunks
+      ✓ allows a fragmented message to interleave with control frames
+      ✓ fails with 1008 when the fragment limit is reached (1 ms)
+      ✓ accepts exactly the maximum number of fragments (1 ms)
+    maximum payload size
+      ✓ fails with 1009 when a declared payload exceeds the limit
+      ✓ accepts a payload of exactly the maximum size (1 ms)
+      ✓ applies the limit to the 16 bit length state as well
+      ✓ disables the limit when maxPayloadSize is 0 (1 ms)
+    control frames
+      ✓ replies to a PING with a PONG carrying the same payload (1 ms)
+      ✓ does not reply to a PING once a close frame has been received
+      ✓ forwards unsolicited PONG frames without writing to the socket (1 ms)
+      ✓ continues parsing data frames after a control frame in the same chunk
+      ✓ handles a close frame, replies to it and exposes the closing info (1 ms)
+      ✓ stops parsing after a close frame
+      ✓ fails with 1002 when the close frame has a one byte body (1 ms)
+      ✓ fails with 1002 when the close frame contains an invalid status code
+      ✓ fails with 1007 when the close reason is not valid UTF-8 (1 ms)
+    write backpressure
+      ✓ pauses parsing until the socket drains when the reply fills the buffer (1 ms)
+      ✓ does not resume parsing when the parser was destroyed before the drain event
+    permessage-deflate
+      ✓ decompresses a compressed text message (7 ms)
+      ✓ decompresses an uncompressed frame when the extension is negotiated but RSV1 is clear (1 ms)
+      ✓ fails with 1007 when the compressed payload cannot be inflated (6 ms)
+      ✓ fails with 1009 when the decompressed message exceeds the payload limit (94 ms)
+      ✓ decompresses large payloads when the payload limit is disabled (6 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        3.775 s
+Ran all test suites within paths "test/lib/web/websocket/receiver/run.test.js".
+Test results written to: ../results/report.json

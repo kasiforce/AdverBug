@@ -1,0 +1,42 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/annotation/save.test.js (12.976 s)
+  WidgetAnnotation.save
+    no-op cases
+      ✓ returns immediately when there is no annotation storage entry (6 ms)
+      ✓ returns when the stored value equals the field value (1 ms)
+      ✓ returns when two equal but distinct arrays are stored (1 ms)
+      ✓ returns when the appearance did not change and there are no flags (2 ms)
+      ✓ returns without writing when the fetched original is not a Dict (1 ms)
+    value updates
+      ✓ writes a changed string value and preserves all non-AP entries (4 ms)
+      ✓ encodes non-ASCII field values (1 ms)
+      ✓ writes an array value and uses its rotation for MK (1 ms)
+      ✓ falls back to the field value when only an explicit rotation changed (1 ms)
+      ✓ saves a value supplied by the XFA data set
+      ✓ passes a parent dictionary returned by setValue to amendSavedDict (1 ms)
+      ✓ stores a non-null MK dictionary produced for the rotation
+    annotation flags
+      ✓ writes flags and restores the original AP when no new appearance exists (1 ms)
+      ✓ does not restore AP when the appearance requests needAppearances (1 ms)
+    generated appearances
+      ✓ omits Matrix for the identity rotation and saves the appearance stream (2 ms)
+      ✓ uses the rotated appearance bounds and matrix for rotation 0 (1 ms)
+      ✓ uses the rotated appearance bounds and matrix for rotation 90 (1 ms)
+      ✓ uses the rotated appearance bounds and matrix for rotation 180 (1 ms)
+      ✓ uses the rotated appearance bounds and matrix for rotation 270 (1 ms)
+      ✓ writes flags together with a newly generated appearance (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        13.657 s
+Ran all test suites within paths "test/core/annotation/save.test.js".
+Test results written to: ../results/report.json

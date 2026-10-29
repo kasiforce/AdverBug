@@ -1,0 +1,55 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/nodes/utils/LoopNode/generate.test.js
+  LoopNode.generate
+    node parameters
+      ✓ generates a counting for loop for an integer node parameter (6 ms)
+      ✓ generates a while loop for a boolean node parameter (1 ms)
+      ✓ forces a non boolean node parameter to an int loop starting at 0 (1 ms)
+      ✓ derives the variable names from the parameter index for nested node parameters
+    object parameters
+      ✓ generates an ascending loop for numeric start and end values
+      ✓ generates a descending loop when start is greater than end
+      ✓ counts down from start - 1 when only start is defined (1 ms)
+      ✓ counts up from 0 when only end is defined
+      ✓ uses a float step of 1. when no update is defined for a float loop (1 ms)
+      ✓ uses a negative float step of 1. for a descending float loop
+      ✓ supports a custom type and variable name (1 ms)
+      ✓ honors an explicit condition instead of inferring it
+      ✓ builds node based start and end values with the loop type (1 ms)
+      ✓ builds a node based end value when no start is defined
+      ✓ appends "- 1" to a node based start value when no end is defined
+      ✓ does not convert a string start value into a constant
+      ✓ overrides an explicit condition when only start is defined
+      ✓ overrides an explicit condition when only end is defined
+    update expressions
+      ✓ increments by a numeric update value (1 ms)
+      ✓ decrements by a numeric update value for a descending loop
+      ✓ uses a string update expression verbatim (1 ms)
+      ✓ uses a node update value built by the builder
+      ✓ uses the generated flow code of a function update without tabs and semicolons (16 ms)
+      ✓ falls back to the default update for a null update value (1 ms)
+      ✓ honors a numeric update value of 0
+      ✓ reports invalid update values and emits a break statement (2 ms)
+    code structure and side effects
+      ✓ nests multiple loops and closes them in reverse order
+      ✓ builds the stack and returns nodes inside a nested flow block and restores it (1 ms)
+      ✓ does not invoke the loop body callback while generating code (1 ms)
+      ✓ only emits the stack code when no loop parameters are present
+    public Loop() factory integration
+      ✓ maps a single numeric argument to an int node parameter (1 ms)
+      ✓ maps a single callback argument to a boolean while parameter (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        2.621 s
+Ran all test suites within paths "test/nodes/utils/LoopNode/generate.test.js".
+Test results written to: ../results/report.json

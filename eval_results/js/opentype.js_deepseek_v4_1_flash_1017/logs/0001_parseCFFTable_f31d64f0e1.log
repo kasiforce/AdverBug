@@ -1,0 +1,66 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/cff/parseCFFTable.test.js (6.981 s)
+  parseCFFTable - CFF1 table
+    ✓ registers the parsed table under font.tables.cff (5 ms)
+    ✓ preserves other entries already present in font.tables (1 ms)
+    ✓ reads the Top DICT metadata (2 ms)
+    ✓ derives the glyph count and builds a loadable glyph set (4 ms)
+    ✓ leaves CID and subroutine state at their defaults (1 ms)
+    ✓ builds a CFF encoding and installs it as font.encoding (1 ms)
+    ✓ keeps a pre-existing font.encoding instead of the CFF encoding
+    ✓ parses correctly when the table is not at offset 0 (1 ms)
+    ✓ does not compare the glyph count with maxp for CFF1 tables (2 ms)
+  parseCFFTable - lowMemory option
+    ✓ defers CFF1 glyph parsing behind font._push (2 ms)
+    ✓ defers CFF2 glyph parsing behind font._push (41 ms)
+  parseCFFTable - CFF2 table
+    ✓ registers the parsed table under font.tables.cff2
+    ✓ parses the FDArray, its Private DICT and the variation store (1 ms)
+    ✓ loads CFF2 glyph outlines lazily (1 ms)
+    ✓ reports a glyph count mismatch with maxp through console.error (1 ms)
+    ✓ does not compare glyph counts when maxp is absent (1 ms)
+    ✓ parses a hand built CFF2 table with FDArray and FDSelect (1 ms)
+    ✓ throws when a CFF2 table has no FDArray (81 ms)
+  parseCFFTable - invalid input
+    ✓ rejects unsupported CFF major versions (1 ms)
+    ✓ rejects a FontSet containing more than one font (1 ms)
+    ✓ rejects a CID font without FDArray/FDSelect references (1 ms)
+  parseCFFTable - predefined charsets
+    ✓ charset 0 selects the ISOAdobe charset (1 ms)
+    ✓ charset 1 selects the Expert charset
+    ✓ charset 2 selects the ExpertSubset charset (1 ms)
+  parseCFFTable - custom charset
+    ✓ reads charset format 0 and resolves SIDs against the string INDEX
+    ✓ rejects an unknown charset format (1 ms)
+  parseCFFTable - encodings
+    ✓ encoding 0 selects the Standard encoding (1 ms)
+    ✓ encoding 1 selects the Expert encoding
+    ✓ reads a custom encoding in format 0 (1 ms)
+    ✓ reads a custom encoding in format 1
+    ✓ rejects an unknown encoding format (1 ms)
+  parseCFFTable - Private DICT
+    ✓ reads defaultWidthX/nominalWidthX and local subroutines from the Private DICT (1 ms)
+    ✓ keeps empty subroutine lists when no Subrs offset is present
+    ✓ computes the local subr bias from 1239 subroutines (107) (3 ms)
+    ✓ computes the local subr bias from 1240 subroutines (1131) (2 ms)
+    ✓ computes the global subr bias from 1239 subroutines (107) (2 ms)
+    ✓ computes the global subr bias from 1240 subroutines (1131) (1 ms)
+  parseCFFTable - CID-keyed CFF1 font
+    ✓ marks the font as CID and records the ROS values (1 ms)
+    ✓ parses the FDArray with its Private DICT and the FDSelect array (1 ms)
+    ✓ keeps numeric SIDs in the charset and resolves glyph outlines through the FDArray (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        9.44 s
+Ran all test suites within paths "test/tables/cff/parseCFFTable.test.js".
+Test results written to: ../results/report.json

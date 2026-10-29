@@ -1,0 +1,122 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:20) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/cjs/payments/p2tr/p2tr.test.js (21.502 s)
+  p2tr fixture vectors
+    ✓ accepts and normalizes: output and pubkey from address (8 ms)
+    ✓ accepts and normalizes: address and pubkey from output (1 ms)
+    ✓ accepts and normalizes: address and output from pubkey (1 ms)
+    ✓ accepts and normalizes: address, output and witness from pubkey and signature (2 ms)
+    ✓ accepts and normalizes: address, output and signature from pubkey and witness (1 ms)
+    ✓ accepts and normalizes: address, pubkey and output from internalPubkey (5 ms)
+    ✓ accepts and normalizes: address, pubkey, internalPubkey, redeeem and output from witness (9 ms)
+    ✓ accepts and normalizes: address, pubkey, internalPubkey and output from witness with annex (6 ms)
+    ✓ accepts and normalizes: address, pubkey, output and hash from internalPubkey and a script tree with one leaf (5 ms)
+    ✓ accepts and normalizes: address, pubkey, output and hash from internalPubkey and a script tree with two leafs (5 ms)
+    ✓ accepts and normalizes: address, pubkey, output and hash from internalPubkey and a script tree with three leafs (5 ms)
+    ✓ accepts and normalizes: address, pubkey, output and hash from internalPubkey and a script tree with four leafs (5 ms)
+    ✓ accepts and normalizes: address, pubkey, output and hash from internalPubkey and a script tree with seven leafs (5 ms)
+    ✓ accepts and normalizes: address, pubkey, and output from internalPubkey redeem, and hash (one leaf, no tree) (6 ms)
+    ✓ accepts and normalizes: address, pubkey, output and hash from internalPubkey and a script tree with seven leafs (2) (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 1 (4 ms)
+    ✓ accepts and normalizes: BIP341 Test case 2 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 3 (6 ms)
+    ✓ accepts and normalizes: BIP341 Test case 4 - spend leaf 0 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 4 - spend leaf 1 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 5 - spend leaf 0 (6 ms)
+    ✓ accepts and normalizes: BIP341 Test case 5 - spend leaf 1 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 6 - spend leaf 0 (6 ms)
+    ✓ accepts and normalizes: BIP341 Test case 6 - spend leaf 1 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 6 - spend leaf 2 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 7 - spend leaf 0 (6 ms)
+    ✓ accepts and normalizes: BIP341 Test case 7 - spend leaf 1 (7 ms)
+    ✓ accepts and normalizes: BIP341 Test case 7 - spend leaf 2 (6 ms)
+    ✓ rejects: invalid case 0 (149 ms)
+    ✓ rejects: invalid case 1 (1 ms)
+    ✓ rejects: Incorrect Witness Version (1 ms)
+    ✓ rejects: Invalid x coordinate for pubkey in pubkey (1 ms)
+    ✓ rejects: Invalid x coordinate for pubkey in output (1 ms)
+    ✓ rejects: Invalid x coordinate for pubkey in address (1 ms)
+    ✓ rejects: Pubkey mismatch between pubkey and output (1 ms)
+    ✓ rejects: Pubkey mismatch between pubkey and address (1 ms)
+    ✓ rejects: Pubkey mismatch between output and address (1 ms)
+    ✓ rejects: Pubkey mismatch between internalPubkey and pubkey (2 ms)
+    ✓ rejects: Hash mismatch between scriptTree and hash (2 ms)
+    ✓ rejects: invalid case 11 (47 ms)
+    ✓ rejects: invalid case 12 (1 ms)
+    ✓ rejects: invalid case 13 (1 ms)
+    ✓ rejects: invalid case 14 (1 ms)
+    ✓ rejects: invalid case 15
+    ✓ rejects: Control block length too small
+    ✓ rejects: Control block must have a length of 33 + 32m (0 <= m <= 128) (1 ms)
+    ✓ rejects: Control block length too large (1 ms)
+    ✓ rejects: Invalid internalPubkey in control block (1 ms)
+    ✓ rejects: internalPubkey mismatch between control block and internalKey (1 ms)
+    ✓ rejects: pubkey mismatch between outputKey and pubkey (1 ms)
+    ✓ rejects: parity (2 ms)
+    ✓ rejects: Script Tree is not a binary tree (has tree leafs) (2 ms)
+    ✓ rejects: Script Tree is not a TapTree tree (leaf has no script) (1 ms)
+    ✓ rejects: Incorrect redeem version (1 ms)
+    ✓ rejects: Incorrect redeem output (1 ms)
+    ✓ rejects: Incorrect redeem witness (1 ms)
+    ✓ rejects: Incorrect redeem output ASM
+    ✓ rejects: Redeem script not in tree (2 ms)
+  argument requirements and schema validation
+    ✓ throws "Not enough data" when no usable input fields are supplied (2 ms)
+    ✓ enforces fixed byte lengths even when validate is false (3 ms)
+  address, output, and network derivation
+    ✕ derives the mainnet address and taproot output from an x-only pubkey (1 ms)
+    ✓ uses the supplied network for the address prefix (1 ms)
+    ✓ derives the pubkey and output from an address (1 ms)
+    ✓ rejects an address whose network prefix does not match (1 ms)
+  redeemVersion and caller-provided data
+    ✓ defaults redeemVersion to LEAF_VERSION_TAPSCRIPT
+    ✓ prefers a top-level redeemVersion over the redeem object version (1 ms)
+    ✓ preserves a caller-provided empty input buffer through Object.assign (1 ms)
+  witness handling
+    ✓ reads a key-path signature and ignores a trailing annex
+    ✓ derives internalPubkey, output key, merkle root, and redeem data from a script-path witness (3 ms)
+  validate option
+    ✕ skips extended cross-field validation when validate is false
+    ✓ skips bech32 parsing when validate is false (17 ms)
+
+  ● address, output, and network derivation › derives the mainnet address and taproot output from an x-only pubkey
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      186 |     expect(payment.address).toBe(MAINNET_ADDRESS);
+      187 |     expect(Array.from(payment.output.slice(0, 2))).toEqual([
+    > 188 |       bscript.OPS.OP_1,
+          |                   ^
+      189 |       0x20,
+      190 |     ]);
+      191 |     expect(bytesToHex(payment.output.slice(2))).toBe(PUBKEY_HEX);
+
+      at Object.OP_1 (test/cjs/payments/p2tr/p2tr.test.js:188:19)
+
+  ● validate option › skips extended cross-field validation when validate is false
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      288 |   test('skips extended cross-field validation when validate is false', () => {
+      289 |     const mismatchedOutput = bscript.compile([
+    > 290 |       bscript.OPS.OP_1,
+          |                   ^
+      291 |       new Uint8Array(32).fill(0x02),
+      292 |     ]);
+      293 |
+
+      at Object.OP_1 (test/cjs/payments/p2tr/p2tr.test.js:290:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 69 passed, 71 total
+Snapshots:   0 total
+Time:        29.562 s
+Ran all test suites within paths "test/cjs/payments/p2tr/p2tr.test.js".
+Test results written to: ../results/report.json

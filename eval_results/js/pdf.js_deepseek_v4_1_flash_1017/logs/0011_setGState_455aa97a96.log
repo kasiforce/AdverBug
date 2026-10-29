@@ -1,0 +1,29 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/evaluator/setGState.test.js (8.364 s)
+  PartialEvaluator.setGState
+    ✓ converts simple entries, normalizes values, emits one setGState op, and caches the result (5 ms)
+    ✓ skips an invalid line width and creates no operation for an otherwise empty state (1 ms)
+    ✓ ignores unimplemented and unknown operators without caching any non-empty operation (1 ms)
+    ✓ loads a font asynchronously, registers its dependency, and avoids the simple-state cache (1 ms)
+    ✓ propagates font-loading failures without emitting or caching state
+    ✓ handles SMask /None synchronously and caches it as a simple state
+    ✓ awaits a dictionary SMask, emits it as true, and skips the simple-state cache (1 ms)
+    ✓ warns about and ignores an unsupported SMask value
+    ✓ handles TR with the transfer-function result (1 ms)
+    ✓ gives TR2 precedence over TR regardless of iteration order
+    ✓ handles TR2 directly and preserves a null transfer-function result
+
+Test Suites: 1 passed, 1 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        8.801 s
+Ran all test suites within paths "test/core/evaluator/setGState.test.js".
+Test results written to: ../results/report.json

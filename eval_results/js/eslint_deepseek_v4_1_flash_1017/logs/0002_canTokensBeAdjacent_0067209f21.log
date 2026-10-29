@@ -1,0 +1,60 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/rules/utils/ast-utils/canTokensBeAdjacent.test.js
+  canTokensBeAdjacent
+    when tokenizing string inputs
+      ✓ uses the last token on the left and the first token on the right (6 ms)
+      ✓ returns false when the left input cannot be tokenized (1 ms)
+      ✓ returns false when the right input cannot be tokenized (1 ms)
+      ✓ throws when a valid input contains neither a token nor a comment (99 ms)
+      ✓ selects a trailing block comment as the left token
+      ✓ selects a trailing line comment as the left token
+      ✓ does not select comments that are not at the outer edge of the left input
+      ✓ selects a leading comment as the right token (1 ms)
+      ✓ does not select a trailing comment in the right input
+      ✓ rejects a left hashbang, whether it is tokenized or supplied as a token
+      ✓ does not treat a right hashbang as the special left-token case (1 ms)
+    when either token is a punctuator
+      ✓ rejects adjacent plus tokens + and +
+      ✓ rejects adjacent plus tokens + and ++
+      ✓ rejects adjacent plus tokens ++ and + (1 ms)
+      ✓ rejects adjacent plus tokens ++ and ++
+      ✓ rejects adjacent minus tokens - and -
+      ✓ rejects adjacent minus tokens - and --
+      ✓ rejects adjacent minus tokens -- and -
+      ✓ rejects adjacent minus tokens -- and -- (1 ms)
+      ✓ allows plus and minus punctuators to be adjacent
+      ✓ allows a punctuator adjacent to a non-punctuator
+      ✓ rejects a slash immediately before a Block token
+      ✓ rejects a slash immediately before a Line token (1 ms)
+      ✓ rejects a slash immediately before a RegularExpression token
+      ✓ allows a slash before a non-comment, non-regex token
+      ✓ allows a line comment after a punctuator other than slash
+    when either token is a string or template
+      ✓ allows a String token adjacent to a String token (1 ms)
+      ✓ allows a String token adjacent to a Identifier token
+      ✓ allows a Identifier token adjacent to a String token
+      ✓ allows a Template token adjacent to a Identifier token
+      ✓ allows a Identifier token adjacent to a Template token
+      ✓ allows a Template token adjacent to a Numeric token
+    numeric token boundaries
+      ✓ allows a leading-dot numeric literal after a non-numeric token
+      ✓ rejects a leading-dot numeric literal after another numeric token
+      ✓ rejects a numeric token that does not start with a dot
+    comments, private identifiers, and fallback behavior
+      ✓ allows block comments on either side
+      ✓ allows a line comment only when it is the right token
+      ✓ allows a private identifier on the right
+      ✓ returns false for token pairs that would merge into an identifier or keyword
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        1.043 s
+Ran all test suites within paths "test/lib/rules/utils/ast-utils/canTokensBeAdjacent.test.js".
+Test results written to: ../results/report.json

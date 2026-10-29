@@ -1,0 +1,70 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+[BABEL] Note: The code generator has deoptimised the styling of /testbed/packages/imba/src/compiler/nodes.mjs as it exceeds the max of 500KB.
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/nodes/js.test.js
+  Access#js - identifier like members
+    ✓ compiles an identifier member as a dot access (3 ms)
+    ✓ compiles a string member that is a valid identifier as a dot access
+    ✓ compiles reserved words and prefixed string members as a dot access
+    ✓ compiles a valid identifier symbol member as a dot access (1 ms)
+    ✓ wraps a raw token member into an identifier access (1 ms)
+  Access#js - members that need brackets
+    ✓ brackets string members that are not valid identifiers (1 ms)
+    ✓ brackets symbol members that are not valid identifiers
+    ✓ brackets the value of an interpolated identifier
+    ✓ brackets a non node member by its string representation
+    ✓ brackets symbol identifiers through the root symbol table (2 ms)
+  Access#js - numeric members
+    ✓ brackets a numeric member (1 ms)
+    ✓ unwraps an index node around a number
+    ✓ unwraps an index node around a string
+    ✓ unwraps an index node around a symbol
+    ✓ compiles a negative index through the negIndex helper (1 ms)
+  Access#js - safe chaining
+    ✓ reports safechain only for the ?. operator
+    ✓ prefixes dot accesses with ?. for safe chains (1 ms)
+    ✓ prefixes bracket accesses with ?. for safe chains
+    ✓ uses the optional negIndex helper for safe negative indexes
+  Access#js - left hand side handling
+    ✓ falls back to the scope context when there is no left side
+    ✓ compiles self as the scope context
+    ✓ parenthesizes a number used as the context of a dot access
+    ✓ keeps a string context as is
+    ✓ remembers the starting location of the left or right operand
+    ✓ keeps an explicit starting location (1 ms)
+  Access#js - implicit access
+    ✓ compiles an implicit access like a regular access
+  Access#js - import proxies
+    ✓ delegates the access to the import proxy of the left side (1 ms)
+  Access#js - typescript output
+    ✓ compiles plain accesses unchanged when the tsc option is set
+    ✓ does not use the negIndex helper when the tsc option is set
+    ✓ guards predicate accesses with an "in" check (1 ms)
+    ✓ adds a function check for called predicate accesses
+    ✓ compiles assigned predicate accesses through the context (1 ms)
+    ✓ skips the predicate guard when the context is self
+    ✓ guards safe chain accesses with an "in" check
+    ✓ adds a function check for called safe chain accesses
+    ✓ appends the datatype of the access
+    ✓ appends the datatype of an implicit access inside a block
+    ✓ appends the datatype when the access is the right side of an assign (1 ms)
+    ✓ does not append the datatype when the access is not the assigned value
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        4.474 s
+Ran all test suites within paths "test/packages/imba/src/compiler/nodes/js.test.js".
+Test results written to: ../results/report.json

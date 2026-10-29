@@ -1,0 +1,47 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webxr/WebXRController/update.test.js
+  WebXRController.update
+    guards and return value
+      ✓ returns this even without any space or input source (3 ms)
+      ✓ does not touch the frame when inputSource is falsy (1 ms)
+      ✓ marks all existing spaces invisible when inputSource is null
+      ✓ ignores everything while the session is visible-blurred (3 ms)
+      ✓ does not throw when the controller has no spaces at all
+    target ray space
+      ✓ applies the target ray pose and dispatches a single move event (2 ms)
+      ✓ hides the target ray and stays silent when the pose is missing
+      ✓ resets the velocity flags when the pose has no velocities (1 ms)
+      ✓ does not dispatch move events when the controller has no target ray space (1 ms)
+    grip space
+      ✓ applies the grip pose with linear and angular velocity copies (1 ms)
+      ✓ keeps the grip invisible when the grip pose is missing (1 ms)
+      ✓ reports missing velocities as flags being false
+      ✓ dispatches gripUpdated only when events are enabled (1 ms)
+      ✓ falls back to the grip pose for the target ray (ray space equals grip space) (1 ms)
+      ✓ does not fall back when no grip pose is available either
+      ✓ ignores grip spaces that are not reported by the input source (1 ms)
+    hand space
+      ✓ creates and updates joints from the joint poses (2 ms)
+      ✓ marks joints without a pose as invisible and reuses joint instances (1 ms)
+      ✓ skips joint and pose lookups while the session is visible-blurred (1 ms)
+      ✓ hides the hand space when the input source provides no hand
+      pinch detection
+        ✓ dispatches pinchstart once when the fingers come close together (1 ms)
+        ✓ dispatches pinchend once when the fingers separate again (1 ms)
+        ✓ stays in the hysteresis band without changing state (1 ms)
+        ✓ starts and ends pinches just outside the hysteresis band (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        1.523 s
+Ran all test suites within paths "test/renderers/webxr/WebXRController/update.test.js".
+Test results written to: ../results/report.json

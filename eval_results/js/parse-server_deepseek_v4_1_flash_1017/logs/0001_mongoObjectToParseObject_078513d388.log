@@ -1,0 +1,90 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/Adapters/Storage/Mongo/MongoTransform/mongoObjectToParseObject.test.js (63.568 s)
+  mongoObjectToParseObject - atomic values
+    ✓ returns a string unchanged (3 ms)
+    ✓ returns a number unchanged
+    ✓ returns a boolean unchanged
+    ✓ returns undefined unchanged
+    ✓ throws for a symbol value (1 ms)
+    ✓ throws for a function value (1 ms)
+    ✓ throws for a bigint value as an unknown js type
+  mongoObjectToParseObject - null, arrays and bson scalars
+    ✓ returns null for a null object (1 ms)
+    ✓ returns an empty array unchanged (1 ms)
+    ✓ maps arrays element by element
+    ✓ does not apply key transformations to objects inside arrays (1 ms)
+    ✓ encodes dates inside arrays (1 ms)
+    ✓ converts mongodb Long values inside arrays to numbers (1 ms)
+    ✓ encodes a top level Date like Parse._encode
+    ✓ converts a mongodb Long to a number (1 ms)
+    ✓ extracts the value of a mongodb Double
+    ✓ converts a mongodb Binary to a Bytes object (1 ms)
+  mongoObjectToParseObject - reserved field name conversions
+    ✓ converts _id to objectId (1 ms)
+    ✓ stringifies an ObjectId _id
+    ✓ converts _session_token to sessionToken (1 ms)
+    ✓ keeps _hashed_password as is
+    ✓ drops the _acl field (1 ms)
+    ✓ passes the internal key _email_verify_token through unchanged (1 ms)
+    ✓ passes the internal key _perishable_token through unchanged
+    ✓ passes the internal key _perishable_token_expires_at through unchanged (1 ms)
+    ✓ passes the internal key _password_changed_at through unchanged
+    ✓ passes the internal key _tombstone through unchanged
+    ✓ passes the internal key _email_verify_token_expires_at through unchanged
+    ✓ passes the internal key _account_lockout_expires_at through unchanged
+    ✓ passes the internal key _failed_login_count through unchanged
+    ✓ passes _password_history through unchanged
+    ✓ converts createdAt to an ISO createdAt string
+    ✓ converts _created_at to an ISO createdAt string (1 ms)
+    ✓ converts updatedAt to an ISO updatedAt string
+    ✓ converts _updated_at to an ISO updatedAt string
+    ✓ converts lastUsed to an ISO lastUsed string (4 ms)
+    ✓ converts _last_used to an ISO lastUsed string
+    ✓ converts timesUsed to timesUsed
+    ✓ converts times_used to timesUsed
+    ✓ encodes expiresAt as a Parse date (1 ms)
+    ✓ encodes _expiresAt as a Parse date
+    ✓ drops an unrecognized reserved key and warns (1 ms)
+    ✓ keeps the __type key (1 ms)
+    ✓ recursively transforms nested objects for regular keys
+  mongoObjectToParseObject - permissions
+    ✓ moves _rperm and _wperm into the result and removes them from the input
+    ✓ defaults the missing permission array to an empty array (1 ms)
+    ✓ defaults both permission arrays when only _wperm is present
+  mongoObjectToParseObject - authData
+    ✓ keeps authData for non-user classes
+    ✓ drops authData for the _User class and warns
+    ✓ synthesizes authData from a single _auth_data_ provider key on _User
+    ✓ merges multiple auth data providers on _User
+    ✓ drops _auth_data_ keys for non-user classes
+  mongoObjectToParseObject - pointers
+    ✓ converts a _p_ pointer column into a Pointer object (1 ms)
+    ✓ drops a pointer column that is not part of the schema and logs info
+    ✓ drops a pointer column whose schema type is not Pointer
+    ✓ drops a null pointer value
+    ✓ throws when the pointer className does not match the schema targetClass (1 ms)
+  mongoObjectToParseObject - special column types
+    ✓ converts a File column value
+    ✓ leaves a File column value untouched when it is not a file database object (1 ms)
+    ✓ converts a GeoPoint column value
+    ✓ converts a Polygon column value (1 ms)
+    ✓ converts a Bytes column holding a mongodb Binary (1 ms)
+    ✓ converts a Bytes column holding a base64 string
+    ✓ does not convert a base64 looking string for a non-Bytes column (1 ms)
+  mongoObjectToParseObject - relation fields
+    ✓ adds relation fields declared in the schema
+    ✓ overrides a stored value with the schema relation definition (1 ms)
+    ✓ does not add relation fields when the schema declares none
+
+Test Suites: 1 passed, 1 total
+Tests:       67 passed, 67 total
+Snapshots:   0 total
+Time:        67.725 s
+Ran all test suites within paths "test/Adapters/Storage/Mongo/MongoTransform/mongoObjectToParseObject.test.js".
+Test results written to: ../results/report.json

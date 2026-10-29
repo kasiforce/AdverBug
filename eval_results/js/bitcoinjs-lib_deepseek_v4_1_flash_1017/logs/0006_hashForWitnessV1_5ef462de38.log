@@ -1,0 +1,71 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/esm/transaction/hashForWitnessV1.test.js
+  Transaction.hashForWitnessV1
+    external BIP341 reference vectors
+      ✓ matches the published sighash for input 0 with hash type 0x03 (7 ms)
+      ✓ matches the published sighash for input 1 with hash type 0x83 (1 ms)
+      ✓ matches the published sighash for input 3 with hash type 0x01 (2 ms)
+      ✓ matches the published sighash for input 4 with hash type 0x00 (1 ms)
+      ✓ matches the published sighash for input 6 with hash type 0x02 (1 ms)
+      ✓ matches the published sighash for input 7 with hash type 0x82
+      ✓ matches the published sighash for input 8 with hash type 0x81 (1 ms)
+    all BIP341 hash-type flag combinations
+      ✓ produces the reference sighash for hash type 0x00 (1 ms)
+      ✓ produces the reference sighash for hash type 0x01
+      ✓ produces the reference sighash for hash type 0x02
+      ✓ produces the reference sighash for hash type 0x03
+      ✓ produces the reference sighash for hash type 0x80 (1 ms)
+      ✓ produces the reference sighash for hash type 0x81
+      ✓ produces the reference sighash for hash type 0x82
+      ✓ produces the reference sighash for hash type 0x83
+      ✓ produces the reference sighash for input index 1 with hash type 0x00
+      ✓ produces the reference sighash for input index 1 with hash type 0x01 (1 ms)
+      ✓ produces the reference sighash for input index 1 with hash type 0x02
+      ✓ produces the reference sighash for input index 1 with hash type 0x03 (1 ms)
+    BIP342 tapscript leaf-hash and annex extensions
+      ✓ produces the reference sighash with leafHash only (1 ms)
+      ✓ produces the reference sighash with annex only
+      ✓ produces the reference sighash with leafHash and annex (1 ms)
+      ✓ produces the reference sighash with ANYONECANPAY with leafHash only
+      ✓ produces the reference sighash with ANYONECANPAY with annex only
+      ✓ produces the reference sighash with ANYONECANPAY with leafHash and annex
+      ✓ treats omitted, null, and false extension arguments as absent (1 ms)
+      ✓ a different leaf hash produces a different sighash (1 ms)
+      ✓ a different annex produces a different sighash (1 ms)
+    commitment rules
+      ✓ commits to every input field when ANYONECANPAY is not set (2 ms)
+      ✓ ANYONECANPAY ignores every field of other inputs (1 ms)
+      ✓ ANYONECANPAY still commits to the selected input (1 ms)
+      ✓ SIGHASH_NONE ignores every output (1 ms)
+      ✓ SIGHASH_SINGLE commits only to the output at the input index (1 ms)
+      ✓ commits to transaction version and locktime (1 ms)
+      ✓ does not commit to input scripts or witnesses (1 ms)
+    validation and errors
+      ✓ requires one prevout script and value per transaction input (27 ms)
+      ✓ requires outputs for SIGHASH_ALL, SIGHASH_DEFAULT, and ANYONECANPAY variants (2 ms)
+      ✓ SIGHASH_NONE permits a transaction without outputs
+      ✓ SIGHASH_SINGLE without a corresponding output cannot serialize the message (6 ms)
+      ✓ rejects a non-bigint value (3 ms)
+      ✓ rejects a negative value (1 ms)
+      ✓ rejects a non-buffer prevout script
+      ✓ rejects a negative input index
+      ✓ rejects a fractional input index (1 ms)
+      ✓ rejects an invalid hash type (1 ms)
+      ✓ rejects an invalid negative hash type (1 ms)
+    determinism and side effects
+      ✓ returns the same hash for repeated calls and does not mutate inputs (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       47 passed, 47 total
+Snapshots:   0 total
+Time:        1.255 s
+Ran all test suites within paths "test/esm/transaction/hashForWitnessV1.test.js".
+Test results written to: ../results/report.json

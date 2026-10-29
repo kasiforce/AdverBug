@@ -1,0 +1,70 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/esm/payments/p2wsh/p2wsh.test.js
+  p2wsh
+    construction from a hash
+      ✓ derives a mainnet address and output from a 32-byte hash (8 ms)
+      ✓ accepts an all-zero hash (2 ms)
+      ✓ derives the address with a custom network (1 ms)
+    construction from an output or address
+      ✓ derives the hash and address from a P2WSH output (1 ms)
+      ✓ derives the hash and output from a BIP173 P2WSH address (2 ms)
+      ✓ uses the redeem network when no top-level network is provided (3 ms)
+    redeem and witness derivation
+      ✓ derives a P2WSH hash from redeem.output (2 ms)
+      ✓ builds a witness stack from redeem.witness and redeem.output (2 ms)
+      ✓ converts a push-only redeem.input into a witness stack (2 ms)
+      ✓ derives redeem details and an empty input from a witness stack (2 ms)
+      ✓ accepts a witness script that cannot be decompiled (2 ms)
+      ✓ includes a redeem name in the payment name (1 ms)
+    options
+      ✓ skips extended cross-source validation when validate is false (28 ms)
+      ✓ allows a partial redeem object when validation is disabled (2 ms)
+      ✓ performs extended validation by default (1 ms)
+    shape and schema validation
+      ✓ rejects an empty payment object (2 ms)
+      ✓ validates that hash is exactly 32 bytes (3 ms)
+      ✓ validates that output is exactly 34 bytes (1 ms)
+      ✓ validates the address type (1 ms)
+      ✓ validates that top-level input is empty (1 ms)
+      ✓ validates the witness container type (1 ms)
+      ✓ validates redeem.input type (1 ms)
+    address and source validation
+      ✓ rejects an address with a mismatched Bech32 prefix (1 ms)
+      ✓ rejects a non-zero witness version (1 ms)
+      ✓ rejects an address whose witness program is not 32 bytes (2 ms)
+      ✓ rejects a hash that mismatches an address (2 ms)
+      ✓ rejects a hash that mismatches an output (2 ms)
+      ✓ rejects a hash that mismatches redeem.output (2 ms)
+      ✓ validates the output witness program prefix (2 ms)
+      ✓ validates the output witness program length byte (2 ms)
+    redeem validation
+      ✓ rejects a redeem network different from the top-level network (2 ms)
+      ✓ rejects simultaneous redeem.input and redeem.witness (2 ms)
+      ✓ rejects an empty redeem.output (2 ms)
+      ✓ rejects an undecompilable redeem.output (2 ms)
+      ✓ accepts a redeem.output of exactly 3600 bytes (3 ms)
+      ✓ rejects a redeem.output larger than 3600 bytes (2 ms)
+      ✓ accepts a redeem.output with exactly 201 non-push operations (4 ms)
+      ✓ rejects a redeem.output with more than 201 non-push operations (7 ms)
+      ✓ rejects a non-push-only redeem.input (2 ms)
+      ✓ rejects witness and redeem.witness disagreement (2 ms)
+      ✓ rejects witness and redeem.output disagreement (2 ms)
+      ✓ rejects an uncompressed pubkey in redeem.input (3 ms)
+      ✓ rejects an uncompressed pubkey in redeem.output (3 ms)
+      ✓ rejects an uncompressed pubkey directly in the witness (3 ms)
+      ✓ rejects an uncompressed pubkey inside the witness script (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       45 passed, 45 total
+Snapshots:   0 total
+Time:        1.25 s
+Ran all test suites within paths "test/esm/payments/p2wsh/p2wsh.test.js".
+Test results written to: ../results/report.json

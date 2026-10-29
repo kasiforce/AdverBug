@@ -1,0 +1,96 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/esm/payments/p2sh/p2sh.test.js
+  payments.p2sh
+    data requirement
+      ✓ throws when no usable data is provided (26 ms)
+      ✓ throws even when validation is disabled (1 ms)
+      ✓ throws when only a witness is supplied (1 ms)
+      ✓ throws for a missing argument (1 ms)
+    schema validation (valibot)
+      ✓ rejects a hash that is not 20 bytes (3 ms)
+      ✓ rejects an output that is not 23 bytes (1 ms)
+      ✓ rejects a non string address (1 ms)
+      ✓ rejects non buffer redeem fields (1 ms)
+      ✓ accepts exactly 20 byte hashes and 23 byte outputs (1 ms)
+    output dependencies
+      ✓ derives address and output from a hash (2 ms)
+      ✓ derives the address using the network script hash version (1 ms)
+      ✓ derives the address for a custom network (1 ms)
+      ✓ does not compute an address when there is no hash
+    hash dependencies
+      ✓ derives the hash from an address (1 ms)
+      ✓ derives the hash from an output
+      ✓ derives the hash from a redeem output (2 ms)
+      ✓ accepts address, hash and output when they are consistent
+    input parsing
+      ✓ extracts the redeem script from a scriptSig (2 ms)
+      ✓ splits multiple scriptSig chunks into redeem.input (1 ms)
+      ✓ treats an OP_FALSE last chunk as an empty redeem output (2 ms)
+      ✓ supports witness spends (empty redeem.input plus witness) (1 ms)
+      ✓ rejects an empty input (1 ms)
+      ✓ rejects an undecompilable input
+      ✓ rejects an input whose last chunk is not data
+      ✓ rejects a non push-only scriptSig (1 ms)
+      ✓ rejects an input with an empty redeem.input and no witness (1 ms)
+    input dependencies
+      ✓ combines redeem.input and redeem.output into the scriptSig (1 ms)
+      ✓ keeps a provided witness (1 ms)
+      ✓ rejects a redeem with both an input and a witness (1 ms)
+    validation of a provided input against a redeem
+      ✓ accepts a matching redeem (1 ms)
+      ✓ rejects a mismatching redeem.output (1 ms)
+      ✓ rejects a mismatching redeem.input (1 ms)
+    redeem output validation
+      ✓ rejects an empty redeem output (1 ms)
+      ✓ rejects an undecompilable redeem output (1 ms)
+      ✓ accepts a redeem output of exactly 520 bytes (1 ms)
+      ✓ rejects a redeem output larger than 520 bytes (1 ms)
+      ✓ accepts a redeem output with exactly 201 non push only ops (1 ms)
+      ✓ rejects a redeem output with more than 201 non push only ops (2 ms)
+      ✓ rejects a redeem output that does not match the hash (1 ms)
+    hash mismatch validation
+      ✓ rejects a hash that does not match the address (1 ms)
+      ✓ rejects an output that does not match the address (1 ms)
+      ✓ rejects an output that does not match the hash (1 ms)
+    output validation
+      ✓ rejects a 23 byte output with the wrong opcodes (2 ms)
+    address validation
+      ✓ rejects an address for a different network (1 ms)
+      ✓ rejects a testnet address when a mainnet network is requested (12 ms)
+      ✓ rejects an address whose hash is not 20 bytes (1 ms)
+      ✓ throws when decoding an invalid address (1 ms)
+    network resolution
+      ✓ defaults to bitcoin (1 ms)
+      ✓ takes the network from the redeem (1 ms)
+      ✓ uses the top level network over the redeem network
+      ✓ rejects a redeem network that differs from the payment network (1 ms)
+      ✓ compares networks by identity (1 ms)
+    witness validation
+      ✓ accepts a witness that matches redeem.witness
+      ✓ rejects a witness that differs from redeem.witness
+      ✓ rejects a witness that has a different number of items (1 ms)
+      ✓ accepts a witness without a redeem (1 ms)
+    options
+      ✓ skips consistency checks when validate is false (1 ms)
+      ✓ still derives values when validate is false
+    result object
+      ✓ passes through unknown properties (1 ms)
+      ✓ keeps caller supplied values (1 ms)
+      ✓ computes lazily and caches the derived values (1 ms)
+      ✓ exposes the payment name (1 ms)
+      ✓ appends the name of a rendered redeem payment
+
+Test Suites: 1 passed, 1 total
+Tests:       63 passed, 63 total
+Snapshots:   0 total
+Time:        4.2 s
+Ran all test suites within paths "test/esm/payments/p2sh/p2sh.test.js".
+Test results written to: ../results/report.json

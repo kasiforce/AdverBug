@@ -1,0 +1,41 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/graphics/reproject-texture/reprojectTexture.test.js
+  reprojectTexture
+    validation and early exit
+      ✓ asserts that both inputs are textures and returns false for an empty rect (5 ms)
+      ✓ returns false without rendering when seam pixels consume the target dimensions (1 ms)
+      ✓ returns false when only one inner dimension is non-positive
+      ✓ renders when the inner dimensions are exactly one pixel (1 ms)
+    default reprojection
+      ✓ creates the expected shader and renders one full-target quad (3 ms)
+      ✓ reuses a shader already present in the program-library cache (1 ms)
+      ✓ ignores options inherited from the prototype (1 ms)
+    projections and cubemaps
+      ✓ uses cube and octahedral projection shader functions and cubemap macros (1 ms)
+      ✓ renders all six target cubemap faces (3 ms)
+      ✓ renders only cubemap face 0 when requested (1 ms)
+      ✓ renders only cubemap face 3 when requested (1 ms)
+      ✓ renders only cubemap face 5 when requested
+    rect and seam handling
+      ✓ applies the rect, seam-derived UV modification, and passes the rect to the draw call (1 ms)
+    prefiltering distributions
+      ✓ defaults to phong prefiltering when specularPower is not one (2 ms)
+      ✓ generates lambert sample data and uses the unweighted prefilter shader (1 ms)
+      ✓ generates ggx sample data and uses the weighted prefilter shader (1 ms)
+      ✓ uses direct reprojection for distribution none (1 ms)
+      ✓ uses direct reprojection for distribution unsupported (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        0.953 s
+Ran all test suites within paths "test/scene/graphics/reproject-texture/reprojectTexture.test.js".
+Test results written to: ../results/report.json

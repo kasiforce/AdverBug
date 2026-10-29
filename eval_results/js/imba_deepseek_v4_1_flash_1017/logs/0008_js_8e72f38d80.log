@@ -1,0 +1,57 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+[BABEL] Note: The code generator has deoptimised the styling of /testbed/packages/imba/src/compiler/nodes.mjs as it exceeds the max of 500KB.
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/nodes/js.test.js
+  TagContent#js in tsc mode
+    ✓ returns the value compiled directly when STACK.tsc() is true (4 ms)
+    ✓ forwards the compilation options `_o` to value.c (1 ms)
+    ✓ treats a tsc platform as tsc mode (1 ms)
+  TagContent#js for switch-fragment parents
+    ✓ assigns the branch tvar for a static string (1 ms)
+    ✓ wraps a Call in render-context setup and teardown (1 ms)
+    ✓ wraps a BangCall in render-context setup and teardown
+    ✓ forwards `_o` to value.c in a switch fragment
+  TagContent#js for detached/slot tag parents
+    ✓ assigns the tvar when the parent Tag is a slot and `_tvar` exists (1 ms)
+    ✓ assigns the tvar when the content is detached and `_tvar` exists
+    ✓ does not take the tag-parent branch when `_tvar` is missing (1 ms)
+    ✓ does not take the tag-parent branch when detached but `_tvar` is missing
+    ✓ requires the parent to be a Tag (not just any TagLike) (1 ms)
+  TagContent#js for only-child static text
+    ✓ uses text$ for a Str only child
+    ✓ uses text$ for a Num only child (1 ms)
+    ✓ forwards `_o` to the value compiler
+  TagContent#js for static values that are not only children
+    ✓ inserts a Str through the DOM insert symbol (1 ms)
+    ✓ inserts a Num through the DOM insert symbol
+    ✓ a first-but-not-last child is not treated as an only child
+    ✓ a last-but-not-first child is not treated as an only child (1 ms)
+  TagContent#js for TagTextContent
+    ✓ updates text$ when it is the only child of a non-switch parent
+    ✓ a switch-fragment parent takes precedence over the only-child text path (1 ms)
+    ✓ a non-only TagTextContent is inserted with String(key=value)
+  TagContent#js generic insertion path
+    ✓ inserts an arbitrary dynamic value and guards it with the key
+    ✓ forwards `_o` to an arbitrary value compiler (1 ms)
+    ✓ wraps a Call into render-context setup/teardown before insertion
+    ✓ wraps a BangCall into render-context setup/teardown before insertion
+    ✓ uses the parent cvar and osym namespaces for lookups
+
+Test Suites: 1 passed, 1 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        3.792 s
+Ran all test suites within paths "test/packages/imba/src/compiler/nodes/js.test.js".
+Test results written to: ../results/report.json

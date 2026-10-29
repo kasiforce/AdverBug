@@ -1,0 +1,140 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/rules/utils/ast-utils/isDefaultThisBinding.test.js
+  isDefaultThisBinding
+    function declarations
+      ✓ treats a lowercase-named function declaration as a default binding (15 ms)
+      ✓ treats an uppercase-named function declaration as a constructor (1 ms)
+      ✓ ignores the uppercase-naming convention when capIsConstructor is false (1 ms)
+      ✓ treats a function declaration with regular parameters as a default binding (1 ms)
+      ✓ returns false when the function is documented with a @this tag (1 ms)
+      ✓ returns false when the @this tag has a description (1 ms)
+      ✓ returns false for a @this tag even when capIsConstructor is false (1 ms)
+      ✓ ignores comments that do not contain a @this tag (1 ms)
+    a parameter named `this`
+      ✓ returns false for a function declaration with a `this` parameter
+      ✓ returns false for a function expression with a `this` parameter (2 ms)
+      ✓ does not treat a nested `this` identifier as a `this` parameter (1 ms)
+    function expressions and their destinations
+      ✓ treats a function assigned to a lowercase variable as a default binding (1 ms)
+      ✓ treats an anonymous function assigned to an uppercase variable as a constructor (1 ms)
+      ✓ ignores the uppercase variable convention when capIsConstructor is false (1 ms)
+      ✓ does not apply the uppercase variable convention to named functions (1 ms)
+      ✓ treats an assignment to a lowercase identifier as a default binding (1 ms)
+      ✓ treats an anonymous function assigned to an uppercase identifier as a constructor (1 ms)
+      ✓ ignores the uppercase assignment convention when capIsConstructor is false (1 ms)
+      ✓ does not apply the uppercase assignment convention to named functions (1 ms)
+      ✓ treats an assignment to a member expression as a method (1 ms)
+      ✓ keeps member expression assignments as methods when capIsConstructor is false (1 ms)
+      ✓ handles assignments in destructuring defaults to member expressions (1 ms)
+      ✓ treats an anonymous function defaulted to an uppercase binding as a constructor
+      ✓ treats an anonymous function defaulted to a lowercase binding as a default binding
+      ✓ handles object destructuring defaults (1 ms)
+      ✓ treats a function used as an array element as a default binding (1 ms)
+      ✓ treats a function passed as a regular argument as a default binding (1 ms)
+      ✓ treats an immediately invoked function as a default binding (1 ms)
+      ✓ returns false when a @this tag documents the surrounding declaration
+      ✓ returns false for a leading @this comment before the function expression (1 ms)
+      ✓ returns false for an inline @this comment before a callback
+      ✓ handles an object literal property value (1 ms)
+      ✓ handles an object method shorthand
+      ✓ handles object getters
+      ✓ handles object setters (1 ms)
+      ✓ treats a function used as a computed property key as a default binding (1 ms)
+    arrow functions
+      ✓ treats an arrow assigned to a lowercase variable as a default binding (1 ms)
+      ✓ treats an arrow assigned to an uppercase variable as a constructor-like binding (1 ms)
+      ✓ treats an arrow assigned to an uppercase variable as a default binding when capIsConstructor is false (1 ms)
+      ✓ treats an arrow assigned to an uppercase identifier as a constructor-like binding
+      ✓ treats an arrow assigned to a member expression as a method (1 ms)
+      ✓ handles an arrow as an object property value (1 ms)
+      ✓ treats a callback arrow with a thisArg as a method callback (1 ms)
+      ✓ treats a nested arrow returned from a non-called arrow as a default binding (1 ms)
+      ✓ treats an arrow returned by a called IIFE into a property as a method (2 ms)
+      ✓ returns false when an @this tag is attached to an arrow declaration
+    classes
+      ✓ treats a function class field initializer as a method-like binding (1 ms)
+      ✓ treats an arrow class field initializer as a method-like binding (1 ms)
+      ✓ treats a static class field initializer as a method-like binding (1 ms)
+      ✓ keeps class field initializers as methods when capIsConstructor is false (1 ms)
+      ✓ treats a function used as a computed class field key as a default binding
+      ✓ treats a method definition value as a method (1 ms)
+      ✓ treats a static method definition value as a method (1 ms)
+      ✓ treats a function used as a computed method key as a default binding (1 ms)
+      ✓ treats a static block as a non-default this binding
+      ✓ treats a static block as a non-default this binding when capIsConstructor is false
+    logical, conditional, and chain expressions
+      ✓ follows a logical expression into an object property (2 ms)
+      ✓ follows a logical expression into a lowercase variable (1 ms)
+      ✓ follows a logical expression into an uppercase variable
+      ✓ follows a conditional expression into an object property (1 ms)
+      ✓ follows a conditional expression into a lowercase variable
+      ✓ follows a conditional expression into an uppercase variable
+      ✓ treats an optional member access without a call as a default binding (1 ms)
+      ✓ keeps optional member access property reads as default bindings for uppercase variables (1 ms)
+      ✓ follows an optional chain into a property assignment (1 ms)
+      ✓ follows an arrow returned through an optional chain into a property assignment
+    return statements
+      ✓ follows a function returned from a called IIFE into a property
+      ✓ treats a function returned from a non-called function as a default binding (1 ms)
+      ✓ treats a function returned from an IIFE in a variable as a default binding (1 ms)
+      ✓ follows an arrow with an expression body through a called IIFE into a property (1 ms)
+      ✓ follows an arrow with a block body through a called IIFE into a property (1 ms)
+      ✓ treats a function returned from a non-called arrow as a default binding
+      ✓ treats a function returned from a called arrow in a variable as a default binding
+    bind, call, and apply member expressions
+      ✓ returns false for a function bound with a non-null receiver (1 ms)
+      ✓ returns false for a function called with a non-null receiver (1 ms)
+      ✓ returns false for a function applied with a non-null receiver (1 ms)
+      ✓ returns true for bind without arguments
+      ✓ returns true for call without arguments (1 ms)
+      ✓ returns true for bind(null) (1 ms)
+      ✓ returns true for call(null)
+      ✓ returns true for bind(undefined) (1 ms)
+      ✓ returns true for apply(undefined) (1 ms)
+      ✓ returns true for bind(void 0)
+      ✓ returns true when the bind member access is not called (1 ms)
+      ✓ returns true when the member access is neither bind, call, nor apply (1 ms)
+      ✓ returns true when the function is the computed key of a member access
+      ✓ returns true when the bind member access is only passed as an argument (1 ms)
+      ✓ returns false for an optional bind called with a non-null receiver (1 ms)
+      ✓ returns true for an optional bind called with a null receiver (1 ms)
+      ✓ returns true for an optional bind called without arguments
+    Reflect.apply and array-like callbacks
+      ✓ returns false for Reflect.apply with a function, receiver, and argument list (1 ms)
+      ✓ handles a computed Reflect.apply accessor (1 ms)
+      ✓ returns true when Reflect.apply has no argument list (1 ms)
+      ✓ returns true when Reflect.apply has two arguments
+      ✓ returns true when the Reflect.apply receiver is null (1 ms)
+      ✓ returns true when the function is not the first Reflect.apply argument
+      ✓ returns false for Array.from with a function, mapFn, and thisArg (1 ms)
+      ✓ returns false for a typed array from() call with a thisArg (1 ms)
+      ✓ returns true for Array.from without a thisArg
+      ✓ returns true for Array.from with a null thisArg (1 ms)
+      ✓ returns true when the function is not the mapFn of Array.from (1 ms)
+      ✓ returns true when the function is the third Array.from argument
+      ✓ returns false for Array.fromAsync with a thisArg (1 ms)
+      ✓ returns true for Array.fromAsync without a thisArg
+      ✓ returns false for forEach with a thisArg (1 ms)
+      ✓ returns false for map with a `this` receiver (1 ms)
+      ✓ returns false for every with a thisArg
+      ✓ returns false for findLastIndex with a thisArg (1 ms)
+      ✓ returns true for forEach without a thisArg (1 ms)
+      ✓ returns true for forEach with a null thisArg
+      ✓ returns true when the function is not the callback of a thisArg method (1 ms)
+      ✓ returns true for a call to an unrelated member method
+    default third argument
+      ✓ uses capIsConstructor=true when no options object is passed
+      ✓ uses capIsConstructor=true when an empty options object is passed
+
+Test Suites: 1 passed, 1 total
+Tests:       114 passed, 114 total
+Snapshots:   0 total
+Time:        1.891 s
+Ran all test suites within paths "test/lib/rules/utils/ast-utils/isDefaultThisBinding.test.js".
+Test results written to: ../results/report.json

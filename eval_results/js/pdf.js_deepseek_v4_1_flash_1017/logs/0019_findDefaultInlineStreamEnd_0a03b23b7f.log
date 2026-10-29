@@ -1,0 +1,37 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/parser/findDefaultInlineStreamEnd.test.js
+  Parser.findDefaultInlineStreamEnd
+    ✓ finds a valid EI marker and returns the data length (data EI q) (4 ms)
+    ✓ finds a valid EI marker and returns the data length (dataEI q)
+    ✓ finds a valid EI marker and returns the data length (data EI
+q) (1 ms)
+    ✓ finds a valid EI marker and returns the data length (data EI
+q)
+    ✓ returns a length relative to the stream's current start position (1 ms)
+    ✓ handles a marker at the end of the stream with no following bytes
+    ✓ accepts a command with the expected number of arguments (1 ms)
+    ✓ accepts a variable-argument command within its argument limit
+    ✓ ignores an EI candidate followed by a non-ASCII byte
+    ✓ ignores an EI candidate followed by a non-ASCII visible byte (1 ms)
+    ✓ ignores an EI candidate followed by an unknown command
+    ✓ ignores an EI candidate whose command has the wrong argument count
+    ✓ treats a single NUL byte as ASCII while validating the marker (1 ms)
+    ✓ treats a sequence of NUL bytes as binary and keeps searching
+    ✓ returns zero when the inline data is empty
+    ✓ uses the last EI occurrence for recovery when no valid command exists (1 ms)
+    ✓ warns and falls back to recovery when knownCommands is unavailable (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       17 passed, 17 total
+Snapshots:   0 total
+Time:        2.772 s
+Ran all test suites within paths "test/core/parser/findDefaultInlineStreamEnd.test.js".
+Test results written to: ../results/report.json

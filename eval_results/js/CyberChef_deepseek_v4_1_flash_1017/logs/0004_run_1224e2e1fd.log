@@ -1,0 +1,68 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/operations/ParseUNIXFilePermissions/run.test.js
+  ParseUNIXFilePermissions.run: octal input
+    ✓ parses a three digit octal permission string (4 ms)
+    ✓ does not report a file type for octal input (1 ms)
+    ✓ parses a full four digit octal permission string including all special bits (2 ms)
+    ✓ reports the setuid flag for a leading 4 (1 ms)
+    ✓ reports the setgid flag for a leading 2 (1 ms)
+    ✓ reports the sticky bit for a leading 1
+    ✓ renders a leading zero for the special bits when none are set (1 ms)
+    ✓ parses a single digit octal string, leaving group and other empty (1 ms)
+    ✓ parses a two digit octal string, leaving other empty (1 ms)
+    ✓ parses zero as no permissions at all (12 ms)
+    ✓ parses zero padded four digit octal strings (1 ms)
+    ✓ tolerates surrounding whitespace
+    ✓ parses octal "4" as -r-------- (1 ms)
+    ✓ parses octal "2" as --w-------
+    ✓ parses octal "1" as ---x------ (1 ms)
+    ✓ parses octal "6" as -rw-------
+    ✓ parses octal "222" as --w--w--w-
+    ✓ parses octal "111" as ---x--x--x (1 ms)
+    ✓ parses octal "444" as -r--r--r--
+    ✓ parses octal "750" as -rwxr-x---
+    ✓ ignores the args argument (1 ms)
+  ParseUNIXFilePermissions.run: textual input
+    ✓ parses a directory permission string
+    ✓ parses a regular file permission string
+    ✓ reports file type lrwxrwxrwx as Symbolic link
+    ✓ reports file type prwxrwxrwx as Named pipe (1 ms)
+    ✓ reports file type srwxrwxrwx as Socket
+    ✓ reports file type crwxrwxrwx as Character device
+    ✓ reports file type brwxrwxrwx as Block device
+    ✓ reports file type Drwxrwxrwx as Door
+    ✓ parses a permission string with every special bit set (1 ms)
+    ✓ keeps the setuid bit without execute, rendering an upper case S
+    ✓ keeps the setgid bit without execute, rendering an upper case S (1 ms)
+    ✓ keeps the sticky bit without execute, rendering an upper case T
+    ✓ parses a permission string with no permissions granted (1 ms)
+    ✓ parses a truncated textual permission string
+    ✓ parses a single character file type (1 ms)
+    ✓ tolerates surrounding whitespace
+    ✓ accepts a read-only textual permission string
+    ✓ output always ends with the permission matrix (1 ms)
+  ParseUNIXFilePermissions.run: invalid input
+    ✓ throws an OperationError for an empty string (33 ms)
+    ✓ throws an OperationError for whitespace only input (1 ms)
+    ✓ throws an OperationError for "8" (1 ms)
+    ✓ throws an OperationError for "8888" (1 ms)
+    ✓ throws an OperationError for "z" (1 ms)
+    ✓ throws an OperationError for "hello"
+    ✓ throws an OperationError for "@@@@" (1 ms)
+    ✓ throws an OperationError for "!rwxrwxrwx" (1 ms)
+    ✓ throws an OperationError mentioning both accepted formats (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       48 passed, 48 total
+Snapshots:   0 total
+Time:        2.965 s
+Ran all test suites within paths "test/core/operations/ParseUNIXFilePermissions/run.test.js".
+Test results written to: ../results/report.json

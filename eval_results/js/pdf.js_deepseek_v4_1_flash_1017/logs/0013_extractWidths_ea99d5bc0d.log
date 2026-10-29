@@ -1,0 +1,66 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/evaluator/extractWidths.test.js (8.074 s)
+  PartialEvaluator.extractWidths
+    composite fonts
+      ✓ uses the default DW of 1000 when /DW is missing (4 ms)
+      ✓ rounds a fractional /DW up (1 ms)
+      ✓ falls back to 1000 when /DW isn't a number
+      ✓ handles the array form of /W
+      ✓ skips non-numeric widths in the array form of /W (1 ms)
+      ✓ handles the range form of /W
+      ✓ ignores a range form entry with a non-numeric width (1 ms)
+      ✓ stops parsing /W when the start isn't an integer
+      ✓ stops parsing /W when the start isn't a number (1 ms)
+      ✓ stops parsing /W when the code is neither an array nor an integer (17 ms)
+      ✓ ignores /W when it isn't an array (1 ms)
+      ✓ resolves references found in /W
+      ✓ keeps the FixedPitch flag for monospaced widths (1 ms)
+      ✓ clears the FixedPitch flag for variable widths
+      ✓ ignores zero widths during the monospace detection
+      ✓ detects a monospace font when all widths equal the default (1 ms)
+      ✓ doesn't compute vertical metrics for horizontal fonts
+    composite vertical fonts
+      ✓ uses the default DW2 values when /DW2 is missing
+      ✓ scales the second default vertical metric with /DW (1 ms)
+      ✓ uses a valid /DW2 array
+      ✓ ignores an invalid /DW2 array (1 ms)
+      ✓ resolves references inside /DW2
+      ✓ handles the array form of /W2
+      ✓ skips incomplete triples in the array form of /W2
+      ✓ skips non-numeric triples in the array form of /W2
+      ✓ handles the range form of /W2
+      ✓ ignores a range form /W2 entry with a non-numeric triple
+      ✓ stops parsing /W2 when the start isn't an integer
+      ✓ stops parsing /W2 when the code is neither an array nor an integer
+      ✓ ignores /W2 when it isn't an array (1 ms)
+      ✓ resolves references found in /W2
+      ✓ uses the rounded /DW for the default vertical metrics
+    simple fonts
+      ✓ maps /Widths using the firstChar offset and /MissingWidth
+      ✓ offsets the widths by a non-zero firstChar
+      ✓ defaults to 0 when /MissingWidth isn't a number (1 ms)
+      ✓ defaults to 0 when /MissingWidth is absent
+      ✓ skips non-numeric entries in /Widths without shifting the others
+      ✓ resolves references found in /Widths
+      ✓ clears FixedPitch for a proportional /Widths array (1 ms)
+      ✓ keeps FixedPitch for an empty /Widths array
+      ✓ falls back to the BaseFont metrics of a monospaced standard font (1 ms)
+      ✓ builds the widths from the BaseFont metrics and the encoding (1 ms)
+      ✓ prefers the /Widths array over the BaseFont metrics (1 ms)
+      ✓ does nothing when /BaseFont isn't a Name
+      ✓ ignores /Widths and /MissingWidth when there is no BaseFont
+
+Test Suites: 1 passed, 1 total
+Tests:       45 passed, 45 total
+Snapshots:   0 total
+Time:        8.527 s
+Ran all test suites within paths "test/core/evaluator/extractWidths.test.js".
+Test results written to: ../results/report.json

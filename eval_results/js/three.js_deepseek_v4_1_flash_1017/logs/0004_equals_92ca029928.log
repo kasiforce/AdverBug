@@ -1,0 +1,67 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/nodes/manager/NodeMaterialObserver/equals.test.js
+  NodeMaterialObserver.equals
+    initial state
+      ✓ returns true and stores the initial state on the first observation (6 ms)
+      ✓ returns true for as long as nothing changes (2 ms)
+    world matrix
+      ✓ returns false once when the world matrix changed and reports true afterwards (1 ms)
+    material
+      ✓ detects a changed scalar property and increments the material version exactly once (1 ms)
+      ✓ detects a changed color value and stores a copy of it (1 ms)
+      ✓ detects a changed clonable object property (1 ms)
+      ✓ ignores material properties that are not monitored (1 ms)
+      ✓ tracks a newly assigned texture (2 ms)
+      ✓ tracks a texture version change (2 ms)
+      ✓ tracks a disposed texture through the texture cache version (1 ms)
+      ✓ tracks a removed texture (1 ms)
+      ✓ checks the material properties only once per render for shared materials (1 ms)
+    render buffer
+      ✓ detects a changed render target size
+      ✓ detects a changed render target height (1 ms)
+    geometry
+      ✓ detects a replaced geometry (1 ms)
+      ✓ detects an attribute version change (1 ms)
+      ✓ detects an added attribute
+      ✓ detects a removed attribute
+      ✓ detects an interleaved attribute version change (1 ms)
+      ✓ detects an added index (1 ms)
+      ✓ detects a changed draw range
+      ✓ checks the geometry properties only once per render for shared geometries (2 ms)
+    morph targets
+      ✓ detects changed morph target influences
+    instancing
+      ✓ detects a changed instance matrix version
+      ✓ detects an assigned instance color (1 ms)
+      ✓ detects an assigned morph texture (1 ms)
+    batching
+      ✓ detects a changed matrices texture version (1 ms)
+      ✓ detects an assigned colors texture
+      ✓ detects a changed indirect texture version (1 ms)
+    lights
+      ✓ returns true when the light data did not change (1 ms)
+      ✓ detects a changed spot light map version (1 ms)
+      ✓ detects a resized shadow map (1 ms)
+    scene environment
+      ✓ detects a changed environment intensity (1 ms)
+      ✓ detects a changed environment rotation
+      ✓ ignores the scene environment when the material has its own env map (1 ms)
+    object center
+      ✓ detects a moved center (1 ms)
+    bundle
+      ✓ stores the current bundle version and does not report a change (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       37 passed, 37 total
+Snapshots:   0 total
+Time:        2.217 s
+Ran all test suites within paths "test/materials/nodes/manager/NodeMaterialObserver/equals.test.js".
+Test results written to: ../results/report.json

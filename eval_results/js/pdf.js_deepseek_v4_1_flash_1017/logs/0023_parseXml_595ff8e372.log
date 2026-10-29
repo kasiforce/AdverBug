@@ -1,0 +1,60 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/xml_parser/parseXml.test.js
+  parseXml
+    text content
+      ✓ does nothing for an empty document (3 ms)
+      ✓ reports plain text without any markup (1 ms)
+      ✓ reports each text run separately around elements (1 ms)
+      ✓ preserves whitespace-only text with the base parser (1 ms)
+    entity resolution
+      ✓ resolves named, decimal and hexadecimal entities in text
+      ✓ resolves entity references inside attribute values (1 ms)
+      ✓ delegates unknown entities to onResolveEntity and keeps the default text
+      ✓ uses the value returned by an overridden onResolveEntity (1 ms)
+      ✓ resolves the maximum valid Unicode code point
+      ✓ keeps out-of-range numeric entities unchanged (1 ms)
+      ✓ does not resolve entities inside CDATA sections
+    elements
+      ✓ reports begin and end events for a simple element
+      ✓ reports self-closing elements as empty (1 ms)
+      ✓ parses multiple attributes with single and double quotes
+      ✓ tracks nesting order for nested elements
+      ✓ allows an empty end-element name (1 ms)
+    processing instructions, comments, CDATA and doctype
+      ✓ parses an XML declaration
+      ✓ parses a processing instruction with surrounding whitespace
+      ✓ parses a comment (1 ms)
+      ✓ parses an empty CDATA section
+      ✓ parses a CDATA section containing markup-like text
+      ✓ parses a simple doctype declaration
+      ✓ parses a doctype declaration with an internal subset (1 ms)
+      ✓ parses a document mixing declarations and content
+    errors
+      ✓ reports an unterminated end element
+      ✓ reports an unterminated XML declaration (1 ms)
+      ✓ reports an unterminated comment
+      ✓ reports an unterminated CDATA section
+      ✓ reports an unterminated doctype declaration
+      ✓ reports an unterminated doctype internal subset
+      ✓ reports a malformed declaration
+      ✓ reports a malformed element with an unquoted attribute
+      ✓ reports a malformed element with an attribute missing a value
+      ✓ reports a malformed element with an unterminated attribute value
+      ✓ reports an unterminated start element (1 ms)
+      ✓ reports an unterminated element for a lone '<'
+      ✓ stops parsing after the first error
+
+Test Suites: 1 passed, 1 total
+Tests:       37 passed, 37 total
+Snapshots:   0 total
+Time:        1.137 s
+Ran all test suites within paths "test/core/xml_parser/parseXml.test.js".
+Test results written to: ../results/report.json

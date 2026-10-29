@@ -1,0 +1,32 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/document/toJSObject.test.js (12.869 s)
+  PDFDocument.toJSObject
+    ✓ returns primitive values and Names unchanged (84 ms)
+    ✓ dereferences a null first argument to the trailer (2 ms)
+    ✓ recursively converts dictionaries, arrays, and nested references (1 ms)
+    ✓ converts direct arrays element by element
+    ✓ fetches a top-level Ref but serializes nested Refs by number and generation (2 ms)
+    ✓ uses content-token conversion for a Page's Contents (3 ms)
+    ✓ does not special-case Contents on a non-Page dictionary (1 ms)
+    ✓ returns a byte representation for an ordinary stream (1 ms)
+    ✓ decodes a Form stream into instructions and command names (1 ms)
+    ✓ converts a PostScript calculator function into executable JS (5 ms)
+    ✓ decodes an Image stream into imageData (4 ms)
+    ✓ decodes an ImageMask stream and updates its temporary mask state (1 ms)
+    ✓ falls back to bytes and restores mask state when image decoding fails (1 ms)
+    ✓ throws when PDFJSDev excludes the internal-viewer implementation (48 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        13.597 s
+Ran all test suites within paths "test/core/document/toJSObject.test.js".
+Test results written to: ../results/report.json

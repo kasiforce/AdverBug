@@ -1,0 +1,31 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:20) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/cmap/makeCmapTable.test.js
+  ✓ returns a cmap Table instance (4 ms)
+  ✓ emits a lone terminator segment in Format 4 for an empty glyph set (9 ms)
+  ✓ merges consecutive code points that share a delta into one Format 4 segment (3 ms)
+  ✓ serializes the Format 4 subtable with the computed header values (2 ms)
+  ✓ sorts segments by code point before merging, independent of glyph order (2 ms)
+  ✓ creates one segment per unmerged run when a glyph owns several code points (2 ms)
+  ✓ adds a Format 12 subtable when a glyph after index 0 uses a supplementary-plane code point (23 ms)
+  ✓ does not switch to Format 12 when only glyph 0 uses a supplementary-plane code point (2 ms)
+  ✓ keeps all BMP segments in Format 4 when the merged count is exactly the segment limit (30 ms)
+  ✓ falls back to Format 12 for every glyph once BMP segments exceed the limit (40 ms)
+  ✓ reads glyphs only through glyphs.get() and only for valid indices (1 ms)
+  invalid input
+    ✓ throws when the glyph collection has no get() (23 ms)
+    ✓ throws when a glyph lacks a unicodes array (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       13 passed, 13 total
+Snapshots:   0 total
+Time:        1.011 s
+Ran all test suites within paths "test/tables/cmap/makeCmapTable.test.js".
+Test results written to: ../results/report.json

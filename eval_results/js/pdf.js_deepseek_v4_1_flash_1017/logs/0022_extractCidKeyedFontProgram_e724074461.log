@@ -1,0 +1,70 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/type1_parser/extractCidKeyedFontProgram.test.js
+  Type1Parser.extractCidKeyedFontProgram
+    ✓ extracts charstrings from a single-FDArray CID-keyed font (8 ms)
+    ✓ parses font dictionary and private dictionary values (3 ms)
+    ✓ defaults a zero ExpansionFactor to 0.06 but keeps other values (1 ms)
+    ✓ sets ForceBold to 0 for a non-true token
+    ✓ decodes subrs and resolves callsubr from a charstring (2 ms)
+    ✓ uses an empty subr when the subr offset interval is invalid
+    ✓ falls back to an empty subr when its end offset exceeds the data
+    ✓ copies the .notdef glyph for an empty CID interval (1 ms)
+    ✓ uses the default notdef charstring when CID 0 itself is empty (1 ms)
+    ✓ uses the default notdef charstring when a glyph offset is out of range (1 ms)
+    ✓ replaces a broken charstring with a single endchar (1 ms)
+    ✓ accepts a single-FDArray font with one FD byte
+    ✓ rejects a font that selects more than one font dictionary (1 ms)
+    ✓ supports four FD bytes and four GD bytes
+    ✓ decodes hex encoded data, ignoring whitespace (1 ms)
+    ✓ returns null when the hex data holds too few digits (1 ms)
+    ✓ returns null when the hex length is impossible to satisfy
+    ✓ caps a too large binary length to the remaining stream bytes
+    ✓ returns null when the binary length is shorter than the CIDMap
+    ✓ returns null when StartData never appears
+    ✓ returns null when StartData has no preceding tokens
+    ✓ honours a non-zero CIDMapOffset (1 ms)
+    ✓ ignores the FD byte of the trailing CIDMap entry
+    ✓ maps multiple subrs by index (1 ms)
+    ✓ decodes uppercase hex digits (1 ms)
+    ✓ accepts a single GD byte
+    ✓ returns null when the CIDMap offset points outside the data (1 ms)
+    ✓ ignores subr entries when SubrCount is zero
+    invalid StartData markers
+      ✓ returns null for missing opening parenthesis
+      ✓ returns null for missing closing parenthesis (1 ms)
+      ✓ returns null for unsupported data type
+      ✓ returns null for non numeric length
+      ✓ returns null for negative length (1 ms)
+      ✓ returns null for zero length
+      ✓ returns null for hex data of zero length
+    invalid font dictionary values
+      ✓ returns null for missing CIDCount
+      ✓ returns null for zero CIDCount
+      ✓ returns null for negative CIDCount
+      ✓ returns null for missing CIDMapOffset
+      ✓ returns null for negative CIDMapOffset
+      ✓ returns null for negative FDBytes (1 ms)
+      ✓ returns null for FDBytes above four
+      ✓ returns null for zero GDBytes
+      ✓ returns null for GDBytes above four (1 ms)
+      ✓ returns null when the CIDMap exceeds the binary data
+    invalid subr dictionary values
+      ✓ returns null for missing SubrMapOffset
+      ✓ returns null for zero SDBytes
+      ✓ returns null for SDBytes above four
+      ✓ returns null for SubrMap beyond the binary data (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       49 passed, 49 total
+Snapshots:   0 total
+Time:        1.564 s
+Ran all test suites within paths "test/core/type1_parser/extractCidKeyedFontProgram.test.js".
+Test results written to: ../results/report.json

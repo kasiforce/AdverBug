@@ -1,0 +1,32 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/external/cmapscompress/optimize/optimizeCMap.test.js (8.917 s)
+  optimizeCMap
+    ✓ returns undefined and leaves an empty body unchanged (4 ms)
+    ✓ merges adjacent items with the same type (1 ms)
+    ✓ splits items when the length of any string field changes
+    ✓ does not split when only numeric fields differ (1 ms)
+    ✓ converts exactly nine single-character type-5 ranges in place (1 ms)
+    ✓ does not convert a run of only eight single-character ranges (1 ms)
+    ✓ splits a single-character type-3 run from surrounding ranges (1 ms)
+    ✓ marks exactly nine increasing ranges as a sequence (1 ms)
+    ✓ does not mark a run of only eight increasing ranges as a sequence (1 ms)
+    ✓ splits an increasing type-4 sequence from its prefix and suffix (1 ms)
+    ✓ splits a non-sequence type-2 item into code buckets (1 ms)
+    ✓ does not bucket a non-sequence item with exactly ten subitems
+    ✓ does not bucket when only one code gap reaches the maximum
+    ✓ throws for malformed input without a body item collection (21 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        12.098 s
+Ran all test suites within paths "test/external/cmapscompress/optimize/optimizeCMap.test.js".
+Test results written to: ../results/report.json

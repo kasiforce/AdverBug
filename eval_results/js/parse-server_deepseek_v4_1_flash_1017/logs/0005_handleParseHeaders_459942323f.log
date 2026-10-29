@@ -1,0 +1,75 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/middlewares/handleParseHeaders.test.js (6.529 s)
+  handleParseHeaders
+    application id resolution and request info
+      ✓ populates req.info, req.config and request metadata for a header-authenticated request (8 ms)
+      ✓ falls back to Config.get and loads keys when req.config is not set (6 ms)
+      ✓ returns 403 when no application id can be resolved (1 ms)
+      ✓ returns 403 when the header application id is not in the app cache (1 ms)
+      ✓ returns 403 when the session token header is not a string (1 ms)
+    cloud context header
+      ✓ parses a valid JSON object context
+      ✓ rejects unparseable json as malformed context (1 ms)
+      ✓ rejects an array as malformed context (1 ms)
+      ✓ rejects a primitive as malformed context (1 ms)
+      ✓ rejects null as malformed context
+    http basic authentication
+      ✓ takes the app id and javascript key from the Authorization header
+      ✓ ignores basic auth credentials for unknown apps (1 ms)
+      ✓ authenticates as master via basic auth master key (2 ms)
+    body based application id
+      ✓ extracts all SDK body fields and strips them from the body (2 ms)
+      ✓ defaults the javascript key to an empty string when absent
+      ✓ removes the Unity _noBody key before processing (1 ms)
+      ✓ removes _RevocableSession from body supplied requests
+      ✓ returns 403 when the body application id is unknown
+      ✓ returns 403 when the header master key does not match the app master key
+      ✓ returns 403 when body _InstallationId is not a string
+      ✓ returns 403 when body _SessionToken is not a string
+      ✓ returns 403 when body _MasterKey is not a string (1 ms)
+      ✓ returns 403 when body _ContentType is not a string
+      ✓ parses a JSON string body context (1 ms)
+      ✓ rejects a body context that is unparseable json (1 ms)
+      ✓ rejects a body context that is an array
+      ✓ rejects a body context that is a string (1 ms)
+      ✓ treats a null body context as no context and removes the key
+    file upload via JSON body
+      ✓ parses a JSON buffer body and repopulates req.body from base64
+      ✓ returns 403 when the buffer body is not valid JSON (1 ms)
+      ✓ returns 403 when the parsed file body has a non-string base64 value
+    key based authentication
+      ✓ authenticates as master when the master key header matches (1 ms)
+      ✓ authenticates as maintenance when the maintenance key header matches (1 ms)
+      ✓ skips key resolution when auth was already resolved as master
+      ✓ does not authenticate as master when the master key does not match (1 ms)
+      ✓ rejects the request when the master key is used from a non allowed ip (1 ms)
+    client key validation
+      ✓ allows the request when a configured client key matches
+      ✓ rejects the request when a configured client key does not match
+      ✓ rejects the request when a configured client key is not provided
+      ✓ does not validate client keys when none are configured
+    server state
+      ✓ responds with 500 when the server state is not ok
+      ✓ continues when the server state is ok
+    session token and route handling
+      ✓ drops the session token for the /login route (1 ms)
+      ✓ keeps the session token for other routes (2 ms)
+      ✓ builds an authenticated request from req.userFromJWT (1 ms)
+    rate limits
+      ✓ runs matching rate limit handlers before calling next (1 ms)
+      ✓ skips rate limit handlers whose path does not match
+      ✓ responds with 429 when a rate limit handler fails with a connection error (1 ms)
+      ✓ logs other rate limit errors and still calls next
+
+Test Suites: 1 passed, 1 total
+Tests:       49 passed, 49 total
+Snapshots:   0 total
+Time:        6.771 s
+Ran all test suites within paths "test/middlewares/handleParseHeaders.test.js".
+Test results written to: ../results/report.json

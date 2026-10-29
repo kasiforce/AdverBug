@@ -1,0 +1,104 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/operations/Lorenz/run.test.js (12.791 s)
+  Lorenz.run
+    enciphering
+      ✓ enciphers plaintext with the default SZ42a/KH settings (5 ms)
+      ✓ treats lowercase plaintext as uppercase (2 ms)
+      ✓ uses a distinct keystream for model SZ40 (1 ms)
+      ✓ uses a distinct keystream for model SZ42a (1 ms)
+      ✓ uses a distinct keystream for model SZ42b (2 ms)
+      ✓ uses the KT-Schalter in the SZ42a limitation logic (1 ms)
+      ✓ uses the KT-Schalter in the SZ42b limitation logic (1 ms)
+      ✓ accepts every wheel at its maximum start position (1 ms)
+      ✓ returns an empty string for empty input (1 ms)
+    wheel patterns
+      ✓ returns the input when the No Pattern lugs are all inactive (1 ms)
+      ✓ supports the built-in ZMUG Pattern (1 ms)
+      ✓ supports the built-in BREAM Pattern (1 ms)
+      ✓ matches the KH pattern when given its lugs as a custom pattern (1 ms)
+      ✓ reads x as an active lug and . as an inactive lug (1 ms)
+      ✓ rejects Ψ1 custom lugs with the wrong length (1 ms)
+      ✓ rejects Ψ2 custom lugs with the wrong length (1 ms)
+      ✓ rejects Ψ3 custom lugs with the wrong length (1 ms)
+      ✓ rejects Ψ4 custom lugs with the wrong length
+      ✓ rejects Ψ5 custom lugs with the wrong length (1 ms)
+      ✓ rejects M37 custom lugs with the wrong length
+      ✓ rejects M61 custom lugs with the wrong length (1 ms)
+      ✓ rejects Χ1 custom lugs with the wrong length
+      ✓ rejects Χ2 custom lugs with the wrong length
+      ✓ rejects Χ3 custom lugs with the wrong length (1 ms)
+      ✓ rejects Χ4 custom lugs with the wrong length
+      ✓ rejects Χ5 custom lugs with the wrong length (1 ms)
+      ✓ rejects Ψ1 custom lugs containing invalid characters
+      ✓ rejects Ψ2 custom lugs containing invalid characters
+      ✓ rejects Ψ3 custom lugs containing invalid characters
+      ✓ rejects Ψ4 custom lugs containing invalid characters
+      ✓ rejects Ψ5 custom lugs containing invalid characters (1 ms)
+      ✓ rejects M37 custom lugs containing invalid characters
+      ✓ rejects M61 custom lugs containing invalid characters (1 ms)
+      ✓ rejects Χ1 custom lugs containing invalid characters
+      ✓ rejects Χ2 custom lugs containing invalid characters (1 ms)
+      ✓ rejects Χ3 custom lugs containing invalid characters
+      ✓ rejects Χ4 custom lugs containing invalid characters
+      ✓ rejects Χ5 custom lugs containing invalid characters
+    ITA2 formatting
+      ✓ uses 5, 8 and 9 as the default shift representations (1 ms)
+      ✓ uses +, - and . when the alternate format is selected (1 ms)
+    receive mode
+      ✓ round-trips a long plaintext through the SZ40 model (1 ms)
+      ✓ round-trips a long plaintext through the SZ42a model (1 ms)
+      ✓ round-trips a long plaintext through the SZ42b model (1 ms)
+      ✓ round-trips plaintext with shifts and spaces: AB12CD
+      ✓ round-trips plaintext with shifts and spaces: 123 (1 ms)
+      ✓ round-trips plaintext with shifts and spaces: A B
+      ✓ round-trips plaintext with shifts and spaces: HELLO, WORLD
+      ✓ round-trips plaintext with shifts and spaces: THE QUICK BROWN FOX (1 ms)
+      ✓ round-trips figure-shifted text using the 5/8/9 ITA2 format (1 ms)
+      ✓ round-trips figure-shifted text using the +/-/. ITA2 format
+    argument validation
+      ✓ rejects Ψ1 start 0 outside the range 1-43
+      ✓ rejects Ψ1 start 44 outside the range 1-43 (1 ms)
+      ✓ rejects Ψ2 start 0 outside the range 1-47
+      ✓ rejects Ψ2 start 48 outside the range 1-47 (1 ms)
+      ✓ rejects Ψ3 start 0 outside the range 1-51
+      ✓ rejects Ψ3 start 52 outside the range 1-51 (1 ms)
+      ✓ rejects Ψ4 start 0 outside the range 1-53
+      ✓ rejects Ψ4 start 54 outside the range 1-53 (13 ms)
+      ✓ rejects Ψ5 start 0 outside the range 1-59 (1 ms)
+      ✓ rejects Ψ5 start 60 outside the range 1-59
+      ✓ rejects Μ37 start 0 outside the range 1-37 (1 ms)
+      ✓ rejects Μ37 start 38 outside the range 1-37
+      ✓ rejects Μ61 start 0 outside the range 1-61 (1 ms)
+      ✓ rejects Μ61 start 62 outside the range 1-61
+      ✓ rejects Χ1 start 0 outside the range 1-41 (1 ms)
+      ✓ rejects Χ1 start 42 outside the range 1-41
+      ✓ rejects Χ2 start 0 outside the range 1-31
+      ✓ rejects Χ2 start 32 outside the range 1-31
+      ✓ rejects Χ3 start 0 outside the range 1-29
+      ✓ rejects Χ3 start 30 outside the range 1-29
+      ✓ rejects Χ4 start 0 outside the range 1-26
+      ✓ rejects Χ4 start 27 outside the range 1-26 (1 ms)
+      ✓ rejects Χ5 start 0 outside the range 1-23
+      ✓ rejects Χ5 start 24 outside the range 1-23 (1 ms)
+      ✓ rejects an unrecognised Lorenz model
+      ✓ rejects characters that are not valid plaintext (1 ms)
+      ✓ rejects invalid ITA2 characters when sending (1 ms)
+      ✓ rejects invalid ITA2 characters when receiving
+      ✓ names a carriage return and a space in ITA2 errors (1 ms)
+    side effects
+      ✓ populates the reverse ITA2 and figure-shift lookup tables (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       80 passed, 80 total
+Snapshots:   0 total
+Time:        12.911 s
+Ran all test suites within paths "test/core/operations/Lorenz/run.test.js".
+Test results written to: ../results/report.json

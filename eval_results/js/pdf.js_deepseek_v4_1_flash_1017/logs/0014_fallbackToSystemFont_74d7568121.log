@@ -1,0 +1,84 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    Warning: Font file is empty in "Courier" (g_d0_f1)
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1142:9)
+      at Object.<anonymous> (test/core/fonts/fallbackToSystemFont.test.js:717:20)
+
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/fonts/fallbackToSystemFont.test.js (5.178 s)
+  Font#fallbackToSystemFont
+    general font bookkeeping
+      ✓ flags the font as missing and derives the loaded name (15 ms)
+      ✓ keeps the whole name when it contains no dash (1 ms)
+      ✓ normalizes underscores and whitespace in the font name
+    basic font metrics
+      ✓ applies the metrics of the mapped standard font
+      ✓ applies the metrics of a font mapped onto a standard font
+      ✓ keeps metrics which are already known (1 ms)
+      ✓ only fills in the metrics which are unknown (1 ms)
+      ✓ leaves the metrics alone for fonts without basic metrics
+    style flags
+      ✓ derives bold and italic from the mapped font name
+      ✓ derives italic from an oblique font name
+      ✓ detects the black weight from the original, unmapped, name (1 ms)
+      ✓ combines bold and italic flags for unmapped font names
+      ✓ matches the black weight case-sensitively (1 ms)
+    remeasure
+      ✓ remeasures unknown fonts which have widths
+      ✓ does not remeasure unknown fonts without widths
+      ✓ does not remeasure standard fonts which have widths (1 ms)
+      ✓ remeasures narrow standard fonts
+    symbol and dingbats encodings
+      ✓ maps a symbol font through the symbol encoding (1 ms)
+      ✓ uses glyph ids for a composite symbol font with an identity encoding (1 ms)
+      ✓ maps a dingbats font through the ZapfDingbats encoding (1 ms)
+    standard fonts
+      ✓ maps the default encoding for standard fonts
+      ✓ merges /ToUnicode into the glyph map of non-identity CID fonts (1 ms)
+      ✓ keeps an identity /ToUnicode out of the glyph map of CID fonts (1 ms)
+    identity-encoded CID fonts
+      ✓ builds the glyph map from the standard font glyph map (3 ms)
+      ✓ converts /ToUnicode into a ToUnicodeMap built from the glyph map (1 ms)
+      ✓ applies the supplemental glyph map of ArialBlack (1 ms)
+      ✓ applies the supplemental glyph map of Calibri (2 ms)
+      ✓ uses the Mac ordered glyph map for TrebuchetMS (1 ms)
+      ✓ remaps the glyph ids through an existing CIDToGIDMap (1 ms)
+      ✓ drops glyphs which are missing from an incomplete CIDToGIDMap (2 ms)
+      ✓ keeps the glyphs when /ToUnicode is not an identity map (1 ms)
+      ✓ keeps all the glyphs when the CIDToGIDMap is complete (1 ms)
+      ✓ merges a non-identity /ToUnicode into the resulting glyph map (1 ms)
+    fonts which are not standard fonts
+      ✓ maps the characters through /Differences and the default encoding (1 ms)
+      ✓ keeps the /ToUnicode value for unknown glyph names
+      ✓ improves the glyph mapping of composite Verdana fonts (1 ms)
+      ✓ does not use the standard glyph map for non-identity /ToUnicode
+    fallback /ToUnicode entries
+      ✓ amends /ToUnicode with the fallback entries (1 ms)
+      ✓ does not amend an identity /ToUnicode (1 ms)
+    integration with the Font constructor
+      ✓ falls back to the system font when no font file is available (2 ms)
+      ✓ also falls back for an empty font file (91 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       41 passed, 41 total
+Snapshots:   0 total
+Time:        5.492 s
+Ran all test suites within paths "test/core/fonts/fallbackToSystemFont.test.js".
+Test results written to: ../results/report.json

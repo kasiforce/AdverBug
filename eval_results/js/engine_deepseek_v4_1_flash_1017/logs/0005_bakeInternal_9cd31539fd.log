@@ -1,0 +1,51 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/lightmapper/lightmapper/bakeInternal.test.js (5.653 s)
+  Lightmapper#bakeInternal()
+    orchestration
+      ✓ runs the bake stages in the expected order with the right arguments (7 ms)
+      ✓ restores all nodes, all lights and the scene after baking (18 ms)
+      ✓ clears the shadow map cache when clustered lighting is disabled (3 ms)
+      ✓ keeps the shadow map cache when clustered lighting is enabled (1 ms)
+    mesh instance and light preparation
+      ✓ patches every receiver for baking and binds each written lightmap slot to the black texture (2 ms)
+      ✓ binds only the slots that the color-only bake writes (1 ms)
+      ✓ disables bakeable lights before rendering and restarts them for each virtual light (4 ms)
+      ✓ marks the baked light as visible for the current frame (1 ms)
+    light and node culling
+      ✓ prepares the light camera once per virtual light and passes the compound caster bounds to culling (1 ms)
+      ✓ skips a bake node when the light does not affect it (1 ms)
+      ✓ forwards whether a shadow map has already been rendered while iterating nodes (1 ms)
+    virtual lights
+      ✓ bakes every virtual light and passes its index and total to prepareVirtualLight (1 ms)
+      ✓ bakes only the first virtual light for the direction pass (2 ms)
+      ✓ forces a single virtual light in color+direction mode when the light bakes direction (2 ms)
+    ambient light
+      ✓ bakes an ambient light only into the color pass (1 ms)
+      ✓ applies the ambient AO material only to the last virtual light (2 ms)
+      ✓ does not use the ambient AO material for a regular light (1 ms)
+    pass rendering
+      ✓ assigns a material per pass and restores the original material afterwards (1 ms)
+      ✓ renders each pass through the lightmapper render pass
+      ✓ ping-pongs render targets for successive passes
+      ✓ binds the rendered temp texture to receivers for each pass (1 ms)
+      ✓ sets the bakeDir uniform only when baking the direction pass (1 ms)
+      ✓ sets a zero bakeDir uniform when the light does not bake direction (1 ms)
+    clustered lighting
+      ✓ updates the light atlas and world clusters with no local light for a directional light (1 ms)
+      ✓ updates the light atlas and world clusters with the light for a local light (1 ms)
+      ✓ does not touch cluster resources when clustered lighting is disabled (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       26 passed, 26 total
+Snapshots:   0 total
+Time:        6.064 s
+Ran all test suites within paths "test/framework/lightmapper/lightmapper/bakeInternal.test.js".
+Test results written to: ../results/report.json

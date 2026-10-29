@@ -1,0 +1,50 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/evaluator/extractDataStructures.test.js (8.364 s)
+  PartialEvaluator.extractDataStructures
+    ✓ extracts the default structures and replaces ToUnicode data (5 ms)
+    ✓ accepts the predefined encoding MacRomanEncoding (1 ms)
+    ✓ accepts the predefined encoding WinAnsiEncoding
+    ✓ accepts the predefined encoding MacExpertEncoding
+    ✓ ignores a named encoding that is not one of the three allowed names (1 ms)
+    ✓ reads a dictionary BaseEncoding and its Differences array
+    ✓ dereferences indirect Differences entries with the xref (1 ms)
+    ✓ drops an unsupported BaseEncoding while retaining Differences (1 ms)
+    ✓ throws for an invalid Differences entry even when ignoreErrors is false (23 ms)
+    ✓ throws for an invalid Differences entry even when ignoreErrors is true (1 ms)
+    ✓ rejects an Encoding that is neither a Name nor a Dict
+    ✓ ignores an invalid Encoding type when ignoreErrors is enabled (1 ms)
+    ✓ extracts CIDSystemInfo for a composite font (1 ms)
+    ✓ preserves an existing CIDSystemInfo
+    ✓ reads CIDToGIDMap bytes and builds the character map (1 ms)
+    ✓ ignores a non-stream CIDToGIDMap (1 ms)
+    ✓ propagates CIDToGIDMap decoding errors when ignoreErrors is disabled
+    ✓ ignores CIDToGIDMap decoding errors when ignoreErrors is enabled
+    ✓ converts an incorrectly specified WinAnsi CJK font to GBK-EUC-H (2 ms)
+    ✓ keeps WinAnsi encoding for a high-byte non-CJK font name
+    ✓ ignores a named encoding for the non-embedded symbol font Symbol
+    ✓ ignores a named encoding for the non-embedded symbol font ZapfDingbats (1 ms)
+    ✓ ignores a named encoding for the non-embedded symbol font Wingdings
+    ✓ chooses the fallback encoding for type Type1 with flags 0
+    ✓ chooses the fallback encoding for type TrueType with flags 0 (1 ms)
+    ✓ chooses the fallback encoding for type Type1 with flags 32
+    ✓ chooses the fallback encoding for type Type1 with flags 4
+    ✓ chooses the fallback encoding for type TrueType with flags 36
+    ✓ removes the Symbolic flag when a TrueType font has Differences (1 ms)
+    ✓ keeps a non-embedded symbolic font's custom symbol encoding selection
+    ✓ waits for the ToUnicode promise before building the final map
+    ✓ does not build ToUnicode when reading it fails
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        9.405 s
+Ran all test suites within paths "test/core/evaluator/extractDataStructures.test.js".
+Test results written to: ../results/report.json

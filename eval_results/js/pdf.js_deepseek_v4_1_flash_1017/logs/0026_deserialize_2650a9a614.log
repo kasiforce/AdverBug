@@ -1,0 +1,77 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/editor/drawers/inkdraw/deserialize.test.js
+  InkDrawOutline.deserialize
+    returned outline
+      ✓ is a new InkDrawOutline instance (4 ms)
+      ✓ is an instance of the class the static method is called on (1 ms)
+      ✓ exposes the bounding box based svg properties (2 ms)
+      ✓ stores the given thickness (1 ms)
+    paths built from points
+      ✓ a single point becomes a closed dot (1 ms)
+      ✓ two points become a straight segment (1 ms)
+      ✓ three points become a single bezier curve
+      ✓ more than three points produce one bezier per extra point
+      ✓ a float64 point list is accepted (1 ms)
+      ✓ each entry of points becomes its own subpath (1 ms)
+      ✓ keeps the points in page coordinates (2 ms)
+      ✓ an empty points list produces no path
+    rotation
+      ✓ maps a dot of the page (25, 50) at rotation 0 (1 ms)
+      ✓ maps a dot of the page (25, 50) at rotation 90
+      ✓ maps a dot of the page (25, 50) at rotation 180 (1 ms)
+      ✓ maps a dot of the page (25, 50) at rotation 270
+      ✓ maps a two point path at rotation 0 (1 ms)
+      ✓ maps a two point path at rotation 90
+      ✓ maps a two point path at rotation 180
+      ✓ maps a two point path at rotation 270
+      ✓ takes the page origin into account at rotation 0 (1 ms)
+      ✓ takes the page origin into account at rotation 90
+      ✓ takes the page origin into account at rotation 180
+      ✓ takes the page origin into account at rotation 270 (1 ms)
+      ✓ rotates the geometry and its bounding box at rotation 0
+      ✓ rotates the geometry and its bounding box at rotation 90
+      ✓ rotates the geometry and its bounding box at rotation 180 (1 ms)
+      ✓ rotates the geometry and its bounding box at rotation 270
+    provided lines
+      ✓ are used instead of being rebuilt from the points
+      ✓ keep the points available for serialization (1 ms)
+      ✓ match the lines that would be built from the points (1 ms)
+      ✓ null coordinates are treated as NaN
+      ✓ an empty lines list produces no path
+      ✓ are not mutated by the deserialization
+    thickness and inner margin
+      ✓ expand the bounding box around the path (1 ms)
+      ✓ an inner margin is added to the stroke margin (1 ms)
+      ✓ rotated pages swap the margin components
+      ✓ the bounding box is clamped to the unit square (1 ms)
+      ✓ a missing inner margin is treated as zero
+    invalid input
+      ✓ an unsupported rotation makes the rescaling fail (43 ms)
+      ✓ an unsupported rotation without any path yields an empty outline (1 ms)
+      ✓ missing points cannot be used to build the lines (1 ms)
+      ✓ more lines than points is rejected (2 ms)
+      ✓ a long plain array cannot be split into bezier curves (1 ms)
+    round trip
+      ✓ restores an outline serialized at rotation 0 (20 ms)
+      ✓ restores an outline serialized at rotation 90
+      ✓ restores an outline serialized at rotation 180 (1 ms)
+      ✓ restores an outline serialized at rotation 270
+      ✓ is idempotent for a serialized path at rotation 0 (1 ms)
+      ✓ is idempotent for a serialized path at rotation 90 (1 ms)
+      ✓ is idempotent for a serialized path at rotation 180
+      ✓ is idempotent for a serialized path at rotation 270 (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        0.926 s
+Ran all test suites within paths "test/display/editor/drawers/inkdraw/deserialize.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,73 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/gsplat-unified/gsplat-projector/dispatch.test.js
+  GSplatProjector#dispatch
+    resources and camera uniforms
+      ✓ binds the projector storage buffers and the work-buffer textures (7 ms)
+      ✓ forwards the camera position and the normalized camera direction (1 ms)
+      ✓ forwards the view matrix and the view-projection matrix (1 ms)
+      ✓ forwards the projection scalars and the clipping ranges (1 ms)
+      ✓ forwards the culling and sort-key parameters (1 ms)
+      ✓ applies the documented defaults for the optional parameters (1 ms)
+      ✓ does not bind stereo or fisheye only uniforms in the default mode (1 ms)
+      ✓ sizes the dispatch for the full splat capacity and issues a single compute pass (1 ms)
+    ordering of side effects
+      ✓ syncs the material, resizes the cache, clears the counter, then dispatches (1 ms)
+      ✓ sizes the cache and the dispatch from totalCapacity (1 ms)
+      ✓ resets the render counter exactly once per dispatch
+    projector variant selection
+      ✓ selects the plain linear variant by default
+      ✓ selects the radial variant when radial sort is requested (1 ms)
+      ✓ folds radial sort away in stochastic mode
+      ✓ selects the pick variant and drops anti-aliasing
+      ✓ selects the anti-aliasing variant for the forward color path (1 ms)
+      ✓ selects the fisheye variant only when the fisheye projection is enabled
+      ✓ selects the stereo variant for non-pick, non-fisheye XR cameras (1 ms)
+      ✓ never combines stereo with pick or fisheye (1 ms)
+      ✓ passes the work buffer through to the compute lookup
+    bin weights
+      ✓ writes 32 interleaved bin weights for the linear sort (3 ms)
+      ✓ gives the last bin the most precision for the radial sort (1 ms)
+      ✓ scales the bin weights with the requested bit depth (1 ms)
+      ✓ skips the bin weights in stochastic mode (1 ms)
+    range normalization
+      ✓ computes invRange for a positive range (1 ms)
+      ✓ computes invRange for a degenerate range
+      ✓ computes invRange for a inverted range
+    projection specifics
+      ✓ forwards the perspective projection flag
+      ✓ forwards the orthographic projection flag
+      ✓ derives pixel focal lengths from the projection scale on WebGL
+      ✓ derives pixel focal lengths from the projection scale on WebGPU
+      ✓ flips the camera direction with a negative z world transform
+      ✓ forwards user foveation and culling parameters (1 ms)
+    fisheye projection
+      ✓ forwards the fisheye parameters when enabled
+      ✓ omits the fisheye parameters when the projection is disabled (1 ms)
+    XR stereo
+      ✓ refreshes the per-eye matrices and drives the shared uniforms from eye 0 (1 ms)
+      ✓ refreshes the view transforms before writing the view-projection uniform
+      ✓ ignores the stereo path in pick mode (1 ms)
+    render-stage material
+      ✓ syncs the material and the user cache words before the compute lookup (1 ms)
+      ✓ defaults the user cache words to zero when no material data is supplied
+      ✓ forwards the user material parameters (1 ms)
+      ✓ lets the projector win on a parameter name collision
+      ✓ only forwards own parameters of the material
+    invalid input
+      ✓ reports that stochastic and pick modes are mutually exclusive (1 ms)
+      ✓ does not report a conflict for the supported combinations (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       45 passed, 45 total
+Snapshots:   0 total
+Time:        3.232 s
+Ran all test suites within paths "test/scene/gsplat-unified/gsplat-projector/dispatch.test.js".
+Test results written to: ../results/report.json

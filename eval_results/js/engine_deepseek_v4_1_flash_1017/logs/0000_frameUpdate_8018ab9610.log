@@ -1,0 +1,63 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/extras/effects/lens-flare/lens-flare-effect/frameUpdate.test.js (11.378 s)
+  LensFlareEffect
+    #frameUpdate()
+      ✓ leaves all the data zeroed when there are no flares (4 ms)
+      ✓ clears the data written for flares it no longer has (2 ms)
+      ✓ writes the screen position, fade, scale and colour of a positional source (1 ms)
+      ✓ writes the flares in the order they are registered (1 ms)
+      ✓ updates the time of the last frame
+      ✓ uses the position of the node of a flare which follows a node
+      ✓ uses the normalised direction of a flare which has a direction (1 ms)
+      ✓ does not draw a flare with no source (1 ms)
+      ✓ does not draw a flare which is disabled, but still reports its position
+      ✓ does not draw a source behind the camera
+      ✓ does not draw a source whose clip space w is zero (1 ms)
+      ✓ uses the direction of a directional light, not its position (1 ms)
+      ✓ does not draw the flare of a directional light which points away from the camera
+      ✓ does not draw the flare of a disabled light (1 ms)
+      ✓ does not draw the flare of a light whose entity is disabled
+      ✓ uses the position of an omni light as the source
+      ✓ draws the flare of a spot light whose camera is inside its cone (1 ms)
+      ✓ does not draw the flare of a spot light whose camera is outside its cone
+      ✓ fades the flare of a spot light between its inner and outer cone angles (1 ms)
+      ✓ cuts the flare of a spot light off sharply when its cone angles are equal
+      ✓ places a directional source far along its direction for an orthographic projection (1 ms)
+      ✓ divides a positional source by the clip space w for an orthographic projection (1 ms)
+      ✓ fades a source out at the edge of the screen
+      ✓ stops drawing a source at the edge of the screen when off screen flares are not allowed
+      ✓ keeps drawing a source beyond the edge of the screen when off screen flares are allowed
+      ✓ stops drawing a source far outside the screen
+      ✓ treats a negative edge fade as no edge fade (1 ms)
+      ✓ transforms the source into the view space of the camera
+      ✓ fades a positional source out with its distance from the camera (1 ms)
+      ✓ stops drawing a positional source at the end of its fade
+      ✓ does not fade a directional source with the distance
+      ✓ moves the tested depth towards the camera by the occlusion offset (1 ms)
+      ✓ follows the visibility immediately when the occlusion fade is zero
+      ✓ does not move the occlusion on the first frame
+      ✓ moves the occlusion by the elapsed time, clamped to a tenth of a second (1 ms)
+      ✓ moves the occlusion by the elapsed time when it is short
+      ✓ does not move the occlusion backwards when the clock goes backwards
+      ✓ scales the colour of the flare by its intensity (1 ms)
+      ✓ scales the intensity of the flare by the intensity of its light
+      ✓ ignores the intensity of the light when the flare does not use it
+      ✓ scales the intensity of the flare by the luminance of its light in physical units
+      ✓ tints the colour of the flare by the linear colour of its light
+      ✓ does not tint the colour of the flare when the light colour is not used (1 ms)
+      ✓ ignores the flares beyond the maximum number of flares (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       44 passed, 44 total
+Snapshots:   0 total
+Time:        14.666 s
+Ran all test suites within paths "test/extras/effects/lens-flare/lens-flare-effect/frameUpdate.test.js".
+Test results written to: ../results/report.json

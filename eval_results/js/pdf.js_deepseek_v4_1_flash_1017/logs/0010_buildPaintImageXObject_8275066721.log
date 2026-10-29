@@ -1,0 +1,62 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/evaluator/buildPaintImageXObject.test.js (8.027 s)
+  PartialEvaluator.buildPaintImageXObject
+    image dimensions
+      ✓ warns and returns with missing width (5 ms)
+      ✓ warns and returns with non-numeric width (1 ms)
+      ✓ warns and returns with zero width (1 ms)
+      ✓ warns and returns with missing height
+      ✓ warns and returns with non-numeric height (1 ms)
+      ✓ warns and returns with zero height (1 ms)
+      ✓ throws when the image exceeds maxImageSize and errors are not ignored (100 ms)
+      ✓ warns and returns when the image exceeds maxImageSize and errors are ignored (1 ms)
+      ✓ allows an image whose area is exactly maxImageSize (1 ms)
+      ✓ does not enforce maxImageSize when it is -1
+    optional content
+      ✓ parses /OC and passes the optional content to image operations (1 ms)
+    image masks
+      ✓ handles a single opaque pixel without registering a dependency (2 ms)
+      ✓ does not use offscreen canvas for Type3 image masks
+      ✓ caches a single opaque pixel by name when there is no image reference (1 ms)
+      ✓ compiles a Type3 glyph image mask into a path (1 ms)
+      ✓ falls back to an inline Type3 mask when glyph compilation fails
+      ✓ sends a regular mask to the worker and records its cache entry (1 ms)
+      ✓ computes the data length from a bitmap-backed mask (1 ms)
+    inline images
+      ✓ inlines a small image through a PDFImage instance (1 ms)
+      ✓ does not inline an image whose dimensions reach the limit (1 ms)
+      ✓ does not inline an image that has a SMask entry (1 ms)
+      ✓ does not inline an image that has a Mask entry
+      ✓ throws when an inline image cannot be decoded (1 ms)
+      ✓ warns and returns when inline decoding fails and errors are ignored (1 ms)
+    regular images
+      ✓ adds the image operation before decoding and sends decoded data (17 ms)
+      ✓ uses a Type3-prefixed object id when parsing a Type3 font (2 ms)
+      ✓ keeps a decoded image when the global cache does not want it (2 ms)
+      ✓ does not start global decoded-image tracking when pageProxyId is null
+      ✓ uses the global cache object id when the image should be cached (2 ms)
+      ✓ rejects inline images that are requested to be cached globally (15 ms)
+      ✓ sends a null image when a globally cached image previously failed to decode (1 ms)
+      ✓ reuses a previously decoded globally cached image
+      ✓ copies a large globally cached image from another page (1 ms)
+      ✓ tries to copy masked images before decoding them again (2 ms)
+      ✓ does not copy small images that are not masked (1 ms)
+      ✓ records a failed decode and sends a null image
+      ✓ records a failed decode against the image reference (1 ms)
+      ✓ only updates the local cache when there is no image reference (1 ms)
+      ✓ does not populate any cache when no cache key is provided (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        8.486 s
+Ran all test suites within paths "test/core/evaluator/buildPaintImageXObject.test.js".
+Test results written to: ../results/report.json

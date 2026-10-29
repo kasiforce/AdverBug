@@ -1,0 +1,76 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/element/system/getImageElementMaterial.test.js (5.891 s)
+  ElementComponentSystem#getImageElementMaterial
+    ✓ starts with no cached materials (9 ms)
+    ✓ defaults to the plain image material when called without arguments (6 ms)
+    ✓ creates one distinct material per flag combination (5 ms)
+    ✓ keeps the mask variants independent from the non-mask variants (2 ms)
+    ✓ throws if the tiled screen-space mask material is requested before the tiled screen-space material exists (24 ms)
+    ✓ clones the tiled screen-space material for the tiled screen-space mask material (4 ms)
+    ✓ clones the tiled screen-space material only once (2 ms)
+    ✓ returns the tiled variants when only nineSliceTiled is set (1 ms)
+    ✓ treats the flags as booleans, so any truthy value selects the same branch (1 ms)
+    defaultImageMaterial (screenSpace=false, mask=false, nineSliced=false, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (3 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (2 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultImage9SlicedMaterial (screenSpace=false, mask=false, nineSliced=true, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultImage9TiledMaterial (screenSpace=false, mask=false, nineSliced=false, nineSliceTiled=true)
+      ✓ creates the material with the properties of its branch (3 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (2 ms)
+      ✓ returns the cached material on later calls without creating a new one (2 ms)
+    defaultImageMaskMaterial (screenSpace=false, mask=true, nineSliced=false, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (2 ms)
+    defaultImage9SlicedMaskMaterial (screenSpace=false, mask=true, nineSliced=true, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultImage9TiledMaskMaterial (screenSpace=false, mask=true, nineSliced=false, nineSliceTiled=true)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultScreenSpaceImageMaterial (screenSpace=true, mask=false, nineSliced=false, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (1 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultScreenSpaceImage9SlicedMaterial (screenSpace=true, mask=false, nineSliced=true, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultScreenSpaceImage9TiledMaterial (screenSpace=true, mask=false, nineSliced=false, nineSliceTiled=true)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (2 ms)
+    defaultScreenSpaceImageMaskMaterial (screenSpace=true, mask=true, nineSliced=false, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    defaultScreenSpaceImageMask9SlicedMaterial (screenSpace=true, mask=true, nineSliced=true, nineSliceTiled=false)
+      ✓ creates the material with the properties of its branch (2 ms)
+      ✓ caches the material on the expected system property and in defaultImageMaterials (1 ms)
+      ✓ returns the cached material on later calls without creating a new one (1 ms)
+    nineSliced takes precedence over nineSliceTiled
+      ✓ returns defaultScreenSpaceImageMask9SlicedMaterial when both flags are set (screenSpace=true, mask=true) (1 ms)
+      ✓ returns defaultScreenSpaceImage9SlicedMaterial when both flags are set (screenSpace=true, mask=false) (1 ms)
+      ✓ returns defaultImage9SlicedMaskMaterial when both flags are set (screenSpace=false, mask=true) (1 ms)
+      ✓ returns defaultImage9SlicedMaterial when both flags are set (screenSpace=false, mask=false) (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       46 passed, 46 total
+Snapshots:   0 total
+Time:        6.254 s
+Ran all test suites within paths "test/framework/components/element/system/getImageElementMaterial.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,36 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/opentype/parseBuffer.test.js (8.609 s)
+  ✓ parses an ArrayBuffer TrueType font and populates its tables and glyphs (45 ms)
+  ✓ accepts Node Buffers and Uint8Arrays as input (62 ms)
+  ✓ recognizes the legacy true and typ1 TrueType signatures (33 ms)
+  ✓ parses a CFF font and initializes CFF glyphs and tables (7 ms)
+  ✓ parses both compressed CFF and TrueType WOFF fonts (120 ms)
+  ✓ rejects a WOFF file with an unsupported flavor (24 ms)
+  ✓ rejects WOFF2 input with an explanatory error
+  ✓ rejects an unknown OpenType signature
+  ✓ rejects an empty ArrayBuffer (17 ms)
+  ✓ throws when a font has no TrueType, CFF, or CFF2 outlines (3 ms)
+  ✓ parses a CFF2 variable font and its variation-related tables (4 ms)
+  ✓ parses fvar, gvar, avar, stat, and HVAR tables of a TrueType variable font (54 ms)
+  ✓ parses cvar together with gvar and fvar tables (25 ms)
+  ✓ parses COLR and CPAL tables and creates a PaletteManager (105 ms)
+  ✓ parses SVG glyph documents (10 ms)
+  ✓ parses an Apple meta table into tables.meta and font.metas (80 ms)
+  ✓ supports low-memory parsing of TrueType and CFF fonts (10 ms)
+  ✓ warns but continues when cvar is present without cvt (3 ms)
+  ✓ warns and skips a malformed gasp table without failing the parse (13 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        10.098 s
+Ran all test suites within paths "test/opentype/parseBuffer.test.js".
+Test results written to: ../results/report.json

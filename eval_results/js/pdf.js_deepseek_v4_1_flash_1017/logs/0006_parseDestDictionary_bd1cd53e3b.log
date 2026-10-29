@@ -1,0 +1,71 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/catalog/parseDestDictionary.test.js
+  Catalog.parseDestDictionary
+    input validation
+      ✓ warns and leaves the result unchanged for a non-dictionary input (5 ms)
+      ✓ warns when an action dictionary has no Name /S entry (1 ms)
+      ✓ warns for unsupported action names (1 ms)
+    simple destinations
+      ✓ converts a Name destination to its name (1 ms)
+      ✓ converts a string destination with PDF string decoding (24 ms)
+      ✓ preserves a valid explicit destination array (1 ms)
+      ✓ ignores an invalid explicit destination array
+      ✓ treats a dictionary /Dest value as an action and lets /A take precedence (1 ms)
+      ✓ parses a dictionary stored in /Dest as an action
+      ✓ falls back to /AA /D for MouseDown actions (1 ms)
+      ✓ falls back to /AA /U for MouseUp actions
+    ResetForm
+      ✓ collects string fields and references and honors an odd Flags value (1 ms)
+      ✓ defaults to including all fields when Flags is absent
+    URI
+      ✓ sets both resolved and unsafe URLs for an absolute URI (1 ms)
+      ✓ resolves a relative URI against docBaseUrl
+      ✓ converts a Name URI into a root-relative URL
+      ✓ keeps unsafeUrl but omits url for a disallowed protocol (1 ms)
+    GoTo
+      ✓ extracts a Name destination
+      ✓ keeps a valid explicit destination array from GoTo
+      ✓ ignores an invalid explicit destination from GoTo
+    Launch and GoToR
+      ✓ builds a remote URL with destination hash and NewWindow
+      ✓ uses a FileSpec filename and docBaseUrl for Launch actions (1 ms)
+      ✓ does nothing for GoToR without a usable /F value
+    GoToE
+      ✓ resolves an embedded attachment and its destination
+      ✓ warns when the attachment cannot be resolved
+    Named
+      ✓ copies a Name /N value into resultObj.action
+      ✓ ignores a non-Name /N value (1 ms)
+    SetOCGState
+      ✓ collects valid Name and Ref state entries
+      ✓ defaults preserveRB to true
+      ✓ does not set state when /State is empty (1 ms)
+      ✓ does not set state when /State is not an array
+      ✓ does not set state when /State is contains an unsupported entry
+    JavaScript
+      ✓ recovers a URL from a JavaScript string action (1 ms)
+      ✓ recovers a URL from a stream and reports a new window
+      ✓ does not warn for JavaScript actions that yield no URL (1 ms)
+      ✓ does not warn for SubmitForm actions
+    structure element fallback
+      ✓ derives a destination from an SE reference (1 ms)
+      ✓ uses the BBox when deriving an SE destination (1 ms)
+      ✓ finds a page reference in a descendant structure element (1 ms)
+      ✓ does not consult /SE when another destination was found
+      ✓ rethrows MissingDataException from SE parsing (22 ms)
+      ✓ swallows other errors from SE parsing (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       42 passed, 42 total
+Snapshots:   0 total
+Time:        2.45 s
+Ran all test suites within paths "test/core/catalog/parseDestDictionary.test.js".
+Test results written to: ../results/report.json

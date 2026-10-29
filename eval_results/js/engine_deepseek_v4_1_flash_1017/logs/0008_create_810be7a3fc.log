@@ -1,0 +1,45 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/batching/batch-manager/create.test.js (5.162 s)
+  BatchManager
+    #create()
+      ✓ returns null and initializes the manager when there is nothing to batch (10 ms)
+      ✓ returns null and does not add a batch when all mesh instances are invisible (5 ms)
+      ✓ creates a static batch linked to the supplied batch group id (3 ms)
+      ✓ combines indexed meshes and offsets their indices (2 ms)
+      ✓ honors primitive base and baseVertex when remapping indices (3 ms)
+      ✓ skips invisible mesh instances while building the combined mesh (3 ms)
+      ✓ includes all original mesh instances in the batch bounding box (1 ms)
+      ✓ transforms static positions into world space (2 ms)
+      ✓ transforms static normals using the inverse transpose of the world transform (2 ms)
+      ✓ does not transform positions for dynamic batches (7 ms)
+      ✓ uses blend indices as the source instance index for dynamic batches (3 ms)
+      ✓ keeps the original instance index for visible meshes separated by hidden ones (2 ms)
+      ✓ clones and updates the material for dynamic batches (2 ms)
+      ✓ reuses the source material for static batches (2 ms)
+      ✓ creates a skin batch instance for dynamic batches (2 ms)
+      ✓ does not create a skin batch instance for static batches (1 ms)
+      ✓ copies render settings from the first source mesh instance (1 ms)
+      ✓ copies parameters from the first source mesh instance (1 ms)
+      ✓ marks the batched mesh instance as batching and disables automatic aabb updates (1 ms)
+      ✓ uses 16-bit indices for small batches (1 ms)
+      ✓ uses 32-bit indices when the combined vertex count exceeds 16 bits (12 ms)
+      ✓ creates triangle indices for a non-indexed triangle fan primitive (1 ms)
+      ✓ creates triangle indices for a non-indexed triangle strip primitive (2 ms)
+      ✓ leaves non-indexed triangle primitives non-indexed (1 ms)
+      ✓ disables culling for UI batch groups (1 ms)
+      ✓ preserves source culling when the batch group is not a UI group (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       26 passed, 26 total
+Snapshots:   0 total
+Time:        5.619 s
+Ran all test suites within paths "test/scene/batching/batch-manager/create.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,45 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/Object3D/toJSON.test.js (16.703 s)
+  Object3D.toJSON
+    root object serialization
+      ✓ serializes default standard properties and root metadata (5 ms)
+      ✓ treats undefined and string meta values as root calls (1 ms)
+      ✓ does not create root metadata when an existing cache object is supplied (1 ms)
+    standard properties
+      ✓ serializes configured transforms and optional object data (1 ms)
+      ✓ copies morph data and omits empty userData (1 ms)
+      ✓ serializes a hierarchy and caches shared geometry and material once (4 ms)
+    mesh-specific resource serialization
+      ✓ serializes single and multiple materials (2 ms)
+      ✓ serializes an array of shapes from geometry parameters (3 ms)
+      ✓ serializes a single shape from geometry parameters (1 ms)
+      ✓ does not extract root-level caches when called with a cache object (1 ms)
+    skinned meshes
+      ✓ serializes bind data and the referenced skeleton (2 ms)
+      ✓ omits skeleton when none is assigned (1 ms)
+    scene resources
+      ✓ serializes a color background and omits unset scene resources (1 ms)
+      ✓ serializes background and environment texture UUIDs
+      ✓ ignores render-target textures for the scene environment (1 ms)
+    instanced meshes
+      ✓ serializes instance data and overrides the object type (2 ms)
+    batched meshes
+      ✓ serializes an empty batch and omits optional resources (2 ms)
+      ✓ serializes populated geometry, instance, and bounding data (5 ms)
+    animations
+      ✓ serializes clips and reuses cached clip entries (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        20.204 s
+Ran all test suites within paths "test/core/Object3D/toJSON.test.js".
+Test results written to: ../results/report.json

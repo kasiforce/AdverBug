@@ -1,0 +1,35 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/sfnt/fontToSfntTable.test.js
+  fontToSfntTable
+    ✓ builds the required sfnt tables and header in the documented order (17 ms)
+    ✓ sorts the table directory records by tag (5 ms)
+    ✓ derives global metrics from all glyphs except .notdef (3 ms)
+    ✓ writes head and OS/2 metadata from font attributes (4 ms)
+    ✓ uses the documented fallbacks when representative glyphs are missing (3 ms)
+    ✓ ignores unicode 0 when computing the first character index (2 ms)
+    ✓ leaves the first character index unset when only unicode 0 is present (2 ms)
+    ✓ sets Unicode range bits across all four range words (3 ms)
+    ✓ encodes macStyle for weightClass=600 and italicAngle=-0.001 (3 ms)
+    ✓ encodes macStyle for weightClass=599 and italicAngle=0 (2 ms)
+    ✓ encodes macStyle for weightClass=400 and italicAngle=-1 (2 ms)
+    ✓ encodes macStyle for weightClass=700 and italicAngle=0 (2 ms)
+    ✓ produces a valid checksum adjustment for the whole font (3 ms)
+    ✓ adds name records, including preferred and fall-back names (3 ms)
+    ✓ includes optional gasp and meta tables when provided (3 ms)
+    ✓ throws when a glyph advanceWidth is NaN (22 ms)
+    ✓ throws when a glyph advanceWidth is undefined
+
+Test Suites: 1 passed, 1 total
+Tests:       17 passed, 17 total
+Snapshots:   0 total
+Time:        2.804 s
+Ran all test suites within paths "test/tables/sfnt/fontToSfntTable.test.js".
+Test results written to: ../results/report.json

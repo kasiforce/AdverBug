@@ -1,0 +1,261 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:20) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/cjs/payments/p2sh/p2sh.test.js (20.017 s)
+  p2sh (valid fixtures)
+    ✓ valid vector #0: p2sh-*, out (from address) (8 ms)
+    ✓ valid vector #1: p2sh-*, out (from hash) (2 ms)
+    ✓ valid vector #2: p2sh-*, out (from output) (2 ms)
+    ✓ valid vector #3: p2sh-p2pkh, out (from redeem) (3 ms)
+    ✓ valid vector #4: p2sh-p2wpkh, out (from redeem) (2 ms)
+    ✓ valid vector #5: p2sh-p2pk, out (from redeem) (2 ms)
+    ✓ valid vector #6: p2sh-p2pkh, in and out (from redeem) (3 ms)
+    ✓ valid vector #7: p2sh-p2wpkh, in and out (from redeem w/ witness) (2 ms)
+    ✓ valid vector #8: p2sh-p2pk, in and out (from input) (2 ms)
+    ✓ valid vector #9: p2sh-p2wpkh, in and out (from input AND witness) (2 ms)
+    ✓ valid vector #10: p2sh-p2pkh, out (network derived from redeem) (2 ms)
+  p2sh (invalid fixtures)
+    ✓ invalid vector #0 throws Not enough data (40 ms)
+    ✓ invalid vector #1 throws Non-minimally encoded (non BIP62 compliant): ValiError: Invalid length: Expected 23 but received 24 (2 ms)
+    ✓ invalid vector #2 throws Expected OP_HASH160: Output is invalid (1 ms)
+    ✓ invalid vector #3 throws Unexpected OP_RESERVED: Output is invalid (1 ms)
+    ✓ invalid vector #4 throws address.hash != H: Hash mismatch (1 ms)
+    ✓ invalid vector #5 throws address.hash != output.hash: Hash mismatch (1 ms)
+    ✓ invalid vector #6 throws output.hash != H: Hash mismatch (1 ms)
+    ✓ invalid vector #7 throws H(redeem.output) != H: Hash mismatch (1 ms)
+    ✓ invalid vector #8 throws Invalid version or Network mismatch (1 ms)
+    ✓ invalid vector #9 throws Invalid address (1 ms)
+    ✓ invalid vector #10 throws Invalid address (1 ms)
+    ✓ invalid vector #11 throws Input too short (1 ms)
+    ✓ invalid vector #12 throws Input too short (1 ms)
+    ✓ invalid vector #13 throws Redeem.output too short (1 ms)
+    ✓ invalid vector #14 throws Redeem.output unspendable if larger than 520 bytes (1 ms)
+    ✓ invalid vector #15 throws Input is invalid (1 ms)
+    ✓ invalid vector #16 throws Redeem.input mismatch (1 ms)
+    ✓ invalid vector #17 throws Redeem.output mismatch (1 ms)
+    ✓ invalid vector #18 throws Redeem.output too short (1 ms)
+    ✓ invalid vector #19 throws Input and witness provided (1 ms)
+    ✓ invalid vector #20 throws Non push-only scriptSig (1 ms)
+    ✓ invalid vector #21 throws Redeem.output too short (1 ms)
+    ✓ invalid vector #22 throws Witness and redeem.witness mismatch (1 ms)
+    ✓ invalid vector #23 throws Hash mismatch (1 ms)
+    ✓ invalid vector #24 throws Network mismatch (1 ms)
+    ✓ invalid vector #25 throws Network mismatch (10 ms)
+    ✓ invalid vector #26 throws Empty input (1 ms)
+  p2sh (behaviour)
+    ✓ throws a TypeError when no usable data is supplied (1 ms)
+    ✓ defaults the network to bitcoin (1 ms)
+    ✓ derives hash/output/address from a supplied address (1 ms)
+    ✓ derives hash/address/output from redeem.output (1 ms)
+    ✓ uses testnet network from redeem and creates a testnet address
+    ✓ derives redeem input/output from a combined scriptSig (1 ms)
+    ✓ treats a trailing OP_FALSE in a scriptSig as an empty redeem output (2 ms)
+    ✓ propagates redeem.witness to witness (1 ms)
+    ✕ includes redeem.name in the payment name
+    ✕ does not validate when opts.validate is false
+    ✓ does not reject a wrong-version address when validation is disabled (1 ms)
+    ✓ does not reject a network mismatch when validation is disabled (12 ms)
+    ✕ accepts a redeem.output of exactly 520 bytes
+    ✕ rejects a redeem.output of 521 bytes
+    ✕ accepts a redeem.output with exactly 201 non-push operations
+    ✕ rejects a redeem.output with 202 non-push operations
+    ✓ rejects a hash that is not 20 bytes (1 ms)
+    ✓ rejects an output that is not 23 bytes (1 ms)
+    ✓ rejects witness data on its own as insufficient (1 ms)
+    ✓ accepts consistent address, hash and output values (1 ms)
+    ✓ accepts consistent input and redeem values (1 ms)
+    ✕ rejects a non-push scriptSig in redeem.input (14 ms)
+    ✕ rejects redeem.input combined with redeem.witness (2 ms)
+    ✕ rejects an empty redeem.input without witness (2 ms)
+    ✕ rejects a witness that differs from redeem.witness
+    ✕ matches identical witness and redeem.witness
+    ✓ rejects mismatching address and hash (1 ms)
+    ✓ rejects a truncated input script
+
+  ● p2sh (behaviour) › includes redeem.name in the payment name
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      276 |   test('includes redeem.name in the payment name', () => {
+      277 |     const payment = p2sh({
+    > 278 |       redeem: { output: bscript.compile([OPS.OP_1]), name: 'p2pkh' },
+          |                                              ^
+      279 |     });
+      280 |     expect(payment.name).toBe('p2sh-p2pkh');
+      281 |   });
+
+      at Object.OP_1 (test/cjs/payments/p2sh/p2sh.test.js:278:46)
+
+  ● p2sh (behaviour) › does not validate when opts.validate is false
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      284 |     // 23 bytes with an invalid opcode layout. With validation enabled this is
+      285 |     // rejected; with validation disabled it is accepted verbatim.
+    > 286 |     const badOutput = new Uint8Array(23).fill(OPS.OP_1);
+          |                                                   ^
+      287 |
+      288 |     expect(() => p2sh({ output: badOutput })).toThrow('Output is invalid');
+      289 |     const payment = p2sh({ output: badOutput }, { validate: false });
+
+      at Object.OP_1 (test/cjs/payments/p2sh/p2sh.test.js:286:51)
+
+  ● p2sh (behaviour) › accepts a redeem.output of exactly 520 bytes
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      328 |
+      329 |   test('accepts a redeem.output of exactly 520 bytes', () => {
+    > 330 |     const output = new Uint8Array(520).fill(OPS.OP_1);
+          |                                                 ^
+      331 |     const payment = p2sh({ redeem: { output } });
+      332 |     expect(payment.hash).toBeDefined();
+      333 |     expect(payment.address).toBeDefined();
+
+      at Object.OP_1 (test/cjs/payments/p2sh/p2sh.test.js:330:49)
+
+  ● p2sh (behaviour) › rejects a redeem.output of 521 bytes
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      338 |
+      339 |   test('rejects a redeem.output of 521 bytes', () => {
+    > 340 |     const output = new Uint8Array(521).fill(OPS.OP_1);
+          |                                                 ^
+      341 |     expect(() => p2sh({ redeem: { output } })).toThrow(
+      342 |       'Redeem.output unspendable if larger than 520 bytes',
+      343 |     );
+
+      at Object.OP_1 (test/cjs/payments/p2sh/p2sh.test.js:340:49)
+
+  ● p2sh (behaviour) › accepts a redeem.output with exactly 201 non-push operations
+
+    TypeError: Cannot read properties of undefined (reading 'OP_CHECKSIG')
+
+      345 |
+      346 |   test('accepts a redeem.output with exactly 201 non-push operations', () => {
+    > 347 |     const output = bscript.compile(Array(201).fill(OPS.OP_CHECKSIG));
+          |                                                        ^
+      348 |     expect(() => p2sh({ redeem: { output } })).not.toThrow();
+      349 |   });
+      350 |
+
+      at Object.OP_CHECKSIG (test/cjs/payments/p2sh/p2sh.test.js:347:56)
+
+  ● p2sh (behaviour) › rejects a redeem.output with 202 non-push operations
+
+    TypeError: Cannot read properties of undefined (reading 'OP_CHECKSIG')
+
+      350 |
+      351 |   test('rejects a redeem.output with 202 non-push operations', () => {
+    > 352 |     const output = bscript.compile(Array(202).fill(OPS.OP_CHECKSIG));
+          |                                                        ^
+      353 |     expect(() => p2sh({ redeem: { output } })).toThrow(
+      354 |       'Redeem.output unspendable with more than 201 non-push ops',
+      355 |     );
+
+      at Object.OP_CHECKSIG (test/cjs/payments/p2sh/p2sh.test.js:352:56)
+
+  ● p2sh (behaviour) › rejects a non-push scriptSig in redeem.input
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Non push-only scriptSig"
+    Received message:   "Cannot read properties of undefined (reading 'OP_RETURN')"
+
+          418 |       p2sh({
+          419 |         redeem: {
+        > 420 |           input: bscript.compile([OPS.OP_RETURN]),
+              |                                       ^
+          421 |           output: bscript.compile([OPS.OP_1]),
+          422 |         },
+          423 |       }),
+
+      at OP_RETURN (test/cjs/payments/p2sh/p2sh.test.js:420:39)
+      at Object.<anonymous> (.adverbug_jest_runtime/node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (.adverbug_jest_runtime/node_modules/expect/build/index.js:2235:93)
+      at Object.toThrow (test/cjs/payments/p2sh/p2sh.test.js:424:7)
+      at Object.toThrow (test/cjs/payments/p2sh/p2sh.test.js:424:7)
+
+  ● p2sh (behaviour) › rejects redeem.input combined with redeem.witness
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Input and witness provided"
+    Received message:   "Cannot read properties of undefined (reading 'OP_0')"
+
+          429 |       p2sh({
+          430 |         redeem: {
+        > 431 |           input: bscript.compile([OPS.OP_0]),
+              |                                       ^
+          432 |           output: bscript.compile([OPS.OP_1]),
+          433 |           witness: [tools.fromHex('00')],
+          434 |         },
+
+      at OP_0 (test/cjs/payments/p2sh/p2sh.test.js:431:39)
+      at Object.<anonymous> (.adverbug_jest_runtime/node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (.adverbug_jest_runtime/node_modules/expect/build/index.js:2235:93)
+      at Object.toThrow (test/cjs/payments/p2sh/p2sh.test.js:436:7)
+      at Object.toThrow (test/cjs/payments/p2sh/p2sh.test.js:436:7)
+
+  ● p2sh (behaviour) › rejects an empty redeem.input without witness
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Empty input"
+    Received message:   "Cannot read properties of undefined (reading 'OP_1')"
+
+          442 |         redeem: {
+          443 |           input: new Uint8Array(0),
+        > 444 |           output: bscript.compile([OPS.OP_1]),
+              |                                        ^
+          445 |         },
+          446 |       }),
+          447 |     ).toThrow('Empty input');
+
+      at OP_1 (test/cjs/payments/p2sh/p2sh.test.js:444:40)
+      at Object.<anonymous> (.adverbug_jest_runtime/node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (.adverbug_jest_runtime/node_modules/expect/build/index.js:2235:93)
+      at Object.toThrow (test/cjs/payments/p2sh/p2sh.test.js:447:7)
+      at Object.toThrow (test/cjs/payments/p2sh/p2sh.test.js:447:7)
+
+  ● p2sh (behaviour) › rejects a witness that differs from redeem.witness
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      449 |
+      450 |   test('rejects a witness that differs from redeem.witness', () => {
+    > 451 |     const output = bscript.compile([OPS.OP_1]);
+          |                                         ^
+      452 |     expect(() =>
+      453 |       p2sh({
+      454 |         redeem: {
+
+      at Object.OP_1 (test/cjs/payments/p2sh/p2sh.test.js:451:41)
+
+  ● p2sh (behaviour) › matches identical witness and redeem.witness
+
+    TypeError: Cannot read properties of undefined (reading 'OP_1')
+
+      463 |
+      464 |   test('matches identical witness and redeem.witness', () => {
+    > 465 |     const output = bscript.compile([OPS.OP_1]);
+          |                                         ^
+      466 |     const witness = [tools.fromHex('01'), tools.fromHex('0203')];
+      467 |     expect(() =>
+      468 |       p2sh({
+
+      at Object.OP_1 (test/cjs/payments/p2sh/p2sh.test.js:465:41)
+
+Test Suites: 1 failed, 1 total
+Tests:       11 failed, 55 passed, 66 total
+Snapshots:   0 total
+Time:        29.56 s
+Ran all test suites within paths "test/cjs/payments/p2sh/p2sh.test.js".
+Test results written to: ../results/report.json

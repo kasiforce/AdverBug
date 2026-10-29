@@ -1,0 +1,229 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/Material/fromJSON.test.js
+  Material.fromJSON
+    return value and empty input
+      ✓ returns the material instance itself (3 ms)
+      ✓ returns the instance itself for subclasses (1 ms)
+      ✓ does not change defaults when the json object is empty (2 ms)
+      ✓ ignores properties whose json value is undefined (1 ms)
+      ✓ keeps existing values for properties that are not present in json (1 ms)
+    identity properties
+      ✓ assigns uuid and name
+      ✓ assigns empty strings instead of treating them as missing
+    plain scalar properties
+      ✓ assigns roughness from json
+      ✓ assigns metalness from json (1 ms)
+      ✓ assigns sheen from json
+      ✓ assigns sheenRoughness from json
+      ✓ assigns specularIntensity from json
+      ✓ assigns shininess from json (1 ms)
+      ✓ assigns clearcoat from json
+      ✓ assigns clearcoatRoughness from json
+      ✓ assigns diffuseRoughness from json (1 ms)
+      ✓ assigns dispersion from json
+      ✓ assigns retroreflectivity from json
+      ✓ assigns iridescence from json
+      ✓ assigns iridescenceIOR from json (1 ms)
+      ✓ assigns transmission from json
+      ✓ assigns thickness from json
+      ✓ assigns attenuationDistance from json (1 ms)
+      ✓ assigns anisotropy from json
+      ✓ assigns anisotropyRotation from json
+      ✓ assigns fog from json
+      ✓ assigns flatShading from json (1 ms)
+      ✓ assigns bumpScale from json
+      ✓ assigns normalMapType from json
+      ✓ assigns displacementScale from json
+      ✓ assigns displacementBias from json (1 ms)
+      ✓ assigns emissiveIntensity from json
+      ✓ assigns envMapIntensity from json
+      ✓ assigns reflectivity from json (1 ms)
+      ✓ assigns refractionRatio from json
+      ✓ assigns lightMapIntensity from json
+      ✓ assigns aoMapIntensity from json
+      ✓ assigns size from json (1 ms)
+      ✓ assigns sizeAttenuation from json
+      ✓ assigns rotation from json
+      ✓ assigns linewidth from json
+      ✓ assigns linecap from json (1 ms)
+      ✓ assigns linejoin from json
+      ✓ assigns dashSize from json
+      ✓ assigns gapSize from json
+      ✓ assigns scale from json (1 ms)
+      ✓ assigns combine from json
+      ✓ assigns blending from json
+      ✓ assigns side from json (1 ms)
+      ✓ assigns shadowSide from json
+      ✓ assigns opacity from json
+      ✓ assigns transparent from json
+      ✓ assigns alphaTest from json (1 ms)
+      ✓ assigns alphaHash from json
+      ✓ assigns depthFunc from json
+      ✓ assigns depthTest from json
+      ✓ assigns depthWrite from json
+      ✓ assigns colorWrite from json
+      ✓ assigns depthPacking from json
+      ✓ assigns blendSrc from json
+      ✓ assigns blendDst from json
+      ✓ assigns blendEquation from json (1 ms)
+      ✓ assigns blendSrcAlpha from json
+      ✓ assigns blendDstAlpha from json
+      ✓ assigns blendEquationAlpha from json
+      ✓ assigns blendAlpha from json
+      ✓ assigns stencilWriteMask from json
+      ✓ assigns stencilFunc from json
+      ✓ assigns stencilRef from json
+      ✓ assigns stencilFuncMask from json
+      ✓ assigns stencilFail from json
+      ✓ assigns stencilZFail from json
+      ✓ assigns stencilZPass from json
+      ✓ assigns stencilWrite from json
+      ✓ assigns wireframe from json
+      ✓ assigns wireframeLinewidth from json (1 ms)
+      ✓ assigns wireframeLinecap from json
+      ✓ assigns wireframeLinejoin from json
+      ✓ assigns polygonOffset from json
+      ✓ assigns polygonOffsetFactor from json (1 ms)
+      ✓ assigns polygonOffsetUnits from json
+      ✓ assigns dithering from json
+      ✓ assigns alphaToCoverage from json
+      ✓ assigns premultipliedAlpha from json
+      ✓ assigns forceSinglePass from json (1 ms)
+      ✓ assigns allowOverride from json
+      ✓ assigns visible from json
+      ✓ assigns toneMapped from json
+      ✓ assigns clipIntersection from json (12 ms)
+      ✓ assigns clipShadows from json
+      ✓ applies falsy but defined numeric and boolean values (1 ms)
+      ✓ keeps the material type and isMaterial flag untouched
+    alphaTest setter behaviour
+      ✓ increments version when alpha testing is enabled (1 ms)
+      ✓ does not increment version when alpha testing stays disabled
+      ✓ does not increment version when alpha testing stays enabled
+    guarded color properties
+      ✓ sets color and emissive hex values while keeping the Color instances (1 ms)
+      ✓ sets specular and shininess on a phong material (1 ms)
+      ✓ sets specularColor and attenuationColor on a physical material
+      ✓ sets blendColor which exists on every material (1 ms)
+      ✓ applies a zero hex value
+      ✓ ignores color-like properties that do not exist on the receiver (1 ms)
+      ✓ creates a new sheenColor Color even if the property did not exist yet
+      ✓ replaces the sheenColor instance of a physical material without mutating the old one (1 ms)
+    vertexColors conversion
+      ✓ converts a positive number to true
+      ✓ converts a value greater than one to true
+      ✓ converts zero to false
+      ✓ converts a negative number to false (1 ms)
+      ✓ passes booleans through unchanged
+    vector properties
+      ✓ creates normalScale from an array
+      ✓ expands a scalar normalScale to both components (1 ms)
+      ✓ creates clearcoatNormalScale from an array
+      ✓ applies envMapRotation to the existing Euler instance (1 ms)
+    clipping planes
+      ✓ converts serialized planes into Plane instances (1 ms)
+      ✓ accepts an empty plane list
+    texture lookups
+      ✓ resolves map through the textures map (1 ms)
+      ✓ resolves matcap through the textures map
+      ✓ resolves alphaMap through the textures map
+      ✓ resolves bumpMap through the textures map
+      ✓ resolves normalMap through the textures map
+      ✓ resolves displacementMap through the textures map
+      ✓ resolves roughnessMap through the textures map
+      ✓ resolves metalnessMap through the textures map
+      ✓ resolves emissiveMap through the textures map
+      ✓ resolves specularMap through the textures map
+      ✓ resolves specularIntensityMap through the textures map
+      ✓ resolves specularColorMap through the textures map (1 ms)
+      ✓ resolves envMap through the textures map
+      ✓ resolves lightMap through the textures map
+      ✓ resolves aoMap through the textures map
+      ✓ resolves gradientMap through the textures map (1 ms)
+      ✓ resolves clearcoatMap through the textures map
+      ✓ resolves clearcoatRoughnessMap through the textures map
+      ✓ resolves clearcoatNormalMap through the textures map
+      ✓ resolves diffuseRoughnessMap through the textures map
+      ✓ resolves iridescenceMap through the textures map
+      ✓ resolves iridescenceThicknessMap through the textures map
+      ✓ resolves transmissionMap through the textures map
+      ✓ resolves thicknessMap through the textures map
+      ✓ resolves anisotropyMap through the textures map (1 ms)
+      ✓ resolves sheenColorMap through the textures map
+      ✓ resolves sheenRoughnessMap through the textures map
+      ✓ sets map to null when the texture is unknown (1 ms)
+      ✓ sets matcap to null when the texture is unknown
+      ✓ sets alphaMap to null when the texture is unknown
+      ✓ sets bumpMap to null when the texture is unknown
+      ✓ sets normalMap to null when the texture is unknown
+      ✓ sets displacementMap to null when the texture is unknown (1 ms)
+      ✓ sets roughnessMap to null when the texture is unknown
+      ✓ sets metalnessMap to null when the texture is unknown
+      ✓ sets emissiveMap to null when the texture is unknown
+      ✓ sets specularMap to null when the texture is unknown
+      ✓ sets specularIntensityMap to null when the texture is unknown
+      ✓ sets specularColorMap to null when the texture is unknown
+      ✓ sets envMap to null when the texture is unknown
+      ✓ sets lightMap to null when the texture is unknown
+      ✓ sets aoMap to null when the texture is unknown
+      ✓ sets gradientMap to null when the texture is unknown
+      ✓ sets clearcoatMap to null when the texture is unknown
+      ✓ sets clearcoatRoughnessMap to null when the texture is unknown
+      ✓ sets clearcoatNormalMap to null when the texture is unknown
+      ✓ sets diffuseRoughnessMap to null when the texture is unknown
+      ✓ sets iridescenceMap to null when the texture is unknown
+      ✓ sets iridescenceThicknessMap to null when the texture is unknown
+      ✓ sets transmissionMap to null when the texture is unknown
+      ✓ sets thicknessMap to null when the texture is unknown
+      ✓ sets anisotropyMap to null when the texture is unknown (1 ms)
+      ✓ sets sheenColorMap to null when the texture is unknown
+      ✓ sets sheenRoughnessMap to null when the texture is unknown
+      ✓ sets map to null for an empty texture key
+      ✓ sets matcap to null for an empty texture key
+      ✓ sets alphaMap to null for an empty texture key
+      ✓ sets bumpMap to null for an empty texture key
+      ✓ sets normalMap to null for an empty texture key
+      ✓ sets displacementMap to null for an empty texture key
+      ✓ sets roughnessMap to null for an empty texture key (1 ms)
+      ✓ sets metalnessMap to null for an empty texture key
+      ✓ sets emissiveMap to null for an empty texture key
+      ✓ sets specularMap to null for an empty texture key
+      ✓ sets specularIntensityMap to null for an empty texture key
+      ✓ sets specularColorMap to null for an empty texture key (1 ms)
+      ✓ sets envMap to null for an empty texture key
+      ✓ sets lightMap to null for an empty texture key
+      ✓ sets aoMap to null for an empty texture key
+      ✓ sets gradientMap to null for an empty texture key
+      ✓ sets clearcoatMap to null for an empty texture key
+      ✓ sets clearcoatRoughnessMap to null for an empty texture key
+      ✓ sets clearcoatNormalMap to null for an empty texture key
+      ✓ sets diffuseRoughnessMap to null for an empty texture key
+      ✓ sets iridescenceMap to null for an empty texture key
+      ✓ sets iridescenceThicknessMap to null for an empty texture key
+      ✓ sets transmissionMap to null for an empty texture key
+      ✓ sets thicknessMap to null for an empty texture key
+      ✓ sets anisotropyMap to null for an empty texture key
+      ✓ sets sheenColorMap to null for an empty texture key
+      ✓ sets sheenRoughnessMap to null for an empty texture key
+      ✓ handles a missing textures argument for absent map entries
+    userData and array payloads
+      ✓ assigns userData by reference
+      ✓ assigns iridescenceThicknessRange unchanged (1 ms)
+    round trip with toJSON
+      ✓ restores standard properties from serialized data (2 ms)
+      ✓ restores custom blending and stencil settings (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       200 passed, 200 total
+Snapshots:   0 total
+Time:        1.697 s
+Ran all test suites within paths "test/materials/Material/fromJSON.test.js".
+Test results written to: ../results/report.json

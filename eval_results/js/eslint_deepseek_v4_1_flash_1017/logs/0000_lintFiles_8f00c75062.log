@@ -1,0 +1,55 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/eslint/eslint/lintFiles.test.js
+  ESLint#lintFiles
+    pattern handling
+      ✓ returns an empty array for an empty string when passOnNoPatterns is true (6 ms)
+      ✓ returns an empty array for an empty array when passOnNoPatterns is true (1 ms)
+      ✓ normalizes an empty string to ['.'] when passOnNoPatterns is false (3 ms)
+      ✓ normalizes an empty array to ['.'] when passOnNoPatterns is false (1 ms)
+      ✓ normalizes a non-empty string pattern to a one-element array (1 ms)
+      ✓ passes an array of patterns through unchanged (1 ms)
+      ✓ throws when patterns is null (58 ms)
+      ✓ throws when patterns is undefined (2 ms)
+      ✓ throws when patterns is a number (2 ms)
+      ✓ throws when patterns is a boolean (1 ms)
+      ✓ throws when patterns is an object (2 ms)
+      ✓ throws when patterns is a whitespace-only string (1 ms)
+      ✓ throws when patterns is an array containing an empty string (1 ms)
+      ✓ throws when patterns is an array containing a whitespace-only string (1 ms)
+      ✓ throws when patterns is an array containing a non-string (1 ms)
+      ✓ throws when patterns is an array with only an empty string (1 ms)
+    file discovery options
+      ✓ passes cwd, globInputPaths and errorOnUnmatchedPattern to findFiles (1 ms)
+      ✓ returns an empty array when findFiles finds no files (1 ms)
+    single-thread linting
+      ✓ lints every discovered file and filters out falsy results (1 ms)
+      ✓ adds a usedDeprecatedRules getter to each returned result (2 ms)
+      ✓ passes the config, options, linter and cache to lintFile (1 ms)
+      ✓ calls calculateWorkerCount with the instance and discovered files
+      ✓ does not start workers when calculateWorkerCount returns zero (1 ms)
+    lint result cache
+      ✓ deletes an existing cache file when caching is disabled (13 ms)
+      ✓ keeps the cache file and reconciles the cache when caching is enabled (1 ms)
+      ✓ rethrows a cache-file deletion error when the file still exists (2 ms)
+      ✓ ignores a cache-file deletion error when the file no longer exists (1 ms)
+    suppressions
+      ✓ does not apply suppressions by default (1 ms)
+      ✓ loads and applies suppressions when applySuppressions is enabled (2 ms)
+    multithread linting
+      ✓ starts workers and returns their results when workerCount is positive (2 ms)
+      ✓ warns to disable concurrency when at most two workers are used (2 ms)
+      ✓ warns to reduce or disable concurrency for more than two workers with a numeric setting (1 ms)
+      ✓ suggests a numeric concurrency setting for 'auto' with more than two workers (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       33 passed, 33 total
+Snapshots:   0 total
+Time:        3.404 s
+Ran all test suites within paths "test/lib/eslint/eslint/lintFiles.test.js".
+Test results written to: ../results/report.json

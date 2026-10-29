@@ -1,0 +1,50 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/bidi/bidi.test.js
+  bidi
+    direction detection
+      ✓ returns an empty string with ltr direction (5 ms)
+      ✓ leaves LTR-only text unchanged (1 ms)
+      ✓ does not strip angle brackets when no bidi processing is needed (1 ms)
+      ✓ marks a single Hebrew character as rtl
+      ✓ reverses a purely Hebrew string and marks it rtl (1 ms)
+      ✓ reverses a purely Arabic string and marks it rtl (1 ms)
+      ✓ reorders a primarily RTL mixed string
+      ✓ keeps a long predominantly LTR string free of reordering
+      ✓ treats exactly 30% RTL characters as primarily RTL (1 ms)
+      ✓ treats short strings containing RTL characters as primarily RTL
+    vertical text
+      ✓ returns ttb direction and leaves the content untouched (1 ms)
+      ✓ returns ttb direction for an empty string
+    numbers, marks and neutrals
+      ✓ keeps Arabic-Indic digits in logical order
+      ✓ places a European digit to the left of surrounding RTL text (1 ms)
+      ✓ keeps a combining mark adjacent to its base character
+      ✓ reorders neutral punctuation together with RTL text (1 ms)
+    explicit start level
+      ✓ keeps LTR text first when an even start level is requested
+      ✓ puts RTL text first when an odd start level is requested
+      ✓ reports ltr when the start level is set explicitly (1 ms)
+    angle bracket sanitizing
+      ✓ removes angle brackets from bidi-processed text
+      ✓ removes all angle brackets wherever they occur (1 ms)
+      ✓ removes angle brackets even when they are the only neutral text
+      ✓ leaves other punctuation untouched (1 ms)
+    state isolation
+      ✓ produces correct results across consecutive calls
+    invalid Unicode characters
+      ✓ warns about characters missing from the Arabic type table (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       25 passed, 25 total
+Snapshots:   0 total
+Time:        0.824 s
+Ran all test suites within paths "test/core/bidi/bidi.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,100 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/element/system/initializeComponentData.test.js (5.674 s)
+  ElementComponentSystem#initializeComponentData
+    initialization lifecycle and screen binding
+      ✓ marks the component as being initialized for the duration of the call (4 ms)
+      ✓ finds the screen but does not bind when no screen is above the entity
+      ✓ binds and updates the screen returned by _parseUpToScreen
+      ✓ calls onEnable exactly once for an enabled component on an enabled entity (1 ms)
+      ✓ does not call onEnable when the component is disabled (1 ms)
+      ✓ does not call onEnable when the entity is disabled
+    anchor and pivot
+      ✓ copies an anchor supplied as a Vec4 without replacing the anchor object (1 ms)
+      ✓ sets an anchor supplied as an array (1 ms)
+      ✓ copies a pivot supplied as a Vec2
+      ✓ sets a pivot supplied as an array, ignoring extra entries (1 ms)
+      ✓ leaves anchor and pivot untouched when they are not supplied
+    anchor classification boundaries
+      ✓ treats a horizontal anchor difference of exactly 0.001 as a point anchor
+      ✓ treats a horizontal anchor difference greater than 0.001 as split anchors
+      ✓ treats a vertical anchor difference of exactly 0.001 as a point anchor (1 ms)
+      ✓ treats a vertical anchor difference greater than 0.001 as split anchors
+    deriving margins from the entity position
+      ✓ derives both axes from the local position, size and pivot (1 ms)
+      ✓ uses the pivot when deriving margins with a different position and size
+      ✓ does not derive margins when a margin is supplied (1 ms)
+      ✓ does not derive the horizontal margins when left is supplied
+      ✓ does not derive the horizontal margins when right is supplied (1 ms)
+      ✓ does not derive the horizontal margins when both left and right are supplied
+      ✓ does not derive the vertical margins when bottom is supplied (1 ms)
+      ✓ does not derive the vertical margins when top is supplied
+      ✓ does not derive either axis when all edges are supplied (1 ms)
+      ✓ does not derive the horizontal margins for split horizontal anchors
+      ✓ does not derive the vertical margins for split vertical anchors (1 ms)
+      ✓ still derives margins when the horizontal anchor difference is only the threshold
+    applying margins and edge overrides
+      ✓ copies a margin supplied as a Vec4 and notifies through the margin setter (1 ms)
+      ✓ sets a margin supplied as an array and notifies through the margin setter
+      ✓ lets individual edges override the supplied margin (1 ms)
+      ✓ applies individual edges without a supplied margin
+      ✓ does not notify the margin setter when no margin or edge is supplied
+    width and height
+      ✓ assigns width and height when the anchors are not split (1 ms)
+      ✓ assigns zero width and height
+      ✓ ignores width for split horizontal anchors but still assigns height
+      ✓ ignores height for split vertical anchors but still assigns width (1 ms)
+      ✓ force-refreshes a split anchor once even without a width or height
+      ✓ does not assign width, height or anchor when they are not supplied and anchors are points (1 ms)
+    general properties
+      ✓ assigns enabled, useInput and fitMode
+      ✓ does not assign enabled, useInput or fitMode when absent
+      ✓ defaults batchGroupId to -1 when it is undefined (1 ms)
+      ✓ defaults batchGroupId to -1 when it is null
+      ✓ preserves a batchGroupId of zero
+      ✓ preserves a non-zero batchGroupId (1 ms)
+      ✓ copies a layers array instead of sharing it
+      ✓ copies an empty layers array
+      ✓ ignores a non-array layers value (1 ms)
+      ✓ ignores a null layers value
+      ✓ assigns type and does not copy type-specific properties for a group element
+      ✓ leaves the existing type alone when type is absent (1 ms)
+    image elements
+      ✓ copies all supported image properties (1 ms)
+      ✓ keeps a Color instance supplied for an image color
+      ✓ ignores a null pixelsPerUnit and falsy texture, sprite and material values (1 ms)
+      ✓ copies nullable image properties when they are defined
+      ✓ treats an existing image component as an image even without a type in the data
+      ✓ updates the image mesh when it is dirty after initialization (1 ms)
+      ✓ does not update the image mesh when it is not dirty
+      ✓ does not update an image mesh on a non-image component
+    text elements
+      ✓ copies all supported text properties (2 ms)
+      ✓ prefers text over key when both are supplied
+      ✓ falls back to key when text is null
+      ✓ falls back to key when text is undefined
+      ✓ assigns an empty text string instead of falling back to key
+      ✓ ignores text and key when both are null
+      ✓ keeps a Color instance supplied for a text color
+      ✓ does not apply fontSize to lineHeight when an explicit lineHeight is given (1 ms)
+      ✓ temporarily applies fontSize to lineHeight when lineHeight is zero
+      ✓ applies a zero fontSize to lineHeight
+      ✓ assigns lineHeight without fontSize when only lineHeight is supplied (1 ms)
+      ✓ treats falsy autoFitWidth and autoFitHeight as absent
+      ✓ does not copy image-only properties onto a text element
+    invalid input
+      ✓ throws when the data block is undefined (35 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       72 passed, 72 total
+Snapshots:   0 total
+Time:        6.029 s
+Ran all test suites within paths "test/framework/components/element/system/initializeComponentData.test.js".
+Test results written to: ../results/report.json

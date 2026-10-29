@@ -1,0 +1,48 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/cff_parser/parse.test.js
+  CFFParser.parse
+    basic (non-CID) fonts
+      ✓ returns a CFF instance and assigns it to the parser (6 ms)
+      ✓ parses the header (1 ms)
+      ✓ parses the name, string and global subroutine indexes (1 ms)
+      ✓ parses the top DICT and exposes its offsets (1 ms)
+      ✓ parses the charstring index and exposes count/charStrings/seacs/widths (1 ms)
+      ✓ resolves charset names through the string index (1 ms)
+      ✓ parses the encoding (1 ms)
+      ✓ parses the private DICT and uses defaultWidthX for widths (1 ms)
+      ✓ handles a font without any charstring (1 ms)
+      ✓ replaces an invalid charstring with a plain endchar (1 ms)
+    properties updates
+      ✓ copies the FontMatrix onto the properties
+      ✓ uses the default FontMatrix when the top DICT does not define one (1 ms)
+      ✓ leaves ascent/descent untouched when there is no usable FontBBox (1 ms)
+    FontBBox handling
+      ✓ falls back to the (normalized) FontDescriptor bbox when the CFF one is empty (1 ms)
+      ✓ recovers unsigned 16-bit lower-left coordinates (Ghostscript quirk)
+      ✓ repairs every unsigned coordinate when the descriptor corroborates it (1 ms)
+      ✓ preserves large unsigned upper-right coordinates when the descriptor does not corroborate (1 ms)
+      ✓ does not repair a bbox whose lower-left corner is not negative
+      ✓ does not repair a bbox when there is no descriptor bbox (1 ms)
+    CID fonts
+      ✓ populates fdArray/fdSelect, uses a CID charset and skips the encoding (1 ms)
+      ✓ clamps the FDArray count to the maximum addressable amount (2 ms)
+    shifted and invalid data
+      ✓ skips leading garbage before the CFF header
+      ✓ throws a FormatError when the header is missing (23 ms)
+      ✓ throws a FormatError for empty data
+      ✓ throws a FormatError when an INDEX has an invalid offset size (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       25 passed, 25 total
+Snapshots:   0 total
+Time:        1.05 s
+Ran all test suites within paths "test/core/cff_parser/parse.test.js".
+Test results written to: ../results/report.json

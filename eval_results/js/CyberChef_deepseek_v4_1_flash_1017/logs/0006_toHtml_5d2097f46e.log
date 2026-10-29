@@ -1,0 +1,67 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/web/HTMLIngredient/toHtml.test.js
+  HTMLIngredient.toHtml
+    text-like ingredient types
+      ✓ renders a wide text input for "string" (4 ms)
+      ✓ renders a wide text input for "binaryString"
+      ✓ renders a wide text input for "byteArray"
+      ✓ renders a short inline text input for "shortString"
+      ✓ renders a short inline text input for "binaryShortString" (1 ms)
+      ✓ does not add any hint attributes when no hint is configured
+      ✓ adds tooltip attributes when a hint is configured
+      ✓ adds the disabled attribute when the ingredient is disabled
+      ✓ adds a maxlength attribute when maxLength is set
+      ✓ omits maxlength when maxLength is zero (1 ms)
+    toggleString
+      ✓ renders a dropdown containing every toggle value (1 ms)
+    number
+      ✓ renders a number input with min, max and step
+      ✓ defaults min and max to empty strings and step to 1 (1 ms)
+      ✓ ignores non-numeric min and max values
+    boolean
+      ✓ renders a checked checkbox when the value is truthy
+      ✓ renders an unchecked checkbox when the value is false
+      ✓ renders a disabled checkbox when disabled
+    option
+      ✓ renders plain options and marks the default one as selected
+      ✓ defaults to selecting the first option (1 ms)
+      ✓ translates group markers into optgroups
+      ✓ renders a disabled select when disabled
+    populateOption
+      ✓ renders options with escaped populate values and registers a change listener
+    populateMultiOption
+      ✓ JSON-encodes and escapes populate values and uses the multi change handler
+      ✓ supports optgroups in the population list
+    editableOption
+      ✓ renders the value at defaultIndex in the input and all options in the menu (1 ms)
+      ✓ uses the first option when defaultIndex is not supplied
+    editableOptionShort
+      ✓ renders a short inline editable option input (1 ms)
+    text
+      ✓ renders a textarea with the default of three rows
+      ✓ uses the configured number of rows
+    argSelector
+      ✓ renders options with turnon/turnoff metadata and marks the default as selected
+      ✓ does not select any option when defaultIndex is out of range (1 ms)
+    label
+      ✓ renders a hidden input without a tabindex
+    generic behaviour
+      ✓ returns an empty string for unknown ingredient types
+      ✓ returns an empty string when no type is supplied
+      ✓ assigns sequential ids and tab indexes (1 ms)
+      ✓ does not register listeners for types that require none
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        1.128 s
+Ran all test suites within paths "test/web/HTMLIngredient/toHtml.test.js".
+Test results written to: ../results/report.json

@@ -1,0 +1,65 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/particle-system/particle-emitter/rebuild.test.js
+  ParticleEmitter#rebuild()
+    configuration and state
+      ✓ falls back to the default color map when none is supplied (6 ms)
+      ✓ keeps a supplied color map (2 ms)
+      ✓ uses emitter extents as spawn bounds for a box emitter (1 ms)
+      ✓ uses the emitter radius as spawn bounds for a sphere emitter (1 ms)
+      ✓ preserves an explicit CPU request (1 ms)
+      ✓ forces CPU particles when sorting is enabled (1 ms)
+      ✓ forces CPU particles when the graphics device requests it (1 ms)
+      ✓ keeps GPU particles when CPU mode is neither requested nor required (1 ms)
+      ✓ preserves visibility returned while destroying old resources (1 ms)
+      ✓ calls the rebuild lifecycle methods (2 ms)
+      ✓ prewarms for one lifetime when requested (1 ms)
+      ✓ does not prewarm when disabled
+    particle data
+      ✓ allocates GPU particle data using two texture rows (1 ms)
+      ✓ allocates CPU particle data using four texture rows and marks particles visible (1 ms)
+      ✓ copies spawn data into a separate starting particle texture (2 ms)
+      ✓ creates sorting state for every actual particle (1 ms)
+      ✓ calculates a spawn position for every particle and passes extents inner ratios (1 ms)
+      ✓ uses zero inner ratios for zero-sized box dimensions (1 ms)
+      ✓ rounds the particle count up to the next power of two (1 ms)
+    spawn transforms
+      ✓ uses an identity rotation and spawn-bounds scale for a node-less box emitter (1 ms)
+      ✓ includes node rotation and local scale in a world-space box spawn transform (2 ms)
+      ✓ uses local-space spawn bounds for a local-space box emitter with a node (1 ms)
+      ✓ uses the node world position when spawning in world space (1 ms)
+      ✓ uses the world origin when there is no node (1 ms)
+    world bounds
+      ✓ transforms local bounds into world space and initializes both trail bounds (1 ms)
+      ✓ keeps local bounds in local space even when a node exists (1 ms)
+      ✓ leaves world bounds untouched when there is no node (1 ms)
+      ✓ sets the mesh instance AABB from world bounds in world space (1 ms)
+      ✓ transforms the mesh instance AABB from local into world space for a local-space emitter (1 ms)
+    GPU resources
+      ✓ creates particle textures and render targets for GPU particles (2 ms)
+      ✓ uses RGBA32F textures and vec4 output when float rendering is supported (1 ms)
+      ✓ falls back to RGBA32U textures and uvec4 output when float rendering is unsupported (1 ms)
+      ✓ does not create GPU particle textures or render targets for CPU particles (1 ms)
+    simulation shaders
+      ✓ creates the respawn, no-respawn and stop shaders from the shared options (2 ms)
+      ✓ sets a single mode define for each of the three shaders (1 ms)
+      ✓ includes local-space and shape defines in the shader unique name and defines (1 ms)
+    mesh and material
+      ✓ configures the quad mesh and mesh instance when no particle mesh is supplied (1 ms)
+      ✓ uses particle mesh vertex and index counts when a mesh is supplied (1 ms)
+      ✓ initializes the material and material textures (1 ms)
+      ✓ preserves the mesh instance visibility returned by resource destruction
+
+Test Suites: 1 passed, 1 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        2.898 s
+Ran all test suites within paths "test/scene/particle-system/particle-emitter/rebuild.test.js".
+Test results written to: ../results/report.json

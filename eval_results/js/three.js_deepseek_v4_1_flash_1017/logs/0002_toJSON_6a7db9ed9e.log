@@ -1,0 +1,48 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/Material/toJSON.test.js
+  Material.toJSON
+    metadata and default serialization
+      ✓ emits the expected metadata block and all base Material defaults (4 ms)
+      ✓ does not serialize optional fields that are undefined (4 ms)
+      ✓ copies customized base Material properties, including converted color values (2 ms)
+    userData
+      ✓ omits empty userData
+      ✓ serializes non-empty userData by reference (1 ms)
+    optional material properties
+      ✓ serializes all supported optional scalar and enum properties, including zero values (1 ms)
+      ✓ converts all Color properties to hexadecimal values
+      ✓ ignores color-like properties that are not actual Color instances (1 ms)
+      ✓ serializes attenuationColor whenever it is defined, using getHex() (1 ms)
+    environment map options
+      ✓ serializes envMapRotation, envMapIntensity, reflectivity and refractionRatio without an envMap (1 ms)
+    texture serialization
+      ✓ serializes every supported texture slot by uuid along with its auxiliary settings (5 ms)
+      ✓ omits texture entries whose values are not textures (1 ms)
+      ✓ omits every texture slot and auxiliary texture setting when each value is not a texture (1 ms)
+      ✓ does not serialize combine for a non-texture envMap (1 ms)
+    clipping planes
+      ✓ omits clippingPlanes when unset or empty (1 ms)
+      ✓ serializes non-empty clipping plane arrays through Plane.toJSON()
+    root object handling and texture/image caches
+      ✓ root call omits textures and images when no textures were serialized (1 ms)
+      ✓ root call extracts cached textures and images and strips their metadata (1 ms)
+      ✓ root call only adds textures when the texture cache is non-empty and the image cache is empty
+      ✓ root call only adds images when the image cache is non-empty and the texture cache is empty (1 ms)
+      ✓ a string meta argument is treated as a root object and a fresh cache is created
+      ✓ a provided meta object is treated as non-root: no texture or image extraction occurs (1 ms)
+      ✓ a provided meta object with pre-existing entries is not reduced into data.textures
+
+Test Suites: 1 passed, 1 total
+Tests:       23 passed, 23 total
+Snapshots:   0 total
+Time:        1.631 s
+Ran all test suites within paths "test/materials/Material/toJSON.test.js".
+Test results written to: ../results/report.json

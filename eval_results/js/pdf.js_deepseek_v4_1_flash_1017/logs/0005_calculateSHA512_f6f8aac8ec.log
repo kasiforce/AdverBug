@@ -1,0 +1,52 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/calculate_sha_other/calculateSHA512.test.js
+  calculateSHA512
+    return value contract
+      ✓ returns a 64-byte Uint8Array by default (6 ms)
+      ✓ returns a 64-byte Uint8Array when mode384 is explicitly false (1 ms)
+      ✓ returns a 48-byte Uint8Array when mode384 is true (1 ms)
+    known SHA-512 vectors
+      ✓ hashes the empty input (1 ms)
+      ✓ hashes the ASCII string 'abc' (1 ms)
+      ✓ hashes the classic 'quick brown fox' sentence (1 ms)
+      ✓ hashes binary data covering all byte values (2 ms)
+    padding and block boundaries
+      ✓ hashes 111 bytes (padding block boundary) (1 ms)
+      ✓ hashes 112 bytes (padding block boundary) (1 ms)
+      ✓ hashes 127 bytes (padding block boundary) (1 ms)
+      ✓ hashes 128 bytes (padding block boundary) (1 ms)
+      ✓ hashes 129 bytes (padding block boundary) (1 ms)
+      ✓ hashes a multi-block input of 1000 bytes (2 ms)
+    offset and length handling
+      ✓ hashes only data[offset .. offset + length)
+      ✓ ignores bytes outside the requested slice (1 ms)
+      ✓ produces the empty-input digest when length is zero despite available data
+      ✓ does not mutate the source buffer (2 ms)
+    determinism
+      ✓ produces identical output for repeated calls (1 ms)
+    SHA-384 mode
+      ✓ calculateSHA512(..., true) hashes ""
+      ✓ calculateSHA512(..., true) hashes "abc" (1 ms)
+      ✓ calculateSHA512(..., true) hashes "The quick brown fox jumps over the lazy dog"
+      ✓ calculateSHA512(..., true) hashes "The quick brown fox jumps over the lazy dog." (1 ms)
+      ✓ calculateSHA384 hashes ""
+      ✓ calculateSHA384 hashes "abc" (1 ms)
+      ✓ calculateSHA384 hashes "The quick brown fox jumps over the lazy dog"
+      ✓ calculateSHA384 hashes "The quick brown fox jumps over the lazy dog." (1 ms)
+      ✓ calculateSHA512 with mode384 matches calculateSHA384
+      ✓ hashes a multi-block 1000-byte input in SHA-384 mode (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       28 passed, 28 total
+Snapshots:   0 total
+Time:        0.76 s
+Ran all test suites within paths "test/core/calculate_sha_other/calculateSHA512.test.js".
+Test results written to: ../results/report.json

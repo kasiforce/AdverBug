@@ -1,0 +1,72 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/extras/exporters/gltf-exporter/writeStandardMaterial.test.js (11.323 s)
+  GltfExporter#writeStandardMaterial
+    PBR metallic-roughness factors
+      ✓ omits all optional factors for a default lit metallic material (3 ms)
+      ✓ writes a linearized baseColorFactor from a non-white diffuse color and opacity (1 ms)
+      ✓ writes baseColorFactor when the diffuse color is white but opacity is not one (1 ms)
+      ✓ uses the emissive color as the unlit base color source (1 ms)
+      ✓ writes a non-default metallicFactor for a metallic material (1 ms)
+      ✓ always writes metallicFactor zero for a spec-gloss material
+      ✓ derives roughness as one minus gloss when gloss is not inverted
+      ✓ uses gloss directly as roughness when gloss is inverted
+      ✓ omits roughnessFactor when the calculated roughness is one (1 ms)
+    PBR textures
+      ✓ routes lit diffuseMap and metalnessMap to their PBR texture slots
+      ✓ routes unlit emissiveMap to baseColorTexture and ignores diffuseMap (1 ms)
+    emissive output
+      ✓ writes a linearized emissiveFactor for a lit non-black emissive color
+      ✓ writes KHR_materials_emissive_strength when lit intensity is not one (1 ms)
+      ✓ does not write emissive strength for unlit materials
+    KHR_materials_anisotropy
+      ✓ writes strength, radians, and texture when GGX anisotropy is enabled (1 ms)
+      ✓ emits a texture-only anisotropy extension when only a map is set
+      ✓ does not write anisotropy when GGX specular is disabled
+      ✓ does not write anisotropy when enabled with no anisotropy contributions
+    KHR_materials_clearcoat
+      ✓ writes the clearcoat factor, roughness, and all clearcoat textures (1 ms)
+      ✓ clamps the clearcoat factor to one and omits default optional fields
+      ✓ omits the normal scale when clearcoat bumpiness is the default (1 ms)
+      ✓ does not write clearcoat when its factor is zero
+    scalar material extensions
+      ✓ writes KHR_materials_dispersion for a non-zero dispersion
+      ✓ writes KHR_materials_ior as the reciprocal of a non-default positive refraction index (1 ms)
+      ✓ omits KHR_materials_ior for the default and non-positive refraction indices
+    KHR_materials_iridescence
+      ✓ writes all non-default iridescence properties and textures
+      ✓ emits a texture-only iridescence extension when only a map is set
+      ✓ omits the extension when iridescence is enabled with entirely default values
+      ✓ does not write iridescence when it is disabled even if properties are non-default
+    KHR_materials_sheen
+      ✓ writes a linearized sheen color, roughness, and textures (1 ms)
+      ✓ emits a texture-only sheen extension when only a color map is set
+      ✓ omits sheen when enabled with default black color and zero gloss (1 ms)
+      ✓ does not write sheen when it is disabled even with non-default values
+    KHR_materials_specular
+      ✓ writes specular factors and textures for a metallic specular-color material
+      ✓ writes the specular extension for spec-gloss materials
+      ✓ emits a texture-only specular extension for a specular color map
+      ✓ does not write specular for metallic materials without specular color tint
+    KHR_materials_transmission
+      ✓ writes transmission factor and texture when dynamic refraction is enabled (1 ms)
+      ✓ writes a texture-only transmission extension when only a refraction map is set
+      ✓ does not write transmission when dynamic refraction is disabled
+    KHR_materials_volume
+      ✓ writes thickness, attenuation, and texture when dynamic refraction is enabled (1 ms)
+      ✓ emits a texture-only volume extension when only a thickness map is set
+      ✓ does not write volume when dynamic refraction is enabled but volume values are default
+
+Test Suites: 1 passed, 1 total
+Tests:       43 passed, 43 total
+Snapshots:   0 total
+Time:        14.664 s
+Ran all test suites within paths "test/extras/exporters/gltf-exporter/writeStandardMaterial.test.js".
+Test results written to: ../results/report.json

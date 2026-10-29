@@ -1,0 +1,91 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/shader-lib/programs/lit-shader/generateVertexShader.test.js
+  LitShader#generateVertexShader
+    baseline output
+      ✓ always emits the position varying and the litMainVS vertex shader (6 ms)
+      ✓ starts with the constructor attributes and zero uv/transform counts (1 ms)
+      ✓ appends generated varyings to existing varyings code
+      ✓ keeps existing unrelated defines and attributes (1 ms)
+    nine-sliced mode
+      ✓ sets NINESLICED for render mode 1 (1 ms)
+      ✓ sets NINESLICED for render mode 2 (1 ms)
+      ✓ does not set NINESLICED for render mode 0
+      ✓ does not set NINESLICED for render mode 99 (1 ms)
+    linear depth
+      ✓ adds the linear depth define and float varying (1 ms)
+      ✓ does not add linear depth output when disabled (1 ms)
+    dynamic refraction
+      ✓ adds the dynamic refraction define and model scale varying for a forward pass (1 ms)
+      ✓ does not add dynamic refraction for a non-forward pass (17 ms)
+      ✓ does not add dynamic refraction when useRefraction disabled
+      ✓ does not add dynamic refraction when useDynamicRefraction disabled (1 ms)
+    normals and tangents
+      ✓ adds normal output when normals are needed
+      ✓ does not add normal output when normals are not needed (1 ms)
+      ✓ emits tangent and binormal varyings for hasTangents with useHeights
+      ✓ emits tangent and binormal varyings for hasTangents with useNormals
+      ✓ emits tangent and binormal varyings for hasTangents with useClearCoatNormals (1 ms)
+      ✓ emits tangent and binormal varyings for hasTangents with enableGGXSpecular
+      ✓ does not emit tangent output for hasTangents without a tangent-consuming option (1 ms)
+      ✓ uses the object space up varying for GGX specular when there are no tangents (1 ms)
+      ✓ prefers tangents over GGX object space up when both are available
+    uv sets
+      ✓ adds defines and attributes for used uv sets and expands extra sets (1 ms)
+      ✓ handles all eight uv sets and counts only the additional sets (2 ms)
+      ✓ adds unmodified uv defines and varyings, expanding extra uv varying sets (1 ms)
+      ✓ does not add unmodified uv output when no flag is set (1 ms)
+      ✓ uses the useUv array length to drive the combined uv loop
+      ✓ ignores unmodified uv entries beyond the useUv length (1 ms)
+    texture transforms
+      ✓ registers a varying and transform defines for a single transform (1 ms)
+      ✓ registers multiple unique transform ids and uv sets sequentially (1 ms)
+      ✓ deduplicates transforms for the same id and uv set (1 ms)
+      ✓ adds no transform output when there are no transforms
+    vertex colors
+      ✓ adds the color attribute, define and varying (1 ms)
+      ✓ adds the gamma define with an empty value when enabled with vertex colors
+      ✓ ignores vertex color gamma when vertex colors are disabled (1 ms)
+    msdf text
+      ✓ adds msdf attributes and define when both flags are set
+      ✓ adds no msdf output when useMsdf disabled (1 ms)
+      ✓ adds no msdf output when msdfTextAttribute disabled
+    morphing
+      ✓ adds shared morphing position defines and the vertex id attribute (1 ms)
+      ✓ adds morphing normal defines when only normals morph (1 ms)
+      ✓ adds all morphing defines, including texture based interpolation, in both stages (1 ms)
+      ✓ ignores texture based morphing when no position or normal morphing is enabled (1 ms)
+    skinning
+      ✓ adds skinning attributes and the shared SKIN define
+      ✓ uses batching instead of skinning when batch is enabled
+      ✓ adds no skinning output when skin is disabled (1 ms)
+    instancing
+      ✓ adds the default instance attributes when the default instancing chunk is used (1 ms)
+      ✓ does not add instance attributes when a custom instancing chunk is used (1 ms)
+      ✓ adds no instancing output when instancing is disabled
+    object level defines
+      ✓ adds screenspace to both stages and pixelsnap only to the vertex stage (1 ms)
+      ✓ keeps vertex-only defines out of the fragment stage
+    shader language output
+      ✓ emits GLSL varying declarations by default (1 ms)
+      ✓ emits WGSL typed varying declarations
+    attribute location validation
+      ✓ reports a conflict between default instance attributes and uv set 6 (1 ms)
+      ✓ does not report a conflict for compatible attributes
+    invalid inputs
+      ✓ throws when useUv is not array-like (31 ms)
+      ✓ throws when mapTransforms is not iterable (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       57 passed, 57 total
+Snapshots:   0 total
+Time:        1.602 s
+Ran all test suites within paths "test/scene/shader-lib/programs/lit-shader/generateVertexShader.test.js".
+Test results written to: ../results/report.json

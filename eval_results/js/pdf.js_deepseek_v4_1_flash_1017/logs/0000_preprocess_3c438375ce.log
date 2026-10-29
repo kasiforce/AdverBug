@@ -1,0 +1,96 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/external/builder/builder/preprocess.test.js (9.405 s)
+  preprocess
+    preprocess: plain content
+      ✓ delivers every line, including the trailing empty one, to the callback (4 ms)
+      ✓ passes content without directives through unchanged (1 ms)
+      ✓ does not expand __VARIABLES__ outside of an #expand directive (1 ms)
+      ✓ does not strip comments outside of a conditional block (1 ms)
+      ✓ writes the joined lines to a file without appending a newline (1 ms)
+      ✓ collapses consecutive blank lines and drops leading blank lines when writing a file (1 ms)
+      ✓ keeps blank lines as-is when the output is a callback (1 ms)
+    preprocess: conditional directives
+      ✓ #if keeps an active block and drops an inactive one (2 ms)
+      ✓ #else selects its branch when the #if condition is false (1 ms)
+      ✓ #else is skipped when the #if condition is true (1 ms)
+      ✓ #elif picks the first branch whose condition is true (1 ms)
+      ✓ #elif conditions after a true branch are not evaluated
+      ✓ nested conditionals are tracked independently (1 ms)
+      ✓ an inactive outer block hides active inner blocks (1 ms)
+      ✓ conditions are evaluated in a JavaScript sandbox built from `defines` (2 ms)
+      ✓ recognizes directives written as JS, CSS and HTML comments
+      ✓ recognizes indented /* */ and <!-- --> directives
+      ✓ does not treat a // directive preceded by whitespace as a directive
+    preprocess: comment stripping
+      ✓ strips one level of leading // comments inside an active block (1 ms)
+      ✓ strips /* */ comment markers inside an active block (1 ms)
+      ✓ strips <!-- --> comment markers inside an active block
+    preprocess: #expand
+      ✓ replaces defined variables with their value (1 ms)
+      ✓ replaces unknown variables with an empty string (1 ms)
+      ✓ replaces several variables on the same line and stringifies values
+      ✓ is ignored inside an inactive branch (2 ms)
+    preprocess: #include
+      ✓ includes a file relative to the including file (1 ms)
+      ✓ preprocesses the included file with the same defines (2 ms)
+      ✓ is skipped inside an inactive branch, even when the file is missing
+      ✓ reports a missing include with the file and line number (1 ms)
+      ✓ reports errors raised inside an included file with its own location (1 ms)
+    preprocess: #error
+      ✓ throws with the message and location when reached (6 ms)
+      ✓ is ignored inside an inactive branch and processing continues
+    preprocess: directive errors
+      ✓ #elif without a matching #if throws
+      ✓ #elif after #else throws (1 ms)
+      ✓ #else without a matching #if throws
+      ✓ #endif without a matching #if throws (1 ms)
+      ✓ unsupported directives such as #ifdef are not recognized
+      ✓ an unclosed #if reports a missing #endif
+      ✓ nested unclosed #if blocks also report a missing #endif (1 ms)
+      ✓ an empty #if expression throws
+      ✓ an unknown identifier in a condition reports the evaluation error (1 ms)
+      ✓ a throwing expression in a condition reports the evaluation error (1 ms)
+    preprocess: CSS imports
+      ✓ expands @import url() recursively relative to each file (1 ms)
+      ✓ leaves @import rules that are not on their own line untouched
+      ✓ does not expand imports when the file is not a CSS file (1 ms)
+      ✓ removes the GECKOVIEW block when the define is set
+      ✓ keeps the GECKOVIEW block when the define is not set (1 ms)
+      ✓ keeps the GECKOVIEW block when it is not properly closed
+    preprocess: reference fixtures
+      ✓ if-true-else.js matches its expected output
+      ✓ if-true-elif-false-else.js matches its expected output (1 ms)
+      ✓ if-false-elif-true-else.js matches its expected output
+      ✓ if-false-elif-false-else.js matches its expected output (1 ms)
+      ✓ if-false-else.js matches its expected output
+      ✓ if-nested.js matches its expected output (1 ms)
+      ✓ if-nested.css matches its expected output (56 ms)
+      ✓ js-comment.js matches its expected output
+      ✓ confusing-comment.js matches its expected output
+      ✓ css-comment.css matches its expected output (156 ms)
+      ✓ expand.html matches its expected output (84 ms)
+      ✓ error-false.js matches its expected output (1 ms)
+      ✓ include.html matches its expected output (63 ms)
+      ✓ else.js throws its expected error (2 ms)
+      ✓ elif.js throws its expected error (1 ms)
+      ✓ error.js throws its expected error (1 ms)
+      ✓ if-empty.js throws its expected error
+      ✓ if-unclosed.js throws its expected error
+      ✓ include-non-existent.html throws its expected error (101 ms)
+      ✓ undefined-define.js throws its expected error (1 ms)
+      ✓ unsupported-ifdef.js throws its expected error (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       69 passed, 69 total
+Snapshots:   0 total
+Time:        12.098 s
+Ran all test suites within paths "test/external/builder/builder/preprocess.test.js".
+Test results written to: ../results/report.json

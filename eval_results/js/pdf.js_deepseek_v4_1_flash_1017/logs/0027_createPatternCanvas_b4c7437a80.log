@@ -1,0 +1,27 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/pattern_helper/createPatternCanvas.test.js
+  TilingPattern.createPatternCanvas
+    ✓ returns the rendered bbox-sized tile when the steps equal the bbox (6 ms)
+    ✓ uses larger absolute steps for the returned tile dimensions (1 ms)
+    ✓ does not redraw when ceiling makes a slightly smaller step equivalent (1 ms)
+    ✓ redraws horizontally and copies overlapping columns in descending order (1 ms)
+    ✓ redraws vertically by folding rows into a temporary band (2 ms)
+    ✓ folds both dimensions without drawing every offset pair (2 ms)
+    ✓ limits redraw copies to the pixels present in the rendered image (1 ms)
+    ✓ combines matrix and base-transform scales when sizing tiles (1 ms)
+    ✓ clamps tile dimensions to TilingPattern.MAX_PATTERN_SIZE
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        1.14 s
+Ran all test suites within paths "test/display/pattern_helper/createPatternCanvas.test.js".
+Test results written to: ../results/report.json

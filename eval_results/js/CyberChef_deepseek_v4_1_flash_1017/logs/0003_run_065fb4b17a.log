@@ -1,0 +1,89 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/operations/ParseIPv6Address/run.test.js
+  ParseIPv6Address.run - basic formatting
+    ✓ prints longhand and shorthand forms of an ordinary global address (4 ms)
+    ✓ normalises uppercase input to lowercase hexadecimal (2 ms)
+    ✓ accepts and trims surrounding whitespace (1 ms)
+    ✓ ignores the args parameter
+  ParseIPv6Address.run - special and reserved addresses
+    ✓ identifies the unspecified address (1 ms)
+    ✓ identifies the loopback address
+    ✓ identifies an IPv4-mapped IPv6 address (1 ms)
+    ✓ identifies an IPv4-translated IPv6 address (1 ms)
+    ✓ identifies the discard prefix (1 ms)
+    ✓ identifies the well-known prefix for IPv4/IPv6 translation (1 ms)
+    ✓ identifies the benchmarking range
+    ✓ identifies ORCHIDv1 addresses including the range boundary (1 ms)
+    ✓ identifies ORCHIDv2 addresses including the range boundary (1 ms)
+    ✓ does not classify a neighbouring 2001:30::/28 prefix as ORCHID
+    ✓ identifies documentation addresses
+  ParseIPv6Address.run - Teredo tunnelling
+    ✓ parses a fully compliant Teredo address (1 ms)
+    ✓ reports a cone NAT client and RFC 5991 non-compliance (1 ms)
+    ✓ flags the R bit error
+    ✓ flags the UG bits error
+  ParseIPv6Address.run - 6to4
+    ✓ extracts the encapsulated IPv4 address and zero-valued fields (1 ms)
+    ✓ formats non-zero SLA ID and interface ID (1 ms)
+  ParseIPv6Address.run - address scopes
+    ✓ identifies unique local addresses at both ends of fc00::/7 (1 ms)
+    ✓ does not classify fec0::1 as a unique local address
+    ✓ identifies link-local addresses at both ends of fe80::/10 (1 ms)
+    ✓ does not classify fec0::1 as a link-local address
+  ParseIPv6Address.run - multicast
+    ✓ describes the primary multicast block and address (1 ms)
+    ✓ leaves scope and address descriptions blank for ff00::
+    ✓ reports the multicast scope for ff01:: (1 ms)
+    ✓ reports the multicast scope for ff02::
+    ✓ reports the multicast scope for ff03::
+    ✓ reports the multicast scope for ff04:: (1 ms)
+    ✓ reports the multicast scope for ff05::
+    ✓ reports the multicast scope for ff08::
+    ✓ reports the multicast scope for ff0e::
+    ✓ reports the reserved multicast address for ff02::1
+    ✓ reports the reserved multicast address for ff02::2
+    ✓ reports the reserved multicast address for ff02::5
+    ✓ reports the reserved multicast address for ff02::6 (1 ms)
+    ✓ reports the reserved multicast address for ff02::8
+    ✓ reports the reserved multicast address for ff02::9
+    ✓ reports the reserved multicast address for ff02::a (1 ms)
+    ✓ reports the reserved multicast address for ff02::c
+    ✓ reports the reserved multicast address for ff02::d
+    ✓ reports the reserved multicast address for ff02::16
+    ✓ reports the reserved multicast address for ff02::6b
+    ✓ reports the reserved multicast address for ff02::fb
+    ✓ reports the reserved multicast address for ff02::101
+    ✓ reports the reserved multicast address for ff02::108
+    ✓ reports the reserved multicast address for ff02::114
+    ✓ reports the reserved multicast address for ff02::181 (1 ms)
+    ✓ reports the RFC-defined multicast address for ff02::1:2
+    ✓ reports the RFC-defined multicast address for ff02::1:3
+    ✓ omits the address description for an unknown multicast address value
+  ParseIPv6Address.run - modified EUI-64 detection
+    ✓ extracts the interface identifier and MAC address (1 ms)
+    ✓ does not report EUI-64 when the FF:FE octets are absent
+  ParseIPv6Address.run - invalid input
+    ✓ throws an OperationError for "garbage" (17 ms)
+    ✓ throws an OperationError for "" (1 ms)
+    ✓ throws an OperationError for "   " (1 ms)
+    ✓ throws an OperationError for "1.2.3.4" (12 ms)
+    ✓ throws an OperationError for "2001:db8:::1" (1 ms)
+    ✓ throws an OperationError for "fffff::1" (1 ms)
+    ✓ throws an OperationError for "::g" (1 ms)
+    ✓ throws an OperationError for "2001:db8::1 trailing" (1 ms)
+    ✓ sets the OperationError type on the thrown error (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       64 passed, 64 total
+Snapshots:   0 total
+Time:        1.299 s
+Ran all test suites within paths "test/core/operations/ParseIPv6Address/run.test.js".
+Test results written to: ../results/report.json

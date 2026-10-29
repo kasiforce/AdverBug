@@ -1,0 +1,47 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/Routers/UsersRouter/handleLogIn.test.js (23.396 s)
+  UsersRouter.handleLogIn
+    successful login without authData
+      ✓ authenticates, runs triggers, creates a session, and returns the re-fetched user (18 ms)
+      ✓ does not call authData helpers when request has no authData (1 ms)
+      ✓ handles a request without a body by treating authData as absent (1 ms)
+    authData handling
+      ✓ allows authData linked to the same user and persists validated authData (3 ms)
+      ✓ rejects authData that is already linked to a different user (1 ms)
+      ✓ does not persist authData when validation returns no changed fields (1 ms)
+      ✓ maps an optimistic-lock miss on authData update to SCRIPT_FAILED (1 ms)
+      ✓ rethrows unexpected errors from the authData update (1 ms)
+    password expiry policy
+      ✓ starts enforcing expiry by setting _password_changed_at when it is missing (1 ms)
+      ✓ rejects login when the stored password is expired (1 ms)
+      ✓ allows login when a Parse-encoded password date is within the allowed age (1 ms)
+      ✓ allows login when a plain Date password date is within the allowed age (1 ms)
+      ✓ skips password expiry checks when maxPasswordAge is not configured
+    trigger failures
+      ✓ propagates a beforeLogin trigger failure without creating a session (1 ms)
+      ✓ propagates a file expansion failure before running any trigger
+      ✓ propagates a session creation failure before the afterLogin trigger (1 ms)
+      ✓ propagates an afterLogin trigger failure and does not re-fetch the user (1 ms)
+    authentication and provider validation failures
+      ✓ propagates an authentication failure before any other work
+      ✓ propagates a missing configured provider failure (1 ms)
+    response filtering after login
+      ✓ removes hidden properties from the re-fetched response (1 ms)
+      ✓ returns the full user for a master caller when the re-fetch returns no result (1 ms)
+      ✓ returns the full user for a maintenance caller when the re-fetch throws
+      ✓ discloses only the objectId for a non-master caller when the re-fetch throws (1 ms)
+      ✓ discloses only the objectId for a non-master caller when the re-fetch has no results
+      ✓ returns the re-fetched user untouched by the fallback for non-master callers
+
+Test Suites: 1 passed, 1 total
+Tests:       25 passed, 25 total
+Snapshots:   0 total
+Time:        23.668 s
+Ran all test suites within paths "test/Routers/UsersRouter/handleLogIn.test.js".
+Test results written to: ../results/report.json

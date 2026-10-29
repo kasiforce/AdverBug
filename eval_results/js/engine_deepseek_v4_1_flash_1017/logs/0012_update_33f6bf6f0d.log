@@ -1,0 +1,35 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:19) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/particle-system/cpu-updater/update.test.js
+  ParticleCPUUpdater
+    #update()
+      ✓ updates an active particle, its life and its vertex data in local space (6 ms)
+      ✓ interpolates all particle channels and applies random blends (1 ms)
+      ✓ writes mesh vertex attributes using the mesh vertex stride (1 ms)
+      ✓ applies the node position, non-uniform scale and uniform scale in world space (1 ms)
+      ✓ divides local-space velocity by the node non-uniform scale (1 ms)
+      ✓ wraps the rendered position without modifying the stored particle position (1 ms)
+      ✓ adds sphere-shaped initial velocity in a random direction (1 ms)
+      ✓ rejects box-shaped initial velocity because Vec3.FORWARD is immutable (33 ms)
+      ✓ respawns a particle that reached its lifetime and hides its quad (2 ms)
+      ✓ keeps a looped particle visible after its life wraps below zero (1 ms)
+      ✓ marks a negative-life particle hidden when updating on stop (1 ms)
+      ✓ stores the sort key for sort mode 1
+      ✓ stores the sort key for sort mode 2 (1 ms)
+      ✓ stores the sort key for sort mode 3
+      ✓ sorts the vertex buffer by particle distance and preserves the source in vbOld (1 ms)
+      ✓ does nothing when there are no particles
+
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
+Snapshots:   0 total
+Time:        1.189 s
+Ran all test suites within paths "test/scene/particle-system/cpu-updater/update.test.js".
+Test results written to: ../results/report.json
