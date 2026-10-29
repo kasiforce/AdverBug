@@ -1,0 +1,72 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_item_is_not_dataframe[0]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[volume]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_item_is_not_dataframe[1]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_price_column_missing[close]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_x_timestamp_longer_than_data
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_historical_lengths_differ
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_generate_receives_batched_normalized_tensors
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_missing_amount_is_derived_from_volume_and_mean_price
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_tuple_inputs_are_accepted
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_missing_volume_and_amount_are_filled_with_zeros
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_pred_len_one_is_supported
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_y_timestamp_length_differs_from_pred_len
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_for_empty_batch
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_constant_predictions_are_scaled_by_series_std
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_returns_one_dataframe_per_series
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_values_are_denormalized_with_per_series_statistics
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_price_column_missing[high]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_default_hyperparameters_are_forwarded
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_pred_len_longer_than_history_is_supported
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_input_dataframes_are_not_mutated
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_price_column_missing[open]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[open]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_x_timestamp_shorter_than_data
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_clip_is_applied_to_normalized_inputs
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_second_series_has_nan
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_zero_predictions_map_back_to_feature_means
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_sequence_lengths_differ
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[close]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[amount]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_df_list_is_not_sequence
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_time_stamp_features_match_calendar_values
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_timestamp_lists_are_not_sequences
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_price_column_missing[low]
+tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_generation_hyperparameters_are_forwarded
+
+34 tests collected in 1.92s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+..................................                                       [100%]
+============================= slowest 20 durations =============================
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_zero_predictions_map_back_to_feature_means
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_second_series_has_nan
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_pred_len_one_is_supported
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_constant_predictions_are_scaled_by_series_std
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_generate_receives_batched_normalized_tensors
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_time_stamp_features_match_calendar_values
+0.02s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_returns_one_dataframe_per_series
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_missing_amount_is_derived_from_volume_and_mean_price
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_tuple_inputs_are_accepted
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[close]
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_item_is_not_dataframe[1]
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_values_are_denormalized_with_per_series_statistics
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[open]
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_missing_volume_and_amount_are_filled_with_zeros
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_nan_present[volume]
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_clip_is_applied_to_normalized_inputs
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_y_timestamp_length_differs_from_pred_len
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_raises_when_historical_lengths_differ
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_generation_hyperparameters_are_forwarded
+0.01s call     tests/sktime/libs/kronos/Testkronos/test_predict_batch.py::test_pred_len_longer_than_history_is_supported
+34 passed in 38.15s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

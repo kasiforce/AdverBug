@@ -1,0 +1,69 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_position_ids_influence_the_output
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_return_dict_default_falls_back_to_config
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_returns_model_output_with_expected_last_hidden_state
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_config_use_cache_false_disables_cache
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_padded_attention_mask_only_affects_padded_positions
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_legacy_tuple_past_key_values_is_not_supported
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_gradient_checkpointing_forces_cache_off
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_single_token_sequence_is_supported
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_batch_entries_are_independent
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_dynamic_cache_is_returned_and_updated
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_all_ones_attention_mask_matches_no_mask
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_return_dict_false_returns_positional_tuple
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_incremental_decoding_with_past_cache
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_dropout_makes_training_mode_stochastic
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_gradient_checkpointing_not_used_in_eval_mode
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_default_position_ids_match_explicit_arange
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_mismatched_sequence_lengths_raise
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_use_cache_without_cache_reports_no_cache
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_return_dict_false_includes_requested_optional_outputs
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_both_inputs_affect_the_result
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_missing_hidden_states_raises
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_eval_mode_is_deterministic
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_optional_outputs_absent_by_default
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_backward_pass_reaches_the_layer_parameters
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_output_hidden_states_contains_pre_and_post_layer_states
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_use_legacy_cache_converts_to_tuple
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_use_cache_none_falls_back_to_config
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_output_flags_default_to_config_values
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_output_attentions_returns_single_entry
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_missing_inputs_embeds_raises_value_error
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_position_ids_are_cast_to_long
+
+31 tests collected in 1.88s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+...............................                                          [100%]
+============================= slowest 20 durations =============================
+11.03s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_both_inputs_affect_the_result
+11.03s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_dropout_makes_training_mode_stochastic
+10.50s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_position_ids_are_cast_to_long
+10.46s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_default_position_ids_match_explicit_arange
+10.46s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_all_ones_attention_mask_matches_no_mask
+10.42s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_padded_attention_mask_only_affects_padded_positions
+10.40s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_eval_mode_is_deterministic
+10.39s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_position_ids_influence_the_output
+10.37s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_dynamic_cache_is_returned_and_updated
+10.28s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_return_dict_false_returns_positional_tuple
+7.99s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_batch_entries_are_independent
+7.64s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_return_dict_false_includes_requested_optional_outputs
+7.55s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_gradient_checkpointing_forces_cache_off
+7.51s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_config_use_cache_false_disables_cache
+7.50s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_use_legacy_cache_converts_to_tuple
+7.44s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_incremental_decoding_with_past_cache
+7.39s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_gradient_checkpointing_not_used_in_eval_mode
+7.37s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_returns_model_output_with_expected_last_hidden_state
+7.34s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_use_cache_without_cache_reports_no_cache
+7.29s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_optional_outputs_absent_by_default
+31 passed in 52.01s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,50 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_gradient_checkpointing_warns_and_disables_cache
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_legacy_past_key_values_are_extended_and_match_full_forward
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_requires_some_input
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_returns_model_output_with_expected_shapes
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_padding_mask_blocks_attention_to_masked_positions
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_cache_object_input_returns_cache_object
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_config_defaults_control_output_flags
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_two_dimensional_input_is_expanded_and_matches_three_dimensional_input
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_tuple_output_contains_requested_fields_in_order
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_rejects_input_ids_and_inputs_embeds_together
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_tuple_output_omits_unrequested_optional_fields
+tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_inputs_embeds_path_matches_input_ids_path
+
+12 tests collected in 2.05s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+............                                                             [100%]
+============================= slowest 20 durations =============================
+1.20s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_gradient_checkpointing_warns_and_disables_cache
+0.05s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_legacy_past_key_values_are_extended_and_match_full_forward
+0.02s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_cache_object_input_returns_cache_object
+0.02s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_tuple_output_omits_unrequested_optional_fields
+0.02s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_two_dimensional_input_is_expanded_and_matches_three_dimensional_input
+0.02s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_rejects_input_ids_and_inputs_embeds_together
+0.02s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_padding_mask_blocks_attention_to_masked_positions
+0.01s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_returns_model_output_with_expected_shapes
+0.01s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_requires_some_input
+0.01s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_config_defaults_control_output_flags
+0.01s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_inputs_embeds_path_matches_input_ids_path
+0.01s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_tuple_output_contains_requested_fields_in_order
+0.01s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_tuple_output_omits_unrequested_optional_fields
+0.01s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_inputs_embeds_path_matches_input_ids_path
+0.01s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_forward_returns_model_output_with_expected_shapes
+0.01s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_gradient_checkpointing_warns_and_disables_cache
+0.01s call     tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_tuple_output_contains_requested_fields_in_order
+0.01s setup    tests/sktime/libs/timemoe/Testtimemoe/test_forward.py::test_config_defaults_control_output_flags
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+12 passed in 40.72s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,56 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/Testgit_log/test_parse.py::test_empty_or_whitespace_data_returns_empty_list[]
+tests/jc/parsers/Testgit_log/test_parse.py::test_empty_or_whitespace_data_returns_empty_list[   ]
+tests/jc/parsers/Testgit_log/test_parse.py::test_empty_or_whitespace_data_returns_empty_list[\n]
+tests/jc/parsers/Testgit_log/test_parse.py::test_empty_or_whitespace_data_returns_empty_list[\t\n  \r\n]
+tests/jc/parsers/Testgit_log/test_parse.py::test_empty_or_whitespace_data_returns_empty_list[\r\n\r\n]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[None]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[123]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[1.5]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[commit x]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[data5]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[data6]
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_string_input_raises_type_error[data7]
+tests/jc/parsers/Testgit_log/test_parse.py::test_input_without_commit_data_returns_empty_list
+tests/jc/parsers/Testgit_log/test_parse.py::test_oneline_style_parses_multiple_commits[True]
+tests/jc/parsers/Testgit_log/test_parse.py::test_oneline_style_parses_multiple_commits[False]
+tests/jc/parsers/Testgit_log/test_parse.py::test_oneline_commit_requires_exactly_forty_lowercase_hex_characters
+tests/jc/parsers/Testgit_log/test_parse.py::test_full_style_parses_all_standard_fields_and_message
+tests/jc/parsers/Testgit_log/test_parse.py::test_fuller_style_parses_author_and_commit_metadata
+tests/jc/parsers/Testgit_log/test_parse.py::test_author_name_and_email_variants[Author: Alice Smith <alice@example.com>-Alice Smith-alice@example.com]
+tests/jc/parsers/Testgit_log/test_parse.py::test_author_name_and_email_variants[Author: <solo@example.com>-None-solo@example.com]
+tests/jc/parsers/Testgit_log/test_parse.py::test_author_name_and_email_variants[Author: Alice-Alice-None]
+tests/jc/parsers/Testgit_log/test_parse.py::test_author_name_and_email_variants[Author: <>-None-None]
+tests/jc/parsers/Testgit_log/test_parse.py::test_utc_date_is_processed_into_epoch_fields
+tests/jc/parsers/Testgit_log/test_parse.py::test_non_utc_date_has_no_utc_epoch
+tests/jc/parsers/Testgit_log/test_parse.py::test_unparseable_date_produces_null_epochs
+tests/jc/parsers/Testgit_log/test_parse.py::test_raw_output_never_contains_calculated_epoch_fields
+tests/jc/parsers/Testgit_log/test_parse.py::test_stat_output_raw_keeps_values_as_strings
+tests/jc/parsers/Testgit_log/test_parse.py::test_stat_output_processed_converts_numeric_fields_to_ints
+tests/jc/parsers/Testgit_log/test_parse.py::test_stat_summary_variants[ 1 file changed, 1 insertion(+)-expected0]
+tests/jc/parsers/Testgit_log/test_parse.py::test_stat_summary_variants[ 3 files changed, 4 deletions(-)-expected1]
+tests/jc/parsers/Testgit_log/test_parse.py::test_stat_summary_variants[ 2 files changed, 5 insertions(+), 6 deletions(-)-expected2]
+tests/jc/parsers/Testgit_log/test_parse.py::test_numstat_output_raw_includes_binary_markers
+tests/jc/parsers/Testgit_log/test_parse.py::test_numstat_output_processed_handles_binary_markers
+tests/jc/parsers/Testgit_log/test_parse.py::test_numstat_suppresses_subsequent_stat_file_lines
+tests/jc/parsers/Testgit_log/test_parse.py::test_patch_headers_are_recognized[diff --git a/foo.txt b/foo.txt]
+tests/jc/parsers/Testgit_log/test_parse.py::test_patch_headers_are_recognized[diff --cc foo.txt]
+tests/jc/parsers/Testgit_log/test_parse.py::test_patch_headers_are_recognized[diff --combined foo.txt]
+tests/jc/parsers/Testgit_log/test_parse.py::test_patch_is_preserved_for_own_commit_and_not_leaked_to_next_commit
+tests/jc/parsers/Testgit_log/test_parse.py::test_multiple_commits_keep_their_own_stats_and_messages
+tests/jc/parsers/Testgit_log/test_parse.py::test_compatibility_warning_is_printed_when_not_quiet
+tests/jc/parsers/Testgit_log/test_parse.py::test_quiet_suppresses_compatibility_warning
+
+42 tests collected in 2.50s
+
+=== test.log ===
+..........................................                               [100%]
+42 passed in 0.24s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

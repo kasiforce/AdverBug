@@ -1,0 +1,62 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/Testip_address/test_parse.py::test_empty_or_whitespace_input_returns_empty_dict[]
+tests/jc/parsers/Testip_address/test_parse.py::test_empty_or_whitespace_input_returns_empty_dict[   ]
+tests/jc/parsers/Testip_address/test_parse.py::test_empty_or_whitespace_input_returns_empty_dict[\n\t ]
+tests/jc/parsers/Testip_address/test_parse.py::test_empty_input_with_raw_returns_empty_dict[]
+tests/jc/parsers/Testip_address/test_parse.py::test_empty_input_with_raw_returns_empty_dict[   ]
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_with_cidr_produces_expected_network_fields
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_without_prefix_is_a_single_host_network
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_leading_and_trailing_whitespace_is_stripped
+tests/jc/parsers/Testip_address/test_parse.py::test_full_schema_keys_are_present
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_integer_representations
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_hex_representations
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_binary_representations_are_padded_and_decode_to_ints
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_slash_31_has_two_hosts_using_network_and_broadcast
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_slash_32_has_one_host
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_integer_notation[2130706433-127.0.0.1]
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_integer_notation[3232235521-192.168.0.1]
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_integer_notation[0-0.0.0.0]
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_integer_notation[4294967295-255.255.255.255]
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_with_cidr_produces_expected_network_fields
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_binary_representations_are_padded_and_decode_to_ints
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_hex_representations
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_slash_127_has_two_hosts_using_network_and_broadcast
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_slash_128_has_one_host
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_scope_id_is_reported
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_mapped_ipv6_is_detected_and_split_into_v4_parts
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_six_to_four_is_detected
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv6_teredo_fields_are_detected
+tests/jc/parsers/Testip_address/test_parse.py::test_ipv4_only_fields_are_none_for_non_ipv6
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[224.0.0.1-is_multicast]
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[127.0.0.1-is_loopback]
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[169.254.1.1-is_link_local]
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[240.0.0.1-is_reserved]
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[::-is_unspecified]
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[10.0.0.1-is_private]
+tests/jc/parsers/Testip_address/test_parse.py::test_address_classification_flag_is_set[ff02::1-is_multicast]
+tests/jc/parsers/Testip_address/test_parse.py::test_public_address_is_global_and_not_private
+tests/jc/parsers/Testip_address/test_parse.py::test_raw_output_matches_processed_output_for_supported_input
+tests/jc/parsers/Testip_address/test_parse.py::test_quiet_argument_does_not_change_result
+tests/jc/parsers/Testip_address/test_parse.py::test_invalid_address_raises_value_error[192.168.1.256]
+tests/jc/parsers/Testip_address/test_parse.py::test_invalid_address_raises_value_error[not-an-ip]
+tests/jc/parsers/Testip_address/test_parse.py::test_invalid_address_raises_value_error[192.168.1.1/33]
+tests/jc/parsers/Testip_address/test_parse.py::test_invalid_address_raises_value_error[2001:db8::1/129]
+tests/jc/parsers/Testip_address/test_parse.py::test_invalid_address_raises_value_error[aaaa::gggg]
+tests/jc/parsers/Testip_address/test_parse.py::test_non_string_input_raises_type_error[None]
+tests/jc/parsers/Testip_address/test_parse.py::test_non_string_input_raises_type_error[123]
+tests/jc/parsers/Testip_address/test_parse.py::test_non_string_input_raises_type_error[12.5]
+tests/jc/parsers/Testip_address/test_parse.py::test_non_string_input_raises_type_error[192.168.1.1]
+tests/jc/parsers/Testip_address/test_parse.py::test_non_string_input_raises_type_error[data4]
+
+48 tests collected in 0.27s
+
+=== test.log ===
+................................................                         [100%]
+48 passed in 0.31s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

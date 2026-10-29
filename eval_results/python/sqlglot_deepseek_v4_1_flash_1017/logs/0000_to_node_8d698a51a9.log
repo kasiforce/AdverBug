@@ -1,0 +1,49 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sqlglot/Testlineage/test_to_node.py::test_returns_node_for_single_column
+tests/sqlglot/Testlineage/test_to_node.py::test_returns_node_for_aliased_projection
+tests/sqlglot/Testlineage/test_to_node.py::test_index_resolves_projection_by_position
+tests/sqlglot/Testlineage/test_to_node.py::test_index_out_of_range_raises_sqlglot_error
+tests/sqlglot/Testlineage/test_to_node.py::test_unknown_column_falls_back_to_the_scope_expression
+tests/sqlglot/Testlineage/test_to_node.py::test_scope_name_prefixes_node_name
+tests/sqlglot/Testlineage/test_to_node.py::test_upstream_receives_created_node
+tests/sqlglot/Testlineage/test_to_node.py::test_trim_selects_false_keeps_the_full_scope_expression
+tests/sqlglot/Testlineage/test_to_node.py::test_cache_returns_the_same_node_and_links_upstream
+tests/sqlglot/Testlineage/test_to_node.py::test_cache_hit_skips_the_on_node_hook
+tests/sqlglot/Testlineage/test_to_node.py::test_without_cache_distinct_nodes_are_built
+tests/sqlglot/Testlineage/test_to_node.py::test_cache_key_distinguishes_scope_names
+tests/sqlglot/Testlineage/test_to_node.py::test_scope_meta_memoizes_projection_lookup
+tests/sqlglot/Testlineage/test_to_node.py::test_scope_meta_star_scope_falls_back_to_star
+tests/sqlglot/Testlineage/test_to_node.py::test_star_select_creates_a_downstream_node_per_source
+tests/sqlglot/Testlineage/test_to_node.py::test_on_node_is_called_bottom_up_for_every_node
+tests/sqlglot/Testlineage/test_to_node.py::test_on_node_recurses_into_select_subqueries
+tests/sqlglot/Testlineage/test_to_node.py::test_set_operation_creates_union_node
+tests/sqlglot/Testlineage/test_to_node.py::test_set_operation_accepts_an_index
+tests/sqlglot/Testlineage/test_to_node.py::test_set_operation_with_upstream_does_not_create_a_new_node
+tests/sqlglot/Testlineage/test_to_node.py::test_set_operation_unknown_column_raises_value_error
+tests/sqlglot/Testlineage/test_to_node.py::test_set_operation_caches_the_created_node
+tests/sqlglot/Testlineage/test_to_node.py::test_subquery_expression_scope_delegates_to_inner_scope
+tests/sqlglot/Testlineage/test_to_node.py::test_parenthesized_query_uses_the_subquery_as_source
+tests/sqlglot/Testlineage/test_to_node.py::test_cte_source_sets_reference_node_name
+tests/sqlglot/Testlineage/test_to_node.py::test_derived_table_source_sets_reference_node_name
+tests/sqlglot/Testlineage/test_to_node.py::test_source_name_is_propagated_from_expanded_sources
+tests/sqlglot/Testlineage/test_to_node.py::test_unqualified_column_is_attributed_to_the_single_source
+tests/sqlglot/Testlineage/test_to_node.py::test_unqualified_column_with_several_sources_becomes_a_placeholder
+tests/sqlglot/Testlineage/test_to_node.py::test_udtf_source_adds_the_columns_used_by_the_table_function
+tests/sqlglot/Testlineage/test_to_node.py::test_pivot_maps_output_column_to_the_aggregated_input
+tests/sqlglot/Testlineage/test_to_node.py::test_pivot_implicit_column_is_traced_to_the_pivoted_source
+tests/sqlglot/Testlineage/test_to_node.py::test_pivot_chain_folds_through_every_operator
+tests/sqlglot/Testlineage/test_to_node.py::test_pivots_on_different_sources_degrade_to_placeholders
+tests/sqlglot/Testlineage/test_to_node.py::test_pivoted_cte_reference_is_resolved_through_cte_sources
+
+35 tests collected in 1.36s
+
+=== test.log ===
+...................................                                      [100%]
+35 passed in 0.97s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

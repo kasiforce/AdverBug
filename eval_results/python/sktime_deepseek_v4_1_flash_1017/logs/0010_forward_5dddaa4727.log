@@ -1,0 +1,69 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_depends_on_loss_masks
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_uses_labels_of_padded_sequence_length
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_is_differentiable
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_raises_when_no_input_is_given
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_sampling_is_seeded
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_output_hidden_states_returns_all_layer_states
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_return_dict_false_includes_hidden_states
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_return_dict_false_returns_tuple_with_predictions
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_config_level_output_hidden_states_is_honoured
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_config_level_return_dict_is_honoured
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_max_output_length_selects_largest_fitting_output_token_len
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_default_num_samples_is_one
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_accepts_inputs_embeds
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_uses_unit_stdev_for_constant_input
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_max_output_length_above_available_length_keeps_all_tokens
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_num_samples_adds_sample_dimension
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_max_output_length_truncates_predictions
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_use_cache_returns_past_key_values
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_does_not_modify_input_ids
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_accepts_attention_mask
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_raises_when_both_input_kinds_are_given
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_is_applied_to_labels_in_the_loss
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_accepts_position_ids
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_is_zero_when_mask_y_is_all_zeros
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_pads_sequence_to_full_patches
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_returns_predictions_in_output_object
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_is_identity_when_disabled
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_accepts_flat_and_shaped_loss_masks
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_depends_on_labels
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_normalises_input_and_rescales_predictions
+tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_with_labels_returns_scalar_loss_and_no_predictions
+
+31 tests collected in 2.13s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+...............................                                          [100%]
+============================= slowest 20 durations =============================
+4.56s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_max_output_length_selects_largest_fitting_output_token_len
+3.77s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_config_level_output_hidden_states_is_honoured
+3.10s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_max_output_length_above_available_length_keeps_all_tokens
+3.02s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_accepts_attention_mask
+2.94s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_depends_on_loss_masks
+2.91s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_sampling_is_seeded
+2.91s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_accepts_position_ids
+2.86s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_default_num_samples_is_one
+2.77s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_accepts_inputs_embeds
+2.68s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_is_applied_to_labels_in_the_loss
+2.53s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_output_hidden_states_returns_all_layer_states
+2.50s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_depends_on_labels
+2.42s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_uses_labels_of_padded_sequence_length
+2.28s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_is_identity_when_disabled
+2.24s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_config_level_return_dict_is_honoured
+2.22s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_revin_uses_unit_stdev_for_constant_input
+2.05s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_accepts_flat_and_shaped_loss_masks
+2.04s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_return_dict_false_returns_tuple_with_predictions
+2.03s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_return_dict_false_includes_hidden_states
+1.95s call     tests/sktime/libs/sundial/Testmodeling_sundial/test_forward.py::test_forward_loss_is_differentiable
+31 passed in 46.42s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

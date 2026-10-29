@@ -1,0 +1,72 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/Testrsync/test_parse.py::test_empty_string_returns_empty_list
+tests/jc/parsers/Testrsync/test_parse.py::test_whitespace_only_string_returns_empty_list
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[None]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[123]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[1.5]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[True]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[bad_input4]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[bad_input5]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[bad_input6]
+tests/jc/parsers/Testrsync/test_parse.py::test_non_string_input_raises_type_error[>f+++++++++ a.txt]
+tests/jc/parsers/Testrsync/test_parse.py::test_unknown_lines_are_discarded
+tests/jc/parsers/Testrsync/test_parse.py::test_single_itemized_file_entry
+tests/jc/parsers/Testrsync/test_parse.py::test_multiple_itemized_entries_keep_order_and_blank_lines_are_skipped
+tests/jc/parsers/Testrsync/test_parse.py::test_filenames_with_spaces_are_preserved
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_update_type_letters[>-file received]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_update_type_letters[<-file sent]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_update_type_letters[c-local change or creation]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_update_type_letters[h-hard link]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_update_type_letters[.-not updated]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_update_type_letters[*-message]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_file_type_letters[f-file]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_file_type_letters[d-directory]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_file_type_letters[D-device]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_file_type_letters[S-special file]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[0-c-checksum_or_value_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[1-s-size_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[2-t-modification_time_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[3-p-permissions_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[4-o-owner_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[5-g-group_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[7-a-acl_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_single_difference_flag_is_true[8-x-extended_attribute_different]
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_all_flags_false
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_unknown_flags_are_null
+tests/jc/parsers/Testrsync/test_parse.py::test_itemize_entry_has_no_date_time_process_or_epoch_keys
+tests/jc/parsers/Testrsync/test_parse.py::test_mac_itemized_entry_has_no_acl_or_xattr_keys
+tests/jc/parsers/Testrsync/test_parse.py::test_mac_itemized_entry_raw_mode
+tests/jc/parsers/Testrsync/test_parse.py::test_summary_lines_with_thousands_separators
+tests/jc/parsers/Testrsync/test_parse.py::test_summary_lines_with_thousands_separators_raw
+tests/jc/parsers/Testrsync/test_parse.py::test_summary_lines_with_human_readable_sizes
+tests/jc/parsers/Testrsync/test_parse.py::test_summary_lines_with_human_readable_sizes_raw
+tests/jc/parsers/Testrsync/test_parse.py::test_summary_with_zero_values
+tests/jc/parsers/Testrsync/test_parse.py::test_files_and_summary_in_a_single_run
+tests/jc/parsers/Testrsync/test_parse.py::test_log_entries_are_grouped_by_process
+tests/jc/parsers/Testrsync/test_parse.py::test_log_entry_epoch_is_local_interpretation_of_date_and_time
+tests/jc/parsers/Testrsync/test_parse.py::test_log_summary_line_sent_received_total_size
+tests/jc/parsers/Testrsync/test_parse.py::test_log_summary_verbose_lines
+tests/jc/parsers/Testrsync/test_parse.py::test_log_summary_raw_mode_keeps_strings
+tests/jc/parsers/Testrsync/test_parse.py::test_log_summary_with_thousands_separators
+tests/jc/parsers/Testrsync/test_parse.py::test_extra_stats_output
+tests/jc/parsers/Testrsync/test_parse.py::test_extra_stats_output_raw
+tests/jc/parsers/Testrsync/test_parse.py::test_no_warning_on_stderr_when_platform_is_compatible
+tests/jc/parsers/Testrsync/test_parse.py::test_warning_on_stderr_when_platform_is_incompatible
+tests/jc/parsers/Testrsync/test_parse.py::test_quiet_true_suppresses_incompatibility_warning
+tests/jc/parsers/Testrsync/test_parse.py::test_quiet_does_not_change_parsed_output
+tests/jc/parsers/Testrsync/test_parse.py::test_raw_output_has_same_structure_as_processed_output
+tests/jc/parsers/Testrsync/test_parse.py::test_processed_log_entries_add_epoch_key
+tests/jc/parsers/Testrsync/test_parse.py::test_parse_does_not_modify_input_data
+
+58 tests collected in 0.21s
+
+=== test.log ===
+..........................................................               [100%]
+58 passed in 0.33s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,75 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_extends_predictions_to_requested_horizon
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_uses_unit_scale_for_tiny_std
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_without_inputs_raises_value_error
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_changes_predictions_for_non_constant_series
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_max_output_length_none_uses_first_output_token_len
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_full_input_ids_without_cache_matches_plain_call
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_without_mtp_does_not_extend_beyond_one_patch
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_predictions_are_differentiable
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_kv_cache_step_matches_full_sequence_pass
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_restores_constant_level
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_output_hidden_states_and_attentions_from_arguments
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_use_cache_returns_past_key_values
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_standardises_full_input_ids_too
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_without_mtp_truncates_to_max_output_length
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_horizon_beyond_capacity_is_not_padded
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_does_not_modify_the_input_tensor
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_float_horizon_is_truncated_to_int
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_all_ones_attention_mask_matches_none
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_matches_input_ids
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_config_return_dict_false_is_respected
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_preserves_batch_dimension[1]
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_preserves_batch_dimension[3]
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_flags_fall_back_to_config_defaults
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_partial_patch_is_slice_of_longer_horizon
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_negative_horizon_is_clamped_to_empty_prediction
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_takes_precedence_over_input_ids
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_return_dict_false_returns_tuple
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_without_input_ids_raises_attribute_error
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_padded_attention_mask
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_exposes_main_hidden_states_for_mtp
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_uses_several_layers_for_longer_horizons
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_is_repeatable_for_identical_inputs
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_returns_lm_output_with_expected_fields
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_full_hidden_states_ignored_when_sequence_already_complete
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_patch_length_follows_last_output_token_len
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_prefix_matches_plain_patch_prediction
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_zero_horizon_returns_empty_prediction
+
+37 tests collected in 2.18s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+.....................................                                    [100%]
+============================= slowest 20 durations =============================
+4.72s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_uses_several_layers_for_longer_horizons
+4.71s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_kv_cache_step_matches_full_sequence_pass
+4.64s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_prefix_matches_plain_patch_prediction
+4.41s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_revin_standardises_full_input_ids_too
+4.26s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_predictions_are_differentiable
+4.04s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_partial_patch_is_slice_of_longer_horizon
+4.03s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_is_repeatable_for_identical_inputs
+4.03s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_matches_input_ids
+4.02s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_use_cache_returns_past_key_values
+4.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_flags_fall_back_to_config_defaults
+3.95s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_all_ones_attention_mask_matches_none
+3.89s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_return_dict_false_returns_tuple
+3.88s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_preserves_batch_dimension[3]
+3.71s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_preserves_batch_dimension[1]
+3.57s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_full_input_ids_without_cache_matches_plain_call
+3.41s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_float_horizon_is_truncated_to_int
+3.32s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_extends_predictions_to_requested_horizon
+3.24s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_mtp_horizon_beyond_capacity_is_not_padded
+3.23s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_takes_precedence_over_input_ids
+3.22s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_full_hidden_states_ignored_when_sequence_already_complete
+37 passed in 46.06s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

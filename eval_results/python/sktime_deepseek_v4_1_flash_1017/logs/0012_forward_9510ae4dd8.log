@@ -1,0 +1,67 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_raises_if_input_ids_and_inputs_embeds_are_both_given
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_input_validation_is_independent_of_config_defaults[False-True]
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_threads_hidden_states_through_all_layers
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_input_validation_is_independent_of_config_defaults[True-False]
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_input_validation_is_independent_of_config_defaults[False-False]
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_raises_if_no_input_is_given
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_input_validation_is_independent_of_config_defaults[True-True]
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_uses_gradient_checkpointing_func_when_training
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::test_forward_return_dict_false_returns_tuple_of_present_values
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_attention_mask_changes_the_output
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_cache_object_input_is_returned_as_cache_object
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_explicit_position_ids_are_used
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_return_dict_false_returns_hidden_states_and_cache
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_returns_model_output_with_expected_hidden_state_shape
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_explicit_return_dict_overrides_config
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_output_attentions_is_not_supported
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_use_cache_false_returns_no_cache
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_incremental_decoding_with_past_key_values
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_single_batch_single_patch
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_config_defaults_are_used
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_eval_mode_is_deterministic
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_cache_is_returned_as_legacy_tuple
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_gradient_checkpointing_disables_the_cache
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_inputs_embeds_defines_the_sequence_length
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_output_hidden_states_contains_every_layer
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_sequence_is_truncated_to_whole_patches
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_return_dict_false_omits_missing_entries
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_position_ids_beyond_the_sequence_length_are_rejected
+tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_inputs_embeds_matches_input_ids_path
+
+29 tests collected in 2.09s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+.............................                                            [100%]
+============================= slowest 20 durations =============================
+2.20s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_gradient_checkpointing_disables_the_cache
+1.55s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_attention_mask_changes_the_output
+1.53s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_inputs_embeds_matches_input_ids_path
+1.42s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_eval_mode_is_deterministic
+1.35s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_incremental_decoding_with_past_key_values
+1.31s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_explicit_position_ids_are_used
+1.15s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_config_defaults_are_used
+1.14s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_inputs_embeds_defines_the_sequence_length
+1.06s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_cache_is_returned_as_legacy_tuple
+1.04s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_cache_object_input_is_returned_as_cache_object
+1.02s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_use_cache_false_returns_no_cache
+1.02s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_sequence_is_truncated_to_whole_patches
+1.00s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_return_dict_false_omits_missing_entries
+0.96s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_returns_model_output_with_expected_hidden_state_shape
+0.87s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_return_dict_false_returns_hidden_states_and_cache
+0.86s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_explicit_return_dict_overrides_config
+0.85s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_output_hidden_states_contains_every_layer
+0.37s call     tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_single_batch_single_patch
+0.07s setup    tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_single_batch_single_patch
+0.05s setup    tests/sktime/libs/timer/Testmodeling_timer/test_forward.py::TestForwardWithTorch::test_inputs_embeds_defines_the_sequence_length
+29 passed in 42.22s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

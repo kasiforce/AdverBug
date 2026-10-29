@@ -1,0 +1,59 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/Testgpg/test_parse.py::test_empty_string_returns_empty_list
+tests/jc/parsers/Testgpg/test_parse.py::test_whitespace_only_returns_empty_list[   ]
+tests/jc/parsers/Testgpg/test_parse.py::test_whitespace_only_returns_empty_list[\n]
+tests/jc/parsers/Testgpg/test_parse.py::test_whitespace_only_returns_empty_list[\r\n]
+tests/jc/parsers/Testgpg/test_parse.py::test_whitespace_only_returns_empty_list[  \t \n \n \t ]
+tests/jc/parsers/Testgpg/test_parse.py::test_no_data_with_raw_true_returns_empty_list
+tests/jc/parsers/Testgpg/test_parse.py::test_blank_lines_are_ignored
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[None]
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[0]
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[1.5]
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[True]
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[pub:f:1024:17]
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[bad_input5]
+tests/jc/parsers/Testgpg/test_parse.py::test_non_string_input_raises_type_error[bad_input6]
+tests/jc/parsers/Testgpg/test_parse.py::test_full_pub_line_field_mapping
+tests/jc/parsers/Testgpg/test_parse.py::test_generic_output_has_exactly_the_schema_keys
+tests/jc/parsers/Testgpg/test_parse.py::test_short_line_produces_none_for_missing_fields
+tests/jc/parsers/Testgpg/test_parse.py::test_empty_fields_are_converted_to_none
+tests/jc/parsers/Testgpg/test_parse.py::test_line_with_only_colons_yields_all_none_values
+tests/jc/parsers/Testgpg/test_parse.py::test_fields_beyond_the_twenty_first_are_ignored
+tests/jc/parsers/Testgpg/test_parse.py::test_unknown_type_uses_generic_mapping
+tests/jc/parsers/Testgpg/test_parse.py::test_pkd_record_mapping
+tests/jc/parsers/Testgpg/test_parse.py::test_pkd_record_with_missing_fields
+tests/jc/parsers/Testgpg/test_parse.py::test_tfs_record_mapping
+tests/jc/parsers/Testgpg/test_parse.py::test_tru_record_mapping
+tests/jc/parsers/Testgpg/test_parse.py::test_skp_record_mapping
+tests/jc/parsers/Testgpg/test_parse.py::test_skp_record_with_empty_data_field
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:version:1.3.5-expected0]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:pubkey:1;2;3;16;17-expected1]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:cipher:2;3;4;7;8;9;10-expected2]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:digest:1;2;3;8;9;10-expected3]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:compress:0;1;2;3-expected4]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:group:mynames:patti;joe;0x12345678;paige-expected5]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_mappings[cfg:curve:ed25519;nistp256;nistp384;nistp521-expected6]
+tests/jc/parsers/Testgpg/test_parse.py::test_cfg_record_output_only_contains_relevant_keys
+tests/jc/parsers/Testgpg/test_parse.py::test_multiple_records_preserve_order
+tests/jc/parsers/Testgpg/test_parse.py::test_crlf_line_endings_are_handled
+tests/jc/parsers/Testgpg/test_parse.py::test_unicode_values_are_preserved
+tests/jc/parsers/Testgpg/test_parse.py::test_raw_and_processed_output_are_equal
+tests/jc/parsers/Testgpg/test_parse.py::test_raw_output_returns_list_of_dicts
+tests/jc/parsers/Testgpg/test_parse.py::test_independent_calls_do_not_share_state
+tests/jc/parsers/Testgpg/test_parse.py::test_no_warning_on_compatible_platform
+tests/jc/parsers/Testgpg/test_parse.py::test_warning_printed_on_incompatible_platform
+tests/jc/parsers/Testgpg/test_parse.py::test_quiet_suppresses_warning_on_incompatible_platform
+tests/jc/parsers/Testgpg/test_parse.py::test_quiet_does_not_change_parsed_output
+
+45 tests collected in 0.77s
+
+=== test.log ===
+.............................................                            [100%]
+45 passed in 0.25s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

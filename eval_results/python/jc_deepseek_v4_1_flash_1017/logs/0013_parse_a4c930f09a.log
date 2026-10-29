@@ -1,0 +1,52 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/Testurl/test_parse.py::test_parse_full_url_returns_all_schema_fields
+tests/jc/parsers/Testurl/test_parse.py::test_parse_unwraps_supported_url_wrappers[<http://example.com/path>]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_unwraps_supported_url_wrappers[URL:http://example.com/path]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_unwraps_supported_url_wrappers[<URL:http://example.com/path>]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_sets_url_for_wrapped_and_naked_inputs[/path-/path]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_sets_url_for_wrapped_and_naked_inputs[<http://example.com/path>-http://example.com/path]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_sets_url_for_wrapped_and_naked_inputs[URL:http://example.com/path-http://example.com/path]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_sets_url_for_wrapped_and_naked_inputs[<URL:http://example.com/path>-http://example.com/path]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_naked_path_extracts_file_parts
+tests/jc/parsers/Testurl/test_parse.py::test_parse_multi_extension_file_uses_last_suffix_as_extension
+tests/jc/parsers/Testurl/test_parse.py::test_parse_preserves_extension_case
+tests/jc/parsers/Testurl/test_parse.py::test_parse_collapses_duplicate_slashes_in_path_fields
+tests/jc/parsers/Testurl/test_parse.py::test_parse_root_path_has_no_path_list_or_filename
+tests/jc/parsers/Testurl/test_parse.py::test_parse_query_only_url
+tests/jc/parsers/Testurl/test_parse.py::test_parse_repeated_query_keys_are_grouped_in_query_obj
+tests/jc/parsers/Testurl/test_parse.py::test_parse_credentials_and_port
+tests/jc/parsers/Testurl/test_parse.py::test_parse_ipv6_hostname_and_port
+tests/jc/parsers/Testurl/test_parse.py::test_parse_scheme_and_hostname_are_lowercased_by_urllib
+tests/jc/parsers/Testurl/test_parse.py::test_parse_port_zero_is_treated_as_missing
+tests/jc/parsers/Testurl/test_parse.py::test_parse_percent_encoded_numeric_port_is_decoded
+tests/jc/parsers/Testurl/test_parse.py::test_parse_invalid_port_is_null_with_warning[abc]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_invalid_port_is_null_with_warning[99999]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_invalid_port_is_null_with_warning[-1]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_invalid_port_warning_can_be_suppressed[abc]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_invalid_port_warning_can_be_suppressed[99999]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_percent_encoding_produces_encoded_and_decoded_views
+tests/jc/parsers/Testurl/test_parse.py::test_parse_spaces_are_quoted_with_plus_in_query_only
+tests/jc/parsers/Testurl/test_parse.py::test_parse_plus_handling_differs_between_path_and_query
+tests/jc/parsers/Testurl/test_parse.py::test_parse_encoded_username_and_password_views
+tests/jc/parsers/Testurl/test_parse.py::test_parse_empty_or_whitespace_data_returns_empty_dict[]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_empty_or_whitespace_data_returns_empty_dict[   ]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_empty_or_whitespace_data_returns_empty_dict[\n\t  ]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_rejects_non_string_input[None]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_rejects_non_string_input[123]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_rejects_non_string_input[http://example.com]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_rejects_non_string_input[data3]
+tests/jc/parsers/Testurl/test_parse.py::test_parse_raw_flag_returns_unprocessed_output
+tests/jc/parsers/Testurl/test_parse.py::test_parse_raw_empty_input_returns_empty_dict
+
+38 tests collected in 0.28s
+
+=== test.log ===
+......................................                                   [100%]
+38 passed in 0.27s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,54 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_values_with_invalid_sequence_length_are_rejected
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_values_are_normalized_with_configured_scale
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_config_output_flags_are_used_and_explicit_values_override_them
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_inputs_embeds_path_matches_embedded_input_ids
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_normalization_is_skipped_when_time_aware_rotary_is_disabled
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_missing_input_ids_and_inputs_embeds_are_rejected
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_two_dimensional_input_is_unsqueezed_and_matches_three_dimensional_input
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_single_token_sequence_is_supported
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_explicit_position_ids_and_empty_legacy_cache_are_accepted
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_return_dict_false_with_all_optional_outputs_has_five_items
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_both_input_ids_and_inputs_embeds_are_rejected
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_optional_hidden_states_attentions_and_router_logits
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_missing_time_values_are_rejected_by_ct_rope
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_attention_mask_prevents_padding_tokens_from_affecting_earlier_tokens
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_forward_returns_moe_output_with_expected_shapes
+tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_return_dict_default_and_explicit_return_dict
+
+16 tests collected in 1.68s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+................                                                         [100%]
+============================= slowest 20 durations =============================
+3.79s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_return_dict_default_and_explicit_return_dict
+3.56s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_explicit_position_ids_and_empty_legacy_cache_are_accepted
+3.49s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_attention_mask_prevents_padding_tokens_from_affecting_earlier_tokens
+3.26s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_two_dimensional_input_is_unsqueezed_and_matches_three_dimensional_input
+3.24s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_config_output_flags_are_used_and_explicit_values_override_them
+3.22s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_inputs_embeds_path_matches_embedded_input_ids
+2.20s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_forward_returns_moe_output_with_expected_shapes
+1.99s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_optional_hidden_states_attentions_and_router_logits
+1.96s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_values_are_normalized_with_configured_scale
+1.94s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_return_dict_false_with_all_optional_outputs_has_five_items
+1.81s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_normalization_is_skipped_when_time_aware_rotary_is_disabled
+1.11s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_single_token_sequence_is_supported
+0.32s call     tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_values_with_invalid_sequence_length_are_rejected
+0.07s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_explicit_position_ids_and_empty_legacy_cache_are_accepted
+0.05s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_values_with_invalid_sequence_length_are_rejected
+0.04s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_optional_hidden_states_attentions_and_router_logits
+0.04s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_single_token_sequence_is_supported
+0.03s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_time_values_are_normalized_with_configured_scale
+0.03s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_forward_returns_moe_output_with_expected_shapes
+0.02s setup    tests/sktime/libs/mira/Testmodeling_mira/test_forward.py::test_missing_input_ids_and_inputs_embeds_are_rejected
+16 passed in 45.92s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

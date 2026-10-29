@@ -1,0 +1,52 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_output_hidden_states_and_attentions
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_return_dict_false_uses_documented_tuple_order
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_preserves_sequence_length
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_rejects_invalid_input_specification[kwargs0-cannot specify both input_ids and inputs_embeds]
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_cache_instance_and_marks_it_non_legacy
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_honors_config_output_flags_and_explicit_cache_override
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_legacy_cache_is_converted_and_extended
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_rejects_invalid_input_specification[kwargs1-must specify either input_ids or inputs_embeds]
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_attention_mask_and_explicit_position_ids
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_is_deterministic_in_eval_mode_and_supports_backward
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_input_ids_returns_model_output_and_cache
+tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_gradient_checkpointing_disables_requested_cache
+
+12 tests collected in 1.98s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+..........F.                                                             [100%]
+============================= slowest 20 durations =============================
+0.02s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_is_deterministic_in_eval_mode_and_supports_backward
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_attention_mask_and_explicit_position_ids
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_rejects_invalid_input_specification[kwargs1-must specify either input_ids or inputs_embeds]
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_is_deterministic_in_eval_mode_and_supports_backward
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_return_dict_false_uses_documented_tuple_order
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_gradient_checkpointing_disables_requested_cache
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_preserves_sequence_length
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_attention_mask_and_explicit_position_ids
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_cache_instance_and_marks_it_non_legacy
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_input_ids_returns_model_output_and_cache
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_rejects_invalid_input_specification[kwargs0-cannot specify both input_ids and inputs_embeds]
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_honors_config_output_flags_and_explicit_cache_override
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_output_hidden_states_and_attentions
+0.01s setup    tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_legacy_cache_is_converted_and_extended
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_honors_config_output_flags_and_explicit_cache_override
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_gradient_checkpointing_disables_requested_cache
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_inputs_embeds_preserves_sequence_length
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_input_ids_returns_model_output_and_cache
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_return_dict_false_uses_documented_tuple_order
+0.01s call     tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_legacy_cache_is_converted_and_extended
+=========================== short test summary info ============================
+FAILED tests/sktime/libs/timer_s1/Testmodeling_TimerS1/test_forward.py::test_forward_accepts_attention_mask_and_explicit_position_ids
+1 failed, 11 passed in 39.63s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json
