@@ -1,0 +1,22 @@
+<script>
+#!/bin/bash
+set -uxo pipefail
+
+# Navigate to the project directory
+cd /testbed
+
+# Ensure Maven wrapper is executable
+chmod +x ./mvnw
+
+# Clean and recompile the project with Maven, skipping tests to ensure setup is correct
+LC_ALL=C ./mvnw clean install -DskipTests
+
+# Execute the tests using Maven with verbose output and JVM argument settings for detailed stack traces
+LC_ALL=C ./mvnw test -Pverbose-test -DtrimStackTrace=false
+
+# Capture the exit code from the test command execution
+rc=$?
+
+# Output the final exit code for the evaluation
+echo "OMNIGRIL_EXIT_CODE=$rc"
+</script>

@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile fails to build successfully due to a dependency issue with Node.js and npm versions. The error indicates 'EBADENGINE' and states that the installed npm version (10.8.2) is not compatible with the required node.js versions (>=22.22.2 or >=24.15.0 or >=26.0.0). Recommend modifying the Dockerfile to install a compatible version of Node.js and npm that matches the requirement specified in the error log. For example, instead of using 'setup_20.x' for the NodeSource repository, you might need to use 'setup_lts.x' or another compatible Node version higher than v20.x. Also, check if the repository's README.md or package.json mentions specific dependency requirements related to Node.js and npm versions.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "Retrieve files such as README.md and package.json from the repository to confirm the correct versions of Node.js and npm compatible with the project. These files often specify the required engine versions or dependencies. This information will help ensure that the environment is set up with the correct versions.",
+  "build_image_status": false
+}

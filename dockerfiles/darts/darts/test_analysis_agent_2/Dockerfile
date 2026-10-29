@@ -1,0 +1,59 @@
+# Use the Ubuntu base image with Bash support
+FROM --platform=linux/x86_64 ubuntu:22.04
+ARG DEBIAN_FRONTEND=noninteractive
+ARG FAKE_DATE
+ENV TZ=Etc/UTC
+ENV FAKE_SYSTEM_DATE=${FAKE_DATE}
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Install essential system dependencies
+RUN apt update && apt install -y \
+    wget \
+    git \
+    build-essential \
+    libffi-dev \
+    python3 \
+    python3-pip \
+    python-is-python3 \
+    jq \
+    curl \
+    locales \
+    locales-all \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install patch and other tools required
+RUN apt install -y patch
+
+# Install Miniconda as a lightweight environment and package manager
+RUN wget 'https://repo.anaconda.com/miniconda/Miniconda3-py311_23.11.0-2-Linux-x86_64.sh' -O miniconda.sh \
+    && bash miniconda.sh -b -p /opt/miniconda3 \
+    && rm miniconda.sh
+ENV PATH=/opt/miniconda3/bin:$PATH
+RUN conda init --all && conda config --append channels conda-forge
+
+# Set up a dedicated environment named "testbed" for the target project
+RUN /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && \
+    conda create -n testbed python=3.10 -y && \
+    conda activate testbed && \
+    pip install pytest pytest-json-report pre-commit typing_extensions ipython"
+
+# Set the default work directory inside the container
+WORKDIR /testbed/
+
+# Clone the target repository, checkout the specified commit SHA, and install dependencies
+RUN /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && \
+    conda activate testbed && \
+    git clone https://github.com/unit8co/darts.git /testbed && \
+    chmod -R 777 /testbed && \
+    cd /testbed && \
+    git reset --hard 05192e9b9e7ed5d0bcabc27543424bd2776b3ce4 && \
+    git remote remove origin && \
+    curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    export PATH=${PATH}:$HOME/.local/bin && \
+    uv sync --group dev-all --upgrade && \
+    uv run pre-commit install && \
+    pip install -e ."
+
+# Configure shell initialization for the virtual environment activation on container start
+RUN echo "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed" >> /root/.bashrc

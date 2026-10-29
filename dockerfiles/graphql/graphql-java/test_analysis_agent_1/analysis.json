@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile has an issue during the build process. The command `git clone https://github.com/graphql-java/graphql-java.git /testbed` fails because the destination path `/testbed` already exists and is not empty. This typically happens because a prior step has already populated the `/testbed` directory. To fix this issue, modify the Dockerfile to either clean up the `/testbed` folder before running the `git clone` command or use a conditional check to ensure the `git clone` command only runs if the directory is empty. Replace the problematic command with the following safe alternative: `RUN [ -d /testbed/.git ] || (rm -rf /testbed && mkdir /testbed && git clone https://github.com/graphql-java/graphql-java.git /testbed)`.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

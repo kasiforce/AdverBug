@@ -1,0 +1,42 @@
+[
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "README.md",
+      "custom_query": "setup and testing information"
+    },
+    "call_ok": true,
+    "result": "[Key Information from README.md]\n- Setup Information:\n  - Prerequisites:\n    - Docker Desktop (must be open and running to use Docker).\n    - Node.js version `v24` (or use `nvm` with the `.nvmrc` file for the correct version).\n  - Docker setup:\n    - **Build Docker Image:** `docker build --tag cyberchef --ulimit nofile=10000 .`\n    - **Run Docker Container:** `docker run -it -p 8080:8080 cyberchef`\n    - **Run Pre-Built Docker Image:** `docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest`\n    - Access locally via `http://localhost:8080` in a browser.\n  - From Source:\n    - Setup commands:\n      ```bash\n      git clone https://github.com/gchq/CyberChef.git\n      cd CyberChef\n      npm install\n      ```\n    - Use `nvm` optionally for Node.js version management (refer to the `.nvmrc` file).\n    \n- Testing Information:\n  - Test framework: Node.js test suites + browser-based UI tests.\n  - Test commands:\n    - **Run Tests**: `npm test` (to execute Node.js and operation test suites).\n    - **Run UI Tests**: `npm run testui` (to execute browser-based tests).\n  - Additional commands:\n    - **Linting**: `npm run lint`\n    - **Set Node.js heap size**: `npm run setheapsize` (necessary for building large recipes).\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "CONTRIBUTING.md",
+      "custom_query": "setup and running test instructions"
+    },
+    "call_ok": true,
+    "result": "No relevant information found.",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "package.json",
+      "custom_query": "dependencies, scripts, and Node.js version"
+    },
+    "call_ok": true,
+    "result": "[Key Information from /data/home/cjy/software-testing/projects/CyberChef/package.json]\n- **Dependencies**:\n  - \"@alexaltea/capstone-js\": \"^3.0.5\"\n  - \"@astronautlabs/amf\": \"^0.0.6\"\n  - \"@blu3r4y/lzma\": \"^2.3.3\"\n  - \"@noble/hashes\": \"2.4.0\"\n  - \"@wavesenterprise/crypto-gost-js\": \"^2.1.0-RC1\"\n  - \"@xmldom/xmldom\": \"^0.8.15\"\n  - \"argon2-browser\": \"^1.18.0\"\n  - \"arrive\": \"^2.5.3\"\n  - And **many more listed dependencies**. These should be installed by running `npm install`.\n\n- **DevDependencies**:\n  - \"@babel/eslint-parser\": \"^8.0.6\"\n  - \"@babel/plugin-transform-runtime\": \"^8.0.6\"\n  - \"@babel/preset-env\": \"^8.0.6\"\n  - \"@babel/runtime\": \"^8.0.5\"\n  - \"@puppeteer/browsers\": \"3.2.3\"\n  - \"autoprefixer\": \"^10.6.1\"\n  - And **numerous other dev dependencies**, which can also be installed via `npm install`.\n\n- **Scripts**:\n  - **Main Commands**:\n    - Start application: `npx grunt dev`\n    - Build production: `npx grunt prod`\n    - Run Node wrapper: `npx grunt node`\n    - REPL mode: `node --no-warnings src/node/repl.mjs`\n    - Run tests (node-based): `npx grunt configTests && node --no-warnings --no-deprecation --openssl-legacy-provider tests/node/index.mjs && node --no-warnings --no-deprecation --openssl-legacy-provider --trace-uncaught tests/operations/index.mjs`\n    - Run node consumer tests: `npx grunt testnodeconsumer`\n    - Run UI tests: `npx grunt testui`\n    - Run UI tests in dev mode: `npx nightwatch --env=dev`\n    - Lint code: `npx grunt lint`\n    - Lint grammar: `cspell ./src`\n    - Configure cryptographic APIs and UI after installation: `npx grunt exec:fixCryptoApiImports && npx grunt exec:fixSnackbarMarkup`\n    - Create new operation: `node src/core/config/scripts/newOperation.mjs`\n    - Update minor version (manual pull request creation needed): `node src/core/config/scripts/newMinorVersion.mjs && npm version minor --git-tag-version=false`\n    - Git tag generation: `git tag -s \"v\\$(npm pkg get version | xargs)\" -m \"\\$(npm pkg get version | xargs)\"`\n    - Set Node.js heap size: `export NODE_OPTIONS=--max_old_space_size=2048`\n\n- **Node.js Version**:\n  - Required: `>=24 <27` (Node.js version 24, with compatibility restrictions below version 27)\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": ".nvmrc",
+      "custom_query": "Node.js version specification"
+    },
+    "call_ok": true,
+    "result": "[Key Information from /data/home/cjy/software-testing/projects/CyberChef/.nvmrc]\n- Node.js version: **24** (specified in the `.nvmrc` file)\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  }
+]

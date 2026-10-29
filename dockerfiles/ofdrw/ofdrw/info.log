@@ -1,0 +1,644 @@
+2026-10-15 21:21:37.447 | INFO     | Model API request cost info: input_tokens=1348, output_tokens=176, cost=0.005130
+2026-10-15 21:21:37.452 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 21:21:40.411 | INFO     | Model API request cost info: input_tokens=775, output_tokens=106, cost=0.002998
+2026-10-15 21:21:40.413 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('README.md', 'Collect environment setup details such as dependencies, Java version, build, and test instructions.')",
+        "browse_file_for_environment_info('CONTRIBUTING.md', 'Check if there are any specific environment setup steps or requirements mentioned.')",
+        "browse_file_for_environment_info('pom.xml', 'What version of Java and dependencies are required?')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-15 21:21:40.413 | DEBUG    | Extracted a valid json
+2026-10-15 21:21:40.417 | INFO     | entering browse
+2026-10-15 21:21:40.417 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/ofdrw/README.md ===
+# OFD Reader & Writer 
+
+![-](https://img.shields.io/badge/java-%3E%3D1.8-blue) ![Maven Central](https://img.shields.io/maven-central/v/org.ofdrw/ofdrw) [![license](https://img.shields.io/badge/license-Apache--2.0-blue)](./LICENSE) 
+
+
+在使用OFDRW前，请务必悉知 [***《OFD Reader & Writer免责声明》***](免责声明.md)！
+
+> 若clone和文档预览存在困难，请移步 [https://gitee.com/ofdrw/ofdrw](https://gitee.com/ofdrw/ofdrw)
+
+**Talk is cheap,Show me the code. ——Linus Torvalds**
+
+<p align="center">
+  <img width="275" height="275" src="./img/icon2.png">
+</p>
+
+OFD Reader & Writer 开源的OFD处理库，支持文档生成、数字签名、文档保护、文档合并、转换、导出等功能。
+
+本项目采用[Apache 2.0许可](./LICENSE)，请尊重开源项目作者，在软件中附带OFDRW开源软件许可，**在遵守开源协议前提下可免费商业化使用**。
+
+根据[《GB/T 33190-2016 电子文件存储与交换格式版式文档》](./GBT_33190-2016_电子文件存储与交换格式版式文档.pdf)标准实现版式文档OFD库（含有书签）。
+
+项目采用Maven模块管理，各模块如下：
+
+- [**ofdrw-core**](./ofdrw-core) OFD核心API，参考[《GB/T 33190-2016 电子文件存储与交换格式版式文档》](./GBT_33190-2016_电子文件存储与交换格式版式文档.pdf)实现的基础数据结构。
+- [**ofdrw-font**](./ofdrw-font) 生成OFD字体相关。
+- [**ofdrw-layout**](./ofdrw-layout) OFD布局引擎库，用于文档构建和渲染。
+- [**ofdrw-pkg**](./ofdrw-pkg) OFD文件的容器，用于文档的打包。
+- [**ofdrw-reader**](./ofdrw-reader) OFD文档解析器，用于OFD的反序列化以及签名签章。
+- [**ofdrw-sign**](./ofdrw-sign) OFD文档数字签章。
+- [**ofdrw-gm**](./ofdrw-gm) 用于支持签章模块需要的国密电子签章数据结构。
+- [**ofrw-crypto**](./ofdrw-crypto) 用于实现《GM/T 0099-2020 开放版式文档密码应用技术规范》对OFD的密码相关功能。
+- [**ofdrw-gv**](./ofdrw-gv) OFDRW 所有模块所共用的全局变量。
+- [**ofdrw-converter**](./ofdrw-converter) OFD文档转换。
+- [**ofdrw-tool**](./ofdrw-tool) OFD文档工具，文档合并、裁剪、重组、混合。
+- [**ofdrw-archive**](./ofdrw-archive) OFD-A 档案模块，依据 GB/T 42133-2022 实现 OFD 文件的合规检查和去技术化转换。***New***
+- [**ofdrw-graphics2d**](./ofdrw-graphics2d) 实现了AWT Graphics2D接口，生成OFD文档内容。
+- [**ofdrw-full**](./ofdrw-full) 上述所有模块整合包，用于简化依赖引入。
+
+注：
+
+- 您可以根据需求裁剪模块优化程序体积。
+- 您可以仅引用`ofdrw-core`中定义的数据结来构建属于您自己的OFD库，就像[ofdrw-graphics2d](./ofdrw-graphics2d)那样。
+
+## QuickStart
+
+Maven项目引入依赖
+```xml
+<dependency>
+  <groupId>org.ofdrw</groupId>
+  <artifactId>ofdrw-full</artifactId>
+  <version>2.4.0</version>
+</dependency>
+```
+
+**OFDRW 将持续保证API的向下兼容，您可以放心的升级OFDRW库至最新版本。**
+
+> - 若您没有采用Maven管理项目，请参阅项目中`pom.xml`文件中的依赖，手动解决三方依赖包问题。
+> - 若出现NoClassFound等错误，请检查相关包是否存在冲突。
+
+
+如何生成一份OFD文档，如何把大象放入冰箱？
+
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) throws IOException {
+        Path path = Paths.get("HelloWorld.ofd");
+        try (OFDDoc ofdDoc = new OFDDoc(path)) {
+            Paragraph p = new Paragraph("你好呀，OFD Reader&Writer！");
+            ofdDoc.add(p);
+        }
+        System.out.println("生成文档位置: " + path.toAbsolutePath());
+    }
+}
+```
+
+效果如下：
+
+![示例](./ofdrw-layout/doc/layout/示例.png)
+
+- [文档生成API示例](./ofdrw-layout/src/test/java/org/ofdrw/layout/OFDDocTest.java)
+- [文档布局示例](./ofdrw-layout/src/test/java/org/ofdrw/layout/LayoutTest.java)
+- [Canvas示例](./ofdrw-layout/src/test/java/org/ofdrw/layout/element/canvas/DrawContextTest.java)
+- [文字抽取示例](./ofdrw-reader/src/test/java/org/ofdrw/reader/ContentExtractorTest.java)
+- [段落布局示例](./ofdrw-layout/src/test/java/org/ofdrw/layout/ParagraphLayoutDemo.java)
+- [文档编辑示例](./ofdrw-layout/src/test/java/org/ofdrw/layout/DocEditDemos.java)
+- [数字签名清理示例](./ofdrw-sign/src/test/java/org/ofdrw/sign/SignCleanerTest.java)
+
+相关文档目录：
+
+- [OFD R&W 布局设计](./ofdrw-layout/doc/layout/README.md)
+- [OFD R&W 扩展 自定义元素](./ofdrw-layout/doc/customelement/README.md)
+- [OFD R&W 基于Canvas文档内容生成](./ofdrw-layout/doc/canvas/README.md)
+- [OFD R&W 签名签章快速入门](./ofdrw-sign/doc/quickstart/README.md)
+- [OFD R&W 加密 完整性保护协议](./ofdrw-crypto/README.md)
+- [OFD R&W 转换OFD/OFD导出 ](./ofdrw-converter/README.md)
+- [OFD R&W 字形数据解析](./ofdrw-converter/src/main/java/org/ofdrw/converter/font/README.md)
+- [OFD R&W 文档合并](./ofdrw-tool/README.md)
+- [OFD R&W 区域占位区块（类表单效果）](./ofdrw-layout/doc/areaholderblock/README.md)
+- [OFD R&W 单元格元素 使用指南](./ofdrw-layout/doc/cell/README.md)
+- [OFD R&W 内容生成 事件处理](./ofdrw-layout/doc/onpage/README.md)
+- [OFD R&W 附件操作](./ofdrw-layout/doc/attachment/README.md)
+- [OFD R&W 添加水印](./ofdrw-layout/doc/watermark/README.md)
+- [OFD R&W OFD-A 档案模块](./ofdrw-archive/README.md)
+
+### 相关解决方案
+
+#### HTML5
+
+HTML5前端预览解决方案： 
+
+- [DLTech21/ofd.js . https://github.com/DLTech21/ofd.js](https://github.com/DLTech21/ofd.js)
+- [xxss0903/LiteOfd . https://github.com/xxss0903/liteofd](https://github.com/xxss0903/liteofd)
+
+#### 开源阅读器
+
+
+**XilouReader**：[chingliu/XilouReader . https://gitee.com/chingliu/XilouReader](https://gitee.com/chingliu/XilouReader)
+
+- 基于pdfium的ofd/pdf双引擎版式阅读器。
+
+
+**OfdiumEx**：[roy19831015/OfdiumEx . https://github.com/roy19831015/OfdiumEx](https://github.com/roy19831015/OfdiumEx)
+
+- 基于cairo库渲染OFD。
+- Windows客户端阅读器
+
+#### 转换
+
+***HTML转换****
+
+**ofd2html**：[NullYing/ofd2html-python . https://github.com/NullYing/ofd2html-python](https://github.com/NullYing/ofd2html-python)
+
+- Python实现的OFD转换HTML
+
+
+***图片转换***
+
+推荐开源OFD图片转换解决方案： [QAQtutu/ofdbox . https://github.com/QAQtutu/ofdbox](https://github.com/QAQtutu/ofdbox)
+
+- 支持OFD解析。
+- 基于java.awt解析OFD实现图片绘制。
+
+> 目前已经被合并到`ofdrw-converter` 模块
+
+#### 阅读器
+
+阅读器方面，您也可以尝试：
+
+- [数科网维公司 . 数科OFD阅读器 . www.ofd.cn](https://www.ofd.cn/)
+- [Foxit . 福昕OFD . www.foxitsoftware.cn/ofd/](https://www.foxitsoftware.cn/ofd/)
+
+## 源码安装
+
+> 支持 ***JDK 1.8*** 及以上版本构建。
+
+在项目根目录下运行：
+
+```bash
+mvn install
+```
+
+就可以完成项目的构建打包，安装到本地Maven仓库中。
+
+## 社区交流
+
+- 若您遇到与OFD相关的技术问题，欢迎进群交流!
+- 若您对项目有建设性意见或方案欢迎提交**Issue**与**Pull Request**。
+
+## 参与贡献
+
+参与贡献代码尽量遵守下面代码规约：
+
+1. **原则上禁止`public`方法、类、接口进行删除**：为了保留向下兼容性，如果是更新升级请标注过去已经暴露方法、接口、类为过时标记`@Deprecated`，并注释置新的实现位置`@deprecated {@link SomethingNew}`。
+2. **请为每个`public`方法、类、接口添加注释**：为了保留开发者的便利性，注释一般为多行注释，注释内容需要包含参数以及方法或类的作用、参数意义、返还值以及意义、异常抛出、以及参数意义。
+
+[>> GitHub 第一次参与开源(多语言)](https://github.com/firstcontributions/first-contributions)
+
+> - [贡献指南](CONTRIBUTING.md)。
+
+## 项目情况
+
+### 进展
+
+[>> 项目进展](releasenotes.md)
+
+> 在OFDRW 2.0.0之后，项目进展以发布说明的方式在项目托管仓库中描述。
+
+### 项目关注度
+
+> 项目获得 Star曲线
+
+[![Stargazers over time](https://starchart.cc/ofdrw/ofdrw.svg)](https://starchart.cc/ofdrw/ofdrw)
+
+=== FILE END:   /data/home/cjy/software-testing/projects/ofdrw/README.md ===
+2026-10-15 21:21:40.417 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 21:21:45.725 | INFO     | Model API request cost info: input_tokens=3145, output_tokens=442, cost=0.012283
+2026-10-15 21:21:45.726 | SUCCESS  | Successfully extracted environment config
+2026-10-15 21:21:45.726 | INFO     | ******
+2026-10-15 21:21:45.726 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/ofdrw/README.md]
+- Dependencies:
+  - Primary dependency for Maven projects:
+    ```xml
+    <dependency>
+      <groupId>org.ofdrw</groupId>
+      <artifactId>ofdrw-full</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    ```
+  - Modules:
+    - ofdrw-core
+    - ofdrw-font
+    - ofdrw-layout
+    - ofdrw-pkg
+    - ofdrw-reader
+    - ofdrw-sign
+    - ofdrw-gm
+    - ofdrw-crypto
+    - ofdrw-gv
+    - ofdrw-converter
+    - ofdrw-tool
+    - ofdrw-archive
+    - ofdrw-graphics2d
+    - ofdrw-full (all modules merged for simplified dependency integration)
+
+- Environment setup:
+  - **Java Version**:
+    - Requires ***JDK 1.8*** or above.
+  - **Build system**:
+    - Maven.
+  - Compilation & local installation:
+    ```bash
+    mvn install
+    ```
+    This command builds, packages, and installs the project into the local Maven repository.
+
+- Test instructions:
+  - Example test files provided:
+    - `org/ofdrw/layout/OFDDocTest.java` (Document generation API example).
+    - `org/ofdrw/layout/LayoutTest.java` (Document layout example).
+    - `org/ofdrw/layout/element/canvas/DrawContextTest.java` (Canvas example).
+    - `org/ofdrw/reader/ContentExtractorTest.java` (Text extraction example).
+    - `org/ofdrw/sign/SignCleanerTest.java` (Digital signature cleanup example).
+  - Relevant test command:
+    ```bash
+    mvn test
+    ```
+    However, specific individual test files could alternatively be executed using:
+    ```bash
+    mvn test -Dtest=<SpecificTestClass>
+    ```
+
+[/Key Information]
+2026-10-15 21:21:45.726 | INFO     | ******
+2026-10-15 21:21:45.726 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/ofdrw/README.md]\n- Dependencies:\n  - Primary dependency for Maven projects:\n    ```xml\n    <dependency>\n      <groupId>org.ofdrw</groupId>\n      <artifactId>ofdrw-full</artifactId>\n      <version>2.4.0</version>\n    </dependency>\n    ```\n  - Modules:\n    - ofdrw-core\n    - ofdrw-font\n    - ofdrw-layout\n    - ofdrw-pkg\n    - ofdrw-reader\n    - ofdrw-sign\n    - ofdrw-gm\n    - ofdrw-crypto\n    - ofdrw-gv\n    - ofdrw-converter\n    - ofdrw-tool\n    - ofdrw-archive\n    - ofdrw-graphics2d\n    - ofdrw-full (all modules merged for simplified dependency integration)\n\n- Environment setup:\n  - **Java Version**:\n    - Requires ***JDK 1.8*** or above.\n  - **Build system**:\n    - Maven.\n  - Compilation & local installation:\n    ```bash\n    mvn install\n    ```\n    This command builds, packages, and installs the project into the local Maven repository.\n\n- Test instructions:\n  - Example test files provided:\n    - `org/ofdrw/layout/OFDDocTest.java` (Document generation API example).\n    - `org/ofdrw/layout/LayoutTest.java` (Document layout example).\n    - `org/ofdrw/layout/element/canvas/DrawContextTest.java` (Canvas example).\n    - `org/ofdrw/reader/ContentExtractorTest.java` (Text extraction example).\n    - `org/ofdrw/sign/SignCleanerTest.java` (Digital signature cleanup example).\n  - Relevant test command:\n    ```bash\n    mvn test\n    ```\n    However, specific individual test files could alternatively be executed using:\n    ```bash\n    mvn test -Dtest=<SpecificTestClass>\n    ```\n\n[/Key Information]', 'Get File Info', True)
+2026-10-15 21:21:45.727 | INFO     | entering browse
+2026-10-15 21:21:45.727 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/ofdrw/CONTRIBUTING.md ===
+> 欢迎你参与 OFW Reader & Writer 的开发，下面是参与代码贡献的指南，以供参考。
+# 代码贡献步骤
+
+## 0. 提交 issue
+
+任何新功能或者功能改进建议都先提交 issue 讨论一下再进行开发，bug 修复可以直接提交 pull request。
+
+## 1. Fork 此仓库
+
+点击右上角的 `fork` 按钮即可。
+
+## 2. Clone 仓库到本地
+
+```bash
+git clone https://github.com/{YOUR_USERNAME}/ofdrw
+```
+
+## 3. 提交代码到Fork的仓库中
+
+```bash
+git push 
+```
+
+## 4. 提交 pull request
+
+回到自己的仓库页面，选择 `New pull request` 按钮，创建 `Pull request` 到原仓库的 `master` 分支。
+
+然后等待我们 Review 即可，如有 `Change Request`，再本地修改之后再次提交即可。
+=== FILE END:   /data/home/cjy/software-testing/projects/ofdrw/CONTRIBUTING.md ===
+2026-10-15 21:21:45.727 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 21:21:48.609 | INFO     | Model API request cost info: input_tokens=763, output_tokens=39, cost=0.002298
+2026-10-15 21:21:48.610 | SUCCESS  | Successfully extracted environment config
+2026-10-15 21:21:48.610 | INFO     | ******
+2026-10-15 21:21:48.610 | INFO     | [Key Information from CONTRIBUTING.md]
+- No specific environment setup steps or requirements are mentioned in this file. The content is focused on contributing process and repository workflow.
+2026-10-15 21:21:48.610 | INFO     | ******
+2026-10-15 21:21:48.611 | DEBUG    | Result of dispatch_intent: ('[Key Information from CONTRIBUTING.md]\n- No specific environment setup steps or requirements are mentioned in this file. The content is focused on contributing process and repository workflow.', 'Get File Info', True)
+2026-10-15 21:21:48.611 | INFO     | entering browse
+2026-10-15 21:21:48.611 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/ofdrw/pom.xml ===
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>OFD Reader And Writer</name>
+
+    <groupId>org.ofdrw</groupId>
+    <artifactId>ofdrw</artifactId>
+    <packaging>pom</packaging>
+    <version>2.4.0</version>
+
+    <url>https://github.com/ofdrw/ofdrw</url>
+    <description>Open Fixed layout Document Reader And Writer Libary(OFD-RW) provider developers to generate ofd
+        document and edit it.
+    </description>
+
+    <modules>
+        <module>ofdrw-core</module>
+        <module>ofdrw-pkg</module>
+        <module>ofdrw-layout</module>
+        <module>ofdrw-font</module>
+        <module>ofdrw-full</module>
+        <module>ofdrw-reader</module>
+        <module>ofdrw-sign</module>
+        <module>ofdrw-gv</module>
+        <module>ofdrw-gm</module>
+        <module>ofdrw-converter</module>
+        <module>ofdrw-crypto</module>
+        <module>ofdrw-tool</module>
+        <module>ofdrw-graphics2d</module>
+        <module>ofdrw-archive</module>
+    </modules>
+
+    <developers>
+        <developer>
+            <id>ofdrw</id>
+            <name>OFD Reader And Writer</name>
+            <email>quanguanyu@qq.com</email>
+            <url>https://github.com/ofdrw</url>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <bc.version>1.85</bc.version>
+        <skipTests>true</skipTests>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://github.com/ofdrw/ofdrw/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/ofdrw/ofdrw.git</url>
+        <connection>scm:git:https://github.com/ofdrw/ofdrw.git</connection>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.5.2</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk18on</artifactId>
+                <version>${bc.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.16.1</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- Source Plugin: Attach source JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Javadoc Plugin: Generate and attach Javadoc JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
+            </plugin>
+
+            <!-- GPG Plugin: Sign artifacts for Maven Central -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <passphraseServerId>gpg.passphrase</passphraseServerId>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire Plugin: Skip tests during build -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                </configuration>
+            </plugin>
+
+            <!-- Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.12.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.10.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+=== FILE END:   /data/home/cjy/software-testing/projects/ofdrw/pom.xml ===
+2026-10-15 21:21:48.611 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 21:21:56.795 | INFO     | Model API request cost info: input_tokens=2220, output_tokens=192, cost=0.007470
+2026-10-15 21:21:56.796 | SUCCESS  | Successfully extracted environment config
+2026-10-15 21:21:56.796 | INFO     | ******
+2026-10-15 21:21:56.796 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/ofdrw/pom.xml]
+- Java Requirements:
+  - Java version: **1.8**
+
+- Dependencies and their Versions:
+  - **org.junit.jupiter:junit-jupiter-api:5.5.2** (For testing)
+  - **org.bouncycastle:bcprov-jdk18on:${bc.version}** (**Resolved to**: 1.85 as per `<bc.version>` property)
+  - **org.bouncycastle:bcpkix-jdk18on:${bc.version}** (**Resolved to**: 1.85 as per `<bc.version>` property)
+  - **commons-io:commons-io:2.16.1**
+
+- Notes:
+  - Dependency versions are explicitly defined except for `${bc.version}`, which is resolved via the `<bc.version>` property as **1.85**.
+
+[/Key Information]
+2026-10-15 21:21:56.796 | INFO     | ******
+2026-10-15 21:21:56.796 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/ofdrw/pom.xml]\n- Java Requirements:\n  - Java version: **1.8**\n\n- Dependencies and their Versions:\n  - **org.junit.jupiter:junit-jupiter-api:5.5.2** (For testing)\n  - **org.bouncycastle:bcprov-jdk18on:${bc.version}** (**Resolved to**: 1.85 as per `<bc.version>` property)\n  - **org.bouncycastle:bcpkix-jdk18on:${bc.version}** (**Resolved to**: 1.85 as per `<bc.version>` property)\n  - **commons-io:commons-io:2.16.1**\n\n- Notes:\n  - Dependency versions are explicitly defined except for `${bc.version}`, which is resolved via the `<bc.version>` property as **1.85**.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-15 21:22:08.176 | INFO     | Model API request cost info: input_tokens=2529, output_tokens=882, cost=0.015143
+2026-10-15 21:22:08.192 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 21:22:22.859 | INFO     | Model API request cost info: input_tokens=1480, output_tokens=556, cost=0.009260
+2026-10-15 21:22:22.860 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "Environment Setup": {
+            "Dependencies": [
+                {
+                    "groupId": "org.ofdrw",
+                    "artifactId": "ofdrw-full",
+                    "version": "2.4.0"
+                }
+            ],
+            "Modules": [
+                "ofdrw-core",
+                "ofdrw-font",
+                "ofdrw-layout",
+                "ofdrw-pkg",
+                "ofdrw-reader",
+                "ofdrw-sign",
+                "ofdrw-gm",
+                "ofdrw-crypto",
+                "ofdrw-gv",
+                "ofdrw-converter",
+                "ofdrw-tool",
+                "ofdrw-archive",
+                "ofdrw-graphics2d",
+                "ofdrw-full"
+            ],
+            "Environment Requirements": {
+                "JDK Version": "1.8 or above",
+                "Build System": "Maven"
+            },
+            "Installation Command": "mvn install",
+            "Build Tool": "Maven"
+        },
+        "Test Execution": {
+            "Commands": {
+                "Run All Tests": "mvn test",
+                "Run Specific Test File": "mvn test -Dtest=<SpecificTestClass>"
+            },
+            "Sample Test Files": [
+                "org/ofdrw/layout/OFDDocTest.java",
+                "org/ofdrw/layout/LayoutTest.java",
+                "org/ofdrw/layout/element/canvas/DrawContextTest.java",
+                "org/ofdrw/reader/ContentExtractorTest.java",
+                "org/ofdrw/sign/SignCleanerTest.java"
+            ]
+        },
+        "Details from pom.xml": {
+            "Java Version": "Java 1.8",
+            "Dependencies": [
+                {
+                    "group": "org.junit.jupiter",
+                    "artifact": "junit-jupiter-api",
+                    "version": "5.5.2"
+                },
+                {
+                    "group": "org.bouncycastle",
+                    "artifact": "bcprov-jdk18on",
+                    "version": "1.85"
+                },
+                {
+                    "group": "org.bouncycastle",
+                    "artifact": "bcpkix-jdk18on",
+                    "version": "1.85"
+                },
+                {
+                    "group": "commons-io",
+                    "artifact": "commons-io",
+                    "version": "2.16.1"
+                }
+            ],
+            "Build System": "Maven"
+        },
+        "Details from CONTRIBUTING.md": "No specific environment setup or test instructions are mentioned."
+    },
+    "terminate": true
+}
+2026-10-15 21:22:22.860 | DEBUG    | Extracted a valid json
+2026-10-15 21:22:22.862 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-15 21:22:39.060 | INFO     | Model API request cost info: input_tokens=2326, output_tokens=394, cost=0.009755
+2026-10-15 21:22:39.062 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-15 21:22:39.068 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-15 21:22:43.030 | INFO     | Model API request cost info: input_tokens=1673, output_tokens=79, cost=0.004973
+2026-10-15 21:22:43.030 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-15 21:32:19.027 | DEBUG    | Result of dispatch_intent: ('Step 10/12 : RUN mvn clean install -DskipTests\n ---> Running in a925036e1ac3\n[INFO] Scanning for projects...\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/central/central-publishing-maven-plugin/0.10.0/central-publishing-maven-plugin-0.10.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 17 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/central/central-publishing-maven-plugin/0.10.0/central-publishing-maven-plugin-0.10.0.pom (17 kB at 6.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/buildsupport/buildsupport/32/buildsupport-32.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 36 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/buildsupport/buildsupport/32/buildsupport-32.pom (36 kB at 164 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 8.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom (8.8 kB at 38 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/10/plexus-10.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 25 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/10/plexus-10.pom (25 kB at 107 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/github/package-url/packageurl-java/1.4.1/packageurl-java-1.4.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/github/package-url/packageurl-java/1.4.1/packageurl-java-1.4.1.pom (12 kB at 48 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.0-jre/guava-32.1.0-jre.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 13 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.0-jre/guava-32.1.0-jre.pom (13 kB at 50 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/32.1.0-jre/guava-parent-32.1.0-jre.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 22 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/32.1.0-jre/guava-parent-32.1.0-jre.pom (22 kB at 96 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom\nProgress (1): 2.4 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom (2.4 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 10 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom (10 kB at 45 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom\nProgress (1): 4.1 kB\nProgress (1): 6.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.6 kB at 27 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom\nProgress (1): 2.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom (2.3 kB at 9.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom\nProgress (1): 4.1 kB\nProgress (1): 4.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (4.3 kB at 16 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom\nProgress (1): 4.1 kB\nProgress (1): 4.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (4.8 kB at 20 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.pom\nProgress (1): 2.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.pom (2.1 kB at 8.8 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.pom\nProgress (1): 2.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.pom (2.2 kB at 9.7 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.18.0/error_prone_parent-2.18.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 11 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.18.0/error_prone_parent-2.18.0.pom (11 kB at 44 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.pom\nProgress (1): 2.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.pom (2.9 kB at 13 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.15.1/commons-io-2.15.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.15.1/commons-io-2.15.1.pom (20 kB at 88 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/65/commons-parent-65.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 37 kB\nProgress (1): 41 kB\nProgress (1): 45 kB\nProgress (1): 49 kB\nProgress (1): 53 kB\nProgress (1): 57 kB\nProgress (1): 61 kB\nProgress (1): 66 kB\nProgress (1): 70 kB\nProgress (1): 74 kB\nProgress (1): 78 kB\nProgress (1): 78 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/65/commons-parent-65.pom (78 kB at 319 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom (24 kB at 101 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.1/junit-bom-5.10.1.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.1/junit-bom-5.10.1.pom (5.6 kB at 22 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 32 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom (32 kB at 124 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 37 kB\nProgress (1): 41 kB\nProgress (1): 45 kB\nProgress (1): 49 kB\nProgress (1): 53 kB\nProgress (1): 57 kB\nProgress (1): 61 kB\nProgress (1): 66 kB\nProgress (1): 70 kB\nProgress (1): 74 kB\nProgress (1): 78 kB\nProgress (1): 78 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom (78 kB at 310 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom (24 kB at 100 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom (5.6 kB at 25 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 21 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.pom (21 kB at 82 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.16.1/jackson-base-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 11 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.16.1/jackson-base-2.16.1.pom (11 kB at 44 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.16.1/jackson-bom-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 18 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.16.1/jackson-bom-2.16.1.pom (18 kB at 75 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.16/jackson-parent-2.16.pom\nProgress (1): 4.1 kB\nProgress (1): 6.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.16/jackson-parent-2.16.pom (6.5 kB at 25 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/56/oss-parent-56.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/56/oss-parent-56.pom (24 kB at 99 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom (5.6 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 7.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.pom (7.1 kB at 29 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 9.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.pom (9.9 kB at 40 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom (5.6 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom\nProgress (1): 4.1 kB\nProgress (1): 6.0 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom (6.0 kB at 27 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 17 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom (17 kB at 72 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 30 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom (30 kB at 117 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 kB at 92 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom\nProgress (1): 3.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom (3.9 kB at 19 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom (14 kB at 64 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom\nProgress (1): 3.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom (3.6 kB at 17 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom\nProgress (1): 2.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 12 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom (14 kB at 57 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/central/central-publishing-maven-plugin/0.10.0/central-publishing-maven-plugin-0.10.0.jar\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.0-jre/guava-32.1.0-jre.jar\nDownloading from central: https://repo.maven.apache.org/maven2/com/github/package-url/packageurl-java/1.4.1/packageurl-java-1.4.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar\nProgress (1): 3.2/112 kB\nProgress (1): 7.3/112 kB\nProgress (1): 11/112 kB \nProgress (1): 15/112 kB\nProgress (1): 20/112 kB\nProgress (1): 24/112 kB\nProgress (1): 28/112 kB\nProgress (1): 32/112 kB\nProgress (1): 36/112 kB\nProgress (1): 40/112 kB\nProgress (1): 44/112 kB\nProgress (1): 48/112 kB\nProgress (1): 52/112 kB\nProgress (1): 56/112 kB\nProgress (1): 61/112 kB\nProgress (1): 65/112 kB\nProgress (1): 69/112 kB\nProgress (1): 73/112 kB\nProgress (1): 77/112 kB\nProgress (1): 81/112 kB\nProgress (1): 85/112 kB\n...skipped 6728 lines...\nProgress (2): 153 kB | 400/472 kB\nProgress (2): 153 kB | 405/472 kB\nProgress (2): 153 kB | 409/472 kB\nProgress (2): 153 kB | 413/472 kB\nProgress (2): 153 kB | 417/472 kB\nProgress (2): 153 kB | 421/472 kB\nProgress (2): 153 kB | 425/472 kB\nProgress (2): 153 kB | 429/472 kB\nProgress (2): 153 kB | 433/472 kB\nProgress (2): 153 kB | 437/472 kB\nProgress (2): 153 kB | 441/472 kB\nProgress (2): 153 kB | 446/472 kB\nProgress (2): 153 kB | 450/472 kB\nProgress (2): 153 kB | 454/472 kB\nProgress (2): 153 kB | 458/472 kB\nProgress (2): 153 kB | 462/472 kB\nProgress (2): 153 kB | 466/472 kB\nProgress (2): 153 kB | 470/472 kB\nProgress (2): 153 kB | 472 kB    \nProgress (3): 153 kB | 472 kB | 4.1/61 kB\nProgress (3): 153 kB | 472 kB | 7.4/61 kB\nProgress (3): 153 kB | 472 kB | 11/61 kB \nProgress (3): 153 kB | 472 kB | 16/61 kB\nProgress (3): 153 kB | 472 kB | 20/61 kB\nProgress (3): 153 kB | 472 kB | 24/61 kB\nProgress (3): 153 kB | 472 kB | 28/61 kB\nProgress (3): 153 kB | 472 kB | 32/61 kB\nProgress (3): 153 kB | 472 kB | 36/61 kB\nProgress (3): 153 kB | 472 kB | 40/61 kB\nProgress (3): 153 kB | 472 kB | 44/61 kB\nProgress (3): 153 kB | 472 kB | 48/61 kB\nProgress (3): 153 kB | 472 kB | 52/61 kB\nProgress (3): 153 kB | 472 kB | 56/61 kB\nProgress (3): 153 kB | 472 kB | 61/61 kB\nProgress (3): 153 kB | 472 kB | 61 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar (153 kB at 170 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.1.0/maven-common-artifact-filters-3.1.0.jar\nProgress (3): 472 kB | 61 kB | 4.1/52 kB\nProgress (3): 472 kB | 61 kB | 7.4/52 kB\nProgress (3): 472 kB | 61 kB | 11/52 kB \nProgress (3): 472 kB | 61 kB | 16/52 kB\nProgress (3): 472 kB | 61 kB | 20/52 kB\nProgress (3): 472 kB | 61 kB | 24/52 kB\nProgress (3): 472 kB | 61 kB | 28/52 kB\nProgress (3): 472 kB | 61 kB | 32/52 kB\nProgress (3): 472 kB | 61 kB | 36/52 kB\nProgress (3): 472 kB | 61 kB | 40/52 kB\nProgress (3): 472 kB | 61 kB | 44/52 kB\nProgress (3): 472 kB | 61 kB | 48/52 kB\nProgress (3): 472 kB | 61 kB | 52 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar (472 kB at 511 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar\nProgress (3): 61 kB | 52 kB | 4.1/46 kB\nProgress (3): 61 kB | 52 kB | 7.4/46 kB\nProgress (3): 61 kB | 52 kB | 11/46 kB \nProgress (3): 61 kB | 52 kB | 16/46 kB\nProgress (3): 61 kB | 52 kB | 20/46 kB\nProgress (3): 61 kB | 52 kB | 24/46 kB\nProgress (3): 61 kB | 52 kB | 28/46 kB\nProgress (3): 61 kB | 52 kB | 32/46 kB\nProgress (3): 61 kB | 52 kB | 36/46 kB\nProgress (3): 61 kB | 52 kB | 40/46 kB\nProgress (3): 61 kB | 52 kB | 44/46 kB\nProgress (3): 61 kB | 52 kB | 46 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar (61 kB at 65 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.5/commons-io-2.5.jar\nProgress (3): 52 kB | 46 kB | 4.1/164 kB\nProgress (3): 52 kB | 46 kB | 7.4/164 kB\nProgress (3): 52 kB | 46 kB | 11/164 kB \nProgress (3): 52 kB | 46 kB | 16/164 kB\nProgress (3): 52 kB | 46 kB | 20/164 kB\nProgress (3): 52 kB | 46 kB | 24/164 kB\nProgress (3): 52 kB | 46 kB | 28/164 kB\nProgress (3): 52 kB | 46 kB | 32/164 kB\nProgress (3): 52 kB | 46 kB | 36/164 kB\nProgress (3): 52 kB | 46 kB | 40/164 kB\nProgress (3): 52 kB | 46 kB | 44/164 kB\nProgress (3): 52 kB | 46 kB | 48/164 kB\nProgress (3): 52 kB | 46 kB | 52/164 kB\nProgress (3): 52 kB | 46 kB | 57/164 kB\nProgress (3): 52 kB | 46 kB | 61/164 kB\nProgress (3): 52 kB | 46 kB | 65/164 kB\nProgress (3): 52 kB | 46 kB | 69/164 kB\nProgress (3): 52 kB | 46 kB | 73/164 kB\nProgress (3): 52 kB | 46 kB | 77/164 kB\nProgress (3): 52 kB | 46 kB | 81/164 kB\nProgress (3): 52 kB | 46 kB | 85/164 kB\nProgress (3): 52 kB | 46 kB | 89/164 kB\nProgress (3): 52 kB | 46 kB | 93/164 kB\nProgress (3): 52 kB | 46 kB | 97/164 kB\nProgress (3): 52 kB | 46 kB | 102/164 kB\nProgress (3): 52 kB | 46 kB | 106/164 kB\nProgress (3): 52 kB | 46 kB | 110/164 kB\nProgress (3): 52 kB | 46 kB | 114/164 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar (52 kB at 50 kB/s)\nProgress (2): 46 kB | 118/164 kB\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar\nProgress (2): 46 kB | 122/164 kB\nProgress (2): 46 kB | 126/164 kB\nProgress (2): 46 kB | 130/164 kB\nProgress (2): 46 kB | 134/164 kB\nProgress (2): 46 kB | 138/164 kB\nProgress (2): 46 kB | 143/164 kB\nProgress (2): 46 kB | 147/164 kB\nProgress (2): 46 kB | 151/164 kB\nProgress (2): 46 kB | 155/164 kB\nProgress (2): 46 kB | 159/164 kB\nProgress (2): 46 kB | 163/164 kB\nProgress (2): 46 kB | 164 kB    \nProgress (3): 46 kB | 164 kB | 4.1/61 kB\nProgress (3): 46 kB | 164 kB | 7.4/61 kB\nProgress (3): 46 kB | 164 kB | 11/61 kB \nProgress (3): 46 kB | 164 kB | 16/61 kB\nProgress (3): 46 kB | 164 kB | 20/61 kB\nProgress (3): 46 kB | 164 kB | 24/61 kB\nProgress (3): 46 kB | 164 kB | 28/61 kB\nProgress (3): 46 kB | 164 kB | 32/61 kB\nProgress (3): 46 kB | 164 kB | 36/61 kB\nProgress (3): 46 kB | 164 kB | 40/61 kB\nProgress (3): 46 kB | 164 kB | 44/61 kB\nProgress (3): 46 kB | 164 kB | 48/61 kB\nProgress (3): 46 kB | 164 kB | 52/61 kB\nProgress (3): 46 kB | 164 kB | 57/61 kB\nProgress (3): 46 kB | 164 kB | 61/61 kB\nProgress (3): 46 kB | 164 kB | 61 kB   \nProgress (4): 46 kB | 164 kB | 61 kB | 4.1/209 kB\nProgress (4): 46 kB | 164 kB | 61 kB | 7.4/209 kB\nProgress (4): 46 kB | 164 kB | 61 kB | 11/209 kB \nProgress (4): 46 kB | 164 kB | 61 kB | 16/209 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar (46 kB at 43 kB/s)\nProgress (3): 164 kB | 61 kB | 20/209 kB\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar\nProgress (3): 164 kB | 61 kB | 24/209 kB\nProgress (3): 164 kB | 61 kB | 28/209 kB\nProgress (3): 164 kB | 61 kB | 32/209 kB\nProgress (3): 164 kB | 61 kB | 36/209 kB\nProgress (3): 164 kB | 61 kB | 40/209 kB\nProgress (3): 164 kB | 61 kB | 44/209 kB\nProgress (3): 164 kB | 61 kB | 48/209 kB\nProgress (3): 164 kB | 61 kB | 52/209 kB\nProgress (3): 164 kB | 61 kB | 56/209 kB\nProgress (3): 164 kB | 61 kB | 61/209 kB\nProgress (3): 164 kB | 61 kB | 65/209 kB\nProgress (3): 164 kB | 61 kB | 69/209 kB\nProgress (3): 164 kB | 61 kB | 73/209 kB\nProgress (3): 164 kB | 61 kB | 77/209 kB\nProgress (3): 164 kB | 61 kB | 81/209 kB\nProgress (3): 164 kB | 61 kB | 85/209 kB\nProgress (3): 164 kB | 61 kB | 89/209 kB\nProgress (3): 164 kB | 61 kB | 93/209 kB\nProgress (3): 164 kB | 61 kB | 97/209 kB\nProgress (3): 164 kB | 61 kB | 101/209 kB\nProgress (3): 164 kB | 61 kB | 106/209 kB\nProgress (3): 164 kB | 61 kB | 110/209 kB\nProgress (3): 164 kB | 61 kB | 114/209 kB\nProgress (3): 164 kB | 61 kB | 118/209 kB\nProgress (3): 164 kB | 61 kB | 122/209 kB\nProgress (3): 164 kB | 61 kB | 126/209 kB\nProgress (3): 164 kB | 61 kB | 130/209 kB\nProgress (3): 164 kB | 61 kB | 134/209 kB\nProgress (3): 164 kB | 61 kB | 138/209 kB\nProgress (3): 164 kB | 61 kB | 142/209 kB\nProgress (3): 164 kB | 61 kB | 147/209 kB\nProgress (3): 164 kB | 61 kB | 151/209 kB\nProgress (3): 164 kB | 61 kB | 155/209 kB\nProgress (3): 164 kB | 61 kB | 159/209 kB\nProgress (3): 164 kB | 61 kB | 163/209 kB\nProgress (3): 164 kB | 61 kB | 167/209 kB\nProgress (3): 164 kB | 61 kB | 171/209 kB\nProgress (3): 164 kB | 61 kB | 175/209 kB\nProgress (3): 164 kB | 61 kB | 179/209 kB\nProgress (3): 164 kB | 61 kB | 183/209 kB\nProgress (3): 164 kB | 61 kB | 187/209 kB\nProgress (3): 164 kB | 61 kB | 192/209 kB\nProgress (3): 164 kB | 61 kB | 196/209 kB\nProgress (3): 164 kB | 61 kB | 200/209 kB\nProgress (3): 164 kB | 61 kB | 204/209 kB\nProgress (3): 164 kB | 61 kB | 208/209 kB\nProgress (3): 164 kB | 61 kB | 209 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar (164 kB at 143 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar\nProgress (3): 61 kB | 209 kB | 4.1/26 kB\nProgress (3): 61 kB | 209 kB | 7.4/26 kB\nProgress (3): 61 kB | 209 kB | 11/26 kB \nProgress (3): 61 kB | 209 kB | 16/26 kB\nProgress (3): 61 kB | 209 kB | 20/26 kB\nProgress (3): 61 kB | 209 kB | 24/26 kB\nProgress (3): 61 kB | 209 kB | 26 kB   \nProgress (4): 61 kB | 209 kB | 26 kB | 4.1/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 7.4/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 11/267 kB \nProgress (4): 61 kB | 209 kB | 26 kB | 16/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 20/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 24/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 28/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 32/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 36/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 40/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 44/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 48/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 52/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 57/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 61/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 65/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 69/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 73/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 77/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 81/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 85/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 89/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 93/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 97/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 102/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 106/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 110/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 114/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 118/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 122/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 126/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 130/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 134/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 138/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 143/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 147/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 151/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 155/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 159/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 163/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 167/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 171/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 175/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 179/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 184/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 188/267 kB\nProgress (4): 61 kB | 209 kB | 26 kB | 192/267 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.5/commons-io-2.5.jar (209 kB at 175 kB/s)\nProgress (3): 61 kB | 26 kB | 196/267 kB\nProgress (3): 61 kB | 26 kB | 200/267 kB\nProgress (3): 61 kB | 26 kB | 204/267 kB\nProgress (3): 61 kB | 26 kB | 208/267 kB\nProgress (3): 61 kB | 26 kB | 212/267 kB\nProgress (3): 61 kB | 26 kB | 216/267 kB\nProgress (3): 61 kB | 26 kB | 220/267 kB\nProgress (3): 61 kB | 26 kB | 224/267 kB\nProgress (3): 61 kB | 26 kB | 229/267 kB\nProgress (3): 61 kB | 26 kB | 233/267 kB\nProgress (3): 61 kB | 26 kB | 237/267 kB\nProgress (3): 61 kB | 26 kB | 241/267 kB\nProgress (3): 61 kB | 26 kB | 245/267 kB\nProgress (3): 61 kB | 26 kB | 249/267 kB\nProgress (3): 61 kB | 26 kB | 253/267 kB\nProgress (3): 61 kB | 26 kB | 257/267 kB\nProgress (3): 61 kB | 26 kB | 261/267 kB\nProgress (3): 61 kB | 26 kB | 265/267 kB\nProgress (3): 61 kB | 26 kB | 267 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.1.0/maven-common-artifact-filters-3.1.0.jar (61 kB at 50 kB/s)\nProgress (3): 26 kB | 267 kB | 4.1/28 kB\nProgress (3): 26 kB | 267 kB | 7.4/28 kB\nProgress (3): 26 kB | 267 kB | 11/28 kB \nProgress (3): 26 kB | 267 kB | 16/28 kB\nProgress (3): 26 kB | 267 kB | 20/28 kB\nProgress (3): 26 kB | 267 kB | 24/28 kB\nProgress (3): 26 kB | 267 kB | 28 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar (26 kB at 20 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar (267 kB at 204 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar (28 kB at 20 kB/s)\n[INFO] Signing 1 file with default secret key.\n[INFO] ------------------------------------------------------------------------\n[INFO] Reactor Summary for OFD Reader And Writer 2.4.0:\n[INFO] \n[INFO] OFD Reader And Writer .............................. FAILURE\x1b[m [01:17 min]\n[INFO] RW Global Variables ................................ \x1b[1;33mSKIPPED\n[INFO] OFDRW Core ......................................... SKIPPED\n[INFO] OFDRW Package ...................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW GM ........................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Reader ....................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Font ......................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Layout ....................................... SKIPPED\n[INFO] OFDRW Signature .................................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] OFDRW Graphics2D ................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Converter .................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Tool ......................................... SKIPPED\x1b[m\n[INFO] OFDRW Full ......................................... SKIPPED\n[INFO] OFDRW Crypto ....................................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] OFDRW Archive ...................................... \x1b[1;33mSKIPPED\n[INFO] ------------------------------------------------------------------------\n[INFO] \x1b[1;31mBUILD FAILURE\x1b[m\n[INFO] ------------------------------------------------------------------------\x1b[m\n[INFO] Total time:  01:32 min\n[INFO] Finished at: 2026-10-15T13:32:18Z\n[INFO] ------------------------------------------------------------------------\n[ERROR] Failed to execute goal \x1b[32morg.apache.maven.plugins:maven-gpg-plugin:3.1.0:sign \x1b[1m(sign-artifacts) on project \x1b[36mofdrw\x1b[m: \x1b[1;31mfailed to execute gpg: Error while executing process. Cannot run program "gpg": error=2, No such file or directory -> \x1b[1m[Help 1]\n[ERROR\x1b[m] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the \x1b[1m-e\x1b[m switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] \x1b[1m[Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException\n ---> Removed intermediate container a925036e1ac3\nError: The command \'/bin/sh -c mvn clean install -DskipTests\' returned a non-zero code: 1', 'Failed to build Docker image.', False)
+2026-10-15 21:32:19.038 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-15 21:32:31.758 | INFO     | Model API request cost info: input_tokens=14482, output_tokens=169, cost=0.037895
+2026-10-15 21:32:31.759 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile encountered a failure during the 'RUN mvn clean install -DskipTests' step. The error indicates that the 'gpg' tool is missing: 'failed to execute gpg: Error while executing process. Cannot run program \"gpg\": error=2, No such file or directory'. Maven's GPG plugin is attempting to sign artifacts, and 'gpg' is likely a required dependency. To resolve this, update the Dockerfile to install 'gpg' (e.g., 'RUN apt-get update && apt-get install -y gnupg') to support Maven's signing process.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-15 21:32:31.760 | DEBUG    | Extracted a valid json
+2026-10-15 21:32:31.762 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-15 21:32:37.157 | INFO     | Model API request cost info: input_tokens=3527, output_tokens=399, cost=0.012808
+2026-10-15 21:32:37.158 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-15 21:42:08.800 | DEBUG    | Result of dispatch_intent: ("Step 10/12 : RUN mvn clean install -DskipTests\n ---> Running in eb193557fca2\n[INFO] Scanning for projects...\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/central/central-publishing-maven-plugin/0.10.0/central-publishing-maven-plugin-0.10.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 17 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/central/central-publishing-maven-plugin/0.10.0/central-publishing-maven-plugin-0.10.0.pom (17 kB at 14 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/buildsupport/buildsupport/32/buildsupport-32.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 36 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/buildsupport/buildsupport/32/buildsupport-32.pom (36 kB at 177 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 8.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom (8.8 kB at 40 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/10/plexus-10.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 25 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/10/plexus-10.pom (25 kB at 110 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/github/package-url/packageurl-java/1.4.1/packageurl-java-1.4.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/github/package-url/packageurl-java/1.4.1/packageurl-java-1.4.1.pom (12 kB at 52 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.0-jre/guava-32.1.0-jre.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 13 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.0-jre/guava-32.1.0-jre.pom (13 kB at 65 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/32.1.0-jre/guava-parent-32.1.0-jre.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 22 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/32.1.0-jre/guava-parent-32.1.0-jre.pom (22 kB at 110 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom\nProgress (1): 2.4 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom (2.4 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 10 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom (10 kB at 47 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom\nProgress (1): 4.1 kB\nProgress (1): 6.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.6 kB at 29 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom\nProgress (1): 2.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom (2.3 kB at 10 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom\nProgress (1): 4.1 kB\nProgress (1): 4.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (4.3 kB at 21 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom\nProgress (1): 4.1 kB\nProgress (1): 4.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (4.8 kB at 22 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.pom\nProgress (1): 2.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.pom (2.1 kB at 9.2 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.pom\nProgress (1): 2.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.pom (2.2 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.18.0/error_prone_parent-2.18.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 11 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.18.0/error_prone_parent-2.18.0.pom (11 kB at 60 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.pom\nProgress (1): 2.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.pom (2.9 kB at 14 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.15.1/commons-io-2.15.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.15.1/commons-io-2.15.1.pom (20 kB at 94 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/65/commons-parent-65.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 37 kB\nProgress (1): 41 kB\nProgress (1): 45 kB\nProgress (1): 49 kB\nProgress (1): 53 kB\nProgress (1): 57 kB\nProgress (1): 61 kB\nProgress (1): 66 kB\nProgress (1): 70 kB\nProgress (1): 74 kB\nProgress (1): 78 kB\nProgress (1): 78 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/65/commons-parent-65.pom (78 kB at 359 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom (24 kB at 104 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.1/junit-bom-5.10.1.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.1/junit-bom-5.10.1.pom (5.6 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 32 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.pom (32 kB at 151 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 37 kB\nProgress (1): 41 kB\nProgress (1): 45 kB\nProgress (1): 49 kB\nProgress (1): 53 kB\nProgress (1): 57 kB\nProgress (1): 61 kB\nProgress (1): 66 kB\nProgress (1): 70 kB\nProgress (1): 74 kB\nProgress (1): 78 kB\nProgress (1): 78 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/85/commons-parent-85.pom (78 kB at 315 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/35/apache-35.pom (24 kB at 106 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.1/junit-bom-5.13.1.pom (5.6 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 21 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.pom (21 kB at 109 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.16.1/jackson-base-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 11 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.16.1/jackson-base-2.16.1.pom (11 kB at 49 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.16.1/jackson-bom-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 18 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.16.1/jackson-bom-2.16.1.pom (18 kB at 91 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.16/jackson-parent-2.16.pom\nProgress (1): 4.1 kB\nProgress (1): 6.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.16/jackson-parent-2.16.pom (6.5 kB at 29 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/56/oss-parent-56.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/56/oss-parent-56.pom (24 kB at 104 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom (5.6 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 7.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.pom (7.1 kB at 34 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 9.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.pom (9.9 kB at 43 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom\nProgress (1): 4.1 kB\nProgress (1): 5.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom (5.6 kB at 25 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom\nProgress (1): 4.1 kB\nProgress (1): 6.0 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom (6.0 kB at 27 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 17 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom (17 kB at 77 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 30 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom (30 kB at 126 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 kB at 97 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom\nProgress (1): 3.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom (3.9 kB at 21 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom (14 kB at 71 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom\nProgress (1): 3.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom (3.6 kB at 17 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom\nProgress (1): 2.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom (2.7 kB at 12 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom (14 kB at 63 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/central/central-publishing-maven-plugin/0.10.0/central-publishing-maven-plugin-0.10.0.jar\nDownloading from central: https://repo.maven.apache.org/maven2/com/github/package-url/packageurl-java/1.4.1/packageurl-java-1.4.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.0-jre/guava-32.1.0-jre.jar\nProgress (1): 4.1/112 kB\nProgress (1): 7.4/112 kB\nProgress (1): 11/112 kB \nProgress (1): 16/112 kB\nProgress (1): 20/112 kB\nProgress (1): 24/112 kB\nProgress (1): 28/112 kB\nProgress (1): 32/112 kB\nProgress (1): 36/112 kB\nProgress (1): 40/112 kB\nProgress (1): 44/112 kB\nProgress (1): 48/112 kB\nProgress (1): 52/112 kB\nProgress (1): 57/112 kB\nProgress (1): 61/112 kB\nProgress (1): 65/112 kB\nProgress (1): 69/112 kB\nProgress (1): 73/112 kB\nProgress (1): 77/112 kB\nProgress (1): 81/112 kB\nProgress (1): 85/112 kB\n...skipped 6735 lines...\nProgress (1): 408/472 kB\nProgress (1): 412/472 kB\nProgress (1): 417/472 kB\nProgress (1): 421/472 kB\nProgress (1): 425/472 kB\nProgress (1): 429/472 kB\nProgress (1): 433/472 kB\nProgress (1): 437/472 kB\nProgress (1): 441/472 kB\nProgress (1): 445/472 kB\nProgress (1): 449/472 kB\nProgress (1): 453/472 kB\nProgress (1): 457/472 kB\nProgress (1): 462/472 kB\nProgress (1): 466/472 kB\nProgress (1): 470/472 kB\nProgress (1): 472 kB    \nProgress (2): 472 kB | 4.1/61 kB\nProgress (2): 472 kB | 7.4/61 kB\nProgress (2): 472 kB | 11/61 kB \nProgress (2): 472 kB | 16/61 kB\nProgress (2): 472 kB | 20/61 kB\nProgress (2): 472 kB | 24/61 kB\nProgress (2): 472 kB | 28/61 kB\nProgress (2): 472 kB | 32/61 kB\nProgress (2): 472 kB | 36/61 kB\nProgress (2): 472 kB | 40/61 kB\nProgress (2): 472 kB | 44/61 kB\nProgress (2): 472 kB | 48/61 kB\nProgress (2): 472 kB | 52/61 kB\nProgress (2): 472 kB | 57/61 kB\nProgress (2): 472 kB | 61/61 kB\nProgress (2): 472 kB | 61 kB   \nProgress (3): 472 kB | 61 kB | 4.1/46 kB\nProgress (3): 472 kB | 61 kB | 7.4/46 kB\nProgress (3): 472 kB | 61 kB | 11/46 kB \nProgress (3): 472 kB | 61 kB | 16/46 kB\nProgress (3): 472 kB | 61 kB | 20/46 kB\nProgress (3): 472 kB | 61 kB | 24/46 kB\nProgress (3): 472 kB | 61 kB | 28/46 kB\nProgress (3): 472 kB | 61 kB | 32/46 kB\nProgress (3): 472 kB | 61 kB | 36/46 kB\nProgress (3): 472 kB | 61 kB | 40/46 kB\nProgress (4): 472 kB | 61 kB | 40/46 kB | 4.1/52 kB\nProgress (4): 472 kB | 61 kB | 44/46 kB | 4.1/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 4.1/52 kB   \nProgress (4): 472 kB | 61 kB | 46 kB | 7.4/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 11/52 kB \nProgress (4): 472 kB | 61 kB | 46 kB | 16/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 20/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 24/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 28/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 32/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 36/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 40/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 44/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 48/52 kB\nProgress (4): 472 kB | 61 kB | 46 kB | 52 kB   \nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 4.1/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 7.4/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 11/61 kB \nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 16/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 20/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 24/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 28/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 32/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 36/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 40/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 44/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 48/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 52/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 57/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 61/61 kB\nProgress (5): 472 kB | 61 kB | 46 kB | 52 kB | 61 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar (472 kB at 520 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar (61 kB at 66 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.5/commons-io-2.5.jar\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar (52 kB at 54 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar (46 kB at 47 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.1.0/maven-common-artifact-filters-3.1.0.jar (61 kB at 62 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar\nProgress (1): 4.1/164 kB\nProgress (1): 7.4/164 kB\nProgress (1): 11/164 kB \nProgress (1): 16/164 kB\nProgress (1): 20/164 kB\nProgress (1): 24/164 kB\nProgress (1): 28/164 kB\nProgress (1): 32/164 kB\nProgress (1): 36/164 kB\nProgress (1): 40/164 kB\nProgress (1): 44/164 kB\nProgress (1): 48/164 kB\nProgress (1): 52/164 kB\nProgress (1): 57/164 kB\nProgress (1): 61/164 kB\nProgress (1): 65/164 kB\nProgress (1): 69/164 kB\nProgress (1): 73/164 kB\nProgress (1): 77/164 kB\nProgress (1): 81/164 kB\nProgress (1): 85/164 kB\nProgress (1): 89/164 kB\nProgress (1): 93/164 kB\nProgress (1): 97/164 kB\nProgress (1): 102/164 kB\nProgress (1): 106/164 kB\nProgress (1): 110/164 kB\nProgress (1): 114/164 kB\nProgress (1): 118/164 kB\nProgress (1): 122/164 kB\nProgress (1): 126/164 kB\nProgress (1): 130/164 kB\nProgress (1): 134/164 kB\nProgress (1): 138/164 kB\nProgress (1): 143/164 kB\nProgress (1): 147/164 kB\nProgress (1): 151/164 kB\nProgress (1): 155/164 kB\nProgress (1): 159/164 kB\nProgress (1): 163/164 kB\nProgress (1): 164 kB    \nProgress (2): 164 kB | 4.1/209 kB\nProgress (2): 164 kB | 7.4/209 kB\nProgress (2): 164 kB | 11/209 kB \nProgress (2): 164 kB | 16/209 kB\nProgress (2): 164 kB | 20/209 kB\nProgress (2): 164 kB | 24/209 kB\nProgress (2): 164 kB | 28/209 kB\nProgress (2): 164 kB | 32/209 kB\nProgress (2): 164 kB | 36/209 kB\nProgress (2): 164 kB | 40/209 kB\nProgress (2): 164 kB | 44/209 kB\nProgress (2): 164 kB | 48/209 kB\nProgress (2): 164 kB | 52/209 kB\nProgress (2): 164 kB | 57/209 kB\nProgress (2): 164 kB | 61/209 kB\nProgress (2): 164 kB | 65/209 kB\nProgress (2): 164 kB | 69/209 kB\nProgress (2): 164 kB | 73/209 kB\nProgress (2): 164 kB | 77/209 kB\nProgress (2): 164 kB | 81/209 kB\nProgress (2): 164 kB | 85/209 kB\nProgress (2): 164 kB | 89/209 kB\nProgress (2): 164 kB | 93/209 kB\nProgress (2): 164 kB | 97/209 kB\nProgress (2): 164 kB | 102/209 kB\nProgress (2): 164 kB | 106/209 kB\nProgress (2): 164 kB | 110/209 kB\nProgress (2): 164 kB | 114/209 kB\nProgress (2): 164 kB | 118/209 kB\nProgress (2): 164 kB | 122/209 kB\nProgress (2): 164 kB | 126/209 kB\nProgress (2): 164 kB | 130/209 kB\nProgress (2): 164 kB | 134/209 kB\nProgress (2): 164 kB | 138/209 kB\nProgress (2): 164 kB | 143/209 kB\nProgress (2): 164 kB | 147/209 kB\nProgress (2): 164 kB | 151/209 kB\nProgress (2): 164 kB | 155/209 kB\nProgress (2): 164 kB | 159/209 kB\nProgress (2): 164 kB | 163/209 kB\nProgress (2): 164 kB | 167/209 kB\nProgress (2): 164 kB | 171/209 kB\nProgress (2): 164 kB | 175/209 kB\nProgress (2): 164 kB | 179/209 kB\nProgress (2): 164 kB | 184/209 kB\nProgress (2): 164 kB | 188/209 kB\nProgress (2): 164 kB | 192/209 kB\nProgress (2): 164 kB | 196/209 kB\nProgress (2): 164 kB | 200/209 kB\nProgress (2): 164 kB | 204/209 kB\nProgress (2): 164 kB | 208/209 kB\nProgress (2): 164 kB | 209 kB    \nProgress (3): 164 kB | 209 kB | 4.1/26 kB\nProgress (3): 164 kB | 209 kB | 7.4/26 kB\nProgress (3): 164 kB | 209 kB | 11/26 kB \nProgress (3): 164 kB | 209 kB | 16/26 kB\nProgress (3): 164 kB | 209 kB | 20/26 kB\nProgress (3): 164 kB | 209 kB | 24/26 kB\nProgress (3): 164 kB | 209 kB | 26 kB   \nProgress (4): 164 kB | 209 kB | 26 kB | 4.1/267 kB\nProgress (4): 164 kB | 209 kB | 26 kB | 7.4/267 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 7.4/267 kB | 4.1/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 11/267 kB | 4.1/28 kB \nProgress (5): 164 kB | 209 kB | 26 kB | 11/267 kB | 7.4/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 16/267 kB | 7.4/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 16/267 kB | 11/28 kB \nProgress (5): 164 kB | 209 kB | 26 kB | 20/267 kB | 11/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 20/267 kB | 16/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 24/267 kB | 16/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 24/267 kB | 20/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 28/267 kB | 20/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 28/267 kB | 24/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 32/267 kB | 24/28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 32/267 kB | 28 kB   \nProgress (5): 164 kB | 209 kB | 26 kB | 36/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 40/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 44/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 48/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 52/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 57/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 61/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 65/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 69/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 73/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 77/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 81/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 85/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 89/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 93/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 97/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 102/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 106/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 110/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 114/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 118/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 122/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 126/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 130/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 134/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 138/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 142/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 147/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 151/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 155/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 159/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 163/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 167/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 171/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 175/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 179/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 183/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 188/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 192/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 196/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 200/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 204/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 208/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 212/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 216/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 220/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 224/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 228/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 233/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 237/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 241/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 245/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 249/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 253/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 257/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 261/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 265/267 kB | 28 kB\nProgress (5): 164 kB | 209 kB | 26 kB | 267 kB | 28 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar (164 kB at 144 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.5/commons-io-2.5.jar (209 kB at 179 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar (28 kB at 23 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar (26 kB at 22 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar (267 kB at 219 kB/s)\n[INFO] Signing 1 file with default secret key.\ngpg: directory '/root/.gnupg' created\ngpg: keybox '/root/.gnupg/pubring.kbx' created\ngpg: no default secret key: No secret key\ngpg: signing failed: No secret key\n[INFO] ------------------------------------------------------------------------\n[INFO] Reactor Summary for OFD Reader And Writer 2.4.0:\x1b[m\n[INFO] \n[INFO] OFD Reader And Writer .............................. FAILURE [01:05 min]\n[INFO] RW Global Variables ................................ \x1b[1;33mSKIPPED\x1b[m\n[INFO] OFDRW Core ......................................... SKIPPED\n[INFO] OFDRW Package ...................................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] OFDRW GM ........................................... SKIPPED\n[INFO] OFDRW Reader ....................................... SKIPPED\x1b[m\n[\x1b[1;34mINFO] OFDRW Font ......................................... SKIPPED\n[INFO] OFDRW Layout ....................................... SKIPPED\n[INFO] OFDRW Signature .................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Graphics2D ................................... SKIPPED\n[INFO] OFDRW Converter .................................... SKIPPED\n[INFO] OFDRW Tool ......................................... SKIPPED\n[INFO] OFDRW Full ......................................... SKIPPED\n[INFO] OFDRW Crypto ....................................... \x1b[1;33mSKIPPED\n[INFO] OFDRW Archive ...................................... SKIPPED\n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD FAILURE\x1b[m\n[INFO] \x1b[1m------------------------------------------------------------------------\n[INFO] Total time:  01:18 min\n[INFO] Finished at: 2026-10-15T13:42:08Z\n[INFO] ------------------------------------------------------------------------\n[ERROR] Failed to execute goal org.apache.maven.plugins:maven-gpg-plugin:3.1.0:sign (sign-artifacts) on project \x1b[36mofdrw: \x1b[1;31mExit code: 2 -> [Help 1]\x1b[m\n[ERROR] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the \x1b[1m-e\x1b[m switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException\n ---> Removed intermediate container eb193557fca2\nError: The command '/bin/sh -c mvn clean install -DskipTests' returned a non-zero code: 1", 'Failed to build Docker image.', False)
+2026-10-15 21:42:08.805 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-15 21:42:16.910 | INFO     | Model API request cost info: input_tokens=14287, output_tokens=228, cost=0.037998
+2026-10-15 21:42:16.912 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile failed to build due to a signing-related issue with the Maven GPG plugin. Specifically, the error message states: 'gpg: no default secret key: No secret key'. This indicates that GPG signing is enabled in the Maven configuration, but there is no secret key available in the environment. To address this, the Dockerfile needs to be updated to either disable GPG signing during Maven builds or ensure the necessary GPG key is available. The following changes should be made:\n\n1. Add the line `RUN mvn install -DskipTests -Dgpg.skip` to bypass GPG signing during Maven builds. This flag disables the GPG signing.\n\n2. You may also want to ensure Maven settings do not enforce signing unnecessarily. Confirm whether settings.xml files enable signing, and modify them if required.\n\nThese changes will allow the Dockerfile to build successfully.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-15 21:42:16.912 | DEBUG    | Extracted a valid json
+2026-10-15 21:42:16.913 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-15 21:42:16.918 | INFO     | Task ofdrw completed successfully.

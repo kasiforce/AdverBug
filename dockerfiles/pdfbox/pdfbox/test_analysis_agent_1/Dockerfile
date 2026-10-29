@@ -1,0 +1,43 @@
+# Use a base image with Bash support
+FROM --platform=linux/x86_64 ubuntu:22.04
+
+# Arguments and environment variables
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Handle potential GPG key issues during apt updates
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Install essential system tools and dependencies
+RUN apt update && apt install -y \
+    wget \
+    git \
+    curl \
+    openjdk-11-jdk \
+    maven \
+    locales \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up locales
+RUN locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+# Set working directory
+WORKDIR /testbed/
+
+# Clone the target repository and checkout the specified commit
+RUN git clone https://github.com/apache/pdfbox.git /testbed/ && \
+    cd /testbed/ && \
+    git reset --hard c8ab655799cb0a2f15d8e9622a1a7a678fddf46e && \
+    git remote remove origin
+
+# Install project dependencies and build the project
+RUN mvn clean install -DskipTests
+
+# Set PATH for Maven
+ENV PATH=/usr/share/maven/bin:$PATH
+
+# Ensure system is ready for testing
+RUN echo "export PATH=/usr/share/maven/bin:$PATH" >> /root/.bashrc

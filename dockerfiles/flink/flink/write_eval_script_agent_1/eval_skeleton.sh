@@ -1,0 +1,21 @@
+#!/bin/bash
+set -uxo pipefail
+
+# Activate the Conda testbed environment
+source /opt/miniconda3/etc/profile.d/conda.sh
+conda activate testbed
+
+# Navigate to the project directory
+cd /testbed
+
+# Optional Cleanup: Ensure no leftover files from previous runs are present
+git reset --hard
+
+# Run the complete test suite with Maven
+./mvnw test
+
+# Capture the exit code of the test execution
+rc=$?
+
+# Output the exit code for the OmniGril test log analysis agent
+echo "OMNIGRIL_EXIT_CODE=$rc"

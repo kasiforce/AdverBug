@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile is failing during the build process because the Maven version installed (3.6.3) is not compatible with the required Maven version for the `hapi-fhir` project. The error message states that Maven version [3.9.0, ) is required. Additionally, the Java version configured (OpenJDK 11) is not sufficient for the project, which requires JDK 17 or newer. To fix these issues, you need to: 1) Upgrade Maven to version 3.9.0 or higher. You can achieve this by downloading the correct version and installing it manually in the Dockerfile. 2) Switch the JDK to version 17 or newer, such as OpenJDK 17 or OpenJDK 21, which is used in the CI for this project. Ensure that the JAVA_HOME and PATH variables are updated accordingly. Example: Replace `apt install openjdk-11-jdk` with `apt install openjdk-17-jdk` and update the environment variables to use JDK 17.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

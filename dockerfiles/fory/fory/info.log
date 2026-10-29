@@ -1,0 +1,2313 @@
+2026-10-15 16:21:16.424 | INFO     | Model API request cost info: input_tokens=1360, output_tokens=183, cost=0.005230
+2026-10-15 16:21:16.430 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 16:21:18.478 | INFO     | Model API request cost info: input_tokens=781, output_tokens=53, cost=0.002483
+2026-10-15 16:21:18.480 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('README.md', '')",
+        "browse_file_for_environment_info('CONTRIBUTING.md', '')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-15 16:21:18.480 | DEBUG    | Extracted a valid json
+2026-10-15 16:21:18.484 | INFO     | entering browse
+2026-10-15 16:21:18.484 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/fory/README.md ===
+<div align="center">
+  <img width="65%" alt="Apache Fory logo" src="docs/images/fory-logo.png"><br>
+</div>
+
+[![Build Status](https://img.shields.io/github/actions/workflow/status/apache/fory/ci.yml?branch=main&style=for-the-badge&label=GITHUB%20ACTIONS&logo=github)](https://github.com/apache/fory/actions/workflows/ci.yml)
+[![Slack Channel](https://img.shields.io/badge/slack-join-3f0e40?logo=slack&style=for-the-badge)](https://join.slack.com/t/fory-project/shared_invite/zt-36g0qouzm-kcQSvV_dtfbtBKHRwT5gsw)
+[![X](https://img.shields.io/badge/@ApacheFory-follow-blue?logo=x&style=for-the-badge)](https://x.com/ApacheFory)
+[![Maven Version](https://img.shields.io/maven-central/v/org.apache.fory/fory-core?style=for-the-badge)](https://search.maven.org/#search|gav|1|g:"org.apache.fory"%20AND%20a:"fory-core")
+[![Crates.io](https://img.shields.io/badge/crates.io-v1.7.7-blue?logo=rust&style=for-the-badge)](https://crates.io/crates/fory)
+[![PyPI](https://img.shields.io/pypi/v/pyfory.svg?logo=PyPI&style=for-the-badge)](https://pypi.org/project/pyfory/)
+[![npm](https://img.shields.io/npm/v/%40apache-fory%2Fcore?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@apache-fory/core)
+[![NuGet](https://img.shields.io/nuget/v/Apache.Fory?logo=nuget&style=for-the-badge)](https://www.nuget.org/packages/Apache.Fory)
+[![pub.dev](https://img.shields.io/pub/v/fory?logo=dart&style=for-the-badge)](https://pub.dev/packages/fory)
+
+**Apache Fory™** is a blazingly fast multi-language serialization framework for
+idiomatic domain objects, schema IDL, and cross-language data exchange.
+
+<https://fory.apache.org>
+
+## Why Fory
+
+Fory is built for fast, compact serialization across languages and implementations. It
+works with idiomatic objects in each language, supports shared schemas when you
+need a contract, and preserves object features such as shared and circular
+references.
+
+- **Efficient Cross-Language Encoding**: Exchange payloads across supported
+  languages with compact binary encoding, metadata packing, schema evolution,
+  shared/circular references, and polymorphic runtime types.
+- **Domain Objects First**: Serialize Java classes, Python dataclasses, Go
+  structs, Rust/C++ structs, and generated or annotated model types directly.
+  Preserve shared and circular references when object identity matters.
+- **Reference-Aware Schema IDL**: Support shared and circular references
+  directly in the schema, alongside numbers, strings, lists, maps, arrays,
+  enums, structs, and unions. Define schemas once, then generate native domain
+  objects for each language without forcing wrapper types into user code.
+- **Optimized Implementations**: Java JIT serializers and generated/static serializers
+  in other language implementations keep hot paths fast and payloads compact.
+- **Language And Platform Support**: Java, Python, C++, Go, Rust,
+  JavaScript/TypeScript, C#, Swift, Dart, Scala, and Kotlin, including GraalVM
+  native image, Android, Dart VM/Flutter/web, and Node.js/browser JavaScript.
+
+For same-language workloads, Fory provides native serialization modes that
+support broader language-specific object models:
+
+- **Java Native Serialization**: A high-performance replacement for JDK
+  serialization, Hessian, Kryo, and FST in Java-only systems. It supports JDK
+  custom serialization semantics.
+- **Python Native Serialization**: A faster and more compact replacement for
+  `pickle` and `cloudpickle` in Python-only systems. It supports classes,
+  modules, functions, and custom object state, with fine-grained
+  deserialization controls through `DeserializationPolicy`.
+
+Fory also provides specialized formats for other data-processing requirements:
+
+- **Row Format**: Read fields, arrays, and nested values without rebuilding
+  complete objects, with zero-copy access and partial reads.
+- **[Fory JSON](java/fory-json/README.md)**: A Java JSON serialization framework built for maximum
+  throughput through runtime-generated codecs and optimized readers and
+  writers. Supports Java 8 and later on standard JDKs, GraalVM native images,
+  and Android, including Java 17 records.
+
+## Performance
+
+Benchmarks show Fory delivering higher throughput and smaller serialized
+payloads than common serialization frameworks on representative workloads. Java
+has the broadest comparison set; the other charts show language-specific results
+across supported languages.
+
+**Java** [Benchmarks](docs/benchmarks/index.md)
+
+In Java serialization benchmarks, Fory reaches up to **170x** the throughput of
+JDK serialization on selected workloads.
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/native/java/java_repo_serialization_throughput.png" width="95%" alt="Java serialization throughput">
+</p>
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/native/java/java_repo_deserialization_throughput.png" width="95%" alt="Java deserialization throughput">
+</p>
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/java/throughput.png" width="95%" alt="Java xlang throughput">
+</p>
+
+**Python** [Benchmarks](benchmarks/python)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/python/throughput.png" width="95%" alt="Python serialization throughput">
+</p>
+
+**Rust** [Benchmarks](benchmarks/rust)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/rust/throughput.png" width="95%" alt="Rust serialization throughput">
+</p>
+
+<details>
+<summary><strong>Benchmarks for <a href="benchmarks/cpp">C++</a>, <a href="benchmarks/go">Go</a>, <a href="docs/benchmarks/object-serialization/xlang/javascript">JavaScript/TypeScript</a>, <a href="docs/benchmarks/object-serialization/xlang/csharp">C#</a>, <a href="docs/benchmarks/object-serialization/xlang/swift">Swift</a>, and <a href="docs/benchmarks/object-serialization/xlang/dart">Dart</a></strong></summary>
+
+**C++** [Benchmarks](benchmarks/cpp)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/cpp/throughput.png" width="95%" alt="C++ serialization throughput">
+</p>
+
+**Go** [Benchmarks](benchmarks/go)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/go/throughput.png" width="95%" alt="Go serialization throughput">
+</p>
+
+**JavaScript/TypeScript** [Benchmarks](docs/benchmarks/object-serialization/xlang/javascript)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/javascript/throughput.png" width="95%" alt="JavaScript serialization throughput">
+</p>
+
+**C#** [Benchmarks](docs/benchmarks/object-serialization/xlang/csharp)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/csharp/throughput.png" width="95%" alt="C# serialization throughput">
+</p>
+
+**Swift** [Benchmarks](docs/benchmarks/object-serialization/xlang/swift)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/swift/throughput.png" width="95%" alt="Swift serialization throughput">
+</p>
+
+**Dart** [Benchmarks](docs/benchmarks/object-serialization/xlang/dart)
+
+<p align="center">
+<img src="docs/benchmarks/object-serialization/xlang/dart/throughput.png" width="95%" alt="Dart serialization throughput">
+</p>
+
+</details>
+
+## Installation
+
+Pick your language and run the package-manager command, or paste the
+dependency block into your build file.
+
+**Java**
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>org.apache.fory</groupId>
+  <artifactId>fory-core</artifactId>
+  <version>1.7.7</version>
+</dependency>
+```
+
+Gradle:
+
+```gradle
+implementation "org.apache.fory:fory-core:1.7.7"
+```
+
+On JDK25+, opening `java.lang.invoke` to Fory core is also recommended. It avoids the
+current-JDK Unsafe fallback and is required when Unsafe access is disabled or unavailable, including
+with `--sun-misc-unsafe-memory-access=deny`. Use `ALL-UNNAMED` when Fory is on the classpath:
+
+```bash
+--add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+```
+
+Use the Fory core module name when Fory is on the module path:
+
+```bash
+--add-opens=java.base/java.lang.invoke=org.apache.fory.core
+```
+
+**Scala**
+
+sbt:
+
+```scala
+libraryDependencies += "org.apache.fory" %% "fory-scala" % "1.7.7"
+```
+
+**Kotlin**
+
+Gradle:
+
+```kotlin
+implementation("org.apache.fory:fory-kotlin:1.7.7")
+```
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>org.apache.fory</groupId>
+  <artifactId>fory-kotlin</artifactId>
+  <version>1.7.7</version>
+</dependency>
+```
+
+**Python**
+
+```bash
+pip install pyfory
+```
+
+For row-format support:
+
+```bash
+pip install "pyfory[format]"
+```
+
+**Rust**
+
+`Cargo.toml`:
+
+```toml
+[dependencies]
+fory = "1.7.7"
+```
+
+**C++**
+
+CMake:
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+  fory
+  GIT_REPOSITORY https://github.com/apache/fory.git
+  GIT_TAG v1.7.7
+  SOURCE_SUBDIR cpp
+)
+FetchContent_MakeAvailable(fory)
+target_link_libraries(my_app PRIVATE fory::serialization)
+```
+
+Bazel:
+
+```bazel
+# MODULE.bazel
+bazel_dep(name = "fory", version = "1.7.7")
+git_override(module_name = "fory", remote = "https://github.com/apache/fory.git", commit = "v1.7.7")
+
+# BUILD
+deps = ["@fory//cpp/fory/serialization:fory_serialization"]
+```
+
+When building C++ with MSVC, enable the conforming preprocessor option
+`/Zc:preprocessor`; see the C++ installation guide for setup details.
+
+See the [C++ installation guide](https://fory.apache.org/docs/object-serialization/cpp/#installation)
+for complete CMake, Bazel, and source-build details.
+
+**Go**
+
+```bash
+go get github.com/apache/fory/go/fory
+```
+
+**JavaScript/TypeScript**
+
+```bash
+npm install @apache-fory/core
+```
+
+For the Node.js string fast path:
+
+```bash
+npm install @apache-fory/core @apache-fory/hps
+```
+
+**C#**
+
+```bash
+dotnet add package Apache.Fory --version 1.7.7
+```
+
+**Dart**
+
+```bash
+dart pub add fory:^1.7.7
+dart pub add dev:build_runner
+```
+
+**Swift**
+
+Add Fory to `Package.swift`:
+
+```swift
+dependencies: [
+  .package(url: "https://github.com/apache/fory.git", exact: "1.7.7")
+],
+targets: [
+  .target(
+    name: "YourTarget",
+    dependencies: [.product(name: "Fory", package: "fory")]
+  )
+]
+```
+
+See the [Swift guide](https://fory.apache.org/docs/object-serialization/swift/) for generated
+serializer setup.
+
+**Development From Source**
+
+See [docs/development/index.md](docs/development/index.md).
+
+Snapshots for Java, Scala, and Kotlin are available from
+`https://repository.apache.org/snapshots/` with the matching `-SNAPSHOT` version.
+
+## Choose a Serialization Format
+
+| Format                 | Use it when                                                   | Start here                                                            |
+| ---------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Xlang binary (default) | Data crosses language boundaries                              | [Cross-language interoperability](docs/object-serialization/xlang.md) |
+| Native binary          | Producer and consumer are in the same runtime family          | [Native guide](docs/object-serialization/native.md)                   |
+| Row format             | You need random field access or analytics-style partial reads | [Row Format](docs/row-format/index.md)                                |
+| Fory JSON              | Java applications need high-performance standard JSON         | [Fory JSON](java/fory-json/README.md)                                 |
+
+For Java, Scala, Kotlin, Python, C++, Go, and Rust, use native mode for
+same-language traffic. It avoids xlang's cross-language type mapping and
+metadata constraints, stays closer to each language's native type system, and
+supports broader language-specific object graphs. Use it when both producer and
+consumer are in the same language family and you want the native object model
+rather than a portable cross-language schema.
+
+For Java/JVM-only systems, native mode is the replacement path for JDK
+serialization, Kryo, FST, Hessian, and Java-only Protocol Buffers payloads. For
+Python-only systems, native mode is the replacement path for pickle and
+cloudpickle.
+
+Compatible mode is Fory's schema-evolution mode. It writes the metadata readers
+and writers need to tolerate schema differences. It is the default for xlang
+mode and native mode in implementations that expose the option.
+
+Use compatible mode when services deploy independently or when fields may be
+added or deleted over time. Set compatible mode to `false` only when every reader
+and writer always uses the same schema and you want faster serialization and
+smaller size. For xlang payloads, set compatible mode to `false` only after
+verifying that every language uses the same schema, or when native types are
+generated from Fory schema IDL.
+
+For xlang, all peers must agree on type identity. Name-based registration is
+easier to read in examples. Numeric IDs are smaller and faster, but they require
+coordination across every reader and writer.
+
+## Cross-Language Serialization
+
+Xlang mode writes the cross-language Fory wire format. Bytes produced by one
+language implementation can be read by another when every peer uses the same type identity,
+compatible mode setting, and field schema.
+
+**Java**
+
+```java
+import org.apache.fory.Fory;
+
+public class Example {
+  public static class Person {
+    public String name;
+    public int age;
+  }
+
+  public static void main(String[] args) {
+    Fory fory = Fory.builder().withXlang(true).build();
+    fory.register(Person.class, "example.Person");
+
+    Person person = new Person();
+    person.name = "Alice";
+    person.age = 30;
+
+    byte[] bytes = fory.serialize(person);
+    Person decoded = (Person) fory.deserialize(bytes);
+    System.out.println(decoded.name);
+  }
+}
+```
+
+**Python**
+
+```python
+from dataclasses import dataclass
+
+import pyfory
+
+@dataclass
+class Person:
+    name: str
+    age: pyfory.Int32
+
+fory = pyfory.Fory(xlang=True)
+fory.register_type(Person, name="example.Person")
+
+data = fory.serialize(Person("Alice", 30))
+person = fory.deserialize(data)
+print(person.name)
+```
+
+**Go**
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/apache/fory/go/fory"
+)
+
+type Person struct {
+    Name string
+    Age  int32
+}
+
+func main() {
+    f := fory.New(fory.WithXlang(true))
+    if err := f.RegisterStructByName(Person{}, "example.Person"); err != nil {
+        panic(err)
+    }
+
+    data, _ := f.Serialize(&Person{Name: "Alice", Age: 30})
+    var person Person
+    if err := f.Deserialize(data, &person); err != nil {
+        panic(err)
+    }
+    fmt.Println(person.Name)
+}
+```
+
+**Rust**
+
+```rust
+use fory::{Error, Fory, ForyStruct};
+
+#[derive(ForyStruct, Debug, PartialEq)]
+struct Person {
+    name: String,
+    age: i32,
+}
+
+fn main() -> Result<(), Error> {
+    let mut fory = Fory::builder().xlang(true).build();
+    fory.register_by_name::<Person>("example.Person")?;
+
+    let bytes = fory.serialize(&Person {
+        name: "Alice".to_string(),
+        age: 30,
+    })?;
+    let person: Person = fory.deserialize(&bytes)?;
+    println!("{}", person.name);
+    Ok(())
+}
+```
+
+**C++**
+
+```cpp
+#include "fory/serialization/fory.h"
+#include <cstdint>
+#include <iostream>
+#include <string>
+
+using namespace fory::serialization;
+
+struct Person {
+  std::string name;
+  int32_t age;
+};
+FORY_STRUCT(Person, name, age);
+
+int main() {
+  auto fory = Fory::builder().xlang(true).build();
+  fory.register_struct<Person>("example.Person");
+
+  auto bytes = fory.serialize(Person{"Alice", 30}).value();
+  Person person = fory.deserialize<Person>(bytes).value();
+  std::cout << person.name << std::endl;
+}
+```
+
+**JavaScript/TypeScript**
+
+```ts
+import Fory, { Type } from "@apache-fory/core";
+
+const personType = Type.struct(
+  { typeName: "example.Person" },
+  {
+    name: Type.string(),
+    age: Type.int32(),
+  },
+);
+
+const fory = new Fory();
+const { serialize, deserialize } = fory.register(personType);
+
+const bytes = serialize({ name: "Alice", age: 30 });
+const person = deserialize(bytes);
+console.log(person.name);
+```
+
+**C#**
+
+```csharp
+using Apache.Fory;
+
+[ForyStruct]
+public sealed class Person
+{
+    public string Name { get; set; } = string.Empty;
+    public int Age { get; set; }
+}
+
+Fory fory = Fory.Builder().Build();
+fory.Register<Person>("example", "Person");
+
+byte[] bytes = fory.Serialize(new Person { Name = "Alice", Age = 30 });
+Person person = fory.Deserialize<Person>(bytes);
+Console.WriteLine(person.Name);
+```
+
+C# always writes the xlang frame header, so there is no separate xlang builder
+flag.
+
+**Dart**
+
+```dart
+import 'package:fory/fory.dart';
+
+part 'person.fory.dart';
+
+@ForyStruct()
+class Person {
+  Person();
+
+  String name = '';
+
+  @ForyField(type: Int32Type())
+  int age = 0;
+}
+
+void main() {
+  final fory = Fory();
+  PersonFory.register(
+    fory,
+    Person,
+    name: 'example.Person',
+  );
+
+  final bytes = fory.serialize(Person()
+    ..name = 'Alice'
+    ..age = 30);
+  final person = fory.deserialize<Person>(bytes);
+  print(person.name);
+}
+```
+
+Dart uses the xlang wire format directly. Generate the companion file before
+running:
+
+```bash
+dart run build_runner build
+```
+
+**Swift**
+
+```swift
+import Fory
+
+@ForyStruct
+struct Person {
+    var name: String = ""
+    var age: Int32 = 0
+}
+
+let fory = Fory()
+try fory.register(Person.self, name: "example.Person")
+
+let bytes = try fory.serialize(Person(name: "Alice", age: 30))
+let person: Person = try fory.deserialize(bytes)
+print(person.name)
+```
+
+**Scala**
+
+```scala
+import org.apache.fory.scala.ForyScala
+
+case class Person(name: String, age: Int)
+
+val fory = ForyScala.builder().withXlang(true).build()
+fory.register(classOf[Person], "example.Person")
+
+val bytes = fory.serialize(Person("Alice", 30))
+val person = fory.deserialize(bytes).asInstanceOf[Person]
+println(person.name)
+```
+
+**Kotlin**
+
+```kotlin
+import org.apache.fory.kotlin.ForyKotlin
+
+data class Person(val name: String, val age: Int)
+
+fun main() {
+    val fory = ForyKotlin.builder().withXlang(true).build()
+    fory.register(Person::class.java, "example.Person")
+
+    val bytes = fory.serialize(Person("Alice", 30))
+    val person = fory.deserialize(bytes) as Person
+    println(person.name)
+}
+```
+
+For shared/circular references, polymorphism, numeric IDs versus names, and
+type-mapping rules, see the [cross-language guide](docs/object-serialization/xlang.md) and
+[type mapping specification](docs/specification/xlang_type_mapping.md).
+
+## Native Serialization
+
+Use native mode when the writer and reader are in the same language. It is
+optimized for each language's native type system and can cover language-specific
+types, object graphs, and framework-replacement cases that xlang mode keeps out
+of the portable wire format. The languages below expose an explicit
+`xlang=false` or native-mode setting; implementations without that switch stay on their
+documented default path.
+
+Choose Java native mode for Java/JVM-only replacements of JDK serialization,
+Kryo, FST, Hessian, or Java-only Protocol Buffers payloads. Choose Python native
+mode when replacing pickle or cloudpickle for Python-only payloads.
+
+Keep class/type registration enabled for untrusted input. See the language guides
+for language-specific security and compatibility settings.
+
+**Java**
+
+```java
+Fory fory = Fory.builder()
+    .withXlang(false)
+    .requireClassRegistration(true)
+    .build();
+// Register, serialize, and deserialize as in the xlang example above.
+```
+
+**Python**
+
+```python
+fory = pyfory.Fory(xlang=False, ref=True)
+# Register, serialize, and deserialize as in the xlang example above.
+```
+
+**Go**
+
+```go
+f := fory.New(fory.WithXlang(false))
+// Register, serialize, and deserialize as in the xlang example above.
+```
+
+**Rust**
+
+```rust
+let mut fory = Fory::builder().xlang(false).build();
+// Register, serialize, and deserialize as in the xlang example above.
+```
+
+**C++**
+
+```cpp
+auto fory = Fory::builder().xlang(false).build();
+// Register, serialize, and deserialize as in the xlang example above.
+```
+
+**Scala**
+
+```scala
+import org.apache.fory.scala.ForyScala
+
+val fory = ForyScala.builder()
+  .withXlang(false)
+  .requireClassRegistration(true)
+  .build()
+// Register, serialize, and deserialize as in the xlang example above.
+```
+
+**Kotlin**
+
+```kotlin
+import org.apache.fory.kotlin.ForyKotlin
+
+val fory = ForyKotlin.builder()
+    .withXlang(false)
+    .requireClassRegistration(true)
+    .build()
+// Register, serialize, and deserialize as in the xlang example above.
+```
+
+## Schema IDL
+
+Fory IDL is Fory's schema-first path for shared data models. Use it when
+multiple languages need one explicit contract, stable field identities, and
+generated native domain objects instead of manually coordinating equivalent
+types in every implementation.
+
+The schema supports primitive values, nullable fields, lists, maps, dense
+arrays, enums, messages, unions, imports, and first-class shared or circular
+references. The compiler generates idiomatic models and Fory integration for
+Java, Python, C++, Go, Rust, JavaScript/TypeScript, C#, Swift, Dart, Scala, and
+Kotlin. It can also generate Fory-backed gRPC service companions for supported
+languages.
+
+Install the compiler from PyPI:
+
+```bash
+pip install fory-compiler
+```
+
+Define the shared model in `tree.fdl`:
+
+```protobuf
+package tree;
+
+message TreeNode {
+    string id = 1;
+    string name = 2;
+
+    list<ref TreeNode> children = 3;
+    ref(weak=true) TreeNode parent = 4; // back-pointer
+}
+```
+
+Generate native models for the languages used by your application:
+
+```bash
+foryc tree.fdl --lang java,python,rust --output ./generated
+```
+
+Generated types use each language's normal classes, structs, dataclasses,
+annotations, macros, or registration helpers, so application code works with
+native domain objects while all peers share the same Fory schema. See the
+[Fory IDL and compiler guide](https://fory.apache.org/docs/compiler) for the
+complete type system, language-specific output options, schema evolution, and
+gRPC generation.
+
+## Row Format
+
+Row format is for random access and partial reads. These examples encode an
+object with an integer array field, then read one array element from the binary
+row without rebuilding the object.
+
+**Python**
+
+```python
+from dataclasses import dataclass
+from typing import List
+
+import pyfory
+
+@dataclass
+class User:
+    id: pyfory.Int32
+    name: str
+    scores: List[pyfory.Int32]
+
+encoder = pyfory.encoder(User)
+binary = encoder.to_row(User(1, "Alice", [98, 100, 95])).to_bytes()
+
+row = pyfory.RowData(encoder.schema, binary)
+print(row.name)
+print(row.scores[1])
+```
+
+**Java**
+
+```java
+public class User {
+  public int id;
+  public String name;
+  public int[] scores;
+}
+
+RowEncoder<User> encoder = Encoders.bean(User.class);
+
+User user = new User();
+user.id = 1;
+user.name = "Alice";
+user.scores = new int[] {98, 100, 95};
+
+BinaryRow row = encoder.toRow(user);
+
+Schema schema = encoder.schema();
+Schema.StringField nameField = schema.stringField("name");
+Schema.ArrayField scoresField = schema.arrayField("scores");
+
+String name = nameField.get(row);
+ArrayData scores = scoresField.get(row);
+int secondScore = scores.getInt32(1);
+```
+
+**Go**
+
+```go
+import "github.com/apache/fory/go/fory/row"
+
+type User struct {
+    Id     int32
+    Name   string
+    Scores []int32
+}
+
+encoder, _ := row.NewEncoder[User]()
+binary, _ := encoder.ToRow(&User{Id: 1, Name: "Alice", Scores: []int32{98, 100, 95}})
+
+schema := encoder.Schema()
+r := row.NewRow(schema, binary)
+name := r.String(schema.FieldIndex("name"))
+secondScore := r.Array(schema.FieldIndex("scores")).Int32(1)
+```
+
+For Java imports, nested structs, arrays/maps, Arrow integration, and partial
+deserialization, see the [Java row-format guide](docs/row-format/java.md),
+[Python row-format guide](docs/row-format/python.md),
+[C++ row-format guide](docs/row-format/cpp.md),
+[Rust row-format guide](docs/row-format/rust.md),
+[Go row-format guide](docs/row-format/go.md), and
+[row-format specification](docs/specification/row_format_spec.md).
+
+## Fory JSON
+
+Fory JSON is a thread-safe JSON serialization framework for Java, extensively
+optimized for maximum performance across JSON encoding, decoding, and Java
+object mapping. It supports Java 8 and later on standard JDKs, GraalVM native
+images, and Android, with Java records supported on Java 17 and later.
+
+**Performance**
+
+The benchmark compares fory-json with Jackson and Gson using String and UTF-8 byte APIs. The String
+group excludes UTF-8 conversion. Gson's byte results include its required String/UTF-8 conversion.
+Higher throughput is better. See the [full benchmark report](docs/benchmarks/json/java/) for more
+details.
+
+<p align="center">
+<img src="docs/benchmarks/json/java/string_throughput.png" width="49%" alt="Java JSON String throughput">
+<img src="docs/benchmarks/json/java/utf8_bytes_throughput.png" width="49%" alt="Java JSON UTF-8 bytes throughput">
+</p>
+
+| Representation | Operation   | fory-json ops/sec | Jackson ops/sec | Gson ops/sec |
+| -------------- | ----------- | ----------------: | --------------: | -----------: |
+| String         | Serialize   |         7,387,465 |       2,049,368 |    1,084,042 |
+| String         | Deserialize |         2,897,955 |       1,074,885 |      902,772 |
+| UTF-8 bytes    | Serialize   |        10,375,498 |       1,868,614 |    1,037,211 |
+| UTF-8 bytes    | Deserialize |         3,077,158 |       1,268,397 |      933,079 |
+
+Add Fory JSON to your project:
+
+**Maven**
+
+```xml
+<dependency>
+  <groupId>org.apache.fory</groupId>
+  <artifactId>fory-json</artifactId>
+  <version>1.7.7</version>
+</dependency>
+```
+
+**Gradle**
+
+```gradle
+implementation "org.apache.fory:fory-json:1.7.7"
+```
+
+Keep all Fory modules in the same application on the same version.
+
+**Quick Start**
+
+Build one `ForyJson` instance and reuse it across threads:
+
+```java
+import org.apache.fory.json.ForyJson;
+
+public final class JsonExample {
+  private static final ForyJson JSON = ForyJson.builder().build();
+
+  public static final class User {
+    public long id;
+    public String name;
+
+    public User() {}
+
+    public User(long id, String name) {
+      this.id = id;
+      this.name = name;
+    }
+  }
+
+  public static void main(String[] args) {
+    User input = new User(7, "Alice");
+
+    String text = JSON.toJson(input);
+    User fromText = JSON.fromJson(text, User.class);
+
+    byte[] bytes = JSON.toJsonBytes(input);
+    User fromBytes = JSON.fromJson(bytes, User.class);
+
+    System.out.println(fromText.name + " / " + fromBytes.name);
+  }
+}
+```
+
+Start with the [Fory JSON module README](java/fory-json/README.md), then use the
+[Fory JSON documentation](docs/json/index.md) for the complete mapping, annotation, codec,
+security, and platform guides.
+
+## Documentation
+
+**User Guides**
+
+| Guide                 | Source                                                                                 | Website                                                                |
+| --------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Java                  | [docs/object-serialization/java](docs/object-serialization/java)                       | [View](https://fory.apache.org/docs/object-serialization/java/)        |
+| Python                | [docs/object-serialization/python](docs/object-serialization/python)                   | [View](https://fory.apache.org/docs/object-serialization/python/)      |
+| Rust                  | [docs/object-serialization/rust](docs/object-serialization/rust)                       | [View](https://fory.apache.org/docs/object-serialization/rust/)        |
+| C++                   | [docs/object-serialization/cpp](docs/object-serialization/cpp)                         | [View](https://fory.apache.org/docs/object-serialization/cpp/)         |
+| Go                    | [docs/object-serialization/go](docs/object-serialization/go)                           | [View](https://fory.apache.org/docs/object-serialization/go/)          |
+| JavaScript/TypeScript | [docs/object-serialization/javascript](docs/object-serialization/javascript)           | [View](https://fory.apache.org/docs/object-serialization/javascript/)  |
+| C#                    | [docs/object-serialization/csharp](docs/object-serialization/csharp)                   | [View](https://fory.apache.org/docs/object-serialization/csharp/)      |
+| Swift                 | [docs/object-serialization/swift](docs/object-serialization/swift)                     | [View](https://fory.apache.org/docs/object-serialization/swift/)       |
+| Dart                  | [docs/object-serialization/dart](docs/object-serialization/dart)                       | [View](https://fory.apache.org/docs/object-serialization/dart/)        |
+| Scala                 | [docs/object-serialization/scala](docs/object-serialization/scala)                     | [View](https://fory.apache.org/docs/object-serialization/scala/)       |
+| Kotlin                | [docs/object-serialization/kotlin](docs/object-serialization/kotlin)                   | [View](https://fory.apache.org/docs/object-serialization/kotlin/)      |
+| Cross-language xlang  | [docs/object-serialization/xlang.md](docs/object-serialization/xlang.md)               | [View](https://fory.apache.org/docs/object-serialization/xlang)        |
+| Schema IDL/compiler   | [docs/compiler](docs/compiler)                                                         | [View](https://fory.apache.org/docs/compiler/)                         |
+| GraalVM native image  | [docs/object-serialization/java/graalvm.md](docs/object-serialization/java/graalvm.md) | [View](https://fory.apache.org/docs/object-serialization/java/graalvm) |
+| Android               | [docs/object-serialization/java/android.md](docs/object-serialization/java/android.md) | [View](https://fory.apache.org/docs/object-serialization/java/android) |
+| Development           | [docs/development/index.md](docs/development/index.md)                                 | [View](docs/development/index.md)                                      |
+
+**Specifications**
+
+| Specification          | Source                                                                        | Website                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Xlang serialization    | [xlang_serialization_spec.md](docs/specification/xlang_serialization_spec.md) | [View](https://fory.apache.org/docs/specification/xlang_serialization_spec) |
+| Java serialization     | [java_serialization_spec.md](docs/specification/java_serialization_spec.md)   | [View](https://fory.apache.org/docs/specification/java_serialization_spec)  |
+| Row format             | [row_format_spec.md](docs/specification/row_format_spec.md)                   | [View](https://fory.apache.org/docs/specification/row_format_spec)          |
+| Cross-language mapping | [xlang_type_mapping.md](docs/specification/xlang_type_mapping.md)             | [View](https://fory.apache.org/docs/specification/xlang_type_mapping)       |
+
+## Community
+
+- [Slack workspace](https://join.slack.com/t/fory-project/shared_invite/zt-36g0qouzm-kcQSvV_dtfbtBKHRwT5gsw)
+- [@ApacheFory on X](https://x.com/ApacheFory)
+- [GitHub issues](https://github.com/apache/fory/issues)
+- Apache Fory mailing lists for development discussion
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and
+[docs/development/index.md](docs/development/index.md) before sending pull requests. Bug
+reports, docs fixes, tests, benchmarks, and implementation improvements are welcome.
+
+## License
+
+Apache Fory™ is licensed under the [Apache License 2.0](LICENSE).
+
+=== FILE END:   /data/home/cjy/software-testing/projects/fory/README.md ===
+2026-10-15 16:21:18.484 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 16:21:20.702 | INFO     | Model API request cost info: input_tokens=8188, output_tokens=5, cost=0.020520
+2026-10-15 16:21:20.703 | DEBUG    | No relevant information found.
+2026-10-15 16:21:20.703 | DEBUG    | Invalid response or missing <analysis> tags, retrying...
+2026-10-15 16:21:20.704 | DEBUG    | Analyzing file content. Try 2 of 3
+2026-10-15 16:21:54.413 | INFO     | Model API request cost info: input_tokens=8205, output_tokens=11, cost=0.020623
+2026-10-15 16:21:54.415 | SUCCESS  | Successfully extracted environment config
+2026-10-15 16:21:54.416 | INFO     | ******
+2026-10-15 16:21:54.416 | INFO     | No relevant information found.
+2026-10-15 16:21:54.416 | INFO     | ******
+2026-10-15 16:21:54.416 | DEBUG    | Result of dispatch_intent: ('No relevant information found.', 'Get File Info', True)
+2026-10-15 16:21:54.416 | INFO     | entering browse
+2026-10-15 16:21:54.416 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/fory/CONTRIBUTING.md ===
+# How to contribute to Apache Fory™
+
+## Finding good first issues
+
+See [Good First Issues](https://github.com/apache/fory/contribute).
+
+## How to create an issue
+
+Create an issue with [this form](https://github.com/apache/fory/issues/new/choose).
+
+## How to title your PR
+
+Generally we follow the [Conventional Commits](https://www.conventionalcommits.org/) for pull request titles,
+since we will squash and merge the PR and use the PR title as the first line of commit message.
+
+For example, here are good PR titles:
+
+- feat(java): support xxx feature
+- fix(c++): blablabla
+- chore(python): remove useless yyy file
+
+If the submitted PR affects the performance of Apache Fory™, we strongly recommend using the perf type,
+and need to provide benchmark data in the PR description. For how to run the benchmark,
+please check [Apache Fory™ Java Benchmark](https://github.com/apache/fory/blob/main/benchmarks/java/README.md).
+
+For more details, please check [pr-lint.yml](./.github/workflows/pr-lint.yml).
+
+## AI-assisted contributions
+
+For full requirements, see [AI Contribution Policy](./AI_POLICY.md).
+
+Key points:
+
+- AI tools are allowed as assistants, but contributors remain fully responsible for all submitted changes.
+- AI-assisted code must be reviewed carefully line by line before submission, and contributors must be able to explain and defend it during review.
+- For substantial AI assistance, contributors must complete a self-review first, then repeat a two-reviewer AI review loop on the current PR diff or current HEAD after the latest code changes until both reviewers report no further actionable comments. One reviewer must be Fory-guided by `AGENTS.md` and `.agents/ci-and-pr.md`; the other must be an independent general reviewer in a separate clean-context session that is not pointed to `.agents/ci-and-pr.md` or copied Fory-specific review checklist text.
+- Include the final clean review screenshots or equivalent persisted links from both fresh reviewers in the PR disclosure.
+- For substantial AI assistance, provide privacy-safe disclosure in the PR using the [AI Contribution Checklist](./AI_POLICY.md#9-contributor-checklist-for-ai-assisted-prs) template. Minor/narrow AI assistance does not require full disclosure.
+- Include adequate human verification evidence (for example exact build/lint/test commands and pass/fail outcomes), and add/update tests and specs where required.
+- For protocol/type-mapping/wire-format or performance-sensitive changes, provide the required compatibility/performance validation evidence.
+- Ensure licensing and provenance compliance with [ASF Generative Tooling Guidance](https://www.apache.org/legal/generative-tooling.html) and do not submit content with uncertain provenance.
+
+## Testing
+
+For environmental requirements, see the [Development guide](./docs/development/index.md).
+
+### Python
+
+```bash
+cd python
+pytest -v -s .
+```
+
+### Java
+
+```bash
+cd java
+mvn -T10 clean test
+```
+
+### C++
+
+```bash
+bazel test $(bazel query //...)
+```
+
+### GoLang
+
+```bash
+cd go/fory
+go test -v ./...
+go test -v fory_xlang_test.go
+```
+
+### Rust
+
+```bash
+cd rust
+cargo test
+# run test with specific test file and method
+cargo test -p tests  --test $test_file $test_method
+# run specific test under subdirectory
+cargo test --test mod $dir$::$test_file::$test_method
+# debug specific test under subdirectory and get backtrace
+RUST_BACKTRACE=1 FORY_PANIC_ON_ERROR=1 cargo test --test mod $dir$::$test_file::$test_method
+```
+
+### JavaScript
+
+```bash
+cd javascript
+npm run test
+```
+
+## Code Style
+
+Run all checks: `bash ci/format.sh --all`.
+
+### License headers
+
+```bash
+docker run --rm -v $(pwd):/github/workspace ghcr.io/korandoru/hawkeye-native:v3 format
+```
+
+### Java
+
+```bash
+cd java
+# code format
+mvn spotless:apply
+# code format check
+mvn spotless:check
+mvn checkstyle:check
+```
+
+### Python
+
+```bash
+cd python
+# install dependencies for formatting
+pip install ruff==0.15.22
+# format python code
+ruff format
+```
+
+### C++
+
+```bash
+pip install clang-format==18.1.8
+git ls-files -- '*.cc' '*.h' | xargs -P 5 clang-format -i
+```
+
+### GoLang
+
+```bash
+cd go/fory
+gofmt -s -w .
+```
+
+### Rust
+
+```bash
+cd rust
+cargo fmt --all
+# lint
+cargo clippy --workspace --all-features --all-targets -- -D warnings
+```
+
+### JavaScript
+
+```bash
+cd javascript
+npm run lint
+```
+
+## Debug
+
+### Java
+
+Apache Fory™ supports dump jit generated code into local file for better debug by configuring environment variables:
+
+- `FORY_CODE_DIR`：The directory for fory to dump generated code. Set to empty by default to skip dump code.
+- `ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID`: Append an unique id for dynamically generated files by default to avoid serializer collision for different classes with same name. Set this to `false` to keep serializer name same for multiple execution or `AOT` codegen.
+
+By using those environment variables, we can generate code to source directory and debug the generated code in next run.
+
+### Python
+
+```bash
+cd python
+python setup.py develop
+```
+
+- Use `cython --cplus -a  pyfory/serialization.pyx` to produce an annotated HTML file of the source code. Then you can analyze interaction between Python objects and Python's C API.
+- Read more: https://cython.readthedocs.io/en/latest/src/userguide/debugging.html
+
+```bash
+FORY_DEBUG=true python setup.py build_ext --inplace
+# For linux
+cygdb build
+```
+
+### C++
+
+See the [Debugging C++](docs/development/cpp-debugging.md) guide.
+
+### Debug Crash
+
+Enable core dump on Macos Monterey 12.1:
+
+```bash
+/usr/libexec/PlistBuddy -c "Add :com.apple.security.get-task-allow bool true" tmp.entitlements
+codesign -s - -f --entitlements tmp.entitlements /Users/chaokunyang/anaconda3/envs/py3.8/bin/python
+ulimit -c unlimited
+```
+
+then run the code:
+
+```bash
+python fory_serializer.py
+ls -al /cores
+```
+
+## Profiling
+
+### C++
+
+```bash
+# Dtrace
+sudo dtrace -x ustackframes=100 -n 'profile-99 /pid == 73485 && arg1/ { @[ustack()] = count(); } tick-60s { exit(0); }' -o out.stack
+sudo stackcollapse.pl out.stack > out.folded
+sudo flamegraph.pl out.folded > out.svg
+```
+
+## Extracts compile_commands.json
+
+```bash
+bazel run :refresh_compile_commands
+```
+
+## How to use Jetbrains IDEA IDE for Java Development
+
+Apache Fory™ Java development is based on Java 11+, and different modules are built with different Java versions.
+
+For example, the `fory-core` module is built with Java 8, and the `fory-format` module is built with Java 11.
+
+To use Jetbrains IDEA IDE for Java Development, you need to configure the project SDK and module SDK to using JDK 11+.
+
+And due to the usage of `sun.misc.Unsafe` API, which is not visible in Java 11+, you need to configure java compiler with `--release` option disabled.
+
+<div align="center">
+  <img width="65%" alt="" src="docs/images/idea-jdk11.png"><br>
+</div>
+
+## Website
+
+Apache Fory™'s website consists of static pages hosted at https://github.com/apache/fory-site.
+
+The capability-first [docs](docs) tree is the canonical source for the website documentation,
+including Introduction, Getting Started, Benchmarks, user guides, Development, and the separate
+Specification surface.
+
+If you want to write a blog, or update other contents about the website, please submit PR to the site repo.
+
+## Development
+
+For more information, see the [Development guide](./docs/development/index.md).
+
+=== FILE END:   /data/home/cjy/software-testing/projects/fory/CONTRIBUTING.md ===
+2026-10-15 16:21:54.417 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 16:22:02.923 | INFO     | Model API request cost info: input_tokens=2324, output_tokens=772, cost=0.013530
+2026-10-15 16:22:02.925 | SUCCESS  | Successfully extracted environment config
+2026-10-15 16:22:02.925 | INFO     | ******
+2026-10-15 16:22:02.925 | INFO     | [Key Information from CONTRIBUTING.md]
+- Libraries/Tools and their versions:
+  - Python code formatting: `ruff==0.15.22`
+  - C++ code formatting: `clang-format==18.1.8`
+- Commands for running tests:
+  - **Python**:
+    ```bash
+    cd python
+    pytest -v -s .
+    ```
+  - **Java**:
+    ```bash
+    cd java
+    mvn -T10 clean test
+    ```
+  - **C++**:
+    ```bash
+    bazel test $(bazel query //...)
+    ```
+  - **GoLang**:
+    ```bash
+    cd go/fory
+    go test -v ./...
+    go test -v fory_xlang_test.go
+    ```
+  - **Rust**:
+    ```bash
+    cd rust
+    cargo test
+    ```
+    - Run test with specific test file and method:
+      ```bash
+      cargo test -p tests --test $test_file $test_method
+      ```
+    - Run specific test under subdirectory:
+      ```bash
+      cargo test --test mod $dir$::$test_file::$test_method
+      ```
+    - Debug specific test under subdirectory and obtain backtrace:
+      ```bash
+      RUST_BACKTRACE=1 FORY_PANIC_ON_ERROR=1 cargo test --test mod $dir$::$test_file::$test_method
+      ```
+  - **JavaScript**:
+    ```bash
+    cd javascript
+    npm run test
+    ```
+- Environment variables (specific for Java debugging):
+  - `FORY_CODE_DIR`: Directory to dump generated code.
+  - `ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID`: Appends a unique ID for dynamically generated files (`true` by default, can set to `false` to disable for AOT codegen).
+  
+- Commands for building or formatting:
+  - **License headers**:
+    ```bash
+    docker run --rm -v $(pwd):/github/workspace ghcr.io/korandoru/hawkeye-native:v3 format
+    ```
+  - **Java code formatting**:
+    ```bash
+    cd java
+    mvn spotless:apply
+    mvn spotless:check
+    mvn checkstyle:check
+    ```
+  - **Python code formatting**:
+    ```bash
+    cd python
+    pip install ruff==0.15.22
+    ruff format
+    ```
+  - **C++ code formatting**:
+    ```bash
+    pip install clang-format==18.1.8
+    git ls-files -- '*.cc' '*.h' | xargs -P 5 clang-format -i
+    ```
+  - **GoLang code formatting**:
+    ```bash
+    cd go/fory
+    gofmt -s -w .
+    ```
+  - **Rust code formatting**:
+    ```bash
+    cd rust
+    cargo fmt --all
+    cargo clippy --workspace --all-features --all-targets -- -D warnings
+    ```
+  - **JavaScript linting**:
+    ```bash
+    cd javascript
+    npm run lint
+    ```
+- Debugging-specific configurations:
+  - **Python**:
+    ```
+    FORY_DEBUG=true python setup.py build_ext --inplace
+    cython --cplus -a pyfory/serialization.pyx
+    ```
+  - **Java specific environment variables**:
+    - `FORY_CODE_DIR`, `ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID`
+- Runtime requirements:
+  - Java modules use different versions:
+    - `fory-core`: Java 8
+    - `fory-format`: Java 11+
+[/Key Information]
+2026-10-15 16:22:02.925 | INFO     | ******
+2026-10-15 16:22:02.925 | DEBUG    | Result of dispatch_intent: ("[Key Information from CONTRIBUTING.md]\n- Libraries/Tools and their versions:\n  - Python code formatting: `ruff==0.15.22`\n  - C++ code formatting: `clang-format==18.1.8`\n- Commands for running tests:\n  - **Python**:\n    ```bash\n    cd python\n    pytest -v -s .\n    ```\n  - **Java**:\n    ```bash\n    cd java\n    mvn -T10 clean test\n    ```\n  - **C++**:\n    ```bash\n    bazel test $(bazel query //...)\n    ```\n  - **GoLang**:\n    ```bash\n    cd go/fory\n    go test -v ./...\n    go test -v fory_xlang_test.go\n    ```\n  - **Rust**:\n    ```bash\n    cd rust\n    cargo test\n    ```\n    - Run test with specific test file and method:\n      ```bash\n      cargo test -p tests --test $test_file $test_method\n      ```\n    - Run specific test under subdirectory:\n      ```bash\n      cargo test --test mod $dir$::$test_file::$test_method\n      ```\n    - Debug specific test under subdirectory and obtain backtrace:\n      ```bash\n      RUST_BACKTRACE=1 FORY_PANIC_ON_ERROR=1 cargo test --test mod $dir$::$test_file::$test_method\n      ```\n  - **JavaScript**:\n    ```bash\n    cd javascript\n    npm run test\n    ```\n- Environment variables (specific for Java debugging):\n  - `FORY_CODE_DIR`: Directory to dump generated code.\n  - `ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID`: Appends a unique ID for dynamically generated files (`true` by default, can set to `false` to disable for AOT codegen).\n  \n- Commands for building or formatting:\n  - **License headers**:\n    ```bash\n    docker run --rm -v $(pwd):/github/workspace ghcr.io/korandoru/hawkeye-native:v3 format\n    ```\n  - **Java code formatting**:\n    ```bash\n    cd java\n    mvn spotless:apply\n    mvn spotless:check\n    mvn checkstyle:check\n    ```\n  - **Python code formatting**:\n    ```bash\n    cd python\n    pip install ruff==0.15.22\n    ruff format\n    ```\n  - **C++ code formatting**:\n    ```bash\n    pip install clang-format==18.1.8\n    git ls-files -- '*.cc' '*.h' | xargs -P 5 clang-format -i\n    ```\n  - **GoLang code formatting**:\n    ```bash\n    cd go/fory\n    gofmt -s -w .\n    ```\n  - **Rust code formatting**:\n    ```bash\n    cd rust\n    cargo fmt --all\n    cargo clippy --workspace --all-features --all-targets -- -D warnings\n    ```\n  - **JavaScript linting**:\n    ```bash\n    cd javascript\n    npm run lint\n    ```\n- Debugging-specific configurations:\n  - **Python**:\n    ```\n    FORY_DEBUG=true python setup.py build_ext --inplace\n    cython --cplus -a pyfory/serialization.pyx\n    ```\n  - **Java specific environment variables**:\n    - `FORY_CODE_DIR`, `ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID`\n- Runtime requirements:\n  - Java modules use different versions:\n    - `fory-core`: Java 8\n    - `fory-format`: Java 11+\n[/Key Information]", 'Get File Info', True)
+2026-10-15 16:22:39.352 | INFO     | Model API request cost info: input_tokens=2611, output_tokens=477, cost=0.011298
+2026-10-15 16:22:39.361 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 16:22:44.222 | INFO     | Model API request cost info: input_tokens=1075, output_tokens=213, cost=0.004818
+2026-10-15 16:22:44.223 | DEBUG    | {
+    "API_calls": [
+        "search_files_by_keyword('requirements')",
+        "search_files_by_keyword('pom.xml')",
+        "search_files_by_keyword('package.json')",
+        "search_files_by_keyword('build.gradle')",
+        "browse_folder('python', 1)",
+        "browse_folder('go', 1)",
+        "browse_folder('java', 1)",
+        "browse_folder('javascript', 1)",
+        "browse_folder('rust', 1)"
+    ],
+    "collected_information": {
+        "existing_files_examined": ["CONTRIBUTING.md"],
+        "details_gathered": "Instructions for environment setup and running tests for multiple PLs, commands for formatting and debugging, partial dependency version details.",
+        "missing_details": [
+            "Programming language versions (e.g., Python, Node.js, Java)",
+            "Dependency files (e.g., requirements.txt, pom.xml, package.json)",
+            "Runtime requirements or OS-specific configurations"
+        ]
+    },
+    "terminate": false
+}
+2026-10-15 16:22:44.223 | DEBUG    | Extracted a valid json
+2026-10-15 16:22:44.230 | DEBUG    | Result of dispatch_intent: ("No files found containing the keyword 'requirements'.", 'No matching files found', True)
+2026-10-15 16:22:44.233 | DEBUG    | Result of dispatch_intent: ("Found 26 files containing the keyword 'pom.xml':\n\n- java/pom.xml\n- java/fory-test-core/pom.xml\n- java/fory-annotation-processor/pom.xml\n- java/fory-latest-jdk-tests/pom.xml\n- java/fory-core/pom.xml\n- java/fory-json/pom.xml\n- java/fory-extensions/pom.xml\n- java/fory-testsuite/pom.xml\n- java/fory-format/pom.xml\n- integration_tests/graalvm_tests/pom.xml\n- integration_tests/jdk_compatibility_tests/pom.xml\n- integration_tests/kotlin_json_corpus/pom.xml\n- integration_tests/idl_tests/java/pom.xml\n- integration_tests/idl_tests/kotlin/pom.xml\n- integration_tests/grpc_tests/java/pom.xml\n- integration_tests/grpc_tests/kotlin/pom.xml\n- integration_tests/jpms_tests/pom.xml\n- integration_tests/graalvm_kotlin_tests/pom.xml\n- kotlin/pom.xml\n- kotlin/fory-kotlin-ksp/pom.xml\n- kotlin/fory-json-kotlin-ksp/pom.xml\n- kotlin/fory-kotlin/pom.xml\n- kotlin/fory-json-kotlin/pom.xml\n- kotlin/fory-kotlin-tests/pom.xml\n- benchmarks/java/pom.xml\n- benchmarks/java25/pom.xml", 'File search completed successfully', True)
+2026-10-15 16:22:44.237 | DEBUG    | Result of dispatch_intent: ("Found 4 files containing the keyword 'package.json':\n\n- integration_tests/idl_tests/javascript/package.json\n- javascript/package.json\n- javascript/packages/hps/package.json\n- javascript/packages/core/package.json", 'File search completed successfully', True)
+2026-10-15 16:22:44.241 | DEBUG    | Result of dispatch_intent: ("Found 2 files containing the keyword 'build.gradle':\n\n- integration_tests/android_tests/build.gradle\n- benchmarks/kotlin/build.gradle.kts", 'File search completed successfully', True)
+2026-10-15 16:22:44.241 | INFO     | Refactored invocation argument parsing gives different result on "browse_folder('python', 1)": old result is ['python', '1'], new result  is ['python', 1]
+2026-10-15 16:22:44.242 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/fory/python. The browsing Depth is 1.\nStructure of this directory:\n\nLICENSE\n\npyproject.toml\n\nCONTRIBUTING.md\n\nsetup.py\n\nNOTICE\n\nREADME.md\n\npyfory/\n\n', 'folder structure collected', True)
+2026-10-15 16:22:44.242 | INFO     | Refactored invocation argument parsing gives different result on "browse_folder('go', 1)": old result is ['go', '1'], new result  is ['go', 1]
+2026-10-15 16:22:44.243 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/fory/go. The browsing Depth is 1.\nStructure of this directory:\n\nREADME.md\n\nfory/\n\n', 'folder structure collected', True)
+2026-10-15 16:22:44.243 | INFO     | Refactored invocation argument parsing gives different result on "browse_folder('java', 1)": old result is ['java', '1'], new result  is ['java', 1]
+2026-10-15 16:22:44.244 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/fory/java. The browsing Depth is 1.\nStructure of this directory:\n\nLICENSE\n\ncheckstyle-suppressions.xml\n\npom.xml\n\ncheckstyle.xml\n\nREADME.md\n\nfory-test-core/\n\nfory-annotation-processor/\n\nfory-latest-jdk-tests/\n\nfory-core/\n\nfory-json/\n\nfory-extensions/\n\nfory-testsuite/\n\nfory-format/\n\n', 'folder structure collected', True)
+2026-10-15 16:22:44.244 | INFO     | Refactored invocation argument parsing gives different result on "browse_folder('javascript', 1)": old result is ['javascript', '1'], new result  is ['javascript', 1]
+2026-10-15 16:22:44.244 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/fory/javascript. The browsing Depth is 1.\nStructure of this directory:\n\n.npmrc\n\n.prettierrc\n\n.eslintrc.cjs\n\n.gitignore\n\njest.config.js\n\npackage.json\n\n.prettierignore\n\npackage-lock.json\n\nREADME.md\n\ntest/\n\nbenchmark/\n\npackages/\n\n', 'folder structure collected', True)
+2026-10-15 16:22:44.245 | INFO     | Refactored invocation argument parsing gives different result on "browse_folder('rust', 1)": old result is ['rust', '1'], new result  is ['rust', 1]
+2026-10-15 16:22:44.245 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/fory/rust. The browsing Depth is 1.\nStructure of this directory:\n\nCargo.toml\n\nrust-toolchain.toml\n\n.gitignore\n\nrustfmt.toml\n\nREADME.md\n\nfory-derive/\n\ntests/\n\napi-tests/\n\nfory/\n\nfory-core/\n\n', 'folder structure collected', True)
+2026-10-15 16:23:28.235 | INFO     | Model API request cost info: input_tokens=4140, output_tokens=498, cost=0.015330
+2026-10-15 16:23:28.244 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 16:23:31.167 | INFO     | Model API request cost info: input_tokens=1096, output_tokens=101, cost=0.003750
+2026-10-15 16:23:31.168 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('Python/pyproject.toml', '')",
+        "browse_file_for_environment_info('Python/setup.py', '')",
+        "browse_file_for_environment_info('Java/pom.xml', '')",
+        "browse_file_for_environment_info('JavaScript/package.json', '')",
+        "browse_file_for_environment_info('Rust/Cargo.toml', '')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-15 16:23:31.168 | DEBUG    | Extracted a valid json
+2026-10-15 16:23:31.171 | INFO     | entering browse
+2026-10-15 16:23:31.171 | INFO     | File not found: File not found: '/data/home/cjy/software-testing/projects/fory/Python/pyproject.toml'
+2026-10-15 16:23:31.171 | DEBUG    | Result of dispatch_intent: ('File not found', 'File not found', False)
+2026-10-15 16:23:31.171 | INFO     | entering browse
+2026-10-15 16:23:31.171 | INFO     | File not found: File not found: '/data/home/cjy/software-testing/projects/fory/Python/setup.py'
+2026-10-15 16:23:31.172 | DEBUG    | Result of dispatch_intent: ('File not found', 'File not found', False)
+2026-10-15 16:23:31.172 | INFO     | entering browse
+2026-10-15 16:23:31.172 | INFO     | File not found: File not found: '/data/home/cjy/software-testing/projects/fory/Java/pom.xml'
+2026-10-15 16:23:31.172 | DEBUG    | Result of dispatch_intent: ('File not found', 'File not found', False)
+2026-10-15 16:23:31.172 | INFO     | entering browse
+2026-10-15 16:23:31.172 | INFO     | File not found: File not found: '/data/home/cjy/software-testing/projects/fory/JavaScript/package.json'
+2026-10-15 16:23:31.172 | DEBUG    | Result of dispatch_intent: ('File not found', 'File not found', False)
+2026-10-15 16:23:31.172 | INFO     | entering browse
+2026-10-15 16:23:31.172 | INFO     | File not found: File not found: '/data/home/cjy/software-testing/projects/fory/Rust/Cargo.toml'
+2026-10-15 16:23:31.173 | DEBUG    | Result of dispatch_intent: ('File not found', 'File not found', False)
+2026-10-15 16:23:56.807 | INFO     | Model API request cost info: input_tokens=5003, output_tokens=529, cost=0.017798
+2026-10-15 16:23:56.817 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 16:24:01.112 | INFO     | Model API request cost info: input_tokens=1128, output_tokens=129, cost=0.004110
+2026-10-15 16:24:01.113 | DEBUG    | {
+    "API_calls": [
+        "search_files_by_keyword('workflow')",
+        "search_files_by_keyword('.ci')",
+        "browse_file_for_environment_info('python/setup.py', 'specific Python dependency and version info')",
+        "browse_file_for_environment_info('java/pom.xml', 'Java Maven dependency versions and configurations')",
+        "browse_file_for_environment_info('javascript/package.json', 'Node.js dependency versions and scripts')",
+        "browse_file_for_environment_info('rust/Cargo.toml', 'Rust dependencies and version info')"
+    ],
+    "collected_information": {},
+    "terminate": false
+}
+2026-10-15 16:24:01.113 | DEBUG    | Extracted a valid json
+2026-10-15 16:24:01.120 | DEBUG    | Result of dispatch_intent: ("Found 2 files containing the keyword 'workflow':\n\n- .agents/skills/fory-release/scripts/check_tag_workflows.py\n- .agents/skills/fory-performance-optimization/references/workflow-checklist.md", 'File search completed successfully', True)
+2026-10-15 16:24:01.124 | DEBUG    | Result of dispatch_intent: ("No files found containing the keyword '.ci'.", 'No matching files found', True)
+2026-10-15 16:24:01.124 | INFO     | entering browse
+2026-10-15 16:24:01.124 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/fory/python/setup.py ===
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+import os
+import platform
+import subprocess
+import sys
+import threading
+import time
+from os.path import abspath, join as pjoin
+
+from setuptools import setup
+from setuptools.dist import Distribution
+
+DEBUG = os.environ.get("FORY_DEBUG", "False").lower() == "true"
+BAZEL_BUILD_EXT = os.environ.get("BAZEL_BUILD_EXT", "True").lower() == "true"
+
+if DEBUG:
+    os.environ["CFLAGS"] = "-O0"
+    BAZEL_BUILD_EXT = False
+
+print(f"DEBUG = {DEBUG}, BAZEL_BUILD_EXT = {BAZEL_BUILD_EXT}, PATH = {os.environ.get('PATH')}")
+
+setup_dir = abspath(os.path.dirname(__file__))
+project_dir = abspath(pjoin(setup_dir, os.pardir))
+fory_cpp_src_dir = abspath(pjoin(setup_dir, "../src/"))
+
+print(f"setup_dir: {setup_dir}")
+print(f"project_dir: {project_dir}")
+print(f"fory_cpp_src_dir: {fory_cpp_src_dir}")
+
+_RETRYABLE_NETWORK_ERROR_PATTERNS = (
+    "error downloading",
+    "download_and_extract",
+    "download from",
+    "http archive",
+    "get returned 500",
+    "get returned 502",
+    "get returned 503",
+    "get returned 504",
+    "network is unreachable",
+    "connection refused",
+    "connection reset",
+    "connection timed out",
+    "timed out waiting for",
+    "timed out",
+    "name resolution",
+    "temporary failure in name resolution",
+    "tls handshake timeout",
+    "temporary failure",
+)
+
+
+def _is_retryable_network_error(output: str) -> bool:
+    lowered = output.lower()
+    return any(pattern in lowered for pattern in _RETRYABLE_NETWORK_ERROR_PATTERNS)
+
+
+def _stream_pipe(pipe, sink, chunks):
+    try:
+        for line in iter(pipe.readline, ""):
+            chunks.append(line)
+            sink.write(line)
+            sink.flush()
+    finally:
+        pipe.close()
+
+
+def _run_with_retry(args, cwd, max_attempts=3):
+    for attempt in range(1, max_attempts + 1):
+        process = subprocess.Popen(
+            args,
+            cwd=cwd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            errors="replace",
+            bufsize=1,
+        )
+
+        stdout_chunks = []
+        stderr_chunks = []
+        stdout_thread = threading.Thread(target=_stream_pipe, args=(process.stdout, sys.stdout, stdout_chunks))
+        stderr_thread = threading.Thread(target=_stream_pipe, args=(process.stderr, sys.stderr, stderr_chunks))
+        stdout_thread.start()
+        stderr_thread.start()
+        returncode = process.wait()
+        stdout_thread.join()
+        stderr_thread.join()
+
+        stdout_text = "".join(stdout_chunks)
+        stderr_text = "".join(stderr_chunks)
+        combined_output = f"{stdout_text}\n{stderr_text}"
+        if returncode == 0:
+            return
+
+        if attempt >= max_attempts or not _is_retryable_network_error(combined_output):
+            raise subprocess.CalledProcessError(returncode, args, output=stdout_text, stderr=stderr_text)
+
+        backoff_seconds = attempt * 5
+        print(
+            f"Detected transient network/download error while running {' '.join(args)} "
+            f"(attempt {attempt}/{max_attempts}); retrying in {backoff_seconds}s.",
+            file=sys.stderr,
+        )
+        time.sleep(backoff_seconds)
+
+
+class BinaryDistribution(Distribution):
+    def __init__(self, attrs=None):
+        super().__init__(attrs=attrs)
+        if BAZEL_BUILD_EXT:
+            import sys
+
+            python_version = f"{sys.version_info.major}.{sys.version_info.minor}"
+            bazel_args = ["bazel", "build", "-s"]
+            # Pass Python version to select the correct toolchain for C extension headers
+            bazel_args += [f"--@rules_python//python/config_settings:python_version={python_version}"]
+            arch = platform.machine().lower()
+            if arch in ("x86_64", "amd64"):
+                bazel_args += ["--config=x86_64"]
+            elif arch in ("aarch64", "arm64"):
+                bazel_args += ["--copt=-fsigned-char"]
+            bazel_args += ["//:cp_fory_so"]
+            # Ensure Windows path compatibility
+            cwd_path = os.path.normpath(project_dir)
+            _run_with_retry(bazel_args, cwd=cwd_path)
+
+    def has_ext_modules(self):
+        return True
+
+
+if __name__ == "__main__":
+    setup(distclass=BinaryDistribution)
+
+=== FILE END:   /data/home/cjy/software-testing/projects/fory/python/setup.py ===
+2026-10-15 16:24:01.124 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 16:24:06.721 | INFO     | Model API request cost info: input_tokens=1679, output_tokens=198, cost=0.006178
+2026-10-15 16:24:06.722 | SUCCESS  | Successfully extracted environment config
+2026-10-15 16:24:06.722 | INFO     | ******
+2026-10-15 16:24:06.722 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/fory/python/setup.py]
+- **Python Dependency Information**:
+  - There is no explicit mention of specific Python dependencies or versions in the file content. 
+  - The `setup.py` file references Python versions generically using `sys.version_info`, but no fixed dependencies or versions for packages are listed.
+
+- **Environment Variables**:
+  - `FORY_DEBUG`: Can be set to `"true"`, which alters build behavior (disabling optimizations with `CFLAGS="-O0"`).
+  - `BAZEL_BUILD_EXT`: Defaults to `"true"` unless overridden, controlling whether Bazel builds the extensions.
+
+- **Runtime Requirements**:
+  - Python version information (`sys.version_info.major` and `sys.version_info.minor`) is used, implying the script adapts to the current Python version.
+
+No specific Python dependency or version information is explicitly defined.
+[/Key Information]
+2026-10-15 16:24:06.722 | INFO     | ******
+2026-10-15 16:24:06.722 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/fory/python/setup.py]\n- **Python Dependency Information**:\n  - There is no explicit mention of specific Python dependencies or versions in the file content. \n  - The `setup.py` file references Python versions generically using `sys.version_info`, but no fixed dependencies or versions for packages are listed.\n\n- **Environment Variables**:\n  - `FORY_DEBUG`: Can be set to `"true"`, which alters build behavior (disabling optimizations with `CFLAGS="-O0"`).\n  - `BAZEL_BUILD_EXT`: Defaults to `"true"` unless overridden, controlling whether Bazel builds the extensions.\n\n- **Runtime Requirements**:\n  - Python version information (`sys.version_info.major` and `sys.version_info.minor`) is used, implying the script adapts to the current Python version.\n\nNo specific Python dependency or version information is explicitly defined.\n[/Key Information]', 'Get File Info', True)
+2026-10-15 16:24:06.723 | INFO     | entering browse
+2026-10-15 16:24:06.723 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/fory/java/pom.xml ===
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         child.project.url.inherit.append.path="false">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.apache</groupId>
+    <artifactId>apache</artifactId>
+    <version>29</version>
+  </parent>
+
+  <groupId>org.apache.fory</groupId>
+  <artifactId>fory-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>1.8.0-SNAPSHOT</version>
+  <name>Fory Project Parent POM</name>
+  <description>
+    Apache Fory™ is a blazingly fast multi-language serialization framework powered by jit and zero-copy.
+  </description>
+  <url>https://fory.apache.org</url>
+  <inceptionYear>2023</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm child.scm.connection.inherit.append.path="false"
+       child.scm.developerConnection.inherit.append.path="false"
+       child.scm.url.inherit.append.path="false">
+    <url>https://github.com/apache/fory</url>
+    <connection>scm:git:https://github.com/apache/fory.git</connection>
+    <developerConnection>scm:git:https://github.com/apache/fory.git</developerConnection>
+  </scm>
+  <developers>
+    <developer>
+      <organizationUrl>https://fory.apache.org</organizationUrl>
+    </developer>
+  </developers>
+
+  <modules>
+    <module>fory-core</module>
+    <module>fory-json</module>
+    <module>fory-annotation-processor</module>
+    <module>fory-extensions</module>
+    <module>fory-test-core</module>
+  </modules>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Remote resource NOTICE years use this timestamp, not the build date. -->
+    <project.build.outputTimestamp>2026-01-01T00:00:00Z</project.build.outputTimestamp>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <guava.version>32.1.2-jre</guava.version>
+    <janino.version>3.1.12</janino.version>
+    <jsr305.version>3.0.2</jsr305.version>
+    <slf4j.version>2.0.12</slf4j.version>
+    <commons_codec.version>1.13</commons_codec.version>
+    <fory.java.rootdir>${basedir}</fory.java.rootdir>
+    <argLine></argLine>
+    <maven-spotless-plugin.version>3.6.0</maven-spotless-plugin.version>
+    <google-java-format.version>1.35.0</google-java-format.version>
+    <lombok.version>1.18.38</lombok.version>
+    <mockito.version>4.11.0</mockito.version>
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>snapshot-publication</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>apache-release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-enforcer-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>enforce-jdk25-release</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>enforce</goal>
+                </goals>
+                <configuration>
+                  <rules>
+                    <requireJavaVersion>
+                      <version>[25,)</version>
+                      <message>
+                        Apache Fory JVM releases must run with JDK 25+ so JDK25 multi-release classes are packaged.
+                      </message>
+                    </requireJavaVersion>
+                  </rules>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <!-- Keep java/LICENSE when the source-release descriptor adds generated legal files. -->
+              <archiverConfig>
+                <duplicateBehavior>skip</duplicateBehavior>
+              </archiverConfig>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>jdk11-and-higher</id>
+      <activation>
+        <jdk>[11,]</jdk>
+      </activation>
+      <modules>
+        <module>fory-format</module>
+        <module>fory-testsuite</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>jdk21-and-higher</id>
+      <activation>
+        <jdk>[21,]</jdk>
+      </activation>
+      <modules>
+        <module>fory-latest-jdk-tests</module>
+      </modules>
+    </profile>
+  </profiles>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>provided</scope>
+        <optional>true</optional>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.janino</groupId>
+        <artifactId>janino</artifactId>
+        <version>${janino.version}</version>
+      </dependency>
+      <!-- Cxeb68d52e-5509 -->
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>${commons_codec.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.5.1</version>
+      </dependency>
+      <!-- CVE-2020-15250 -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.1</version>
+      </dependency>
+      <!-- CVE-2021-36374 -->
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant</artifactId>
+        <version>1.10.12</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>${mockito.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.0</version>
+          <configuration>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+              </path>
+            </annotationProcessorPaths>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.6.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.3.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.6.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.4</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <configuration>
+          <properties>
+            <projectName>Apache Fory™</projectName>
+          </properties>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <!-- test in ci only or manually invoke the goal -->
+              <!-- <goal>check</goal> -->
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <configLocation>${fory.java.rootdir}/checkstyle.xml</configLocation>
+          <suppressionsLocation>${fory.java.rootdir}/checkstyle-suppressions.xml</suppressionsLocation>
+          <consoleOutput>true</consoleOutput>
+          <failsOnError>true</failsOnError>
+          <failOnViolation>true</failOnViolation>
+          <violationSeverity>warning</violationSeverity>
+          <outputFile>${project.build.directory}/checkstyle-errors.xml</outputFile>
+          <linkXRef>false</linkXRef>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>${maven-spotless-plugin.version}</version>
+        <configuration>
+          <java>
+            <googleJavaFormat>
+              <version>${google-java-format.version}</version>
+              <style>GOOGLE</style>
+            </googleJavaFormat>
+          </java>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <doclint>none</doclint>
+          <encoding>UTF-8</encoding>
+          <docencoding>UTF-8</docencoding>
+          <charset>UTF-8</charset>
+          <detectJavaApiLink>false</detectJavaApiLink>
+          <detectLinks>false</detectLinks>
+          <detectOfflineLinks>false</detectOfflineLinks>
+          <failOnWarnings>true</failOnWarnings>
+          <bottom>
+            Copyright © 2023-2025, The Apache Software Foundation. Apache Fory™, Fory™, and Apache
+            are either registered trademarks or trademarks of the Apache Software Foundation.
+          </bottom>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+=== FILE END:   /data/home/cjy/software-testing/projects/fory/java/pom.xml ===
+2026-10-15 16:24:06.723 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 16:24:13.498 | INFO     | Model API request cost info: input_tokens=3625, output_tokens=526, cost=0.014323
+2026-10-15 16:24:13.499 | SUCCESS  | Successfully extracted environment config
+2026-10-15 16:24:13.500 | INFO     | ******
+2026-10-15 16:24:13.500 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/fory/java/pom.xml]
+- Maven Dependency Versions:
+  - **Google Guava**: 32.1.2-jre
+  - **Janino**: 3.1.12
+  - **JSR305**: 3.0.2
+  - **SLF4J**: 2.0.12
+  - **Commons Codec**: 1.13
+  - **Lombok**: 1.18.38
+  - **Mockito Core**: 4.11.0
+  - **TestNG**: 7.5.1
+  - **JUnit**: 4.13.1
+  - **Apache Ant**: 1.10.12
+- Configuration Properties:
+  - Maven Compiler Source: 1.8
+  - Maven Compiler Target: 1.8
+  - Source Encoding: UTF-8
+  - Reporting Output Encoding: UTF-8
+  - Output Timestamp for remote resource NOTICE years: 2026-01-01T00:00:00Z
+  - Maven Spotless Plugin Version: 3.6.0
+  - Google Java Format Version: 1.35.0
+- Maven Build Plugin Versions:
+  - Maven Compiler Plugin: 3.14.0
+  - Maven Javadoc Plugin: 3.6.3
+  - Maven Source Plugin: 3.3.1
+  - Maven Shade Plugin: 3.6.0
+  - Maven Surefire Plugin: 3.5.4
+  - Maven Deploy Plugin: 2.7
+  - Maven GPG Plugin: 1.6
+  - Maven Checkstyle Plugin: 3.6.0
+  - Spotless Maven Plugin: 3.6.0
+
+- Additional Notes:
+  - Profiles:
+    - **Snapshot Publication**: Adds Maven Source Plugin.
+    - **Apache Release**: Enforces JDK version 25+ and uses Maven Assembly Plugin for archiving resources.
+    - Profile activated for JDK 11 and higher:
+      - Includes additional modules: `fory-format` and `fory-testsuite`.
+    - Profile activated for JDK 21 and higher:
+      - Includes `fory-latest-jdk-tests` module.
+  - Dependency configurations include optional dependencies (e.g., SLF4J API is configured as optional with provided scope).
+[/Key Information]
+2026-10-15 16:24:13.500 | INFO     | ******
+2026-10-15 16:24:13.500 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/fory/java/pom.xml]\n- Maven Dependency Versions:\n  - **Google Guava**: 32.1.2-jre\n  - **Janino**: 3.1.12\n  - **JSR305**: 3.0.2\n  - **SLF4J**: 2.0.12\n  - **Commons Codec**: 1.13\n  - **Lombok**: 1.18.38\n  - **Mockito Core**: 4.11.0\n  - **TestNG**: 7.5.1\n  - **JUnit**: 4.13.1\n  - **Apache Ant**: 1.10.12\n- Configuration Properties:\n  - Maven Compiler Source: 1.8\n  - Maven Compiler Target: 1.8\n  - Source Encoding: UTF-8\n  - Reporting Output Encoding: UTF-8\n  - Output Timestamp for remote resource NOTICE years: 2026-01-01T00:00:00Z\n  - Maven Spotless Plugin Version: 3.6.0\n  - Google Java Format Version: 1.35.0\n- Maven Build Plugin Versions:\n  - Maven Compiler Plugin: 3.14.0\n  - Maven Javadoc Plugin: 3.6.3\n  - Maven Source Plugin: 3.3.1\n  - Maven Shade Plugin: 3.6.0\n  - Maven Surefire Plugin: 3.5.4\n  - Maven Deploy Plugin: 2.7\n  - Maven GPG Plugin: 1.6\n  - Maven Checkstyle Plugin: 3.6.0\n  - Spotless Maven Plugin: 3.6.0\n\n- Additional Notes:\n  - Profiles:\n    - **Snapshot Publication**: Adds Maven Source Plugin.\n    - **Apache Release**: Enforces JDK version 25+ and uses Maven Assembly Plugin for archiving resources.\n    - Profile activated for JDK 11 and higher:\n      - Includes additional modules: `fory-format` and `fory-testsuite`.\n    - Profile activated for JDK 21 and higher:\n      - Includes `fory-latest-jdk-tests` module.\n  - Dependency configurations include optional dependencies (e.g., SLF4J API is configured as optional with provided scope).\n[/Key Information]', 'Get File Info', True)
+2026-10-15 16:24:13.500 | INFO     | entering browse
+2026-10-15 16:24:13.500 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/fory/javascript/package.json ===
+{
+  "scripts": {
+    "test:crosslanguage": "f() { npx jest crossLanguage.test.ts -t \"$@\" > /dev/null 2>&1; }; f",
+    "test": "npm run build && jest",
+    "clear": "rm -rf ./packages/core/dist && rm -rf ./packages/hps/dist",
+    "build": "npm run clear && npm run build -w packages/core -w packages/hps",
+    "lint": "npm run format-check",
+    "lint-fix": "npm run format",
+    "format": "prettier --write \"{packages,test}/**/*.ts\" && eslint . --fix",
+    "format-check": "prettier --check \"{packages,test}/**/*.ts\" && eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/fory.git",
+    "directory": "javascript"
+  },
+  "workspaces": [
+    "packages/hps",
+    "packages/core"
+  ],
+  "devDependencies": {
+    "@types/js-beautify": "^1.14.3",
+    "@types/node": "18.19.130",
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "@typescript-eslint/parser": "^8.66.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "jest": "^30.4.2",
+    "jest-junit": "^17.0.0",
+    "js-beautify": "^1.14.11",
+    "prettier": "^3.9.4",
+    "ts-jest": "^29.4.12",
+    "typescript": "^4.8.4"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^10.2.5"
+    },
+    "editorconfig": {
+      "minimatch": "^10.2.5"
+    },
+    "glob@^10.0.0": {
+      "minimatch": "^10.2.5"
+    }
+  }
+}
+
+=== FILE END:   /data/home/cjy/software-testing/projects/fory/javascript/package.json ===
+2026-10-15 16:24:13.500 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 16:24:25.474 | INFO     | Model API request cost info: input_tokens=1008, output_tokens=467, cost=0.007190
+2026-10-15 16:24:25.475 | SUCCESS  | Successfully extracted environment config
+2026-10-15 16:24:25.475 | INFO     | ******
+2026-10-15 16:24:25.475 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/fory/javascript/package.json]
+- **Node.js dependency versions (DevDependencies):**
+  - @types/js-beautify: ^1.14.3
+  - @types/node: 18.19.130 (**Exact version**)
+  - @typescript-eslint/eslint-plugin: ^8.66.0
+  - @typescript-eslint/parser: ^8.66.0
+  - eslint: ^8.57.1
+  - eslint-config-prettier: ^10.1.8
+  - jest: ^30.4.2
+  - jest-junit: ^17.0.0
+  - js-beautify: ^1.14.11
+  - prettier: ^3.9.4
+  - ts-jest: ^29.4.12
+  - typescript: ^4.8.4
+
+- **Scripts:**
+  - `test:crosslanguage`: Runs a specific Jest test file (`crossLanguage.test.ts`) with a match for the test name using `npx jest`.
+    - **Custom single test command:** `npx jest crossLanguage.test.ts -t "<test_name>" > /dev/null 2>&1`
+  - `test`: Builds the package and runs all tests with `jest`.
+    - Command: `npm run build && jest`
+  - `clear`: Clears `dist` directories in `core` and `hps` packages.
+  - `build`: Clears the project and rebuilds `core` and `hps` packages.
+    - Command: `npm run clear && npm run build -w packages/core -w packages/hps`
+  - `lint`: Runs a format check using Prettier and ESLint.
+    - Command: `prettier --check "{packages,test}/**/*.ts" && eslint .`
+  - `lint-fix`: Formats code with Prettier and fixes linting issues.
+    - Command: `prettier --write "{packages,test}/**/*.ts" && eslint . --fix`
+  - `format`: Same as `lint-fix`.
+  - `format-check`: Same as `lint`.
+[/Key Information]
+2026-10-15 16:24:25.475 | INFO     | ******
+2026-10-15 16:24:25.475 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/fory/javascript/package.json]\n- **Node.js dependency versions (DevDependencies):**\n  - @types/js-beautify: ^1.14.3\n  - @types/node: 18.19.130 (**Exact version**)\n  - @typescript-eslint/eslint-plugin: ^8.66.0\n  - @typescript-eslint/parser: ^8.66.0\n  - eslint: ^8.57.1\n  - eslint-config-prettier: ^10.1.8\n  - jest: ^30.4.2\n  - jest-junit: ^17.0.0\n  - js-beautify: ^1.14.11\n  - prettier: ^3.9.4\n  - ts-jest: ^29.4.12\n  - typescript: ^4.8.4\n\n- **Scripts:**\n  - `test:crosslanguage`: Runs a specific Jest test file (`crossLanguage.test.ts`) with a match for the test name using `npx jest`.\n    - **Custom single test command:** `npx jest crossLanguage.test.ts -t "<test_name>" > /dev/null 2>&1`\n  - `test`: Builds the package and runs all tests with `jest`.\n    - Command: `npm run build && jest`\n  - `clear`: Clears `dist` directories in `core` and `hps` packages.\n  - `build`: Clears the project and rebuilds `core` and `hps` packages.\n    - Command: `npm run clear && npm run build -w packages/core -w packages/hps`\n  - `lint`: Runs a format check using Prettier and ESLint.\n    - Command: `prettier --check "{packages,test}/**/*.ts" && eslint .`\n  - `lint-fix`: Formats code with Prettier and fixes linting issues.\n    - Command: `prettier --write "{packages,test}/**/*.ts" && eslint . --fix`\n  - `format`: Same as `lint-fix`.\n  - `format-check`: Same as `lint`.\n[/Key Information]', 'Get File Info', True)
+2026-10-15 16:24:25.476 | INFO     | entering browse
+2026-10-15 16:24:25.476 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/fory/rust/Cargo.toml ===
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+[workspace]
+members = [
+    "fory-core",
+    "fory",
+    "fory-derive",
+    "api-tests/external-model",
+    "api-tests/facade-only",
+    "api-tests/renamed-facade",
+    "tests",
+]
+
+exclude = [
+    "fuzz"
+]
+
+resolver = "2"
+
+[workspace.package]
+version = "1.8.0-alpha.0"
+rust-version = "1.70"
+description = "Apache Fory: Blazingly fast multi-language serialization framework with trait objects and reference support."
+license = "Apache-2.0"
+license-file = "../LICENSE"
+readme = "README.md"
+homepage = "https://fory.apache.org"
+repository = "https://github.com/apache/fory"
+edition = "2021"
+keywords = ["serialization", "serde", "trait-object", "zero-copy", "schema-evolution"]
+categories = ["encoding"]
+
+[workspace.dependencies]
+fory-core = { path = "fory-core", version = "1.8.0-alpha.0" }
+fory-derive = { path = "fory-derive", version = "1.8.0-alpha.0" }
+
+=== FILE END:   /data/home/cjy/software-testing/projects/fory/rust/Cargo.toml ===
+2026-10-15 16:24:25.476 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 16:24:29.253 | INFO     | Model API request cost info: input_tokens=970, output_tokens=125, cost=0.003675
+2026-10-15 16:24:29.254 | SUCCESS  | Successfully extracted environment config
+2026-10-15 16:24:29.254 | INFO     | ******
+2026-10-15 16:24:29.254 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/fory/rust/Cargo.toml]
+- Rust dependencies:
+  - **fory-core**: Path = "fory-core", Version = "1.8.0-alpha.0"
+  - **fory-derive**: Path = "fory-derive", Version = "1.8.0-alpha.0"
+- Workspace configuration:
+  - Rust version: **1.70**
+- Other metadata:
+  - Workspace resolver: **2**
+  - Edition: **2021**
+[/Key Information]
+2026-10-15 16:24:29.254 | INFO     | ******
+2026-10-15 16:24:29.254 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/fory/rust/Cargo.toml]\n- Rust dependencies:\n  - **fory-core**: Path = "fory-core", Version = "1.8.0-alpha.0"\n  - **fory-derive**: Path = "fory-derive", Version = "1.8.0-alpha.0"\n- Workspace configuration:\n  - Rust version: **1.70**\n- Other metadata:\n  - Workspace resolver: **2**\n  - Edition: **2021**\n[/Key Information]', 'Get File Info', True)
+2026-10-15 16:24:42.190 | INFO     | Model API request cost info: input_tokens=7250, output_tokens=1450, cost=0.032625
+2026-10-15 16:24:42.218 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 16:24:50.997 | INFO     | Model API request cost info: input_tokens=2048, output_tokens=885, cost=0.013970
+2026-10-15 16:24:50.998 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "Environment_Setup": {
+            "Languages_and_Dependencies": {
+                "Python_code_formatting": "ruff==0.15.22",
+                "C++_code_formatting": "clang-format==18.1.8"
+            },
+            "Commands_for_Running_Tests": {
+                "Python": "cd python && pytest -v -s .",
+                "Java": "cd java && mvn -T10 clean test",
+                "C++": "bazel test $(bazel query //...)",
+                "GoLang": "cd go/fory && go test -v ./... && go test -v fory_xlang_test.go",
+                "Rust": {
+                    "Default": "cd rust && cargo test",
+                    "Specific_Test": [
+                        "cargo test -p tests --test $test_file $test_method",
+                        "cargo test --test mod $dir$::$test_file::$test_method",
+                        "RUST_BACKTRACE=1 FORY_PANIC_ON_ERROR=1 cargo test --test mod $dir$::$test_file::$test_method"
+                    ]
+                },
+                "JavaScript": ["cd javascript && npm run test", "npx jest crossLanguage.test.ts"]
+            },
+            "Environment_Variables_Java": {
+                "FORY_CODE_DIR": "Directory for generated code.",
+                "ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID": "Appends unique IDs for generated files ('true' by default)."
+            },
+            "Debugging_Commands_Python": [
+                "FORY_DEBUG=true python setup.py build_ext --inplace",
+                "cython --cplus -a pyfory/serialization.pyx"
+            ],
+            "Runtime_Requirements": {
+                "Java_Modules": {
+                    "Java_8": "fory-core",
+                    "Java_11+": "fory-format"
+                },
+                "Python_Version": "sys.version_info.major and sys.version_info.minor"
+            }
+        },
+        "Dependencies": {
+            "Python": {
+                "setup.py": {
+                    "No_Explicit_Dependencies": "Adapts to current Python version using sys.version_info.",
+                    "Environment_Variables": {
+                        "FORY_DEBUG": "Alters build behavior when set to 'true'.",
+                        "BAZEL_BUILD_EXT": "Controls whether Bazel builds extensions (defaults to 'true')."
+                    }
+                }
+            },
+            "Java": {
+                "pom.xml": {
+                    "Dependencies": [
+                        "Google Guava: 32.1.2-jre",
+                        "Janino: 3.1.12",
+                        "JSR305: 3.0.2",
+                        "SLF4J: 2.0.12",
+                        "Commons Codec: 1.13",
+                        "Lombok: 1.18.38",
+                        "Mockito Core: 4.11.0",
+                        "TestNG: 7.5.1",
+                        "JUnit: 4.13.1",
+                        "Apache Ant: 1.10.12"
+                    ],
+                    "Configuration_Properties": {
+                        "Compiler_Source/Target_Version": "1.8",
+                        "Profiles": "Supports JDK 8, 11, 21+ with module configurations."
+                    }
+                }
+            },
+            "JavaScript": {
+                "package.json": {
+                    "Dependencies": {
+                        "@types/node": "18.19.130 (Exact Version)",
+                        "jest": "^30.4.2",
+                        "tslint": "^8.66.0",
+                        "prettier": "^3.9.4"
+                    }
+                }
+            },
+            "Rust": {
+                "Cargo.toml": {
+                    "Rust_Version": "1.70",
+                    "Edition": "2021",
+                    "Dependencies": [
+                        "fory-core: Path = 'fory-core', Version = '1.8.0-alpha.0'",
+                        "fory-derive: Path = 'fory-derive', Version = '1.8.0-alpha.0'"
+                    ]
+                }
+            }
+        }
+    },
+    "terminate": true
+}
+2026-10-15 16:24:50.999 | DEBUG    | Extracted a valid json
+2026-10-15 16:24:51.001 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-15 16:25:09.882 | INFO     | Model API request cost info: input_tokens=2626, output_tokens=769, cost=0.014255
+2026-10-15 16:25:09.884 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-15 16:25:09.893 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-15 16:25:13.310 | INFO     | Model API request cost info: input_tokens=2348, output_tokens=188, cost=0.007750
+2026-10-15 16:25:13.311 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-15 16:25:13.318 | INFO     | Trying to extract a eval script. Try 2 of 3.
+2026-10-15 16:25:18.108 | INFO     | Model API request cost info: input_tokens=2556, output_tokens=257, cost=0.008960
+2026-10-15 16:25:18.108 | INFO     | Raw script and produced in try 2. Writing script into file.
+2026-10-15 16:57:54.023 | DEBUG    | Result of dispatch_intent: ('Step 11/18 : RUN /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed && cd /testbed/python && pip install -e ."\n ---> Running in e0df49237b84\nObtaining file:///testbed/python\n  Installing build dependencies: started\n  Installing build dependencies: still running...\n  Installing build dependencies: still running...\n  Installing build dependencies: still running...\n  Installing build dependencies: finished with status \'done\'\n  Checking if build backend supports build_editable: started\n  Checking if build backend supports build_editable: finished with status \'done\'\n  Getting requirements to build editable: started\n  Getting requirements to build editable: finished with status \'error\'\n  error: subprocess-exited-with-error\n  × Getting requirements to build editable did not run successfully.\n  │ exit code: 1\n  ╰─> [31 lines of output]\n      DEBUG = False, BAZEL_BUILD_EXT = True, PATH = /tmp/pip-build-env-7devwaie/overlay/bin:/tmp/pip-build-env-7devwaie/normal/bin:/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n      setup_dir: /testbed/python\n      project_dir: /testbed\n      fory_cpp_src_dir: /testbed/src\n      Traceback (most recent call last):\n        File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>\n          main()\n        File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main\n          json_out["return_val"] = hook(**hook_input["kwargs"])\n        File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 157, in get_requires_for_build_editable\n          return hook(config_settings)\n        File "/tmp/pip-build-env-7devwaie/overlay/lib/python3.9/site-packages/setuptools/build_meta.py", line 481, in get_requires_for_build_editable\n          return self.get_requires_for_build_wheel(config_settings)\n        File "/tmp/pip-build-env-7devwaie/overlay/lib/python3.9/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel\n          return self._get_build_requires(config_settings, requirements=[])\n        File "/tmp/pip-build-env-7devwaie/overlay/lib/python3.9/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires\n          self.run_setup()\n        File "/tmp/pip-build-env-7devwaie/overlay/lib/python3.9/site-packages/setuptools/build_meta.py", line 317, in run_setup\n          exec(code, locals())\n        File "<string>", line 148, in <module>\n        File "/tmp/pip-build-env-7devwaie/overlay/lib/python3.9/site-packages/setuptools/__init__.py", line 117, in setup\n          return distutils.core.setup(**attrs)  # type: ignore[return-value]\n        File "/tmp/pip-build-env-7devwaie/overlay/lib/python3.9/site-packages/setuptools/_distutils/core.py", line 148, in setup\n          _setup_distribution = dist = klass(attrs)\n        File "<string>", line 141, in __init__\n        File "<string>", line 85, in _run_with_retry\n        File "/opt/miniconda3/envs/testbed/lib/python3.9/subprocess.py", line 951, in __init__\n          self._execute_child(args, executable, preexec_fn, close_fds,\n        File "/opt/miniconda3/envs/testbed/lib/python3.9/subprocess.py", line 1837, in _execute_child\n          raise child_exception_type(errno_num, err_msg, err_filename)\n      FileNotFoundError: [Errno 2] No such file or directory: \'bazel\'\n      [end of output]\n  note: This error originates from a subprocess, and is likely not a problem with pip.\nERROR: Failed to build \'file:///testbed/python\' when getting requirements to build editable\n ---> Removed intermediate container e0df49237b84\nError: The command \'/bin/sh -c /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed && cd /testbed/python && pip install -e ."\' returned a non-zero code: 1', 'Failed to build Docker image.', False)
+2026-10-15 16:57:54.030 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-15 16:58:00.116 | INFO     | Model API request cost info: input_tokens=3209, output_tokens=189, cost=0.009913
+2026-10-15 16:58:00.118 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile failed to build at Step 11 while executing 'pip install -e .' in the Python project's directory at '/testbed/python'. The error shows that the 'bazel' binary is missing, which is required in the Python package's setup process. To fix this issue, update the Dockerfile to ensure that Bazel is installed before this step. You can add the following commands before Step 11:\n\nRUN apt update && apt install -y bazel\n\nThis will ensure that the Bazel build tool is available and can be used during the setup process.\n\nError details:\nFileNotFoundError: [Errno 2] No such file or directory: 'bazel'",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-15 16:58:00.118 | DEBUG    | Extracted a valid json
+2026-10-15 16:58:00.121 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-15 16:58:07.560 | INFO     | Model API request cost info: input_tokens=4591, output_tokens=792, cost=0.019398
+2026-10-15 16:58:07.561 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-15 17:26:12.105 | DEBUG    | Result of dispatch_intent: ("Step 6/19 : RUN apt update && apt install -y bazel\n ---> Running in 783e1fad7f3a\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nGet:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]\nGet:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]\nGet:7 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]\nGet:9 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [8243 kB]\nGet:10 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1626 kB]\nGet:11 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [104 kB]\nGet:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4758 kB]\nGet:13 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]\nGet:14 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.9 kB]\nGet:15 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7955 kB]\nGet:16 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [4429 kB]\nGet:17 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [96.8 kB]\nGet:18 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1323 kB]\nFetched 49.0 MB in 38s (1280 kB/s)\nReading package lists...\nBuilding dependency tree...\nReading state information...\n29 packages can be upgraded. Run 'apt list --upgradable' to see them.\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nReading package lists...\nBuilding dependency tree...\nReading state information...\nE: Unable to locate package bazel\n ---> Removed intermediate container 783e1fad7f3a\nError: The command '/bin/sh -c apt update && apt install -y bazel' returned a non-zero code: 100", 'Failed to build Docker image.', False)
+2026-10-15 17:26:12.109 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-15 17:26:18.230 | INFO     | Model API request cost info: input_tokens=2792, output_tokens=319, cost=0.010170
+2026-10-15 17:26:18.231 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile failed during the installation of 'bazel' with this error: 'E: Unable to locate package bazel'. This indicates that Bazel is not available directly from the Ubuntu 22.04 package repository. To resolve this issue, you can add Bazel's official package repository and GPG key before installing it. Update the Dockerfile as follows: \n\n1. Add Bazel's package repository and GPG key:\n   ```bash\n   RUN apt update && apt install -y apt-transport-https curl gnupg\n   RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor -o /usr/share/keyrings/bazel-archive-keyring.gpg\n   RUN echo \"deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8\" > /etc/apt/sources.list.d/bazel.list\n   ```\n\n2. Update and install Bazel as follows:\n   ```bash\n   RUN apt update && apt install -y bazel\n   ```\n\n3. After these changes, rebuild the Dockerfile and confirm Bazel is installed correctly. This should fix the 'E: Unable to locate package bazel' error.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-15 17:26:18.231 | DEBUG    | Extracted a valid json
+2026-10-15 17:26:18.232 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-15 17:26:18.238 | INFO     | Task fory completed successfully.

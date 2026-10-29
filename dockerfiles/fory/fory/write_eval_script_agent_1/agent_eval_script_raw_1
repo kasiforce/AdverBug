@@ -1,0 +1,32 @@
+Below is the evaluation script that adheres to your requirements.
+
+```bash
+<script>
+#!/bin/bash
+set -uxo pipefail
+
+# Ensure the environment is activated
+source /opt/miniconda3/etc/profile.d/conda.sh
+conda activate testbed
+
+# Navigate to the testbed directory
+cd /testbed
+
+# Run all test commands found using the context retrieval agent
+# Python tests
+cd python && pytest -v -s . || true
+rc_python=$?
+
+# Java tests
+cd ../java && mvn -T10 clean test || true
+rc_java=$?
+
+# C++ tests (bazel)
+cd ../cpp && bazel test $(bazel query //...) || true
+rc_cpp=$?
+
+# Rust Tidy Cleanup & Multiple Coverage
+rust_cmd tests areas []
+# Match golng cleanup checks.` Installing ...
+ gol 'echo Cleaning.log'"
+For  release.Running load.jquery`

@@ -1,0 +1,65 @@
+# Base image specification. Defines the foundation OS and architecture for the container (Required)
+FROM --platform=linux/x86_64 ubuntu:22.04
+ARG DEBIAN_FRONTEND=noninteractive
+ARG FAKE_DATE
+ENV TZ=Etc/UTC
+ENV FAKE_SYSTEM_DATE=${FAKE_DATE}
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# System dependencies installation. Installs essential tools and libraries required for development and runtime (Required)
+RUN apt update && apt install -y \
+    wget \
+    git \
+    build-essential \
+    jq \
+    curl \
+    locales \
+    locales-all \
+    tzdata \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the locale and timezone
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
+RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
+
+# Install nvm, Node.js (LTS version), and npm
+RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && \
+    chmod +x $HOME/.nvm/nvm.sh && \
+    . $HOME/.nvm/nvm.sh && \
+    nvm install --lts && \
+    nvm alias default lts/* && \
+    nvm use default
+
+# Ensure nvm is available in all environments
+ENV NVM_DIR=/root/.nvm
+RUN echo "export NVM_DIR=/root/.nvm && . /root/.nvm/nvm.sh" >> /root/.bashrc
+
+# Update npm to the latest version
+RUN . $HOME/.nvm/nvm.sh && npm install -g npm@latest && npm install -g lerna
+
+# Set default workdir to testbed
+WORKDIR /testbed/
+
+# Target Project setup: Clone the source code, check out the target version, configure it, and install project-specific dependencies
+RUN git clone https://github.com/imba/imba.git /testbed && \
+    cd /testbed && \
+    git reset --hard 549019012bf4d4bb083d326cfcf1f7531abef23a && \
+    git remote remove origin
+
+# Set up the monorepo with Lerna
+RUN . $HOME/.nvm/nvm.sh && \
+    cd /testbed && \
+    npm install && \
+    npx lerna bootstrap
+
+# Install testing dependencies (Vitest in the specified workspace)
+RUN . $HOME/.nvm/nvm.sh && \
+    cd /testbed && \
+    npm install vitest --workspace=packages/imba
+
+# Ensure environment is correctly set
+RUN echo "export NVM_DIR=/root/.nvm && . /root/.nvm/nvm.sh && nvm use default" >> /root/.bashrc

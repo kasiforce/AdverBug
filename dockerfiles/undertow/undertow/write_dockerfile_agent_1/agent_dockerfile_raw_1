@@ -1,0 +1,62 @@
+<dockerfile>
+# Selecting a stable base image that includes bash by default
+FROM ubuntu:22.04
+
+# Environment variables for non-interactive and timezone setup
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Prevent GPG-related issues during apt update
+ARG FAKE_DATE
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Installing essential system dependencies
+RUN apt update && apt install -y \
+    wget \
+    git \
+    openjdk-17-jdk \
+    maven \
+    locales \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Setting up system locale
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen && \
+    update-locale LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+SHELL ["/bin/bash", "-c"]
+
+# Installing Miniconda for environment management
+RUN wget 'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh' -O miniconda.sh && \
+    bash miniconda.sh -b -p /opt/miniconda3 && \
+    rm miniconda.sh
+ENV PATH=/opt/miniconda3/bin:$PATH
+RUN conda init bash && conda config --set auto_activate_base false
+
+# Creating and setting up the Python virtual environment
+RUN conda create -n testbed python=3.11 -y && \
+    echo "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed" >> ~/.bashrc
+
+# Set up the working directory
+WORKDIR /testbed/
+
+# Cloning the target repository and configuring it
+RUN source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed && \
+    git clone https://github.com/undertow-io/undertow.git /testbed && \
+    cd /testbed && \
+    git checkout 77dc917cea6f40468ea481e1bafa7e15657eb887
+
+# Installing project dependencies using Maven
+RUN source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed && \
+    mvn install -DskipTests -Dmaven.javadoc.skip=true
+
+# Exposing the Maven configuration to persist within the environment
+RUN echo "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed" >> ~/.bashrc
+
+# Preserve Maven and Java environment variables
+ENV PATH="/opt/miniconda3/envs/testbed/bin:$PATH"
+ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+</dockerfile>

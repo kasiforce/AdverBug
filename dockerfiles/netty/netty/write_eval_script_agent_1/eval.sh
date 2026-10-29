@@ -1,0 +1,20 @@
+#!/bin/bash
+set -uxo pipefail
+
+# Activate Conda environment
+source /opt/miniconda3/bin/activate
+conda activate testbed
+
+# Navigate to the cloned repository inside the container
+cd /testbed
+
+# Run Maven tests using the appropriate profile and settings
+# - Ensures that tests output pass/fail/skip or errors (via Surefire reports)
+# - Test results will be saved in `target/surefire-reports/TEST-*.xml` for structured analysis.
+mvn clean test -B -ntp
+
+# Capture the exit code to check if the tests passed or failed
+rc=$?
+
+# Output the test execution status for analysis
+echo "OMNIGRIL_EXIT_CODE=$rc"

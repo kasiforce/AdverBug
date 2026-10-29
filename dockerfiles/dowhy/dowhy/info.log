@@ -1,0 +1,1247 @@
+2026-10-16 18:53:01.661 | INFO     | Model API request cost info: input_tokens=1305, output_tokens=375, cost=0.007013
+2026-10-16 18:53:01.945 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 18:53:20.739 | INFO     | Model API request cost info: input_tokens=974, output_tokens=138, cost=0.003815
+2026-10-16 18:53:20.741 | DEBUG    | {
+    "API_calls": [
+        "search_files_by_keyword('requirements')",
+        "browse_file_for_environment_info('/data/home/cjy/software-testing/projects/dowhy/README.rst', 'Gather environment setup and running tests instructions.')",
+        "browse_file_for_environment_info('/data/home/cjy/software-testing/projects/dowhy/pyproject.toml', 'Extract dependency and environment setup information.')",
+        "browse_file_for_environment_info('/data/home/cjy/software-testing/projects/dowhy/CONTRIBUTING.md', 'Retrieve instructions for setting up and contributing to the environment.')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-16 18:53:20.741 | DEBUG    | Extracted a valid json
+2026-10-16 18:53:20.745 | DEBUG    | Result of dispatch_intent: ("No files found containing the keyword 'requirements'.", 'No matching files found', True)
+2026-10-16 18:53:20.745 | INFO     | entering browse
+2026-10-16 18:53:20.746 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/dowhy/README.rst ===
+|BuildStatus|_ |PyPiVersion|_ |PythonSupport|_ |Downloads|_ |discord|_ |gurubase|_
+
+.. |PyPiVersion| image:: https://img.shields.io/pypi/v/dowhy.svg
+.. _PyPiVersion: https://pypi.org/project/dowhy/
+
+.. |PythonSupport| image:: https://img.shields.io/pypi/pyversions/dowhy.svg
+.. _PythonSupport: https://pypi.org/project/dowhy/
+
+.. |BuildStatus| image:: https://github.com/py-why/dowhy/actions/workflows/ci.yml/badge.svg
+.. _BuildStatus: https://github.com/py-why/dowhy/actions
+
+.. |Downloads| image:: https://pepy.tech/badge/dowhy
+.. _Downloads: https://pepy.tech/project/dowhy
+
+.. |discord| image:: https://img.shields.io/discord/818456847551168542
+.. _discord: https://discord.gg/cSBGb3vsZb
+
+.. |gurubase| image:: https://img.shields.io/badge/Gurubase-Ask%20DoWhy%20Guru-006BFF
+.. _gurubase: https://gurubase.io/g/dowhy
+
+.. image:: dowhy-logo-large.png
+  :width: 50%
+  :align: center
+
+
+`Checkout the documentation <https://py-why.github.io/dowhy/>`_
+===============================================================
+
+- The documentation, user guide, sample notebooks and other information are available at
+    `https://py-why.github.io/dowhy <https://py-why.github.io/dowhy/>`_
+- DoWhy is part of the `PyWhy Ecosystem <https://www.pywhy.org/>`_. For more tools and libraries related to causality, checkout the `PyWhy GitHub organization <https://github.com/py-why/>`_!
+- For any questions, comments, or discussions about specific use cases, join our community on `Discord <https://discord.gg/cSBGb3vsZb>`_ (|discord|_)
+- Jump right into some case studies:
+    - Effect estimation: `Hotel booking cancellations <https://medium.com/data-science/beyond-predictive-models-the-causal-story-behind-hotel-booking-cancellations-d29e8558cbaf>`_ | `Effect of customer loyalty programs <https://www.pywhy.org/dowhy/main/example_notebooks/dowhy_example_effect_of_memberrewards_program.html>`_ | `Optimizing article headlines <https://medium.com/@akelleh/introducing-the-do-sampler-for-causal-inference-a3296ea9e78d>`_ | `Effect of home visits on infant health (IHDP) <https://medium.com/data-science/implementing-causal-inference-a-key-step-towards-agi-de2cde8ea599>`_ | `Causes of customer churn/attrition <https://medium.com/geekculture/a-quickstart-for-causal-analysis-decision-making-with-dowhy-2ce2d4d1efa9>`_
+    - Root cause analysis and explanations: `Causal attribution and root-cause analysis of an online shop <https://www.pywhy.org/dowhy/main/example_notebooks/gcm_online_shop.html>`_ | `Finding the Root Cause of Elevated Latencies in a Microservice Architecture <https://www.pywhy.org/dowhy/main/example_notebooks/gcm_rca_microservice_architecture.html>`_ | `Finding Root Causes of Changes in a Supply Chain <https://www.pywhy.org/dowhy/main/example_notebooks/gcm_supply_chain_dist_change.html>`_
+
+For more example notebooks, see `here! <https://www.pywhy.org/dowhy/main/example_notebooks/nb_index.html>`_
+
+Introduction & Key Features
+===========================
+Decision-making involves understanding how different variables affect each other and predicting the outcome when some of them are changed to new values. For instance, given an outcome variable, one may be interested in determining how a potential action(s) may affect it, understanding what led to its current value, or simulate what would happen if some variables are changed. Answering such questions requires causal reasoning. DoWhy is a Python library that guides you through the various steps of causal reasoning and provides a unified interface for answering causal questions.
+
+DoWhy provides a wide variety of algorithms for effect estimation, prediction, quantification
+of causal influences, diagnosis of causal structures, root cause analysis, interventions and
+counterfactuals. A key feature of DoWhy is its refutation and falsification API that can test causal assumptions for any estimation method,
+thus making inference more robust and accessible to non-experts.
+
+**Graphical Causal Models and Potential Outcomes: Best of both worlds**
+
+DoWhy builds on two of the most powerful frameworks for causal inference:
+graphical causal models and potential outcomes. For effect estimation, it uses graph-based criteria and do-calculus for
+modeling assumptions and identifying a non-parametric causal effect. For estimation, it switches to methods based
+primarily on potential outcomes.
+
+For causal questions beyond effect estimation, it uses the power of graphical causal models by modeling the data
+generation process via explicit causal mechanisms at each node, which, for instance, unlocks capabilities to attribute
+observed effects to particular variables or estimate point-wise counterfactuals.
+
+For a quick introduction to causal inference, check out `amit-sharma/causal-inference-tutorial <https://github.com/amit-sharma/causal-inference-tutorial/>`_
+We also gave a more comprehensive tutorial at the ACM Knowledge Discovery and Data Mining (`KDD 2018 <http://www.kdd.org/kdd2018/>`_) conference: `causalinference.gitlab.io/kdd-tutorial <http://causalinference.gitlab.io/kdd-tutorial/>`_.
+For an introduction to the four steps of causal inference and its implications for machine learning, you can access this video tutorial from Microsoft Research `DoWhy Webinar <https://www.microsoft.com/en-us/research/video/foundations-of-causal-inference-and-its-impacts-on-machine-learning/>`_ and for an introduction to the graphical causal model API, see the `PyCon presentation on Root Cause Analysis with DoWhy <https://www.youtube.com/watch?v=icpHrbDlGaw>`_.
+
+Key Features
+~~~~~~~~~~~~
+
+.. image:: https://raw.githubusercontent.com/py-why/dowhy/main/docs/images/dowhy-features.png
+
+DoWhy supports the following causal tasks:
+
+- Effect estimation (identification, average causal effect, conditional average causal effect, instrumental variables and more)
+- Quantify causal influences (mediation analysis, direct arrow strength, intrinsic causal influence)
+- What-if analysis (generate samples from interventional distribution, estimate counterfactuals)
+- Root cause analysis and explanations (attribute anomalies to their causes, find causes for changes in distributions, estimate feature relevance and more)
+
+For more details and how to use these methods in practice, checkout the documentation at `https://py-why.github.io/dowhy <https://py-why.github.io/dowhy/>`_
+
+Quick Start
+===========
+DoWhy support Python 3.8+. To install, you can use pip, poetry, or conda.
+
+**Latest Release**
+
+Install the latest `release <https://pypi.org/project/dowhy/>`__ using pip.
+
+.. code:: shell
+
+   pip install dowhy
+
+Install the latest `release <https://pypi.org/project/dowhy/>`__ using poetry.
+
+.. code:: shell
+
+   poetry add dowhy
+
+Install the latest `release <https://anaconda.org/conda-forge/dowhy>`__ using conda.
+
+.. code:: shell
+
+   conda install -c conda-forge dowhy
+
+If you face "Solving environment" problems with conda, then try :code:`conda update --all` and then install dowhy. If that does not work, then use :code:`conda config --set channel_priority false` and try to install again. If the problem persists, please `add your issue here <https://github.com/microsoft/dowhy/issues/197>`_.
+
+**Development Version**
+
+If you prefer to use the latest dev version, your dependency management tool will need to point at our GitHub repository.
+
+.. code:: shell
+
+    pip install git+https://github.com/py-why/dowhy@main
+
+
+**Requirements**
+
+DoWhy requires a few dependencies. 
+Details on specific versions can be found in `pyproject.toml <./pyproject.toml>`_, under the `tool.poetry.dependencies` section.
+
+If you face any problems, try installing dependencies manually.
+
+.. code:: shell
+
+    pip install '<dependency-name>==<version>'
+
+Optionally, if you wish to input graphs in the dot format, then install pydot (or pygraphviz).
+
+For better-looking graphs, you can optionally install pygraphviz. To proceed,
+first install graphviz and then pygraphviz (on Ubuntu and Ubuntu WSL).
+
+.. note::
+    Installing pygraphviz can cause problems on some platforms.
+    One way that works for most Linux distributions is to
+    first install graphviz and then pygraphviz as shown below.
+    Otherwise, please consult the documentation of `pygraphviz <https://pygraphviz.github.io/documentation/stable/install.html>`_.
+
+.. code:: shell
+
+    sudo apt install graphviz libgraphviz-dev graphviz-dev pkg-config
+    pip install --global-option=build_ext \
+    --global-option="-I/usr/local/include/graphviz/" \
+    --global-option="-L/usr/local/lib/graphviz" pygraphviz
+
+Example: Effect identification and estimation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Most causal tasks in DoWhy only require a few lines of code to write. Here, we exemplarily estimate the causal effect of
+a treatment on an outcome variable:
+
+.. code:: python
+
+    from dowhy import CausalModel
+    import dowhy.datasets
+
+    # Load some sample data
+    data = dowhy.datasets.linear_dataset(
+        beta=10,
+        num_common_causes=5,
+        num_instruments=2,
+        num_samples=10000,
+        treatment_is_binary=True)
+
+A causal graph can be defined in different way, but the most common way is via `NetworkX <https://networkx.org/>`_.
+After loading in the data, we use the four main operations for effect estimation in DoWhy: *model*, *identify*,
+*estimate* and *refute*:
+
+.. code:: python
+
+    # I. Create a causal model from the data and given graph.
+    model = CausalModel(
+        data=data["df"],
+        treatment=data["treatment_name"],
+        outcome=data["outcome_name"],
+        graph=data["gml_graph"])  # Or alternatively, as nx.DiGraph
+
+    # II. Identify causal effect and return target estimands
+    identified_estimand = model.identify_effect()
+
+    # III. Estimate the target estimand using a statistical method.
+    estimate = model.estimate_effect(identified_estimand,
+                                     method_name="backdoor.propensity_score_matching")
+
+    # IV. Refute the obtained estimate using multiple robustness checks.
+    refute_results = model.refute_estimate(identified_estimand, estimate,
+                                           method_name="random_common_cause")
+
+DoWhy stresses on the interpretability of its output. At any point in the analysis,
+you can inspect the untested assumptions, identified estimands (if any), and the
+estimate (if any). Here's a sample output of the linear regression estimator:
+
+.. image:: https://raw.githubusercontent.com/py-why/dowhy/main/docs/images/regression_output.png
+    :width: 80%
+
+For a full code example, check out the `Getting Started with DoWhy <https://www.pywhy.org/dowhy/main/example_notebooks/dowhy_simple_example.html>`_ notebook.
+
+You can also use Conditional Average Treatment Effect (CATE) estimation methods from `EconML <https://github.com/py-why/econml>`_, as shown in the `Conditional Treatment Effects <https://www.pywhy.org/dowhy/main/example_notebooks/dowhy-conditional-treatment-effects.html>`_ notebook. Here's a code snippet.
+
+.. code:: python
+
+	from sklearn.preprocessing import PolynomialFeatures
+	from sklearn.linear_model import LassoCV
+	from sklearn.ensemble import GradientBoostingRegressor
+	dml_estimate = model.estimate_effect(identified_estimand, method_name="backdoor.econml.dml.DML",
+                        control_value = 0,
+                        treatment_value = 1,
+                        target_units = lambda df: df["X0"]>1,
+                        confidence_intervals=False,
+                        method_params={
+                            "init_params":{'model_y':GradientBoostingRegressor(),
+                                           'model_t': GradientBoostingRegressor(),
+                                           'model_final':LassoCV(),
+                                           'featurizer':PolynomialFeatures(degree=1, include_bias=True)},
+                            "fit_params":{}})
+
+
+Example: Graphical causal model (GCM) based inference
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DoWhy's graphical causal model framework offers powerful tools to address causal questions beyond effect estimation.
+It is based on Pearl's graphical causal model framework and models the causal data generation process of each variable
+explicitly via *causal mechanisms* to support a wide range of causal algorithms. For more details, see the book
+`Elements of Causal Inference <https://mitpress.mit.edu/9780262037310/elements-of-causal-inference/>`_.
+
+Complex causal queries, such as attributing observed anomalies to nodes in the system, can be performed with just a few
+lines of code:
+
+.. code:: python
+
+    import networkx as nx, numpy as np, pandas as pd
+    from dowhy import gcm
+
+    # Let's generate some "normal" data we assume we're given from our problem domain:
+    X = np.random.normal(loc=0, scale=1, size=1000)
+    Y = 2 * X + np.random.normal(loc=0, scale=1, size=1000)
+    Z = 3 * Y + np.random.normal(loc=0, scale=1, size=1000)
+    data = pd.DataFrame(dict(X=X, Y=Y, Z=Z))
+
+    # 1. Modeling cause-effect relationships as a structural causal model
+    #    (causal graph + functional causal models):
+    causal_model = gcm.StructuralCausalModel(nx.DiGraph([('X', 'Y'), ('Y', 'Z')]))  # X -> Y -> Z
+    gcm.auto.assign_causal_mechanisms(causal_model, data)
+
+    # 2. Fitting the SCM to the data:
+    gcm.fit(causal_model, data)
+
+    # Optional: Evaluate causal model
+    print(gcm.evaluate_causal_model(causal_model, data))
+
+    # Step 3: Perform a causal analysis.
+    # results = gcm.<causal_query>(causal_model, ...)
+    # For instance, root cause analysis:
+    anomalous_sample = pd.DataFrame(dict(X=[0.1], Y=[6.2], Z=[19]))  # Here, Y is the root cause.
+
+    # "Which node is the root cause of the anomaly in Z?":
+    anomaly_attribution = gcm.attribute_anomalies(causal_model, "Z", anomalous_sample)
+
+    # Or sampling from an interventional distribution. Here, under the intervention do(Y := 2).
+    samples = gcm.interventional_samples(causal_model, interventions={'Y': lambda y: 2}, num_samples_to_draw=100)
+
+The GCM framework offers many more features beyond these examples. For a full code example, check out the `Online Shop example notebook <https://www.pywhy.org/dowhy/main/example_notebooks/gcm_online_shop.html>`_.
+
+For more functionalities, example applications of DoWhy and details about the outputs, see the `User Guide <https://www.pywhy.org/dowhy/main/user_guide/intro.html>`_ or
+checkout `Jupyter notebooks <https://www.pywhy.org/dowhy/main/example_notebooks/nb_index.html>`_.
+
+More Information & Resources
+============================
+`Microsoft Research Blog <https://www.microsoft.com/en-us/research/blog/dowhy-a-library-for-causal-inference/>`_ | `Video Tutorial for Effect Estimation <https://www.youtube.com/watch?v=LALfQStONEc&t=114s>`_ | `Video Tutorial for Root Cause Analysis <https://www.youtube.com/watch?v=icpHrbDlGaw>`_ | `Arxiv Paper <https://arxiv.org/abs/2011.04216>`_ | `Arxiv Paper (Graphical Causal Model extension) <https://arxiv.org/abs/2206.06821>`_ | `Slides <https://www2.slideshare.net/AmitSharma315/dowhy-an-endtoend-library-for-causal-inference>`_
+
+
+Citing this package
+~~~~~~~~~~~~~~~~~~~
+If you find DoWhy useful for your work, please cite **both** of the following two references:
+
+- Amit Sharma, Emre Kiciman. DoWhy: An End-to-End Library for Causal Inference. 2020. https://arxiv.org/abs/2011.04216
+- Patrick Blöbaum, Peter Götz, Kailash Budhathoki, Atalanti A. Mastakouri, Dominik Janzing. DoWhy-GCM: An extension of DoWhy for causal inference in graphical causal models. 2024. MLOSS 25(147):1−7. https://jmlr.org/papers/v25/22-1258.html
+
+Bibtex::
+
+  @article{dowhy,
+    title={DoWhy: An End-to-End Library for Causal Inference},
+    author={Sharma, Amit and Kiciman, Emre},
+    journal={arXiv preprint arXiv:2011.04216},
+    year={2020}
+  }
+
+  @article{JMLR:v25:22-1258,
+  author  = {Patrick Bl{{\"o}}baum and Peter G{{\"o}}tz and Kailash Budhathoki and Atalanti A. Mastakouri and Dominik Janzing},
+  title   = {DoWhy-GCM: An Extension of DoWhy for Causal Inference in Graphical Causal Models},
+  journal = {Journal of Machine Learning Research},
+  year    = {2024},
+  volume  = {25},
+  number  = {147},
+  pages   = {1--7},
+  url     = {http://jmlr.org/papers/v25/22-1258.html}
+  }
+
+Issues
+~~~~~~
+If you encounter an issue or have a specific request for DoWhy, please `raise an issue <https://github.com/py-why/dowhy/issues>`_.
+
+Contributing
+~~~~~~~~~~~~
+
+This project welcomes contributions and suggestions. For a guide to contributing and a list of all contributors, check out `CONTRIBUTING.md <https://github.com/py-why/dowhy/blob/main/CONTRIBUTING.md>`_ and our `docs for contributing code <https://github.com/py-why/dowhy/blob/main/docs/source/contributing/contributing-code.rst>`_. Our `contributor code of conduct is available here <https://github.com/py-why/governance/blob/main/CODE-OF-CONDUCT.md>`_.
+
+=== FILE END:   /data/home/cjy/software-testing/projects/dowhy/README.rst ===
+2026-10-16 18:53:20.746 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 18:53:41.297 | INFO     | Model API request cost info: input_tokens=4662, output_tokens=388, cost=0.015535
+2026-10-16 18:53:41.298 | SUCCESS  | Successfully extracted environment config
+2026-10-16 18:53:41.298 | INFO     | ******
+2026-10-16 18:53:41.298 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/dowhy/README.rst]
+- **Environment Setup**:
+  - Supported Python version: Python 3.8+
+  - Installation options:
+    - Using pip:
+      ```bash
+      pip install dowhy
+      ```
+    - Using poetry:
+      ```bash
+      poetry add dowhy
+      ```
+    - Using conda:
+      ```bash
+      conda install -c conda-forge dowhy
+      ```
+  - Development version installation:
+    ```bash
+    pip install git+https://github.com/py-why/dowhy@main
+    ```
+  - Additional optional dependencies for graph input or visualization:
+    - Install pydot:
+      ```bash
+      pip install pydot
+      ```
+    - For enhanced graph visuals using pygraphviz:
+      ```bash
+      sudo apt install graphviz libgraphviz-dev graphviz-dev pkg-config
+      pip install --global-option=build_ext \
+      --global-option="-I/usr/local/include/graphviz/" \
+      --global-option="-L/usr/local/lib/graphviz" pygraphviz
+      ```
+
+- **Testing Instructions**:
+  - The file does not explicitly include instructions for running a test suite or individual tests.
+
+- **Dependencies**:
+  - Dependencies are listed under the `tool.poetry.dependencies` section in the `pyproject.toml` file.
+  - Versions of dependencies can be installed as needed:
+    ```bash
+    pip install '<dependency-name>==<version>'
+    ```
+  - Note: Issues with dependencies on conda can potentially be resolved by:
+    ```bash
+    conda update --all
+    ```
+    or:
+    ```bash
+    conda config --set channel_priority false
+    ```
+
+No explicit details about testing commands were found.
+[/Key Information]
+2026-10-16 18:53:41.299 | INFO     | ******
+2026-10-16 18:53:41.299 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/dowhy/README.rst]\n- **Environment Setup**:\n  - Supported Python version: Python 3.8+\n  - Installation options:\n    - Using pip:\n      ```bash\n      pip install dowhy\n      ```\n    - Using poetry:\n      ```bash\n      poetry add dowhy\n      ```\n    - Using conda:\n      ```bash\n      conda install -c conda-forge dowhy\n      ```\n  - Development version installation:\n    ```bash\n    pip install git+https://github.com/py-why/dowhy@main\n    ```\n  - Additional optional dependencies for graph input or visualization:\n    - Install pydot:\n      ```bash\n      pip install pydot\n      ```\n    - For enhanced graph visuals using pygraphviz:\n      ```bash\n      sudo apt install graphviz libgraphviz-dev graphviz-dev pkg-config\n      pip install --global-option=build_ext \\\n      --global-option="-I/usr/local/include/graphviz/" \\\n      --global-option="-L/usr/local/lib/graphviz" pygraphviz\n      ```\n\n- **Testing Instructions**:\n  - The file does not explicitly include instructions for running a test suite or individual tests.\n\n- **Dependencies**:\n  - Dependencies are listed under the `tool.poetry.dependencies` section in the `pyproject.toml` file.\n  - Versions of dependencies can be installed as needed:\n    ```bash\n    pip install \'<dependency-name>==<version>\'\n    ```\n  - Note: Issues with dependencies on conda can potentially be resolved by:\n    ```bash\n    conda update --all\n    ```\n    or:\n    ```bash\n    conda config --set channel_priority false\n    ```\n\nNo explicit details about testing commands were found.\n[/Key Information]', 'Get File Info', True)
+2026-10-16 18:53:41.299 | INFO     | entering browse
+2026-10-16 18:53:41.299 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/dowhy/pyproject.toml ===
+[project]
+name = "dowhy"
+dynamic = ["version"]
+
+[project.license]
+text = "MIT"
+
+[tool.poetry]
+name = "dowhy"
+#
+# 0.0.0 is standard placeholder for poetry-dynamic-versioning
+# any changes to this should not be checked in
+#
+version = "0.0.0"
+description = "DoWhy is a Python library for causal inference that supports explicit modeling and testing of causal assumptions"
+authors = ["PyWhy Community <amshar@microsoft.com>"]
+maintainers = []
+license = "MIT"
+documentation = "https://py-why.github.io/dowhy"
+repository = "https://github.com/py-why/dowhy"
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+]
+keywords = [
+    'causality',
+    'machine-learning',
+    'causal-inference',
+    'statistics',
+    'graphical-model',
+]
+include = ['docs', 'tests', 'CONTRIBUTING.md', 'LICENSE']
+readme = 'README.rst'
+[[tool.poetry.source]]
+name = "torch-cpu"
+url = "https://download.pytorch.org/whl/torch/"
+priority = "explicit"
+
+
+[build-system]
+requires = [
+    "poetry-core>=1.0.0", 
+    "cython>=3.0",
+    "setuptools>=61.0; python_version>='3.13'",
+    "setuptools>=40.0; python_version<'3.13'"
+]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+metadata = false
+format = "{base}"
+
+[tool.poetry-dynamic-versioning.substitution]
+files = ["dowhy/__init__.py"]
+
+#
+# Dependency compatibility notes:
+# * numba (imported by econml) requires python <3.11
+#
+[tool.poetry.dependencies]
+python = ">=3.9,<3.14"
+cython = ">=3.0"
+scipy = [
+    { version = ">=1.10.0", python = ">=3.9,<3.13" },
+    { version = ">=1.15", python = ">=3.13" },
+]
+statsmodels = ">=0.14"
+numpy = ">2.0"
+pandas = ">1.0"
+networkx = [
+    { version = ">=3.3", python = ">=3.10" },
+    { version = ">=2.8.5", python = "<3.10" }
+]
+sympy = ">=1.10.1"
+scikit-learn = ">1.0"
+pydot = { version = "^1.4.2", optional = true }
+joblib = ">=1.1.0"
+pygraphviz = { version = ">=1.9", optional = true }
+econml = ">=0.16"
+tqdm = ">=4.64.0"
+causal-learn = ">=0.1.4.4"
+numba = ">=0.59"
+
+#Plotting Extra
+matplotlib = { version = ">=3.5.3", optional = true }
+cvxpy = "^1.7.1"
+
+[tool.poetry.extras]
+pygraphviz = ["pygraphviz"]
+pydot = ["pydot"]
+plotting = ["matplotlib"]
+econml = ["econml"]
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = ">=0.24.4"
+flake8 = ">=5.0.4"
+black = { version = ">=22.6", extras = ["jupyter"] }
+isort = ">=5.10.1"
+pytest = ">=7.1.2"
+pytest-cov = ">=4.1.0"
+pytest-split = ">=0.8.0"
+nbformat = ">=5.4.0"
+jupyter = ">=1.0.0"
+flaky = ">=3.7.0"
+keras = ">=2.9.0"
+xgboost = ">=2.0.2"
+mypy = ">=1.7.1"
+torch = [
+    { version = "==2.4.1", python = "<3.13" },
+    { version = ">=2.0", python = ">=3.13" }
+]
+torchvision = ">=0.13.1"
+pytorch-lightning = [
+    { version = "<2.0", python = ">=3.9,<3.11" },
+    { version = ">=2.0", python = ">=3.11" }
+]
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+#
+# Dependencies for Documentation Generation
+#
+docutils = "<0.21"
+sphinx_design = ">=0.3.0"
+sphinx = ">=5.3.0"
+sphinxcontrib-googleanalytics = { git = "https://github.com/sphinx-contrib/googleanalytics.git", branch = "master" }
+nbsphinx = ">=0.8.9"
+sphinx-rtd-theme = ">=1.0.0"
+pydata-sphinx-theme = ">=0.9.0"
+ipykernel = ">=6.15.1"
+sphinx-copybutton = "0.5.0"
+seaborn = ">=0.12.1"
+cdt = ">=0.6.0"
+
+#
+# Versions defined for security reasons
+#
+# https://github.com/py-why/dowhy/security/dependabot/1 - CVE-2022-34749
+nbconvert = { version = "7.17.1", allow-prereleases = true }
+
+[tool.pytest.ini_options]
+markers = [
+    "advanced: not be to run each time. only on package updates.",
+    "notebook: jupyter notebook tests",
+    "econml: a marker to mark tests requiring econml",
+    "focused: a debug marker to focus on specific tests",
+]
+
+[tool.poe.tasks]
+# stop the build if there are Python syntax errors or undefined names
+_flake8Errors = "flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics"
+_flake8Warnings = "flake8 . --count --exit-zero --statistics"
+_black = 'black .'
+_isort = 'isort .'
+_black_check = 'black --check .'
+_isort_check = 'isort --check .'
+
+# testing tasks
+test = "pytest -v -m 'not advanced and not econml' --durations=0 --durations-min=60.0"
+test_no_notebooks = "pytest -v -m 'not advanced and not econml and not notebook' --durations=0 --durations-min=60.0"
+test_durations = "poetry run poe test --store-durations"
+test_econml = "pytest -v -m 'econml' --durations=0 --durations-min=60.0"
+test_advanced = "pytest -v"
+test_focused = "pytest -v -m 'focused'"
+
+[tool.poe.tasks.format]
+sequence = ['_black', '_isort']
+ignore_fail = 'return_non_zero'
+
+[tool.poe.tasks.format_check]
+sequence = ['_black_check', '_isort_check']
+ignore_fail = 'return_non_zero'
+
+[tool.poe.tasks.lint]
+sequence = ['_flake8Errors', '_flake8Warnings']
+ignore_fail = 'return_non_zero'
+
+[tool.poe.tasks.verify]
+sequence = ['lint', 'format_check', 'test']
+ignore_fail = "return_non_zero"
+
+[tool.black]
+line-length = 120
+target-version = ['py39', 'py310', 'py311', 'py312', 'py313']
+include = '\.pyi?$'
+extend-exclude = '''
+(
+      __pycache__
+    | \.github
+)
+'''
+
+[tool.pylint]
+max-line-length = 120
+disable = ["W0511"]
+
+[tool.isort]
+profile = 'black'
+multi_line_output = 3
+line_length = 120
+py_version = 38
+
+=== FILE END:   /data/home/cjy/software-testing/projects/dowhy/pyproject.toml ===
+2026-10-16 18:53:41.299 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 18:53:56.979 | INFO     | Model API request cost info: input_tokens=2365, output_tokens=898, cost=0.014892
+2026-10-16 18:53:56.980 | SUCCESS  | Successfully extracted environment config
+2026-10-16 18:53:56.980 | INFO     | ******
+2026-10-16 18:53:56.980 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/dowhy/pyproject.toml]
+- Dependency information:
+  - **Base dependencies:**
+    - Requires Python `>=3.9,<3.14`.
+    - cython `>=3.0`
+    - scipy:
+      - `>=1.10.0` for Python versions `>=3.9,<3.13`.
+      - `>=1.15` for Python versions `>=3.13`.
+    - statsmodels `>=0.14`
+    - numpy `>2.0`
+    - pandas `>1.0`
+    - networkx:
+      - `>=3.3` for Python versions `>=3.10`.
+      - `>=2.8.5` for Python versions `<3.10`.
+    - sympy `>=1.10.1`
+    - scikit-learn `>1.0`
+    - pydot `^1.4.2` (**optional**).
+    - joblib `>=1.1.0`
+    - pygraphviz `>=1.9` (**optional**).
+    - econml `>=0.16`
+    - tqdm `>=4.64.0`
+    - causal-learn `>=0.1.4.4`
+    - numba `>=0.59`.
+    - matplotlib `>=3.5.3` (**optional**, for plotting).
+    - cvxpy `^1.7.1`.
+
+  - **Development dependencies:**
+    - poethepoet `>=0.24.4`
+    - flake8 `>=5.0.4`
+    - black `>=22.6` (**with extras: jupyter**).
+    - isort `>=5.10.1`
+    - pytest `>=7.1.2`
+    - pytest-cov `>=4.1.0`
+    - pytest-split `>=0.8.0`
+    - nbformat `>=5.4.0`
+    - jupyter `>=1.0.0`
+    - flaky `>=3.7.0`
+    - keras `>=2.9.0`
+    - xgboost `>=2.0.2`
+    - mypy `>=1.7.1`
+    - torch:
+      - `==2.4.1` for Python `<3.13`.
+      - `>=2.0` for Python `>=3.13`.
+    - torchvision `>=0.13.1`
+    - pytorch-lightning:
+      - `<2.0` for Python `>=3.9,<3.11`.
+      - `>=2.0` for Python `>=3.11`.
+
+  - **Documentation dependencies:**
+    - docutils `<0.21`
+    - sphinx_design `>=0.3.0`
+    - sphinx `>=5.3.0`
+    - sphinxcontrib-googleanalytics (branch: `master`, repository: `https://github.com/sphinx-contrib/googleanalytics.git`).
+    - nbsphinx `>=0.8.9`
+    - sphinx-rtd-theme `>=1.0.0`
+    - pydata-sphinx-theme `>=0.9.0`
+    - ipykernel `>=6.15.1`
+    - sphinx-copybutton `0.5.0`
+    - seaborn `>=0.12.1`
+    - cdt `>=0.6.0`
+    - nbconvert `7.17.1` (**allow-prereleases**).
+
+- Environment setup commands:
+  - Use Poetry as the package manager:
+    ```bash
+    poetry install
+    ```
+    This command will automatically install base, development, and optional dependencies as per the defined Poetry groups.
+
+- Key environment settings:
+  - Python versions: Compatible with `>=3.9` up to `<3.14`.
+
+- Framework-specific dependency notes:
+  - **numba**: Requires Python `<3.11`.
+  - **torch** version varies based on Python version (`<3.13` vs. `>=3.13`).
+  - **networkx** and **scipy** dependency resolutions vary based on Python version.
+
+[/Key Information]
+2026-10-16 18:53:56.980 | INFO     | ******
+2026-10-16 18:53:56.980 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/dowhy/pyproject.toml]\n- Dependency information:\n  - **Base dependencies:**\n    - Requires Python `>=3.9,<3.14`.\n    - cython `>=3.0`\n    - scipy:\n      - `>=1.10.0` for Python versions `>=3.9,<3.13`.\n      - `>=1.15` for Python versions `>=3.13`.\n    - statsmodels `>=0.14`\n    - numpy `>2.0`\n    - pandas `>1.0`\n    - networkx:\n      - `>=3.3` for Python versions `>=3.10`.\n      - `>=2.8.5` for Python versions `<3.10`.\n    - sympy `>=1.10.1`\n    - scikit-learn `>1.0`\n    - pydot `^1.4.2` (**optional**).\n    - joblib `>=1.1.0`\n    - pygraphviz `>=1.9` (**optional**).\n    - econml `>=0.16`\n    - tqdm `>=4.64.0`\n    - causal-learn `>=0.1.4.4`\n    - numba `>=0.59`.\n    - matplotlib `>=3.5.3` (**optional**, for plotting).\n    - cvxpy `^1.7.1`.\n\n  - **Development dependencies:**\n    - poethepoet `>=0.24.4`\n    - flake8 `>=5.0.4`\n    - black `>=22.6` (**with extras: jupyter**).\n    - isort `>=5.10.1`\n    - pytest `>=7.1.2`\n    - pytest-cov `>=4.1.0`\n    - pytest-split `>=0.8.0`\n    - nbformat `>=5.4.0`\n    - jupyter `>=1.0.0`\n    - flaky `>=3.7.0`\n    - keras `>=2.9.0`\n    - xgboost `>=2.0.2`\n    - mypy `>=1.7.1`\n    - torch:\n      - `==2.4.1` for Python `<3.13`.\n      - `>=2.0` for Python `>=3.13`.\n    - torchvision `>=0.13.1`\n    - pytorch-lightning:\n      - `<2.0` for Python `>=3.9,<3.11`.\n      - `>=2.0` for Python `>=3.11`.\n\n  - **Documentation dependencies:**\n    - docutils `<0.21`\n    - sphinx_design `>=0.3.0`\n    - sphinx `>=5.3.0`\n    - sphinxcontrib-googleanalytics (branch: `master`, repository: `https://github.com/sphinx-contrib/googleanalytics.git`).\n    - nbsphinx `>=0.8.9`\n    - sphinx-rtd-theme `>=1.0.0`\n    - pydata-sphinx-theme `>=0.9.0`\n    - ipykernel `>=6.15.1`\n    - sphinx-copybutton `0.5.0`\n    - seaborn `>=0.12.1`\n    - cdt `>=0.6.0`\n    - nbconvert `7.17.1` (**allow-prereleases**).\n\n- Environment setup commands:\n  - Use Poetry as the package manager:\n    ```bash\n    poetry install\n    ```\n    This command will automatically install base, development, and optional dependencies as per the defined Poetry groups.\n\n- Key environment settings:\n  - Python versions: Compatible with `>=3.9` up to `<3.14`.\n\n- Framework-specific dependency notes:\n  - **numba**: Requires Python `<3.11`.\n  - **torch** version varies based on Python version (`<3.13` vs. `>=3.13`).\n  - **networkx** and **scipy** dependency resolutions vary based on Python version.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-16 18:53:56.981 | INFO     | entering browse
+2026-10-16 18:53:56.981 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/dowhy/CONTRIBUTING.md ===
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-60-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/emrekiciman"><img src="https://avatars3.githubusercontent.com/u/5982160?v=4?s=100" width="100px;" alt="emrekiciman"/><br /><sub><b>emrekiciman</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=emrekiciman" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/amit-sharma"><img src="https://avatars3.githubusercontent.com/u/1775381?v=4?s=100" width="100px;" alt="Amit Sharma"/><br /><sub><b>Amit Sharma</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=amit-sharma" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://adamkelleher.com"><img src="https://avatars0.githubusercontent.com/u/1762368?v=4?s=100" width="100px;" alt="Adam Kelleher"/><br /><sub><b>Adam Kelleher</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=akelleh" title="Code">💻</a> <a href="#content-akelleh" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Tanmay-Kulkarni101"><img src="https://avatars3.githubusercontent.com/u/17275495?v=4?s=100" width="100px;" alt="Tanmay Kulkarni"/><br /><sub><b>Tanmay Kulkarni</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=Tanmay-Kulkarni101" title="Code">💻</a> <a href="https://github.com/py-why/dowhy/commits?author=Tanmay-Kulkarni101" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vojavocni"><img src="https://avatars.githubusercontent.com/u/40206443?v=4?s=100" width="100px;" alt="Aleksandar Jovanovic"/><br /><sub><b>Aleksandar Jovanovic</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=vojavocni" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/n8sty"><img src="https://avatars.githubusercontent.com/u/2964996?v=4?s=100" width="100px;" alt="nate giraldi"/><br /><sub><b>nate giraldi</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=n8sty" title="Documentation">📖</a> <a href="https://github.com/py-why/dowhy/commits?author=n8sty" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/yaakx"><img src="https://avatars.githubusercontent.com/u/54352800?v=4?s=100" width="100px;" alt="Julen Corral"/><br /><sub><b>Julen Corral</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=yaakx" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://toppare.github.io/"><img src="https://avatars.githubusercontent.com/u/6221127?v=4?s=100" width="100px;" alt="Baran Toppare"/><br /><sub><b>Baran Toppare</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=toppare" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/EgorKraevTransferwise"><img src="https://avatars.githubusercontent.com/u/62890791?v=4?s=100" width="100px;" alt="EgorKraevTransferwise"/><br /><sub><b>EgorKraevTransferwise</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=EgorKraevTransferwise" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ryanrussell"><img src="https://avatars.githubusercontent.com/u/523300?v=4?s=100" width="100px;" alt="Ryan Russell"/><br /><sub><b>Ryan Russell</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=ryanrussell" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MichaelMarien"><img src="https://avatars.githubusercontent.com/u/13829139?v=4?s=100" width="100px;" alt="MichaelMarien"/><br /><sub><b>MichaelMarien</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=MichaelMarien" title="Code">💻</a> <a href="https://github.com/py-why/dowhy/commits?author=MichaelMarien" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://people.mpi-inf.mpg.de/~kbudhath/"><img src="https://avatars.githubusercontent.com/u/111277?v=4?s=100" width="100px;" alt="Kailashbuki"/><br /><sub><b>Kailashbuki</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=kailashbuki" title="Code">💻</a> <a href="https://github.com/py-why/dowhy/commits?author=kailashbuki" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/petergtz"><img src="https://avatars.githubusercontent.com/u/3618401?v=4?s=100" width="100px;" alt="Peter Götz"/><br /><sub><b>Peter Götz</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=petergtz" title="Code">💻</a> <a href="https://github.com/py-why/dowhy/commits?author=petergtz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/bloebp"><img src="https://avatars.githubusercontent.com/u/51325689?v=4?s=100" width="100px;" alt="Patrick Blöbaum"/><br /><sub><b>Patrick Blöbaum</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=bloebp" title="Code">💻</a> <a href="https://github.com/py-why/dowhy/commits?author=bloebp" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/itsoum"><img src="https://avatars.githubusercontent.com/u/9675299?v=4?s=100" width="100px;" alt="Ilias Tsoumas"/><br /><sub><b>Ilias Tsoumas</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=itsoum" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/elikling"><img src="https://avatars.githubusercontent.com/u/8556526?v=4?s=100" width="100px;" alt="Eli Y. Kling"/><br /><sub><b>Eli Y. Kling</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=elikling" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://astoeffelbauer.github.io"><img src="https://avatars.githubusercontent.com/u/54737457?v=4?s=100" width="100px;" alt="Andreas Stöffelbauer"/><br /><sub><b>Andreas Stöffelbauer</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=astoeffelbauer" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/esmucler"><img src="https://avatars.githubusercontent.com/u/14080095?v=4?s=100" width="100px;" alt="Ezequiel Smucler"/><br /><sub><b>Ezequiel Smucler</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=esmucler" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/yemaedahrav"><img src="https://avatars.githubusercontent.com/u/50958687?v=4?s=100" width="100px;" alt="Amey Varhade"/><br /><sub><b>Amey Varhade</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=yemaedahrav" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/bkowshik"><img src="https://avatars.githubusercontent.com/u/2899501?v=4?s=100" width="100px;" alt="Bhargav Kowshik"/><br /><sub><b>Bhargav Kowshik</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=bkowshik" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/darthtrevino"><img src="https://avatars.githubusercontent.com/u/113544?v=4?s=100" width="100px;" alt="Chris Trevino"/><br /><sub><b>Chris Trevino</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=darthtrevino" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://jlgleason.github.io"><img src="https://avatars.githubusercontent.com/u/18729651?v=4?s=100" width="100px;" alt="Jeffrey Gleason"/><br /><sub><b>Jeffrey Gleason</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=jlgleason" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=100" width="100px;" alt="Ikko Ashimine"/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=eltociear" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://eeulig.com"><img src="https://avatars.githubusercontent.com/u/87869465?v=4?s=100" width="100px;" alt="Elias"/><br /><sub><b>Elias</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=eeulig" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Padarn"><img src="https://avatars.githubusercontent.com/u/858039?v=4?s=100" width="100px;" alt="Padarn Wilson"/><br /><sub><b>Padarn Wilson</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=Padarn" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://michaelkoberst.com"><img src="https://avatars.githubusercontent.com/u/15187387?v=4?s=100" width="100px;" alt="Michael Oberst"/><br /><sub><b>Michael Oberst</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=moberst" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.klesel.info"><img src="https://avatars.githubusercontent.com/u/41738984?v=4?s=100" width="100px;" alt="Michael Klesel"/><br /><sub><b>Michael Klesel</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=Klesel" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MFreidank"><img src="https://avatars.githubusercontent.com/u/6368040?v=4?s=100" width="100px;" alt="Moritz Freidank"/><br /><sub><b>Moritz Freidank</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=MFreidank" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://stjohngrimbly.com"><img src="https://avatars.githubusercontent.com/u/28342957?v=4?s=100" width="100px;" alt="St John Grimbly"/><br /><sub><b>St John Grimbly</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=sgrimbly" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://lukasheumos.com"><img src="https://avatars.githubusercontent.com/u/21954664?v=4?s=100" width="100px;" alt="Lukas Heumos"/><br /><sub><b>Lukas Heumos</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=Zethson" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.logstotal.com"><img src="https://avatars.githubusercontent.com/u/315964?v=4?s=100" width="100px;" alt="Dr. Di Prodi"/><br /><sub><b>Dr. Di Prodi</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=robomotic" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://bhatt-priyadutt.github.io/priyadutt-portfolio/"><img src="https://avatars.githubusercontent.com/u/68959880?v=4?s=100" width="100px;" alt="Priyadutt"/><br /><sub><b>Priyadutt</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=bhatt-priyadutt" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/drawlinson"><img src="https://avatars.githubusercontent.com/u/1892448?v=4?s=100" width="100px;" alt="drawlinson"/><br /><sub><b>drawlinson</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=drawlinson" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dw-610"><img src="https://avatars.githubusercontent.com/u/139509928?v=4?s=100" width="100px;" alt="Dylan W"/><br /><sub><b>Dylan W</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=dw-610" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/victor5as"><img src="https://avatars.githubusercontent.com/u/33633851?v=4?s=100" width="100px;" alt="Víctor Quintas-Martínez"/><br /><sub><b>Víctor Quintas-Martínez</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=victor5as" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/rahulbshrestha/"><img src="https://avatars.githubusercontent.com/u/22676591?v=4?s=100" width="100px;" alt="Rahul Shrestha"/><br /><sub><b>Rahul Shrestha</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=rahulbshrestha" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/yogabonito"><img src="https://avatars.githubusercontent.com/u/7026269?v=4?s=100" width="100px;" alt="yogabonito"/><br /><sub><b>yogabonito</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=yogabonito" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nparent1"><img src="https://avatars.githubusercontent.com/u/52084137?v=4?s=100" width="100px;" alt="Nick Parente"/><br /><sub><b>Nick Parente</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=nparent1" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Yangliu-SY"><img src="https://avatars.githubusercontent.com/u/144334404?v=4?s=100" width="100px;" alt="Yangliu-SY"/><br /><sub><b>Yangliu-SY</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=Yangliu-SY" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kmhj13"><img src="https://avatars.githubusercontent.com/u/172297022?v=4?s=100" width="100px;" alt="kmhj13"/><br /><sub><b>kmhj13</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=kmhj13" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/GregVS"><img src="https://avatars.githubusercontent.com/u/83143490?v=4?s=100" width="100px;" alt="Gregory Saldanha"/><br /><sub><b>Gregory Saldanha</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=GregVS" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vivianqin214"><img src="https://avatars.githubusercontent.com/u/56522949?v=4?s=100" width="100px;" alt="vivianqin214"/><br /><sub><b>vivianqin214</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=vivianqin214" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://themichaelbeale.com"><img src="https://avatars.githubusercontent.com/u/1507647?v=4?s=100" width="100px;" alt="Michael Beale"/><br /><sub><b>Michael Beale</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=mbeale" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://williambdean.github.io/"><img src="https://avatars.githubusercontent.com/u/57733339?v=4?s=100" width="100px;" alt="Will Dean"/><br /><sub><b>Will Dean</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=williambdean" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/maartenvanhooftds"><img src="https://avatars.githubusercontent.com/u/11979499?v=4?s=100" width="100px;" alt="maartenvanhooftds"/><br /><sub><b>maartenvanhooftds</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=maartenvanhooftds" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/emmanuel-ferdman"><img src="https://avatars.githubusercontent.com/u/35470921?v=4?s=100" width="100px;" alt="Emmanuel Ferdman"/><br /><sub><b>Emmanuel Ferdman</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=emmanuel-ferdman" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JPZ4-5"><img src="https://avatars.githubusercontent.com/u/103734362?v=4?s=100" width="100px;" alt="JPZ4-5"/><br /><sub><b>JPZ4-5</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=JPZ4-5" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/ghiles-meddour/"><img src="https://avatars.githubusercontent.com/u/88532760?v=4?s=100" width="100px;" alt="Ghiles Meddour"/><br /><sub><b>Ghiles Meddour</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=ghilesmeddour" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/toroleapinc"><img src="https://avatars.githubusercontent.com/u/88481784?v=4?s=100" width="100px;" alt="edvatar"/><br /><sub><b>edvatar</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=toroleapinc" title="Documentation">📖</a> <a href="https://github.com/py-why/dowhy/commits?author=toroleapinc" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kevinchiv"><img src="https://avatars.githubusercontent.com/u/20054278?v=4?s=100" width="100px;" alt="Kevin Chiv"/><br /><sub><b>Kevin Chiv</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=kevinchiv" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/haoyu-haoyu"><img src="https://avatars.githubusercontent.com/u/85037553?v=4?s=100" width="100px;" alt="haoyu-haoyu"/><br /><sub><b>haoyu-haoyu</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=haoyu-haoyu" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://kaushikrajan.me"><img src="https://avatars.githubusercontent.com/u/182360080?v=4?s=100" width="100px;" alt="Kaushik Rajan"/><br /><sub><b>Kaushik Rajan</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=kvr06-ai" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/immu4989"><img src="https://avatars.githubusercontent.com/u/19887503?v=4?s=100" width="100px;" alt="Imran Ahamed"/><br /><sub><b>Imran Ahamed</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=immu4989" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/abhiprd2000"><img src="https://avatars.githubusercontent.com/u/280053291?v=4?s=100" width="100px;" alt="Abhimanyu Prasad"/><br /><sub><b>Abhimanyu Prasad</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=abhiprd2000" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://tasfinmahmud.github.io"><img src="https://avatars.githubusercontent.com/u/88986939?v=4?s=100" width="100px;" alt="Tasfin Mahmud"/><br /><sub><b>Tasfin Mahmud</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=TasfinMahmud" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.linkedin.com/in/joanie-hayoun-‍chung-2b4b03223"><img src="https://avatars.githubusercontent.com/u/155081908?v=4?s=100" width="100px;" alt="Joanie Hayoun Chung"/><br /><sub><b>Joanie Hayoun Chung</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=jchung02" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/wali-reheman"><img src="https://avatars.githubusercontent.com/u/123214778?v=4?s=100" width="100px;" alt="Wali Reheman"/><br /><sub><b>Wali Reheman</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=wali-reheman" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Anai-Guo"><img src="https://avatars.githubusercontent.com/u/275560793?v=4?s=100" width="100px;" alt="Tai An"/><br /><sub><b>Tai An</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=Anai-Guo" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/will-marella"><img src="https://avatars.githubusercontent.com/u/162729147?v=4?s=100" width="100px;" alt="Will Marella"/><br /><sub><b>Will Marella</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=will-marella" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucaluo925"><img src="https://avatars.githubusercontent.com/u/240237312?v=4?s=100" width="100px;" alt="lucaluo925"/><br /><sub><b>lucaluo925</b></sub></a><br /><a href="https://github.com/py-why/dowhy/commits?author=lucaluo925" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Contributing Guide
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. This Project welcomes contributions, suggestions, and feedback. All contributions, suggestions, and feedback you submitted are accepted under the [Project's license](./LICENSE). You represent that if you do not own copyright in the code that you have the authority to submit it under the [Project's license](./LICENSE). All feedback, suggestions, or contributions are not confidential.
+
+There are multiple ways to contribute to DoWhy.
+
+You can help us make DoWhy better,
+* Adding a Jupyter notebook that describes the use of DoWhy for solving causal
+problems
+
+* Helping implement a new method for any of the four steps of causal analysis:
+  model, identify, estimate, refute
+
+* Integrating DoWhy's API with external implementations for any of the four steps, so that external libraries can be called seamlessly from the `identify_effect`, `estimate_effect` or `refute_estimate` methods.
+
+* Helping extend the DoWhy API so that we can support new functionality like interpretability of the estimate, counterfactual prediction and more.
+
+* Helping update the documentation for DoWhy
+
+If you would like to contribute, you can raise a pull request. If you have
+questions before contributing, you can start by opening an issue on Github.
+
+The Project abides by PyWhy's [code of conduct](https://github.com/py-why/governance/blob/main/CODE-OF-CONDUCT.md) and [trademark policy](https://github.com/py-why/governance/blob/main/TRADEMARKS.md).
+
+---
+Part of MVG-0.1-beta.
+Made with love by GitHub. Licensed under the [CC-BY 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
+
+=== FILE END:   /data/home/cjy/software-testing/projects/dowhy/CONTRIBUTING.md ===
+2026-10-16 18:53:56.981 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 18:54:18.502 | INFO     | Model API request cost info: input_tokens=8556, output_tokens=286, cost=0.024250
+2026-10-16 18:54:18.503 | SUCCESS  | Successfully extracted environment config
+2026-10-16 18:54:18.503 | INFO     | ******
+2026-10-16 18:54:18.503 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/dowhy/CONTRIBUTING.md]
+- **Environment setup and contribution instructions:**
+  - To contribute:
+    - Add a Jupyter notebook that describes the use of DoWhy for solving causal problems.
+    - Implement new methods for causal analysis steps (model, identify, estimate, refute).
+    - Integrate DoWhy's API with external implementations for the steps (`identify_effect`, `estimate_effect`, `refute_estimate`).
+    - Extend the API for new features like interpretability of estimates and counterfactual predictions.
+    - Update the project documentation.
+  - To start contributing:
+    - Raise a pull request on GitHub.
+    - Open an issue on GitHub for questions before contributing.
+  - All contributions, suggestions, and feedback are accepted under the project's license.
+  - Contributors must follow PyWhy's code of conduct.
+
+- **Relevant policies and links:**
+  - Code of Conduct: [PyWhy Code of Conduct](https://github.com/py-why/governance/blob/main/CODE-OF-CONDUCT.md).
+  - Trademark Policy: [PyWhy Trademark Policy](https://github.com/py-why/governance/blob/main/TRADEMARKS.md).
+  - Contributions should comply with the license: [Project's License](./LICENSE).
+
+[/Key Information]
+2026-10-16 18:54:18.503 | INFO     | ******
+2026-10-16 18:54:18.503 | DEBUG    | Result of dispatch_intent: ("[Key Information from /data/home/cjy/software-testing/projects/dowhy/CONTRIBUTING.md]\n- **Environment setup and contribution instructions:**\n  - To contribute:\n    - Add a Jupyter notebook that describes the use of DoWhy for solving causal problems.\n    - Implement new methods for causal analysis steps (model, identify, estimate, refute).\n    - Integrate DoWhy's API with external implementations for the steps (`identify_effect`, `estimate_effect`, `refute_estimate`).\n    - Extend the API for new features like interpretability of estimates and counterfactual predictions.\n    - Update the project documentation.\n  - To start contributing:\n    - Raise a pull request on GitHub.\n    - Open an issue on GitHub for questions before contributing.\n  - All contributions, suggestions, and feedback are accepted under the project's license.\n  - Contributors must follow PyWhy's code of conduct.\n\n- **Relevant policies and links:**\n  - Code of Conduct: [PyWhy Code of Conduct](https://github.com/py-why/governance/blob/main/CODE-OF-CONDUCT.md).\n  - Trademark Policy: [PyWhy Trademark Policy](https://github.com/py-why/governance/blob/main/TRADEMARKS.md).\n  - Contributions should comply with the license: [Project's License](./LICENSE).\n\n[/Key Information]", 'Get File Info', True)
+2026-10-16 18:54:33.700 | INFO     | Model API request cost info: input_tokens=3612, output_tokens=505, cost=0.014080
+2026-10-16 18:54:33.709 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 18:54:38.075 | INFO     | Model API request cost info: input_tokens=1104, output_tokens=170, cost=0.004460
+2026-10-16 18:54:38.076 | DEBUG    | {
+    "API_calls": [
+        "browse_folder('/data/home/cjy/software-testing/projects/dowhy/tests', '1')",
+        "browse_folder('/data/home/cjy/software-testing/projects/dowhy/.github', '1')"
+    ],
+    "collected_information": {
+        "environment_setup": {
+            "details_collected": true,
+            "sources": ["README.rst", "pyproject.toml"],
+            "dependencies": "Enumerated with installation commands via pip, poetry, or conda",
+            "optional_dependencies": "Available for enhanced functionality such as visualization"
+        },
+        "test_execution": {
+            "details_collected": false,
+            "test_dependencies": ["pytest", "pytest-cov"],
+            "specific_test_commands": "Missing"
+        }
+    },
+    "terminate": false
+}
+2026-10-16 18:54:38.076 | DEBUG    | Extracted a valid json
+2026-10-16 18:54:38.078 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/dowhy/tests. The browsing Depth is 1.\nStructure of this directory:\n\n__init__.py\n\ntest_propensity_balance_interpreter.py\n\ntest_causal_estimator.py\n\ntest_causal_graph.py\n\ntest_causal_refuter.py\n\ntest_notebooks.py\n\ndefinitions.py\n\ntest_data_transformer.py\n\nconftest.py\n\ntest_datasets.py\n\ntest_causal_model.py\n\ntest_confounder_distribution_interpreter.py\n\nsample_dag.txt\n\ncausal_prediction/\n\ntimeseries/\n\ncausal-inference-discovery-book/\n\ngcm/\n\ncausal_refuters/\n\ndata_transformers/\n\ncausal_identifiers/\n\nutils/\n\ndo_sampler/\n\ncausal_estimators/\n\n', 'folder structure collected', True)
+2026-10-16 18:54:38.078 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/dowhy/.github. The browsing Depth is 1.\nStructure of this directory:\n\ndependabot.yml\n\nISSUE_TEMPLATE/\n\nworkflows/\n\n', 'folder structure collected', True)
+2026-10-16 18:54:45.035 | INFO     | Model API request cost info: input_tokens=4636, output_tokens=399, cost=0.015580
+2026-10-16 18:54:45.044 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 18:54:54.415 | INFO     | Model API request cost info: input_tokens=998, output_tokens=175, cost=0.004245
+2026-10-16 18:54:54.416 | DEBUG    | {
+    "API_calls": [
+        "browse_folder(\"/data/home/cjy/software-testing/projects/dowhy/.github/workflows\", 1)"
+    ],
+    "collected_information": {
+        "Environment Setup": "The collected data from `README.rst` and `pyproject.toml` provide comprehensive installation steps, supported Python versions (>=3.9 and <3.14), main dependencies, optional development, and visualization dependencies. This suffices for environment setup.",
+        "Test Execution": "While test files and folders such as `conftest.py` and `causal_refuters/` indicate the probable use of `pytest`, explicit test execution commands have not been identified in the current information. The `.github/workflows/` directory potentially contains CI/CD-related test commands, requiring further inspection."
+    },
+    "terminate": false
+}
+2026-10-16 18:54:54.417 | DEBUG    | Extracted a valid json
+2026-10-16 18:54:54.419 | INFO     | Refactored invocation argument parsing gives different result on 'browse_folder("/data/home/cjy/software-testing/projects/dowhy/.github/workflows", 1)': old result is ['/data/home/cjy/software-testing/projects/dowhy/.github/workflows', '1'], new result  is ['/data/home/cjy/software-testing/projects/dowhy/.github/workflows', 1]
+2026-10-16 18:54:54.420 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/dowhy/.github/workflows. The browsing Depth is 1.\nStructure of this directory:\n\nclose-inactive-issues.yml\n\nci.yml\n\nadvanced-on-demand.yml\n\ndocs.yml\n\nrepo-assist.lock.yml\n\ncopilot-setup-steps.yml\n\nrepo-assist.md\n\nbuild-docker-image-docs.yml\n\nnightly-tests.yml\n\ndocs-ci.yml\n\ndocs-release.yml\n\nci-install.yml\n\npython-publish.yml\n\n', 'folder structure collected', True)
+2026-10-16 18:55:15.614 | INFO     | Model API request cost info: input_tokens=5427, output_tokens=509, cost=0.018658
+2026-10-16 18:55:15.623 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 18:55:19.115 | INFO     | Model API request cost info: input_tokens=1108, output_tokens=202, cost=0.004790
+2026-10-16 18:55:19.117 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info(\".github/workflows/ci.yml\", \"Find commands for running tests in the CI pipeline.\")",
+        "browse_file_for_environment_info(\".github/workflows/nightly-tests.yml\", \"Identify test execution commands that are part of nightly testing.\")"
+    ],
+    "collected_information": {
+        "environment_setup": {
+            "sources": ["README.rst", "pyproject.toml"],
+            "details": {
+                "dependency_installation": ["pip", "poetry", "conda"],
+                "python_version_compatibility": ">=3.9 and <3.14",
+                "optional_dependencies": ["visualization"]
+            }
+        },
+        "test_execution": {
+            "sources": ["tests folder (implied pytest usage)", "pyproject.toml (test dependencies)"],
+            "details_missing": ["Explicit test execution commands"]
+        }
+    },
+    "terminate": false
+}
+2026-10-16 18:55:19.117 | DEBUG    | Extracted a valid json
+2026-10-16 18:55:19.120 | INFO     | entering browse
+2026-10-16 18:55:19.120 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/dowhy/.github/workflows/ci.yml ===
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'dowhy/**'
+      - 'tests/**'
+      - 'docs/source/example_notebooks/**'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'dowhy/**'
+      - 'tests/**'
+      - 'docs/source/example_notebooks/**'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, "3.10", "3.11", "3.12", "3.13"]
+        poetry-version: [2.1.3]
+        test-group: [1, 2, 3, 4, 5, 6]
+
+    steps:
+    - uses: actions/checkout@v7.0.1
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v7
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Poetry ${{ matrix.poetry-version }}
+      uses: abatilo/actions-poetry@v4.0.0
+      with:
+        poetry-version: ${{ matrix.poetry-version }}
+
+    - name: Configure Poetry to use in-project virtualenv
+      run: poetry config virtualenvs.in-project true
+
+    - name: Cache virtualenv
+      id: cache-venv
+      uses: actions/cache@v6
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
+        restore-keys: |
+          venv-${{ runner.os }}-py${{ matrix.python-version }}-
+
+    # At the moment needed to support scipy in Python 3.12+
+    # Only required when building from source (i.e., no cached venv)
+    - name: Install LLVM and Clang
+      if: steps.cache-venv.outputs.cache-hit != 'true'
+      uses: KyleMayes/install-llvm-action@v2.0.5
+      with:
+        version: "14.0"
+        directory: ${{ runner.temp }}/llvm
+
+    - name: Install graphviz
+      run: |
+        sudo apt install graphviz libgraphviz-dev graphviz-dev pkg-config
+
+    - name: Install dependencies
+      if: steps.cache-venv.outputs.cache-hit != 'true'
+      run: |
+        python -m pip install --upgrade pip
+        echo "installing poetry dependencies"
+        poetry install -E plotting -E pygraphviz -E econml
+
+    - name: Lint
+      run: poetry run poe lint
+
+    - name: Check Formatting
+      run: poetry run poe format_check
+
+    - name: Test
+      run: poetry run poe test --splits 6 --group ${{ matrix.test-group }}
+
+    - name: Test EconML based functionality
+      run: poetry run poe test_econml
+
+    - name: Test README errors for PyPI
+      run: |
+          pip install poetry-dynamic-versioning
+          pip install twine
+          poetry-dynamic-versioning
+          poetry build
+          twine check dist/*
+
+    - name: Notify Discord
+      if: failure() && github.ref == 'refs/heads/main'
+      uses: th0th/notify-discord@v0.4.1
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        GITHUB_ACTOR: ${{ github.actor }}
+        GITHUB_JOB_NAME: CI Failed on Main
+        GITHUB_JOB_STATUS: ${{ job.status }}
+
+=== FILE END:   /data/home/cjy/software-testing/projects/dowhy/.github/workflows/ci.yml ===
+2026-10-16 18:55:19.120 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 18:55:26.554 | INFO     | Model API request cost info: input_tokens=1435, output_tokens=198, cost=0.005568
+2026-10-16 18:55:26.556 | SUCCESS  | Successfully extracted environment config
+2026-10-16 18:55:26.556 | INFO     | ******
+2026-10-16 18:55:26.556 | INFO     | [Key Information from ci.yml]
+- **Testing commands in the CI pipeline:**
+  - `poetry run poe test --splits 6 --group ${{ matrix.test-group }}`
+    - **Runs tests with split groups as defined in the matrix.** Replace `${{ matrix.test-group }}` with the desired group number (e.g., 1, 2, 3, etc.).
+  - `poetry run poe test_econml`
+    - **Runs tests specifically for "EconML"-related functionality.** No additional arguments or configuration needed.
+
+- **Other relevant testing-related commands:**
+  - Test README errors for PyPI: 
+    ```
+    pip install poetry-dynamic-versioning
+    pip install twine
+    poetry-dynamic-versioning
+    poetry build
+    twine check dist/*
+    ```
+    - **Verifies README format errors for publishing packages to PyPI.**
+[/Key Information]
+2026-10-16 18:55:26.556 | INFO     | ******
+2026-10-16 18:55:26.556 | DEBUG    | Result of dispatch_intent: ('[Key Information from ci.yml]\n- **Testing commands in the CI pipeline:**\n  - `poetry run poe test --splits 6 --group ${{ matrix.test-group }}`\n    - **Runs tests with split groups as defined in the matrix.** Replace `${{ matrix.test-group }}` with the desired group number (e.g., 1, 2, 3, etc.).\n  - `poetry run poe test_econml`\n    - **Runs tests specifically for "EconML"-related functionality.** No additional arguments or configuration needed.\n\n- **Other relevant testing-related commands:**\n  - Test README errors for PyPI: \n    ```\n    pip install poetry-dynamic-versioning\n    pip install twine\n    poetry-dynamic-versioning\n    poetry build\n    twine check dist/*\n    ```\n    - **Verifies README format errors for publishing packages to PyPI.**\n[/Key Information]', 'Get File Info', True)
+2026-10-16 18:55:26.557 | INFO     | entering browse
+2026-10-16 18:55:26.557 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/dowhy/.github/workflows/nightly-tests.yml ===
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+name: Advanced Tests (nightly)
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, "3.10", "3.11", "3.12", "3.13"]
+        poetry-version: [2.1.3]
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry ${{ matrix.poetry-version }}
+        uses: abatilo/actions-poetry@v4.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+
+      # At the moment needed to support scipy in Python 3.12+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "14.0"
+          directory: ${{ runner.temp }}/llvm
+
+      - name: Install graphviz
+        run: |
+          sudo apt install graphviz libgraphviz-dev graphviz-dev pkg-config
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          echo "installing poetry dependencies"
+          poetry install -E plotting -E pydot -E pygraphviz -E econml --with docs
+
+      - name: Run Advanced Tests
+        run: poetry run poe test_advanced
+
+      - name: Notify Discord
+        if: github.ref == 'refs/heads/main'
+        uses: th0th/notify-discord@v0.4.1
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_JOB_NAME: Nightly Tests ${{ job.status == 'success' && 'Passed' || 'Failed' }}
+          GITHUB_JOB_STATUS: ${{ job.status }}
+
+=== FILE END:   /data/home/cjy/software-testing/projects/dowhy/.github/workflows/nightly-tests.yml ===
+2026-10-16 18:55:26.557 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 18:55:32.765 | INFO     | Model API request cost info: input_tokens=1051, output_tokens=248, cost=0.005108
+2026-10-16 18:55:32.766 | SUCCESS  | Successfully extracted environment config
+2026-10-16 18:55:32.766 | INFO     | ******
+2026-10-16 18:55:32.767 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/dowhy/.github/workflows/nightly-tests.yml]
+- Test Execution Commands in Nightly Testing:
+  - `poetry run poe test_advanced`
+
+- Prerequisites for the environment:
+  - OS: Ubuntu (latest for GitHub Actions)
+  - Python versions tested: 3.9, 3.10, 3.11, 3.12, 3.13
+  - Poetry version: 2.1.3
+  - LLVM and Clang installation command:
+    - GitHub Action: `KyleMayes/install-llvm-action@v2`
+    - Specific LLVM version: 14.0
+  - Additional required packages (Ubuntu packages):
+    - `graphviz`
+    - `libgraphviz-dev`
+    - `graphviz-dev`
+    - `pkg-config`
+  - Dependencies installation:
+    - Upgrade pip: `python -m pip install --upgrade pip`
+    - Install dependencies (with specific extras): 
+      - `poetry install -E plotting -E pydot -E pygraphviz -E econml --with docs`
+[/Key Information]
+2026-10-16 18:55:32.767 | INFO     | ******
+2026-10-16 18:55:32.767 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/dowhy/.github/workflows/nightly-tests.yml]\n- Test Execution Commands in Nightly Testing:\n  - `poetry run poe test_advanced`\n\n- Prerequisites for the environment:\n  - OS: Ubuntu (latest for GitHub Actions)\n  - Python versions tested: 3.9, 3.10, 3.11, 3.12, 3.13\n  - Poetry version: 2.1.3\n  - LLVM and Clang installation command:\n    - GitHub Action: `KyleMayes/install-llvm-action@v2`\n    - Specific LLVM version: 14.0\n  - Additional required packages (Ubuntu packages):\n    - `graphviz`\n    - `libgraphviz-dev`\n    - `graphviz-dev`\n    - `pkg-config`\n  - Dependencies installation:\n    - Upgrade pip: `python -m pip install --upgrade pip`\n    - Install dependencies (with specific extras): \n      - `poetry install -E plotting -E pydot -E pygraphviz -E econml --with docs`\n[/Key Information]', 'Get File Info', True)
+2026-10-16 18:55:45.213 | INFO     | Model API request cost info: input_tokens=6694, output_tokens=1156, cost=0.028295
+2026-10-16 18:55:45.238 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 18:55:59.563 | INFO     | Model API request cost info: input_tokens=1755, output_tokens=743, cost=0.011818
+2026-10-16 18:55:59.564 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "environment_setup": {
+            "python_versions_supported": "Python >= 3.9 and < 3.14",
+            "installation_methods": {
+                "pip": "pip install dowhy",
+                "poetry": "poetry add dowhy",
+                "conda": "conda install -c conda-forge dowhy",
+                "development_version": "pip install git+https://github.com/py-why/dowhy@main"
+            },
+            "optional_dependencies": {
+                "graph_input": "pip install pydot",
+                "enhanced_visuals": [
+                    "sudo apt install graphviz libgraphviz-dev graphviz-dev pkg-config",
+                    "pip install --global-option=build_ext --global-option=\"-I/usr/local/include/graphviz/\" --global-option=\"-L/usr/local/lib/graphviz\" pygraphviz"
+                ]
+            },
+            "dependencies": {
+                "base": [
+                    "cython >=3.0",
+                    "scipy",
+                    "numpy",
+                    "pandas",
+                    "statsmodels",
+                    "sympy",
+                    "scikit-learn",
+                    "networkx"
+                ],
+                "optional_visualization": ["pydot ^1.4.2", "pygraphviz >=1.9", "matplotlib >=3.5.3"],
+                "development": [
+                    "poethepoet",
+                    "flask",
+                    "black",
+                    "pytest",
+                    "pytest-cov",
+                    "pytest-split",
+                    "jupyter",
+                    "flaky",
+                    "keras",
+                    "xgboost",
+                    "torch",
+                    "pytorch-lightning",
+                    "mypy"
+                ],
+                "documentation": [
+                    "sphinx",
+                    "seaborn",
+                    "cdt",
+                    "nbconvert",
+                    "nbsphinx",
+                    "IPython"
+                ]
+            },
+            "environment_setup_commands": {
+                "poetry": {
+                    "base": "poetry install",
+                    "with_extras": "poetry install -E plotting -E pydot -E pygraphviz -E econml --with docs"
+                }
+            }
+        },
+        "testing": {
+            "ci_testing_commands": {
+                "regular_tests": "poetry run poe test --splits 6 --group ${{ matrix.test-group }}",
+                "econml_tests": "poetry run poe test_econml",
+                "readme_format_check": [
+                    "pip install poetry-dynamic-versioning",
+                    "pip install twine",
+                    "poetry-dynamic-versioning",
+                    "poetry build",
+                    "twine check dist/*"
+                ]
+            },
+            "nightly_testing_commands": {
+                "advanced_testing": "poetry run poe test_advanced",
+                "environment_prerequisites": {
+                    "os": "Ubuntu (GitHub Actions runner)",
+                    "python_versions": ["3.9", "3.10", "3.11", "3.12", "3.13"],
+                    "poetry_version": "2.1.3",
+                    "llvm_required_packages": ["graphviz", "libgraphviz-dev", "graphviz-dev", "pkg-config"],
+                    "additional_commands": [
+                        "python -m pip install --upgrade pip",
+                        "poetry install -E plotting -E pydot -E pygraphviz -E econml --with docs"
+                    ]
+                }
+            }
+        }
+    },
+    "terminate": true
+}
+2026-10-16 18:55:59.565 | DEBUG    | Extracted a valid json
+2026-10-16 18:55:59.567 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-16 18:56:22.831 | INFO     | Model API request cost info: input_tokens=2495, output_tokens=612, cost=0.012358
+2026-10-16 18:56:22.832 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-16 18:56:22.842 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-16 18:56:34.890 | INFO     | Model API request cost info: input_tokens=2036, output_tokens=149, cost=0.006580
+2026-10-16 18:56:34.892 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-16 19:15:57.482 | DEBUG    | Result of dispatch_intent: ("Step 15/16 : RUN conda activate testbed &&     pip install --upgrade pip &&     pip install cython scipy numpy pandas statsmodels sympy scikit-learn networkx &&     pip install matplotlib pydot pygraphviz &&     pip install sphinx seaborn cdt nbconvert nbsphinx IPython &&     pip install -e .\n ---> Running in 2d625f0f8273\nCommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.\nTo initialize your shell, run\n    $ conda init <SHELL_NAME>\nCurrently supported shells are:\n  - bash\n  - fish\n  - tcsh\n  - xonsh\n  - zsh\n  - powershell\nSee 'conda init --help' for more information and options.\nIMPORTANT: You may need to close and restart your shell after running 'conda init'.\n ---> Removed intermediate container 2d625f0f8273\nError: The command '/bin/bash -c conda activate testbed &&     pip install --upgrade pip &&     pip install cython scipy numpy pandas statsmodels sympy scikit-learn networkx &&     pip install matplotlib pydot pygraphviz &&     pip install sphinx seaborn cdt nbconvert nbsphinx IPython &&     pip install -e .' returned a non-zero code: 1", 'Failed to build Docker image.', False)
+2026-10-16 19:15:57.509 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-16 19:16:02.820 | INFO     | Model API request cost info: input_tokens=2169, output_tokens=280, cost=0.008223
+2026-10-16 19:16:02.822 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile fails during execution of the RUN command in Step 15, with the error: 'CommandNotFoundError: Your shell has not been properly configured to use conda activate.' The root cause appears to be related to insufficient initialization of the Conda environment in the Dockerfile. To fix this issue, consider running 'conda init bash' and ensuring that the Bash shell has been correctly initialized for Conda. Additionally, as 'conda activate' often requires a working shell environment, evaluating whether the SHELL initialization in Dockerfile (e.g., '/bin/bash -c') has been properly configured is necessary. Make the following revisions:\n\n1. After installing Conda, explicitly add 'RUN conda init bash' before creating the Conda environment and ensure to restart/reload the shell for these modifications to take effect.\n2. Alternatively, prefix Conda commands in the Dockerfile with 'source /opt/miniconda3/etc/profile.d/conda.sh &&' to ensure the Conda environment is properly activated within the same shell process.\n\nEnsure that the environment initialization works properly and does not fail in subsequent Conda-related steps.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-16 19:16:02.822 | DEBUG    | Extracted a valid json
+2026-10-16 19:16:02.824 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-16 19:16:15.394 | INFO     | Model API request cost info: input_tokens=4214, output_tokens=661, cost=0.017145
+2026-10-16 19:16:15.395 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-16 19:47:04.256 | DEBUG    | Result of dispatch_intent: ('Step 15/16 : RUN source /opt/miniconda3/etc/profile.d/conda.sh &&     conda activate testbed &&     pip install --upgrade pip &&     pip install cython scipy numpy pandas statsmodels sympy scikit-learn networkx &&     pip install matplotlib pydot pygraphviz &&     pip install sphinx seaborn cdt nbconvert nbsphinx IPython &&     pip install -e .\n ---> Running in 1d87343adeef\nRequirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (22.1.2)\nCollecting pip\n  Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 2.7 MB/s eta 0:00:00\nInstalling collected packages: pip\n  Attempting uninstall: pip\n    Found existing installation: pip 22.1.2\n    Uninstalling pip-22.1.2:\n      Successfully uninstalled pip-22.1.2\nSuccessfully installed pip-26.0.1\nWARNING: Running pip as the \'root\' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv\nCollecting cython\n  Downloading cython-3.3.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (28 kB)\nCollecting scipy\n  Downloading scipy-1.13.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)\nCollecting numpy\n  Downloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)\nCollecting pandas\n  Downloading pandas-2.3.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)\nCollecting statsmodels\n  Downloading statsmodels-0.14.6-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)\nCollecting sympy\n  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)\nCollecting scikit-learn\n  Downloading scikit_learn-1.6.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)\nCollecting networkx\n  Downloading networkx-3.2.1-py3-none-any.whl.metadata (5.2 kB)\nCollecting python-dateutil>=2.8.2 (from pandas)\n  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)\nCollecting pytz>=2020.1 (from pandas)\n  Downloading pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)\nCollecting tzdata>=2022.7 (from pandas)\n  Downloading tzdata-2026.5-py2.py3-none-any.whl.metadata (1.4 kB)\nCollecting patsy>=0.5.6 (from statsmodels)\n  Downloading patsy-1.0.3-py2.py3-none-any.whl.metadata (3.7 kB)\nCollecting packaging>=21.3 (from statsmodels)\n  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)\nCollecting mpmath<1.4,>=1.1.0 (from sympy)\n  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)\nCollecting joblib>=1.2.0 (from scikit-learn)\n  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)\nCollecting threadpoolctl>=3.1.0 (from scikit-learn)\n  Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)\nCollecting six>=1.5 (from python-dateutil>=2.8.2->pandas)\n  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)\nDownloading cython-3.3.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.5 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 4.8 MB/s  0:00:00\nDownloading scipy-1.13.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (38.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 38.6/38.6 MB 6.5 MB/s  0:00:05\nDownloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 MB 5.9 MB/s  0:00:03\nDownloading pandas-2.3.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 6.6 MB/s  0:00:01\nDownloading statsmodels-0.14.6-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (10.4 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 6.7 MB/s  0:00:01\nDownloading sympy-1.14.0-py3-none-any.whl (6.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 5.4 MB/s  0:00:01\nDownloading mpmath-1.3.0-py3-none-any.whl (536 kB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 1.3 MB/s  0:00:00\nDownloading scikit_learn-1.6.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.5 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 6.4 MB/s  0:00:02\nDownloading networkx-3.2.1-py3-none-any.whl (1.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 4.4 MB/s  0:00:00\nDownloading joblib-1.5.3-py3-none-any.whl (309 kB)\nDownloading packaging-26.3-py3-none-any.whl (129 kB)\nDownloading patsy-1.0.3-py2.py3-none-any.whl (233 kB)\nDownloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)\nDownloading pytz-2026.5-py2.py3-none-any.whl (506 kB)\nDownloading six-1.17.0-py2.py3-none-any.whl (11 kB)\nDownloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)\nDownloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)\nInstalling collected packages: pytz, mpmath, tzdata, threadpoolctl, sympy, six, packaging, numpy, networkx, joblib, cython, scipy, python-dateutil, patsy, scikit-learn, pandas, statsmodels\nSuccessfully installed cython-3.3.0 joblib-1.5.3 mpmath-1.3.0 networkx-3.2.1 numpy-2.0.2 packaging-26.3 pandas-2.3.3 patsy-1.0.3 python-dateutil-2.9.0.post0 pytz-2026.5 scikit-learn-1.6.1 scipy-1.13.1 six-1.17.0 statsmodels-0.14.6 sympy-1.14.0 threadpoolctl-3.7.0 tzdata-2026.5\nWARNING: Running pip as the \'root\' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\nCollecting matplotlib\n  Downloading matplotlib-3.9.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)\nCollecting pydot\n  Downloading pydot-4.0.1-py3-none-any.whl.metadata (11 kB)\nCollecting pygraphviz\n  Downloading pygraphviz-1.11.zip (120 kB)\n  Installing build dependencies: started\n  Installing build dependencies: finished with status \'done\'\n  Getting requirements to build wheel: started\n  Getting requirements to build wheel: finished with status \'done\'\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status \'done\'\nCollecting contourpy>=1.0.1 (from matplotlib)\n  Downloading contourpy-1.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.4 kB)\nCollecting cycler>=0.10 (from matplotlib)\n  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)\nCollecting fonttools>=4.22.0 (from matplotlib)\n  Downloading fonttools-4.60.2-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (113 kB)\nCollecting kiwisolver>=1.3.1 (from matplotlib)\n  Downloading kiwisolver-1.4.7-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (6.3 kB)\nRequirement already satisfied: numpy>=1.23 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib) (2.0.2)\nRequirement already satisfied: packaging>=20.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib) (26.3)\nCollecting pillow>=8 (from matplotlib)\n  Downloading pillow-11.3.0-cp39-cp39-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.0 kB)\nCollecting pyparsing>=2.3.1 (from matplotlib)\n  Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)\nRequirement already satisfied: python-dateutil>=2.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib) (2.9.0.post0)\nCollecting importlib-resources>=3.2.0 (from matplotlib)\n  Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)\nCollecting zipp>=3.1.0 (from importlib-resources>=3.2.0->matplotlib)\n  Downloading zipp-3.23.1-py3-none-any.whl.metadata (3.6 kB)\nRequirement already satisfied: six>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib) (1.17.0)\nDownloading matplotlib-3.9.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 6.5 MB/s  0:00:01\nDownloading pydot-4.0.1-py3-none-any.whl (37 kB)\nDownloading contourpy-1.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (321 kB)\nDownloading cycler-0.12.1-py3-none-any.whl (8.3 kB)\nDownloading fonttools-4.60.2-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.8 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 8.6 MB/s  0:00:00\nDownloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)\nDownloading kiwisolver-1.4.7-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 6.8 MB/s  0:00:00\nDownloading pillow-11.3.0-cp39-cp39-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 5.0 MB/s  0:00:01\nDownloading pyparsing-3.3.3-py3-none-any.whl (126 kB)\nDownloading zipp-3.23.1-py3-none-any.whl (10 kB)\nBuilding wheels for collected packages: pygraphviz\n  Building wheel for pygraphviz (pyproject.toml): started\n  Building wheel for pygraphviz (pyproject.toml): finished with status \'done\'\n  Created wheel for pygraphviz: filename=pygraphviz-1.11-cp39-cp39-linux_x86_64.whl size=104812 sha256=312ae5091b0fa80b5e39166951e24a8daaa8bb1aa4df96f8482e911e29247b95\n  Stored in directory: /root/.cache/pip/wheels/2a/15/84/0cfa4492795c389d89e0c3101f6d42e6201a66869a9c8b576e\nSuccessfully built pygraphviz\nInstalling collected packages: zipp, pyparsing, pygraphviz, pillow, kiwisolver, fonttools, cycler, contourpy, pydot, importlib-resources, matplotlib\nSuccessfully installed contourpy-1.3.0 cycler-0.12.1 fonttools-4.60.2 importlib-resources-6.5.2 kiwisolver-1.4.7 matplotlib-3.9.4 pillow-11.3.0 pydot-4.0.1 pygraphviz-1.11 pyparsing-3.3.3 zipp-3.23.1\nWARNING: Running pip as the \'root\' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\nCollecting sphinx\n  Downloading sphinx-7.4.7-py3-none-any.whl.metadata (6.1 kB)\nCollecting seaborn\n  Downloading seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)\nCollecting cdt\n  Downloading cdt-0.6.0-py3-none-any.whl.metadata (693 bytes)\nCollecting nbconvert\n  Downloading nbconvert-7.17.2-py3-none-any.whl.metadata (8.4 kB)\nCollecting nbsphinx\n  Downloading nbsphinx-0.9.8-py3-none-any.whl.metadata (2.1 kB)\nCollecting IPython\n  Downloading ipython-8.18.1-py3-none-any.whl.metadata (6.0 kB)\nCollecting sphinxcontrib-applehelp (from sphinx)\n  Downloading sphinxcontrib_applehelp-2.0.0-py3-none-any.whl.metadata (2.3 kB)\nCollecting sphinxcontrib-devhelp (from sphinx)\n  Downloading sphinxcontrib_devhelp-2.0.0-py3-none-any.whl.metadata (2.3 kB)\nCollecting sphinxcontrib-jsmath (from sphinx)\n  Downloading sphinxcontrib_jsmath-1.0.1-py2.py3-none-any.whl.metadata (1.4 kB)\nCollecting sphinxcontrib-htmlhelp>=2.0.0 (from sphinx)\n  Downloading sphinxcontrib_htmlhelp-2.1.0-py3-none-any.whl.metadata (2.3 kB)\nCollecting sphinxcontrib-serializinghtml>=1.1.9 (from sphinx)\n  Downloading sphinxcontrib_serializinghtml-2.0.0-py3-none-any.whl.metadata (2.4 kB)\nCollecting sphinxcontrib-qthelp (from sphinx)\n  Downloading sphinxcontrib_qthelp-2.0.0-py3-none-any.whl.metadata (2.3 kB)\nCollecting Jinja2>=3.1 (from sphinx)\n  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)\nCollecting Pygments>=2.17 (from sphinx)\n  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)\nCollecting docutils<0.22,>=0.20 (from sphinx)\n  Downloading docutils-0.21.2-py3-none-any.whl.metadata (2.8 kB)\nCollecting snowballstemmer>=2.2 (from sphinx)\n  Downloading snowballstemmer-3.1.1-py3-none-any.whl.metadata (7.9 kB)\nCollecting babel>=2.13 (from sphinx)\n  Downloading babel-2.18.0-py3-none-any.whl.metadata (2.2 kB)\nCollecting alabaster~=0.7.14 (from sphinx)\n  Downloading alabaster-0.7.16-py3-none-any.whl.metadata (2.9 kB)\nCollecting imagesize>=1.3 (from sphinx)\n  Downloading imagesize-1.5.0-py2.py3-none-any.whl.metadata (1.6 kB)\nCollecting requests>=2.30.0 (from sphinx)\n  Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)\nRequirement already satisfied: packaging>=23.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from sphinx) (26.3)\nCollecting importlib-metadata>=6.0 (from sphinx)\n  Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)\nCollecting tomli>=2 (from sphinx)\n  Downloading tomli-2.5.0-py3-none-any.whl.metadata (10 kB)\nRequirement already satisfied: numpy!=1.24.0,>=1.20 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn) (2.0.2)\nRequirement already satisfied: pandas>=1.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn) (2.3.3)\nRequirement already satisfied: matplotlib!=3.6.1,>=3.4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from seaborn) (3.9.4)\nRequirement already satisfied: scipy in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cdt) (1.13.1)\nRequirement already satisfied: scikit-learn in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cdt) (1.6.1)\nRequirement already satisfied: joblib in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cdt) (1.5.3)\nRequirement already satisfied: statsmodels in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cdt) (0.14.6)\nRequirement already satisfied: networkx in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cdt) (3.2.1)\nCollecting skrebate (from cdt)\n  Downloading skrebate-0.8.4-py3-none-any.whl.metadata (14 kB)\nCollecting tqdm (from cdt)\n  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)\nCollecting GPUtil (from cdt)\n  Downloading GPUtil-1.4.0.tar.gz (5.5 kB)\n  Installing build dependencies: started\n  Installing build dependencies: finished with status \'done\'\n  Getting requirements to build wheel: started\n  Getting requirements to build wheel: finished with status \'done\'\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status \'done\'\nCollecting beautifulsoup4 (from nbconvert)\n  Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)\nCollecting bleach!=5.0.0 (from bleach[css]!=5.0.0->nbconvert)\n  Downloading bleach-6.2.0-py3-none-any.whl.metadata (30 kB)\nCollecting defusedxml (from nbconvert)\n  Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)\nCollecting jupyter-core>=4.7 (from nbconvert)\n  Downloading jupyter_core-5.8.1-py3-none-any.whl.metadata (1.6 kB)\nCollecting jupyterlab-pygments (from nbconvert)\n  Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl.metadata (4.4 kB)\nCollecting markupsafe>=2.0 (from nbconvert)\n  Downloading markupsafe-3.0.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nCollecting mistune<4,>=2.0.3 (from nbconvert)\n  Downloading mistune-3.3.4-py3-none-any.whl.metadata (1.9 kB)\nCollecting nbclient>=0.5.0 (from nbconvert)\n  Downloading nbclient-0.10.2-py3-none-any.whl.metadata (8.3 kB)\nCollecting nbformat>=5.7 (from nbconvert)\n  Downloading nbformat-5.10.4-py3-none-any.whl.metadata (3.6 kB)\nCollecting pandocfilters>=1.4.1 (from nbconvert)\n  Downloading pandocfilters-1.5.1-py2.py3-none-any.whl.metadata (9.0 kB)\nCollecting traitlets>=5.1 (from nbconvert)\n  Downloading traitlets-5.15.1-py3-none-any.whl.metadata (10 kB)\nCollecting typing-extensions (from mistune<4,>=2.0.3->nbconvert)\n  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\nCollecting decorator (from IPython)\n  Downloading decorator-5.3.1-py3-none-any.whl.metadata (3.9 kB)\nCollecting jedi>=0.16 (from IPython)\n  Downloading jedi-0.19.2-py2.py3-none-any.whl.metadata (22 kB)\nCollecting matplotlib-inline (from IPython)\n  Downloading matplotlib_inline-0.2.2-py3-none-any.whl.metadata (2.4 kB)\nCollecting prompt-toolkit<3.1.0,>=3.0.41 (from IPython)\n  Downloading prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)\nCollecting stack-data (from IPython)\n  Downloading stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)\nCollecting exceptiongroup (from IPython)\n  Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)\nCollecting pexpect>4.3 (from IPython)\n  Downloading pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)\nCollecting wcwidth (from prompt-toolkit<3.1.0,>=3.0.41->IPython)\n  Downloading wcwidth-0.9.2-py3-none-any.whl.metadata (23 kB)\nCollecting webencodings (from bleach!=5.0.0->bleach[css]!=5.0.0->nbconvert)\n  Downloading webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)\nCollecting tinycss2<1.5,>=1.1.0 (from bleach[css]!=5.0.0->nbconvert)\n  Downloading tinycss2-1.4.0-py3-none-any.whl.metadata (3.0 kB)\nRequirement already satisfied: zipp>=3.20 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from importlib-metadata>=6.0->sphinx) (3.23.1)\nCollecting parso<0.9.0,>=0.8.4 (from jedi>=0.16->IPython)\n  Downloading parso-0.8.7-py2.py3-none-any.whl.metadata (8.2 kB)\nCollecting platformdirs>=2.5 (from jupyter-core>=4.7->nbconvert)\n  Downloading platformdirs-4.4.0-py3-none-any.whl.metadata (12 kB)\nRequirement already satisfied: contourpy>=1.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.3.0)\nRequirement already satisfied: cycler>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (0.12.1)\nRequirement already satisfied: fonttools>=4.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (4.60.2)\nRequirement already satisfied: kiwisolver>=1.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.4.7)\nRequirement already satisfied: pillow>=8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (11.3.0)\nRequirement already satisfied: pyparsing>=2.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (3.3.3)\nRequirement already satisfied: python-dateutil>=2.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (2.9.0.post0)\nRequirement already satisfied: importlib-resources>=3.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (6.5.2)\nCollecting jupyter-client>=6.1.12 (from nbclient>=0.5.0->nbconvert)\n  Downloading jupyter_client-8.6.3-py3-none-any.whl.metadata (8.3 kB)\nCollecting pyzmq>=23.0 (from jupyter-client>=6.1.12->nbclient>=0.5.0->nbconvert)\n  Downloading pyzmq-27.2.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)\nCollecting tornado>=6.2 (from jupyter-client>=6.1.12->nbclient>=0.5.0->nbconvert)\n  Downloading tornado-6.5.10-cp39-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (2.8 kB)\nCollecting fastjsonschema>=2.15 (from nbformat>=5.7->nbconvert)\n  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by \'ReadTimeoutError("HTTPSConnectionPool(host=\'files.pythonhosted.org\', port=443): Read timed out. (read timeout=15)")\': /packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl.metadata\n  WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by \'NewConnectionError(\'<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f9376181310>: Failed to establish a new connection: [Errno 101] Network is unreachable\')\': /packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl.metadata\n  WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by \'NewConnectionError(\'<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f93761814c0>: Failed to establish a new connection: [Errno 101] Network is unreachable\')\': /packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl.metadata\n  WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by \'NewConnectionError(\'<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f9376181670>: Failed to establish a new connection: [Errno 101] Network is unreachable\')\': /packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl.metadata\n  WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by \'NewConnectionError(\'<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f9376181820>: Failed to establish a new connection: [Errno 101] Network is unreachable\')\': /packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl.metadata\nERROR: Could not install packages due to an OSError: HTTPSConnectionPool(host=\'files.pythonhosted.org\', port=443): Max retries exceeded with url: /packages/cb/a8/20d0723294217e47de6d9e2e40fd4a9d2f7c4b6ef974babd482a59743694/fastjsonschema-2.21.2-py3-none-any.whl.metadata (Caused by NewConnectionError(\'<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f93761819d0>: Failed to establish a new connection: [Errno 101] Network is unreachable\'))\n ---> Removed intermediate container 1d87343adeef\nError: The command \'/bin/bash -c source /opt/miniconda3/etc/profile.d/conda.sh &&     conda activate testbed &&     pip install --upgrade pip &&     pip install cython scipy numpy pandas statsmodels sympy scikit-learn networkx &&     pip install matplotlib pydot pygraphviz &&     pip install sphinx seaborn cdt nbconvert nbsphinx IPython &&     pip install -e .\' returned a non-zero code: 1', 'Failed to build Docker image.', False)
+2026-10-16 19:47:04.260 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-16 19:47:11.933 | INFO     | Model API request cost info: input_tokens=9771, output_tokens=253, cost=0.026958
+2026-10-16 19:47:11.935 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile encountered an error during the environment setup when it attempted to run the command `pip install ...` for installing dependencies. The issue is due to network connectivity problems, as seen in the error message: `ERROR: Could not install packages due to an OSError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Max retries exceeded with url: ... (Caused by NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x...>: Failed to establish a new connection: [Errno 101] Network is unreachable'))`. This indicates that the environment within the Docker container lacks access to the internet. This needs to be resolved by ensuring internet connectivity in the Docker build process. For example, you can try adding HTTP proxy support if your network requires it or verify that the host system allows network access during Docker builds. Additionally, avoid running `pip install` commands in the Dockerfile to prevent such failures during the image build process and instead install them in the eval script.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-16 19:47:11.935 | DEBUG    | Extracted a valid json
+2026-10-16 19:47:11.936 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-16 19:47:11.942 | INFO     | Task dowhy completed successfully.

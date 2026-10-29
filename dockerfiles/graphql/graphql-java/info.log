@@ -1,0 +1,2330 @@
+2026-10-15 17:28:43.125 | INFO     | Model API request cost info: input_tokens=1318, output_tokens=261, cost=0.005905
+2026-10-15 17:28:43.131 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:28:46.261 | INFO     | Model API request cost info: input_tokens=859, output_tokens=86, cost=0.003008
+2026-10-15 17:28:46.262 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('README.md')",
+        "browse_file_for_environment_info('build.gradle')",
+        "browse_file_for_environment_info('gradle.properties')",
+        "search_files_by_keyword('java')",
+        "browse_file_for_environment_info('CONTRIBUTING.md')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-15 17:28:46.262 | DEBUG    | Extracted a valid json
+2026-10-15 17:28:46.268 | DEBUG    | Result of dispatch_intent: ("Found 765 files containing the keyword 'java'. Showing the first 50:\n\n- graphql-java-code-style.xml\n- performance-results-page/src/main/java/graphql/performance/page/Main.java\n- performance-results-page/src/main/java/graphql/performance/page/model/BenchmarkSeries.java\n- performance-results-page/src/main/java/graphql/performance/page/model/BenchmarkResult.java\n- performance-results-page/src/main/java/graphql/performance/page/model/ResultFile.java\n- performance-results-page/src/main/java/graphql/performance/page/model/PrimaryMetric.java\n- performance-results-page/src/main/java/graphql/performance/page/generator/HtmlGenerator.java\n- performance-results-page/src/main/java/graphql/performance/page/parser/ResultFileParser.java\n- performance-results-page/src/main/java/graphql/performance/page/analyzer/BenchmarkAnalyzer.java\n- src/test/java/HelloWorld.java\n- src/test/java/graphql/schema/scalars/JsonScalar.java\n- src/test/java/graphql/schema/scalars/ObjectScalar.java\n- src/test/java/reproductions/SubscriptionReproduction.java\n- src/test/compiler/graphql/execution/ShadedJarConsumer.java\n- src/test/groovy/readme/SchemaTransformExamples.java\n- src/test/groovy/readme/SubscriptionExamples.java\n- src/test/groovy/readme/MappingExamples.java\n- src/test/groovy/readme/FieldSelectionExamples.java\n- src/test/groovy/readme/InstrumentationExamples.java\n- src/test/groovy/readme/ReadmeExamples.java\n- src/test/groovy/readme/ScalarExamples.java\n- src/test/groovy/readme/DirectivesExamples.java\n- src/test/groovy/readme/DataLoaderBatchingExamples.java\n- src/test/groovy/readme/ConcernsExamples.java\n- src/test/groovy/readme/ExecutionExamples.java\n- src/test/groovy/readme/DataFetchingExamples.java\n- src/test/groovy/readme/IncrementalExamples.java\n- src/test/groovy/graphql/MutationSchema.java\n- src/test/groovy/graphql/RelaySchema.java\n- src/test/groovy/graphql/ScalarsQuerySchema.java\n- src/test/groovy/graphql/GarfieldSchema.java\n- src/test/groovy/graphql/NestedInputSchema.java\n- src/test/groovy/graphql/StarWarsSchema.java\n- src/test/groovy/graphql/TypeReferenceSchema.java\n- src/test/groovy/graphql/HelloWorld.java\n- src/test/groovy/graphql/validation/SpecValidationSchemaPojos.java\n- src/test/groovy/graphql/validation/Harness.java\n- src/test/groovy/graphql/validation/SpecValidationSchema.java\n- src/test/groovy/graphql/execution/BreadthFirstExecutionTestStrategy.java\n- src/test/groovy/graphql/execution/BreadthFirstTestStrategy.java\n- src/test/groovy/graphql/execution/reactive/tck/CompletionStageMappingPublisherRandomCompleteTckVerificationTest.java\n- src/test/groovy/graphql/execution/reactive/tck/CompletionStageMappingOrderedPublisherRandomCompleteTckVerificationTest.java\n- src/test/groovy/graphql/execution/reactive/tck/SingleSubscriberPublisherTckVerificationTest.java\n- src/test/groovy/graphql/execution/reactive/tck/CompletionStageMappingOrderedPublisherTckVerificationTest.java\n- src/test/groovy/graphql/execution/reactive/tck/CompletionStageMappingPublisherTckVerificationTest.java\n- src/test/groovy/graphql/execution/pubsub/CapturingSubscriber.java\n- src/test/groovy/graphql/execution/pubsub/CapturingSubscription.java\n- src/test/groovy/graphql/execution/pubsub/CommonMessagePublisher.java\n- src/test/groovy/graphql/execution/pubsub/FlowMessagePublisher.java\n- src/test/groovy/graphql/execution/pubsub/ReactiveStreamsObjectPublisher.java", 'File search completed successfully', True)
+2026-10-15 17:28:58.363 | INFO     | Model API request cost info: input_tokens=2774, output_tokens=465, cost=0.011585
+2026-10-15 17:28:58.371 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:29:00.695 | INFO     | Model API request cost info: input_tokens=1063, output_tokens=123, cost=0.003888
+2026-10-15 17:29:00.696 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('README.md', 'How to set up the project environment and run tests')",
+        "browse_file_for_environment_info('CONTRIBUTING.md', 'Are there any setup or test execution instructions?')",
+        "browse_file_for_environment_info('build.gradle', 'What dependencies and Java version are required?')",
+        "browse_file_for_environment_info('gradle.properties', 'Are there any Gradle-specific settings or Java version requirements?')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-15 17:29:00.697 | DEBUG    | Extracted a valid json
+2026-10-15 17:29:00.699 | INFO     | entering browse
+2026-10-15 17:29:00.700 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/README.md ===
+# GraphQL Java
+
+Discuss and ask questions in our Discussions: https://github.com/graphql-java/graphql-java/discussions
+
+This is a [GraphQL](https://github.com/graphql/graphql-spec) Java implementation.
+
+Latest build in Maven central: https://repo1.maven.org/maven2/com/graphql-java/graphql-java/
+
+[![Build](https://github.com/graphql-java/graphql-java/actions/workflows/master.yml/badge.svg)](https://github.com/graphql-java/graphql-java/actions/workflows/master.yml)
+[![Latest Release](https://img.shields.io/maven-central/v/com.graphql-java/graphql-java?versionPrefix=24.)](https://maven-badges.herokuapp.com/maven-central/com.graphql-java/graphql-java/)
+[![Latest Snapshot](https://img.shields.io/maven-central/v/com.graphql-java/graphql-java?label=maven-central%20snapshot&versionPrefix=0)](https://maven-badges.herokuapp.com/maven-central/com.graphql-java/graphql-java/)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-green)](https://github.com/graphql-java/graphql-java/blob/master/LICENSE.md)
+
+### Documentation
+
+See our tutorial for beginners: [Getting started with GraphQL Java and Spring Boot](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/)
+
+For further details, please see the documentation: https://www.graphql-java.com/documentation/getting-started
+
+We (the maintainers) have written a book — [GraphQL with Java and Spring](https://leanpub.com/graphql-java) — covering everything you need to build a production-ready GraphQL service. Available on [Leanpub](https://leanpub.com/graphql-java) and [Amazon](https://www.amazon.com/GraphQL-Java-Spring-Andreas-Marek-ebook/dp/B0C96ZYWPF/).
+
+Please take a look at our [list of releases](https://github.com/graphql-java/graphql-java/releases) if you want to learn more about new releases and the changelog.
+
+## Federation
+
+GraphQL Java is the foundation for building GraphQL services on the JVM. For 
+teams adopting GraphQL Federation, [feddi](https://feddi.dev?utm_source=github_graphql_java&utm_medium=readme&utm_campaign=site_referral&utm_content=federation_feddi) is the first 
+JVM-native GraphQL federation gateway and platform built on GraphQL Java, 
+implementing the [GraphQL Composite Schemas Specification](https://graphql.github.io/composite-schemas-spec/draft/).
+
+The open-source gateway — [feddi-gateway](https://github.com/feddi-dev/feddi-gateway) 
+— runs as a standalone federation gateway inside existing Java and Spring GraphQL 
+environments.
+
+feddi is developed independently from GraphQL Java.
+
+### Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing to this project (commenting or opening PR/Issues etc) you are agreeing to follow this conduct, so please
+take the time to read it.
+
+### License
+
+Copyright (c) 2015, Andreas Marek and [Contributors](https://github.com/graphql-java/graphql-java/graphs/contributors)
+
+### Powered by
+[![IntelliJ IDEA logo](https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA.svg)](https://jb.gg/OpenSourceSupport)
+
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/README.md ===
+2026-10-15 17:29:00.700 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:29:04.207 | INFO     | Model API request cost info: input_tokens=1254, output_tokens=167, cost=0.004805
+2026-10-15 17:29:04.209 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:29:04.209 | INFO     | ******
+2026-10-15 17:29:04.209 | INFO     | [Key Information from README.md]
+- No concrete information about project setup or test execution is provided in this README file.
+- Suggested resources:
+  - Documentation: [https://www.graphql-java.com/documentation/getting-started](https://www.graphql-java.com/documentation/getting-started).
+  - Tutorial: [Getting started with GraphQL Java and Spring Boot](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/).
+  - Latest build information and dependencies: [Maven Central](https://repo1.maven.org/maven2/com/graphql-java/graphql-java/).
+
+Practical suggestions:
+- Explore linked resources for environment setup details.
+- Check if testing instructions are provided elsewhere, e.g., other files within the project repository.
+[/Key Information]
+2026-10-15 17:29:04.209 | INFO     | ******
+2026-10-15 17:29:04.209 | DEBUG    | Result of dispatch_intent: ('[Key Information from README.md]\n- No concrete information about project setup or test execution is provided in this README file.\n- Suggested resources:\n  - Documentation: [https://www.graphql-java.com/documentation/getting-started](https://www.graphql-java.com/documentation/getting-started).\n  - Tutorial: [Getting started with GraphQL Java and Spring Boot](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/).\n  - Latest build information and dependencies: [Maven Central](https://repo1.maven.org/maven2/com/graphql-java/graphql-java/).\n\nPractical suggestions:\n- Explore linked resources for environment setup details.\n- Check if testing instructions are provided elsewhere, e.g., other files within the project repository.\n[/Key Information]', 'Get File Info', True)
+2026-10-15 17:29:04.209 | INFO     | entering browse
+2026-10-15 17:29:04.210 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/CONTRIBUTING.md ===
+Thanks for contributing to graphql-java!
+
+
+Please be sure that you read the [Code of Conduct](CODE_OF_CONDUCT.md) before contributing to this project and please
+create a new Issue and discuss first what you are planning to do for larger changes.
+
+
+The overall goal of graphql-java is to have a correct implementation of the [GraphQL Spec](https://github.com/facebook/graphql/) in a production ready way.
+
+In order to achieve that we have a strong focus on maintainability and high test coverage:
+
+- We expect new or modified unit test for every change (written in [Spock](https://spockframework.org/)).
+
+- Your code should be formatted with our IntelliJ [graphql-java-code-style](graphql-java-code-style.xml).
+
+- We don't add a new dependency to graphql-java: dependency conflicts will make adaption of graphql-java harder for users,
+therefore we avoid adding any new dependency.
+
+- graphql-java has a strict focus on executing a GraphQL request, this means JSON parsing, http communication, databases
+access etc is out of scope.
+
+
+## File Validation
+
+This repository enforces file compatibility and size standards through both local Git hooks and CI checks.
+
+### Local Git Hooks
+
+To install the pre-commit hook locally, run:
+
+```bash
+./scripts/setup-hooks.sh
+```
+
+The pre-commit hook will automatically check for:
+
+- **Windows-incompatible filenames**: Files with characters that are reserved on Windows (< > : " | ? * \) will be rejected. This ensures the repository can be cloned on Windows systems.
+
+- **Large files**: Files larger than 10MB will be rejected. If you need to commit large files, consider:
+  - Splitting them into smaller parts (`.part1`, `.part2`, etc.)
+  - Reducing the file size
+
+- **Dangerous Unicode characters**: Files containing invisible or rendering-altering Unicode characters will be rejected. This protects against [Trojan Source](https://trojansource.codes/) (BiDi override) and glassworm-style attacks. Blocked character categories include C0/C1 control characters, zero-width characters, and BiDi overrides.
+
+To bypass the hooks temporarily (not recommended), use `git commit --no-verify`.
+
+### CI Validation
+
+The same checks are also enforced by the "Validate Files" GitHub Action on all pull requests and pushes. This ensures that even if the local hook is bypassed, incompatible files will be caught during CI.
+
+
+If you have any question please consider asking in our [Discussions](https://github.com/graphql-java/graphql-java/discussions). For bug reports or specific code related topics create a new issue.
+
+Thanks!
+
+
+
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/CONTRIBUTING.md ===
+2026-10-15 17:29:04.210 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:29:14.404 | INFO     | Model API request cost info: input_tokens=1088, output_tokens=108, cost=0.003800
+2026-10-15 17:29:14.405 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:29:14.405 | INFO     | ******
+2026-10-15 17:29:14.405 | INFO     | [Key Information from CONTRIBUTING.md]
+- **Setup instructions:**
+  - Install local Git pre-commit hooks:
+    ```bash
+    ./scripts/setup-hooks.sh
+    ```
+
+- **Testing requirements:**
+  - **Framework:** Spock (https://spockframework.org/)
+  - **Expectation:** New or modified unit tests for every code change must be written using Spock.
+
+- **Testing execution instructions:**
+  - No commands for executing tests are explicitly provided.
+[/Key Information]
+2026-10-15 17:29:14.405 | INFO     | ******
+2026-10-15 17:29:14.405 | DEBUG    | Result of dispatch_intent: ('[Key Information from CONTRIBUTING.md]\n- **Setup instructions:**\n  - Install local Git pre-commit hooks:\n    ```bash\n    ./scripts/setup-hooks.sh\n    ```\n\n- **Testing requirements:**\n  - **Framework:** Spock (https://spockframework.org/)\n  - **Expectation:** New or modified unit tests for every code change must be written using Spock.\n\n- **Testing execution instructions:**\n  - No commands for executing tests are explicitly provided.\n[/Key Information]', 'Get File Info', True)
+2026-10-15 17:29:14.406 | INFO     | entering browse
+2026-10-15 17:29:14.406 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/build.gradle ===
+import aQute.bnd.gradle.BundleTaskExtension
+import net.ltgt.gradle.errorprone.CheckSeverity
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+import org.objectweb.asm.ClassReader
+import org.objectweb.asm.ClassWriter
+import org.objectweb.asm.tree.ClassNode
+
+import java.text.SimpleDateFormat
+
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath 'org.ow2.asm:asm:9.10.1'
+        classpath 'org.ow2.asm:asm-tree:9.10.1'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id 'antlr'
+    id 'signing'
+    id "com.gradleup.shadow" version "9.4.2"
+    id "biz.aQute.bnd.builder" version "7.1.0"
+    id "io.github.gradle-nexus.publish-plugin" version "2.0.0"
+    id "groovy"
+    id "me.champeau.jmh" version "0.7.3"
+    id "io.github.reyerizo.gradle.jcstress" version "0.9.0"
+    id "net.ltgt.errorprone" version '5.1.1'
+    id 'jacoco'
+    //
+    // Kotlin just for tests - not production code
+    id 'org.jetbrains.kotlin.jvm' version '2.4.20'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25) // build on 25 - release on 11
+    }
+}
+
+kotlin {
+    compilerOptions {
+        apiVersion = KotlinVersion.KOTLIN_2_0
+        languageVersion = KotlinVersion.KOTLIN_2_0
+        jvmTarget = JvmTarget.JVM_11
+        javaParameters = true
+        freeCompilerArgs = [
+                '-Xemit-jvm-type-annotations',
+                '-Xjspecify-annotations=strict',
+        ]
+    }
+}
+
+def makeDevelopmentVersion(parts) {
+    def version = String.join("-", parts)
+    println "created development version: $version"
+    return version
+}
+
+static private List<List> invisibleAnnotationLists(ClassNode classNode) {
+    def annotationLists = []
+    if (classNode.invisibleAnnotations != null) {
+        annotationLists.add(classNode.invisibleAnnotations)
+    }
+    classNode.fields.each { field ->
+        if (field.invisibleAnnotations != null) {
+            annotationLists.add(field.invisibleAnnotations)
+        }
+    }
+    classNode.methods.each { method ->
+        if (method.invisibleAnnotations != null) {
+            annotationLists.add(method.invisibleAnnotations)
+        }
+        method.invisibleParameterAnnotations?.each { annotations ->
+            if (annotations != null) {
+                annotationLists.add(annotations)
+            }
+        }
+    }
+    classNode.recordComponents?.each { recordComponent ->
+        if (recordComponent.invisibleAnnotations != null) {
+            annotationLists.add(recordComponent.invisibleAnnotations)
+        }
+    }
+    return annotationLists
+}
+
+static private int removeListedInvisibleAnnotations(ClassNode classNode, Set<String> annotationsToRemove) {
+    int removedAnnotationCount = 0
+    invisibleAnnotationLists(classNode).each { annotations ->
+        int originalSize = annotations.size()
+        annotations.removeAll { annotation -> annotationsToRemove.contains(annotation.desc) }
+        removedAnnotationCount += originalSize - annotations.size()
+    }
+
+    classNode.methods.each { method ->
+        if (method.invisibleParameterAnnotations == null) return
+        if (!method.invisibleParameterAnnotations.every { it == null || it.isEmpty() }) return
+
+        method.invisibleParameterAnnotations = null
+        method.invisibleAnnotableParameterCount = 0
+    }
+    return removedAnnotationCount
+}
+
+static private String classEntryForAnnotationDescriptor(String descriptor) {
+    if (!descriptor.startsWith('L') || !descriptor.endsWith(';')) {
+        throw new GradleException("Invalid annotation descriptor: ${descriptor}")
+    }
+    return descriptor.substring(1, descriptor.length() - 1) + '.class'
+}
+
+static private Map<String, Integer> rewriteClassFiles(File directory, Closure<Integer> rewriteClass) {
+    int modifiedClassCount = 0
+    int modificationCount = 0
+
+    directory.eachFileRecurse(groovy.io.FileType.FILES) { file ->
+        if (!file.name.endsWith('.class')) return
+
+        byte[] originalBytes = file.bytes
+        def reader = new ClassReader(originalBytes)
+        def classNode = new ClassNode()
+        reader.accept(classNode, 0)
+
+        int classModificationCount = rewriteClass.call(classNode)
+        if (classModificationCount == 0) return
+
+        def writer = new ClassWriter(reader, 0)
+        classNode.accept(writer)
+        file.bytes = writer.toByteArray()
+        modifiedClassCount++
+        modificationCount += classModificationCount
+    }
+    return [modifiedClassCount: modifiedClassCount, modificationCount: modificationCount]
+}
+
+def getDevelopmentVersion() {
+    def dateTime = new SimpleDateFormat('yyyy-MM-dd\'T\'HH-mm-ss').format(new Date())
+    def gitCheckOutput = new StringBuilder()
+    def gitCheckError = new StringBuilder()
+    def gitCheck = ["git", "-C", projectDir.toString(), "rev-parse", "--is-inside-work-tree"].execute()
+    gitCheck.waitForProcessOutput(gitCheckOutput, gitCheckError)
+    def isGit = gitCheckOutput.toString().trim()
+    if (isGit != "true") {
+        return makeDevelopmentVersion(["0.0.0", dateTime, "no-git"])
+    }
+
+    // a default Github Action env variable set to 'true'
+    def isCi = Boolean.parseBoolean(System.env.CI)
+    if (isCi) {
+        def gitHashOutput = new StringBuilder()
+        def gitHashError = new StringBuilder()
+        def gitShortHash = ["git", "-C", projectDir.toString(), "rev-parse", "--short", "HEAD"].execute()
+        gitShortHash.waitForProcessOutput(gitHashOutput, gitHashError)
+        def gitHash = gitHashOutput.toString().trim()
+        if (gitHash.isEmpty()) {
+            println "git hash is empty: error: ${gitHashError.toString()}"
+            throw new IllegalStateException("git hash could not be determined")
+        }
+
+        return makeDevelopmentVersion(["0.0.0", dateTime, gitHash])
+    }
+
+    def gitRevParseOutput = new StringBuilder()
+    def gitRevParseError = new StringBuilder()
+    def gitRevParse = ["git", "-C", projectDir.toString(), "rev-parse", "--abbrev-ref", "HEAD"].execute()
+    gitRevParse.waitForProcessOutput(gitRevParseOutput, gitRevParseError)
+    def branchName = gitRevParseOutput.toString().trim().replaceAll('[/\\\\]', '-')
+
+    return makeDevelopmentVersion(["0.0.0", branchName, "SNAPSHOT"])
+}
+
+def reactiveStreamsVersion = '1.0.3'
+def releaseVersion = System.env.RELEASE_VERSION
+def antlrVersion = '4.13.2' // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
+def guavaVersion = '32.1.2-jre'
+version = releaseVersion ? releaseVersion : getDevelopmentVersion()
+group = 'com.graphql-java'
+
+def plainJarDir = layout.buildDirectory.dir('intermediates/plain-jar')
+def shadowJarDir = layout.buildDirectory.dir('intermediates/shadow-jar')
+
+gradle.buildFinished { buildResult ->
+    println "*******************************"
+    println "*"
+    if (buildResult.failure != null) {
+        println "* FAILURE - ${buildResult.failure}"
+    } else {
+        println "* SUCCESS"
+    }
+    println "* Version: $version"
+    println "*"
+    println "*******************************"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+jar {
+    // The regular Java JAR is an input to the shading pipeline, not a
+    // publishable artifact. Keep it out of build/libs so it cannot be mistaken
+    // for the final GraphQL Java JAR.
+    archiveClassifier.set('plain')
+    destinationDirectory.set(plainJarDir)
+    from "LICENSE.md"
+    from "src/main/antlr/Graphql.g4"
+    from "src/main/antlr/GraphqlOperation.g4"
+    from "src/main/antlr/GraphqlSDL.g4"
+    from "src/main/antlr/GraphqlCommon.g4"
+    manifest {
+        attributes('Automatic-Module-Name': 'com.graphqljava')
+    }
+}
+
+shadow {
+    // GraphQL Java has additional post-processing after shadowJar. Do not let
+    // Shadow expose its intermediate artifact through the Java component or
+    // add it directly to assemble; buildFinalJar owns both responsibilities.
+    addShadowVariantIntoJavaComponent.set(false)
+    addShadowJarToAssembleLifecycle.set(false)
+
+    // The shadow runtime variant is disabled below because it would expose the
+    // uncleaned intermediate JAR. It therefore has no need for a target JVM
+    // attribute. Disabling this also prevents Shadow's afterEvaluate hook from
+    // trying to mutate that configuration after it has become non-consumable.
+    addTargetJvmVersionAttribute.set(false)
+}
+
+dependencies {
+    api 'com.graphql-java:java-dataloader:6.0.0'
+    api 'org.reactivestreams:reactive-streams:' + reactiveStreamsVersion
+    api "org.jspecify:jspecify:1.0.0"
+
+    implementation 'org.antlr:antlr4-runtime:' + antlrVersion
+    implementation 'com.google.guava:guava:' + guavaVersion
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.14.4'
+
+    testImplementation 'org.spockframework:spock-core:2.4-groovy-5.0'
+    testImplementation 'net.bytebuddy:byte-buddy:1.18.8'
+    testImplementation 'org.objenesis:objenesis:3.5'
+    testImplementation 'org.apache.groovy:groovy:5.1.1'
+    testImplementation 'org.apache.groovy:groovy-json:5.1.1'
+    testImplementation 'com.google.code.gson:gson:2.14.0'
+    testImplementation 'org.eclipse.jetty:jetty-server:11.0.26'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.22.0'
+    testImplementation 'org.awaitility:awaitility-groovy:4.3.0'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+
+    testImplementation 'org.reactivestreams:reactive-streams-tck:' + reactiveStreamsVersion
+    testImplementation "io.reactivex.rxjava2:rxjava:2.2.21"
+    testImplementation "io.projectreactor:reactor-core:3.8.7"
+
+    testImplementation 'org.testng:testng:7.12.0' // use for reactive streams test inheritance
+    testImplementation "com.tngtech.archunit:archunit-junit5:1.5.0"
+    testImplementation 'org.openjdk.jmh:jmh-core:1.37' // required for ArchUnit to check JMH tests
+    
+    // JUnit Platform launcher required for Gradle 9
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.14.4'
+
+    antlr 'org.antlr:antlr4:' + antlrVersion
+
+    // this is needed for the idea jmh plugin to work correctly
+    jmh 'org.openjdk.jmh:jmh-core:1.37'
+    jmh 'org.openjdk.jmh:jmh-generator-annprocess:1.37'
+    jmh 'me.bechberger:ap-loader-all:4.5-13'
+
+    // comment this in if you want to run JMH benchmarks from idea
+//    jmhAnnotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.37'
+
+    errorprone 'com.uber.nullaway:nullaway:0.13.8'
+    errorprone 'com.google.errorprone:error_prone_core:2.50.0'
+
+    // just tests - no Kotlin otherwise
+    testImplementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+}
+
+shadowJar {
+    minimize()
+    // This is deliberately an intermediate artifact. The only unclassified
+    // binary JAR is produced by buildFinalJar after cleanup.
+    archiveClassifier.set('shadow')
+    destinationDirectory.set(shadowJarDir)
+    configurations = [project.configurations.compileClasspath]
+    relocate('com.google.common', 'graphql.com.google.common') {
+        include 'com.google.common.collect.*'
+        include 'com.google.common.base.*'
+        include 'com.google.common.math.*'
+        include 'com.google.common.primitives.*'
+    }
+    relocate('org.antlr.v4.runtime', 'graphql.org.antlr.v4.runtime')
+    dependencies {
+        include(dependency('com.google.guava:guava:' + guavaVersion))
+        include(dependency('org.antlr:antlr4-runtime:' + antlrVersion))
+    }
+    from "LICENSE.md"
+    from "src/main/antlr/Graphql.g4"
+    from "src/main/antlr/GraphqlOperation.g4"
+    from "src/main/antlr/GraphqlSDL.g4"
+    from "src/main/antlr/GraphqlCommon.g4"
+    manifest {
+        attributes('Automatic-Module-Name': 'com.graphqljava')
+    }
+}
+
+// Apply bnd to shadowJar task manually for Gradle 9 compatibility
+tasks.named('shadowJar').configure {
+    // Get the BundleTaskExtension added by bnd plugin
+    def bundle = extensions.findByType(BundleTaskExtension)
+    if (bundle != null) {
+        //Configure bnd for shadowJar
+        // -exportcontents: graphql.*  Adds all packages of graphql and below to the exported packages list
+        // -removeheaders:  Private-Package Removes the MANIFEST.MF header Private-Package, which contains all the internal packages and 
+        //                                  also the repackaged packages like guava, which would be wrong after repackaging.
+        // Import-Package:  Changes the imported packages header, to exclude guava and dependencies from the import list (! excludes packages)
+        //                  Guava was repackaged and included inside the jar, so we need to remove it.
+        //                  ANTLR was shaded, so we need to remove it.
+        //                  sun.misc is a JRE internal-only class that is not directly used by graphql-java. It was causing problems in libraries using graphql-java.
+        //                  The last ,* copies all the existing imports from the other dependencies, which is required.
+        bundle.bnd('''
+-exportcontents: graphql.*
+-removeheaders: Private-Package
+Import-Package: !android.os.*,!com.google.*,!org.checkerframework.*,!graphql.com.google.*,!org.antlr.*,!graphql.org.antlr.*,!sun.misc.*,org.jspecify.annotations;resolution:=optional,*
+''')
+    }
+}
+
+tasks.named('jmhJar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        project.configurations.jmhRuntimeClasspath
+                .filter { it.exists() }
+                .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+jcstress {
+}
+
+tasks.named('jcstress') {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+jmh {
+    if (project.hasProperty('jmhInclude')) {
+        includes = [project.property('jmhInclude')]
+    }
+    if (project.hasProperty('jmhProfilers')) {
+        def profStr = project.property('jmhProfilers') as String
+        if (profStr.startsWith('async')) {
+            // Resolve native lib from ap-loader JAR on the jmh classpath
+            def apJar = configurations.jmh.files.find { it.name.contains('ap-loader') }
+            if (apJar) {
+                def proc = ['java', '-jar', apJar.absolutePath, 'agentpath'].execute()
+                proc.waitFor(10, java.util.concurrent.TimeUnit.SECONDS)
+                def libPath = proc.text.trim()
+                if (libPath && new File(libPath).exists()) {
+                    if (profStr == 'async') {
+                        profilers = ["async:libPath=${libPath}"]
+                    } else {
+                        profilers = [profStr.replaceFirst('async:', "async:libPath=${libPath};")]
+                    }
+                } else {
+                    profilers = [profStr]
+                }
+            } else {
+                profilers = [profStr]
+            }
+        } else {
+            profilers = [profStr]
+        }
+    }
+    if (project.hasProperty('jmhFork')) {
+        fork = project.property('jmhFork') as int
+    }
+    if (project.hasProperty('jmhIterations')) {
+        iterations = project.property('jmhIterations') as int
+    }
+    if (project.hasProperty('jmhWarmupIterations')) {
+        warmupIterations = project.property('jmhWarmupIterations') as int
+    }
+}
+
+
+def extractedShadowJarDir = layout.buildDirectory.dir('intermediates/shadow-jar-extracted')
+def annotationCleanedShadowJarDir = layout.buildDirectory.dir('intermediates/annotation-cleaned')
+
+// External CLASS-retention annotations referenced by shaded classes. Keep this
+// list explicit so GraphQL Java's own invisible annotations remain untouched.
+def annotationsToRemoveFromShadedJar = [
+        'Lcom/google/common/annotations/Beta;',
+        'Lcom/google/common/annotations/GwtCompatible;',
+        'Lcom/google/common/annotations/GwtIncompatible;',
+        'Lcom/google/common/annotations/J2ktIncompatible;',
+        'Lcom/google/common/annotations/VisibleForTesting;',
+        'Lcom/google/errorprone/annotations/CanIgnoreReturnValue;',
+        'Lcom/google/errorprone/annotations/CompatibleWith;',
+        'Lcom/google/errorprone/annotations/DoNotCall;',
+        'Lcom/google/errorprone/annotations/ForOverride;',
+        'Lcom/google/errorprone/annotations/InlineMe;',
+        'Lcom/google/errorprone/annotations/InlineMeValidationDisabled;',
+        'Lcom/google/errorprone/annotations/concurrent/GuardedBy;',
+        'Lcom/google/j2objc/annotations/RetainedWith;',
+        'Lcom/google/j2objc/annotations/Weak;',
+        'Ljavax/annotation/meta/TypeQualifierNickname;',
+] as Set<String>
+
+/**
+ * Expands the shaded JAR into a clean working directory and removes any
+ * unrelocated dependency classes that remain under {@code com/**}.
+ *
+ * The annotation cleanup must consume this output rather than the regular
+ * {@code jar} output because dependency classes only exist after shadowing.
+ */
+task extractWithoutGuava(type: Sync) {
+    description = 'Extract the shaded jar without unrelocated dependency classes'
+    from({ zipTree(tasks.named('shadowJar').get().archiveFile) }) {
+        exclude('/com/**')
+    }
+    into extractedShadowJarDir
+}
+
+extractWithoutGuava.dependsOn shadowJar
+
+/**
+ * Copies the extracted shaded JAR into a separate output directory and uses
+ * ASM to remove the explicitly configured annotations from declaration-level
+ * {@code RuntimeInvisibleAnnotations} and
+ * {@code RuntimeInvisibleParameterAnnotations} attributes.
+ *
+ * Other invisible annotations, runtime-visible annotations, and invisible
+ * type annotations are deliberately preserved.
+ */
+tasks.register('cleanShadedClassAnnotations', Sync) {
+    description = 'Remove selected invisible annotations from shaded class files'
+    dependsOn extractWithoutGuava
+
+    from extractedShadowJarDir
+    into annotationCleanedShadowJarDir
+    inputs.property('annotationsToRemove', annotationsToRemoveFromShadedJar.toList().sort())
+
+    doLast {
+        def outputDir = annotationCleanedShadowJarDir.get().asFile
+        def result = rewriteClassFiles(outputDir) { classNode ->
+            removeListedInvisibleAnnotations(classNode, annotationsToRemoveFromShadedJar)
+        }
+
+        logger.lifecycle("Removed ${result.modificationCount} invisible annotations; modified ${result.modifiedClassCount} shaded class files")
+    }
+}
+
+/**
+ * Produces the sole unclassified GraphQL Java binary JAR directly from the
+ * annotation-cleaned directory, retaining the manifest produced by Bnd for
+ * the shaded JAR.
+ *
+ * The regular jar and shadowJar tasks write explicitly named intermediates to
+ * build/intermediates. This task alone owns the final build/libs path so Gradle
+ * can accurately track it and no earlier pipeline stage can overwrite it.
+ */
+def buildFinalJar = tasks.register('buildFinalJar', Jar) {
+    group = 'build'
+    description = 'Build the published jar from cleaned shaded class files'
+    dependsOn cleanShadedClassAnnotations
+
+    from(annotationCleanedShadowJarDir) {
+        exclude 'META-INF/MANIFEST.MF'
+    }
+    archiveClassifier.set('')
+    destinationDirectory.set(layout.buildDirectory.dir('libs'))
+    manifest {
+        from annotationCleanedShadowJarDir.map { it.file("META-INF/MANIFEST.MF") }
+    }
+}
+
+assemble.dependsOn buildFinalJar
+
+// The Java component is the source of the main Maven publication. Replace the
+// regular jar artifact on both variants with buildFinalJar so local consumers,
+// project dependencies, signing, and publication all resolve the same cleaned
+// binary. Shadow's optional Java variant is disabled above for the same reason.
+configurations.named('apiElements') {
+    outgoing.artifacts.clear()
+    outgoing.artifact(buildFinalJar)
+}
+configurations.named('runtimeElements') {
+    outgoing.artifacts.clear()
+    outgoing.artifact(buildFinalJar)
+}
+// Shadow creates this configuration independently of its optional Java
+// component variant. Make it non-consumable so dependency resolution cannot
+// select the uncleaned intermediate; shadowJar remains available only as an
+// explicitly invoked internal pipeline task.
+configurations.named('shadowRuntimeElements') {
+    canBeConsumed = false
+}
+
+/**
+ * Scans every class in the completed published JAR with ASM and fails if any
+ * configured annotation remains, or if an invisible annotation references an
+ * annotation class that is not bundled in the JAR. This allows both GraphQL
+ * Java annotations and resolvable relocated dependency annotations. The task
+ * also verifies that {@code graphql.Contract} was preserved by the selective
+ * cleanup.
+ */
+def verifyShadedClassAnnotations = tasks.register('verifyShadedClassAnnotations') {
+    group = 'verification'
+    description = 'Verify invisible annotations are bundled or removed from the published jar'
+    dependsOn buildFinalJar
+
+    def shadedJar = buildFinalJar.flatMap { it.archiveFile }
+    inputs.file(shadedJar)
+    inputs.property('annotationsToRemove', annotationsToRemoveFromShadedJar.toList().sort())
+
+    doLast {
+        def annotationsThatShouldHaveBeenRemoved = []
+        def unresolvableAnnotations = []
+        boolean graphqlContractFound = false
+
+        new java.util.jar.JarFile(shadedJar.get().asFile).withCloseable { jarFile ->
+            jarFile.entries().each { entry ->
+                if (entry.directory || !entry.name.endsWith('.class')) return
+
+                byte[] classBytes = jarFile.getInputStream(entry).withCloseable { it.bytes }
+                def classNode = new ClassNode()
+                new ClassReader(classBytes).accept(classNode, 0)
+
+                invisibleAnnotationLists(classNode).each { annotations ->
+                    annotations.each { annotation ->
+                        if (annotationsToRemoveFromShadedJar.contains(annotation.desc)) {
+                            annotationsThatShouldHaveBeenRemoved.add("${entry.name}: ${annotation.desc}")
+                        } else {
+                            def annotationClassEntry = classEntryForAnnotationDescriptor(annotation.desc)
+                            if (jarFile.getJarEntry(annotationClassEntry) == null) {
+                                unresolvableAnnotations.add("${entry.name}: ${annotation.desc}")
+                            }
+                        }
+                        if (annotation.desc == 'Lgraphql/Contract;') {
+                            graphqlContractFound = true
+                        }
+                    }
+                }
+            }
+        }
+
+        def verificationErrors = []
+        if (!annotationsThatShouldHaveBeenRemoved.isEmpty()) {
+            verificationErrors.add("Found annotations that should have been removed:\n${annotationsThatShouldHaveBeenRemoved.join('\n')}")
+        }
+        if (!unresolvableAnnotations.isEmpty()) {
+            verificationErrors.add("Found invisible annotations whose types are not bundled; add them to annotationsToRemoveFromShadedJar:\n${unresolvableAnnotations.join('\n')}")
+        }
+        if (!graphqlContractFound) {
+            verificationErrors.add('graphql.Contract was removed from the shaded jar')
+        }
+        if (!verificationErrors.isEmpty()) {
+            throw new GradleException(verificationErrors.join('\n\n'))
+        }
+    }
+}
+
+/**
+ * Compiles a small Java 11 consumer against only the completed shaded JAR.
+ * Resolving {@code ExecutionContext.getOperationDirectives()} forces javac to
+ * inspect the shaded ImmutableList signature; {@code -Xlint:classfile -Werror}
+ * turns dangling annotation references into a build failure.
+ */
+def compileShadedJarConsumer = tasks.register('compileShadedJarConsumer', JavaCompile) {
+    group = 'verification'
+    description = 'Compile a consumer against the shaded jar with class-file warnings treated as errors'
+    dependsOn buildFinalJar
+
+    source fileTree('src/test/compiler') {
+        include '**/*.java'
+    }
+    classpath = files(buildFinalJar.flatMap { it.archiveFile })
+    destinationDirectory = layout.buildDirectory.dir('classes/shaded-jar-consumer')
+    options.release = 11
+    options.compilerArgs.addAll(['-Xlint:classfile', '-Werror'])
+}
+
+check.dependsOn verifyShadedClassAnnotations, compileShadedJarConsumer
+
+
+// --- TestNG TCK skip verification ---
+// The Reactive Streams TCK PublisherVerification base class silently converts optional test
+// failures to skips. We verify the exact set of 49 expected skips after each testng run so
+// that a newly-silenced failure (or a newly-passing test) is caught immediately.
+
+def buildExpectedTestngSkips() {
+    def pkg = 'graphql.execution.reactive.tck.'
+    def allClasses = [
+            'CompletionStageMappingOrderedPublisherTckVerificationTest',
+            'CompletionStageMappingOrderedPublisherRandomCompleteTckVerificationTest',
+            'CompletionStageMappingPublisherTckVerificationTest',
+            'CompletionStageMappingPublisherRandomCompleteTckVerificationTest',
+            'SingleSubscriberPublisherTckVerificationTest',
+    ]
+    def multiSubscriberClasses = allClasses - ['SingleSubscriberPublisherTckVerificationTest']
+
+    // 8 methods skipped by all 5 classes (required_spec317 + 7 untested) = 40
+    def commonSkippedMethods = [
+            'required_spec317_mustNotSignalOnErrorWhenPendingAboveLongMaxValue',
+            'untested_spec106_mustConsiderSubscriptionCancelledAfterOnErrorOrOnCompleteHasBeenCalled',
+            'untested_spec107_mustNotEmitFurtherSignalsOnceOnErrorHasBeenSignalled',
+            'untested_spec108_possiblyCanceledSubscriptionShouldNotReceiveOnErrorOrOnCompleteSignals',
+            'untested_spec109_subscribeShouldNotThrowNonFatalThrowable',
+            'untested_spec110_rejectASubscriptionRequestIfTheSameSubscriberSubscribesTwice',
+            'untested_spec304_requestShouldNotPerformHeavyComputations',
+            'untested_spec305_cancelMustNotSynchronouslyPerformHeavyComputation',
+    ]
+
+    // 1 method skipped by 4 multi-subscriber classes = 4
+    def multiSubscriberSkippedMethods = [
+            'stochastic_spec103_mustSignalOnMethodsSequentially',
+    ]
+
+    // 5 methods skipped by SingleSubscriber only = 5
+    def singleSubscriberSkippedMethods = [
+            'optional_spec111_maySupportMultiSubscribe',
+            'optional_spec111_multicast_mustProduceTheSameElementsInTheSameSequenceToAllOfItsSubscribersWhenRequestingManyUpfront',
+            'optional_spec111_multicast_mustProduceTheSameElementsInTheSameSequenceToAllOfItsSubscribersWhenRequestingManyUpfrontAndCompleteAsExpected',
+            'optional_spec111_multicast_mustProduceTheSameElementsInTheSameSequenceToAllOfItsSubscribersWhenRequestingOneByOne',
+            'optional_spec111_registeredSubscribersMustReceiveOnNextOrOnCompleteSignals',
+    ]
+
+    def expected = [] as Set<String>
+    allClasses.each { cls ->
+        commonSkippedMethods.each { method -> expected.add(pkg + cls + '.' + method) }
+    }
+    multiSubscriberClasses.each { cls ->
+        multiSubscriberSkippedMethods.each { method -> expected.add(pkg + cls + '.' + method) }
+    }
+    singleSubscriberSkippedMethods.each { method ->
+        expected.add(pkg + 'SingleSubscriberPublisherTckVerificationTest.' + method)
+    }
+    return expected  // 40 + 4 + 5 = 49
+}
+
+def verifyTestngSkips(Task task, Set<String> expected) {
+    def xmlDir = task.reports.junitXml.outputLocation.asFile.get()
+    def actualSkips = [] as Set<String>
+    xmlDir.eachFileMatch(~/TEST-.*\.xml/) { file ->
+        def testsuite = new groovy.xml.XmlSlurper().parse(file)
+        testsuite.testcase.each { tc ->
+            if (tc.skipped.size() > 0) {
+                actualSkips.add(tc.@classname.toString() + '.' + tc.@name.toString())
+            }
+        }
+    }
+
+    def unexpected = actualSkips - expected
+    def missing = expected - actualSkips
+    if (unexpected || missing) {
+        def msg = new StringBuilder("TestNG TCK skip verification failed!\n")
+        if (unexpected) {
+            msg.append("\nUnexpected skips (tests that should pass but were skipped):\n")
+            unexpected.toSorted().each { msg.append("  + ${it}\n") }
+        }
+        if (missing) {
+            msg.append("\nMissing skips (tests that should be skipped but were not):\n")
+            missing.toSorted().each { msg.append("  - ${it}\n") }
+        }
+        msg.append("\nUpdate buildExpectedTestngSkips() in build.gradle if these changes are intentional.")
+        throw new GradleException(msg.toString())
+    }
+    logger.lifecycle("TestNG TCK skip verification passed: ${actualSkips.size()} skips match expected set.")
+}
+
+def expectedTestngSkips = buildExpectedTestngSkips()
+
+task testng(type: Test) {
+    useTestNG()
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    dependsOn tasks.named('testClasses')
+    doLast { verifyTestngSkips(it, expectedTestngSkips) }
+}
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    source file("build/generated-src"), sourceSets.main.java
+    // Gradle 9 requires explicit task dependencies
+    mustRunAfter generateTestGrammarSource, generateJmhGrammarSource, generateJcstressGrammarSource
+}
+
+tasks.withType(GroovyCompile) {
+    // Options when compiling Java using the Groovy plugin.
+    // (Groovy itself defaults to UTF-8 for Groovy code)
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+    groovyOptions.forkOptions.memoryMaximumSize = "4g"
+}
+
+tasks.withType(JavaCompile) {
+    options.release = 11
+    options.errorprone {
+        disableAllChecks = true
+        check("NullAway", CheckSeverity.ERROR)
+        //
+        // end state has us with this config turned on - eg all classes
+        //
+        //option("NullAway:AnnotatedPackages", "graphql")
+        option("NullAway:CustomContractAnnotations", "graphql.Contract")
+        option("NullAway:OnlyNullMarked", "true")
+        option("NullAway:JSpecifyMode", "true")
+    }
+    // Include to disable NullAway on test code
+    if (name.toLowerCase().contains("test") || name.toLowerCase().contains("jcstress")) {
+        options.errorprone {
+            disable("NullAway")
+        }
+    }
+}
+
+generateGrammarSource {
+    includes = ['Graphql.g4']
+    maxHeapSize = "64m"
+    arguments += ["-visitor"]
+    outputDirectory = file("${project.buildDir}/generated-src/antlr/main/graphql/parser/antlr")
+}
+generateGrammarSource.inputs
+        .dir('src/main/antlr')
+        .withPropertyName('sourceDir')
+        .withPathSensitivity(PathSensitivity.RELATIVE)
+
+
+task sourcesJar(type: Jar) {
+    dependsOn classes
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+// Removed deprecated archives configuration in favor of direct assemble dependencies
+
+List<TestDescriptor> failedTests = []
+Map<String, Integer> testsAndTime = [:]
+Map<String, Integer> testClassesAndTime = [:]
+int testCount = 0
+long testTime = 0L
+
+tasks.withType(Test) {
+    if (!name.startsWith('testng')) {
+        useJUnitPlatform()
+    }
+    maxHeapSize = "1g"
+    testLogging {
+        events "FAILED", "SKIPPED"
+        exceptionFormat = "FULL"
+    }
+
+    // Required for JMH ArchUnit tests
+    classpath += sourceSets.jmh.output
+    dependsOn "jmhClasses"
+
+    afterTest { TestDescriptor descriptor, TestResult result ->
+        testCount++
+        if (result.getFailedTestCount() > 0) {
+            failedTests.add(descriptor)
+        }
+        def ms = (int) (result.endTime - result.startTime)
+        testTime += ms
+        String className = descriptor.className ?: "unknown"
+        String name = className + "." + descriptor.displayName
+        if (ms > 500) {
+            testsAndTime[name] = ms
+            testClassesAndTime.compute(className) { k, v -> v == null ? ms : v + ms }
+            println "\tTest '$name' took ${ms}ms"
+        }
+    }
+}
+
+tasks.register('testWithJava21', Test) {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    classpath += sourceSets.jmh.output
+    dependsOn "jmhClasses"
+    dependsOn tasks.named('testClasses')
+}
+
+tasks.register('testWithJava17', Test) {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    classpath += sourceSets.jmh.output
+    dependsOn "jmhClasses"
+
+
+    dependsOn tasks.named('testClasses')
+
+}
+
+tasks.register('testWithJava11', Test) {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+
+    dependsOn tasks.named('testClasses')
+
+    classpath += sourceSets.jmh.output
+    dependsOn "jmhClasses"
+
+}
+
+['11', '17', '21'].each { ver ->
+    tasks.register("testngWithJava${ver}", Test) {
+        useTestNG()
+        javaLauncher = javaToolchains.launcherFor {
+            languageVersion = JavaLanguageVersion.of(ver)
+        }
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        dependsOn tasks.named('testClasses')
+        doLast { verifyTestngSkips(it, expectedTestngSkips) }
+    }
+}
+
+
+jacoco {
+    toolVersion = "0.8.14"
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+        csv.required = false
+    }
+
+    // Use the modified classes from classes-jacoco/ (with @Generated annotations)
+    // so CRC64 checksums match the execution data recorded during tests.
+    // Also exclude generated ANTLR code and shaded dependencies from coverage.
+    afterEvaluate {
+        classDirectories.setFrom(files(
+                fileTree(dir: layout.buildDirectory.dir('classes-jacoco/java/main'), exclude: [
+                        'graphql/parser/antlr/**',
+                        'graphql/com/google/**',
+                        'graphql/org/antlr/**'
+                ])
+        ))
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Mark identity equals(Object)/hashCode() with a @Generated annotation so
+// JaCoCo's AnnotationGeneratedFilter excludes them from coverage.
+// The annotation class need not exist — JaCoCo only inspects the descriptor
+// string in the bytecode, and the JVM ignores unknown CLASS-retention
+// annotations.
+//
+// IMPORTANT: modifications are made on a COPY in classes-jacoco/ so that
+// the original (pristine) class files in classes/java/main are packaged
+// into the published jar unchanged.
+// ---------------------------------------------------------------------------
+tasks.register('markGeneratedEqualsHashCode') {
+    description = 'Add @Generated annotation to equals/hashCode so JaCoCo ignores them'
+    dependsOn classes
+
+    def originalDir = layout.buildDirectory.dir('classes/java/main')
+    def jacocoDir = layout.buildDirectory.dir('classes-jacoco/java/main')
+
+    inputs.dir(originalDir)
+    inputs.property("generatedAnnotationTaskVersion", 2)
+    outputs.dir(jacocoDir)
+
+    doLast {
+        def src = originalDir.get().asFile
+        def dest = jacocoDir.get().asFile
+        project.delete(dest)
+        if (!src.exists()) return
+
+        // Copy all class files to a separate directory for JaCoCo
+        ant.copy(todir: dest) {
+            fileset(dir: src)
+        }
+
+        def ANNOTATION = 'Lgraphql/coverage/Generated;'
+
+        rewriteClassFiles(dest) { classNode ->
+            int addedAnnotationCount = 0
+            for (method in classNode.methods) {
+                if ((method.name == 'equals' && method.desc == '(Ljava/lang/Object;)Z') ||
+                        (method.name == 'hashCode' && method.desc == '()I')) {
+                    if (method.invisibleAnnotations == null) {
+                        method.invisibleAnnotations = []
+                    }
+                    if (!method.invisibleAnnotations.any { it.desc == ANNOTATION }) {
+                        method.invisibleAnnotations.add(new org.objectweb.asm.tree.AnnotationNode(ANNOTATION))
+                        addedAnnotationCount++
+                    }
+                }
+            }
+            return addedAnnotationCount
+        }
+    }
+}
+
+// Test tasks need the modified classes for JaCoCo coverage recording
+tasks.named('test') { dependsOn markGeneratedEqualsHashCode }
+tasks.named('compileTestJava') { dependsOn markGeneratedEqualsHashCode }
+
+// Prepend modified classes to the test classpath so the JaCoCo agent records
+// execution data with CRC64s that match the annotated bytecode.
+tasks.named('test', Test) {
+    classpath = files(layout.buildDirectory.dir('classes-jacoco/java/main')) + classpath
+}
+
+/*
+ * The gradle.buildFinished callback is deprecated BUT there does not seem to be a decent alternative in gradle 7
+ * So progress over perfection here
+ *
+ * See https://github.com/gradle/gradle/issues/20151
+ */
+gradle.buildFinished {
+    println "\n\n"
+    println "============================"
+    println "$testCount tests run in $testTime ms"
+    println "============================"
+    if (!failedTests.isEmpty()) {
+        println "\n\n"
+        println "============================"
+        println "These are the test failures"
+        println "============================"
+        for (td in failedTests) {
+            println "${td.getClassName()}.${td.getDisplayName()}"
+        }
+        println "============================"
+    }
+    // slowest tests
+    println "\n\n"
+    println "============================"
+    println "Top 20 slowest test classes"
+    println "============================"
+    showTestResults(testClassesAndTime,20) { e ->
+        println "\tTest class ${e.key} took ${e.value}ms"
+    }
+    println "\n\n"
+    println "============================"
+    println "Top 50 slowest tests"
+    println "============================"
+    showTestResults(testsAndTime,50) { e ->
+        println "\tTest ${e.key} took ${e.value}ms"
+    }
+}
+
+static private showTestResults(Map<String, Integer> testMap, int limit, Closure closure) {
+    testMap.entrySet().stream()
+            .sorted { e1, e2 -> e2.getValue() - e1.getValue() }
+            .limit(limit)
+            .forEach(closure)
+}
+
+
+allprojects {
+    tasks.withType(Javadoc) {
+        exclude('**/antlr/**')
+    }
+}
+
+publishing {
+
+    publications {
+
+        graphqlJava(MavenPublication) {
+            version = version
+            from components.java
+
+            artifact sourcesJar {
+                archiveClassifier = "sources"
+            }
+            artifact javadocJar {
+                archiveClassifier = "javadoc"
+            }
+            pom.withXml {
+                // Removing antlr4 below (introduced in `1ac98bf`) addresses an issue with
+                // the Gradle ANTLR plugin. `1ac98bf` can be reverted and this comment removed once
+
+--- CONTENT TRUNCATED ---
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/build.gradle ===
+2026-10-15 17:29:14.406 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:29:20.892 | INFO     | Model API request cost info: input_tokens=9303, output_tokens=786, cost=0.031117
+2026-10-15 17:29:20.893 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:29:20.893 | INFO     | ******
+2026-10-15 17:29:20.893 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/graphql-java/build.gradle]
+- **Java Version:**
+  - Requires Java version **25** for building and **11** for release.
+  - Additional tasks registered for testing with Java versions **11**, **17**, and **21**.
+
+- **Dependencies (with versions):**
+  - **Build-time dependencies:**
+    - `org.ow2.asm:asm:9.10.1`
+    - `org.ow2.asm:asm-tree:9.10.1`
+    
+  - **Plugins:**
+    - `com.gradleup.shadow` version `9.4.2`
+    - `biz.aQute.bnd.builder` version `7.1.0`
+    - `io.github.gradle-nexus.publish-plugin` version `2.0.0`
+    - `me.champeau.jmh` version `0.7.3`
+    - `io.github.reyerizo.gradle.jcstress` version `0.9.0`
+    - `net.ltgt.errorprone` version `5.1.1`
+    - `jacoco` (tool version `0.8.14`)
+    - `org.jetbrains.kotlin.jvm` version `2.4.20` (only for tests)
+  
+  - **API dependencies:**
+    - `com.graphql-java:java-dataloader:6.0.0`
+    - `org.reactivestreams:reactive-streams:1.0.3`
+    - `org.jspecify:jspecify:1.0.0`
+  
+  - **Implementation dependencies:**
+    - `org.antlr:antlr4-runtime:4.13.2`
+    - `com.google.guava:guava:32.1.2-jre`
+    
+  - **Testing dependencies:**
+    - `org.junit.jupiter:junit-jupiter:5.14.4`
+    - `org.spockframework:spock-core:2.4-groovy-5.0`
+    - `net.bytebuddy:byte-buddy:1.18.8`
+    - `org.objenesis:objenesis:3.5`
+    - `org.apache.groovy:groovy:5.1.1`
+    - `org.apache.groovy:groovy-json:5.1.1`
+    - `com.google.code.gson:gson:2.14.0`
+    - `org.eclipse.jetty:jetty-server:11.0.26`
+    - `com.fasterxml.jackson.core:jackson-databind:2.22.0`
+    - `org.awaitility:awaitility-groovy:4.3.0`
+    - `com.github.javafaker:javafaker:1.0.2`
+    - `org.reactivestreams:reactive-streams-tck:1.0.3`
+    - `io.reactivex.rxjava2:rxjava:2.2.21`
+    - `io.projectreactor:reactor-core:3.8.7`
+    - `org.testng:testng:7.12.0`
+    - `com.tngtech.archunit:archunit-junit5:1.5.0`
+    - `org.openjdk.jmh:jmh-core:1.37`
+    - `org.junit.platform:junit-platform-launcher:1.14.4`
+  
+  - **Annotation Processor (`jmh`):**
+    - `org.openjdk.jmh:jmh-core:1.37`
+    - `org.openjdk.jmh:jmh-generator-annprocess:1.37`
+    - `me.bechberger:ap-loader-all:4.5-13`
+[/Key Information]
+2026-10-15 17:29:20.894 | INFO     | ******
+2026-10-15 17:29:20.894 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/graphql-java/build.gradle]\n- **Java Version:**\n  - Requires Java version **25** for building and **11** for release.\n  - Additional tasks registered for testing with Java versions **11**, **17**, and **21**.\n\n- **Dependencies (with versions):**\n  - **Build-time dependencies:**\n    - `org.ow2.asm:asm:9.10.1`\n    - `org.ow2.asm:asm-tree:9.10.1`\n    \n  - **Plugins:**\n    - `com.gradleup.shadow` version `9.4.2`\n    - `biz.aQute.bnd.builder` version `7.1.0`\n    - `io.github.gradle-nexus.publish-plugin` version `2.0.0`\n    - `me.champeau.jmh` version `0.7.3`\n    - `io.github.reyerizo.gradle.jcstress` version `0.9.0`\n    - `net.ltgt.errorprone` version `5.1.1`\n    - `jacoco` (tool version `0.8.14`)\n    - `org.jetbrains.kotlin.jvm` version `2.4.20` (only for tests)\n  \n  - **API dependencies:**\n    - `com.graphql-java:java-dataloader:6.0.0`\n    - `org.reactivestreams:reactive-streams:1.0.3`\n    - `org.jspecify:jspecify:1.0.0`\n  \n  - **Implementation dependencies:**\n    - `org.antlr:antlr4-runtime:4.13.2`\n    - `com.google.guava:guava:32.1.2-jre`\n    \n  - **Testing dependencies:**\n    - `org.junit.jupiter:junit-jupiter:5.14.4`\n    - `org.spockframework:spock-core:2.4-groovy-5.0`\n    - `net.bytebuddy:byte-buddy:1.18.8`\n    - `org.objenesis:objenesis:3.5`\n    - `org.apache.groovy:groovy:5.1.1`\n    - `org.apache.groovy:groovy-json:5.1.1`\n    - `com.google.code.gson:gson:2.14.0`\n    - `org.eclipse.jetty:jetty-server:11.0.26`\n    - `com.fasterxml.jackson.core:jackson-databind:2.22.0`\n    - `org.awaitility:awaitility-groovy:4.3.0`\n    - `com.github.javafaker:javafaker:1.0.2`\n    - `org.reactivestreams:reactive-streams-tck:1.0.3`\n    - `io.reactivex.rxjava2:rxjava:2.2.21`\n    - `io.projectreactor:reactor-core:3.8.7`\n    - `org.testng:testng:7.12.0`\n    - `com.tngtech.archunit:archunit-junit5:1.5.0`\n    - `org.openjdk.jmh:jmh-core:1.37`\n    - `org.junit.platform:junit-platform-launcher:1.14.4`\n  \n  - **Annotation Processor (`jmh`):**\n    - `org.openjdk.jmh:jmh-core:1.37`\n    - `org.openjdk.jmh:jmh-generator-annprocess:1.37`\n    - `me.bechberger:ap-loader-all:4.5-13`\n[/Key Information]', 'Get File Info', True)
+2026-10-15 17:29:20.894 | INFO     | entering browse
+2026-10-15 17:29:20.894 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/gradle.properties ===
+org.gradle.caching=true
+org.gradle.daemon=true
+org.gradle.parallel=true
+org.gradle.jvmargs=-Dfile.encoding=UTF-8 
+
+
+# Prevents the Kotlin stdlib being a POM dependency
+#
+# https://kotlinlang.org/docs/gradle-configure-project.html#dependency-on-the-standard-library
+kotlin.stdlib.default.dependency=false
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/gradle.properties ===
+2026-10-15 17:29:20.894 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:29:24.259 | INFO     | Model API request cost info: input_tokens=622, output_tokens=140, cost=0.002955
+2026-10-15 17:29:24.260 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:29:24.260 | INFO     | ******
+2026-10-15 17:29:24.260 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/graphql-java/gradle.properties]
+- Gradle settings:
+  - org.gradle.caching=true (**Enables build caching**)
+  - org.gradle.daemon=true (**Enables Gradle's daemon for faster builds**)
+  - org.gradle.parallel=true (**Enables parallel execution of tasks**)
+  - org.gradle.jvmargs=-Dfile.encoding=UTF-8 (**Sets JVM arguments**)
+- Gradle-specific configuration:
+  - kotlin.stdlib.default.dependency=false (**Prevents dependency on Kotlin standard library in POM**)
+- No specific Java version requirements mentioned in this file.
+[/Key Information]
+2026-10-15 17:29:24.260 | INFO     | ******
+2026-10-15 17:29:24.260 | DEBUG    | Result of dispatch_intent: ("[Key Information from /data/home/cjy/software-testing/projects/graphql-java/gradle.properties]\n- Gradle settings:\n  - org.gradle.caching=true (**Enables build caching**)\n  - org.gradle.daemon=true (**Enables Gradle's daemon for faster builds**)\n  - org.gradle.parallel=true (**Enables parallel execution of tasks**)\n  - org.gradle.jvmargs=-Dfile.encoding=UTF-8 (**Sets JVM arguments**)\n- Gradle-specific configuration:\n  - kotlin.stdlib.default.dependency=false (**Prevents dependency on Kotlin standard library in POM**)\n- No specific Java version requirements mentioned in this file.\n[/Key Information]", 'Get File Info', True)
+2026-10-15 17:29:36.654 | INFO     | Model API request cost info: input_tokens=4783, output_tokens=1623, cost=0.028188
+2026-10-15 17:29:36.675 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:29:42.564 | INFO     | Model API request cost info: input_tokens=2221, output_tokens=779, cost=0.013343
+2026-10-15 17:29:42.565 | DEBUG    | {
+    "API_calls": [
+        "browse_folder(\"scripts\", 1)",
+        "browse_folder(\".github/workflows\", 1)"
+    ],
+    "collected_information": {
+        "environment_setup": {
+            "java_versions": {
+                "build": "25",
+                "release": "11",
+                "testing": ["11", "17", "21"]
+            },
+            "build_tool": "Gradle",
+            "dependencies": {
+                "build_time": ["org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-tree:9.10.1"],
+                "plugins": [
+                    "com.gradleup.shadow:9.4.2",
+                    "biz.aQute.bnd.builder:7.1.0",
+                    "io.github.gradle-nexus.publish-plugin:2.0.0",
+                    "me.champeau.jmh:0.7.3",
+                    "io.github.reyerizo.gradle.jcstress:0.9.0",
+                    "net.ltgt.errorprone:5.1.1",
+                    "jacoco:0.8.14",
+                    "org.jetbrains.kotlin.jvm:2.4.20"
+                ],
+                "api": [
+                    "com.graphql-java:java-dataloader:6.0.0",
+                    "org.reactivestreams:reactive-streams:1.0.3",
+                    "org.jspecify:jspecify:1.0.0"
+                ],
+                "implementation": [
+                    "org.antlr:antlr4-runtime:4.13.2",
+                    "com.google.guava:guava:32.1.2-jre"
+                ],
+                "testing": [
+                    "org.spockframework:spock-core:2.4-groovy-5.0",
+                    "org.junit.jupiter:junit-jupiter:5.14.4",
+                    "org.testng:testng:7.12.0"
+                ]
+            },
+            "gradle_properties": {
+                "build_caching": true,
+                "daemon": true,
+                "parallel_execution": true,
+                "jvm_args": "-Dfile.encoding=UTF-8",
+                "kotlin_stdlib_default_dependency": false
+            },
+            "git_hooks_setup_script": "./scripts/setup-hooks.sh"
+        },
+        "test_execution": {
+            "framework": "Spock",
+            "requirements": {
+                "unit_tests_required": true,
+                "mandatory_for_code_changes": true
+            },
+            "dependencies": [
+                "org.spockframework:spock-core:2.4-groovy-5.0",
+                "org.junit.jupiter:junit-jupiter:5.14.4",
+                "org.testng:testng:7.12.0"
+            ],
+            "missing_information": {
+                "exact_test_execution_command": "No command found in CONTRIBUTING.md or other files",
+                "detailed_setup_instructions": "Steps to install Java, configure the environment, or run tests are missing",
+                "explicit_env_variable_setup": "No .env variables or external configurations mentioned"
+            }
+        },
+        "additional_documentation": {
+            "README_resources": [
+                {
+                    "resource_name": "Getting Started",
+                    "link": "https://www.graphql-java.com/documentation/getting-started"
+                },
+                {
+                    "resource_name": "Tutorial",
+                    "link": "https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/"
+                },
+                {
+                    "resource_name": "Latest Build Information",
+                    "link": "https://repo1.maven.org/maven2/com/graphql-java/graphql-java/"
+                }
+            ]
+        }
+    },
+    "terminate": false
+}
+2026-10-15 17:29:42.565 | DEBUG    | Extracted a valid json
+2026-10-15 17:29:42.568 | INFO     | Refactored invocation argument parsing gives different result on 'browse_folder("scripts", 1)': old result is ['scripts', '1'], new result  is ['scripts', 1]
+2026-10-15 17:29:42.569 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/graphql-java/scripts. The browsing Depth is 1.\nStructure of this directory:\n\nsetup-hooks.sh\n\n', 'folder structure collected', True)
+2026-10-15 17:29:42.569 | INFO     | Refactored invocation argument parsing gives different result on 'browse_folder(".github/workflows", 1)': old result is ['.github/workflows', '1'], new result  is ['.github/workflows', 1]
+2026-10-15 17:29:42.569 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/graphql-java/.github/workflows. The browsing Depth is 1.\nStructure of this directory:\n\ndependabot-auto-merge.yml\n\nmaster.yml\n\nstatic.yml\n\nrelease.yml\n\npull_request.yml\n\npr-report.yml\n\ncommit_performance_result.yml\n\npublish_commit.yml\n\nvalidate-files.yml\n\n', 'folder structure collected', True)
+2026-10-15 17:29:51.289 | INFO     | Model API request cost info: input_tokens=6801, output_tokens=813, cost=0.025133
+2026-10-15 17:29:51.303 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:29:57.010 | INFO     | Model API request cost info: input_tokens=1411, output_tokens=333, cost=0.006858
+2026-10-15 17:29:57.011 | DEBUG    | {
+    "API_calls": ["browse_folder(\".github/workflows\",1)"],
+    "collected_information": {
+        "README.md": {
+            "contents": "No concrete information about project setup or test execution is provided. Suggested resources include GraphQL Java documentation and tutorials.",
+            "links": {
+                "documentation": "https://www.graphql-java.com/documentation/getting-started",
+                "tutorial": "https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/",
+                "dependencies": "https://repo1.maven.org/maven2/com/graphql-java/graphql-java/"
+            }
+        },
+        "CONTRIBUTING.md": {
+            "setup_instructions": "./scripts/setup-hooks.sh for Git pre-commit hooks",
+            "testing_requirements": {
+                "framework": "Spock",
+                "instruction": "Unit tests for code changes must be written using Spock."
+            },
+            "missing_info": "Explicit instructions regarding test execution commands."
+        },
+        "build.gradle": {
+            "java_versions": {
+                "build": "25",
+                "release": "11",
+                "testing": ["11", "17", "21"]
+            },
+            "dependencies": "Detailed list of build-time, plugin, API, implementation, testing, and annotation dependencies available."
+        },
+        "gradle.properties": {
+            "gradle_settings": {
+                "caching": true,
+                "daemon": true,
+                "parallel": true,
+                "jvmargs": "-Dfile.encoding=UTF-8"
+            }
+        }
+    },
+    "terminate": false
+}
+2026-10-15 17:29:57.011 | DEBUG    | Extracted a valid json
+2026-10-15 17:29:57.013 | INFO     | Refactored invocation argument parsing gives different result on 'browse_folder(".github/workflows",1)': old result is ['.github/workflows', '1'], new result  is ['.github/workflows', 1]
+2026-10-15 17:29:57.014 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/graphql-java/.github/workflows. The browsing Depth is 1.\nStructure of this directory:\n\ndependabot-auto-merge.yml\n\nmaster.yml\n\nstatic.yml\n\nrelease.yml\n\npull_request.yml\n\npr-report.yml\n\ncommit_performance_result.yml\n\npublish_commit.yml\n\nvalidate-files.yml\n\n', 'folder structure collected', True)
+2026-10-15 17:30:04.690 | INFO     | Model API request cost info: input_tokens=7964, output_tokens=744, cost=0.027350
+2026-10-15 17:30:04.703 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:30:09.344 | INFO     | Model API request cost info: input_tokens=1342, output_tokens=327, cost=0.006625
+2026-10-15 17:30:09.345 | DEBUG    | {
+    "API_calls": [
+        "browse_folder('.github/workflows', 1)",
+        "search_files_by_keyword('validate-files')",
+        "search_files_by_keyword('pull_request')",
+        "search_files_by_keyword('master')"
+    ],
+    "collected_information": {
+        "README.md": {
+            "setup_info": null,
+            "related_links": [
+                "https://www.graphql-java.com/documentation/getting-started",
+                "https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/",
+                "https://repo1.maven.org/maven2/com/graphql-java/graphql-java/"
+            ]
+        },
+        "CONTRIBUTING.md": {
+            "setup_instructions": "Install local Git pre-commit hooks by executing ./scripts/setup-hooks.sh.",
+            "testing_requirements": "New or modified unit tests must be written using Spock framework.",
+            "testing_execution": null
+        },
+        "build.gradle": {
+            "java_version": {
+                "build": "25",
+                "release": "11",
+                "testing": [11, 17, 21]
+            },
+            "dependencies": "List of build-time, plugin, API, implementation, testing, and annotation dependencies provided."
+        },
+        "gradle.properties": {
+            "gradle_settings": {
+                "caching": "Enabled",
+                "daemon": "Enabled",
+                "parallel_execution": "Enabled",
+                "jvm_args": "-Dfile.encoding=UTF-8"
+            }
+        }
+    },
+    "terminate": false
+}
+2026-10-15 17:30:09.345 | DEBUG    | Extracted a valid json
+2026-10-15 17:30:09.348 | INFO     | Refactored invocation argument parsing gives different result on "browse_folder('.github/workflows', 1)": old result is ['.github/workflows', '1'], new result  is ['.github/workflows', 1]
+2026-10-15 17:30:09.349 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/graphql-java/.github/workflows. The browsing Depth is 1.\nStructure of this directory:\n\ndependabot-auto-merge.yml\n\nmaster.yml\n\nstatic.yml\n\nrelease.yml\n\npull_request.yml\n\npr-report.yml\n\ncommit_performance_result.yml\n\npublish_commit.yml\n\nvalidate-files.yml\n\n', 'folder structure collected', True)
+2026-10-15 17:30:09.350 | DEBUG    | Result of dispatch_intent: ("Found 1 files containing the keyword 'validate-files':\n\n- .github/workflows/validate-files.yml", 'File search completed successfully', True)
+2026-10-15 17:30:09.352 | DEBUG    | Result of dispatch_intent: ("Found 1 files containing the keyword 'pull_request':\n\n- .github/workflows/pull_request.yml", 'File search completed successfully', True)
+2026-10-15 17:30:09.354 | DEBUG    | Result of dispatch_intent: ("Found 3 files containing the keyword 'master':\n\n- .github/workflows/master.yml\n- .git/logs/refs/heads/master\n- .git/refs/heads/master", 'File search completed successfully', True)
+2026-10-15 17:30:18.419 | INFO     | Model API request cost info: input_tokens=9171, output_tokens=756, cost=0.030488
+2026-10-15 17:30:18.432 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:30:23.023 | INFO     | Model API request cost info: input_tokens=1354, output_tokens=391, cost=0.007295
+2026-10-15 17:30:23.024 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('.github/workflows/validate-files.yml', 'test execution commands or setup details')",
+        "browse_file_for_environment_info('.github/workflows/pull_request.yml', 'test execution commands or setup details')",
+        "browse_file_for_environment_info('.github/workflows/master.yml', 'test execution commands or setup details')"
+    ],
+    "collected_information": {
+        "README.md": {
+            "project_setup": "No concrete information provided.",
+            "documentation_links": [
+                "https://www.graphql-java.com/documentation/getting-started",
+                "https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/",
+                "https://repo1.maven.org/maven2/com/graphql-java/graphql-java/"
+            ]
+        },
+        "CONTRIBUTING.md": {
+            "setup_instructions": "Install local Git pre-commit hooks using ./scripts/setup-hooks.sh",
+            "testing_requirements": {
+                "framework": "Spock (https://spockframework.org/)",
+                "expectations": "New or modified unit tests for every code change must be written using Spock."
+            },
+            "test_execution_commands": "No explicit commands provided."
+        },
+        "build.gradle": {
+            "java_versions": {
+                "build": "25",
+                "release": "11",
+                "testing": ["11", "17", "21"]
+            },
+            "dependencies": "List of build-time, plugin, API, implementation, testing, and annotation dependencies provided."
+        },
+        "gradle.properties": {
+            "gradle_settings": {
+                "caching": "enabled",
+                "daemon": "enabled",
+                "parallel_execution": "enabled",
+                "jvm_args": "-Dfile.encoding=UTF-8"
+            }
+        }
+    },
+    "terminate": false
+}
+2026-10-15 17:30:23.024 | DEBUG    | Extracted a valid json
+2026-10-15 17:30:23.027 | INFO     | entering browse
+2026-10-15 17:30:23.027 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/validate-files.yml ===
+name: Validate Files
+
+# This workflow validates that all files in the repository comply with:
+# 1. Windows filename compatibility — no reserved characters (< > : " | ? * \)
+#    so the repo can be cloned on Windows systems.
+# 2. File size limits — no files larger than 10 MB. Many enterprise users mirror
+#    graphql-java into internal repositories that enforce file size limits.
+# 3. No dangerous Unicode characters — prevents Trojan Source (BiDi override),
+#    glassworm, and similar attacks using invisible or control characters.
+
+on:
+  push:
+    branches:
+      - master
+      - '**'
+  pull_request:
+    branches:
+      - master
+      - 23.x
+      - 22.x
+      - 21.x
+      - 20.x
+      - 19.x
+permissions:
+  contents: read
+jobs:
+  validate-filenames-and-size:
+    runs-on: ubuntu-latest
+    name: Validate Files (Windows names, size, Unicode safety)
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0  # Fetch all history to check all files
+      
+      - name: Check for Windows-incompatible filenames
+        run: |
+          echo "Checking for Windows-incompatible filenames..."
+          
+          # Windows reserved characters: < > : " | ? * \
+          INVALID_CHARS='[<>:"|?*\\]'
+          
+          # Get all files in the repository (excluding .git directory)
+          ALL_FILES=$(git ls-files)
+          
+          # Check each file for invalid characters
+          INVALID_FILES=$(echo "$ALL_FILES" | grep -E "$INVALID_CHARS" || true)
+          
+          if [ -n "$INVALID_FILES" ]; then
+              echo "::error::The following files have Windows-incompatible characters in their names:"
+              echo "$INVALID_FILES" | while read -r file; do
+                  echo "::error file=${file}::File contains Windows-incompatible characters"
+                  echo "  - $file"
+              done
+              echo ""
+              echo "Please rename these files to remove characters: < > : \" | ? * \\"
+              echo "For ISO timestamps, replace colons with hyphens (e.g., 08:40:24 -> 08-40-24)"
+              exit 1
+          else
+              echo "✓ All filenames are Windows-compatible"
+          fi
+      
+      - name: Check for files larger than 10MB
+        run: |
+          echo "Checking for files larger than 10MB..."
+          
+          MAX_SIZE=$((10 * 1024 * 1024))  # 10 MB in bytes
+          LARGE_FILES=""
+          
+          # Get all files in the repository (excluding .git directory)
+          ALL_FILES=$(git ls-files)
+          
+          # Check each file's size
+          while IFS= read -r file; do
+              if [ -f "$file" ]; then
+                  size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null)
+                  if [ -z "$size" ]; then
+                      echo "::warning file=${file}::Could not determine size of file"
+                      continue
+                  fi
+                  if [ "$size" -gt "$MAX_SIZE" ]; then
+                      size_mb=$(awk "BEGIN {printf \"%.2f\", $size/1024/1024}")
+                      echo "::error file=${file}::File size (${size_mb} MB) exceeds 10MB limit"
+                      LARGE_FILES="${LARGE_FILES}${file} (${size_mb} MB)\n"
+                  fi
+              fi
+          done <<< "$ALL_FILES"
+          
+          if [ -n "$LARGE_FILES" ]; then
+              echo ""
+              echo "The following files exceed 10MB:"
+              echo -e "$LARGE_FILES"
+              echo ""
+              echo "Please consider one of these options:"
+              echo "  1. Split the file into smaller parts with suffixes .part1, .part2, etc."
+              echo "  2. Remove unnecessary content from the file"
+              exit 1
+          else
+              echo "✓ All files are within the 10MB size limit"
+          fi
+
+      - name: Check for dangerous Unicode characters
+        run: |
+          echo "Checking for dangerous Unicode characters (Trojan Source / glassworm)..."
+
+          # Dangerous character ranges:
+          #   U+0000-0008, U+000B-000C, U+000E-001F  C0 control chars (except TAB, LF, CR)
+          #   U+007F-009F                              DELETE + C1 control chars
+          #   U+200B-200D                              Zero-width space/non-joiner/joiner
+          #   U+FEFF                                   Zero-width no-break space (BOM)
+          #   U+202A-202E                              BiDi embedding/override (Trojan Source)
+          #   U+2066-2069                              BiDi isolate chars (Trojan Source)
+
+          FOUND_FILES=""
+
+          while IFS= read -r file; do
+              if [ ! -f "$file" ]; then
+                  continue
+              fi
+              # Skip binary files
+              if file --mime-type "$file" 2>/dev/null | grep -qv 'text/'; then
+                  continue
+              fi
+              MATCHES=$(perl -CSD -ne '
+                  if (/[\x{0000}-\x{0008}\x{000B}\x{000C}\x{000E}-\x{001F}\x{007F}-\x{009F}\x{200B}-\x{200D}\x{FEFF}\x{202A}-\x{202E}\x{2066}-\x{2069}]/) {
+                      print "  line $.: $_";
+                  }
+              ' "$file" 2>/dev/null || true)
+              if [ -n "$MATCHES" ]; then
+                  echo "::error file=${file}::File contains dangerous Unicode characters"
+                  FOUND_FILES="${FOUND_FILES}${file}:\n${MATCHES}\n"
+              fi
+          done <<< "$(git ls-files)"
+
+          if [ -n "$FOUND_FILES" ]; then
+              echo ""
+              echo "The following files contain dangerous Unicode characters:"
+              echo -e "$FOUND_FILES"
+              echo ""
+              echo "These invisible or rendering-altering characters can be used for"
+              echo "Trojan Source or glassworm-style attacks. Detected categories:"
+              echo "  - C0/C1 control characters (U+0000-001F, U+007F-009F, except TAB/LF/CR)"
+              echo "  - Zero-width characters (U+200B-200D, U+FEFF)"
+              echo "  - BiDi override/isolate (U+202A-202E, U+2066-2069)"
+              echo ""
+              echo "Please remove these characters from the affected files."
+              exit 1
+          else
+              echo "✓ No dangerous Unicode characters found"
+          fi
+
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/validate-files.yml ===
+2026-10-15 17:30:23.027 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:30:24.980 | INFO     | Model API request cost info: input_tokens=2058, output_tokens=11, cost=0.005255
+2026-10-15 17:30:24.982 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:30:24.982 | INFO     | ******
+2026-10-15 17:30:24.982 | INFO     | No relevant information found.
+2026-10-15 17:30:24.982 | INFO     | ******
+2026-10-15 17:30:24.983 | DEBUG    | Result of dispatch_intent: ('No relevant information found.', 'Get File Info', True)
+2026-10-15 17:30:24.983 | INFO     | entering browse
+2026-10-15 17:30:24.983 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/pull_request.yml ===
+name: Pull Request Build
+# For pull requests: builds and test
+on:
+  push:
+    branches:
+      - '!master'
+  pull_request:
+    branches:
+      - master
+      - 23.x
+      - 22.x
+      - 21.x
+      - 20.x
+      - 19.x
+permissions:
+  contents: read
+jobs:
+  buildAndTest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - gradle-argument: 'assemble && ./gradlew check -x test -x testng'
+            label: 'check'
+          - gradle-argument: 'testWithJava11 testngWithJava11'
+            label: 'java11'
+            test-results-dirs: 'testWithJava11 testngWithJava11'
+          - gradle-argument: 'testWithJava17 testngWithJava17'
+            label: 'java17'
+            test-results-dirs: 'testWithJava17 testngWithJava17'
+          - gradle-argument: 'testWithJava21 testngWithJava21'
+            label: 'java21'
+            test-results-dirs: 'testWithJava21 testngWithJava21'
+          - gradle-argument: 'test testng jacocoTestReport'
+            label: 'java25'
+            test-results-dirs: 'test testng'
+          - gradle-argument: 'jcstress'
+            label: 'jcstress'
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: gradle/actions/wrapper-validation@v6
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6.0.1
+        with:
+          java-version: '25'
+          distribution: 'corretto'
+      - name: build and test
+        run: |
+          if [ "${{ matrix.label }}" = "jcstress" ]; then
+            set -o pipefail
+            mkdir -p build
+            ./gradlew ${{matrix.gradle-argument}} --info --stacktrace 2>&1 | tee build/jcstress-output.txt
+          else
+            ./gradlew ${{matrix.gradle-argument}} --info --stacktrace
+          fi
+      - name: Upload Coverage HTML Report
+        uses: actions/upload-artifact@v7
+        if: always() && matrix.label == 'java25'
+        with:
+          name: jacoco-html-report
+          path: build/reports/jacoco/test/html/
+          retention-days: 14
+      - name: Upload Coverage XML Report
+        uses: actions/upload-artifact@v7
+        if: always() && matrix.label == 'java25'
+        with:
+          name: coverage-report
+          path: build/reports/jacoco/test/jacocoTestReport.xml
+          retention-days: 1
+      - name: Parse Test Results
+        if: always() && matrix.label != 'check' && matrix.label != 'jcstress'
+        run: |
+          total=0; failures=0; errors=0; skipped=0
+          for dir_name in ${{ matrix.test-results-dirs }}; do
+            dir="build/test-results/$dir_name"
+            for f in "$dir"/TEST-*.xml; do
+              [ -f "$f" ] || continue
+              t=$(grep -o 'tests="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              fl=$(grep -o 'failures="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              e=$(grep -o 'errors="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              s=$(grep -o 'skipped="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              total=$((total + ${t:-0}))
+              failures=$((failures + ${fl:-0}))
+              errors=$((errors + ${e:-0}))
+              skipped=$((skipped + ${s:-0}))
+            done
+          done
+          passed=$((total - failures - errors - skipped))
+          mkdir -p /tmp/test-stats
+          echo "{\"total\":$total,\"passed\":$passed,\"failed\":$failures,\"errors\":$errors,\"skipped\":$skipped}" \
+            > "/tmp/test-stats/${{ matrix.label }}.json"
+      - name: Parse jcstress Results
+        if: always() && matrix.label == 'jcstress'
+        run: |
+          total=0; passed=0; failed=0; errors=0; skipped=0
+          if [ -f build/jcstress-output.txt ]; then
+            line=$(grep 'Results:.*planned.*passed.*failed' build/jcstress-output.txt | tail -1)
+            if [ -n "$line" ]; then
+              total=$(echo "$line" | sed 's/.*Results: \([0-9]*\) planned.*/\1/')
+              passed=$(echo "$line" | sed 's/.*; \([0-9]*\) passed.*/\1/')
+              failed=$(echo "$line" | sed 's/.*passed, \([0-9]*\) failed.*/\1/')
+              soft=$(echo "$line" | sed 's/.*failed, \([0-9]*\) soft.*/\1/')
+              hard=$(echo "$line" | sed 's/.*soft errs, \([0-9]*\) hard.*/\1/')
+              errors=$((soft + hard))
+            fi
+          fi
+          mkdir -p /tmp/test-stats
+          echo "{\"total\":$total,\"passed\":$passed,\"failed\":$failed,\"errors\":$errors,\"skipped\":$skipped}" \
+            > "/tmp/test-stats/${{ matrix.label }}.json"
+      - name: Upload Test Stats
+        if: always() && matrix.label != 'check'
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-stats-${{ matrix.label }}
+          path: /tmp/test-stats/${{ matrix.label }}.json
+  test-summary:
+    name: "Per-Class Coverage Gate"
+    needs: buildAndTest
+    if: always() && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Download Coverage Report
+        uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Enforce Per-Class Coverage Gate
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { parseJacocoXml, pct, zeroCov, isRegression } = require('./.github/scripts/parse-jacoco.js');
+
+            // --- Read baseline from repo ---
+            const baselineFile = 'test-baseline.json';
+            let baseline = { tests: {}, coverage: {} };
+            if (fs.existsSync(baselineFile)) {
+              baseline = JSON.parse(fs.readFileSync(baselineFile, 'utf8'));
+            }
+            const baseClasses = (baseline.coverage || {}).classes || {};
+
+            // --- Parse JaCoCo XML for per-class coverage ---
+            const jacocoFile = path.join('coverage', 'jacocoTestReport.xml');
+            const parsed = parseJacocoXml(jacocoFile);
+            if (!parsed) {
+              console.log('No JaCoCo report found, skipping coverage gate.');
+              return;
+            }
+            const classCounters = parsed.classes;
+
+            // --- Coverage gate: fail if any class regresses on any metric ---
+            // A regression requires BOTH a percentage drop AND an increase in the
+            // absolute number of missed items. This avoids false positives when
+            // well-covered code is extracted/moved out of a class (which lowers the
+            // percentage without actually losing any test coverage).
+            const regressions = [];
+            for (const [cls, curr] of Object.entries(classCounters)) {
+              const base = baseClasses[cls] || { line: zeroCov, branch: zeroCov, method: zeroCov };
+              const classRegressions = [];
+              for (const [metric, key] of [['Line', 'line'], ['Branch', 'branch'], ['Method', 'method']]) {
+                const currPct = pct(curr[key].covered, curr[key].missed);
+                const basePct = pct(base[key].covered, base[key].missed);
+                const currMissed = curr[key].missed;
+                const baseMissed = base[key].missed;
+                if (isRegression(currPct, basePct, currMissed, baseMissed)) {
+                  classRegressions.push(`  ${cls} ${metric}: ${currPct.toFixed(1)}% (was ${basePct.toFixed(1)}%, delta ${(currPct - basePct).toFixed(1)}%, missed: ${currMissed} was ${baseMissed})`);
+                }
+              }
+              if (classRegressions.length > 0) {
+                regressions.push(...classRegressions);
+                // Add method-level details for this regression
+                const currMethods = curr.methods || [];
+                const baseMethods = (base.methods || []);
+                if (currMethods.length > 0 || baseMethods.length > 0) {
+                  const baseByKey = {};
+                  for (const m of baseMethods) baseByKey[m.name + m.desc] = m;
+                  const seen = new Set();
+                  for (const m of currMethods) {
+                    const key = m.name + m.desc;
+                    seen.add(key);
+                    const bm = baseByKey[key];
+                    const currLinePct = pct(m.counters.line.covered, m.counters.line.missed);
+                    const baseLinePct = bm ? pct(bm.counters.line.covered, bm.counters.line.missed) : null;
+                    const lineChanged = baseLinePct !== null && Math.abs(currLinePct - baseLinePct) >= 0.05;
+                    const isNew = !bm;
+                    // When baseline method data exists, only show methods that actually
+                    // changed or are new. Fall back to showing all uncovered methods
+                    // when no baseline method data is available yet.
+                    const hasMissed = m.counters.line.missed > 0 || m.counters.branch.missed > 0;
+                    const show = baseMethods.length > 0
+                      ? (lineChanged || isNew)
+                      : (hasMissed || isNew);
+                    if (show) {
+                      const displayName = m.name === '<init>' ? 'constructor' : m.name;
+                      let detail = `      ${displayName} — Line: ${currLinePct.toFixed(1)}%`;
+                      if (baseLinePct !== null) detail += ` (was ${baseLinePct.toFixed(1)}%)`;
+                      else detail += ' (new)';
+                      regressions.push(detail);
+                    }
+                  }
+                  for (const bm of baseMethods) {
+                    if (!seen.has(bm.name + bm.desc)) {
+                      const displayName = bm.name === '<init>' ? 'constructor' : bm.name;
+                      regressions.push(`      ${displayName} — removed`);
+                    }
+                  }
+                }
+              }
+            }
+            if (regressions.length > 0) {
+              core.setFailed(`Per-class coverage regressions detected:\n${regressions.join('\n')}\n\nUpdate test-baseline.json if these changes are intentional.`);
+            }
+  javadoc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: gradle/actions/wrapper-validation@v6
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6.0.1
+        with:
+          java-version: '25'
+          distribution: 'corretto'
+      - name: Verify Javadoc
+        run: ./gradlew javadoc --info --stacktrace
+  allBuildAndTestSuccessful:
+    if: always()
+    needs:
+      - buildAndTest
+      - test-summary
+      - javadoc
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all jobs passed
+        run: |
+          if [ "${{ needs.buildAndTest.result }}" != "success" ]; then
+            echo "buildAndTest failed with result: ${{ needs.buildAndTest.result }}"
+            exit 1
+          fi
+          if [ "${{ needs.test-summary.result }}" != "success" ] && [ "${{ needs.test-summary.result }}" != "skipped" ]; then
+            echo "Per-Class Coverage Gate failed with result: ${{ needs.test-summary.result }}"
+            exit 1
+          fi
+          if [ "${{ needs.javadoc.result }}" != "success" ]; then
+            echo "javadoc failed with result: ${{ needs.javadoc.result }}"
+            exit 1
+          fi
+          echo "All build and test jobs passed successfully."
+
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/pull_request.yml ===
+2026-10-15 17:30:24.983 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:30:32.881 | INFO     | Model API request cost info: input_tokens=3349, output_tokens=494, cost=0.013313
+2026-10-15 17:30:32.883 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:30:32.883 | INFO     | ******
+2026-10-15 17:30:32.883 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/pull_request.yml]
+- **Setup Details**:
+  - Jobs run on `ubuntu-latest`.
+  - JDK setup:
+    - Version: JDK 25
+    - Distribution: Corretto
+    - Command used: `actions/setup-java@v6.0.1` with `java-version: '25'` and `distribution: 'corretto'`.
+
+- **Test Execution Commands**:
+  - Test execution uses Gradle commands. The `matrix.gradle-argument` determines the specific tests executed. Below are the defined options:
+    1. `./gradlew assemble && ./gradlew check -x test -x testng` (**Label**: `check`).
+    2. `./gradlew testWithJava11 testngWithJava11` (**Label**: `java11`).
+    3. `./gradlew testWithJava17 testngWithJava17` (**Label**: `java17`).
+    4. `./gradlew testWithJava21 testngWithJava21` (**Label**: `java21`).
+    5. `./gradlew test testng jacocoTestReport` (**Label**: `java25`).
+    6. `./gradlew jcstress` (**Label**: `jcstress`).
+  - Additional flags used with Gradle commands:
+    - `--info` and `--stacktrace` for detailed build and test logs.
+    - For `jcstress`, output is captured in a file: `build/jcstress-output.txt`.
+
+- **Test Results Parsing**:
+  - Tool parses test result XML reports from `build/test-results/<test-results-dirs>`:
+    - Defined per label (e.g., `testWithJava11`, `testngWithJava11`).
+  - Coverage Reports:
+    - HTML report: `build/reports/jacoco/test/html/`.
+    - XML report: `build/reports/jacoco/test/jacocoTestReport.xml`.
+  - Commands for analyzing coverage or parsing test results:
+    - Coverage is uploaded as artifacts using `actions/upload-artifact@v7`.
+
+- **Optional Test/Validation Commands**:
+  - Generate Javadoc: `./gradlew javadoc --info --stacktrace`.
+
+[/Key Information]
+2026-10-15 17:30:32.883 | INFO     | ******
+2026-10-15 17:30:32.883 | DEBUG    | Result of dispatch_intent: ("[Key Information from /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/pull_request.yml]\n- **Setup Details**:\n  - Jobs run on `ubuntu-latest`.\n  - JDK setup:\n    - Version: JDK 25\n    - Distribution: Corretto\n    - Command used: `actions/setup-java@v6.0.1` with `java-version: '25'` and `distribution: 'corretto'`.\n\n- **Test Execution Commands**:\n  - Test execution uses Gradle commands. The `matrix.gradle-argument` determines the specific tests executed. Below are the defined options:\n    1. `./gradlew assemble && ./gradlew check -x test -x testng` (**Label**: `check`).\n    2. `./gradlew testWithJava11 testngWithJava11` (**Label**: `java11`).\n    3. `./gradlew testWithJava17 testngWithJava17` (**Label**: `java17`).\n    4. `./gradlew testWithJava21 testngWithJava21` (**Label**: `java21`).\n    5. `./gradlew test testng jacocoTestReport` (**Label**: `java25`).\n    6. `./gradlew jcstress` (**Label**: `jcstress`).\n  - Additional flags used with Gradle commands:\n    - `--info` and `--stacktrace` for detailed build and test logs.\n    - For `jcstress`, output is captured in a file: `build/jcstress-output.txt`.\n\n- **Test Results Parsing**:\n  - Tool parses test result XML reports from `build/test-results/<test-results-dirs>`:\n    - Defined per label (e.g., `testWithJava11`, `testngWithJava11`).\n  - Coverage Reports:\n    - HTML report: `build/reports/jacoco/test/html/`.\n    - XML report: `build/reports/jacoco/test/jacocoTestReport.xml`.\n  - Commands for analyzing coverage or parsing test results:\n    - Coverage is uploaded as artifacts using `actions/upload-artifact@v7`.\n\n- **Optional Test/Validation Commands**:\n  - Generate Javadoc: `./gradlew javadoc --info --stacktrace`.\n\n[/Key Information]", 'Get File Info', True)
+2026-10-15 17:30:32.883 | INFO     | entering browse
+2026-10-15 17:30:32.884 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/master.yml ===
+name: Master Build and Publish
+# For master push: Builds and publishes the development version to maven
+on:
+  push:
+    branches:
+      - master
+permissions:
+  contents: write
+jobs:
+  buildAndTest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - gradle-argument: 'assemble && ./gradlew check -x test -x testng'
+            label: 'check'
+          - gradle-argument: 'testWithJava11 testngWithJava11'
+            label: 'java11'
+            test-results-dirs: 'testWithJava11 testngWithJava11'
+          - gradle-argument: 'testWithJava17 testngWithJava17'
+            label: 'java17'
+            test-results-dirs: 'testWithJava17 testngWithJava17'
+          - gradle-argument: 'testWithJava21 testngWithJava21'
+            label: 'java21'
+            test-results-dirs: 'testWithJava21 testngWithJava21'
+          - gradle-argument: 'test testng jacocoTestReport'
+            label: 'java25'
+            test-results-dirs: 'test testng'
+          - gradle-argument: 'jcstress'
+            label: 'jcstress'
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: gradle/actions/wrapper-validation@v6
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6.0.1
+        with:
+          java-version: '25'
+          distribution: 'corretto'
+      - name: build and test
+        run: |
+          if [ "${{ matrix.label }}" = "jcstress" ]; then
+            set -o pipefail
+            mkdir -p build
+            ./gradlew ${{matrix.gradle-argument}} --info --stacktrace 2>&1 | tee build/jcstress-output.txt
+          else
+            ./gradlew ${{matrix.gradle-argument}} --info --stacktrace
+          fi
+      - name: Upload Coverage XML Report
+        uses: actions/upload-artifact@v7
+        if: always() && matrix.label == 'java25'
+        with:
+          name: coverage-report
+          path: build/reports/jacoco/test/jacocoTestReport.xml
+          retention-days: 1
+      - name: Parse Test Results
+        if: always() && matrix.label != 'check' && matrix.label != 'jcstress'
+        run: |
+          total=0; failures=0; errors=0; skipped=0
+          for dir_name in ${{ matrix.test-results-dirs }}; do
+            dir="build/test-results/$dir_name"
+            for f in "$dir"/TEST-*.xml; do
+              [ -f "$f" ] || continue
+              t=$(grep -o 'tests="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              fl=$(grep -o 'failures="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              e=$(grep -o 'errors="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              s=$(grep -o 'skipped="[0-9]*"' "$f" | head -1 | grep -o '[0-9]*')
+              total=$((total + ${t:-0}))
+              failures=$((failures + ${fl:-0}))
+              errors=$((errors + ${e:-0}))
+              skipped=$((skipped + ${s:-0}))
+            done
+          done
+          passed=$((total - failures - errors - skipped))
+          mkdir -p /tmp/test-stats
+          echo "{\"total\":$total,\"passed\":$passed,\"failed\":$failures,\"errors\":$errors,\"skipped\":$skipped}" \
+            > "/tmp/test-stats/${{ matrix.label }}.json"
+      - name: Parse jcstress Results
+        if: always() && matrix.label == 'jcstress'
+        run: |
+          total=0; passed=0; failed=0; errors=0; skipped=0
+          if [ -f build/jcstress-output.txt ]; then
+            line=$(grep 'Results:.*planned.*passed.*failed' build/jcstress-output.txt | tail -1)
+            if [ -n "$line" ]; then
+              total=$(echo "$line" | sed 's/.*Results: \([0-9]*\) planned.*/\1/')
+              passed=$(echo "$line" | sed 's/.*; \([0-9]*\) passed.*/\1/')
+              failed=$(echo "$line" | sed 's/.*passed, \([0-9]*\) failed.*/\1/')
+              soft=$(echo "$line" | sed 's/.*failed, \([0-9]*\) soft.*/\1/')
+              hard=$(echo "$line" | sed 's/.*soft errs, \([0-9]*\) hard.*/\1/')
+              errors=$((soft + hard))
+            fi
+          fi
+          mkdir -p /tmp/test-stats
+          echo "{\"total\":$total,\"passed\":$passed,\"failed\":$failed,\"errors\":$errors,\"skipped\":$skipped}" \
+            > "/tmp/test-stats/${{ matrix.label }}.json"
+      - name: Upload Test Stats
+        if: always() && matrix.label != 'check'
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-stats-${{ matrix.label }}
+          path: /tmp/test-stats/${{ matrix.label }}.json
+  update-baseline:
+    needs: buildAndTest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          token: ${{ secrets.ADMIN_PAT }}
+      - name: Download Test Stats
+        uses: actions/download-artifact@v8
+        with:
+          pattern: test-stats-*
+          merge-multiple: true
+          path: test-stats/
+      - name: Download Coverage Report
+        uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Update Baseline
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { parseJacocoXml } = require('./.github/scripts/parse-jacoco.js');
+
+            const versions = ['java11', 'java17', 'java21', 'java25', 'jcstress'];
+            const zeroTest = { total: 0, passed: 0, failed: 0, errors: 0, skipped: 0 };
+
+            // Read current baseline
+            const baselineFile = 'test-baseline.json';
+            let baseline = { tests: {}, coverage: {} };
+            if (fs.existsSync(baselineFile)) {
+              baseline = JSON.parse(fs.readFileSync(baselineFile, 'utf8'));
+            }
+
+            // Update test stats from artifacts
+            const tests = baseline.tests || {};
+            for (const v of versions) {
+              const file = path.join('test-stats', `${v}.json`);
+              if (fs.existsSync(file)) {
+                tests[v] = JSON.parse(fs.readFileSync(file, 'utf8'));
+              } else {
+                tests[v] = tests[v] || zeroTest;
+              }
+            }
+
+            // Update coverage from JaCoCo XML
+            const jacocoFile = path.join('coverage', 'jacocoTestReport.xml');
+            const coverage = parseJacocoXml(jacocoFile) || { overall: {}, classes: {} };
+
+            const updated = { tests, coverage };
+            fs.writeFileSync(baselineFile, JSON.stringify(updated, null, 2) + '\n');
+      - name: Commit Updated Baseline
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add test-baseline.json
+          git diff --cached --quiet || {
+            git commit -m "Update test baseline [skip ci]"
+            git push
+          }
+  javadoc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: gradle/actions/wrapper-validation@v6
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6.0.1
+        with:
+          java-version: '25'
+          distribution: 'corretto'
+      - name: Verify Javadoc
+        run: ./gradlew javadoc --info --stacktrace
+  allBuildAndTestSuccessful:
+    if: always()
+    needs:
+      - buildAndTest
+      - update-baseline
+      - javadoc
+      - publishToMavenCentral
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all jobs passed
+        run: |
+          if [ "${{ needs.buildAndTest.result }}" != "success" ]; then
+            echo "buildAndTest failed with result: ${{ needs.buildAndTest.result }}"
+            exit 1
+          fi
+          if [ "${{ needs.update-baseline.result }}" != "success" ]; then
+            echo "update-baseline failed with result: ${{ needs.update-baseline.result }}"
+            exit 1
+          fi
+          if [ "${{ needs.javadoc.result }}" != "success" ]; then
+            echo "javadoc failed with result: ${{ needs.javadoc.result }}"
+            exit 1
+          fi
+          if [ "${{ needs.publishToMavenCentral.result }}" != "success" ]; then
+            echo "publishToMavenCentral failed with result: ${{ needs.publishToMavenCentral.result }}"
+            exit 1
+          fi
+          echo "All build and test jobs passed successfully."
+  publishToMavenCentral:
+    needs: buildAndTest
+    runs-on: ubuntu-latest
+    env:
+      MAVEN_CENTRAL_USER: ${{ secrets.MAVEN_CENTRAL_USER }}
+      MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+      MAVEN_CENTRAL_USER_NEW: ${{ secrets.MAVEN_CENTRAL_USER_NEW }}
+      MAVEN_CENTRAL_PASSWORD_NEW: ${{ secrets.MAVEN_CENTRAL_PASSWORD_NEW }}
+      MAVEN_CENTRAL_PGP_KEY: ${{ secrets.MAVEN_CENTRAL_PGP_KEY }}
+
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: gradle/actions/wrapper-validation@v6
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6.0.1
+        with:
+          java-version: '25'
+          distribution: 'corretto'
+      - name: publishToMavenCentral
+        run: ./gradlew assemble && ./gradlew check -x test -x testng --info && ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -x check --info --stacktrace
+
+=== FILE END:   /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/master.yml ===
+2026-10-15 17:30:32.884 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-15 17:30:37.375 | INFO     | Model API request cost info: input_tokens=2957, output_tokens=366, cost=0.011053
+2026-10-15 17:30:37.376 | SUCCESS  | Successfully extracted environment config
+2026-10-15 17:30:37.376 | INFO     | ******
+2026-10-15 17:30:37.376 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/master.yml]
+- **Test Execution Commands**:
+  - For tests with Java 11:
+    ```bash
+    ./gradlew testWithJava11 testngWithJava11 --info --stacktrace
+    ```
+  - For tests with Java 17:
+    ```bash
+    ./gradlew testWithJava17 testngWithJava17 --info --stacktrace
+    ```
+  - For tests with Java 21:
+    ```bash
+    ./gradlew testWithJava21 testngWithJava21 --info --stacktrace
+    ```
+  - For tests with Java 25:
+    ```bash
+    ./gradlew test testng jacocoTestReport --info --stacktrace
+    ```
+  - For `jcstress` tests:
+    ```bash
+    ./gradlew jcstress --info --stacktrace
+    ```
+    - Additionally captures detailed output to: `build/jcstress-output.txt`.
+
+- **Setup Details**:
+  - **Java Versions**:
+    - JDK 25 (corretto) is set up using:
+      ```yaml
+      uses: actions/setup-java@v6.0.1
+      with:
+        java-version: '25'
+        distribution: 'corretto'
+      ```
+  - **Gradle Wrapper Validation**:
+    ```yaml
+    uses: gradle/actions/wrapper-validation@v6
+    ```
+
+- **Coverage Report**:
+  - Jacoco coverage report is generated specifically for Java 25 tests:
+    - Path: `build/reports/jacoco/test/jacocoTestReport.xml`
+
+- **OS Prerequisite**:
+  - Runs on `ubuntu-latest`.
+
+[/Key Information]
+2026-10-15 17:30:37.376 | INFO     | ******
+2026-10-15 17:30:37.376 | DEBUG    | Result of dispatch_intent: ("[Key Information from /data/home/cjy/software-testing/projects/graphql-java/.github/workflows/master.yml]\n- **Test Execution Commands**:\n  - For tests with Java 11:\n    ```bash\n    ./gradlew testWithJava11 testngWithJava11 --info --stacktrace\n    ```\n  - For tests with Java 17:\n    ```bash\n    ./gradlew testWithJava17 testngWithJava17 --info --stacktrace\n    ```\n  - For tests with Java 21:\n    ```bash\n    ./gradlew testWithJava21 testngWithJava21 --info --stacktrace\n    ```\n  - For tests with Java 25:\n    ```bash\n    ./gradlew test testng jacocoTestReport --info --stacktrace\n    ```\n  - For `jcstress` tests:\n    ```bash\n    ./gradlew jcstress --info --stacktrace\n    ```\n    - Additionally captures detailed output to: `build/jcstress-output.txt`.\n\n- **Setup Details**:\n  - **Java Versions**:\n    - JDK 25 (corretto) is set up using:\n      ```yaml\n      uses: actions/setup-java@v6.0.1\n      with:\n        java-version: '25'\n        distribution: 'corretto'\n      ```\n  - **Gradle Wrapper Validation**:\n    ```yaml\n    uses: gradle/actions/wrapper-validation@v6\n    ```\n\n- **Coverage Report**:\n  - Jacoco coverage report is generated specifically for Java 25 tests:\n    - Path: `build/reports/jacoco/test/jacocoTestReport.xml`\n\n- **OS Prerequisite**:\n  - Runs on `ubuntu-latest`.\n\n[/Key Information]", 'Get File Info', True)
+2026-10-15 17:30:47.661 | INFO     | Model API request cost info: input_tokens=11121, output_tokens=1496, cost=0.042763
+2026-10-15 17:30:47.686 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-15 17:31:08.531 | INFO     | Model API request cost info: input_tokens=2094, output_tokens=692, cost=0.012155
+2026-10-15 17:31:08.533 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "Environment Setup": {
+            "Java Setup": "Clear instructions to set up JDK 25 using actions/setup-java@v6.0.1.",
+            "Gradle Configurations": {
+                "Properties": {
+                    "org.gradle.caching": "true",
+                    "org.gradle.daemon": "true",
+                    "org.gradle.parallel": "true",
+                    "org.gradle.jvmargs": "-Dfile.encoding=UTF-8"
+                }
+            },
+            "Local Git Hooks": "Install using ./scripts/setup-hooks.sh in CONTRIBUTING.md.",
+            "Build Dependencies": [
+                "org.ow2.asm:asm:9.10.1",
+                "org.ow2.asm:asm-tree:9.10.1",
+                "org.antlr:antlr4-runtime:4.13.2",
+                "com.google.guava:guava:32.1.2-jre"
+            ],
+            "Testing Dependencies": [
+                "org.junit.jupiter:junit-jupiter:5.14.4",
+                "org.spockframework:spock-core:2.4-groovy-5.0"
+            ],
+            "Testing Framework": "Spock framework. New or modified unit tests for code changes must use this framework."
+        },
+        "Test Execution Details": {
+            "Java Versions Used": ["11", "17", "21", "25"],
+            "Gradle Commands for Testing": {
+                "Label: check": "./gradlew assemble && ./gradlew check -x test -x testng",
+                "Label: java11": "./gradlew testWithJava11 testngWithJava11",
+                "Label: java17": "./gradlew testWithJava17 testngWithJava17",
+                "Label: java21": "./gradlew testWithJava21 testngWithJava21",
+                "Label: java25": "./gradlew test testng jacocoTestReport",
+                "Label: jcstress": "./gradlew jcstress"
+            },
+            "Detailed Commands with Logging (master.yml)": {
+                "Java 11": "./gradlew testWithJava11 testngWithJava11 --info --stacktrace",
+                "Java 17": "./gradlew testWithJava17 testngWithJava17 --info --stacktrace",
+                "Java 21": "./gradlew testWithJava21 testngWithJava21 --info --stacktrace",
+                "Java 25": "./gradlew test testng jacocoTestReport --info --stacktrace",
+                "jcstress": "./gradlew jcstress --info --stacktrace"
+            },
+            "Coverage Report Details": {
+                "HTML Path": "build/reports/jacoco/test/html/",
+                "XML Path": "build/reports/jacoco/test/jacocoTestReport.xml"
+            },
+            "Pre-commit Hooks": "Installable via ./scripts/setup-hooks.sh."
+        },
+        "Additional Readme Guidance": {
+            "Documentation": "https://www.graphql-java.com/documentation/getting-started",
+            "Tutorial": "https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/",
+            "Dependencies Info": "https://repo1.maven.org/maven2/com/graphql-java/graphql-java/"
+        }
+    },
+    "terminate": true
+}
+2026-10-15 17:31:08.533 | DEBUG    | Extracted a valid json
+2026-10-15 17:31:08.535 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-15 17:31:24.009 | INFO     | Model API request cost info: input_tokens=2487, output_tokens=594, cost=0.012158
+2026-10-15 17:31:24.010 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-15 17:31:24.020 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-15 17:31:27.149 | INFO     | Model API request cost info: input_tokens=2034, output_tokens=156, cost=0.006645
+2026-10-15 17:31:27.150 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-15 17:38:03.967 | DEBUG    | Result of dispatch_intent: ("Step 14/16 : RUN git clone https://github.com/graphql-java/graphql-java.git /testbed &&     cd /testbed &&     git reset --hard 4c096208ba7203c92ed6617ddfdc35653c8aca11 &&     git remote remove origin\n ---> Running in d4d44138a47e\nfatal: destination path '/testbed' already exists and is not an empty directory.\n ---> Removed intermediate container d4d44138a47e\nError: The command '/bin/sh -c git clone https://github.com/graphql-java/graphql-java.git /testbed &&     cd /testbed &&     git reset --hard 4c096208ba7203c92ed6617ddfdc35653c8aca11 &&     git remote remove origin' returned a non-zero code: 128", 'Failed to build Docker image.', False)
+2026-10-15 17:38:03.970 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-15 17:38:08.168 | INFO     | Model API request cost info: input_tokens=2073, output_tokens=205, cost=0.007233
+2026-10-15 17:38:08.169 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile has an issue during the build process. The command `git clone https://github.com/graphql-java/graphql-java.git /testbed` fails because the destination path `/testbed` already exists and is not empty. This typically happens because a prior step has already populated the `/testbed` directory. To fix this issue, modify the Dockerfile to either clean up the `/testbed` folder before running the `git clone` command or use a conditional check to ensure the `git clone` command only runs if the directory is empty. Replace the problematic command with the following safe alternative: `RUN [ -d /testbed/.git ] || (rm -rf /testbed && mkdir /testbed && git clone https://github.com/graphql-java/graphql-java.git /testbed)`.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-15 17:38:08.169 | DEBUG    | Extracted a valid json
+2026-10-15 17:38:08.171 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-15 17:38:14.182 | INFO     | Model API request cost info: input_tokens=4124, output_tokens=625, cost=0.016560
+2026-10-15 17:38:14.183 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-15 17:45:39.452 | DEBUG    | Result of dispatch_intent: ("Step 14/16 : RUN [ -d /testbed/.git ] || (rm -rf /testbed && mkdir /testbed && git clone https://github.com/graphql-java/graphql-java.git /testbed) &&     cd /testbed &&     git reset --hard 4c096208ba7203c92ed6617ddfdc35653c8aca11 &&     git remote remove origin\n ---> Running in 98af194f4949\nCloning into '/testbed'...\nfatal: Unable to read current working directory: No such file or directory\n ---> Removed intermediate container 98af194f4949\nError: The command '/bin/sh -c [ -d /testbed/.git ] || (rm -rf /testbed && mkdir /testbed && git clone https://github.com/graphql-java/graphql-java.git /testbed) &&     cd /testbed &&     git reset --hard 4c096208ba7203c92ed6617ddfdc35653c8aca11 &&     git remote remove origin' returned a non-zero code: 128", 'Failed to build Docker image.', False)
+2026-10-15 17:45:39.456 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-15 17:45:49.629 | INFO     | Model API request cost info: input_tokens=2156, output_tokens=271, cost=0.008100
+2026-10-15 17:45:49.630 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile failed to build due to the following error: 'fatal: Unable to read current working directory: No such file or directory'. This issue arises on step 14 where the script attempts to run `[ -d /testbed/.git ] || (rm -rf /testbed && mkdir /testbed && git clone https://github.com/graphql-java/graphql-java.git /testbed) && cd /testbed && git reset --hard 4c096208ba7203c92ed6617ddfdc35653c8aca11 && git remote remove origin`. The problem seems to be that the working directory `/testbed` was not properly created or is not accessible at this stage of the Dockerfile. Recommended solutions: 1) Explicitly create the `/testbed` directory before this step if it doesn't exist, using `mkdir -p /testbed`. 2) Ensure the working directory is correctly set before this step by using `WORKDIR /testbed` earlier in the Dockerfile. 3) Verify if the user executing these commands has appropriate permissions for the `/testbed` directory.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-15 17:45:49.631 | DEBUG    | Extracted a valid json
+2026-10-15 17:45:49.631 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-15 17:45:49.636 | INFO     | Task graphql-java completed successfully.

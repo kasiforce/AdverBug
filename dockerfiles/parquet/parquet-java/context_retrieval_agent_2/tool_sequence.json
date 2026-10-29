@@ -1,0 +1,31 @@
+[
+  {
+    "func_name": "search_files_by_keyword",
+    "arguments": {
+      "keyword": "settings.xml"
+    },
+    "call_ok": true,
+    "result": "No files found containing the keyword 'settings.xml'.",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "README.md",
+      "custom_query": "Check for Maven setup instructions, dependency management, or alternative repository settings."
+    },
+    "call_ok": true,
+    "result": "[Key Information from README.md]\n- Maven setup instructions:\n  - To build the project:\n    ```\n    LC_ALL=C ./mvnw clean install\n    ```\n  - To run unit tests:\n    ```\n    ./mvnw test\n    ```\n  - To package the jars:\n    ```\n    ./mvnw clean package\n    ```\n  - Command to build jars with Java Vector API support (experimental):\n    ```\n    ./mvnw clean package -P vector-plugins\n    ```\n\n- Dependency management:\n  - Current release: `1.18.1`\n  - Maven dependencies:\n    ```xml\n    <dependencies>\n      <dependency>\n        <groupId>org.apache.parquet</groupId>\n        <artifactId>parquet-common</artifactId>\n        <version>1.18.1</version>\n      </dependency>\n      <dependency>\n        <groupId>org.apache.parquet</groupId>\n        <artifactId>parquet-encoding</artifactId>\n        <version>1.18.1</version>\n      </dependency>\n      <dependency>\n        <groupId>org.apache.parquet</groupId>\n        <artifactId>parquet-column</artifactId>\n        <version>1.18.1</version>\n      </dependency>\n      <dependency>\n        <groupId>org.apache.parquet</groupId>\n        <artifactId>parquet-hadoop</artifactId>\n        <version>1.18.1</version>\n      </dependency>\n    </dependencies>\n    ```\n\n- Repository settings:\n  - Remote repository location: `https://github.com/apache/parquet-java.git`\n\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "pom.xml",
+      "custom_query": "Search for custom Maven configurations, plugins, or dependencies."
+    },
+    "call_ok": true,
+    "result": "[Key Information from pom.xml]\n- **Custom Maven Configurations:**\n  - **Java version enforced:** Java 17 or higher is required to build the project (`maven-enforcer-plugin` rule).\n  - **Logging configuration during tests:** Configured via `maven-surefire-plugin`:\n    - Log level: `${surefire.logLevel}` (Defaults to `ERROR`).\n    - Stack trace depth: `-XX:MaxJavaStackTraceDepth=8`.\n  - **Resource-intensive tests toggle:** Controlled by the property `<enableResourceIntensiveTests>` (Default: `true`).\n  - **Profile for verbose testing:**\n    - ID: `verbose-test`.\n    - Log level: `INFO`.\n    - Maximum stack trace depth: `-XX:MaxJavaStackTraceDepth=1024`.\n\n- **Custom Maven Plugins:**\n  - **Build and Compilation Plugins:**\n    - `maven-compiler-plugin`: Configures Java compilation to use Java 17 or higher.\n    - `maven-javadoc-plugin`: Excludes all source files under `generated-sources`.\n  - **Dependency Verification:**\n    - `maven-enforcer-plugin`: Bans specific dependencies like `org.slf4j:slf4j-log4j12` and restricts imports of JUnit 4 (encourages JUnit 5 and AssertJ instead).\n    - `maven-dependency-plugin`: Performs dependency analysis with a strict failure on warnings.\n  - **Code Quality and Formatting:**\n    - `spotless-maven-plugin`: Enforces code formatting, removes unused imports, and applies `palantirJavaFormat`.\n    - `apache-rat-plugin`: Ensures license compliance with specific exclusions (e.g., `.parquet`, `.json` files).\n  - **Testing Tools:**\n    - `maven-surefire-plugin`: For unit tests; excludes benchmark-related Java files.\n    - `maven-failsafe-plugin`: Configured for integration/verification tests.\n    - `cobertura-maven-plugin`: For generating code coverage reports in HTML format.\n  - **Others:**\n    - `maven-shade-plugin`: Shades dependencies like Jackson and fastutil while minimizing the final JAR.\n    - `buildnumber-maven-plugin`: Ensures valid build metadata.\n    - `cyclonedx-maven-plugin`: Generates a software bill of materials (SBOM).\n    - `japicmp-maven-plugin`: Compares backward incompatible API changes across versions.\n\n- **Custom Dependencies:**\n  - Testing and Validation:\n    - `JUnit 5` dependencies:\n      - `junit-jupiter-api`, `junit-jupiter-params`, `junit-jupiter-engine`, `junit-vintage-engine` (all scoped `test`).\n    - `AssertJ`: `org.assertj:assertj-core` (version: `${assertj.version}`, scoped `test`).\n  - Dependency Management:\n    - Overrides Hadoop dependencies to exclude logging frameworks (`org.slf4j`, `ch.qos.reload4j`).\n  - Parquet-CLI Dependencies:\n    - `opencsv` (version: `2.3`), `jcommander` (version: `1.82`), `tukaani` (version: `1.12`), `zstd-jni` (version: `1.5.7-21`), `commons-text` (version: `1.15.0`), `commons-lang3` (version: `3.21.0`).\n\n- **Custom Resource Handling:**\n  - Parquet CLI tools depend on `thrift` and `avro`, with specific excluded classes in their shaded dependencies.\n  - Ensures non-public APIs are excluded from compatibility checks (`japicmp-maven-plugin`).\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  }
+]

@@ -1,0 +1,72 @@
+# Use Ubuntu 22.04 as the base image for stability and compatibility
+FROM --platform=linux/x86_64 ubuntu:22.04
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Set timezone and prevent GPG problems with apt
+ENV TZ=Etc/UTC
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Install basic utilities and essential development tools
+RUN apt update && apt install -y \
+    wget \
+    git \
+    curl \
+    openjdk-17-jdk \
+    maven \
+    nodejs \
+    npm \
+    python3 \
+    python3-pip \
+    python-is-python3 \
+    clang-format \
+    locales \
+    locales-all \
+    build-essential \
+    libssl-dev \
+    pkg-config \
+    libtiff-dev \
+    libffi-dev \
+    tzdata \
+    rustc \
+    cargo \
+    net-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Miniconda for Python environment management
+RUN wget "https://repo.anaconda.com/miniconda/Miniconda3-py311_23.11.0-2-Linux-x86_64.sh" -O miniconda.sh && \
+    bash miniconda.sh -b -p /opt/miniconda3 && rm miniconda.sh
+ENV PATH=/opt/miniconda3/bin:$PATH
+
+# Initialize conda and set up a virtual environment named 'testbed'
+RUN conda init --all && conda config --append channels conda-forge && \
+    /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && conda create -n testbed python=3.9 -y && conda activate testbed && pip install ruff==0.15.22 pytest==7.4.0"
+
+# Set the working directory
+WORKDIR /testbed/
+
+# Clone the repository and checkout the specific commit
+RUN /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed && \
+    git clone https://github.com/apache/fory.git /testbed && cd /testbed && git reset --hard d8ed8643ed66ab7c7874c70dea2e0a407ccfdeb6 && git remote remove origin"
+
+# Install Python dependencies (if any setup.py exists)
+RUN /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed && cd /testbed/python && pip install -e ."
+
+# Set up Java dependencies using Maven
+RUN /bin/bash -c "cd /testbed/java && mvn install -T10 -DskipTests"
+
+# Set up Node.js dependencies in JavaScript subdirectory
+RUN /bin/bash -c "cd /testbed/javascript && npm install"
+
+# Set up Rust dependencies using Cargo
+RUN /bin/bash -c "cd /testbed/rust && cargo build"
+
+# Set up Golang dependencies (if applicable) and ensure the environment is ready
+RUN apt install -y golang && \
+    /bin/bash -c "cd /testbed/go/fory && go mod tidy && go build"
+
+# Set up environment variables for Java runtime configuration
+ENV FORY_CODE_DIR="/testbed/generated_code"
+ENV ENABLE_FORY_GENERATED_CLASS_UNIQUE_ID=true
+
+# Activate 'testbed' environment by default for the container
+RUN echo "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed" >> /root/.bashrc

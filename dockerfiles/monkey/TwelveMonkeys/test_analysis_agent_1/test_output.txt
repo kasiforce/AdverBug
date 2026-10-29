@@ -1,0 +1,1691 @@
++ cd /testbed
++ mvn --batch-mode --no-transfer-progress test
+OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 35 modules
+[INFO] Installing Central Publishing features
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] TwelveMonkeys                                                      [pom]
+[INFO] TwelveMonkeys » Common                                             [pom]
+[INFO] TwelveMonkeys » Common » Language support                          [jar]
+[INFO] TwelveMonkeys » Common » IO                                        [jar]
+[INFO] TwelveMonkeys » Common » Image                                     [jar]
+[INFO] TwelveMonkeys » Servlet                                            [jar]
+[INFO] TwelveMonkeys » ImageIO                                            [pom]
+[INFO] TwelveMonkeys » ImageIO » Core                                     [jar]
+[INFO] TwelveMonkeys » ImageIO » Metadata                                 [jar]
+[INFO] TwelveMonkeys » ImageIO » Photoshop Path Support                   [jar]
+[INFO] TwelveMonkeys » ImageIO » BMP plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » HDR plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » DDS plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » ICNS plugin                              [jar]
+[INFO] TwelveMonkeys » ImageIO » IFF plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » JPEG plugin                              [jar]
+[INFO] TwelveMonkeys » ImageIO » PCX plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » PDF plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » PICT plugin                              [jar]
+[INFO] TwelveMonkeys » ImageIO » PNM plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » PSD plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » SGI plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » TGA plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » Thumbs.db plugin                         [jar]
+[INFO] TwelveMonkeys » ImageIO » TIFF plugin                              [jar]
+[INFO] TwelveMonkeys » ImageIO » WebP plugin                              [jar]
+[INFO] TwelveMonkeys » ImageIO » XWD plugin                               [jar]
+[INFO] TwelveMonkeys » ImageIO » Batik Plugin                             [jar]
+[INFO] TwelveMonkeys » ImageIO » JDK Reference Tests                      [jar]
+[INFO] TwelveMonkeys » ImageIO » JPEG/JEP-262 Interop                     [jar]
+[INFO] TwelveMonkeys » ImageIO » JPEG/JAI TIFF Interop                    [jar]
+[INFO] TwelveMonkeys » ImageIO » TIFF/JAI Metadata Interop                [jar]
+[INFO] TwelveMonkeys » ImageIO » TIFF/JDK JPEG Interop                    [jar]
+[INFO] TwelveMonkeys » Contrib                                            [jar]
+[INFO] TwelveMonkeys » BOM                                                [pom]
+[INFO] 
+[INFO] ------------------< com.twelvemonkeys:twelvemonkeys >-------------------
+[INFO] Building TwelveMonkeys 3.15.4-SNAPSHOT                            [1/35]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------< com.twelvemonkeys.common:common >-------------------
+[INFO] Building TwelveMonkeys » Common 3.15.4-SNAPSHOT                   [2/35]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ----------------< com.twelvemonkeys.common:common-lang >----------------
+[INFO] Building TwelveMonkeys » Common » Language support 3.15.4-SNAPSHOT [3/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ common-lang ---
+[INFO] skip non existing resourceDirectory /testbed/common/common-lang/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ common-lang ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 48 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] /testbed/common/common-lang/src/main/java/com/twelvemonkeys/lang/SystemUtil.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/common/common-lang/src/main/java/com/twelvemonkeys/lang/SystemUtil.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ common-lang ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/common/common-lang/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ common-lang ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ common-lang ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 30 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] /testbed/common/common-lang/src/test/java/com/twelvemonkeys/util/TimeoutMapTest.java: /testbed/common/common-lang/src/test/java/com/twelvemonkeys/util/TimeoutMapTest.java uses or overrides a deprecated API.
+[INFO] /testbed/common/common-lang/src/test/java/com/twelvemonkeys/util/TimeoutMapTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/common/common-lang/src/test/java/com/twelvemonkeys/lang/ObjectAbstractTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/common/common-lang/src/test/java/com/twelvemonkeys/lang/ObjectAbstractTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ common-lang ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.lang.ValidateTest
+[INFO] Tests run: 114, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.172 s -- in com.twelvemonkeys.lang.ValidateTest
+[INFO] Running com.twelvemonkeys.lang.PlatformTest
+[WARNING] Tests run: 14, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.012 s -- in com.twelvemonkeys.lang.PlatformTest
+[INFO] Running com.twelvemonkeys.lang.BeanUtilTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.twelvemonkeys.lang.BeanUtilTest
+[INFO] Running com.twelvemonkeys.lang.StringUtilTest
+[INFO] Tests run: 56, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in com.twelvemonkeys.lang.StringUtilTest
+[INFO] Running com.twelvemonkeys.lang.DateUtilTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in com.twelvemonkeys.lang.DateUtilTest
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapValues
+[INFO] Tests run: 60, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapValues
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapKeySet
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapKeySet
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapEntrySet
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapEntrySet
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.144 s -- in com.twelvemonkeys.util.LinkedMapTest
+[INFO] Running com.twelvemonkeys.util.regex.RegExTokenIteratorTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.util.regex.RegExTokenIteratorTest
+[INFO] Running com.twelvemonkeys.util.StringTokenIteratorTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.util.StringTokenIteratorTest
+[INFO] Running com.twelvemonkeys.util.NullMapTest
+[INFO] Tests run: 35, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.twelvemonkeys.util.NullMapTest
+[INFO] Running com.twelvemonkeys.util.LRUMapTest
+[INFO] Running com.twelvemonkeys.util.LRUMapTest$TestLRUMapValues
+[INFO] Tests run: 66, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.util.LRUMapTest$TestLRUMapValues
+[INFO] Running com.twelvemonkeys.util.LRUMapTest$TestLRUMapKeySet
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.util.LRUMapTest$TestLRUMapKeySet
+[INFO] Running com.twelvemonkeys.util.LRUMapTest$TestLRUMapEntrySet
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.twelvemonkeys.util.LRUMapTest$TestLRUMapEntrySet
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapValues
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapValues
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapKeySet
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapKeySet
+[INFO] Running com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapEntrySet
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.util.LinkedMapTest$TestLinkedMapEntrySet
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.110 s -- in com.twelvemonkeys.util.LRUMapTest
+[INFO] Running com.twelvemonkeys.util.BeanMapTest
+[INFO] Running com.twelvemonkeys.util.BeanMapTest$TestBeanMapValues
+[INFO] Tests run: 59, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.util.BeanMapTest$TestBeanMapValues
+[INFO] Running com.twelvemonkeys.util.BeanMapTest$TestBeanMapKeySet
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.util.BeanMapTest$TestBeanMapKeySet
+[INFO] Running com.twelvemonkeys.util.BeanMapTest$TestBeanMapEntrySet
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.util.BeanMapTest$TestBeanMapEntrySet
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in com.twelvemonkeys.util.BeanMapTest
+[INFO] Running com.twelvemonkeys.util.TimeoutMapTest
+[INFO] Running com.twelvemonkeys.util.TimeoutMapTest$TestTimeoutMapValues
+[INFO] Tests run: 82, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.util.TimeoutMapTest$TestTimeoutMapValues
+[INFO] Running com.twelvemonkeys.util.TimeoutMapTest$TestTimeoutMapKeySet
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.util.TimeoutMapTest$TestTimeoutMapKeySet
+[INFO] Running com.twelvemonkeys.util.TimeoutMapTest$TestTimeoutMapEntrySet
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.twelvemonkeys.util.TimeoutMapTest$TestTimeoutMapEntrySet
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.748 s -- in com.twelvemonkeys.util.TimeoutMapTest
+[INFO] Running com.twelvemonkeys.util.service.ServiceRegistryTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in com.twelvemonkeys.util.service.ServiceRegistryTest
+[INFO] Running com.twelvemonkeys.util.CollectionUtilTest
+[WARNING] Tests run: 34, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.050 s -- in com.twelvemonkeys.util.CollectionUtilTest
+[INFO] Running com.twelvemonkeys.util.convert.NumberConverterTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.util.convert.NumberConverterTest
+[INFO] Running com.twelvemonkeys.util.convert.DefaultConverterTest
+[WARNING] Tests run: 18, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.006 s -- in com.twelvemonkeys.util.convert.DefaultConverterTest
+[INFO] Running com.twelvemonkeys.util.convert.ConverterTest
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.001 s -- in com.twelvemonkeys.util.convert.ConverterTest
+[INFO] Running com.twelvemonkeys.util.convert.DateConverterTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.util.convert.DateConverterTest
+[INFO] Running com.twelvemonkeys.util.convert.TimeConverterTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.util.convert.TimeConverterTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 936, Failures: 0, Errors: 0, Skipped: 5
+[INFO] 
+[INFO] 
+[INFO] -----------------< com.twelvemonkeys.common:common-io >-----------------
+[INFO] Building TwelveMonkeys » Common » IO 3.15.4-SNAPSHOT              [4/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ common-io ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ common-io ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 48 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] /testbed/common/common-io/src/main/java/com/twelvemonkeys/io/FilenameMaskFilter.java: Some input files use or override a deprecated API.
+[INFO] /testbed/common/common-io/src/main/java/com/twelvemonkeys/io/FilenameMaskFilter.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ common-io ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/common/common-io/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ common-io ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ common-io ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 26 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ common-io ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.io.FastByteArrayOutputStreamTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s -- in com.twelvemonkeys.io.FastByteArrayOutputStreamTest
+[INFO] Running com.twelvemonkeys.io.MemoryCacheSeekableStreamTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s -- in com.twelvemonkeys.io.MemoryCacheSeekableStreamTest
+[INFO] Running com.twelvemonkeys.io.StringArrayReaderTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.twelvemonkeys.io.StringArrayReaderTest
+[INFO] Running com.twelvemonkeys.io.SubStreamTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.io.SubStreamTest
+[INFO] Running com.twelvemonkeys.io.ole2.CompoundDocumentTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 s -- in com.twelvemonkeys.io.ole2.CompoundDocumentTest
+[INFO] Running com.twelvemonkeys.io.ole2.CompoundDocument_StreamTest
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in com.twelvemonkeys.io.ole2.CompoundDocument_StreamTest
+[INFO] Running com.twelvemonkeys.io.ole2.CompoundDocument_SeekableLittleEndianDataInputStreamTest
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in com.twelvemonkeys.io.ole2.CompoundDocument_SeekableLittleEndianDataInputStreamTest
+[INFO] Running com.twelvemonkeys.io.enc.PackBitsEncoderTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s -- in com.twelvemonkeys.io.enc.PackBitsEncoderTest
+[INFO] Running com.twelvemonkeys.io.enc.Base64DecoderTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.347 s -- in com.twelvemonkeys.io.enc.Base64DecoderTest
+[INFO] Running com.twelvemonkeys.io.enc.DecoderStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.io.enc.DecoderStreamTest
+[INFO] Running com.twelvemonkeys.io.enc.Base64EncoderTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.324 s -- in com.twelvemonkeys.io.enc.Base64EncoderTest
+[INFO] Running com.twelvemonkeys.io.enc.PackBitsDecoderTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in com.twelvemonkeys.io.enc.PackBitsDecoderTest
+[INFO] Running com.twelvemonkeys.io.enc.EncoderStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.twelvemonkeys.io.enc.EncoderStreamTest
+[INFO] Running com.twelvemonkeys.io.FileCacheSeekableStreamTest
+[INFO] Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s -- in com.twelvemonkeys.io.FileCacheSeekableStreamTest
+[INFO] Running com.twelvemonkeys.io.CompoundReaderTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.io.CompoundReaderTest
+[INFO] Running com.twelvemonkeys.io.LittleEndianDataInputStreamTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.io.LittleEndianDataInputStreamTest
+[INFO] Running com.twelvemonkeys.io.FileSeekableStreamTest
+[INFO] Tests run: 35, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in com.twelvemonkeys.io.FileSeekableStreamTest
+[INFO] Running com.twelvemonkeys.net.HTTPUtilTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in com.twelvemonkeys.net.HTTPUtilTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 307, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.common:common-image >----------------
+[INFO] Building TwelveMonkeys » Common » Image 3.15.4-SNAPSHOT           [5/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ common-image ---
+[INFO] skip non existing resourceDirectory /testbed/common/common-image/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ common-image ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 23 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ common-image ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/common/common-image/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ common-image ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ common-image ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ common-image ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.image.AreaAverageOpTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s -- in com.twelvemonkeys.image.AreaAverageOpTest
+[INFO] Running com.twelvemonkeys.image.ImageUtilTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.461 s -- in com.twelvemonkeys.image.ImageUtilTest
+[INFO] Running com.twelvemonkeys.image.ConvolveWithEdgeOpTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.twelvemonkeys.image.ConvolveWithEdgeOpTest
+[INFO] Running com.twelvemonkeys.image.MonochromeColorModelTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.image.MonochromeColorModelTest
+[INFO] Running com.twelvemonkeys.image.InverseColorMapTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.image.InverseColorMapTest
+[INFO] Running com.twelvemonkeys.image.BrightnessContrastFilterTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.image.BrightnessContrastFilterTest
+[INFO] Running com.twelvemonkeys.image.ResampleOpTest
+[WARNING] Tests run: 48, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.762 s -- in com.twelvemonkeys.image.ResampleOpTest
+[INFO] Running com.twelvemonkeys.image.BufferedImageIconTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.image.BufferedImageIconTest
+[INFO] Running com.twelvemonkeys.image.AffineTransformOpTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s -- in com.twelvemonkeys.image.AffineTransformOpTest
+[INFO] Running com.twelvemonkeys.image.BufferedImageFactoryTest
+[WARNING] Tests run: 19, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.070 s -- in com.twelvemonkeys.image.BufferedImageFactoryTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 137, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] -----------------< com.twelvemonkeys.servlet:servlet >------------------
+[INFO] Building TwelveMonkeys » Servlet 3.15.4-SNAPSHOT                  [6/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ servlet ---
+[INFO] skip non existing resourceDirectory /testbed/servlet/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ servlet ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ servlet ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/servlet/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ servlet ---
+[INFO] Copying 4 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ servlet ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ servlet ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.servlet.image.IIOProviderContextListenerTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.422 s -- in com.twelvemonkeys.servlet.image.IIOProviderContextListenerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] -----------------< com.twelvemonkeys.imageio:imageio >------------------
+[INFO] Building TwelveMonkeys » ImageIO 3.15.4-SNAPSHOT                  [7/35]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-core >---------------
+[INFO] Building TwelveMonkeys » ImageIO » Core 3.15.4-SNAPSHOT           [8/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-core ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 51 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-core ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-core/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-core ---
+[INFO] Copying 5 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 38 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-core ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.spi.ProviderInfoTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.twelvemonkeys.imageio.spi.ProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.util.SequenceSupportTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.util.SequenceSupportTest
+[INFO] Running com.twelvemonkeys.imageio.util.IIOOutputStreamAdapterTest
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in com.twelvemonkeys.imageio.util.IIOOutputStreamAdapterTest
+[INFO] Running com.twelvemonkeys.imageio.util.UInt32ImageTypeSpecifierTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in com.twelvemonkeys.imageio.util.UInt32ImageTypeSpecifierTest
+[INFO] Running com.twelvemonkeys.imageio.util.RasterUtilsTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.twelvemonkeys.imageio.util.RasterUtilsTest
+[INFO] Running com.twelvemonkeys.imageio.util.IIOUtilTest
+[INFO] Tests run: 38, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s -- in com.twelvemonkeys.imageio.util.IIOUtilTest
+[INFO] Running com.twelvemonkeys.imageio.util.IIOInputStreamAdapterTest
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.twelvemonkeys.imageio.util.IIOInputStreamAdapterTest
+[INFO] Running com.twelvemonkeys.imageio.util.ImageTypeSpecifiersTest
+[INFO] Tests run: 42, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s -- in com.twelvemonkeys.imageio.util.ImageTypeSpecifiersTest
+[INFO] Running com.twelvemonkeys.imageio.util.IndexedImageTypeSpecifierTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.imageio.util.IndexedImageTypeSpecifierTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedRAFImageInputStreamSpiTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.twelvemonkeys.imageio.stream.BufferedRAFImageInputStreamSpiTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedFileImageInputStreamSpiTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.stream.BufferedFileImageInputStreamSpiTest
+[INFO] Running com.twelvemonkeys.imageio.stream.ByteArrayImageInputStreamSpiTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.stream.ByteArrayImageInputStreamSpiTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedInputStreamImageInputStreamSpiTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.stream.BufferedInputStreamImageInputStreamSpiTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedFileImageInputStreamTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.551 s -- in com.twelvemonkeys.imageio.stream.BufferedFileImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedImageInputStreamTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s -- in com.twelvemonkeys.imageio.stream.BufferedImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.stream.ByteArrayImageInputStreamTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in com.twelvemonkeys.imageio.stream.ByteArrayImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.stream.StreamProviderInfoTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.twelvemonkeys.imageio.stream.StreamProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedChannelImageInputStreamFileCacheTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s -- in com.twelvemonkeys.imageio.stream.BufferedChannelImageInputStreamFileCacheTest
+[INFO] Running com.twelvemonkeys.imageio.stream.SubImageInputStreamTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.imageio.stream.SubImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedChannelImageInputStreamTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.070 s -- in com.twelvemonkeys.imageio.stream.BufferedChannelImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedFileInputStreamImageInputStreamSpiTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.twelvemonkeys.imageio.stream.BufferedFileInputStreamImageInputStreamSpiTest
+[INFO] Running com.twelvemonkeys.imageio.stream.URLImageInputStreamSpiTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.stream.URLImageInputStreamSpiTest
+[INFO] Running com.twelvemonkeys.imageio.stream.BufferedChannelImageInputStreamMemoryCacheTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in com.twelvemonkeys.imageio.stream.BufferedChannelImageInputStreamMemoryCacheTest
+[INFO] Running com.twelvemonkeys.imageio.stream.DirectImageInputStreamTest
+[WARNING] Tests run: 14, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.078 s -- in com.twelvemonkeys.imageio.stream.DirectImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.ImageReaderBaseTest
+[INFO] Tests run: 39, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in com.twelvemonkeys.imageio.ImageReaderBaseTest
+[INFO] Running com.twelvemonkeys.imageio.color.KCMSSanitizerStrategyTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in com.twelvemonkeys.imageio.color.KCMSSanitizerStrategyTest
+[INFO] Running com.twelvemonkeys.imageio.color.LCMSSanitizerStrategyTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.twelvemonkeys.imageio.color.LCMSSanitizerStrategyTest
+[INFO] Running com.twelvemonkeys.imageio.color.CIELabColorConverterTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.twelvemonkeys.imageio.color.CIELabColorConverterTest
+[INFO] Running com.twelvemonkeys.imageio.color.ColorSpacesTest
+[WARNING] Tests run: 19, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.032 s -- in com.twelvemonkeys.imageio.color.ColorSpacesTest
+[INFO] Running com.twelvemonkeys.imageio.color.DiscreteAlphaIndexColorModelTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.color.DiscreteAlphaIndexColorModelTest
+[INFO] Running com.twelvemonkeys.imageio.color.UInt32ColorModelTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in com.twelvemonkeys.imageio.color.UInt32ColorModelTest
+[INFO] Running com.twelvemonkeys.imageio.color.ColorProfilesTest
+[INFO] Tests run: 33, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.twelvemonkeys.imageio.color.ColorProfilesTest
+[INFO] Running com.twelvemonkeys.imageio.color.ProfileDeferralActivatorTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.twelvemonkeys.imageio.color.ProfileDeferralActivatorTest
+[INFO] Running com.twelvemonkeys.imageio.StandardImageMetadataSupportTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in com.twelvemonkeys.imageio.StandardImageMetadataSupportTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 494, Failures: 0, Errors: 0, Skipped: 4
+[INFO] 
+[INFO] 
+[INFO] -------------< com.twelvemonkeys.imageio:imageio-metadata >-------------
+[INFO] Building TwelveMonkeys » ImageIO » Metadata 3.15.4-SNAPSHOT       [9/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-metadata ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-metadata/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-metadata ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 42 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-metadata ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-metadata/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-metadata ---
+[INFO] Copying 28 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-metadata ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 35 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-metadata ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.metadata.AbstractDirectoryTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.070 s -- in com.twelvemonkeys.imageio.metadata.AbstractDirectoryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.TIFFEntryTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.twelvemonkeys.imageio.metadata.tiff.TIFFEntryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.TIFFReaderTest
+[INFO] Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s -- in com.twelvemonkeys.imageio.metadata.tiff.TIFFReaderTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.HalfTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s -- in com.twelvemonkeys.imageio.metadata.tiff.HalfTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.BigTIFFWriterTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.imageio.metadata.tiff.BigTIFFWriterTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.TIFFWriterTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.metadata.tiff.TIFFWriterTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.IFDTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.metadata.tiff.IFDTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.RationalTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.metadata.tiff.RationalTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.TIFFDirectoryTest
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.metadata.tiff.TIFFDirectoryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.tiff.UnknownTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.imageio.metadata.tiff.UnknownTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.xmp.XMPReaderTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s -- in com.twelvemonkeys.imageio.metadata.xmp.XMPReaderTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.xmp.XMPEntryTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.metadata.xmp.XMPEntryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.xmp.RDFDescriptionTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.metadata.xmp.RDFDescriptionTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.xmp.XMPScannerTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.metadata.xmp.XMPScannerTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.xmp.XMPDirectoryTest
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.metadata.xmp.XMPDirectoryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.psd.PSDReaderTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.metadata.psd.PSDReaderTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.psd.PSDDirectoryTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.metadata.psd.PSDDirectoryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.psd.PSDEntryTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.metadata.psd.PSDEntryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.iptc.IPTCReaderTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.imageio.metadata.iptc.IPTCReaderTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.iptc.IPTCEntryTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.metadata.iptc.IPTCEntryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.iptc.IPTCWriterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.imageio.metadata.iptc.IPTCWriterTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.iptc.IPTCDirectoryTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.metadata.iptc.IPTCDirectoryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.AbstractEntryTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.metadata.AbstractEntryTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.jpeg.JPEGSegmentUtilTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in com.twelvemonkeys.imageio.metadata.jpeg.JPEGSegmentUtilTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.jpeg.JPEGSegmentTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.metadata.jpeg.JPEGSegmentTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.jpeg.JPEGQualityTest
+[WARNING] Tests run: 10, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.044 s -- in com.twelvemonkeys.imageio.metadata.jpeg.JPEGQualityTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.exif.EXIFReaderTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.imageio.metadata.exif.EXIFReaderTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.exif.EXIFWriterTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.metadata.exif.EXIFWriterTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.exif.RationalTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.imageio.metadata.exif.RationalTest
+[INFO] Running com.twelvemonkeys.imageio.metadata.AbstractCompoundDirectoryTest
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.metadata.AbstractCompoundDirectoryTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 440, Failures: 0, Errors: 0, Skipped: 1
+[INFO] 
+[INFO] 
+[INFO] -------------< com.twelvemonkeys.imageio:imageio-clippath >-------------
+[INFO] Building TwelveMonkeys » ImageIO » Photoshop Path Support 3.15.4-SNAPSHOT [10/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-clippath ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-clippath/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-clippath ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-clippath ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-clippath/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-clippath ---
+[INFO] Copying 9 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-clippath ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-clippath ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.path.PathsTest
+[WARNING] Tests run: 16, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.289 s -- in com.twelvemonkeys.imageio.path.PathsTest
+[INFO] Running com.twelvemonkeys.imageio.path.AdobePathWriterTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in com.twelvemonkeys.imageio.path.AdobePathWriterTest
+[INFO] Running com.twelvemonkeys.imageio.path.AdobePathSegmentTest
+[INFO] Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in com.twelvemonkeys.imageio.path.AdobePathSegmentTest
+[INFO] Running com.twelvemonkeys.imageio.path.AdobePathReaderTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in com.twelvemonkeys.imageio.path.AdobePathReaderTest
+[INFO] Running com.twelvemonkeys.imageio.path.AdobePathBuilderTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.imageio.path.AdobePathBuilderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 84, Failures: 0, Errors: 0, Skipped: 1
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-bmp >----------------
+[INFO] Building TwelveMonkeys » ImageIO » BMP plugin 3.15.4-SNAPSHOT    [11/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-bmp ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-bmp ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 29 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] /testbed/imageio/imageio-bmp/src/main/java/com/twelvemonkeys/imageio/plugins/bmp/BMPImageWriterSpi.java: /testbed/imageio/imageio-bmp/src/main/java/com/twelvemonkeys/imageio/plugins/bmp/BMPImageWriterSpi.java uses unchecked or unsafe operations.
+[INFO] /testbed/imageio/imageio-bmp/src/main/java/com/twelvemonkeys/imageio/plugins/bmp/BMPImageWriterSpi.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-bmp ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-bmp/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-bmp ---
+[INFO] Copying 89 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-bmp ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-bmp ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.BMPImageWriterTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.589 s -- in com.twelvemonkeys.imageio.plugins.bmp.BMPImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.CURProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.twelvemonkeys.imageio.plugins.bmp.CURProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.CURImageReaderTest
+[WARNING] Tests run: 78, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.263 s -- in com.twelvemonkeys.imageio.plugins.bmp.CURImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.ICOImageWriterTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.twelvemonkeys.imageio.plugins.bmp.ICOImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.RLE8DecoderTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.twelvemonkeys.imageio.plugins.bmp.RLE8DecoderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.RLE4DecoderTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in com.twelvemonkeys.imageio.plugins.bmp.RLE4DecoderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.BMPImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@d5ae57e: type = 10 ColorModel: #pixelBits = 8 numComponents = 1 color space = java.awt.color.ICC_ColorSpace@5357c287 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 127 height = 64 #numDataElements 1 dataOff[0] = 0
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmpsuite/q/pal8os2v2.bmp caused exception: New BMP version not implemented yet.
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmpsuite/q/pal8os2v2-16.bmp caused exception: New BMP version not implemented yet.
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmpsuite/q/rgba32abf.bmp caused exception: Invalid compression specified in BMP stream.
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmp/blauesglas_16_bitmask444.bmp caused exception: New BMP version not implemented yet.
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmp/blauesglas_16_bitmask565.bmp caused exception: New BMP version not implemented yet.
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmp/blauesglas_32_bitmask888.bmp caused exception: New BMP version not implemented yet.
+WARNING: Reading TestData: file:/testbed/imageio/imageio-bmp/target/test-classes/bmp/blauesglas_32_bitmask888_reversed.bmp caused exception: New BMP version not implemented yet.
+[WARNING] Tests run: 79, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.511 s -- in com.twelvemonkeys.imageio.plugins.bmp.BMPImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.ICOProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.plugins.bmp.ICOProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.BMPProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.plugins.bmp.BMPProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.bmp.ICOImageReaderTest
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.199 s -- in com.twelvemonkeys.imageio.plugins.bmp.ICOImageReaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 315, Failures: 0, Errors: 0, Skipped: 12
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-hdr >----------------
+[INFO] Building TwelveMonkeys » ImageIO » HDR plugin 3.15.4-SNAPSHOT    [12/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-hdr ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-hdr ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 12 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-hdr ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-hdr/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-hdr ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-hdr ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-hdr ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.hdr.tonemap.DefaultToneMapperTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.twelvemonkeys.imageio.plugins.hdr.tonemap.DefaultToneMapperTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.hdr.tonemap.NullToneMapperTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.imageio.plugins.hdr.tonemap.NullToneMapperTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.hdr.tonemap.GammaToneMapperTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.plugins.hdr.tonemap.GammaToneMapperTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.hdr.RGBETest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.imageio.plugins.hdr.RGBETest
+[INFO] Running com.twelvemonkeys.imageio.plugins.hdr.HDRImageReaderTest
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 1.173 s -- in com.twelvemonkeys.imageio.plugins.hdr.HDRImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.hdr.HDRProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.twelvemonkeys.imageio.plugins.hdr.HDRProviderInfoTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 99, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-dds >----------------
+[INFO] Building TwelveMonkeys » ImageIO » DDS plugin 3.15.4-SNAPSHOT    [13/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-dds ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-dds ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 15 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-dds ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-dds/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-dds ---
+[INFO] Copying 41 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-dds ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-dds ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.dds.DDSImageWriteParamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.twelvemonkeys.imageio.plugins.dds.DDSImageWriteParamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.dds.DDSImageMetadataTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.imageio.plugins.dds.DDSImageMetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.dds.DDSHeaderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in com.twelvemonkeys.imageio.plugins.dds.DDSHeaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.dds.DDSProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.twelvemonkeys.imageio.plugins.dds.DDSProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.dds.DDSImageWriterTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.675 s -- in com.twelvemonkeys.imageio.plugins.dds.DDSImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.dds.DDSImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@3f792b9b: type = 3 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=ff000000 IntegerInterleavedRaster: width = 256 height = 256 #Bands = 4 xOff = 0 yOff = 0 dataOffset[0] 0
+[WARNING] Tests run: 76, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.795 s -- in com.twelvemonkeys.imageio.plugins.dds.DDSImageReaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 119, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-icns >---------------
+[INFO] Building TwelveMonkeys » ImageIO » ICNS plugin 3.15.4-SNAPSHOT   [14/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-icns ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-icns ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 13 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-icns ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-icns/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-icns ---
+[INFO] Copying 7 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-icns ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-icns ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.icns.ICNSUtilTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.twelvemonkeys.imageio.plugins.icns.ICNSUtilTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.icns.ICNSProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in com.twelvemonkeys.imageio.plugins.icns.ICNSProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.icns.ICNSImageWriterTest
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.739 s -- in com.twelvemonkeys.imageio.plugins.icns.ICNSImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.icns.ICNSImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@7c098bb3: type = 3 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=ff000000 IntegerInterleavedRaster: width = 16 height = 16 #Bands = 4 xOff = 0 yOff = 0 dataOffset[0] 0
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@312ab28e: type = 7 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@758a34ce transparency = 3 has alpha = true isAlphaPre = true ByteInterleavedRaster: width = 16 height = 16 #numDataElements 4 dataOff[0] = 3
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.305 s -- in com.twelvemonkeys.imageio.plugins.icns.ICNSImageReaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 114, Failures: 0, Errors: 0, Skipped: 4
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-iff >----------------
+[INFO] Building TwelveMonkeys » ImageIO » IFF plugin 3.15.4-SNAPSHOT    [15/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-iff ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-iff ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 28 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-iff ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-iff/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-iff ---
+[INFO] Copying 18 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-iff ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-iff ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.iff.PCHGChunkTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in com.twelvemonkeys.imageio.plugins.iff.PCHGChunkTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.iff.IFFImageMetadataTest
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.twelvemonkeys.imageio.plugins.iff.IFFImageMetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.iff.IFFProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.twelvemonkeys.imageio.plugins.iff.IFFProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.iff.IFFImageWriterTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.620 s -- in com.twelvemonkeys.imageio.plugins.iff.IFFImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.iff.IFFImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@65b3a85a: type = 7 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@207b8649 transparency = 3 has alpha = true isAlphaPre = true ByteInterleavedRaster: width = 300 height = 200 #numDataElements 4 dataOff[0] = 3
+[WARNING] Tests run: 76, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.581 s -- in com.twelvemonkeys.imageio.plugins.iff.IFFImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.iff.RGB8RLEDecoderTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.plugins.iff.RGB8RLEDecoderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 158, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-jpeg >---------------
+[INFO] Building TwelveMonkeys » ImageIO » JPEG plugin 3.15.4-SNAPSHOT   [16/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-jpeg ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-jpeg ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 31 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-jpeg ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-jpeg/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-jpeg ---
+[INFO] Copying 97 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-jpeg ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 11 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-jpeg ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JPEGSegmentImageInputStreamTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.143 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JPEGSegmentImageInputStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JPEGProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JPEGProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JPEGImage10MetadataTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JPEGImage10MetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JFXXThumbnailReaderTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JFXXThumbnailReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JPEGImageWriterTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.867 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JPEGImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JFIFThumbnailReaderTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JFIFThumbnailReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.EXIFThumbnailReaderTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.twelvemonkeys.imageio.plugins.jpeg.EXIFThumbnailReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.LuminanceToGrayTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.plugins.jpeg.LuminanceToGrayTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.JPEGImageReaderTest
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg/cmyk-sample.jpg image 0: Inconsistent metadata read from stream
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg/0x00-to-0xFF-between-segments.jpg image 0: Image format error
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg/jfif-bogus-empty-jfif-segment.jpg image 0: Inconsistent metadata read from stream
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg/app-marker-missing-null-term.jpg image 0: JFIF APP0 must be first marker after SOI
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg/jfif-16bit-dqt.jpg image 0: Unsupported element precision
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg/jfif-grayscale-thumbnail.jpg image 0: JFIF APP0 must be first marker after SOI
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg-lossless/8_ls.jpg image 0: Unsupported JPEG process: SOF type 0xc3
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg-lossless/16_ls.jpg image 0: Unsupported JPEG process: SOF type 0xc3
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg-lossless/24_ls.jpg image 0: Unsupported JPEG process: SOF type 0xc3
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg-lossless/f-18.jpg image 0: Unsupported JPEG process: SOF type 0xc3
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg-lossless/testimg_rgb.jpg image 0: Unsupported JPEG process: SOF type 0xc3
+WARNING: Reading reference metadata failed for TestData: file:/testbed/imageio/imageio-jpeg/target/test-classes/jpeg-lossless/testimg_gray.jpg image 0: Unsupported JPEG process: SOF type 0xc3
+[WARNING] Tests run: 145, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 5.736 s -- in com.twelvemonkeys.imageio.plugins.jpeg.JPEGImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.FastCMYKToRGBTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.imageio.plugins.jpeg.FastCMYKToRGBTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 242, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-pcx >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PCX plugin 3.15.4-SNAPSHOT    [17/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-pcx ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-pcx ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 14 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-pcx ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-pcx/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-pcx ---
+[INFO] Copying 13 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-pcx ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-pcx ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.dcx.DCXProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in com.twelvemonkeys.imageio.plugins.dcx.DCXProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.dcx.DCXImageReaderTest
+[WARNING] Tests run: 75, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.663 s -- in com.twelvemonkeys.imageio.plugins.dcx.DCXImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pcx.PCXImageReaderTest
+[WARNING] Tests run: 77, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.623 s -- in com.twelvemonkeys.imageio.plugins.pcx.PCXImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pcx.PCXProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.plugins.pcx.PCXProviderInfoTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 178, Failures: 0, Errors: 0, Skipped: 4
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-pdf >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PDF plugin 3.15.4-SNAPSHOT    [18/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-pdf ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-pdf/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-pdf ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-pdf ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-pdf/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-pdf ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-pdf/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-pdf ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-pdf ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-pict >---------------
+[INFO] Building TwelveMonkeys » ImageIO » PICT plugin 3.15.4-SNAPSHOT   [19/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-pict ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-pict ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 28 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-pict ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-pict/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-pict ---
+[INFO] Copying 46 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-pict ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 8 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-pict ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.pict.PICTImageWriterTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.737 s -- in com.twelvemonkeys.imageio.plugins.pict.PICTImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pict.QTGenericDecompressorTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.imageio.plugins.pict.QTGenericDecompressorTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pict.QTBMPDecompressorTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.imageio.plugins.pict.QTBMPDecompressorTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pict.PICTImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@259195fe: type = 3 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=ff000000 IntegerInterleavedRaster: width = 300 height = 200 #Bands = 4 xOff = 0 yOff = 0 dataOffset[0] 0
+[WARNING] Tests run: 99, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 1.058 s -- in com.twelvemonkeys.imageio.plugins.pict.PICTImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pict.PICTProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.twelvemonkeys.imageio.plugins.pict.PICTProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pict.QTRAWDecompressorTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.plugins.pict.QTRAWDecompressorTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pntg.PNTGMetadataTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.twelvemonkeys.imageio.plugins.pntg.PNTGMetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pntg.PNTGImageReaderTest
+[WARNING] Tests run: 73, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.244 s -- in com.twelvemonkeys.imageio.plugins.pntg.PNTGImageReaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 217, Failures: 0, Errors: 0, Skipped: 6
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-pnm >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PNM plugin 3.15.4-SNAPSHOT    [20/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-pnm ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-pnm ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 22 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-pnm ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-pnm/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-pnm ---
+[INFO] Copying 16 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-pnm ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-pnm ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PNMImageReaderSpiTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.twelvemonkeys.imageio.plugins.pnm.PNMImageReaderSpiTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PAMImageWriterTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.552 s -- in com.twelvemonkeys.imageio.plugins.pnm.PAMImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PAMImageWriterSpiTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.twelvemonkeys.imageio.plugins.pnm.PAMImageWriterSpiTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PAMImageReaderSpiTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.twelvemonkeys.imageio.plugins.pnm.PAMImageReaderSpiTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PNMProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.plugins.pnm.PNMProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PAMProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.plugins.pnm.PAMProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PNMImageReaderTest
+[WARNING] Tests run: 77, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.335 s -- in com.twelvemonkeys.imageio.plugins.pnm.PNMImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PAMImageReaderTest
+[WARNING] Tests run: 77, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.137 s -- in com.twelvemonkeys.imageio.plugins.pnm.PAMImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PNMImageWriterSpiTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.plugins.pnm.PNMImageWriterSpiTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.pnm.PNMImageWriterTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.twelvemonkeys.imageio.plugins.pnm.PNMImageWriterTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 241, Failures: 0, Errors: 0, Skipped: 4
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-psd >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PSD plugin 3.15.4-SNAPSHOT    [21/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-psd ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-psd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 37 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-psd ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-psd/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-psd ---
+[INFO] Copying 36 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-psd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-psd ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@18cebaa5: type = 7 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@7c098bb3 transparency = 3 has alpha = true isAlphaPre = true ByteInterleavedRaster: width = 300 height = 225 #numDataElements 4 dataOff[0] = 3
+WARNING: Image count not equal to test data count
+[WARNING] Tests run: 104, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.826 s -- in com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.PSDUtilDecompressorStreamTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in com.twelvemonkeys.imageio.plugins.psd.PSDUtilDecompressorStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.PSDImageWriterTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s -- in com.twelvemonkeys.imageio.plugins.psd.PSDImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.PSDProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.plugins.psd.PSDProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.PSDMetadataTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.imageio.plugins.psd.PSDMetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.HorizontalDeDifferencingStreamTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.plugins.psd.HorizontalDeDifferencingStreamTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 154, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-sgi >----------------
+[INFO] Building TwelveMonkeys » ImageIO » SGI plugin 3.15.4-SNAPSHOT    [22/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-sgi ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-sgi ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-sgi ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-sgi/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-sgi ---
+[INFO] Copying 6 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-sgi ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-sgi ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.sgi.SGIProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in com.twelvemonkeys.imageio.plugins.sgi.SGIProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.sgi.SGIImageReaderTest
+[WARNING] Tests run: 80, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 1.037 s -- in com.twelvemonkeys.imageio.plugins.sgi.SGIImageReaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 93, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-tga >----------------
+[INFO] Building TwelveMonkeys » ImageIO » TGA plugin 3.15.4-SNAPSHOT    [23/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-tga ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-tga ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 12 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-tga ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-tga/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-tga ---
+[INFO] Copying 28 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-tga ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-tga ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.TGAImageWriterTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.587 s -- in com.twelvemonkeys.imageio.plugins.tga.TGAImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.TGAImageWriteParamTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.plugins.tga.TGAImageWriteParamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.TGAImageReaderTest
+[WARNING] Tests run: 79, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.801 s -- in com.twelvemonkeys.imageio.plugins.tga.TGAImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.TGAMetadataTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.twelvemonkeys.imageio.plugins.tga.TGAMetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.RLEDecoderTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.299 s -- in com.twelvemonkeys.imageio.plugins.tga.RLEDecoderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.RLEEncoderTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.251 s -- in com.twelvemonkeys.imageio.plugins.tga.RLEEncoderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tga.TGAProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.twelvemonkeys.imageio.plugins.tga.TGAProviderInfoTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 174, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] -------------< com.twelvemonkeys.imageio:imageio-thumbsdb >-------------
+[INFO] Building TwelveMonkeys » ImageIO » Thumbs.db plugin 3.15.4-SNAPSHOT [24/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-thumbsdb ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-thumbsdb ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-thumbsdb ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-thumbsdb/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-thumbsdb ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-thumbsdb ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] /testbed/imageio/imageio-thumbsdb/src/test/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReaderTest.java: /testbed/imageio/imageio-thumbsdb/src/test/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReaderTest.java uses or overrides a deprecated API.
+[INFO] /testbed/imageio/imageio-thumbsdb/src/test/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReaderTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-thumbsdb ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.thumbsdb.ThumbsDBProviderInfoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in com.twelvemonkeys.imageio.plugins.thumbsdb.ThumbsDBProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.thumbsdb.ThumbsDBImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@7e8dcdaa: type = 1 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=0 IntegerInterleavedRaster: width = 96 height = 96 #Bands = 3 xOff = 0 yOff = 0 dataOffset[0] 0
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@3cc41abc: type = 4 DirectColorModel: rmask=ff gmask=ff00 bmask=ff0000 amask=0 IntegerInterleavedRaster: width = 96 height = 96 #Bands = 3 xOff = 0 yOff = 0 dataOffset[0] 0
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@61ce23ac: type = 8 DirectColorModel: rmask=f800 gmask=7e0 bmask=1f amask=0 ShortInterleavedRaster: width = 96 height = 96 #numDataElements 1
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@1c3b9394: type = 9 DirectColorModel: rmask=7c00 gmask=3e0 bmask=1f amask=0 ShortInterleavedRaster: width = 96 height = 96 #numDataElements 1
+[WARNING] Tests run: 75, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.630 s -- in com.twelvemonkeys.imageio.plugins.thumbsdb.ThumbsDBImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.thumbsdb.CatalogTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.twelvemonkeys.imageio.plugins.thumbsdb.CatalogTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 92, Failures: 0, Errors: 0, Skipped: 3
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-tiff >---------------
+[INFO] Building TwelveMonkeys » ImageIO » TIFF plugin 3.15.4-SNAPSHOT   [25/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-tiff ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-tiff ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 31 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-tiff ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-tiff/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-tiff ---
+[INFO] Copying 148 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-tiff ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 18 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-tiff ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.ExtraSamplesColorModelTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.110 s -- in com.twelvemonkeys.imageio.plugins.tiff.ExtraSamplesColorModelTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.YCbCrUpsamplerStreamTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.plugins.tiff.YCbCrUpsamplerStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.TIFFImageWriterTest
+[INFO] Tests run: 59, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.741 s -- in com.twelvemonkeys.imageio.plugins.tiff.TIFFImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.TIFFImageMetadataTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in com.twelvemonkeys.imageio.plugins.tiff.TIFFImageMetadataTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.HorizontalDifferencingStreamTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.twelvemonkeys.imageio.plugins.tiff.HorizontalDifferencingStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.BigTIFFImageReaderTest
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.104 s -- in com.twelvemonkeys.imageio.plugins.tiff.BigTIFFImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.YCbCr16UpsamplerStreamTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.imageio.plugins.tiff.YCbCr16UpsamplerStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.TIFFImageReaderTest
+[WARNING] Tests run: 110, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 3.133 s -- in com.twelvemonkeys.imageio.plugins.tiff.TIFFImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.TIFFProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.plugins.tiff.TIFFProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.BigTIFFProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.imageio.plugins.tiff.BigTIFFProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.CCITTFaxDecoderStreamTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.twelvemonkeys.imageio.plugins.tiff.CCITTFaxDecoderStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.BigTIFFImageWriterTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.twelvemonkeys.imageio.plugins.tiff.BigTIFFImageWriterTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.LZWEncoderTest
+[WARNING] Tests run: 5, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.plugins.tiff.LZWEncoderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.BitPaddingStreamTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.plugins.tiff.BitPaddingStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.CCITTFaxEncoderStreamTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s -- in com.twelvemonkeys.imageio.plugins.tiff.CCITTFaxEncoderStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.HorizontalDeDifferencingStreamTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.twelvemonkeys.imageio.plugins.tiff.HorizontalDeDifferencingStreamTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.LZWDecoderTest
+[WARNING] Tests run: 18, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.067 s -- in com.twelvemonkeys.imageio.plugins.tiff.LZWDecoderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.TIFFStreamMetadataTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s -- in com.twelvemonkeys.imageio.plugins.tiff.TIFFStreamMetadataTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 432, Failures: 0, Errors: 0, Skipped: 6
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-webp >---------------
+[INFO] Building TwelveMonkeys » ImageIO » WebP plugin 3.15.4-SNAPSHOT   [26/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-webp ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-webp ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 34 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-webp ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-webp/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-webp ---
+[INFO] Copying 31 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-webp ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-webp ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.webp.WebPImageReaderTest
+[WARNING] Tests run: 85, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 4.690 s -- in com.twelvemonkeys.imageio.plugins.webp.WebPImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.webp.WebPProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.plugins.webp.WebPProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.webp.LSBBitReaderTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.twelvemonkeys.imageio.plugins.webp.LSBBitReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.webp.WebPImageMetadataTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in com.twelvemonkeys.imageio.plugins.webp.WebPImageMetadataTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 117, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-xwd >----------------
+[INFO] Building TwelveMonkeys » ImageIO » XWD plugin 3.15.4-SNAPSHOT    [27/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-xwd ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-xwd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-xwd ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-xwd/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-xwd ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-xwd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-xwd ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.xwd.XWDProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in com.twelvemonkeys.imageio.plugins.xwd.XWDProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.xwd.XWDImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@3a393455: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@13518f37 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 70 height = 46 #numDataElements 3 dataOff[0] = 2
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.587 s -- in com.twelvemonkeys.imageio.plugins.xwd.XWDImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.xwd.XWDX11HeaderTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.twelvemonkeys.imageio.plugins.xwd.XWDX11HeaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 95, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] --------------< com.twelvemonkeys.imageio:imageio-batik >---------------
+[INFO] Building TwelveMonkeys » ImageIO » Batik Plugin 3.15.4-SNAPSHOT  [28/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-batik ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-batik ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 8 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ imageio-batik ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-batik/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-batik ---
+[INFO] Copying 14 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-batik ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-batik ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.svg.SVGImageReaderSpiTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s -- in com.twelvemonkeys.imageio.plugins.svg.SVGImageReaderSpiTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.svg.SVGImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@60baef24: type = 3 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=ff000000 IntegerInterleavedRaster: width = 450 height = 500 #Bands = 4 xOff = 0 yOff = 0 dataOffset[0] 0
+[WARNING] Tests run: 84, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 1.845 s -- in com.twelvemonkeys.imageio.plugins.svg.SVGImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.svg.SVGProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.twelvemonkeys.imageio.plugins.svg.SVGProviderInfoTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.wmf.WMFImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@3f628ce9: type = 3 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=ff000000 IntegerInterleavedRaster: width = 133 height = 106 #Bands = 4 xOff = 0 yOff = 0 dataOffset[0] 0
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.629 s -- in com.twelvemonkeys.imageio.plugins.wmf.WMFImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.plugins.wmf.WMFProviderInfoTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.twelvemonkeys.imageio.plugins.wmf.WMFProviderInfoTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 186, Failures: 0, Errors: 0, Skipped: 8
+[INFO] 
+[INFO] 
+[INFO] ------------< com.twelvemonkeys.imageio:imageio-reference >-------------
+[INFO] Building TwelveMonkeys » ImageIO » JDK Reference Tests 3.15.4-SNAPSHOT [29/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-reference ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-reference/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-reference ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-reference ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-reference ---
+[WARNING] I/O error reading dependency state: /testbed/imageio/imageio-reference/target/classes: /testbed/imageio/imageio-reference/target/classes
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug:source,lines target 8] to target/test-classes
+[WARNING] /testbed/imageio/imageio-reference/src/test/java/com/twelvemonkeys/imageio/reference/JPEGImageReaderTest.java:[36,36] com.sun.imageio.plugins.jpeg.JPEGImageReader is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/imageio/imageio-reference/src/test/java/com/twelvemonkeys/imageio/reference/PNGImageReaderTest.java:[36,35] com.sun.imageio.plugins.png.PNGImageReader is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/imageio/imageio-reference/src/test/java/com/twelvemonkeys/imageio/reference/JPEGImageReaderTest.java:[60,66] com.sun.imageio.plugins.jpeg.JPEGImageReader is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/imageio/imageio-reference/src/test/java/com/twelvemonkeys/imageio/reference/PNGImageReaderTest.java:[56,65] com.sun.imageio.plugins.png.PNGImageReader is internal proprietary API and may be removed in a future release
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-reference ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.reference.JPEGImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@3c9bfddc: type = 1 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=0 IntegerInterleavedRaster: width = 386 height = 396 #Bands = 3 xOff = 0 yOff = 0 dataOffset[0] 0
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@54a67a45: type = 4 DirectColorModel: rmask=ff gmask=ff00 bmask=ff0000 amask=0 IntegerInterleavedRaster: width = 386 height = 396 #Bands = 3 xOff = 0 yOff = 0 dataOffset[0] 0
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@35390ee3: type = 8 DirectColorModel: rmask=f800 gmask=7e0 bmask=1f amask=0 ShortInterleavedRaster: width = 386 height = 396 #numDataElements 1
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@5ddea849: type = 9 DirectColorModel: rmask=7c00 gmask=3e0 bmask=1f amask=0 ShortInterleavedRaster: width = 386 height = 396 #numDataElements 1
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 0.757 s -- in com.twelvemonkeys.imageio.reference.JPEGImageReaderTest
+[INFO] Running com.twelvemonkeys.imageio.reference.PNGImageReaderTest
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@40cb698e: type = 3 DirectColorModel: rmask=ff0000 gmask=ff00 bmask=ff amask=ff000000 IntegerInterleavedRaster: width = 300 height = 410 #Bands = 4 xOff = 0 yOff = 0 dataOffset[0] 0
+WARNING: Reader does not throw exception with non-declared destination: BufferedImage@3382f8ae: type = 7 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@60641ec8 transparency = 3 has alpha = true isAlphaPre = true ByteInterleavedRaster: width = 300 height = 410 #numDataElements 4 dataOff[0] = 3
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.397 s -- in com.twelvemonkeys.imageio.reference.PNGImageReaderTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 148, Failures: 0, Errors: 0, Skipped: 7
+[INFO] 
+[INFO] 
+[INFO] -------< com.twelvemonkeys.imageio:imageio-jpeg-jep262-interop >--------
+[INFO] Building TwelveMonkeys » ImageIO » JPEG/JEP-262 Interop 3.15.4-SNAPSHOT [30/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-jpeg-jep262-interop ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-jpeg-jep262-interop/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-jpeg-jep262-interop ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-jpeg-jep262-interop ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-jpeg-jep262-interop ---
+[WARNING] I/O error reading dependency state: /testbed/imageio/imageio-jpeg-jep262-interop/target/classes: /testbed/imageio/imageio-jpeg-jep262-interop/target/classes
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-jpeg-jep262-interop ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.jep262interop.JEP262TIFFImageReaderInteroperabilityTest
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 74, Time elapsed: 0.155 s -- in com.twelvemonkeys.imageio.plugins.jpeg.jep262interop.JEP262TIFFImageReaderInteroperabilityTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 74, Failures: 0, Errors: 0, Skipped: 74
+[INFO] 
+[INFO] 
+[INFO] ---------< com.twelvemonkeys.imageio:imageio-jpeg-jai-interop >---------
+[INFO] Building TwelveMonkeys » ImageIO » JPEG/JAI TIFF Interop 3.15.4-SNAPSHOT [31/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-jpeg-jai-interop ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-jpeg-jai-interop/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-jpeg-jai-interop ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-jpeg-jai-interop ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-jpeg-jai-interop ---
+[WARNING] I/O error reading dependency state: /testbed/imageio/imageio-jpeg-jai-interop/target/classes: /testbed/imageio/imageio-jpeg-jai-interop/target/classes
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-jpeg-jai-interop ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.jpeg.jaiinterop.JAITIFFImageReaderInteroperabilityTest
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.447 s -- in com.twelvemonkeys.imageio.plugins.jpeg.jaiinterop.JAITIFFImageReaderInteroperabilityTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] ---------< com.twelvemonkeys.imageio:imageio-tiff-jai-interop >---------
+[INFO] Building TwelveMonkeys » ImageIO » TIFF/JAI Metadata Interop 3.15.4-SNAPSHOT [32/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-tiff-jai-interop ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-tiff-jai-interop/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-tiff-jai-interop ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-tiff-jai-interop ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-tiff-jai-interop/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-tiff-jai-interop ---
+[WARNING] I/O error reading dependency state: /testbed/imageio/imageio-tiff-jai-interop/target/classes: /testbed/imageio/imageio-tiff-jai-interop/target/classes
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-tiff-jai-interop ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.jaiinterop.TIFFImageMetadataJAInteroperabilityTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s -- in com.twelvemonkeys.imageio.plugins.tiff.jaiinterop.TIFFImageMetadataJAInteroperabilityTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] ---------< com.twelvemonkeys.imageio:imageio-tiff-jdk-interop >---------
+[INFO] Building TwelveMonkeys » ImageIO » TIFF/JDK JPEG Interop 3.15.4-SNAPSHOT [33/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ imageio-tiff-jdk-interop ---
+[INFO] skip non existing resourceDirectory /testbed/imageio/imageio-tiff-jdk-interop/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ imageio-tiff-jdk-interop ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ imageio-tiff-jdk-interop ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ imageio-tiff-jdk-interop ---
+[WARNING] I/O error reading dependency state: /testbed/imageio/imageio-tiff-jdk-interop/target/classes: /testbed/imageio/imageio-tiff-jdk-interop/target/classes
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ imageio-tiff-jdk-interop ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.tiff.jdkinterop.TIFFImageReaderJDKJPEGInteroperabilityTest
+WARNING: Image count not equal to test data count
+[WARNING] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 1.884 s -- in com.twelvemonkeys.imageio.plugins.tiff.jdkinterop.TIFFImageReaderJDKJPEGInteroperabilityTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 74, Failures: 0, Errors: 0, Skipped: 2
+[INFO] 
+[INFO] 
+[INFO] -----------------< com.twelvemonkeys.contrib:contrib >------------------
+[INFO] Building TwelveMonkeys » Contrib 3.15.4-SNAPSHOT                 [34/35]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:resources (default-resources) @ contrib ---
+[INFO] skip non existing resourceDirectory /testbed/contrib/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:compile (default-compile) @ contrib ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (manifest) @ contrib ---
+[INFO] Stale files detected, re-generating manifest.
+[INFO] Writing manifest: /testbed/contrib/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.5.0:testResources (default-testResources) @ contrib ---
+[INFO] Copying 12 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.16.0:testCompile (default-testCompile) @ contrib ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug:source,lines target 8] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.6.0:test (default-test) @ contrib ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.contrib.tiff.TIFFUtilitiesTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.558 s -- in com.twelvemonkeys.contrib.tiff.TIFFUtilitiesTest
+[INFO] Running com.twelvemonkeys.contrib.exif.OrientationTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.twelvemonkeys.contrib.exif.OrientationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] ---------------------< com.twelvemonkeys.bom:bom >----------------------
+[INFO] Building TwelveMonkeys » BOM 3.15.4-SNAPSHOT                     [35/35]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for TwelveMonkeys 3.15.4-SNAPSHOT:
+[INFO] 
+[INFO] TwelveMonkeys ...................................... SUCCESS [  0.001 s]
+[INFO] TwelveMonkeys » Common ............................. SUCCESS [  0.000 s]
+[INFO] TwelveMonkeys » Common » Language support .......... SUCCESS [  5.438 s]
+[INFO] TwelveMonkeys » Common » IO ........................ SUCCESS [  2.556 s]
+[INFO] TwelveMonkeys » Common » Image ..................... SUCCESS [  2.540 s]
+[INFO] TwelveMonkeys » Servlet ............................ SUCCESS [  1.165 s]
+[INFO] TwelveMonkeys » ImageIO ............................ SUCCESS [  0.001 s]
+[INFO] TwelveMonkeys » ImageIO » Core ..................... SUCCESS [  3.366 s]
+[INFO] TwelveMonkeys » ImageIO » Metadata ................. SUCCESS [  2.707 s]
+[INFO] TwelveMonkeys » ImageIO » Photoshop Path Support ... SUCCESS [  1.537 s]
+[INFO] TwelveMonkeys » ImageIO » BMP plugin ............... SUCCESS [  6.285 s]
+[INFO] TwelveMonkeys » ImageIO » HDR plugin ............... SUCCESS [  2.248 s]
+[INFO] TwelveMonkeys » ImageIO » DDS plugin ............... SUCCESS [  3.845 s]
+[INFO] TwelveMonkeys » ImageIO » ICNS plugin .............. SUCCESS [  2.123 s]
+[INFO] TwelveMonkeys » ImageIO » IFF plugin ............... SUCCESS [  2.719 s]
+[INFO] TwelveMonkeys » ImageIO » JPEG plugin .............. SUCCESS [ 10.818 s]
+[INFO] TwelveMonkeys » ImageIO » PCX plugin ............... SUCCESS [  2.563 s]
+[INFO] TwelveMonkeys » ImageIO » PDF plugin ............... SUCCESS [  0.048 s]
+[INFO] TwelveMonkeys » ImageIO » PICT plugin .............. SUCCESS [  4.832 s]
+[INFO] TwelveMonkeys » ImageIO » PNM plugin ............... SUCCESS [  2.509 s]
+[INFO] TwelveMonkeys » ImageIO » PSD plugin ............... SUCCESS [  5.572 s]
+[INFO] TwelveMonkeys » ImageIO » SGI plugin ............... SUCCESS [  2.099 s]
+[INFO] TwelveMonkeys » ImageIO » TGA plugin ............... SUCCESS [  3.373 s]
+[INFO] TwelveMonkeys » ImageIO » Thumbs.db plugin ......... SUCCESS [  1.545 s]
+[INFO] TwelveMonkeys » ImageIO » TIFF plugin .............. SUCCESS [ 16.356 s]
+[INFO] TwelveMonkeys » ImageIO » WebP plugin .............. SUCCESS [  6.345 s]
+[INFO] TwelveMonkeys » ImageIO » XWD plugin ............... SUCCESS [  1.534 s]
+[INFO] TwelveMonkeys » ImageIO » Batik Plugin ............. SUCCESS [  3.968 s]
+[INFO] TwelveMonkeys » ImageIO » JDK Reference Tests ...... SUCCESS [  1.929 s]
+[INFO] TwelveMonkeys » ImageIO » JPEG/JEP-262 Interop ..... SUCCESS [  0.999 s]
+[INFO] TwelveMonkeys » ImageIO » JPEG/JAI TIFF Interop .... SUCCESS [  3.337 s]
+[INFO] TwelveMonkeys » ImageIO » TIFF/JAI Metadata Interop  SUCCESS [  0.745 s]
+[INFO] TwelveMonkeys » ImageIO » TIFF/JDK JPEG Interop .... SUCCESS [  2.683 s]
+[INFO] TwelveMonkeys » Contrib ............................ SUCCESS [  1.515 s]
+[INFO] TwelveMonkeys » BOM ................................ SUCCESS [  0.001 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:49 min
+[INFO] Finished at: 2026-10-19T03:12:45Z
+[INFO] ------------------------------------------------------------------------
++ rc=0
++ echo OMNIGRIL_EXIT_CODE=0
+OMNIGRIL_EXIT_CODE=0

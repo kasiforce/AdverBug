@@ -1,0 +1,1560 @@
+2026-10-16 14:39:17.819 | INFO     | Model API request cost info: input_tokens=1395, output_tokens=229, cost=0.005778
+2026-10-16 14:39:17.825 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 14:39:23.691 | INFO     | Model API request cost info: input_tokens=827, output_tokens=65, cost=0.002718
+2026-10-16 14:39:23.693 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('README.md', '')",
+        "browse_file_for_environment_info('CONTRIBUTING.md', '')",
+        "browse_file_for_environment_info('pom.xml', '')"
+    ],
+    "collected_information": {},
+    "terminate": false
+}
+2026-10-16 14:39:23.693 | DEBUG    | Extracted a valid json
+2026-10-16 14:39:23.696 | INFO     | entering browse
+2026-10-16 14:39:23.697 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/tinkerpop/README.md ===
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+# Apache TinkerPop
+
+[![Maven Central](https://img.shields.io/maven-central/v/org.apache.tinkerpop/gremlin-driver?color=brightgreen)](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)
+[![NuGet](https://img.shields.io/nuget/v/Gremlin.Net?color=brightgreen)](https://www.nuget.org/packages/Gremlin.Net)
+[![PyPI](https://img.shields.io/pypi/v/gremlinpython?color=brightgreen)](https://pypi.org/project/gremlinpython/)
+[![npm](https://img.shields.io/npm/v/gremlin?color=brightgreen)](https://www.npmjs.com/package/gremlin)
+[![Go.Dev](https://badge.fury.io/go/github.com%2Fapache%2Ftinkerpop%2Fgremlin-go%2Fv3.svg)](https://pkg.go.dev/github.com/apache/tinkerpop/gremlin-go/v3)
+
+[![Codecov](https://codecov.io/gh/apache/tinkerpop/branch/master/graph/badge.svg?token=TojD2nR5Qd)](https://codecov.io/gh/apache/tinkerpop)
+
+[![TinkerPop3](https://raw.githubusercontent.com/apache/tinkerpop/master/docs/static/images/tinkerpop3-splash.png)](https://tinkerpop.apache.org)
+
+Apache TinkerPop™ is a graph computing framework for both graph databases (OLTP) and graph analytic systems (OLAP). It 
+provides the Gremlin graph traversal language, drivers, and tools for working with property graphs across a wide variety
+of underlying data systems.
+
+## Project overview
+
+TinkerPop defines a common interface and language (Gremlin) so that applications can work against many different graph 
+systems without being locked into a single vendor. It includes a reference in‑memory graph database (TinkerGraph), 
+Gremlin Server, language variants, and a rich collection of recipes and documentation.
+
+Key resources:
+
+- Website: https://tinkerpop.apache.org
+- Documentation Index: https://tinkerpop.apache.org/docs/current/index.html
+- Upgrade documentation: https://tinkerpop.apache.org/docs/current/upgrade/
+- Reference documentation: https://tinkerpop.apache.org/docs/current/reference/
+- Recipes: https://tinkerpop.apache.org/docs/current/recipes/
+- Provider documentation and Gremlin Semantics: https://tinkerpop.apache.org/docs/current/dev/provider
+- Developer documentation: https://tinkerpop.apache.org/docs/current/dev/developer
+- IO Documentation: https://tinkerpop.apache.org/docs/current/dev/io
+- Roadmap and proposals: https://tinkerpop.apache.org/docs/current/dev/future/
+- Javadocs: https://tinkerpop.apache.org/javadocs/current/full/, [core javadoc](https://tinkerpop.apache.org/javadocs/current/core/)
+
+## Building and Testing
+
+Building TinkerPop is supported on Linux and macOS.
+
+TinkerPop uses [Maven](https://maven.apache.org/) and requires Java 11/17 for proper building and proper operations. To 
+build, execute unit tests and package Gremlin Console/Server run:
+
+```bash
+mvn clean install
+```
+
+The zip distributions can be found in the following directories:
+
+1. `gremlin-server/target`
+2. `gremlin-console/target`
+
+Please see the CONTRIBUTING.md file for more detailed information and options for building, test running and developing 
+TinkerPop.
+
+## Get Started
+
+Download [Gremlin Console](https://tinkerpop.apache.org/download.html) (compatible with Java 11/17) and unzip to a 
+directory, then:
+
+```bash
+$ bin/gremlin.sh
+
+         \,,,/
+         (o o)
+-----oOOo-(3)-oOOo-----
+plugin activated: tinkerpop.server
+plugin activated: tinkerpop.utilities
+plugin activated: tinkerpop.tinkergraph
+gremlin> Gremlin.version()
+==>3.8.0
+gremlin> graph = TinkerFactory.createModern()
+==>tinkergraph[vertices:6 edges:6]
+gremlin> g = traversal().with(graph)
+==>graphtraversalsource[tinkergraph[vertices:6 edges:6], standard]
+gremlin> g.V().has('name','vadas').valueMap()
+==>[name:[vadas], age:[27]]
+```
+
+From the Gremlin Console, you can connect to a TinkerGraph instance and run your first traversals. Refer to the 
+[Getting Started](https://tinkerpop.apache.org/docs/current/tutorials/getting-started/) for detailed walkthroughs and 
+examples.
+
+## Using TinkerPop
+
+Common ways to use TinkerPop include:
+
+- Embedding **TinkerGraph** in your application for development, testing, or lightweight graph workloads.
+- Connecting to a **Gremlin‑enabled graph database** via drivers or [Gremlin Server](https://tinkerpop.apache.org/docs/current/reference/#gremlin-server).
+- Running **Gremlin traversals** from the JVM, or via Gremlin Language Variants (Python, .NET, JavaScript, Go, etc.).
+- Using the **Gremlin Console** for interactive exploration, debugging, and learning.
+
+See the [Reference Documentation](https://tinkerpop.apache.org/docs/current/reference/) for supported features,
+configuration options, and other details.
+
+## Documentation
+
+The full TinkerPop documentation is published on the project website and is also maintained in this repository under 
+`docs/src/` as AsciiDoc “books.”
+
+When changing or adding documentation, follow the existing AsciiDoc structure in `docs/src/**` and update the 
+relevant `index.asciidoc` files so new content is included in the build.
+
+## Contributing
+
+Contributions to Apache TinkerPop are welcome. The [Developer Documentation](https://tinkerpop.apache.org/docs/current/dev/developer)
+and contributing guide describe how to set up a development environment, run tests, and submit changes.
+
+- Contribution guidelines: `CONTRIBUTING.md` in the repository root.
+- Developer documentation: https://tinkerpop.apache.org/docs/current/dev/developer/
+
+Before opening a pull request, please:
+
+- Discuss larger changes on the appropriate Apache mailing list.
+- Ensure tests pass locally and, where appropriate, add new tests and documentation.
+- Update `CHANGELOG.asciidoc` and upgrade docs when behavior or public APIs change.
+
+## Using AI and IDE assistants
+
+If you use AI coding agents or IDE assistants when working on TinkerPop, please consult `AGENTS.md`. That file 
+summarizes:
+
+- Recommended build and test commands.
+- Code style and testing conventions.
+- “Do and don’t” guidance specific to automated tools.
+
+`AGENTS.md` is a concise guide for tools and tool‑using contributors, while `CONTRIBUTING.md` and the 
+[Developer Documentation](https://tinkerpop.apache.org/docs/current/dev/developer) remain the canonical sources for 
+project policies and processes.
+
+## License
+
+Apache TinkerPop is an open source project of The Apache Software Foundation and is licensed under the Apache License, 
+Version 2.0. See the `LICENSE` file in this repository for details.
+
+=== FILE END:   /data/home/cjy/software-testing/projects/tinkerpop/README.md ===
+2026-10-16 14:39:23.697 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 14:39:26.654 | INFO     | Model API request cost info: input_tokens=2217, output_tokens=198, cost=0.007523
+2026-10-16 14:39:26.656 | SUCCESS  | Successfully extracted environment config
+2026-10-16 14:39:26.656 | INFO     | ******
+2026-10-16 14:39:26.656 | INFO     | [Key Information from README.md]
+- **Setup Command**: 
+  - `mvn clean install` (**Builds the project, executes unit tests, and packages Gremlin Console/Server**)
+- **Prerequisites**:
+  - OS: **Linux** or **macOS** 
+  - **Java** 11 or 17
+  - **Maven** (Apache Maven)
+- **Testing**:
+  - **Test Framework**: Maven built-in testing
+  - **Test Command (all tests)**: `mvn clean install`
+  - For more detailed information and options for test running, refer to `CONTRIBUTING.md`.
+- **Documentation**: 
+  - Detailed guides for getting started, testing, and contributing are available. Key files include `CONTRIBUTING.md`, `AGENTS.md`, and developer documentation at https://tinkerpop.apache.org/docs/current/dev/developer .
+[/Key Information]
+2026-10-16 14:39:26.656 | INFO     | ******
+2026-10-16 14:39:26.656 | DEBUG    | Result of dispatch_intent: ('[Key Information from README.md]\n- **Setup Command**: \n  - `mvn clean install` (**Builds the project, executes unit tests, and packages Gremlin Console/Server**)\n- **Prerequisites**:\n  - OS: **Linux** or **macOS** \n  - **Java** 11 or 17\n  - **Maven** (Apache Maven)\n- **Testing**:\n  - **Test Framework**: Maven built-in testing\n  - **Test Command (all tests)**: `mvn clean install`\n  - For more detailed information and options for test running, refer to `CONTRIBUTING.md`.\n- **Documentation**: \n  - Detailed guides for getting started, testing, and contributing are available. Key files include `CONTRIBUTING.md`, `AGENTS.md`, and developer documentation at https://tinkerpop.apache.org/docs/current/dev/developer .\n[/Key Information]', 'Get File Info', True)
+2026-10-16 14:39:26.657 | INFO     | entering browse
+2026-10-16 14:39:26.657 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/tinkerpop/CONTRIBUTING.md ===
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+# Contributing to Apache TinkerPop
+
+Thank you for your interest in contributing to Apache TinkerPop™! Contributions of code, tests, documentation, examples, 
+and ideas are all welcome.
+
+Contributions via GitHub pull requests are gladly accepted from their original author. By submitting any copyrighted 
+material via pull request, email, or other means, you agree to license the material under the project's open source 
+license and warrant that you have the legal authority to do so.
+
+Please see the "Developer Documentation" for more information on 
+[contributing](http://tinkerpop.apache.org/docs/current/dev/developer/#_contributing) to TinkerPop.
+
+## Ways to contribute
+
+You can help TinkerPop in many ways, including: [tinkerpop.apache](https://tinkerpop.apache.org/docs/current/dev/developer/)
+
+- Reporting bugs and proposing improvements.
+- Contributing code changes and tests.
+- Writing and improving documentation and examples.
+- Helping users on mailing lists, issue trackers, and forums.
+- Sharing recipes, tutorials, and best practices.
+
+If you are new to the project, unresolved issues marked as “trivial” in [JIRA](https://issues.apache.org/jira/browse/TINKERPOP)
+are a good place to start.
+
+## Getting started
+
+. Fork the [Apache TinkerPop repository](https://github.com/apache/tinkerpop) on GitHub and clone your fork locally.
+. Set up a development environment following the [Developer Documentation](https://tinkerpop.apache.org/docs/current/dev/developer/)
+. For non‑trivial work, tie your changes to an existing JIRA issue or create a new one if needed.
+
+## Contribution process
+
+The general workflow for code or documentation changes is: [tinkerpop.apache](https://tinkerpop.apache.org/docs/current/dev/developer/)
+
+1. **Discuss (recommended)**
+    - For larger or potentially breaking changes, start a discussion on the TinkerPop dev mailing list and/or in JIRA.
+
+2. **Implement**
+    - Make your changes in a feature branch in your fork.
+    - Include tests for code changes whenever possible.
+    - Update documentation, recipes, and upgrade notes when behavior or APIs change.
+
+3. **Build and test**
+    - Run the relevant Maven builds and tests as described in the Developer Documentation (for example, `mvn clean install`).
+    - For significant contributions, consider running the broader test and documentation build described in the development‑environment guide.
+
+4. **Prepare your pull request**
+    - Reference the associated JIRA issue in your commit message/pull request description.
+    - Keep pull requests focused and reasonably small where possible.
+    - Update `CHANGELOG.asciidoc` and the upgrade documentation if your change affects user‑visible behavior or public API.
+
+5. **Submit and respond to review**
+    - Open a GitHub pull request against the appropriate branch.
+    - Automated builds and tests will run via [GitHub Actions](https://github.com/apache/tinkerpop/actions); please address any failures.
+    - Committers and other contributors may request changes; you can add more commits to the same branch to update the pull request.
+    - Please be patient; we will do our best to move your contribution forward.
+
+## Documentation contributions
+
+TinkerPop documentation is maintained primarily as AsciiDoc under `docs/src/**` and published per release. 
+
+When changing documentation:
+
+- Edit the appropriate AsciiDoc files in `docs/src/`.
+- Use the existing structure (books and index files) and update `index.asciidoc` entries so new content is included.
+- For project documentation, submit changes via pull request, just like code.
+
+The Developer Documentation includes detailed information on how to build and preview the documentation locally.
+
+The TinkerPop website is also maintained in the repository under `docs/site` as HTML files. Contributions to that are
+also welcome via pull request. 
+
+## Using AI and IDE assistants
+
+If you use AI coding agents or IDE assistants when working on TinkerPop, please also consult `AGENTS.md`. That file 
+summarizes:
+
+- Recommended build and test commands.
+- Coding and testing conventions.
+- “Do and don’t” guidance specific to automated tools.
+
+Please consider [ASF Generative Tooling Guidance](https://www.apache.org/legal/generative-tooling.html) when making 
+contributions with these tools.
+
+## Community and communication
+
+TinkerPop is an Apache Software Foundation project and follows [ASF community guidelines](https://community.apache.org/contributors/).
+
+For more detail on:
+
+- [Mailing lists](https://lists.apache.org/list.html?dev@tinkerpop.apache.org) and project communication.
+- Roles and responsibilities (contributors, committers, PMC).
+- Release and voting processes.
+
+please see the Developer Documentation’s contributing and governance sections:  
+https://tinkerpop.apache.org/docs/current/dev/developer/
+=== FILE END:   /data/home/cjy/software-testing/projects/tinkerpop/CONTRIBUTING.md ===
+2026-10-16 14:39:26.657 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 14:39:30.132 | INFO     | Model API request cost info: input_tokens=1708, output_tokens=218, cost=0.006450
+2026-10-16 14:39:30.133 | SUCCESS  | Successfully extracted environment config
+2026-10-16 14:39:30.133 | INFO     | ******
+2026-10-16 14:39:30.133 | INFO     | [Key Information from CONTRIBUTING.md]
+- Setup and Build:
+  - Development environment setup instructions are available in the [Developer Documentation](https://tinkerpop.apache.org/docs/current/dev/developer/).
+  - Build and test commands include:
+    - **`mvn clean install`** for Maven build and tests.
+
+- Contribution Process:
+  - Changes should include tests whenever possible.
+  - For larger changes, start a discussion via the dev mailing list or JIRA. 
+
+- Testing:
+  - Recommended to run relevant Maven tests for significant contributions.
+  - Automated builds and tests are run via [GitHub Actions](https://github.com/apache/tinkerpop/actions).
+
+- Documentation-related contributions:
+  - Documentation is maintained as AsciiDoc files under `docs/src/**`.
+  - Contributions to project documentation can follow the same pull request process as code.
+
+- Additional Tools:
+  - The `AGENTS.md` file contains further details for using AI coding agents or IDE assistants with TinkerPop, including build/test command suggestions.
+[/Key Information]
+2026-10-16 14:39:30.134 | INFO     | ******
+2026-10-16 14:39:30.134 | DEBUG    | Result of dispatch_intent: ('[Key Information from CONTRIBUTING.md]\n- Setup and Build:\n  - Development environment setup instructions are available in the [Developer Documentation](https://tinkerpop.apache.org/docs/current/dev/developer/).\n  - Build and test commands include:\n    - **`mvn clean install`** for Maven build and tests.\n\n- Contribution Process:\n  - Changes should include tests whenever possible.\n  - For larger changes, start a discussion via the dev mailing list or JIRA. \n\n- Testing:\n  - Recommended to run relevant Maven tests for significant contributions.\n  - Automated builds and tests are run via [GitHub Actions](https://github.com/apache/tinkerpop/actions).\n\n- Documentation-related contributions:\n  - Documentation is maintained as AsciiDoc files under `docs/src/**`.\n  - Contributions to project documentation can follow the same pull request process as code.\n\n- Additional Tools:\n  - The `AGENTS.md` file contains further details for using AI coding agents or IDE assistants with TinkerPop, including build/test command suggestions.\n[/Key Information]', 'Get File Info', True)
+2026-10-16 14:39:30.134 | INFO     | entering browse
+2026-10-16 14:39:30.135 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/tinkerpop/pom.xml ===
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.apache</groupId>
+        <artifactId>apache</artifactId>
+        <version>27</version>
+    </parent>
+    <groupId>org.apache.tinkerpop</groupId>
+    <artifactId>tinkerpop</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Apache TinkerPop</name>
+    <description>A Graph Computing Framework</description>
+    <url>http://tinkerpop.apache.org/</url>
+    <mailingLists>
+        <mailingList>
+            <name>Users</name>
+            <subscribe>http://groups.google.com/group/gremlin-users</subscribe>
+            <unsubscribe>http://groups.google.com/group/gremlin-users</unsubscribe>
+            <archive>http://groups.google.com/group/gremlin-users/topics</archive>
+        </mailingList>
+        <mailingList>
+            <name>Developers</name>
+            <subscribe>dev-subscribe@tinkerpop.apache.org</subscribe>
+            <unsubscribe>dev-unsubscribe@tinkerpop.apache.org</unsubscribe>
+            <archive>dev-digest-subscribe@tinkerpop.apache.org</archive>
+        </mailingList>
+    </mailingLists>
+    <inceptionYear>2013</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.opensource.org/licenses/Apache-2.0</url>
+        </license>
+    </licenses>
+    <organization>
+        <name>Apache Software Foundation</name>
+        <url>http://www.apache.org/</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Marko A. Rodriguez</name>
+            <email>okram@apache.org</email>
+            <url>http://markorodriguez.com</url>
+        </developer>
+        <developer>
+            <name>Stephen Mallette</name>
+            <email>spmallette@apache.org</email>
+            <url>http://stephen.genoprime.com</url>
+        </developer>
+        <developer>
+            <name>Daniel Kuppitz</name>
+            <email>dkuppitz@apache.org</email>
+            <url>http://gremlin.guru</url>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>Joshua Shinavier</name>
+            <email>josh@fortytwo.net</email>
+            <url>http://fortytwo.net</url>
+        </contributor>
+        <contributor>
+            <name>Michael Pollmeier</name>
+            <email>michael@michaelpollmeier.com</email>
+            <url>http://michaelpollmeier.com</url>
+        </contributor>
+        <contributor>
+            <name>Pieter Martin</name>
+            <email>pieter.martin@gmail.com</email>
+            <url>http://umlg.org</url>
+        </contributor>
+        <contributor>
+            <name>Matt Frantz</name>
+            <email>matthew.h.frantz@gmail.com</email>
+            <url>https://github.com/mhfrantz</url>
+        </contributor>
+        <contributor>
+            <name>Jason Plurad</name>
+            <email>pluradj@gmail.com</email>
+            <url>https://github.com/pluradj</url>
+        </contributor>
+        <contributor>
+            <name>Dylan Millikin</name>
+            <email>dylan.millikin@gmail.com</email>
+            <url>https://github.com/PommeVerte</url>
+        </contributor>
+        <contributor>
+            <name>Ted Wilmes</name>
+            <email>twilmes@gmail.com</email>
+            <url>https://github.com/twilmes</url>
+        </contributor>
+        <contributor>
+            <name>Harsh Thakkar</name>
+            <email>harsh9t@gmail.com</email>
+            <organization>University of Bonn</organization>
+            <organizationUrl>http://harshthakkar.in</organizationUrl>
+        </contributor>
+        <contributor>
+            <name>Dharmen Punjani</name>
+            <email>dharmen.punjani@gmail.com</email>
+            <organization>National and Kapodistrian University of Athens</organization>
+            <organizationUrl>http://wdaqua.eu/students/dharmen-punjani</organizationUrl>
+        </contributor>
+    </contributors>
+    <modules>
+        <module>gremlin-language</module>
+        <module>gremlin-shaded</module>
+        <module>gremlin-core</module>
+        <module>gql-gremlin</module>
+        <module>gremlin-annotations</module>
+        <module>gremlin-test</module>
+        <module>gremlin-util</module>
+        <module>gremlin-groovy</module>
+        <module>tinkergraph-gremlin</module>
+        <module>gremlin-driver</module>
+        <module>gremlin-server</module>
+        <module>gremlin-js</module>
+        <module>gremlin-python</module>
+        <module>gremlin-dotnet</module>
+        <module>gremlin-go</module>
+        <module>hadoop-gremlin</module>
+        <module>spark-gremlin</module>
+        <module>gremlin-console</module>
+        <module>gremlin-tools</module>
+    </modules>
+    <scm>
+        <connection>scm:git:git@github.com:apache/tinkerpop.git</connection>
+        <developerConnection>scm:git:git@github.com:apache/tinkerpop.git</developerConnection>
+        <url>https://github.com/apache/tinkerpop</url>
+    </scm>
+    <properties>
+        <antlr4.version>4.13.2</antlr4.version>
+        <caffeine.version>3.2.3</caffeine.version>
+        <commons.codec.version>1.20.0</commons.codec.version>
+        <commons.collections.version>4.5.0</commons.collections.version>
+        <commons.configuration.version>2.15.1</commons.configuration.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons.io.version>2.22.0</commons.io.version>
+        <commons.lang3.version>3.20.0</commons.lang3.version>
+        <commons.text.version>1.15.0</commons.text.version>
+        <cucumber.version>7.21.1</cucumber.version>
+        <exp4j.version>0.4.8</exp4j.version>
+        <groovy.version>4.0.32</groovy.version>
+        <!--
+          don't really use guava directly, but there are a lot of jar conflicts around it,
+          so centralizing that dependency version here
+        -->
+        <guava.version>33.6.0-jre</guava.version>
+        <!--
+          don't think we need guice 7 at the moment - the only difference with 6 is that
+          it supports the jakarta.inject namespace which tinkerpop doesn't fuss with
+        -->
+        <guice.version>6.0.0</guice.version>
+        <hadoop.version>3.4.3</hadoop.version>
+        <hamcrest.version>3.0</hamcrest.version>
+        <java.tuples.version>1.2</java.tuples.version>
+        <javadoc-plugin.version>3.3.1</javadoc-plugin.version>
+        <javapoet.version>1.13.0</javapoet.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+        <junit.version>4.13.1</junit.version>
+        <logback.version>1.3.15</logback.version>
+        <metrics.version>3.0.2</metrics.version>
+        <mockito.version>5.19.0</mockito.version>
+        <netty.version>4.2.7.Final</netty.version>
+        <slf4j.version>2.0.16</slf4j.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
+        <spark.version>4.1.2</spark.version>
+        <awssdk.version>2.29.3</awssdk.version>
+        <!-- Version aligned with Netty's optional bcpkix dependency used for SelfSignedCertificate -->
+        <bouncycastle.version>1.70</bouncycastle.version>
+        <ayza.version>10.0.0</ayza.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <skipIntegrationTests>true</skipIntegrationTests>
+        <suresafeArgs>--illegal-access=permit</suresafeArgs>
+
+        <!--
+        This file will come from the root of each modules test/resources/ directories. logback-silent.xml will
+        turn off all logging possible while still allowing tests to pass. logback-test.xml will be more verbose
+        in its output.
+        -->
+        <logback-test.properties>file:target/test-classes/logback-test.xml</logback-test.properties>
+        <logback-silent.properties>file:target/test-classes/logback-silent.xml</logback-silent.properties>
+
+        <!-- only needed for hadoop/spark which still are stuck in log4j 1.x - do not depend on these otherwise -->
+        <log4j-test.properties>file:target/test-classes/log4j-test.properties</log4j-test.properties>
+        <log4j-silent.properties>file:target/test-classes/log4j-silent.properties</log4j-silent.properties>
+
+        <muteTestLogs>false</muteTestLogs>
+
+        <!--
+        These options are necessary to run and pass the tests with JDK 17. There are some unexported APIs that we need
+        access to and we still rely on libraries that use deep reflection (notably Kryo). We can probably remove this
+        in the future when we don't need reflection and we turn this into a JPMS module.
+        -->
+        <jdk17JvmArgs>
+            -XX:+IgnoreUnrecognizedVMOptions
+            --add-exports=java.base/sun.nio.ch=ALL-UNNAMED
+            --add-exports=java.base/sun.security.x509=ALL-UNNAMED
+            --add-exports=java.base/sun.security.action=ALL-UNNAMED
+            --add-opens=java.base/java.io=ALL-UNNAMED
+            --add-opens=java.base/java.nio=ALL-UNNAMED
+            --add-opens=java.base/sun.nio.cs=ALL-UNNAMED
+            --add-opens=java.base/java.lang=ALL-UNNAMED
+            --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+            --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+            --add-opens=java.base/java.util=ALL-UNNAMED
+            --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+            --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED
+            --add-opens=java.base/java.net=ALL-UNNAMED
+        </jdk17JvmArgs>
+
+        <runtime.npm.version>10.9.4</runtime.npm.version>
+        <runtime.node.version>v22.22.1</runtime.node.version>
+        <node.test.version>22</node.test.version>
+    </properties>
+    <build>
+        <directory>${basedir}/target</directory>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.16.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-all</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <DependencyConvergence/>
+                                <requireJavaVersion>
+                                    <version>[17,26)</version>
+                                </requireJavaVersion>
+                                <requireMavenVersion>
+                                    <version>[3.6.3,)</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>gremlin-dotnet/src/obj/**</exclude>
+                                <exclude>gremlin-dotnet/src/_site/**</exclude>
+                                <exclude>node_modules/**</exclude>
+                                <exclude>gremlin-js/gremlin-javascript/node_modules/**</exclude>
+                                <exclude>gremlin-js/gremlin-javascript/.idea/**</exclude>
+                                <exclude>gremlin-python/src/main/python-reports/**</exclude>
+                                <exclude>gremlin-python/src/main/jython/**</exclude>
+                                <exclude>gremlin-python/src/main/python/venv/**</exclude>
+                                <exclude>gremlin-python/src/main/python/.pytest_cache/**</exclude>
+                                <exclude>gremlin-python/src/main/python/.idea/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalJOption>-Xdoclint:none</additionalJOption>
+                    <tags>
+                        <tag>
+                            <name>example</name>
+                            <placement>aoptcmf</placement>
+                            <head>Example:</head>
+                        </tag>
+                    </tags>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>aggregate-in-site-lifecycle</id>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                        <phase>site</phase>
+                        <configuration>
+                            <additionalJOption>-Xdoclint:none</additionalJOption>
+                            <includeDependencySources>true</includeDependencySources>
+                            <dependencySourceIncludes>
+                                <dependencySourceInclude>org.apache.tinkerpop:*</dependencySourceInclude>
+                            </dependencySourceIncludes>
+                            <overview>${basedir}/docs/javadoc/overview.html</overview>
+                            <quiet>true</quiet>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <!-- source: https://stackoverflow.com/a/39139979/6753576 -->
+                        <!-- sets the only.when.is.snapshot.used property to true if SNAPSHOT was used,
+                            to the project version otherwise -->
+                        <id>build-helper-regex-is-snapshot-used</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>only.when.is.snapshot.used</name>
+                            <value>${project.version}</value>
+                            <regex>.*-SNAPSHOT</regex>
+                            <replacement>true</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- sets the only.when.is.prerelease.version property to true if a prerelease version was used,
+                            to the project version otherwise -->
+                        <id>build-helper-regex-is-prerelease-version</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>only.when.is.prerelease.version</name>
+                            <value>${project.version}</value>
+                            <regex>.*-.*</regex>
+                            <replacement>true</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- sets the true.when.is.prerelease.version property to true if a prerelease version was used,
+                            empty string otherwise -->
+                        <id>build-helper-regex-is-prerelease-version2</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>true.when.is.prerelease.version</name>
+                            <value>${only.when.is.prerelease.version}</value>
+                            <regex>${project.version}</regex>
+                            <replacement></replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- sets the docker.tags.majorVersion.minorVersion property to
+                            ${parsedVersion.majorVersion}.${parsedVersion.minorVersion} unless a prerelease version was,
+                            used. If a prerelease is used, an empty string is assigned instead. -->
+                        <id>build-helper-regex-set-docker-version-tag</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>docker.tags.majorVersion.minorVersion</name>
+                            <value>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}${true.when.is.prerelease.version}</value>
+                            <regex>.*true</regex>
+                            <replacement></replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- sets the docker.tags.latest property to "latest" unless a prerelease version was,
+                            used. If a prerelease is used, an empty string is assigned instead. -->
+                        <id>build-helper-regex-set-docker-latest-tag</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>docker.tags.latest</name>
+                            <value>latest${true.when.is.prerelease.version}</value>
+                            <regex>.*true</regex>
+                            <replacement></replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>parse-version</id>
+                        <goals>
+                            <goal>parse-version</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <version>${project.version}</version>
+                            <hash>${buildNumber}</hash>
+                            <tinkerpop-version>${project.version}</tinkerpop-version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <version>0.13</version>
+                <executions>
+                    <execution>
+                        <id>rat-checks</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <excludeSubProjects>false</excludeSubProjects>
+                    <excludes>
+                        <exclude>.mailmap</exclude>
+                        <exclude>.asf.yaml</exclude>
+                        <exclude>.travis.yml</exclude>
+                        <exclude>.travis.*.sh</exclude>
+                        <exclude>.dockerignore</exclude>
+                        <exclude>.github/**</exclude>
+                        <exclude>**/.classpath</exclude>
+                        <exclude>**/.project</exclude>
+                        <exclude>**/.settings/**</exclude>
+                        <exclude>**/.idea/**</exclude>
+                         <exclude>**/.claude/**</exclude>
+                         <exclude>**/.codex/**</exclude>
+                         <exclude>**/.copilot/**</exclude>
+                         <exclude>**/.cursor/**</exclude>
+                         <exclude>**/.kiro/**</exclude>
+                         <exclude>**/.junie/**</exclude>
+                         <exclude>**/.runtime/**</exclude>
+                         <exclude>**/.agents/**</exclude>
+                        <!-- Beads planning data: PRIME.md and config.yaml are tracked, and a
+                             committer's local Dolt database sits alongside them untracked -->
+                        <exclude>.beads/**</exclude>
+                        <exclude>.repository/**</exclude>
+                        <exclude>**/target/**</exclude>
+                        <exclude>data/*.txt</exclude>
+                        <exclude>**/bin/gremlin.sh</exclude>
+                        <exclude>docs/static/**</exclude>
+                        <exclude>docs/original/**</exclude>
+                        <exclude>docs/site/home/css/**</exclude>
+                        <exclude>docs/site/home/js/**</exclude>
+                        <exclude>docs/site/home/llms.txt</exclude>
+                        <exclude>docs/site/home/robots.txt</exclude>
+                        <exclude>docs/site/home/sitemap.xml</exclude>
+                        <exclude>docs/gremlint/build/**</exclude>
+                        <exclude>docs/gremlint/public/CNAME</exclude>
+                        <exclude>gremlin-console/bin/gremlin.sh</exclude>
+                        <exclude>**/AGENTS.md</exclude>
+                        <exclude>**/*.kryo</exclude>
+                        <exclude>**/*.gbin</exclude>
+                        <exclude>**/*.iml</exclude>
+                        <exclude>**/*.json</exclude>
+                        <exclude>**/*.xml</exclude>
+                        <exclude>**/*.ldjson</exclude>
+                        <exclude>**/*.graffle</exclude>
+                        <exclude>**/*.svg</exclude>
+                        <exclude>**/goal.txt</exclude>
+                        <exclude>**/*.trx</exclude>
+                        <exclude>**/src/main/resources/META-INF/services/**</exclude>
+                        <exclude>**/src/test/resources/mockito-extensions/**</exclude>
+                        <exclude>**/src/test/resources/META-INF/services/**</exclude>
+                        <exclude>**/src/test/resources/cucumber.properties</exclude>
+                        <exclude>**/src/test/resources/correct-traversals.txt</exclude>
+                        <exclude>**/src/test/resources/incorrect-traversals.txt</exclude>
+                        <exclude>**/src/test/resources/incorrect-gremlin-values.txt</exclude>
+                        <exclude>**/src/test/resources/gremlin-values.txt</exclude>
+                        <exclude>**/src/test/resources/org/apache/tinkerpop/gremlin/console/groovy/plugin/script-customizer-*.groovy</exclude>
+                        <exclude>**/src/test/resources/org/apache/tinkerpop/gremlin/jsr223/script-customizer-*.groovy</exclude>
+                        <exclude>**/src/test/resources/org/apache/tinkerpop/gremlin/console/jsr223/script-customizer-*.groovy</exclude>
+                        <exclude>**/src/main/resources/org/apache/tinkerpop/gremlin/structure/io/script/*.txt</exclude>
+                        <exclude>**/src/main/ext/**</exclude>
+                        <exclude>**/src/main/static/**</exclude>
+                        <exclude>**/_bsp/**</exclude>
+                        <exclude>DEPENDENCIES</exclude>
+                        <exclude>**/.glv</exclude>
+                        <exclude>**/Debug/**</exclude>
+                        <exclude>**/Release/**</exclude>
+                        <exclude>**/obj/**</exclude>
+                        <exclude>**/*.sln</exclude>
+                        <exclude>**/*.user</exclude>
+                        <exclude>**/*.csproj</exclude>
+                        <exclude>**/.vs/**</exclude>
+                        <exclude>**/NuGet.Config</exclude>
+                        <exclude>**/*.nuspec</exclude>
+                        <exclude>**/BenchmarkDotNet.Artifacts/**</exclude>
+                        <exclude>**/.nvmrc</exclude>
+                        <exclude>**/.yarnrc.yml</exclude>
+                        <exclude>**/yarn.lock</exclude>
+                        <exclude>**/node/**</exclude>
+                        <exclude>**/node_modules/**</exclude>
+                        <exclude>**/npm-debug.log</exclude>
+                        <exclude>**/dist/**</exclude>
+                        <exclude>**/build/**</exclude>
+                        <exclude>**/.duel-cache/**</exclude>
+                        <exclude>docs/upgrade/spec/cmdb-data.gremlin</exclude>
+                        <exclude>docs/upgrade/spec/spec.md</exclude>
+                        <!-- javascript docs/lib -->
+                        <exclude>**/doc/**</exclude>
+                        <exclude>**/lib/**</exclude>
+                        <exclude>**/.env</exclude>
+                        <exclude>**/.prettierrc</exclude>
+                        <exclude>**/.prettierignore</exclude>
+                        <exclude>**/_site/**</exclude>
+                        <exclude>**/.pytest_cache/**</exclude>
+                        <exclude>**/venv/**</exclude>
+                        <exclude>**/.venv/**</exclude>
+                        <exclude>**/.eggs/**</exclude>
+                        <exclude>**/gremlinpython.egg-info/**</exclude>
+                        <exclude>**/docfx/**</exclude>
+                        <exclude>**/go.sum</exclude>
+                        <exclude>**/coverage.out</exclude>
+                        <exclude>**/gremlinconsoletest.egg-info/**</exclude>
+                        <!-- Agent skill markdown is guidance for AI agents, kept header-free to maximize signal;
+                             SKILL.md additionally requires frontmatter at the very start of the file -->
+                        <exclude>**/.skills/**/*.md</exclude>
+                    </excludes>
+                    <licenses>
+                        <license implementation="org.apache.rat.analysis.license.ApacheSoftwareLicense20"/>
+                    </licenses>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-core</artifactId>
+                        <version>1.6</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>xerces</groupId>
+                                <artifactId>xercesImpl</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!-- we never use this plugin - disabling helps with speeding up other processing like when using -Dcoverage -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.google.code.maven-replacer-plugin</groupId>
+                    <artifactId>replacer</artifactId>
+                    <version>1.5.3</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>replace</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <basedir>${basedir}</basedir>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.14.0</version>
+                    <configuration>
+                        <release>17</release>
+                        <source>17</source>
+                        <target>17</target>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- reverted surefire to 2.21.0 for performance reasons. 2.22.2 required forkCount=1 and
+                     reuseForks=true which seemed to more the double the build time. there are only milestone
+                     releases after 2.22.2 so rather than rely on those at this time, i guess we just stick with
+                     2.21.0
+
+                     the above note was from 3.5.0. for 3.6.0 tried this change as part of bumping to newer
+                     versions of hadoop/spark and didn't see a slow down in execution time. going to newer
+                     versions of surefire/failsafe, the aforementioned milestone releases, however seemed to cause
+                     test failures for spark integration tests. it was not clear why.
+
+                     note that while we got rid of log4j 1.x and have converted to logback, hadoop seems bound
+                     tightly to the former. included the log4j configuration file here so that we didn't have to
+                     copy/paste this entire config into both hadoop-gremlin and spark-gremlin. it is of no cost to
+                     maintain these settings here globally even if they aren't used as such.
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.5.3</version>
+                    <configuration>
+                        <argLine>
+                            -Dlogback.configuration=${logback-test.properties}
+                            -Dlog4j.configuration=${log4j-test.properties}
+                            -Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider
+                            -Dbuild.dir=${project.build.directory}
+                            -Dis.testing=true -Djava.net.preferIPv4Stack=true ${suresafeArgs}
+                            ${jdk17JvmArgs}
+                        </argLine>
+                        <trimStackTrace>false</trimStackTrace>
+                        <excludes>
+                            <exclude>**/*IntegrateTest.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <executions>
+                        <execution>
+                            <id>integration-test</id>
+                            <goals>
+                                <goal>integration-test</goal>
+                            </goals>
+                            <configuration>
+                                <includes>
+                                    <include>**/*IntegrateTest.java</include>
+                                </includes>
+                                <skipTests>${skipIntegrationTests}</skipTests>
+                                <argLine>
+                                    -Dlogback.configuration=${logback-test.properties}
+                                    -Dlog4j.configuration=${log4j-test.properties}
+                                    -Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider
+                                    -Dhost=localhost -Dport=8182
+                                    -Dbuild.dir=${project.build.directory} -Dis.testing=true
+                                    -Djava.net.preferIPv4Stack=true ${suresafeArgs}
+                                    ${jdk17JvmArgs}
+                                </argLine>
+                                <forkCount>1</forkCount>
+                                <reuseForks>false</reuseForks>
+                                <summaryFile>target/failsafe-reports/failsafe-integration.xml</summaryFile>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>verify-integration-test</id>
+                            <goals>
+                                <goal>verify</goal>
+                            </goals>
+                            <configuration>
+                                <skipTests>${skipIntegrationTests}</skipTests>
+                                <summaryFiles>
+                                    <summaryFile>target/failsafe-reports/failsafe-integration.xml</summaryFile>
+                                </summaryFiles>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <version>1.0.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${javadoc-plugin.version}</version>
+                    <configuration>
+                        <source>17</source>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.gmavenplus</groupId>
+                    <artifactId>gmavenplus-plugin</artifactId>
+                    <version>4.1.1</version>
+                    <configuration>
+                        <targetBytecode>17</targetBytecode>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.6.2</version>
+                    <configuration>
+                        <createDependencyReducedPom>false</createDependencyReducedPom>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.3.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.45.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0-M3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.testing.compile</groupId>
+                <artifactId>compile-testing</artifactId>
+                <version>0.23.0</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.errorprone</groupId>
+                        <artifactId>error_prone_annotations</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- start - resolve self-conflict within compile-testing -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.errorprone</groupId>
+                        <artifactId>error_prone_annotations</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.43.0</version>
+            </dependency>
+            <!-- end - resolve self-conflict within compile-testing -->
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>${guice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>${commons.configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons.text.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons.collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.hakky54</groupId>
+                <artifactId>ayza-for-netty</artifactId>
+                <version>${ayza.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.codahale.metrics</groupId>
+                <artifactId>metrics-core</artifactId>
+                <version>${metrics.version}</version>
+                <exclusions>
+                    <!-- conflict with jcl-over-slf4j-->
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.codahale.metrics</groupId>
+                <artifactId>metrics-graphite</artifactId>
+                <version>${metrics.version}</version>
+                <optional>true</optional>
+                <exclusions>
+                    <!-- conflict with jcl-over-slf4j-->
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.codahale.metrics</groupId>
+                <artifactId>metrics-ganglia</artifactId>
+                <version>${metrics.version}</version>
+                <optional>true</optional>
+                <exclusions>
+                    <!-- conflict with jcl-over-slf4j-->
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <!-- LGPL licensed - users will need to install this jar manually -->
+                    <exclusion>
+                        <groupId>org.acplt</groupId>
+                        <artifactId>oncrpc</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+                <exclusions>
+                    <!-- exclude commons-logging in favor of slf4j via jcl-over-slf4j -->
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.14</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-codec</groupId>
+                        <artifactId>commons-codec</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hamcrest</groupId>
+                        <artifactId>hamcrest-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hamcrest</groupId>
+                        <artifactId>hamcrest-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.hakky54</groupId>
+                <artifactId>logcaptor</artifactId>
+                <version>2.7.10</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+            </dependency>
+            <!-- start - align httpclient to TinkerPop -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+            <!-- end - align httpclient to TinkerPop -->
+        </dependencies>
+    </dependencyManagement>
+
+--- CONTENT TRUNCATED ---
+=== FILE END:   /data/home/cjy/software-testing/projects/tinkerpop/pom.xml ===
+2026-10-16 14:39:30.135 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 14:39:57.719 | INFO     | Model API request cost info: input_tokens=10296, output_tokens=955, cost=0.035290
+2026-10-16 14:39:57.720 | SUCCESS  | Successfully extracted environment config
+2026-10-16 14:39:57.720 | INFO     | ******
+2026-10-16 14:39:57.720 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/tinkerpop/pom.xml]
+- **Runtime Requirements**:
+  - Java version: [17,26) (Java 17 or higher but less than Java 26)
+  - Maven version: 3.6.3 or higher
+  - Node.js: v22.22.1
+  - npm: 10.9.4
+
+- **Libraries and Versions**:
+  - antlr4: 4.13.2
+  - caffeine: 3.2.3
+  - commons-codec: 1.20.0
+  - commons-collections: 4.5.0
+  - commons-configuration: 2.15.1
+  - commons-lang: 2.6
+  - commons-io: 2.22.0
+  - commons-lang3: 3.20.0
+  - commons-text: 1.15.0
+  - cucumber: 7.21.1
+  - exp4j: 0.4.8
+  - groovy: 4.0.32
+  - guava: 33.6.0-jre
+  - guice: 6.0.0
+  - hadoop: 3.4.3
+  - hamcrest: 3.0
+  - java.tuples: 1.2
+  - javadoc-plugin: 3.3.1
+  - javapoet: 1.13.0
+  - jbcrypt: 0.4
+  - junit: 4.13.1
+  - logback: 1.3.15
+  - metrics: 3.0.2
+  - mockito: 5.19.0
+  - netty: 4.2.7.Final
+  - slf4j: 2.0.16
+  - snakeyaml: 2.0
+  - spark: 4.1.2
+  - awssdk: 2.29.3
+  - bouncycastle: 1.70
+  - ayza-netty: 10.0.0
+
+- **Testing Settings**:
+  - Test command for unit tests (via Maven Surefire Plugin):
+    ```
+    mvn test
+    ```
+    - Includes JVM arguments:
+      ```
+      -Dlogback.configuration=file:target/test-classes/logback-test.xml
+      -Dlog4j.configuration=file:target/test-classes/log4j-test.properties
+      -Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider
+      -Dbuild.dir=${project.build.directory}
+      -Dis.testing=true -Djava.net.preferIPv4Stack=true ${suresafeArgs} ${jdk17JvmArgs}
+      ```
+    - Excludes integration test files: `**/*IntegrateTest.java`.
+
+  - Test command for integration tests (via Maven Failsafe Plugin):
+    ```
+    mvn verify
+    ```
+    or for specific integration tests:
+    ```
+    mvn failsafe:integration-test
+    ```
+    - Includes JVM arguments:
+      ```
+      -Dlogback.configuration=file:target/test-classes/logback-test.xml
+      -Dlog4j.configuration=file:target/test-classes/log4j-test.properties
+      -Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider
+      -Dhost=localhost -Dport=8182
+      -Dbuild.dir=${project.build.directory} -Dis.testing=true
+      -Djava.net.preferIPv4Stack=true ${suresafeArgs} ${jdk17JvmArgs}
+      ```
+    - Runs files matching pattern: `**/*IntegrateTest.java`.
+
+- **Environment Files and Logging Settings**:
+  - Logging configuration for tests:
+    - Verbose logging: `file:target/test-classes/logback-test.xml`.
+    - Silent mode logging: `file:target/test-classes/logback-silent.xml`.
+    - For Hadoop/Spark (stuck on log4j 1.x): 
+      - Verbose logging: `file:target/test-classes/log4j-test.properties`.
+      - Silent mode logging: `file:target/test-classes/log4j-silent.properties`.
+
+- **Other Notes**:
+  - Skipping of integration tests controlled by property: `${skipIntegrationTests}` (default: true).
+  - JVM-specific settings for JDK 17 necessary to handle reflection issues.
+
+[/Key Information]
+2026-10-16 14:39:57.720 | INFO     | ******
+2026-10-16 14:39:57.720 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/tinkerpop/pom.xml]\n- **Runtime Requirements**:\n  - Java version: [17,26) (Java 17 or higher but less than Java 26)\n  - Maven version: 3.6.3 or higher\n  - Node.js: v22.22.1\n  - npm: 10.9.4\n\n- **Libraries and Versions**:\n  - antlr4: 4.13.2\n  - caffeine: 3.2.3\n  - commons-codec: 1.20.0\n  - commons-collections: 4.5.0\n  - commons-configuration: 2.15.1\n  - commons-lang: 2.6\n  - commons-io: 2.22.0\n  - commons-lang3: 3.20.0\n  - commons-text: 1.15.0\n  - cucumber: 7.21.1\n  - exp4j: 0.4.8\n  - groovy: 4.0.32\n  - guava: 33.6.0-jre\n  - guice: 6.0.0\n  - hadoop: 3.4.3\n  - hamcrest: 3.0\n  - java.tuples: 1.2\n  - javadoc-plugin: 3.3.1\n  - javapoet: 1.13.0\n  - jbcrypt: 0.4\n  - junit: 4.13.1\n  - logback: 1.3.15\n  - metrics: 3.0.2\n  - mockito: 5.19.0\n  - netty: 4.2.7.Final\n  - slf4j: 2.0.16\n  - snakeyaml: 2.0\n  - spark: 4.1.2\n  - awssdk: 2.29.3\n  - bouncycastle: 1.70\n  - ayza-netty: 10.0.0\n\n- **Testing Settings**:\n  - Test command for unit tests (via Maven Surefire Plugin):\n    ```\n    mvn test\n    ```\n    - Includes JVM arguments:\n      ```\n      -Dlogback.configuration=file:target/test-classes/logback-test.xml\n      -Dlog4j.configuration=file:target/test-classes/log4j-test.properties\n      -Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider\n      -Dbuild.dir=${project.build.directory}\n      -Dis.testing=true -Djava.net.preferIPv4Stack=true ${suresafeArgs} ${jdk17JvmArgs}\n      ```\n    - Excludes integration test files: `**/*IntegrateTest.java`.\n\n  - Test command for integration tests (via Maven Failsafe Plugin):\n    ```\n    mvn verify\n    ```\n    or for specific integration tests:\n    ```\n    mvn failsafe:integration-test\n    ```\n    - Includes JVM arguments:\n      ```\n      -Dlogback.configuration=file:target/test-classes/logback-test.xml\n      -Dlog4j.configuration=file:target/test-classes/log4j-test.properties\n      -Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider\n      -Dhost=localhost -Dport=8182\n      -Dbuild.dir=${project.build.directory} -Dis.testing=true\n      -Djava.net.preferIPv4Stack=true ${suresafeArgs} ${jdk17JvmArgs}\n      ```\n    - Runs files matching pattern: `**/*IntegrateTest.java`.\n\n- **Environment Files and Logging Settings**:\n  - Logging configuration for tests:\n    - Verbose logging: `file:target/test-classes/logback-test.xml`.\n    - Silent mode logging: `file:target/test-classes/logback-silent.xml`.\n    - For Hadoop/Spark (stuck on log4j 1.x): \n      - Verbose logging: `file:target/test-classes/log4j-test.properties`.\n      - Silent mode logging: `file:target/test-classes/log4j-silent.properties`.\n\n- **Other Notes**:\n  - Skipping of integration tests controlled by property: `${skipIntegrationTests}` (default: true).\n  - JVM-specific settings for JDK 17 necessary to handle reflection issues.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-16 14:40:11.155 | INFO     | Model API request cost info: input_tokens=3287, output_tokens=1458, cost=0.022798
+2026-10-16 14:40:11.177 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 14:40:17.192 | INFO     | Model API request cost info: input_tokens=2056, output_tokens=953, cost=0.014670
+2026-10-16 14:40:17.193 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "environment_setup": {
+            "prerequisites": {
+                "os": ["Linux", "macOS"],
+                "java_version": ["11", "17"],
+                "maven_version": "3.6.3 or higher",
+                "nodejs_version": "v22.22.1",
+                "npm_version": "10.9.4"
+            },
+            "setup_command": "mvn clean install"
+        },
+        "test_execution": {
+            "test_commands": {
+                "unit_tests": {
+                    "command": "mvn test",
+                    "jvm_arguments": [
+                        "-Dlogback.configuration=file:target/test-classes/logback-test.xml",
+                        "-Dlog4j.configuration=file:target/test-classes/log4j-test.properties",
+                        "-Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider",
+                        "-Dbuild.dir=${project.build.directory}",
+                        "-Dis.testing=true",
+                        "-Djava.net.preferIPv4Stack=true",
+                        "${suresafeArgs}",
+                        "${jdk17JvmArgs}"
+                    ],
+                    "excluded_files": ["**/*IntegrateTest.java"]
+                },
+                "integration_tests": {
+                    "command": "mvn verify",
+                    "alternate_command": "mvn failsafe:integration-test",
+                    "jvm_arguments": [
+                        "-Dlogback.configuration=file:target/test-classes/logback-test.xml",
+                        "-Dlog4j.configuration=file:target/test-classes/log4j-test.properties",
+                        "-Dslf4j.provider=ch.qos.logback.classic.spi.LogbackServiceProvider",
+                        "-Dhost=localhost",
+                        "-Dport=8182",
+                        "-Dbuild.dir=${project.build.directory}",
+                        "-Dis.testing=true",
+                        "-Djava.net.preferIPv4Stack=true",
+                        "${suresafeArgs}",
+                        "${jdk17JvmArgs}"
+                    ],
+                    "included_files": ["**/*IntegrateTest.java"]
+                },
+                "skip_integration_tests_property": "${skipIntegrationTests} (default: true)"
+            },
+            "logging_configurations": {
+                "verbose_logging": "file:target/test-classes/logback-test.xml",
+                "silent_mode_logging": "file:target/test-classes/logback-silent.xml",
+                "hadoop_spark_logging": {
+                    "verbose_logging": "file:target/test-classes/log4j-test.properties",
+                    "silent_mode_logging": "file:target/test-classes/log4j-silent.properties"
+                }
+            }
+        },
+        "libraries_and_versions": {
+            "antlr4": "4.13.2",
+            "caffeine": "3.2.3",
+            "commons-codec": "1.20.0",
+            "commons-collections": "4.5.0",
+            "commons-configuration": "2.15.1",
+            "commons-lang": "2.6",
+            "commons-io": "2.22.0",
+            "commons-lang3": "3.20.0",
+            "commons-text": "1.15.0",
+            "cucumber": "7.21.1",
+            "exp4j": "0.4.8",
+            "groovy": "4.0.32",
+            "guava": "33.6.0-jre",
+            "guice": "6.0.0",
+            "hadoop": "3.4.3",
+            "hamcrest": "3.0",
+            "java.tuples": "1.2",
+            "javadoc-plugin": "3.3.1",
+            "javapoet": "1.13.0",
+            "jbcrypt": "0.4",
+            "junit": "4.13.1",
+            "logback": "1.3.15",
+            "metrics": "3.0.2",
+            "mockito": "5.19.0",
+            "netty": "4.2.7.Final",
+            "slf4j": "2.0.16",
+            "snakeyaml": "2.0",
+            "spark": "4.1.2",
+            "awssdk": "2.29.3",
+            "bouncycastle": "1.70",
+            "ayza-netty": "10.0.0"
+        },
+        "sources_of_information": ["README.md", "CONTRIBUTING.md", "pom.xml"]
+    },
+    "terminate": true
+}
+2026-10-16 14:40:17.193 | DEBUG    | Extracted a valid json
+2026-10-16 14:40:17.195 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-16 14:40:24.322 | INFO     | Model API request cost info: input_tokens=2716, output_tokens=632, cost=0.013110
+2026-10-16 14:40:24.324 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-16 14:40:24.335 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-16 14:40:33.128 | INFO     | Model API request cost info: input_tokens=2301, output_tokens=504, cost=0.010793
+2026-10-16 14:40:33.129 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-16 15:03:16.430 | DEBUG    | Result of dispatch_intent: ('Step 15/21 : RUN mvn clean install -DskipTests && npm install\n ---> Running in decf00d9e60b\n[INFO] Scanning for projects...\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 kB at 8.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.pom (1.5 kB at 6.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-parent/0.24/dotnet-maven-parent-0.24.pom\nProgress (1): 2.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-parent/0.24/dotnet-maven-parent-0.24.pom (2.8 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom\nProgress (1): 4.1 kB\nProgress (1): 6.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.6 kB at 20 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom (1.5 kB at 6.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 22 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom (22 kB at 109 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 32 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom (32 kB at 160 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom\nProgress (1): 4.1 kB\nProgress (1): 4.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom (4.1 kB at 15 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom\nProgress (1): 2.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom (2.8 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom\nProgress (1): 2.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom (2.2 kB at 8.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom\nProgress (1): 3.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom (3.2 kB at 13 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom\nProgress (1): 4.1 kB\nProgress (1): 6.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom (6.8 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom (12 kB at 44 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom\nProgress (1): 889 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom (889 B at 3.5 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom\nProgress (1): 4.1 kB\nProgress (1): 5.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom (5.8 kB at 24 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom\nProgress (1): 3.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom (3.9 kB at 15 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom\nProgress (1): 492 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom (492 B at 1.8 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom\nProgress (1): 4.1 kB\nProgress (1): 5.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom (5.7 kB at 20 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom\nProgress (1): 998 B\nDownloaded from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom (998 B at 4.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom\nProgress (1): 4.1 kB\nProgress (1): 6.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom (6.9 kB at 26 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom\nProgress (1): 3.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom (3.1 kB at 12 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom\nProgress (1): 2.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom (2.2 kB at 8.5 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom\nProgress (1): 3.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom (3.1 kB at 13 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom (1.9 kB at 6.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom\nProgress (1): 1.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom (1.6 kB at 5.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom\nProgress (1): 880 B\nDownloaded from central: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom (880 B at 3.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom (1.9 kB at 7.7 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.7.7/jackson-databind-2.7.7.pom\nProgress (1): 4.1 kB\nProgress (1): 5.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.7.7/jackson-databind-2.7.7.pom (5.2 kB at 19 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.7/jackson-parent-2.7.pom\nProgress (1): 4.1 kB\nProgress (1): 8.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.7/jackson-parent-2.7.pom (8.1 kB at 30 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/25/oss-parent-25.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 19 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/25/oss-parent-25.pom (19 kB at 75 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.7.0/jackson-annotations-2.7.0.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.7.0/jackson-annotations-2.7.0.pom (1.5 kB at 5.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.7.7/jackson-core-2.7.7.pom\nProgress (1): 4.1 kB\nProgress (1): 5.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.7.7/jackson-core-2.7.7.pom (5.1 kB at 22 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar\nProgress (1): 4.1/41 kB\nProgress (1): 7.4/41 kB\nProgress (1): 11/41 kB \nProgress (1): 16/41 kB\nProgress (1): 20/41 kB\nProgress (1): 24/41 kB\nProgress (1): 28/41 kB\nProgress (1): 32/41 kB\nProgress (1): 36/41 kB\nProgress (1): 40/41 kB\nProgress (1): 41 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.jar (41 kB at 171 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar\nProgress (1): 3.3/35 kB\nProgress (1): 6.0/35 kB\nProgress (1): 9.1/35 kB\nProgress (1): 12/35 kB \nProgress (1): 15/35 kB\nProgress (1): 17/35 kB\nProgress (1): 20/35 kB\nProgress (1): 23/35 kB\nProgress (1): 26/35 kB\nProgress (1): 28/35 kB\nProgress (1): 31/35 kB\nProgress (1): 34/35 kB\nProgress (1): 35 kB   \nProgress (2): 35 kB | 3.3/156 kB\nProgress (2): 35 kB | 6.0/156 kB\nProgress (2): 35 kB | 8.8/156 kB\nProgress (3): 35 kB | 8.8/156 kB | 3.3/49 kB\nProgress (3): 35 kB | 12/156 kB | 3.3/49 kB \nProgress (3): 35 kB | 12/156 kB | 6.0/49 kB\nProgress (3): 35 kB | 14/156 kB | 6.0/49 kB\nProgress (3): 35 kB | 14/156 kB | 8.8/49 kB\nProgress (3): 35 kB | 17/156 kB | 8.8/49 kB\nProgress (3): 35 kB | 17/156 kB | 12/49 kB \nProgress (3): 35 kB | 20/156 kB | 12/49 kB\nProgress (3): 35 kB | 20/156 kB | 14/49 kB\nProgress (3): 35 kB | 22/156 kB | 14/49 kB\nProgress (3): 35 kB | 22/156 kB | 17/49 kB\nProgress (3): 35 kB | 25/156 kB | 17/49 kB\nProgress (3): 35 kB | 25/156 kB | 20/49 kB\nProgress (3): 35 kB | 28/156 kB | 20/49 kB\nProgress (3): 35 kB | 28/156 kB | 22/49 kB\nProgress (3): 35 kB | 31/156 kB | 22/49 kB\nProgress (3): 35 kB | 31/156 kB | 25/49 kB\nProgress (3): 35 kB | 33/156 kB | 25/49 kB\nProgress (3): 35 kB | 33/156 kB | 28/49 kB\nProgress (3): 35 kB | 36/156 kB | 28/49 kB\nProgress (3): 35 kB | 36/156 kB | 31/49 kB\nProgress (3): 35 kB | 36/156 kB | 33/49 kB\nProgress (3): 35 kB | 39/156 kB | 33/49 kB\nProgress (3): 35 kB | 39/156 kB | 36/49 kB\nProgress (3): 35 kB | 42/156 kB | 36/49 kB\nProgress (3): 35 kB | 42/156 kB | 39/49 kB\nProgress (3): 35 kB | 44/156 kB | 39/49 kB\nProgress (3): 35 kB | 47/156 kB | 39/49 kB\nProgress (3): 35 kB | 47/156 kB | 42/49 kB\nProgress (3): 35 kB | 47/156 kB | 44/49 kB\nProgress (3): 35 kB | 50/156 kB | 44/49 kB\nProgress (3): 35 kB | 53/156 kB | 44/49 kB\nProgress (3): 35 kB | 53/156 kB | 47/49 kB\nProgress (3): 35 kB | 53/156 kB | 49 kB   \nProgress (3): 35 kB | 55/156 kB | 49 kB\nProgress (3): 35 kB | 59/156 kB | 49 kB\nProgress (3): 35 kB | 64/156 kB | 49 kB\nProgress (3): 35 kB | 68/156 kB | 49 kB\nProgress (4): 35 kB | 68/156 kB | 49 kB | 3.3/12 kB\nProgress (4): 35 kB | 68/156 kB | 49 kB | 6.0/12 kB\nProgress (4): 35 kB | 68/156 kB | 49 kB | 8.6/12 kB\nProgress (4): 35 kB | 68/156 kB | 49 kB | 11/12 kB \nProgress (4): 35 kB | 68/156 kB | 49 kB | 12 kB   \nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 4.1/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 7.4/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 11/88 kB \nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 16/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 20/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 24/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 28/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 32/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 36/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 40/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 44/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 48/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 52/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 57/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 61/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 65/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 69/88 kB\nProgress (5): 35 kB | 68/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 72/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 76/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 80/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 84/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 88/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 92/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 96/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 100/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 104/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 109/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 113/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 117/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 121/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 123/156 kB | 49 kB | 12 kB | 73/88 kB\nProgress (5): 35 kB | 123/156 kB | 49 kB | 12 kB | 77/88 kB\nProgress (5): 35 kB | 123/156 kB | 49 kB | 12 kB | 81/88 kB\nProgress (5): 35 kB | 123/156 kB | 49 kB | 12 kB | 85/88 kB\nProgress (5): 35 kB | 127/156 kB | 49 kB | 12 kB | 85/88 kB\nProgress (5): 35 kB | 127/156 kB | 49 kB | 12 kB | 88 kB   \nProgress (5): 35 kB | 130/156 kB | 49 kB | 12 kB | 88 kB\nProgress (5): 35 kB | 134/156 kB | 49 kB | 12 kB | 88 kB\nProgress (5): 35 kB | 138/156 kB | 49 kB | 12 kB | 88 kB\nProgress (5): 35 kB | 142/156 kB | 49 kB | 12 kB | 88 kB\nProgress (5): 35 kB | 147/156 kB | 49 kB | 12 kB | 88 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.jar (49 kB at 110 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar (35 kB at 79 kB/s)\nProgress (3): 151/156 kB | 12 kB | 88 kB\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.jar\nProgress (3): 155/156 kB | 12 kB | 88 kB\nProgress (3): 156 kB | 12 kB | 88 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar (12 kB at 25 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar (88 kB at 163 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar\nProgress (2): 156 kB | 3.3/68 kB\nProgress (2): 156 kB | 7.4/68 kB\nProgress (2): 156 kB | 11/68 kB \nProgress (3): 156 kB | 11/68 kB | 3.3/26 kB\nProgress (3): 156 kB | 11/68 kB | 6.0/26 kB\nProgress (3): 156 kB | 16/68 kB | 6.0/26 kB\nProgress (3): 156 kB | 16/68 kB | 8.8/26 kB\nProgress (3): 156 kB | 20/68 kB | 8.8/26 kB\nProgress (3): 156 kB | 20/68 kB | 12/26 kB \nProgress (3): 156 kB | 20/68 kB | 14/26 kB\nProgress (3): 156 kB | 24/68 kB | 14/26 kB\nProgress (3): 156 kB | 28/68 kB | 14/26 kB\nProgress (3): 156 kB | 28/68 kB | 18/26 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar (156 kB at 278 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar\nProgress (2): 28/68 kB | 22/26 kB\nProgress (2): 32/68 kB | 22/26 kB\nProgress (2): 32/68 kB | 26 kB   \nProgress (2): 36/68 kB | 26 kB\nProgress (2): 40/68 kB | 26 kB\nProgress (2): 44/68 kB | 26 kB\nProgress (2): 48/68 kB | 26 kB\nProgress (2): 52/68 kB | 26 kB\nProgress (2): 57/68 kB | 26 kB\nProgress (2): 61/68 kB | 26 kB\nProgress (2): 65/68 kB | 26 kB\nProgress (2): 68 kB | 26 kB   \nProgress (3): 68 kB | 26 kB | 3.1/332 kB\nProgress (3): 68 kB | 26 kB | 5.9/332 kB\nProgress (3): 68 kB | 26 kB | 8.6/332 kB\nProgress (3): 68 kB | 26 kB | 11/332 kB \nProgress (3): 68 kB | 26 kB | 14/332 kB\nProgress (3): 68 kB | 26 kB | 17/332 kB\nProgress (3): 68 kB | 26 kB | 20/332 kB\nProgress (3): 68 kB | 26 kB | 22/332 kB\nProgress (3): 68 kB | 26 kB | 25/332 kB\nProgress (3): 68 kB | 26 kB | 28/332 kB\nProgress (3): 68 kB | 26 kB | 31/332 kB\nProgress (3): 68 kB | 26 kB | 33/332 kB\nProgress (3): 68 kB | 26 kB | 36/332 kB\n...skipped 44902 lines...\n[INFO] Copying netty-handler-proxy-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-handler-proxy-4.2.7.Final.jar\n[INFO] Copying netty-handler-ssl-ocsp-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-handler-ssl-ocsp-4.2.7.Final.jar\n[INFO] Copying netty-resolver-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-4.2.7.Final.jar\n[INFO] Copying netty-resolver-dns-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-4.2.7.Final.jar\n[INFO] Copying netty-transport-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-4.2.7.Final.jar\n[INFO] Copying netty-transport-rxtx-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-rxtx-4.2.7.Final.jar\n[INFO] Copying netty-transport-sctp-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-sctp-4.2.7.Final.jar\n[INFO] Copying netty-transport-udt-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-udt-4.2.7.Final.jar\n[INFO] Copying netty-transport-classes-epoll-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-classes-epoll-4.2.7.Final.jar\n[INFO] Copying netty-transport-classes-kqueue-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-classes-kqueue-4.2.7.Final.jar\n[INFO] Copying netty-resolver-dns-classes-macos-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-classes-macos-4.2.7.Final.jar\n[INFO] Copying netty-transport-classes-io_uring-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-classes-io_uring-4.2.7.Final.jar\n[INFO] Copying netty-codec-classes-quic-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-classes-quic-4.2.7.Final.jar\n[INFO] Copying netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar\n[INFO] Copying netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar\n[INFO] Copying netty-transport-native-epoll-4.2.7.Final-linux-riscv64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-epoll-4.2.7.Final-linux-riscv64.jar\n[INFO] Copying netty-transport-native-io_uring-4.2.7.Final-linux-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-io_uring-4.2.7.Final-linux-x86_64.jar\n[INFO] Copying netty-transport-native-io_uring-4.2.7.Final-linux-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-io_uring-4.2.7.Final-linux-aarch_64.jar\n[INFO] Copying netty-transport-native-io_uring-4.2.7.Final-linux-riscv64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-io_uring-4.2.7.Final-linux-riscv64.jar\n[INFO] Copying netty-transport-native-kqueue-4.2.7.Final-osx-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-kqueue-4.2.7.Final-osx-x86_64.jar\n[INFO] Copying netty-transport-native-kqueue-4.2.7.Final-osx-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-kqueue-4.2.7.Final-osx-aarch_64.jar\n[INFO] Copying netty-resolver-dns-native-macos-4.2.7.Final-osx-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-native-macos-4.2.7.Final-osx-x86_64.jar\n[INFO] Copying netty-resolver-dns-native-macos-4.2.7.Final-osx-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-native-macos-4.2.7.Final-osx-aarch_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-linux-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-linux-x86_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-linux-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-linux-aarch_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-osx-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-osx-x86_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-osx-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-osx-aarch_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-windows-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-windows-x86_64.jar\n[INFO] Copying littleproxy-2.8.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/littleproxy-2.8.0.jar\n[INFO] Copying guava-33.6.0-jre.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/guava-33.6.0-jre.jar\n[INFO] Copying failureaccess-1.0.3.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/failureaccess-1.0.3.jar\n[INFO] Copying listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar\n[INFO] Copying jspecify-1.0.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/jspecify-1.0.0.jar\n[INFO] Copying j2objc-annotations-3.1.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/j2objc-annotations-3.1.jar\n[INFO] Copying slf4j-api-2.0.16.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/slf4j-api-2.0.16.jar\n[INFO] Copying groovy-4.0.32.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/groovy-4.0.32.jar\n[INFO] \n[INFO] --- \x1b[0;32mmaven-jar-plugin:3.2.0:jar \x1b[1m(default-jar) @ \x1b[36mgremlin-socket-server\x1b[0;1m ---\x1b[m\n[INFO] Building jar: /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT.jar\n[INFO] \n[INFO] --- maven-source-plugin:3.2.1:jar-no-fork (attach-sources) @ gremlin-socket-server ---\n[INFO] Building jar: /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-sources.jar\n[INFO] \n[INFO] --- maven-javadoc-plugin:3.3.1:jar (attach-javadoc) @ gremlin-socket-server ---\n[INFO] No previous run data found, generating javadoc.\n[INFO] Building jar: /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-javadoc.jar\n[INFO] \n[INFO] \x1b[1m--- maven-site-plugin:3.12.0:attach-descriptor \x1b[1m(attach-descriptor) @ \x1b[36mgremlin-socket-server\x1b[0;1m ---\n[INFO] Skipping because packaging \'jar\' is not pom.\n[INFO] \n[INFO] --- \x1b[0;32mmaven-failsafe-plugin:3.6.0:integration-test\x1b[m (integration-test) @ \x1b[36mgremlin-socket-server ---\x1b[m\n[INFO] Tests are skipped.\n[INFO] \n[INFO] --- maven-failsafe-plugin:3.6.0:verify (verify-integration-test) @ gremlin-socket-server\x1b[0;1m ---\n[INFO] Tests are skipped.\n[INFO] \n[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ gremlin-socket-server\x1b[0;1m ---\x1b[m\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT.jar to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT.jar\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/pom.xml to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT.pom\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-sources.jar to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT-sources.jar\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-javadoc.jar to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT-javadoc.jar\n[INFO] \n[INFO] --- \x1b[0;32mexec-maven-plugin:3.5.0:exec\x1b[m \x1b[1m(build-image) @ gremlin-socket-server\x1b[0;1m ---\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 13 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.pom (13 kB at 44 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 9.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.pom (9.5 kB at 33 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.pom\nProgress (1): 2.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.pom (2.8 kB at 9.5 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.pom\nProgress (1): 2.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.pom (2.6 kB at 8.2 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar\nProgress (1): 4.1/66 kB\nProgress (1): 7.4/66 kB\nProgress (1): 11/66 kB \nProgress (1): 16/66 kB\nProgress (1): 20/66 kB\nProgress (1): 24/66 kB\nProgress (1): 28/66 kB\nProgress (1): 32/66 kB\nProgress (1): 36/66 kB\nProgress (1): 40/66 kB\nProgress (1): 44/66 kB\nProgress (1): 48/66 kB\nProgress (1): 52/66 kB\nProgress (1): 57/66 kB\nProgress (1): 61/66 kB\nProgress (1): 65/66 kB\nProgress (1): 66 kB   \nProgress (2): 66 kB | 4.1/73 kB\nProgress (2): 66 kB | 7.4/73 kB\nProgress (2): 66 kB | 11/73 kB \nProgress (2): 66 kB | 16/73 kB\nProgress (3): 66 kB | 16/73 kB | 4.1/52 kB\nProgress (3): 66 kB | 16/73 kB | 7.4/52 kB\nProgress (3): 66 kB | 20/73 kB | 7.4/52 kB\nProgress (3): 66 kB | 20/73 kB | 11/52 kB \nProgress (3): 66 kB | 24/73 kB | 11/52 kB\nProgress (3): 66 kB | 24/73 kB | 16/52 kB\nProgress (3): 66 kB | 28/73 kB | 16/52 kB\nProgress (3): 66 kB | 32/73 kB | 16/52 kB\nProgress (4): 66 kB | 32/73 kB | 16/52 kB | 4.1/193 kB\nProgress (4): 66 kB | 32/73 kB | 16/52 kB | 7.4/193 kB\nProgress (4): 66 kB | 32/73 kB | 16/52 kB | 11/193 kB \nProgress (4): 66 kB | 32/73 kB | 16/52 kB | 16/193 kB\nProgress (4): 66 kB | 36/73 kB | 16/52 kB | 16/193 kB\nProgress (4): 66 kB | 40/73 kB | 16/52 kB | 16/193 kB\nProgress (4): 66 kB | 44/73 kB | 16/52 kB | 16/193 kB\nProgress (4): 66 kB | 44/73 kB | 20/52 kB | 16/193 kB\nProgress (4): 66 kB | 48/73 kB | 20/52 kB | 16/193 kB\nProgress (4): 66 kB | 48/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 52/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 57/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 61/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 65/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 69/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 73/73 kB | 24/52 kB | 16/193 kB\nProgress (4): 66 kB | 73 kB | 24/52 kB | 16/193 kB   \nProgress (4): 66 kB | 73 kB | 28/52 kB | 16/193 kB\nProgress (4): 66 kB | 73 kB | 32/52 kB | 16/193 kB\nProgress (4): 66 kB | 73 kB | 36/52 kB | 16/193 kB\nProgress (4): 66 kB | 73 kB | 40/52 kB | 16/193 kB\nProgress (4): 66 kB | 73 kB | 40/52 kB | 20/193 kB\nProgress (4): 66 kB | 73 kB | 40/52 kB | 24/193 kB\nProgress (4): 66 kB | 73 kB | 40/52 kB | 28/193 kB\nProgress (4): 66 kB | 73 kB | 40/52 kB | 32/193 kB\nProgress (4): 66 kB | 73 kB | 44/52 kB | 32/193 kB\nProgress (4): 66 kB | 73 kB | 48/52 kB | 32/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 32/193 kB   \nProgress (4): 66 kB | 73 kB | 52 kB | 36/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 40/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 44/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 48/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 52/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 57/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 61/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 65/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 69/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 73/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 77/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 81/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 85/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 89/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 93/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 97/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 102/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 106/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 110/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 114/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 118/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 122/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 126/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 130/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 134/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 138/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 142/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 147/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 151/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 155/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 159/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 163/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 167/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 171/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 175/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 179/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 183/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 188/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 192/193 kB\nProgress (4): 66 kB | 73 kB | 52 kB | 193 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar (66 kB at 215 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.jar (73 kB at 226 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.jar (52 kB at 155 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar (193 kB at 455 kB/s)\n[ERROR] Command execution failed.\njava.io.IOException: Cannot run program "docker" (in directory "/testbed/gremlin-tools/gremlin-socket-server"): error=2, No such file or directory\n    at java.lang.ProcessBuilder.start (ProcessBuilder.java:1143)\n    at java.lang.ProcessBuilder.start (ProcessBuilder.java:1073)\n    at org.codehaus.mojo.exec.ExtendedExecutor.launch (ExtendedExecutor.java:62\x1b[m)\n    at\x1b[m org.apache.commons.exec.DefaultExecutor.executeInternal (\x1b[1mDefaultExecutor.java:295)\n    at org.apache.commons.exec.DefaultExecutor.execute (\x1b[1mDefaultExecutor.java:253\x1b[m)\n    at org.codehaus.mojo.exec.ExecMojo.executeCommandLine (ExecMojo.java:903)\n    at org.codehaus.mojo.exec.ExecMojo.executeCommandLine (ExecMojo.java:863)\n    at org.codehaus.mojo.exec.ExecMojo.execute (ExecMojo.java:454)\n    at\x1b[m org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (\x1b[1mDefaultBuildPluginManager.java:137)\n    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (\x1b[1mMojoExecutor.java:210)\n    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:156)\n    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148\x1b[m)\n    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)\n    at\x1b[m org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)\n    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)\n    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)\n    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305\x1b[m)\n    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)\n    at\x1b[m org.apache.maven.DefaultMaven.execute (\x1b[1mDefaultMaven.java:105\x1b[m)\n    \x1b[1mat org.apache.maven.cli.MavenCli.execute (MavenCli.java:957)\n    \x1b[1mat org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)\n    \x1b[1mat org.apache.maven.cli.MavenCli.main (MavenCli.java:193)\n    at\x1b[m jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method\x1b[m)\n    at\x1b[m jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)\n    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (\x1b[1mDelegatingMethodAccessorImpl.java:43)\n    \x1b[1mat java.lang.reflect.Method.invoke (Method.java:569)\n    \x1b[1mat org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)\nCaused by: java.io.IOException: error=2, No such file or directory\n    at java.lang.ProcessImpl.forkAndExec (\x1b[1mNative Method)\n    at\x1b[m java.lang.ProcessImpl.<init> (ProcessImpl.java:314)\n    at java.lang.ProcessImpl.start (ProcessImpl.java:244)\n    \x1b[1mat java.lang.ProcessBuilder.start (ProcessBuilder.java:1110\x1b[m)\n    at\x1b[m java.lang.ProcessBuilder.start (\x1b[1mProcessBuilder.java:1073)\n    at org.codehaus.mojo.exec.ExtendedExecutor.launch (\x1b[1mExtendedExecutor.java:62)\n    at org.apache.commons.exec.DefaultExecutor.executeInternal (DefaultExecutor.java:295)\n    \x1b[1mat\x1b[m org.apache.commons.exec.DefaultExecutor.execute (DefaultExecutor.java:253)\n    at org.codehaus.mojo.exec.ExecMojo.executeCommandLine (ExecMojo.java:903)\n    at org.codehaus.mojo.exec.ExecMojo.executeCommandLine (ExecMojo.java:863\x1b[m)\n    \x1b[1mat org.codehaus.mojo.exec.ExecMojo.execute (ExecMojo.java:454\x1b[m)\n    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (\x1b[1mDefaultBuildPluginManager.java:137)\n    at\x1b[m org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:210\x1b[m)\n    at\x1b[m org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:156)\n    at\x1b[m org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148)\n    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)\n    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (\x1b[1mLifecycleModuleBuilder.java:81\x1b[m)\n    \x1b[1mat org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)\n    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)\n    \x1b[1mat org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305)\n    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)\n    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:105)\n    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:957)\n    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)\n    at org.apache.maven.cli.MavenCli.main (MavenCli.java:193)\n    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)\n    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)\n    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)\n    at java.lang.reflect.Method.invoke (Method.java:569)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)\n[INFO] ------------------------------------------------------------------------\x1b[m\n[INFO] Reactor Summary for Apache TinkerPop 4.0.0-SNAPSHOT:\n[\x1b[1;34mINFO] \n[INFO] Apache TinkerPop ................................... \x1b[1;32mSUCCESS [03:23 min]\n[INFO] Apache TinkerPop :: Gremlin Language ............... \x1b[1;32mSUCCESS\x1b[m [ 36.747 s]\n[INFO] Apache TinkerPop :: Gremlin Shaded ................. \x1b[1;32mSUCCESS [  9.857 s]\n[INFO] Apache TinkerPop :: Gremlin Core ................... SUCCESS [ 52.921 s]\n[INFO] Apache TinkerPop :: GQL Gremlin .................... \x1b[1;32mSUCCESS [  2.486 s]\n[INFO] Apache TinkerPop :: Gremlin Annotations ............ SUCCESS\x1b[m [  6.876 s]\n[INFO] Apache TinkerPop :: Gremlin Test ................... \x1b[1;32mSUCCESS [03:24 min]\n[INFO] Apache TinkerPop :: TinkerGraph Gremlin ............ \x1b[1;32mSUCCESS [  4.507 s]\n[INFO] Apache TinkerPop :: Gremlin Util ................... \x1b[1;32mSUCCESS\x1b[m [ 25.969 s]\n[INFO] Apache TinkerPop :: Gremlin Groovy ................. \x1b[1;32mSUCCESS\x1b[m [ 11.728 s]\n[INFO] Apache TinkerPop :: Gremlin Tools .................. SUCCESS [  0.052 s]\n[INFO] Apache TinkerPop :: Gremlin Socket Server .......... \x1b[1;31mFAILURE [ 17.995 s]\n[INFO] Apache TinkerPop :: Gremlin Driver ................. \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin Server ................. SKIPPED\n[INFO] Apache TinkerPop :: Gremlin JS ..................... SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Javascript ............. \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlint ....................... \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin MCP .................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] Apache TinkerPop :: Gremlin Python ................. \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin.Net .................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] Apache TinkerPop :: Gremlin.Net - Source ........... \x1b[1;33mSKIPPED\n[\x1b[1;34mINFO] Apache TinkerPop :: Gremlin.Net - Tests ............ \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin Go ..................... \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Hadoop Gremlin ................. \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Spark Gremlin .................. SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Console ................ SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Benchmark .............. SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Coverage ............... SKIPPED\n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD FAILURE\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  09:50 min\n[INFO] Finished at: 2026-10-16T07:03:14Z\n[INFO] ------------------------------------------------------------------------\n[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.5.0:exec (build-image) on project gremlin-socket-server: Command execution failed.: Cannot run program "docker" (in directory "/testbed/gremlin-tools/gremlin-socket-server"): error=2, No such file or directory -> [Help 1]\n[ERROR] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException\n[ERROR] \n[ERROR] After correcting the problems, you can resume the build with the command\n[ERROR]   mvn <args> -rf :gremlin-socket-server\n ---> Removed intermediate container decf00d9e60b\nError: The command \'/bin/sh -c mvn clean install -DskipTests && npm install\' returned a non-zero code: 1', 'Failed to build Docker image.', False)
+2026-10-16 15:03:16.438 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-16 15:03:26.621 | INFO     | Model API request cost info: input_tokens=18550, output_tokens=238, cost=0.048755
+2026-10-16 15:03:26.622 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile fails to build successfully due to a critical missing dependency: the 'docker' command is required for executing certain parts of the Maven build process within the project (specifically the 'exec-maven-plugin'). The error message received is: 'Cannot run program \"docker\" (in directory \"/testbed/gremlin-tools/gremlin-socket-server\"): error=2, No such file or directory'. To fix this issue, ensure that Docker is properly installed in the Dockerfile by adding the following commands:\n\n```Dockerfile\nRUN apt update && apt install -y docker.io && rm -rf /var/lib/apt/lists/*\n```\nAdditionally, you may need to ensure that the correct permissions are granted for Docker CLI usage within the container by adding:\n\n```Dockerfile\nRUN usermod -aG docker $(whoami)\n```\nEnsure these changes are applied and rebuild the Dockerfile.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-16 15:03:26.622 | DEBUG    | Extracted a valid json
+2026-10-16 15:03:26.625 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-16 15:03:33.193 | INFO     | Model API request cost info: input_tokens=4451, output_tokens=655, cost=0.017677
+2026-10-16 15:03:33.194 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-16 15:30:54.333 | DEBUG    | Result of dispatch_intent: ("Step 16/22 : RUN mvn clean install -DskipTests && npm install\n ---> Running in c37306d6b296\n[INFO] Scanning for projects...\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 kB at 7.1 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.pom (1.5 kB at 4.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-parent/0.24/dotnet-maven-parent-0.24.pom\nProgress (1): 2.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-parent/0.24/dotnet-maven-parent-0.24.pom (2.8 kB at 9.5 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom\nProgress (1): 4.1 kB\nProgress (1): 6.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.6 kB at 22 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom (1.5 kB at 4.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 22 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom (22 kB at 74 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 32 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom (32 kB at 106 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom\nProgress (1): 4.1 kB\nProgress (1): 4.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom (4.1 kB at 15 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom\nProgress (1): 2.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom (2.8 kB at 10 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom\nProgress (1): 2.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom (2.2 kB at 7.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom\nProgress (1): 3.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom (3.2 kB at 12 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom\nProgress (1): 4.1 kB\nProgress (1): 6.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom (6.8 kB at 24 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom (12 kB at 41 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom\nProgress (1): 889 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom (889 B at 3.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom\nProgress (1): 4.1 kB\nProgress (1): 5.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom (5.8 kB at 22 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom\nProgress (1): 3.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom (3.9 kB at 16 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom\nProgress (1): 492 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom (492 B at 1.8 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom\nProgress (1): 4.1 kB\nProgress (1): 5.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom (5.7 kB at 22 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom\nProgress (1): 998 B\nDownloaded from central: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom (998 B at 3.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom\nProgress (1): 4.1 kB\nProgress (1): 6.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom (6.9 kB at 24 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom\nProgress (1): 3.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom (3.1 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom\nProgress (1): 2.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom (2.2 kB at 7.5 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom\nProgress (1): 3.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom (3.1 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom (1.9 kB at 6.1 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom\nProgress (1): 1.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom (1.6 kB at 4.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom\nProgress (1): 880 B\nDownloaded from central: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom (880 B at 3.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom (1.9 kB at 6.7 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.7.7/jackson-databind-2.7.7.pom\nProgress (1): 4.1 kB\nProgress (1): 5.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.7.7/jackson-databind-2.7.7.pom (5.2 kB at 19 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.7/jackson-parent-2.7.pom\nProgress (1): 4.1 kB\nProgress (1): 8.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.7/jackson-parent-2.7.pom (8.1 kB at 27 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/25/oss-parent-25.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 19 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/25/oss-parent-25.pom (19 kB at 77 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.7.0/jackson-annotations-2.7.0.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.7.0/jackson-annotations-2.7.0.pom (1.5 kB at 6.8 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.7.7/jackson-core-2.7.7.pom\nProgress (1): 4.1 kB\nProgress (1): 5.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.7.7/jackson-core-2.7.7.pom (5.1 kB at 21 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar\nProgress (1): 4.1/41 kB\nProgress (1): 7.4/41 kB\nProgress (1): 11/41 kB \nProgress (1): 16/41 kB\nProgress (1): 20/41 kB\nProgress (1): 24/41 kB\nProgress (1): 28/41 kB\nProgress (1): 32/41 kB\nProgress (1): 36/41 kB\nProgress (1): 40/41 kB\nProgress (1): 41 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/eobjects/build/dotnet-maven-plugin/0.24/dotnet-maven-plugin-0.24.jar (41 kB at 138 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar\nProgress (1): 3.3/12 kB\nProgress (1): 6.0/12 kB\nProgress (1): 9.1/12 kB\nProgress (1): 12/12 kB \nProgress (1): 12 kB   \nProgress (2): 12 kB | 3.3/35 kB\nProgress (2): 12 kB | 6.0/35 kB\nProgress (2): 12 kB | 9.1/35 kB\nProgress (2): 12 kB | 12/35 kB \nProgress (2): 12 kB | 15/35 kB\nProgress (2): 12 kB | 17/35 kB\nProgress (2): 12 kB | 20/35 kB\nProgress (2): 12 kB | 23/35 kB\nProgress (2): 12 kB | 26/35 kB\nProgress (2): 12 kB | 28/35 kB\nProgress (2): 12 kB | 31/35 kB\nProgress (2): 12 kB | 34/35 kB\nProgress (2): 12 kB | 35 kB   \nProgress (3): 12 kB | 35 kB | 3.3/156 kB\nProgress (3): 12 kB | 35 kB | 6.0/156 kB\nProgress (3): 12 kB | 35 kB | 8.8/156 kB\nProgress (3): 12 kB | 35 kB | 12/156 kB \nProgress (3): 12 kB | 35 kB | 14/156 kB\nProgress (3): 12 kB | 35 kB | 17/156 kB\nProgress (3): 12 kB | 35 kB | 20/156 kB\nProgress (3): 12 kB | 35 kB | 22/156 kB\nProgress (3): 12 kB | 35 kB | 25/156 kB\nProgress (3): 12 kB | 35 kB | 28/156 kB\nProgress (3): 12 kB | 35 kB | 31/156 kB\nProgress (3): 12 kB | 35 kB | 33/156 kB\nProgress (3): 12 kB | 35 kB | 36/156 kB\nProgress (3): 12 kB | 35 kB | 39/156 kB\nProgress (3): 12 kB | 35 kB | 42/156 kB\nProgress (3): 12 kB | 35 kB | 44/156 kB\nProgress (3): 12 kB | 35 kB | 47/156 kB\nProgress (3): 12 kB | 35 kB | 50/156 kB\nProgress (3): 12 kB | 35 kB | 53/156 kB\nProgress (3): 12 kB | 35 kB | 55/156 kB\nProgress (4): 12 kB | 35 kB | 55/156 kB | 3.3/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 3.3/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 6.0/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 8.8/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 12/49 kB \nProgress (4): 12 kB | 35 kB | 59/156 kB | 14/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 17/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 20/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 22/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 25/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 28/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 31/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 33/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 36/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 39/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 42/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 44/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 47/49 kB\nProgress (4): 12 kB | 35 kB | 59/156 kB | 49 kB   \nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 4.1/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 7.4/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 11/88 kB \nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 16/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 20/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 24/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 28/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 32/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 36/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 40/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 44/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 48/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 52/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 57/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 61/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 65/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 69/88 kB\nProgress (5): 12 kB | 35 kB | 59/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 64/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 68/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 72/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 76/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 80/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 84/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 88/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 92/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 96/156 kB | 49 kB | 73/88 kB\nProgress (5): 12 kB | 35 kB | 100/156 kB | 49 kB | 73/88 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar (12 kB at 23 kB/s)\nProgress (4): 35 kB | 104/156 kB | 49 kB | 73/88 kB\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar\nProgress (4): 35 kB | 109/156 kB | 49 kB | 73/88 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar (35 kB at 67 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.jar\nProgress (3): 113/156 kB | 49 kB | 73/88 kB\nProgress (3): 117/156 kB | 49 kB | 73/88 kB\nProgress (3): 121/156 kB | 49 kB | 73/88 kB\nProgress (3): 123/156 kB | 49 kB | 73/88 kB\nProgress (3): 127/156 kB | 49 kB | 73/88 kB\nProgress (3): 130/156 kB | 49 kB | 73/88 kB\nProgress (3): 134/156 kB | 49 kB | 73/88 kB\nProgress (3): 138/156 kB | 49 kB | 73/88 kB\nProgress (3): 138/156 kB | 49 kB | 77/88 kB\nProgress (3): 138/156 kB | 49 kB | 81/88 kB\nProgress (3): 138/156 kB | 49 kB | 85/88 kB\nProgress (3): 138/156 kB | 49 kB | 88 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.jar (49 kB at 84 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar\nProgress (2): 142/156 kB | 88 kB\nProgress (2): 147/156 kB | 88 kB\nProgress (2): 151/156 kB | 88 kB\nProgress (2): 155/156 kB | 88 kB\nProgress (2): 156 kB | 88 kB    \nProgress (3): 156 kB | 88 kB | 3.3/26 kB\nProgress (4): 156 kB | 88 kB | 3.3/26 kB | 3.3/68 kB\nProgress (4): 156 kB | 88 kB | 6.0/26 kB | 3.3/68 kB\nProgress (4): 156 kB | 88 kB | 6.0/26 kB | 6.0/68 kB\nProgress (4): 156 kB | 88 kB | 8.8/26 kB | 6.0/68 kB\nProgress (4): 156 kB | 88 kB | 8.8/26 kB | 8.8/68 kB\nProgress (4): 156 kB | 88 kB | 11/26 kB | 8.8/68 kB \nProgress (4): 156 kB | 88 kB | 11/26 kB | 12/68 kB \nProgress (4): 156 kB | 88 kB | 14/26 kB | 12/68 kB\nProgress (4): 156 kB | 88 kB | 14/26 kB | 14/68 kB\nProgress (4): 156 kB | 88 kB | 17/26 kB | 14/68 kB\nProgress (4): 156 kB | 88 kB | 20/26 kB | 14/68 kB\nProgress (4): 156 kB | 88 kB | 20/26 kB | 18/68 kB\nProgress (4): 156 kB | 88 kB | 22/26 kB | 18/68 kB\nProgress (4): 156 kB | 88 kB | 25/26 kB | 18/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 18/68 kB   \nProgress (4): 156 kB | 88 kB | 26 kB | 22/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 27/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 31/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 35/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 39/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 41/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 45/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 49/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 53/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 57/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 61/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 66/68 kB\nProgress (4): 156 kB | 88 kB | 26 kB | 68 kB   \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar (88 kB at 126 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar\nProgress (4): 156 kB | 26 kB | 68 kB | 3.3/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 7.4/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 11/332 kB \nProgress (4): 156 kB | 26 kB | 68 kB | 16/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 20/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 24/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 28/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 32/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 36/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 40/332 kB\nProgress (4): 156 kB | 26 kB | 68 kB | 44/332 kB\n...skipped 44864 lines...\n[INFO] Copying hppc-0.7.1.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/hppc-0.7.1.jar\n[INFO] Copying javapoet-1.13.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/javapoet-1.13.0.jar\n[INFO] Copying exp4j-0.4.8.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/exp4j-0.4.8.jar\n[INFO] Copying caffeine-3.2.3.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/caffeine-3.2.3.jar\n[INFO] Copying error_prone_annotations-2.43.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/error_prone_annotations-2.43.0.jar\n[INFO] Copying tinkergraph-gremlin-4.0.0-SNAPSHOT.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/tinkergraph-gremlin-4.0.0-SNAPSHOT.jar\n[INFO] Copying commons-lang3-3.20.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/commons-lang3-3.20.0.jar\n[INFO] Copying gql-gremlin-4.0.0-SNAPSHOT.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/gql-gremlin-4.0.0-SNAPSHOT.jar\n[INFO] Copying antlr4-runtime-4.13.2.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/antlr4-runtime-4.13.2.jar\n[INFO] Copying netty-all-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-all-4.2.7.Final.jar\n[INFO] Copying netty-buffer-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-buffer-4.2.7.Final.jar\n[INFO] Copying netty-codec-base-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-base-4.2.7.Final.jar\n[INFO] Copying netty-codec-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-4.2.7.Final.jar\n[INFO] Copying netty-codec-dns-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-dns-4.2.7.Final.jar\n[INFO] Copying netty-codec-haproxy-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-haproxy-4.2.7.Final.jar\n[INFO] Copying netty-codec-compression-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-compression-4.2.7.Final.jar\n[INFO] Copying netty-codec-http-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-http-4.2.7.Final.jar\n[INFO] Copying netty-codec-http2-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-http2-4.2.7.Final.jar\n[INFO] Copying netty-codec-http3-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-http3-4.2.7.Final.jar\n[INFO] Copying jctools-core-4.0.5.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/jctools-core-4.0.5.jar\n[INFO] Copying netty-transport-native-unix-common-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-unix-common-4.2.7.Final.jar\n[INFO] Copying bcprov-jdk18on-1.80.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/bcprov-jdk18on-1.80.jar\n[INFO] Copying netty-codec-memcache-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-memcache-4.2.7.Final.jar\n[INFO] Copying netty-codec-mqtt-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-mqtt-4.2.7.Final.jar\n[INFO] Copying netty-codec-redis-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-redis-4.2.7.Final.jar\n[INFO] Copying netty-codec-smtp-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-smtp-4.2.7.Final.jar\n[INFO] Copying netty-codec-socks-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-socks-4.2.7.Final.jar\n[INFO] Copying netty-codec-stomp-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-stomp-4.2.7.Final.jar\n[INFO] Copying netty-codec-xml-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-xml-4.2.7.Final.jar\n[INFO] Copying netty-codec-protobuf-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-protobuf-4.2.7.Final.jar\n[INFO] Copying netty-codec-marshalling-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-marshalling-4.2.7.Final.jar\n[INFO] Copying netty-common-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-common-4.2.7.Final.jar\n[INFO] Copying netty-handler-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-handler-4.2.7.Final.jar\n[INFO] Copying netty-handler-proxy-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-handler-proxy-4.2.7.Final.jar\n[INFO] Copying netty-handler-ssl-ocsp-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-handler-ssl-ocsp-4.2.7.Final.jar\n[INFO] Copying netty-resolver-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-4.2.7.Final.jar\n[INFO] Copying netty-resolver-dns-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-4.2.7.Final.jar\n[INFO] Copying netty-transport-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-4.2.7.Final.jar\n[INFO] Copying netty-transport-rxtx-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-rxtx-4.2.7.Final.jar\n[INFO] Copying netty-transport-sctp-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-sctp-4.2.7.Final.jar\n[INFO] Copying netty-transport-udt-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-udt-4.2.7.Final.jar\n[INFO] Copying netty-transport-classes-epoll-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-classes-epoll-4.2.7.Final.jar\n[INFO] Copying netty-transport-classes-kqueue-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-classes-kqueue-4.2.7.Final.jar\n[INFO] Copying netty-resolver-dns-classes-macos-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-classes-macos-4.2.7.Final.jar\n[INFO] Copying netty-transport-classes-io_uring-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-classes-io_uring-4.2.7.Final.jar\n[INFO] Copying netty-codec-classes-quic-4.2.7.Final.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-classes-quic-4.2.7.Final.jar\n[INFO] Copying netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar\n[INFO] Copying netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar\n[INFO] Copying netty-transport-native-epoll-4.2.7.Final-linux-riscv64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-epoll-4.2.7.Final-linux-riscv64.jar\n[INFO] Copying netty-transport-native-io_uring-4.2.7.Final-linux-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-io_uring-4.2.7.Final-linux-x86_64.jar\n[INFO] Copying netty-transport-native-io_uring-4.2.7.Final-linux-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-io_uring-4.2.7.Final-linux-aarch_64.jar\n[INFO] Copying netty-transport-native-io_uring-4.2.7.Final-linux-riscv64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-io_uring-4.2.7.Final-linux-riscv64.jar\n[INFO] Copying netty-transport-native-kqueue-4.2.7.Final-osx-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-kqueue-4.2.7.Final-osx-x86_64.jar\n[INFO] Copying netty-transport-native-kqueue-4.2.7.Final-osx-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-transport-native-kqueue-4.2.7.Final-osx-aarch_64.jar\n[INFO] Copying netty-resolver-dns-native-macos-4.2.7.Final-osx-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-native-macos-4.2.7.Final-osx-x86_64.jar\n[INFO] Copying netty-resolver-dns-native-macos-4.2.7.Final-osx-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-resolver-dns-native-macos-4.2.7.Final-osx-aarch_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-linux-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-linux-x86_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-linux-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-linux-aarch_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-osx-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-osx-x86_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-osx-aarch_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-osx-aarch_64.jar\n[INFO] Copying netty-codec-native-quic-4.2.7.Final-windows-x86_64.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/netty-codec-native-quic-4.2.7.Final-windows-x86_64.jar\n[INFO] Copying littleproxy-2.8.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/littleproxy-2.8.0.jar\n[INFO] Copying guava-33.6.0-jre.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/guava-33.6.0-jre.jar\n[INFO] Copying failureaccess-1.0.3.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/failureaccess-1.0.3.jar\n[INFO] Copying listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar\n[INFO] Copying jspecify-1.0.0.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/jspecify-1.0.0.jar\n[INFO] Copying j2objc-annotations-3.1.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/j2objc-annotations-3.1.jar\n[INFO] Copying slf4j-api-2.0.16.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/slf4j-api-2.0.16.jar\n[INFO] Copying groovy-4.0.32.jar to /testbed/gremlin-tools/gremlin-socket-server/target/libs/groovy-4.0.32.jar\n[INFO] \n[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ gremlin-socket-server ---\n[INFO] Building jar: /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT.jar\n[INFO] \n[INFO] --- maven-source-plugin:3.2.1:jar-no-fork (attach-sources) @ gremlin-socket-server ---\n[INFO] Building jar: /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-sources.jar\n[INFO] \n[INFO] --- \x1b[0;32mmaven-javadoc-plugin:3.3.1:jar (attach-javadoc) @ gremlin-socket-server\x1b[0;1m ---\n[INFO] No previous run data found, generating javadoc.\n[INFO] Building jar: /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-javadoc.jar\n[INFO] \n[INFO] --- maven-site-plugin:3.12.0:attach-descriptor (attach-descriptor) @ gremlin-socket-server ---\n[INFO] Skipping because packaging 'jar' is not pom.\n[INFO] \n[INFO] --- \x1b[0;32mmaven-failsafe-plugin:3.6.0:integration-test (integration-test) @ gremlin-socket-server\x1b[0;1m ---\n[INFO] Tests are skipped.\n[INFO] \n[INFO] --- \x1b[0;32mmaven-failsafe-plugin:3.6.0:verify \x1b[1m(verify-integration-test) @ gremlin-socket-server ---\n[INFO] Tests are skipped.\n[INFO] \n[INFO] \x1b[1m--- maven-install-plugin:2.5.2:install \x1b[1m(default-install) @ gremlin-socket-server\x1b[0;1m ---\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT.jar to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT.jar\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/pom.xml to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT.pom\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-sources.jar to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT-sources.jar\n[INFO] Installing /testbed/gremlin-tools/gremlin-socket-server/target/gremlin-socket-server-4.0.0-SNAPSHOT-javadoc.jar to /root/.m2/repository/org/apache/tinkerpop/gremlin-socket-server/4.0.0-SNAPSHOT/gremlin-socket-server-4.0.0-SNAPSHOT-javadoc.jar\n[INFO] \n[INFO] --- \x1b[0;32mexec-maven-plugin:3.5.0:exec (build-image) @ gremlin-socket-server\x1b[0;1m ---\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 13 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.pom (13 kB at 41 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 9.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.pom (9.5 kB at 29 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.pom\nProgress (1): 2.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.pom (2.8 kB at 9.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.pom\nProgress (1): 2.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.pom (2.6 kB at 10.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.jar\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar\nProgress (1): 3.2/52 kB\nProgress (2): 3.2/52 kB | 4.1/73 kB\nProgress (2): 3.2/52 kB | 7.2/73 kB\nProgress (2): 3.2/52 kB | 11/73 kB \nProgress (2): 3.2/52 kB | 15/73 kB\nProgress (2): 3.2/52 kB | 20/73 kB\nProgress (2): 3.2/52 kB | 24/73 kB\nProgress (2): 3.2/52 kB | 28/73 kB\nProgress (2): 3.2/52 kB | 32/73 kB\nProgress (2): 3.2/52 kB | 36/73 kB\nProgress (2): 3.2/52 kB | 40/73 kB\nProgress (2): 3.2/52 kB | 44/73 kB\nProgress (2): 3.2/52 kB | 48/73 kB\nProgress (2): 3.2/52 kB | 52/73 kB\nProgress (2): 3.2/52 kB | 56/73 kB\nProgress (2): 3.2/52 kB | 60/73 kB\nProgress (2): 3.2/52 kB | 65/73 kB\nProgress (2): 3.2/52 kB | 69/73 kB\nProgress (2): 3.2/52 kB | 73/73 kB\nProgress (2): 3.2/52 kB | 73 kB   \nProgress (2): 7.3/52 kB | 73 kB\nProgress (2): 11/52 kB | 73 kB \nProgress (2): 15/52 kB | 73 kB\nProgress (2): 20/52 kB | 73 kB\nProgress (2): 24/52 kB | 73 kB\nProgress (2): 28/52 kB | 73 kB\nProgress (2): 32/52 kB | 73 kB\nProgress (2): 36/52 kB | 73 kB\nProgress (3): 36/52 kB | 73 kB | 4.1/193 kB\nProgress (3): 36/52 kB | 73 kB | 7.4/193 kB\nProgress (3): 36/52 kB | 73 kB | 11/193 kB \nProgress (3): 36/52 kB | 73 kB | 16/193 kB\nProgress (3): 40/52 kB | 73 kB | 16/193 kB\nProgress (3): 44/52 kB | 73 kB | 16/193 kB\nProgress (3): 48/52 kB | 73 kB | 16/193 kB\nProgress (3): 52 kB | 73 kB | 16/193 kB   \nProgress (3): 52 kB | 73 kB | 20/193 kB\nProgress (3): 52 kB | 73 kB | 24/193 kB\nProgress (4): 52 kB | 73 kB | 24/193 kB | 4.1/66 kB\nProgress (4): 52 kB | 73 kB | 24/193 kB | 7.4/66 kB\nProgress (4): 52 kB | 73 kB | 24/193 kB | 11/66 kB \nProgress (4): 52 kB | 73 kB | 24/193 kB | 16/66 kB\nProgress (4): 52 kB | 73 kB | 28/193 kB | 16/66 kB\nProgress (4): 52 kB | 73 kB | 32/193 kB | 16/66 kB\nProgress (4): 52 kB | 73 kB | 36/193 kB | 16/66 kB\nProgress (4): 52 kB | 73 kB | 40/193 kB | 16/66 kB\nProgress (4): 52 kB | 73 kB | 40/193 kB | 20/66 kB\nProgress (4): 52 kB | 73 kB | 40/193 kB | 24/66 kB\nProgress (4): 52 kB | 73 kB | 40/193 kB | 28/66 kB\nProgress (4): 52 kB | 73 kB | 40/193 kB | 32/66 kB\nProgress (4): 52 kB | 73 kB | 44/193 kB | 32/66 kB\nProgress (4): 52 kB | 73 kB | 48/193 kB | 32/66 kB\nProgress (4): 52 kB | 73 kB | 52/193 kB | 32/66 kB\nProgress (4): 52 kB | 73 kB | 57/193 kB | 32/66 kB\nProgress (4): 52 kB | 73 kB | 57/193 kB | 36/66 kB\nProgress (4): 52 kB | 73 kB | 57/193 kB | 40/66 kB\nProgress (4): 52 kB | 73 kB | 57/193 kB | 44/66 kB\nProgress (4): 52 kB | 73 kB | 57/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 61/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 65/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 69/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 73/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 77/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 81/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 85/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 89/193 kB | 48/66 kB\nProgress (4): 52 kB | 73 kB | 89/193 kB | 52/66 kB\nProgress (4): 52 kB | 73 kB | 89/193 kB | 57/66 kB\nProgress (4): 52 kB | 73 kB | 89/193 kB | 61/66 kB\nProgress (4): 52 kB | 73 kB | 89/193 kB | 65/66 kB\nProgress (4): 52 kB | 73 kB | 89/193 kB | 66 kB   \nProgress (4): 52 kB | 73 kB | 93/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 97/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 102/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 106/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 110/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 114/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 118/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 122/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 126/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 130/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 134/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 138/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 143/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 147/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 151/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 155/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 159/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 163/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 167/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 171/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 175/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 179/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 184/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 188/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 192/193 kB | 66 kB\nProgress (4): 52 kB | 73 kB | 193 kB | 66 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.7.1/asm-commons-9.7.1.jar (73 kB at 272 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.7.1/asm-tree-9.7.1.jar (52 kB at 186 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar (66 kB at 194 kB/s)\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.2/plexus-utils-4.0.2.jar (193 kB at 462 kB/s)\nDEPRECATED: The legacy builder is deprecated and will be removed in a future release.\n            Install the buildx component to build images with BuildKit:\n            https://docs.docker.com/go/buildx/\nfailed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n[ERROR] Command execution failed.\norg.apache.commons.exec.ExecuteException: Process exited with an error: 1 (Exit value: 1)\x1b[m\n    at org.apache.commons.exec.DefaultExecutor.executeInternal (DefaultExecutor.java:355\x1b[m)\n    at org.apache.commons.exec.DefaultExecutor.execute (DefaultExecutor.java:253\x1b[m)\n    at org.codehaus.mojo.exec.ExecMojo.executeCommandLine (ExecMojo.java:903\x1b[m)\n    at org.codehaus.mojo.exec.ExecMojo.executeCommandLine (ExecMojo.java:863\x1b[m)\n    at org.codehaus.mojo.exec.ExecMojo.execute (ExecMojo.java:454\x1b[m)\n    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:137)\n    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (\x1b[1mMojoExecutor.java:210\x1b[m)\n    \x1b[1mat org.apache.maven.lifecycle.internal.MojoExecutor.execute (\x1b[1mMojoExecutor.java:156)\n    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148)\n    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)\n    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)\n    \x1b[1mat org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)\n    \x1b[1mat\x1b[m org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)\n    at\x1b[m org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305)\n    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)\n    \x1b[1mat org.apache.maven.DefaultMaven.execute (DefaultMaven.java:105)\n    \x1b[1mat org.apache.maven.cli.MavenCli.execute (MavenCli.java:957\x1b[m)\n    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)\n    at org.apache.maven.cli.MavenCli.main (\x1b[1mMavenCli.java:193\x1b[m)\n    \x1b[1mat jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method\x1b[m)\n    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)\n    \x1b[1mat jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)\n    \x1b[1mat java.lang.reflect.Method.invoke (Method.java:569)\n    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)\n    \x1b[1mat org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)\n    \x1b[1mat org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)\n    \x1b[1mat org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)\n[INFO] ------------------------------------------------------------------------\n[INFO] Reactor Summary for Apache TinkerPop 4.0.0-SNAPSHOT:\n[\x1b[1;34mINFO] \n[INFO] Apache TinkerPop ................................... SUCCESS [03:17 min]\n[INFO] Apache TinkerPop :: Gremlin Language ............... \x1b[1;32mSUCCESS [ 35.352 s]\n[INFO] Apache TinkerPop :: Gremlin Shaded ................. \x1b[1;32mSUCCESS [  9.579 s]\n[INFO] Apache TinkerPop :: Gremlin Core ................... \x1b[1;32mSUCCESS [ 52.712 s]\n[INFO] Apache TinkerPop :: GQL Gremlin .................... \x1b[1;32mSUCCESS [  2.616 s]\n[INFO] Apache TinkerPop :: Gremlin Annotations ............ \x1b[1;32mSUCCESS [  6.855 s]\n[INFO] Apache TinkerPop :: Gremlin Test ................... \x1b[1;32mSUCCESS\x1b[m [03:15 min]\n[INFO] Apache TinkerPop :: TinkerGraph Gremlin ............ \x1b[1;32mSUCCESS [  4.282 s]\n[INFO] Apache TinkerPop :: Gremlin Util ................... \x1b[1;32mSUCCESS [ 27.291 s]\n[INFO] Apache TinkerPop :: Gremlin Groovy ................. \x1b[1;32mSUCCESS [ 13.720 s]\n[INFO] Apache TinkerPop :: Gremlin Tools .................. \x1b[1;32mSUCCESS [  0.048 s]\n[INFO] Apache TinkerPop :: Gremlin Socket Server .......... \x1b[1;31mFAILURE [ 18.192 s]\n[INFO] Apache TinkerPop :: Gremlin Driver ................. \x1b[1;33mSKIPPED\x1b[m\n[INFO] Apache TinkerPop :: Gremlin Server ................. \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin JS ..................... \x1b[1;33mSKIPPED\n[\x1b[1;34mINFO\x1b[m] Apache TinkerPop :: Gremlin Javascript ............. SKIPPED\n[INFO\x1b[m] Apache TinkerPop :: Gremlint ....................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] Apache TinkerPop :: Gremlin MCP .................... \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin Python ................. \x1b[1;33mSKIPPED\n[INFO] Apache TinkerPop :: Gremlin.Net .................... SKIPPED\n[INFO] Apache TinkerPop :: Gremlin.Net - Source ........... \x1b[1;33mSKIPPED\x1b[m\n[\x1b[1;34mINFO\x1b[m] Apache TinkerPop :: Gremlin.Net - Tests ............ SKIPPED\n[\x1b[1;34mINFO] Apache TinkerPop :: Gremlin Go ..................... \x1b[1;33mSKIPPED\x1b[m\n[INFO] Apache TinkerPop :: Hadoop Gremlin ................. SKIPPED\n[INFO] Apache TinkerPop :: Spark Gremlin .................. SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Console ................ SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Benchmark .............. SKIPPED\n[INFO] Apache TinkerPop :: Gremlin Coverage ............... SKIPPED\n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD FAILURE\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  09:38 min\n[INFO] Finished at: 2026-10-16T07:30:52Z\n[INFO] ------------------------------------------------------------------------\n[ERROR] Failed to execute goal \x1b[32morg.codehaus.mojo:exec-maven-plugin:3.5.0:exec \x1b[1m(build-image) on project \x1b[36mgremlin-socket-server\x1b[m: \x1b[1;31mCommand execution failed.: Process exited with an error: 1 (Exit value: 1) -> \x1b[1m[Help 1]\n[ERROR] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[\x1b[1;31mERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException\n[ERROR] \n[\x1b[1;31mERROR\x1b[m] After correcting the problems, you can resume the build with the command\n[ERROR]   \x1b[1mmvn <args> -rf :gremlin-socket-server\n ---> Removed intermediate container c37306d6b296\nError: The command '/bin/sh -c mvn clean install -DskipTests && npm install' returned a non-zero code: 1", 'Failed to build Docker image.', False)
+2026-10-16 15:30:54.337 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-16 15:31:04.605 | INFO     | Model API request cost info: input_tokens=19696, output_tokens=296, cost=0.052200
+2026-10-16 15:31:04.606 | DEBUG    | {
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile fails to build due to the error: `failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory`. This error indicates that the Docker CLI commands are being used during the Maven build process, but the Docker daemon isn't accessible or correctly configured inside the Docker container. Recommendation: Remove the line `RUN usermod -aG docker $(whoami)` and avoid using Docker CLI commands inside the Maven build process during the Docker environment setup. Ensure that the Maven build and installation process (`mvn clean install -DskipTests`) does not invoke any external Docker commands that depend on the host machine's Docker daemon. You could also adjust the Maven plugin configuration to not require Docker and skip operations relying on Docker during environment setup.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "Retrieve dependencies or settings files such as `.github/workflows/*`, `pom.xml`, `README.md`, or documentation in the `docs/` folder to check if the Maven build process or Docker dependency is necessary for the target repository and how to configure it properly. Specifically, look for any Maven plugins or settings invoking external dependencies (like Docker) during the build process."
+}
+2026-10-16 15:31:04.606 | DEBUG    | Extracted a valid json
+2026-10-16 15:31:04.607 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-16 15:31:04.614 | INFO     | Task tinkerpop completed successfully.

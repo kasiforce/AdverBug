@@ -1,0 +1,19 @@
+#!/bin/bash
+set -uxo pipefail
+
+# Navigate to the test directory in the container
+cd /testbed
+
+# Ensure Maven is installed and prerequisites are correctly set
+mvn --version
+java -version
+
+# Run the tests using Maven's surefire plugin, focusing on the test directory
+# Here, the Maven 'mvn test' command is used, as per project configurations
+mvn test -B -Dskip.surefire.tests=false
+
+# Capture the exit code from the Maven test command
+rc=$?
+
+# Echo the exit status for the evaluation system
+echo "OMNIGRIL_EXIT_CODE=$rc"

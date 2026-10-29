@@ -1,0 +1,2271 @@
+2026-10-16 13:07:40.613 | INFO     | Model API request cost info: input_tokens=1290, output_tokens=278, cost=0.006005
+2026-10-16 13:07:40.619 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 13:07:47.310 | INFO     | Model API request cost info: input_tokens=877, output_tokens=128, cost=0.003472
+2026-10-16 13:07:47.312 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info(\"README.md\", \"What are the setup steps or requirements for this project?\")",
+        "browse_file_for_environment_info(\"pom.xml\", \"What is the required Java version and dependency setup?\")",
+        "browse_file_for_environment_info(\"build.gradle\", \"What is the required Java version and dependency setup?\")",
+        "browse_file_for_environment_info(\".travis.yml\", \"What Java version is used, and are there test execution commands available here?\")"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-16 13:07:47.312 | DEBUG    | Extracted a valid json
+2026-10-16 13:07:47.315 | INFO     | entering browse
+2026-10-16 13:07:47.315 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/JSqlParser/README.md ===
+<div align="center">
+
+<table border="0" width="100%"><tr>
+<td valign="middle">
+<h1><a href="https://jsqlparser.github.io/JSqlParser">JSqlParser</a></h1>
+<h3>Turn any SQL statement into a traversable tree of Java objects -- and back again.</h3>
+<p>An RDBMS-agnostic SQL parser for the JVM:<br/>one grammar, twelve dialects, no native extensions.</p>
+</td>
+<td width="270" align="center" valign="middle">
+<a href="https://jsqlparser.github.io/JSqlParser">
+<img src="src/site/sphinx/_images/logo-no-background.svg" alt="JSqlParser" width="250"/>
+</a>
+</td>
+</tr></table>
+
+[![CI](https://github.com/JSQLParser/JSqlParser/actions/workflows/ci.yml/badge.svg)](https://github.com/JSQLParser/JSqlParser/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/JSQLParser/JSqlParser/badge.svg?branch=master)](https://coveralls.io/r/JSQLParser/JSqlParser?branch=master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f9a2d7eb98f45969749e101322634a1)](https://www.codacy.com/gh/JSQLParser/JSqlParser/dashboard)
+[![Manticore Build](https://img.shields.io/maven-central/v/com.manticore-projects.jsqlformatter/jsqlparser.svg?label=manticore%20build&color=ff420e)](https://central.sonatype.com/artifact/com.manticore-projects.jsqlformatter/jsqlparser)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.jsqlparser/jsqlparser.svg?label=upstream%20release)](https://central.sonatype.com/artifact/com.github.jsqlparser/jsqlparser)
+[![Javadocs](https://www.javadoc.io/badge/com.github.jsqlparser/jsqlparser.svg)](https://www.javadoc.io/doc/com.github.jsqlparser/jsqlparser)
+[![GitHub Stars](https://img.shields.io/github/stars/JSQLParser/JSqlParser?style=flat&label=stars)](https://github.com/JSQLParser/JSqlParser/stargazers)
+[![Gitter](https://badges.gitter.im/JSQLParser/JSqlParser.svg)](https://gitter.im/JSQLParser/JSqlParser)
+
+**[Website](https://jsqlparser.github.io/JSqlParser)** · **[Samples](https://jsqlparser.github.io/JSqlParser/usage.html#parse-a-sql-statements)** · **[Syntax](https://jsqlparser.github.io/JSqlParser/syntax.html)** · **[Change Log](https://jsqlparser.github.io/JSqlParser/changelog.html#latest-changes-since-jsqlparser-version)** · **[Contributing](https://jsqlparser.github.io/JSqlParser/contribution.html)**
+
+</div>
+
+---
+
+## What it does
+
+Give it SQL. Get an AST you can walk, rewrite, and print back out.
+
+```sql
+SELECT 1 FROM dual WHERE a = b
+```
+
+```text
+SQL Text
+ └─Statements: statement.select.PlainSelect
+    ├─selectItems: statement.select.SelectItem
+    │  └─LongValue: 1
+    ├─Table: dual
+    └─where: expression.operators.relational.EqualsTo
+       ├─Column: a
+       └─Column: b
+```
+
+```java
+String sqlStr = "select 1 from dual where a=b";
+
+PlainSelect select = (PlainSelect) CCJSqlParserUtil.parse(sqlStr);
+
+SelectItem selectItem = select.getSelectItems().get(0);
+Assertions.assertEquals(new LongValue(1), selectItem.getExpression());
+
+Table table = (Table) select.getFromItem();
+Assertions.assertEquals("dual", table.getName());
+
+EqualsTo equalsTo = (EqualsTo) select.getWhere();
+Column a = (Column) equalsTo.getLeftExpression();
+Column b = (Column) equalsTo.getRightExpression();
+Assertions.assertEquals("a", a.getColumnName());
+        Assertions.assertEquals("b", b.getColumnName());
+```
+
+The tree is traversable with the Visitor pattern, and the same object model works in reverse:
+build statements from Java with a [fluent API](https://jsqlparser.github.io/JSqlParser/usage.html#build-a-sql-statements)
+and render them as SQL text.
+
+## Install
+
+Use the stable **Manticore builds**. They are released continuously from the current development
+line and carry all of the performance and grammar work described below. The upstream
+`com.github.jsqlparser` release on Maven Central is considerably older.
+
+```xml
+<dependency>
+    <groupId>com.manticore-projects.jsqlformatter</groupId>
+    <artifactId>jsqlparser</artifactId>
+    <version>[5.3.218,)</version>
+</dependency>
+```
+
+```gradle
+implementation("com.manticore-projects.jsqlformatter:jsqlparser:+")
+```
+
+<details>
+<summary>Upstream release and snapshots</summary>
+
+```xml
+<dependency>
+    <groupId>com.github.jsqlparser</groupId>
+    <artifactId>jsqlparser</artifactId>
+    <version>5.3</version>
+</dependency>
+```
+
+Snapshot coordinates and repository setup are on the
+[build dependencies page](https://jsqlparser.github.io/JSqlParser/usage.html#build-dependencies).
+
+</details>
+
+## Performance
+
+**11× faster than 5.3**, and the fastest parser on real-world SQL of any of the parsers
+tested, in any language — 19× ahead of `sqlglot[c]` on JSqlParser's own `SELECT` test suite.
+
+<div align="right">
+  <a href="https://github.com/manticore-projects/jsqlparser-bench">
+    <img src="https://github.com/manticore-projects/jsqlparser-bench/raw/main/benchmark_score.svg" alt="SQL parser benchmark score" width="30%"/>
+  </a>
+</div>
+
+```text
+Benchmark                                     (version)  Mode  Cnt    Score   Error  Units
+JSQLParserBenchmark.parseSQLStatements           latest  avgt   15   32.525 ± 0.413  ms/op
+JSQLParserBenchmark.parseSQLStatements              5.3  avgt   15  983.459 ± 8.197  ms/op
+JSQLParserBenchmark.parseSQLStatements              5.1  avgt   15  319.601 ± 4.081  ms/op
+```
+
+Methodology and the full cross-parser comparison against SQLGlot, `sqlglot[c]` and
+polyglot-sql: **[jsqlparser-bench](https://github.com/manticore-projects/jsqlparser-bench)**.
+
+## What it parses
+
+JSqlParser targets the SQL standard plus all major RDBMS. One grammar covers all of them,
+and missing syntax gets added on demand — [open an issue](https://github.com/JSQLParser/JSqlParser/issues).
+
+<div align="center">
+
+`BigQuery` · `Snowflake` · `DuckDB` · `Redshift` · `Oracle` · `MS SQL Server` · `Sybase`
+`PostgreSQL` · `MySQL` · `MariaDB` · `DB2` · `H2` · `HSQLDB` · `Derby` · `SQLite`
+
+</div>
+
+|  | Statements |
+|---|---|
+| **Queries** | `SELECT` · `WITH …` · Piped SQL |
+| **ksqlDB windows** | JOIN `WITHIN`, window `GRACE PERIOD`, and `EMIT CHANGES`/`FINAL` |
+| **ClickHouse column selection** | `COLUMNS('regexp')` select items with chained `APPLY`, `EXCEPT`, and `REPLACE` transformers |
+| **DML** | `INSERT` · `UPDATE` · `UPSERT` · `MERGE` · `DELETE` · `TRUNCATE TABLE` |
+| **DDL** | `CREATE …` · `ALTER …` · `DROP …` |
+| **MySQL table maintenance** | `ANALYZE` · `CHECK` · `OPTIMIZE` · `REPAIR TABLE` |
+| **PostgreSQL RLS** | `CREATE POLICY` · `ALTER TABLE … ENABLE`/`DISABLE`/`FORCE`/`NO FORCE ROW LEVEL SECURITY` |
+| **Informix constraints** | `ALTER TABLE … ADD CONSTRAINT` with trailing constraint names for primary, unique, foreign and check constraints; enable with `parser.withDialect(Dialect.INFORMIX)` |
+| **Salesforce SOQL** | `INCLUDES` · `EXCLUDES` |
+
+Beyond statement shapes, the grammar handles nested sub-selects, bind parameters (`?`,
+`:name`), window and analytic functions, Oracle hints, and the T-SQL square-bracket versus
+array-literal ambiguity. The complete reference is on the
+[syntax page](https://jsqlparser.github.io/JSqlParser/syntax.html).
+
+PostgreSQL dollar-quoted strings, including `$tag$…$tag$`, retain their delimiter and
+literal body in `StringValue`. Tagged quotes are disabled by default to preserve
+identifier parsing. Enable them with `parser.withDialect(Dialect.POSTGRESQL)` or
+`parser.withDollarQuotedStringTags(true)`. Untagged `$$…$$` literals remain enabled.
+
+## Statement classification
+
+Any parsed statement can say what it actually does — no second parse, no visitor to write:
+
+```java
+StatementFeatures features = CCJSqlParserUtil.parse(sqlStr).getFeatures();
+
+// safeguard a read-only client before anything reaches the database
+if (connection.isReadOnly() && features.mayModifyData()) {
+    throw new SQLException("rejected: " + features.getUnresolvedReferences());
+}
+
+// dispatch correctly
+if (features.returnsResultSet()) { statement.executeQuery(sqlStr);  }
+else                             { statement.executeUpdate(sqlStr); }
+```
+
+This is not `sqlStr.startsWith("SELECT")` with extra steps. `RETURNING` turns DML into a row
+source, a data-modifying CTE hides a `DELETE` inside a `SELECT`, and `INSERT INTO x SELECT ..`
+contains a query but returns nothing:
+
+| SQL | returns rows | modifies data |
+|---|---|---|
+| `SELECT * FROM t` | yes | no |
+| `INSERT INTO x SELECT * FROM t` | no | yes |
+| `DELETE FROM t RETURNING *` | yes | yes |
+| `WITH c AS (DELETE FROM t RETURNING *) SELECT * FROM c` | yes | yes |
+| `SELECT nextval('s')` | yes | *unproven* |
+
+Features are not mutually exclusive, and each is three-valued: proven, not excludable, or ruled
+out. `is()` answers "did the grammar prove it", `may()` answers "could it be ruled out" — so a
+guard uses `may()` and a dispatcher uses `is()`. Function volatility is not a syntactic property,
+so anything the caller has not declared pure stays unproven and is listed by name.
+
+Legacy MySQL `GROUP BY ... ASC/DESC` is available with `Dialect.MYSQL` and the explicit
+`withLegacyMySqlGroupBy(true)` option; modern/default parsing keeps it disabled.
+
+## Piped SQL
+
+Support is progressing for Piped SQL, which writes queries in the order they actually
+execute rather than the order SQL historically demanded.
+
+```sql
+FROM Produce
+|> WHERE
+    item != 'bananas'
+    AND category IN ('fruit', 'nut')
+|> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales
+   GROUP BY item
+|> ORDER BY item DESC;
+```
+
+Background reading: the [Google research paper](https://storage.googleapis.com/gweb-research2023-media/pubtools/1004848.pdf),
+[BigQuery pipe syntax](https://cloud.google.com/bigquery/docs/reference/standard-sql/pipe-syntax)
+and [DuckDB FROM-first syntax](https://duckdb.org/docs/sql/query_syntax/from.html#from-first-syntax).
+
+ODBC `{fn TIMESTAMPADD(...)}` and `{fn TIMESTAMPDIFF(...)}` expose standard
+`SQL_TSI_*` interval arguments as time-unit expressions, preserving column traversal.
+
+## Java version
+
+| JSqlParser | Runtime | Notes |
+|------------|---------|-------|
+| 4.9 | JDK 8 | last JDK 8 compatible release |
+| 5.0 and later | JDK 11 | breaking changes to the AST Visitors, see the Migration Guide |
+| 5.1 and later | JDK 11 | building requires a **JDK 17 toolchain** (plugin requirement) |
+| 5.4 and later | JDK 11 | parser generated with **JavaCC 8** |
+
+## Sister projects
+
+- **[JSQLFormatter](https://manticore-projects.com/JSQLFormatter/index.html)** — pretty-printing and formatting of SQL text
+- **[JSQLTranspiler](https://manticore-projects.com/JSQLTranspiler/index.html)** — dialect-specific rewriting, column resolution and lineage, by [Starlake.ai](https://starlake.ai/)
+
+## Alternatives
+
+The dual-licensed [JOOQ](https://www.jooq.org/doc/latest/manual/sql-building/sql-parser/)
+ships a hand-written parser with broad RDBMS support, cross-dialect translation, SQL
+transformation, and a JDBC proxy mode. Worth a look if translation between dialects is your
+primary need rather than AST access.
+
+## Sponsor
+
+A huge thank you to **[Starlake.ai](https://starlake.ai/)**, who simplify data ingestion,
+transformation and orchestration for faster delivery of high-quality data. Starlake has been
+instrumental in providing Piped SQL support and a large number of test cases for BigQuery,
+Redshift, Databricks and DuckDB. If JSqlParser is useful to you, visit
+[Starlake.ai](https://starlake.ai/) and give them a star.
+
+## Documentation
+
+1. [Samples](https://jsqlparser.github.io/JSqlParser/usage.html#parse-a-sql-statements)
+2. [Build instructions](https://jsqlparser.github.io/JSqlParser/usage.html) and [Maven artifact](https://jsqlparser.github.io/JSqlParser/usage.html#build-dependencies)
+3. [Contribution guide](https://jsqlparser.github.io/JSqlParser/contribution.html)
+4. [Change log](https://jsqlparser.github.io/JSqlParser/changelog.html#latest-changes-since-jsqlparser-version)
+5. [Issues](https://github.com/JSQLParser/JSqlParser/issues)
+
+## License
+
+Dual licensed under **LGPL 2.1** or the **Apache License, Version 2.0**. Take your pick.
+
+=== FILE END:   /data/home/cjy/software-testing/projects/JSqlParser/README.md ===
+2026-10-16 13:07:47.316 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 13:07:59.360 | INFO     | Model API request cost info: input_tokens=3775, output_tokens=358, cost=0.013018
+2026-10-16 13:07:59.362 | SUCCESS  | Successfully extracted environment config
+2026-10-16 13:07:59.362 | INFO     | ******
+2026-10-16 13:07:59.362 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/JSqlParser/README.md]
+- **Setup Steps**:
+  - Install JSqlParser using Maven or Gradle:
+    - For Maven:
+      ```xml
+      <dependency>
+          <groupId>com.manticore-projects.jsqlformatter</groupId>
+          <artifactId>jsqlparser</artifactId>
+          <version>[5.3.218,)</version>
+      </dependency>
+      ```
+    - For Gradle:
+      ```gradle
+      implementation("com.manticore-projects.jsqlformatter:jsqlparser:+")
+      ```
+  - Alternatively, use older upstream versions:
+    - Maven:
+      ```xml
+      <dependency>
+          <groupId>com.github.jsqlparser</groupId>
+          <artifactId>jsqlparser</artifactId>
+          <version>5.3</version>
+      </dependency>
+      ```
+
+- **Runtime Requirements**:
+  - Java Runtime:
+    - Version 4.9: JDK 8 (compatible with Java 8 runtime)
+    - Version 5.0 and later: Requires at least JDK 11 runtime.
+    - Version 5.1 and later:
+      - Requires **JDK 17 toolchain** for building (plugin requirement).
+    - Version 5.4 and later:
+      - Parser generated with **JavaCC 8**.
+
+- **Build Instructions**:
+  - Follow Maven or Gradle-based dependency setup as described above.
+
+- **Option for Dialects**:
+  - Enable various SQL dialects to customize grammar handling, e.g., `Dialect.POSTGRESQL`, `Dialect.MYSQL`.
+[/Key Information]
+2026-10-16 13:07:59.362 | INFO     | ******
+2026-10-16 13:07:59.363 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/JSqlParser/README.md]\n- **Setup Steps**:\n  - Install JSqlParser using Maven or Gradle:\n    - For Maven:\n      ```xml\n      <dependency>\n          <groupId>com.manticore-projects.jsqlformatter</groupId>\n          <artifactId>jsqlparser</artifactId>\n          <version>[5.3.218,)</version>\n      </dependency>\n      ```\n    - For Gradle:\n      ```gradle\n      implementation("com.manticore-projects.jsqlformatter:jsqlparser:+")\n      ```\n  - Alternatively, use older upstream versions:\n    - Maven:\n      ```xml\n      <dependency>\n          <groupId>com.github.jsqlparser</groupId>\n          <artifactId>jsqlparser</artifactId>\n          <version>5.3</version>\n      </dependency>\n      ```\n\n- **Runtime Requirements**:\n  - Java Runtime:\n    - Version 4.9: JDK 8 (compatible with Java 8 runtime)\n    - Version 5.0 and later: Requires at least JDK 11 runtime.\n    - Version 5.1 and later:\n      - Requires **JDK 17 toolchain** for building (plugin requirement).\n    - Version 5.4 and later:\n      - Parser generated with **JavaCC 8**.\n\n- **Build Instructions**:\n  - Follow Maven or Gradle-based dependency setup as described above.\n\n- **Option for Dialects**:\n  - Enable various SQL dialects to customize grammar handling, e.g., `Dialect.POSTGRESQL`, `Dialect.MYSQL`.\n[/Key Information]', 'Get File Info', True)
+2026-10-16 13:07:59.363 | INFO     | entering browse
+2026-10-16 13:07:59.363 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/JSqlParser/pom.xml ===
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.jsqlparser</groupId>
+    <artifactId>jsqlparser</artifactId>
+    <version>5.5-SNAPSHOT</version>
+    <packaging>bundle</packaging>
+
+    <name>JSQLParser library</name>
+    <description>JSqlParser parses an SQL statement and translate it into a hierarchy of Java classes.
+        The generated hierarchy can be navigated using the Visitor Pattern.</description>
+    <url>https://github.com/JSQLParser/JSqlParser</url>
+    <inceptionYear>2004</inceptionYear>
+
+    <organization>
+        <name>JSQLParser</name>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU Library or Lesser General Public License (LGPL) V2.1</name>
+            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Tobias Warneke</name>
+            <email>t.warneke@gmx.net</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/JSQLParser/JSqlParser.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:JSQLParser/JSqlParser.git</developerConnection>
+        <url>https://github.com/JSQLParser/JSqlParser.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/JSQLParser/JSqlParser/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <!--
+            No <repository> here on purpose: central-publishing-maven-plugin is registered as a build
+            extension and replaces the deploy step for releases, so a release <repository> would be
+            dead configuration. Snapshots still go through maven-deploy-plugin, hence the entry below.
+            The id must match a <server> in settings.xml.
+        -->
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <properties>
+        <!-- ==== build platform ==================================================== -->
+        <maven.compiler.release>11</maven.compiler.release>
+        <toolchain.jdk.version>[17,24)</toolchain.jdk.version>
+        <toolchain.jdk.mode>IfMatch</toolchain.jdk.mode>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Reproducible builds; maven-release-plugin updates this on release:prepare. -->
+        <project.build.outputTimestamp>2026-09-13T21:14:58Z</project.build.outputTimestamp>
+
+        <jacocoArgLine> </jacocoArgLine>
+
+        <!-- ==== plugin versions ================================================== -->
+        <maven-toolchains-plugin.version>3.3.0</maven-toolchains-plugin.version>
+        <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
+        <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
+        <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
+        <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
+        <maven-site-plugin.version>3.22.0</maven-site-plugin.version>
+        <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
+        <maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
+        <maven-release-plugin.version>3.3.1</maven-release-plugin.version>
+        <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
+        <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
+        <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+        <maven-jxr-plugin.version>3.6.0</maven-jxr-plugin.version>
+        <maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
+        <maven-bundle-plugin.version>5.1.8</maven-bundle-plugin.version>
+        <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+        <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
+        <license-maven-plugin.version>2.0.0</license-maven-plugin.version>
+        <javacc-maven-plugin.version>3.8.0</javacc-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.15</jacoco-maven-plugin.version>
+        <spotless-maven-plugin.version>3.8.0</spotless-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.9.3.0</spotbugs-maven-plugin.version>
+        <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
+
+        <!-- ==== tool versions (plugin dependencies) ============================== -->
+        <pmd.version>7.17.0</pmd.version>
+        <checkstyle.version>10.23.1</checkstyle.version>
+
+        <!-- ==== dependency versions ============================================== -->
+        <!--
+            Personal JavaCC 8 fork. This is the one deliberate open range: the grammar bootstrap
+            is expected to track the newest fork build. Pin it (e.g. 8.1.1.1939) before cutting a
+            release so the release is reproducible.
+        -->
+        <javacc.version>[8.1.2.1941,)</javacc.version>
+        <junit.version>5.14.4</junit.version>
+        <mockito.version>5.23.0</mockito.version>
+        <assertj.version>3.27.7</assertj.version>
+        <hamcrest.version>3.0</hamcrest.version>
+        <commons-io.version>2.18.0</commons-io.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
+        <h2.version>2.3.232</h2.version>
+        <jmh.version>1.37</jmh.version>
+
+        <!-- ==== GPG ============================================================== -->
+        <gpg.keyname>f22e0543</gpg.keyname>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.manticore-projects.jsqlformatter</groupId>
+            <artifactId>javacc-java</artifactId>
+            <version>${javacc.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manticore-projects.jsqlformatter</groupId>
+            <artifactId>javacc-core</artifactId>
+            <version>${javacc.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Needed for the Validation Framework tests -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--
+            JMH core API. The annotation processor is NOT declared as a dependency: it is supplied
+            to javac via <annotationProcessorPaths> on the default-testCompile execution below.
+        -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Pin the implicitly bound lifecycle plugins for reproducible builds. -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!--
+                Selects the JDK used by compiler, surefire and javadoc. Runs in the validate phase
+                so every later plugin sees it. Requires either an entry in ~/.m2/toolchains.xml or a
+                JDK that the plugin's auto-discovery can find (see README / build docs).
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-toolchains-plugin</artifactId>
+                <version>${maven-toolchains-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>select-jdk-toolchain</id>
+                        <goals>
+                            <goal>select-jdk-toolchain</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3.9.0,)</version>
+                                </requireMavenVersion>
+                                <banDuplicatePomDependencyVersions />
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+                Regenerates the keyword whitelist of the grammar production
+                RelObjectNameWithoutValue(). Not bound to a phase; run manually:
+                    mvn compile exec:java
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass>net.sf.jsqlparser.parser.ParserKeywordsUtils</mainClass>
+                    <arguments>
+                        <argument>src/main/jjtree/net/sf/jsqlparser/parser/JSqlParserCC.jjt</argument>
+                        <argument>src/site/sphinx/keywords.rst</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <configuration>
+                    <minimumPriority>2</minimumPriority>
+                    <rulesets>
+                        <!-- Custom local file system rule set -->
+                        <ruleset>${project.basedir}/config/pmd/ruleset.xml</ruleset>
+                    </rulesets>
+                    <excludes>
+                        <exclude>**/*Bean.java</exclude>
+                        <exclude>**/generated/*.java</exclude>
+                        <exclude>**/net/sf/jsqlparser/parser/SimpleCharStream.java</exclude>
+                    </excludes>
+                    <excludeRoots>
+                        <excludeRoot>${project.build.directory}/generated-sources</excludeRoot>
+                        <excludeRoot>${project.build.directory}/generated-test-sources</excludeRoot>
+                    </excludeRoots>
+                    <printFailingErrors>true</printFailingErrors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pmd</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sourceforge.pmd</groupId>
+                        <artifactId>pmd-core</artifactId>
+                        <version>${pmd.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>net.sourceforge.pmd</groupId>
+                        <artifactId>pmd-java</artifactId>
+                        <version>${pmd.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/javacc/</source>
+                                <source>${project.build.directory}/generated-sources/jjtree/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>${maven.compiler.release}</release>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                    <maxmem>2000m</maxmem>
+                    <!-- The generated parser needs a large stack; -J args require a forked javac. -->
+                    <fork>true</fork>
+                    <compilerArgs>
+                        <arg>-J-Xss4M</arg>
+                    </compilerArgs>
+                </configuration>
+                <executions>
+                    <!-- The JMH processor is only needed for the benchmarks in src/test/java. -->
+                    <execution>
+                        <id>default-testCompile</id>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <configuration>
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>org.openjdk.jmh</groupId>
+                                    <artifactId>jmh-generator-annprocess</artifactId>
+                                    <version>${jmh.version}</version>
+                                </path>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.javacc.plugin</groupId>
+                <artifactId>javacc-maven-plugin</artifactId>
+                <version>${javacc-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>javacc</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>jjtree-javacc</goal>
+                        </goals>
+                        <!--
+                            GRAMMAR_ENCODING governs reading only: JJTree writes the intermediate
+                            .jj with the JVM default charset, which mangles the grammar's non-ASCII
+                            character classes unless file.encoding is UTF-8 (see .mvn/jvm.config).
+                        -->
+                        <configuration>
+                            <javaccCmdLineArgs>
+                                <arg>-CODE_GENERATOR:"Java"</arg>
+                                <arg>-GRAMMAR_ENCODING:"UTF-8"</arg>
+                            </javaccCmdLineArgs>
+                            <jjtreeCmdLineArgs>
+                                <arg>-GRAMMAR_ENCODING:"UTF-8"</arg>
+                                <arg>-CODE_GENERATOR:"Java"</arg>
+                            </jjtreeCmdLineArgs>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.manticore-projects.jsqlformatter</groupId>
+                        <artifactId>javacc-java</artifactId>
+                        <version>${javacc.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.manticore-projects.jsqlformatter</groupId>
+                        <artifactId>javacc-core</artifactId>
+                        <version>${javacc.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${license-maven-plugin.version}</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                    <canUpdateDescription>false</canUpdateDescription>
+                    <licenseName>dual_lgpl_ap2</licenseName>
+                    <licenseResolver>${project.baseUri}/src/license</licenseResolver>
+                    <excludes>
+                        <exclude>site/sphinx/**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>update-file-header</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <releaseProfiles>sign-release-artifacts</releaseProfiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <excludePackageNames>net.sf.jsqlparser.parser</excludePackageNames>
+                            <doclint>none</doclint>
+                            <!--
+                                maven-javadoc-plugin >= 3.11.3 adds the JDK 23+ "no-fonts" doclet
+                                flag based on the JDK running Maven, not on the javadoc executable
+                                it actually forks. With a toolchain (or any JAVA_HOME) below 23 that
+                                produces "error: invalid flag". Upstream bug, see
+                                https://github.com/apache/maven-javadoc-plugin/issues/1244
+                                Override from the CLI with -Dmaven.javadoc.disableNoFonts=false.
+                            -->
+                            <disableNoFonts>true</disableNoFonts>
+                            <useStandardDocletOptions>true</useStandardDocletOptions>
+                            <maxmemory>2g</maxmemory>
+                            <minmemory>800m</minmemory>
+                            <additionalJOptions>
+                                <additionalJOption>-J-Xss4m</additionalJOption>
+                            </additionalJOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+                Builds the JAR for <packaging>bundle</packaging>. maven-jar-plugin is NOT invoked in
+                this lifecycle, so manifest entries have to be declared here as bnd instructions.
+            -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven-bundle-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Automatic-Module-Name>net.sf.jsqlparser</Automatic-Module-Name>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <trimStackTrace>false</trimStackTrace>
+                    <!-- AlterViewTest does deep reflection -->
+                    <useModulePath>false</useModulePath>
+                    <!--
+                        @{jacocoArgLine} is resolved late, after jacoco:prepare-agent has run.
+                        Without it the JaCoCo agent would be dropped and coverage reports empty.
+                    -->
+                    <!-- Forked test JVMs do not inherit .mvn/jvm.config, so pin the encoding here too. -->
+                    <argLine>
+                        @{jacocoArgLine}
+                        --add-opens=java.base/java.lang=ALL-UNNAMED
+                        --add-opens=java.base/java.util=ALL-UNNAMED
+                        -Xmx2G -Xms800m -Xss4m
+                        -Dfile.encoding=UTF-8
+                    </argLine>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Do not clobber Surefire's own argLine. -->
+                            <propertyName>jacocoArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Not bound to a phase; run `mvn spotless:apply` / `mvn spotless:check` on demand. -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-maven-plugin.version}</version>
+                <configuration>
+                    <!-- Limit format enforcement to the files changed by this feature branch. -->
+                    <ratchetFrom>origin/master</ratchetFrom>
+                    <formats>
+                        <format>
+                            <includes>
+                                <include>*.md</include>
+                                <include>.gitignore</include>
+                            </includes>
+                            <trimTrailingWhitespace />
+                            <endWithNewline />
+                            <indent>
+                                <tabs>true</tabs>
+                                <spacesPerTab>4</spacesPerTab>
+                            </indent>
+                        </format>
+                    </formats>
+                    <java>
+                        <includes>
+                            <include>src/main/java/**/*.java</include>
+                            <include>src/test/java/**/*.java</include>
+                        </includes>
+                        <importOrder />
+                        <removeUnusedImports />
+                        <!-- Google Java Style, https://google.github.io/styleguide/javaguide.html -->
+                        <eclipse>
+                            <file>config/formatter/eclipse-java-google-style.xml</file>
+                        </eclipse>
+                        <formatAnnotations />
+                    </java>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${central-publishing-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>sonatype-nexus</publishingServerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <outputDirectory>${project.reporting.outputDirectory}/testresults</outputDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <useStandardDocletOptions>true</useStandardDocletOptions>
+                    <doclint>none</doclint>
+                    <!-- See the note on the attach-javadocs execution above. -->
+                    <disableNoFonts>true</disableNoFonts>
+                    <maxmemory>2g</maxmemory>
+                    <minmemory>800m</minmemory>
+                    <additionalJOptions>
+                        <additionalJOption>-J-Xss2m</additionalJOption>
+                    </additionalJOptions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <profiles>
+        <profile>
+            <id>sign-release-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <!-- Required for non-interactive CI signing. -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>check.sources</id>
+            <activation>
+                <property>
+                    <name>!skipCheckSources</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven-checkstyle-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>verify-style</id>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <logViolationsToConsole>true</logViolationsToConsole>
+                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                            <!-- Deliberately narrowed: excludes the generated parser sources. -->
+                            <sourceDirectories>${project.build.sourceDirectory}</sourceDirectories>
+                            <excludes>**/module-info.java,**/net/sf/jsqlparser/parser/SimpleCharStream.java</excludes>
+                            <checkstyleRules>
+                                <module name="Checker">
+                                    <module name="SuppressWarningsFilter" />
+                                    <module name="FileTabCharacter" />
+                                    <module name="TreeWalker">
+                                        <module name="AvoidNestedBlocks" />
+                                        <module name="ConstantName" />
+                                        <module name="EmptyCatchBlock" />
+                                        <module name="EmptyStatement" />
+                                        <module name="MissingOverride" />
+                                        <module name="MultipleVariableDeclarations" />
+                                        <module name="ParameterAssignment" />
+                                        <module name="StringLiteralEquality" />
+                                        <module name="RedundantImport" />
+                                        <module name="UnusedImports" />
+
+                                        <module name="WhitespaceAfter" />
+
+                                        <module name="NeedBraces" />
+                                        <module name="UnnecessaryParentheses" />
+                                        <module name="LeftCurly" />
+                                        <module name="RightCurly" />
+
+                                        <module name="SuppressWarningsHolder" />
+                                    </module>
+                                </module>
+                            </checkstyleRules>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.puppycrawl.tools</groupId>
+                                <artifactId>checkstyle</artifactId>
+                                <version>${checkstyle.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <!-- For building the parser with debug flags: mvn -Pskip.all ... -->
+            <id>skip.all</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+                <checkstyle.skip>true</checkstyle.skip>
+                <pmd.skip>true</pmd.skip>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
+                <license.skipUpdateLicense>true</license.skipUpdateLicense>
+            </properties>
+        </profile>
+    </profiles>
+</project>
+=== FILE END:   /data/home/cjy/software-testing/projects/JSqlParser/pom.xml ===
+2026-10-16 13:07:59.363 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 13:09:04.048 | INFO     | Model API request cost info: input_tokens=7795, output_tokens=741, cost=0.026898
+2026-10-16 13:09:04.050 | SUCCESS  | Successfully extracted environment config
+2026-10-16 13:09:04.050 | INFO     | ******
+2026-10-16 13:09:04.050 | INFO     | [Key Information from pom.xml]
+- **Required Java Version**:
+  - Minimum JDK release specified: **11** (`<maven.compiler.release>11</maven.compiler.release>`)
+  - JDK Toolchain version: `[17,24)` (Java versions from 17 to <24 are suggested)
+
+- **Dependencies and versions for this project**:
+  - **Test Dependencies**:
+    - `org.junit.jupiter:junit-jupiter:${junit.version}` (version: 5.14.4)
+    - `com.manticore-projects.jsqlformatter:javacc-java:${javacc.version}` (version: [8.1.2.1941,])
+    - `com.manticore-projects.jsqlformatter:javacc-core:${javacc.version}` (version: [8.1.2.1941,])
+    - `org.mockito:mockito-core:${mockito.version}` (version: 5.23.0)
+    - `org.mockito:mockito-junit-jupiter:${mockito.version}` (version: 5.23.0)
+    - `org.assertj:assertj-core:${assertj.version}` (version: 3.27.7)
+    - `commons-io:commons-io:${commons-io.version}` (version: 2.18.0)
+    - `org.apache.commons:commons-lang3:${commons-lang3.version}` (version: 3.18.0)
+    - `com.h2database:h2:${h2.version}` (version: 2.3.232)
+    - `org.hamcrest:hamcrest:${hamcrest.version}` (version: 3.0)
+    - `org.openjdk.jmh:jmh-core:${jmh.version}` (version: 1.37)
+
+  - **Plugin Versions**:
+    - `org.apache.maven.plugins:maven-toolchains-plugin:3.3.0`
+    - `org.apache.maven.plugins:maven-enforcer-plugin:3.6.3`
+    - `org.apache.maven.plugins:maven-compiler-plugin:3.15.0`
+    - `org.codehaus.mojo:exec-maven-plugin:3.5.0`
+    - `org.jacoco:jacoco-maven-plugin:0.8.15`
+    - `org.codehaus.mojo:javacc-maven-plugin:3.8.0`
+    - `org.apache.maven.plugins:maven-surefire-plugin:3.5.6`
+
+- **General requirements**:
+  - Apache Maven 3.9.0 or higher (specified in `<requireMavenVersion>` rule in the Maven Enforcer plugin).
+
+- **Command for populating required dependencies**:
+  - `mvn dependency:resolve` or any standard Maven build lifecycle command like `mvn install`.
+
+- **Build Properties**:
+  - Encoding: UTF-8 (`<project.build.sourceEncoding>` and `<project.reporting.outputEncoding>`)
+  - Required file encoding: `UTF-8` (added as Java property: `-Dfile.encoding=UTF-8`)
+  - Jacoco coverage configured with `jacoco-maven-plugin`.
+
+- Note:
+  - This project is a Java-based Maven project with multiple test dependencies such as JUnit, Mockito, and AssertJ.
+  - Additional details regarding compilation and releases:
+    - Compilation requires a minimum JDK 11 but supports JDK 17 and above (to <24).
+    - For integration tests and coverage, JaCoCo and Maven Surefire Plugin are specifically configured.
+
+[/Key Information]
+2026-10-16 13:09:04.050 | INFO     | ******
+2026-10-16 13:09:04.050 | DEBUG    | Result of dispatch_intent: ('[Key Information from pom.xml]\n- **Required Java Version**:\n  - Minimum JDK release specified: **11** (`<maven.compiler.release>11</maven.compiler.release>`)\n  - JDK Toolchain version: `[17,24)` (Java versions from 17 to <24 are suggested)\n\n- **Dependencies and versions for this project**:\n  - **Test Dependencies**:\n    - `org.junit.jupiter:junit-jupiter:${junit.version}` (version: 5.14.4)\n    - `com.manticore-projects.jsqlformatter:javacc-java:${javacc.version}` (version: [8.1.2.1941,])\n    - `com.manticore-projects.jsqlformatter:javacc-core:${javacc.version}` (version: [8.1.2.1941,])\n    - `org.mockito:mockito-core:${mockito.version}` (version: 5.23.0)\n    - `org.mockito:mockito-junit-jupiter:${mockito.version}` (version: 5.23.0)\n    - `org.assertj:assertj-core:${assertj.version}` (version: 3.27.7)\n    - `commons-io:commons-io:${commons-io.version}` (version: 2.18.0)\n    - `org.apache.commons:commons-lang3:${commons-lang3.version}` (version: 3.18.0)\n    - `com.h2database:h2:${h2.version}` (version: 2.3.232)\n    - `org.hamcrest:hamcrest:${hamcrest.version}` (version: 3.0)\n    - `org.openjdk.jmh:jmh-core:${jmh.version}` (version: 1.37)\n\n  - **Plugin Versions**:\n    - `org.apache.maven.plugins:maven-toolchains-plugin:3.3.0`\n    - `org.apache.maven.plugins:maven-enforcer-plugin:3.6.3`\n    - `org.apache.maven.plugins:maven-compiler-plugin:3.15.0`\n    - `org.codehaus.mojo:exec-maven-plugin:3.5.0`\n    - `org.jacoco:jacoco-maven-plugin:0.8.15`\n    - `org.codehaus.mojo:javacc-maven-plugin:3.8.0`\n    - `org.apache.maven.plugins:maven-surefire-plugin:3.5.6`\n\n- **General requirements**:\n  - Apache Maven 3.9.0 or higher (specified in `<requireMavenVersion>` rule in the Maven Enforcer plugin).\n\n- **Command for populating required dependencies**:\n  - `mvn dependency:resolve` or any standard Maven build lifecycle command like `mvn install`.\n\n- **Build Properties**:\n  - Encoding: UTF-8 (`<project.build.sourceEncoding>` and `<project.reporting.outputEncoding>`)\n  - Required file encoding: `UTF-8` (added as Java property: `-Dfile.encoding=UTF-8`)\n  - Jacoco coverage configured with `jacoco-maven-plugin`.\n\n- Note:\n  - This project is a Java-based Maven project with multiple test dependencies such as JUnit, Mockito, and AssertJ.\n  - Additional details regarding compilation and releases:\n    - Compilation requires a minimum JDK 11 but supports JDK 17 and above (to <24).\n    - For integration tests and coverage, JaCoCo and Maven Surefire Plugin are specifically configured.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-16 13:09:04.050 | INFO     | entering browse
+2026-10-16 13:09:04.051 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/JSqlParser/build.gradle ===
+import se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
+import com.nwalsh.gradle.saxon.SaxonXsltTask
+
+import java.time.Instant
+
+buildscript {
+    dependencies {
+        classpath group: 'net.sf.saxon', name: 'Saxon-HE', version: 'latest.release'
+    }
+}
+
+plugins {
+    id 'java'
+    id "com.vanniktech.maven.publish" version "latest.release"
+    id 'maven-publish'
+    id 'signing'
+
+    id "org.javacc.javacc" version "latest.release"
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version "latest.release"
+    id "com.github.spotbugs" version "latest.release"
+    id "com.diffplug.spotless" version "latest.release"
+    id 'pmd'
+    id 'checkstyle'
+    id 'eclipse'
+
+    // download the RR tools which have no Maven Repository
+    id "de.undercouch.download" version "latest.release"
+    id 'org.hidetake.ssh' version "latest.release"
+
+    id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "latest.release"
+    id "me.champeau.jmh" version "latest.release"
+    id "com.nwalsh.gradle.saxon.saxon-gradle" version "latest.release"
+    id 'biz.aQute.bnd.builder' version "latest.release"
+}
+
+def getVersion = { boolean considerSnapshot ->
+    Integer major = 0
+    Integer minor = 0
+    Integer patch = null
+    Integer build = null
+    String commit = null
+    String snapshot = ""
+
+    def versionStr = providers.exec {
+        commandLine "git", "--no-pager", "-C", project.projectDir,  "describe", "--tags", "--always", "--dirty=-SNAPSHOT"
+    }.standardOutput.asText.get().trim()
+
+    def pattern = /jsqlparser-(?<major>\d*)\.(?<minor>\d*)(\.(?<patch>\d*))?(-(?<build>\d*)-(?<commit>[a-zA-Z\d]*))?/
+    def matcher = versionStr =~ pattern
+
+    if (matcher.find()) {
+        major = matcher.group('major') as Integer ?: 0
+        minor = matcher.group('minor') as Integer ?: 0
+        patch = matcher.group('patch') as Integer ?: null
+        build = matcher.group('build') as Integer ?: null
+        commit = matcher.group('commit') ?: null
+    }
+
+    if (considerSnapshot && (versionStr.endsWith('SNAPSHOT') || build != null)) {
+        minor++
+        if (patch != null) patch = 0
+        snapshot = "-SNAPSHOT"
+    }
+
+    return "${major}.${minor}" +
+            (patch != null ? ".${patch}" : "") +
+            (build != null ? ".${build}" : "") +
+            snapshot
+}
+
+
+// for publishing a release, call Gradle with Environment Variable RELEASE:
+// RELEASE=true gradle JSQLParser:publish
+version = getVersion( !System.getenv("RELEASE") )
+group = 'com.manticore-projects.jsqlformatter'
+description = 'JSQLParser library'
+
+tasks.register('generateBuildInfo') {
+    outputs.dir layout.buildDirectory.file("resources/main")
+    doLast {
+        def outputDir =  new File( layout.buildDirectory.file("generated/sources/buildinfo/java/main").get().asFile, "net/sf/jsqlparser")
+        outputDir.mkdirs()
+
+        def gitVersionStr = providers.exec {
+            commandLine "git", "--no-pager", "-C", project.projectDir,  "describe", "--tags", "--always", "--dirty=-SNAPSHOT"
+        }.standardOutput.asText.get().trim()
+
+        def gitCommitStr = providers.exec {
+            commandLine "git", "--no-pager", "-C", project.projectDir,  "rev-parse", "--short", "HEAD"
+        }.standardOutput.asText.get().trim()
+
+        def buildTime = Instant.now().toString()
+
+        def content = """\
+            |package net.sf.jsqlparser;
+            |
+            |public final class BuildInfo {
+            |  public static final String NAME = "${project.name}";
+            |  public static final String VERSION = "${gitVersionStr}";
+            |  public static final String GIT_COMMIT = "${gitCommitStr ?: 'unknown'}";
+            |  public static final String BUILD_TIME = "${buildTime}";
+            |}
+            """.stripMargin()
+
+        new File(outputDir, "BuildInfo.java").text = content
+    }
+}
+
+// Make sure the file is included in the compiled sources
+sourceSets {
+    main {
+        java {
+            srcDir layout.buildDirectory.file("generated/sources/buildinfo/java/main").get().asFile
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    mustRunAfter("generateBuildInfo")
+}
+
+tasks.withType(Pmd).configureEach {
+    mustRunAfter("generateBuildInfo")
+}
+
+tasks.withType(Checkstyle).configureEach {
+    exclude '**/module-info.java', '**/package-info.java'
+
+    mustRunAfter("generateBuildInfo")
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://dev.saxonica.com/maven" }
+}
+
+configurations {
+    xmlDoclet
+}
+
+dependencies {
+    testImplementation 'commons-io:commons-io:2.+'
+    testImplementation 'org.apache.commons:commons-text:+'
+    testImplementation 'org.mockito:mockito-core:+'
+    testImplementation 'org.assertj:assertj-core:+'
+    testImplementation 'org.hamcrest:hamcrest-core:+'
+    testImplementation 'org.apache.commons:commons-lang3:+'
+    testImplementation 'com.h2database:h2:+'
+
+    // for JaCoCo Reports
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.+'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.+'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.+'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5+'
+
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.+'
+
+    // Performance Benchmark
+    testImplementation 'org.openjdk.jmh:jmh-core:+'
+    testImplementation 'org.openjdk.jmh:jmh-generator-annprocess:+'
+
+    // Java Doc in XML Format
+    xmlDoclet ('com.manticore-projects.tools:xml-doclet:+'){ changing = true }
+
+    // enforce latest version of JavaCC
+    testImplementation('com.manticore-projects.jsqlformatter:javacc-core:[8.1.2.1941,)')
+    testImplementation('com.manticore-projects.jsqlformatter:javacc-java:[8.1.2.1941,)')
+
+    jmh 'org.openjdk.jmh:jmh-core:+'
+    jmh 'org.openjdk.jmh:jmh-generator-annprocess:+'
+    javacc('com.manticore-projects.jsqlformatter:javacc-core:[8.1.2.1941,)')
+    javacc('com.manticore-projects.jsqlformatter:javacc-java:[8.1.2.1941,)')
+}
+
+compileJavacc {
+    arguments = [
+            grammar_encoding: 'UTF-8',
+            static: 'false',
+            java_template_type: 'modern',
+            // Comment this in to build the parser with tracing.
+            DEBUG_PARSER: 'false',
+            DEBUG_LOOKAHEAD: 'false',
+            LEGACY_EXCEPTION_HANDLING: 'false'
+    ]
+}
+
+java {
+    withSourcesJar()
+    // withJavadocJar()
+
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+
+    // needed for XML-Doclet to work (since Doclet changed again with Java 13)
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+javadoc {
+    include("build/generated/javacc/net/sf/jsqlparser/parser/*.java" )
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+    options.addBooleanOption("Xdoclint:none", true)
+}
+
+jar {
+    manifest {
+        attributes (
+                "Automatic-Module-Name": "net.sf.jsqlparser"
+        )
+    }
+
+    bundle {
+        properties.empty()
+        bnd(
+                "Created-By": System.properties.get('user.name'),
+                "Bundle-SymbolicName": "net.sf.jsqlparser",
+                "Import-Package": "*",
+                "Export-Package": "net.sf.jsqlparser.*",
+                "Automatic-Module-Name": "net.sf.jsqlparser"
+        )
+    }
+
+    dependsOn(generateBuildInfo)
+}
+
+tasks.register('xmldoc', Javadoc) {
+    dependsOn(compileJavacc)
+
+    def outFile =  reporting.file(
+            version.endsWith("-SNAPSHOT")
+                    ? "xmlDoclet/javadoc_snapshot.xml"
+                    : "xmlDoclet/javadoc_stable.xml"
+    )
+
+    source = sourceSets.main.allJava
+    // add any generated Java sources
+    source += fileTree(layout.buildDirectory.dir("generated/javacc").get().asFile) {
+        include '**/*.java'
+    }
+    source += fileTree(layout.buildDirectory.dir("generated/jjtree").get().asFile) {
+        include '**/*.java'
+    }
+
+    classpath = sourceSets.main.runtimeClasspath
+
+    destinationDir = reporting.file("xmlDoclet")
+    options.docletpath = configurations.xmlDoclet.files as List
+    options.doclet = "com.manticore.tools.xmldoclet.XmlDoclet"
+    title = "API $version"
+
+    options.addStringOption("basePackage", "net.sf.jsqlparser")
+    options.addStringOption("filename", outFile.getName())
+
+    doLast {
+        copy {
+            from outFile
+            into layout.projectDirectory.dir("src/site/sphinx/").asFile
+        }
+    }
+}
+
+test {
+    environment = [ 'EXPORT_TEST_TO_FILE': 'False' ]
+    useJUnitPlatform()
+
+    // set heap size for the test JVM(s)
+    minHeapSize = "1G"
+    maxHeapSize = "4G"
+
+    // set JVM stack size
+    jvmArgs = ['-Xss4m', '--add-opens=java.base/java.lang=ALL-UNNAMED']
+
+    jacoco {
+        excludes = ['net/sf/jsqlparser/parser/CCJSqlParserTokenManager']
+    }
+}
+
+coveralls {
+    jacocoReportPath 'build/reports/jacoco/test/jacocoTestReport.xml'
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('reports/jacoco')
+    }
+}
+jacocoTestCoverageVerification {
+    // Jacoco can't handle the TokenManager class
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    "**CCJSqlParserTokenManager**"
+            ])
+        }))
+    }
+    violationRules {
+        rule {
+            //element = 'CLASS'
+            limit {
+                //@todo: temporarily reduced it 80%, we need to bring that back to 84% accepting the Keywords PR
+                minimum = 0.50
+            }
+            excludes = [
+                    'net.sf.jsqlparser.util.validation.*',
+                    'net.sf.jsqlparser.**.*Adapter',
+                    'net.sf.jsqlparser.parser.**'
+            ]
+        }
+        rule {
+            //element = 'CLASS'
+            limit {
+                counter = 'LINE'
+                value = 'MISSEDCOUNT'
+
+                //@todo: temporarily increased to 7000, we need to bring that down to 5500 after accepting the Keywords PR
+                maximum = 20000
+            }
+            excludes = [
+                    'net.sf.jsqlparser.util.validation.*',
+                    'net.sf.jsqlparser.**.*Adapter',
+                    'net.sf.jsqlparser.parser.**'
+            ]
+        }
+//        rule {
+//            element = 'CLASS'
+//            limit {
+//                counter = 'LINE'
+//                value = 'MISSEDRATIO'
+//                maximum = 0.3
+//            }
+//           excludes = [
+//                    'net.sf.jsqlparser.util.validation.*',
+//                    'net.sf.jsqlparser.**.*Adapter',
+//                    'net.sf.jsqlparser.parser.**'
+//            ]
+//        }
+    }
+}
+
+spotbugsMain {
+    reports {
+        html.required.set(true)
+        html.outputLocation.set( layout.buildDirectory.file("reports/spotbugs/main/spotbugs.html").get().asFile )
+        html.stylesheet="fancy-hist.xsl"
+    }
+}
+
+
+spotbugs {
+    // fail only on P1 and without the net.sf.jsqlparser.parser.*
+    excludeFilter = file("config/spotbugs/spotBugsExcludeFilter.xml")
+}
+
+// do not run over the test, although we should do that eventually
+tasks.named('spotbugsTest').configure {
+    enabled = false
+}
+
+pmd {
+    // later versions throw NPE
+    toolVersion = '7.17.0'
+
+    consoleOutput = true
+    sourceSets = [sourceSets.main]
+
+    // clear the ruleset in order to use configured rules only
+    ruleSets = []
+    rulesMinimumPriority = 2
+    ruleSetFiles = files("config/pmd/ruleset.xml")
+}
+
+tasks.named('pmdMain').configure {
+    excludes = [
+            "build/generated/*"
+            , "**/net/sf/jsqlparser/parser/SimpleCharStream.java"
+    ]
+}
+
+checkstyle {
+    sourceSets = [sourceSets.main, sourceSets.test]
+    configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+}
+
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        xml.required = false
+        html.required = true
+    }
+    excludes = [
+            "**/module-info.java"
+            , "net/sf/jsqlparser/parser/SimpleCharStream.java"
+    ]
+}
+
+spotless {
+    // optional: limit format enforcement to just the files changed by this feature branch
+    ratchetFrom 'origin/master'
+
+    format 'misc', {
+        // define the files to apply `misc` to
+        target '*.rst', '*.md', '.gitignore'
+
+        // define the steps to apply to those files
+        trimTrailingWhitespace()
+        leadingTabsToSpaces(4)
+        endWithNewline()
+    }
+    java {
+        leadingTabsToSpaces(4)
+        eclipse().configFile('config/formatter/eclipse-java-google-style.xml')
+    }
+}
+
+
+tasks.register('renderRR') {
+    dependsOn(compileJavacc)
+
+    doLast {
+        def rrDir = layout.buildDirectory.dir("rr").get().asFile
+
+        // Download convert.war
+        download.run {
+            src 'http://manticore-projects.com/download/convert.war'
+            dest new File(rrDir, "convert.war")
+            overwrite false
+            onlyIfModified true
+        }
+
+        // Download rr.war
+        download.run {
+            src 'http://manticore-projects.com/download/rr.war'
+            dest new File(rrDir, "rr.war")
+            overwrite false
+            onlyIfModified true
+            tempAndMove true
+        }
+
+        // Convert JJ file to EBNF
+        def ebnfFile = new File(rrDir, "JSqlParserCC.ebnf")
+        def jjFile = layout.buildDirectory.dir("generated/jjtree/net/sf/jsqlparser/parser/JSqlParserCC.jj").get().asFile.absolutePath
+
+        def convertProc = new ProcessBuilder('java',
+                '-Djdk.xml.maxElementDepth=0',
+                '-jar',
+                new File(rrDir, "convert.war").absolutePath,
+                jjFile)
+                .redirectOutput(ebnfFile)
+                .redirectErrorStream(true)
+                .start()
+        if (convertProc.waitFor() != 0) {
+            throw new GradleException("Failed to convert JJ to EBNF")
+        }
+
+        // Generate RR diagrams
+        def rrProc = new ProcessBuilder('java', '-jar',
+                new File(rrDir, "rr.war").absolutePath,
+                "-noepsilon",
+                "-color:#4D88FF",
+                "-offset:0",
+                "-width:800",
+                "-out:${new File(rrDir, "JSqlParserCC.xhtml")}",
+                new File(rrDir, "JSqlParserCC.ebnf").absolutePath)
+                .redirectErrorStream(true)
+                .start()
+        rrProc.inputStream.eachLine { logger.info(it) }
+        if (rrProc.waitFor() != 0) {
+            throw new GradleException("Failed to generate RR diagrams")
+        }
+    }
+}
+
+
+tasks.register('gitChangelogTask', GitChangelogTask) {
+    fromRepo.set( file("$projectDir").toString() )
+    file.set( new File("${projectDir}/src/site/sphinx/changelog.rst") )
+    fromRevision.set( "4.0")
+    //toRef = "1.1";
+
+    // switch off the formatter since the indentation matters for Mark-down
+    // @formatter:off
+    templateContent.set ("""
+************************
+Changelog
+************************
+
+
+{{#tags}}
+{{#ifMatches name "^Unreleased.*"}}
+Latest Changes since |JSQLPARSER_VERSION|
+{{/ifMatches}}
+{{#ifMatches name "^(?!Unreleased).*"}}
+Version {{name}}
+{{/ifMatches}}
+=============================================================
+
+ {{#issues}}
+
+  {{#commits}}
+   {{#ifMatches messageTitle "^(?!Merge).*"}}
+  * **{{{messageTitle}}}**
+
+    {{authorName}}, {{commitDate}}
+   {{/ifMatches}}
+  {{/commits}}
+
+ {{/issues}}
+{{/tags}}
+""")
+    // @formatter:on
+}
+
+tasks.register('updateKeywords', JavaExec) {
+    group = "Execution"
+    description = "Generate the Reserved Keywords documentation"
+    classpath = sourceSets.main.runtimeClasspath
+    args = [
+            file('src/main/jjtree/net/sf/jsqlparser/parser/JSqlParserCC.jjt').absolutePath
+            , file('src/site/sphinx/keywords.rst').absolutePath
+    ]
+    mainClass.set("net.sf.jsqlparser.parser.ParserKeywordsUtils")
+
+    dependsOn(compileJava)
+}
+
+tasks.register('xslt', SaxonXsltTask) {
+    def outFile = version.endsWith("-SNAPSHOT")
+            ? file("src/site/sphinx/syntax_snapshot.rst")
+            : file("src/site/sphinx/syntax_stable.rst")
+
+    dependsOn(renderRR)
+    stylesheet file('src/main/resources/rr/xhtml2rst.xsl')
+
+    parameters(
+            "withFloatingToc": System.getProperty("FLOATING_TOC", "false"),
+            "isSnapshot": Boolean.toString(version.endsWith("-SNAPSHOT"))
+    )
+
+    // Transform every .xml file in the "input" directory.
+    input layout.buildDirectory.file("rr/JSqlParserCC.xhtml").get()
+    output outFile
+}
+
+tasks.register('sphinx', Exec) {
+    dependsOn(gitChangelogTask, renderRR, xslt, xmldoc)
+
+    String PROLOG = """
+.. |_| unicode:: U+00A0
+    :trim:
+
+.. |JSQLPARSER_EMAIL| replace:: support@manticore-projects.com
+.. |JSQLPARSER_VERSION| replace:: ${getVersion(false)}
+.. |JSQLPARSER_SNAPSHOT_VERSION| replace:: ${getVersion(true)}
+.. |JSQLPARSER_STABLE_VERSION_LINK| raw:: html
+
+    <a href='http://manticore-projects.com/download/${project.name}-${getVersion(false)}/${project.name}-${getVersion(false)}.jar'>${project.name}-${getVersion(false)}.jar</a>
+
+.. |JSQLPARSER_SNAPSHOT_VERSION_LINK| raw:: html
+
+    <a href='http://manticore-projects.com/download/${project.name}-${getVersion(false)}/${project.name}-${getVersion(true)}.jar'>${project.name}-${getVersion(true)}.jar</a>
+
+"""
+
+    args = [
+            "-Dproject=JSQLParser"
+            , "-Dcopyright=Tobias Warneke, 2022"
+            , "-Dauthor=Tobias Warneke"
+            , "-Drelease=${getVersion(false)}"
+            , "-Drst_prolog=$PROLOG"
+            , "${projectDir}/src/site/sphinx"
+            , layout.buildDirectory.file("sphinx").get().asFile
+    ]
+
+    executable "sphinx-build"
+
+    //store the output instead of printing to the console:
+    standardOutput = new ByteArrayOutputStream()
+
+    //extension method stopTomcat.output() can be used to obtain the output:
+    ext.output = {
+        return standardOutput.toString()
+    }
+}
+
+// `publish` is Gradle's own task; the Central Portal upload runs under `publishToMavenCentral`.
+// Both need the same prerequisites, or a CI job invoking the latter silently skips check and docs.
+tasks.matching { it.name in ['publish', 'publishToMavenCentral'] }.configureEach {
+    dependsOn(check, gitChangelogTask, renderRR, xslt, xmldoc)
+}
+
+mavenPublishing {
+    publishToMavenCentral(true)
+    signAllPublications()
+
+    coordinates(group, "jsqlparser", version)
+
+    pom {
+        name.set('JSQLParser library')
+        description.set('Parse SQL Statements into Abstract Syntax Trees (AST)')
+        url.set('https://github.com/JSQLParser/JSqlParser')
+
+        licenses {
+            license {
+                name.set('GNU Library or Lesser General Public License (LGPL) V2.1')
+                url.set('http://www.gnu.org/licenses/lgpl-2.1.html')
+            }
+            license {
+                name.set('The Apache Software License, Version 2.0')
+                url.set('http://www.apache.org/licenses/LICENSE-2.0.txt')
+            }
+        }
+
+        developers {
+            developer {
+                id.set('twa')
+                name.set('Tobias Warneke')
+                email.set('t.warneke@gmx.net')
+            }
+            developer {
+                id.set('are')
+                name.set('Andreas Reichel')
+                email.set('andreas@manticore-projects.com')
+            }
+        }
+
+        scm {
+            connection.set('scm:git:https://github.com/JSQLParser/JSqlParser.git')
+            developerConnection.set('scm:git:ssh://git@github.com:JSQLParser/JSqlParser.git')
+            url.set('https://github.com/JSQLParser/JSqlParser.git')
+        }
+    }
+}
+
+// Signing and its task wiring are handled by mavenPublishing.signAllPublications() above.
+// The manual `signing { required { ... hasTask("publish") } }` block that used to live here
+// never matched the `publishToMavenCentral` task, so the two disagreed about whether to sign.
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+
+    // javac's parser is recursive descent: one stack frame per level of nesting. The generated
+    // CCJSqlParser is nested deeply enough to exhaust the default thread stack, which surfaces as
+    // "An exception has occurred in the compiler ... java.lang.StackOverflowError" - a compiler
+    // crash, not a compile error, and not a bug worth reporting to Oracle.
+    //
+    // -Xss only takes effect at JVM launch, so the compiler has to run in its own process:
+    // setting forkOptions without options.fork = true silently does nothing.
+    options.fork = true
+    options.forkOptions.jvmArgs = (options.forkOptions.jvmArgs ?: []) + ['-Xss16m']
+}
+
+// javadoc parses the same sources in a forked process and hits the same wall
+tasks.withType(Javadoc).configureEach {
+    options.setJFlags((options.getJFlags() ?: []) + ['-Xss16m'])
+}
+
+remotes {
+    webServer {
+        host = findProperty("${project.name}.host") ?: "defaultHost" // Provide default if not found
+        user = findProperty("${project.name}.username") ?: "defaultUsername" // Provide default if not found
+        identity = file("${System.getProperty('user.home')}/.ssh/id_rsa")
+    }
+}
+
+
+tasks.register('upload') {
+    doFirst {
+        if (findProperty("${project.name}.host") == null) {
+            println(
+                    """
+                Property \"${project.name}.host\' not found.
+                Please define \"${project.name}.host\" in the Gradle configuration (e. g. \$HOME/.gradle/gradle.properties.
+                """
+            )
+        }
+    }
+    doLast {
+        ssh.run {
+            session(remotes.webServer) {
+                def versionStable = getVersion(false)
+                execute "mkdir -p download/${project.name}-${versionStable}"
+                for (File file: fileTree(include:['*.jar'], dir: layout.buildDirectory.dir("libs").get()).collect()) {
+                    put from: file, into: "download/${project.name}-${versionStable}"
+                }
+            }
+        }
+    }
+
+    dependsOn(check, assemble, gitChangelogTask, renderRR, xslt, xmldoc)
+}
+
+check {
+    dependsOn jacocoTestCoverageVerification
+}
+
+jmh {
+    jmhVersion = '1.37'
+    jvmArgs = [
+            "--enable-native-access=ALL-UNNAMED"
+            , "--add-opens=java.base/sun.misc=ALL-UNNAMED"
+            , "--add-opens=java.base/java.lang=ALL-UNNAMED"
+            , "-XX:+UnlockDiagnosticVMOptions"
+            , "-XX:+DebugNonSafepoints"
+    ]
+
+    // Profiling is opt-in because the native library path depends on the host.
+    profilers = providers.gradleProperty('jmhProfiler').map { [it] }.getOrElse([])
+
+    includes = ['.*JSQLParserBenchmark.*']
+    warmupIterations = 2
+    fork = 3
+    iterations = 5
+    timeOnIteration = '1s'
+}
+
+// ---------------------------------------------------------------------------------------------
+// Grammar ambiguity gate
+//
+// JavaCC reports choice conflicts as "Warning: ..." on stdout and still exits 0, so an ambiguity
+// introduced by a PR is completely invisible to `./gradlew check`. The `org.javacc.javacc` plugin
+// forwards that output to the Gradle logger, where it cannot be inspected either.
+//
+// This task therefore re-runs JavaCC on the JJTree output, into a throwaway directory, captures
+// stdout+stderr and fails when any warning survives the allow list.
+// ---------------------------------------------------------------------------------------------
+
+// Regexes for warnings that are known-benign. Add an entry ONLY together with a comment saying
+// why. Never add a "Choice conflict" pattern here — that is the thing this gate exists to catch.
+def grammarWarningAllowList = [
+        // JJTree copies the options block into the .jj; re-passing -OUTPUT_DIRECTORY on the
+        // command line makes JavaCC complain that it overrides the in-file value.
+        ~/^Warning: .*Command line setting of .* modifies option value in file\./,
+
+        // -OUTPUT_DIRECTORY points at a scratch directory that is wiped before every run, so
+        // JavaCC always announces that it is creating it. Housekeeping, not a grammar problem.
+        ~/^Warning: Output directory .* does not exist\. Creating the directory\./
+]
+
+def javaccMainClassOverride = project.findProperty('javaccMainClass')
+
+tasks.register('checkGrammarAmbiguity') {
+    group = 'verification'
+    description = 'Fails the build when JavaCC reports choice conflicts (grammar ambiguities).'
+
+    dependsOn(compileJavacc)
+
+    def jjFile = layout.buildDirectory
+            .file('generated/jjtree/net/sf/jsqlparser/parser/JSqlParserCC.jj')
+    def scratchDir = layout.buildDirectory.dir('grammar-check')
+    def reportFile = layout.buildDirectory.file('reports/grammar/javacc-warnings.txt')
+    def javaccClasspath = configurations.javacc
+    def allowList = grammarWarningAllowList
+    def mainClassOverride = javaccMainClassOverride
+
+    inputs.file(jjFile)
+    inputs.files(javaccClasspath)
+    outputs.file(reportFile)
+
+    doLast {
+        def jj = jjFile.get().asFile
+        if (!jj.exists()) {
+            throw new GradleException("Generated grammar not found: ${jj} — did compileJavacc run?")
+        }
+
+        def out = scratchDir.get().asFile
+        out.deleteDir()
+        out.mkdirs()
+
+        // JavaCC 8 splits into javacc-core / javacc-java; take Main-Class from whichever jar
+        // declares one, so this keeps working across upgrades of the Manticore JavaCC branch.
+        def mainClass = mainClassOverride ?: javaccClasspath.files.findResult { f ->
+            if (!f.name.endsWith('.jar')) {
+                return null
+            }
+            new java.util.jar.JarFile(f).withCloseable { jar ->
+                jar.manifest?.mainAttributes?.getValue('Main-Class')
+            }
+        } ?: 'org.javacc.parser.Main'
+
+        def isWindows = System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('win')
+        def javaExe = new File(new File(System.getProperty('java.home'), 'bin'),
+                isWindows ? 'java.exe' : 'java')
+
+        def proc = new ProcessBuilder(
+                javaExe.absolutePath,
+                '-cp', javaccClasspath.asPath,
+                mainClass.toString(),
+                '-GRAMMAR_ENCODING=UTF-8',
+                "-OUTPUT_DIRECTORY=${out.absolutePath}".toString(),
+                jj.absolutePath)
+                .directory(out)
+                .redirectErrorStream(true)
+                .start()
+
+        def output = proc.inputStream.getText('UTF-8')
+        def exit = proc.waitFor()
+
+        // Warnings are multi-line: a "Warning:" header followed by indented continuation lines.
+        def warnings = []
+        def current = null
+        output.eachLine { line ->
+            if (line.startsWith('Warning:')) {
+                current = new StringBuilder(line)
+                warnings << current
+            } else if (current != null && line.startsWith(' ')) {
+                current.append('\n').append(line)
+            } else {
+                current = null
+            }
+        }
+
+        def offending = warnings
+                .collect { it.toString() }
+                .findAll { w -> allowList.every { !(w =~ it) } }
+
+        def report = reportFile.get().asFile
+        report.parentFile.mkdirs()
+        report.setText(offending.isEmpty() ? 'No JavaCC grammar warnings.\n'
+                : offending.join('\n\n') + '\n', 'UTF-8')
+
+        if (exit != 0) {
+            logger.error(output)
+            throw new GradleException("JavaCC exited with ${exit} while analysing the grammar.")
+        }
+
+        if (!offending.isEmpty()) {
+            def conflicts = offending.count { it.contains('Choice conflict') }
+            logger.error("\n${offending.join('\n\n')}\n")
+            throw new GradleException(
+                    "${offending.size()} JavaCC grammar warning(s), ${conflicts} of them choice " +
+                            "conflicts. Resolve the ambiguity or add an explicit LOOKAHEAD to the earlier " +
+                            "expansion. Report: ${report}")
+        }
+
+        logger.lifecycle('Grammar is free of JavaCC choice conflicts.')
+    }
+}
+
+tasks.named('check') {
+    dependsOn('checkGrammarAmbiguity')
+}
+
+=== FILE END:   /data/home/cjy/software-testing/projects/JSqlParser/build.gradle ===
+2026-10-16 13:09:04.051 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 13:09:21.742 | INFO     | Model API request cost info: input_tokens=7212, output_tokens=668, cost=0.024710
+2026-10-16 13:09:21.744 | SUCCESS  | Successfully extracted environment config
+2026-10-16 13:09:21.744 | INFO     | ******
+2026-10-16 13:09:21.744 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/JSqlParser/build.gradle]
+- **Required Java Version:**
+  - Minimum source compatibility: Java 11
+  - Target compatibility: Java 11
+  - Toolchain required: Java 17 (specified for XML-Doclet requirements)
+
+- **Dependency Setup:**
+  - **Buildscript dependencies:**
+    - Saxon-HE (`net.sf.saxon` group, version `latest.release`)
+  
+  - **Plugins used:**
+    - Java (`id 'java'`)
+    - Maven Publish with latest version (`id "com.vanniktech.maven.publish" version "latest.release"`)
+    - Signing (`id 'signing'`)
+    - JaCoCo (`id 'jacoco'`)
+    - SpotBugs (`id "com.github.spotbugs" version "latest.release"`)
+    - Checkstyle (`id 'checkstyle'`)
+    - PMD (`id 'pmd'`)
+    - Eclipse (`id 'eclipse'`)
+    - Other development-related plugins
+    
+  - **Project dependencies:**
+    - **Testing Libraries:**
+      - commons-io: `testImplementation 'commons-io:commons-io:2.+'`
+      - org.apache.commons-text: `testImplementation 'org.apache.commons:commons-text:+'`
+      - Mockito Core: `testImplementation 'org.mockito:mockito-core:+'`
+      - AssertJ Core: `testImplementation 'org.assertj:assertj-core:+'`
+      - Hamcrest Core: `testImplementation 'org.hamcrest:hamcrest-core:+'`
+      - Apache Commons Lang: `testImplementation 'org.apache.commons:commons-lang3:+'`
+      - H2 database: `testImplementation 'com.h2database:h2:+'`
+      - **JUnit:**
+        - `testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.+'`
+        - `testImplementation 'org.junit.jupiter:junit-jupiter-api:5.+'`
+        - `testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.+'`
+        - `testImplementation 'org.junit.jupiter:junit-jupiter-params:5+'`
+      - Mockito JUnit Support: `testImplementation 'org.mockito:mockito-junit-jupiter:5.+'`
+    - **Performance Benchmarking:**
+      - `testImplementation 'org.openjdk.jmh:jmh-core:+'`
+      - `testImplementation 'org.openjdk.jmh:jmh-generator-annprocess:+'`
+    - **XML Documentation:**
+      - `xmlDoclet('com.manticore-projects.tools:xml-doclet:+'){ changing = true }`
+    - **JavaCC Parsing Tools:**
+      - `javacc('com.manticore-projects.jsqlformatter:javacc-core:[8.1.2.1941,)')`
+      - `javacc('com.manticore-projects.jsqlformatter:javacc-java:[8.1.2.1941,)')`
+
+- **Repository Setup:**
+  - Maven Central repository used.
+  - Additional repository: `maven { url "https://dev.saxonica.com/maven" }`.
+
+[/Key Information]
+2026-10-16 13:09:21.744 | INFO     | ******
+2026-10-16 13:09:21.744 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/JSqlParser/build.gradle]\n- **Required Java Version:**\n  - Minimum source compatibility: Java 11\n  - Target compatibility: Java 11\n  - Toolchain required: Java 17 (specified for XML-Doclet requirements)\n\n- **Dependency Setup:**\n  - **Buildscript dependencies:**\n    - Saxon-HE (`net.sf.saxon` group, version `latest.release`)\n  \n  - **Plugins used:**\n    - Java (`id \'java\'`)\n    - Maven Publish with latest version (`id "com.vanniktech.maven.publish" version "latest.release"`)\n    - Signing (`id \'signing\'`)\n    - JaCoCo (`id \'jacoco\'`)\n    - SpotBugs (`id "com.github.spotbugs" version "latest.release"`)\n    - Checkstyle (`id \'checkstyle\'`)\n    - PMD (`id \'pmd\'`)\n    - Eclipse (`id \'eclipse\'`)\n    - Other development-related plugins\n    \n  - **Project dependencies:**\n    - **Testing Libraries:**\n      - commons-io: `testImplementation \'commons-io:commons-io:2.+\'`\n      - org.apache.commons-text: `testImplementation \'org.apache.commons:commons-text:+\'`\n      - Mockito Core: `testImplementation \'org.mockito:mockito-core:+\'`\n      - AssertJ Core: `testImplementation \'org.assertj:assertj-core:+\'`\n      - Hamcrest Core: `testImplementation \'org.hamcrest:hamcrest-core:+\'`\n      - Apache Commons Lang: `testImplementation \'org.apache.commons:commons-lang3:+\'`\n      - H2 database: `testImplementation \'com.h2database:h2:+\'`\n      - **JUnit:**\n        - `testRuntimeOnly \'org.junit.platform:junit-platform-launcher:1.+\'`\n        - `testImplementation \'org.junit.jupiter:junit-jupiter-api:5.+\'`\n        - `testRuntimeOnly \'org.junit.jupiter:junit-jupiter-engine:5.+\'`\n        - `testImplementation \'org.junit.jupiter:junit-jupiter-params:5+\'`\n      - Mockito JUnit Support: `testImplementation \'org.mockito:mockito-junit-jupiter:5.+\'`\n    - **Performance Benchmarking:**\n      - `testImplementation \'org.openjdk.jmh:jmh-core:+\'`\n      - `testImplementation \'org.openjdk.jmh:jmh-generator-annprocess:+\'`\n    - **XML Documentation:**\n      - `xmlDoclet(\'com.manticore-projects.tools:xml-doclet:+\'){ changing = true }`\n    - **JavaCC Parsing Tools:**\n      - `javacc(\'com.manticore-projects.jsqlformatter:javacc-core:[8.1.2.1941,)\')`\n      - `javacc(\'com.manticore-projects.jsqlformatter:javacc-java:[8.1.2.1941,)\')`\n\n- **Repository Setup:**\n  - Maven Central repository used.\n  - Additional repository: `maven { url "https://dev.saxonica.com/maven" }`.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-16 13:09:21.744 | INFO     | entering browse
+2026-10-16 13:09:21.745 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/JSqlParser/.travis.yml ===
+language: java
+jdk:
+  - openjdk8
+  - openjdk11
+  
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+=== FILE END:   /data/home/cjy/software-testing/projects/JSqlParser/.travis.yml ===
+2026-10-16 13:09:21.745 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-16 13:09:27.622 | INFO     | Model API request cost info: input_tokens=622, output_tokens=112, cost=0.002675
+2026-10-16 13:09:27.623 | SUCCESS  | Successfully extracted environment config
+2026-10-16 13:09:27.623 | INFO     | ******
+2026-10-16 13:09:27.623 | INFO     | [Key Information from .travis.yml]
+- Java versions:
+  - openjdk8
+  - openjdk11
+- No direct test execution commands are specified in the file, but there is a command related to coverage that indirectly indicates testing might be executed:
+  - `mvn clean cobertura:cobertura coveralls:report`
+- Cached directories:
+  - `$HOME/.m2`
+  - `$HOME/.gradle/caches/`
+  - `$HOME/.gradle/wrapper/`
+[/Key Information]
+2026-10-16 13:09:27.623 | INFO     | ******
+2026-10-16 13:09:27.623 | DEBUG    | Result of dispatch_intent: ('[Key Information from .travis.yml]\n- Java versions:\n  - openjdk8\n  - openjdk11\n- No direct test execution commands are specified in the file, but there is a command related to coverage that indirectly indicates testing might be executed:\n  - `mvn clean cobertura:cobertura coveralls:report`\n- Cached directories:\n  - `$HOME/.m2`\n  - `$HOME/.gradle/caches/`\n  - `$HOME/.gradle/wrapper/`\n[/Key Information]', 'Get File Info', True)
+2026-10-16 13:09:39.730 | INFO     | Model API request cost info: input_tokens=3794, output_tokens=1313, cost=0.022615
+2026-10-16 13:09:39.751 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-16 13:09:51.593 | INFO     | Model API request cost info: input_tokens=1911, output_tokens=786, cost=0.012638
+2026-10-16 13:09:51.594 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "Environment Setup from README.md": {
+            "Setup Steps": {
+                "Maven": {
+                    "Dependency": {
+                        "Group ID": "com.manticore-projects.jsqlformatter",
+                        "Artifact ID": "jsqlparser",
+                        "Version": "[5.3.218,)"
+                    }
+                },
+                "Gradle": {
+                    "Implementation": "com.manticore-projects.jsqlformatter:jsqlparser:+"
+                },
+                "Alternative Versions": {
+                    "Maven": {
+                        "Dependency": {
+                            "Group ID": "com.github.jsqlparser",
+                            "Artifact ID": "jsqlparser",
+                            "Version": "5.3"
+                        }
+                    }
+                }
+            },
+            "Runtime Requirements": {
+                "Version 4.9": "JDK 8 (compatible with Java 8 runtime)",
+                "Version 5.0+": "At least JDK 11 runtime",
+                "Version 5.1+": "Requires JDK 17 toolchain for building",
+                "Version 5.4+": "Parser generated with JavaCC 8"
+            },
+            "Build Instructions": "Follow Maven or Gradle-based dependency setup as described.",
+            "Option for Dialects": "Enable various SQL dialects to customize grammar handling (e.g., Dialect.POSTGRESQL, Dialect.MYSQL)."
+        },
+        "Environment Setup from pom.xml": {
+            "Required Java Version": {
+                "Minimum JDK": "11",
+                "JDK Toolchain": "[17,24)"
+            },
+            "Dependencies": [
+                "org.junit.jupiter:junit-jupiter:5.14.4",
+                "org.mockito:mockito-core:5.23.0",
+                "org.assertj:assertj-core:3.27.7",
+                "com.h2database:h2:2.3.232"
+            ],
+            "Build Properties": {
+                "Encoding": "UTF-8",
+                "File Encoding": "-Dfile.encoding=UTF-8"
+            },
+            "Commands": {
+                "Populate Dependencies": [
+                    "mvn dependency:resolve",
+                    "mvn install"
+                ]
+            },
+            "Maven Version Requirement": "Apache Maven 3.9.0 or higher"
+        },
+        "Environment Setup from build.gradle": {
+            "Required Java Version": {
+                "Minimum Source Compatibility": "Java 11",
+                "Target Compatibility": "Java 11",
+                "Toolchain Required": "Java 17"
+            },
+            "Dependencies": [
+                "commons-io",
+                "org.apache.commons-text",
+                "Mockito Core",
+                "AssertJ Core",
+                "JUnit",
+                "Performance benchmarking: org.openjdk.jmh:jmh-core",
+                "jmh-generator-annprocess",
+                "JavaCC Parsing Tools: javacc-core, javacc-java"
+            ],
+            "Plugins": [
+                "Maven Publish",
+                "Signing",
+                "JaCoCo",
+                "SpotBugs",
+                "Checkstyle",
+                "Eclipse"
+            ],
+            "Repository Setup": {
+                "Primary": "Maven Central",
+                "Additional Repository": "https://dev.saxonica.com/maven"
+            }
+        },
+        "Environment Setup from .travis.yml": {
+            "Java Versions Used": ["openjdk8", "openjdk11"],
+            "Test Command Contexts": "Coverage execution command indirectly indicates testing (mvn clean cobertura:cobertura coveralls:report).",
+            "Cached Directories for Build Optimization": [
+                "$HOME/.m2",
+                "$HOME/.gradle/caches/",
+                "$HOME/.gradle/wrapper/"
+            ]
+        }
+    },
+    "terminate": true
+}
+2026-10-16 13:09:51.594 | DEBUG    | Extracted a valid json
+2026-10-16 13:09:51.596 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-16 13:10:00.703 | INFO     | Model API request cost info: input_tokens=2525, output_tokens=815, cost=0.014463
+2026-10-16 13:10:00.704 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-16 13:10:00.715 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-16 13:10:05.492 | INFO     | Model API request cost info: input_tokens=2293, output_tokens=117, cost=0.006903
+2026-10-16 13:10:05.492 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-16 13:20:42.892 | DEBUG    | Result of dispatch_intent: ("Step 18/24 : RUN mvn dependency:resolve && mvn install\n ---> Running in 80814b2c04d0\n[INFO] Scanning for projects...\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/felix/maven-bundle-plugin/5.1.8/maven-bundle-plugin-5.1.8.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 11 kB \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/felix/maven-bundle-plugin/5.1.8/maven-bundle-plugin-5.1.8.pom (11 kB at 5.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/7/felix-parent-7.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 21 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/7/felix-parent-7.pom (21 kB at 89 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 18 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom (18 kB at 79 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/6.0.0/org.osgi.core-6.0.0.pom\nProgress (1): 1.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/6.0.0/org.osgi.core-6.0.0.pom (1.1 kB at 3.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/6.3.1/biz.aQute.bndlib-6.3.1.pom\nProgress (1): 4.1 kB\nProgress (1): 5.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/6.3.1/biz.aQute.bndlib-6.3.1.pom (5.2 kB at 19 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.dto/1.0.0/org.osgi.dto-1.0.0.pom\nProgress (1): 1.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.dto/1.0.0/org.osgi.dto-1.0.0.pom (1.3 kB at 3.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.resource/1.0.0/org.osgi.resource-1.0.0.pom\nProgress (1): 1.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.resource/1.0.0/org.osgi.resource-1.0.0.pom (1.3 kB at 6.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.framework/1.8.0/org.osgi.framework-1.8.0.pom\nProgress (1): 1.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.framework/1.8.0/org.osgi.framework-1.8.0.pom (1.3 kB at 5.8 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.tracker/1.5.4/org.osgi.util.tracker-1.5.4.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.tracker/1.5.4/org.osgi.util.tracker-1.5.4.pom (1.9 kB at 5.8 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/osgi.annotation/8.0.1/osgi.annotation-8.0.1.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/osgi.annotation/8.0.1/osgi.annotation-8.0.1.pom (1.5 kB at 5.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.service.log/1.3.0/org.osgi.service.log-1.3.0.pom\nProgress (1): 1.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.service.log/1.3.0/org.osgi.service.log-1.3.0.pom (1.3 kB at 5.7 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.service.repository/1.1.0/org.osgi.service.repository-1.1.0.pom\nProgress (1): 1.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.service.repository/1.1.0/org.osgi.service.repository-1.1.0.pom (1.3 kB at 5.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.function/1.2.0/org.osgi.util.function-1.2.0.pom\nProgress (1): 1.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.function/1.2.0/org.osgi.util.function-1.2.0.pom (1.7 kB at 7.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.promise/1.2.0/org.osgi.util.promise-1.2.0.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.promise/1.2.0/org.osgi.util.promise-1.2.0.pom (1.9 kB at 8.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.function/1.1.0/org.osgi.util.function-1.1.0.pom\nProgress (1): 1.4 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.util.function/1.1.0/org.osgi.util.function-1.1.0.pom (1.4 kB at 5.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd.util/6.3.1/biz.aQute.bnd.util-6.3.1.pom\nProgress (1): 2.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd.util/6.3.1/biz.aQute.bnd.util-6.3.1.pom (2.7 kB at 12 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.pom\nProgress (1): 3.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.pom (3.8 kB at 16 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.25/slf4j-parent-1.7.25.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.25/slf4j-parent-1.7.25.pom (14 kB at 56 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.pom\nProgress (1): 4.1 kB\nProgress (1): 5.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.pom (5.9 kB at 30 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/2.1/felix-parent-2.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 9.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/2.1/felix-parent-2.1.pom (9.7 kB at 46 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 15 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom (15 kB at 66 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.1.0/org.osgi.core-4.1.0.pom\nProgress (1): 193 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.1.0/org.osgi.core-4.1.0.pom (193 B at 932 B/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/easymock/easymock/2.4/easymock-2.4.pom\nProgress (1): 4.1 kB\nProgress (1): 5.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/easymock/easymock/2.4/easymock-2.4.pom (5.3 kB at 25 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.utils/1.6.0/org.apache.felix.utils-1.6.0.pom\nProgress (1): 3.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.utils/1.6.0/org.apache.felix.utils-1.6.0.pom (3.3 kB at 15 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.compendium/4.2.0/org.osgi.compendium-4.2.0.pom\nProgress (1): 463 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.compendium/4.2.0/org.osgi.compendium-4.2.0.pom (463 B at 2.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.3.9/maven-core-3.3.9.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 8.3 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.3.9/maven-core-3.3.9.pom (8.3 kB at 38 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/3.3.9/maven-3.3.9.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 24 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/3.3.9/maven-3.3.9.pom (24 kB at 118 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/27/maven-parent-27.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 37 kB\nProgress (1): 41 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/27/maven-parent-27.pom (41 kB at 160 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/17/apache-17.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/17/apache-17.pom (16 kB at 52 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.3.9/maven-model-3.3.9.pom\nProgress (1): 4.0 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.3.9/maven-model-3.3.9.pom (4.0 kB at 13 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.pom\nProgress (1): 3.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.pom (3.8 kB at 14 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom (20 kB at 71 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom\nProgress (1): 4.1 kB\nProgress (1): 6.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom (6.8 kB at 25 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom (14 kB at 53 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 22 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.pom (22 kB at 90 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/37/commons-parent-37.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 25 kB\nProgress (1): 29 kB\nProgress (1): 33 kB\nProgress (1): 37 kB\nProgress (1): 41 kB\nProgress (1): 45 kB\nProgress (1): 49 kB\nProgress (1): 53 kB\nProgress (1): 57 kB\nProgress (1): 61 kB\nProgress (1): 63 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/37/commons-parent-37.pom (63 kB at 258 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/16/apache-16.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 15 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/16/apache-16.pom (15 kB at 61 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.3.9/maven-settings-3.3.9.pom\nProgress (1): 1.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.3.9/maven-settings-3.3.9.pom (1.8 kB at 8.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.3.9/maven-settings-builder-3.3.9.pom\nProgress (1): 2.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.3.9/maven-settings-builder-3.3.9.pom (2.6 kB at 14 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-builder-support/3.3.9/maven-builder-support-3.3.9.pom\nProgress (1): 1.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-builder-support/3.3.9/maven-builder-support-3.3.9.pom (1.7 kB at 7.6 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom\nProgress (1): 1.5 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom (1.5 kB at 6.2 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom\nProgress (1): 3.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom (3.1 kB at 5.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.6/plexus-component-annotations-1.6.pom\nProgress (1): 748 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.6/plexus-component-annotations-1.6.pom (748 B at 3.7 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.6/plexus-containers-1.6.pom\nProgress (1): 3.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.6/plexus-containers-1.6.pom (3.8 kB at 17 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.2/plexus-3.3.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 22 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.2/plexus-3.3.2.pom (22 kB at 93 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom\nProgress (1): 3.0 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom (3.0 kB at 11 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom\nProgress (1): 4.1 kB\nProgress (1): 6.8 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom (6.8 kB at 27 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 8.4 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom (8.4 kB at 34 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom\nProgress (1): 4.1 kB\nProgress (1): 5.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom (5.1 kB at 24 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 9.0 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom (9.0 kB at 45 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom\nProgress (1): 2.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom (2.1 kB at 10 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.3.9/maven-repository-metadata-3.3.9.pom\nProgress (1): 1.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.3.9/maven-repository-metadata-3.3.9.pom (1.9 kB at 9.3 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.3.9/maven-artifact-3.3.9.pom\nProgress (1): 2.1 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.3.9/maven-artifact-3.3.9.pom (2.1 kB at 10 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.3.9/maven-plugin-api-3.3.9.pom\nProgress (1): 2.7 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.3.9/maven-plugin-api-3.3.9.pom (2.7 kB at 10 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.2/org.eclipse.sisu.plexus-0.3.2.pom\nProgress (1): 4.1 kB\nProgress (1): 4.2 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.2/org.eclipse.sisu.plexus-0.3.2.pom (4.2 kB at 19 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-plexus/0.3.2/sisu-plexus-0.3.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-plexus/0.3.2/sisu-plexus-0.3.2.pom (14 kB at 62 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom\nProgress (1): 4.1 kB\nProgress (1): 6.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (6.6 kB at 12 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.0/cdi-api-1.0.pom\nProgress (1): 1.4 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.0/cdi-api-1.0.pom (1.4 kB at 5.0 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-parent/1.0/weld-api-parent-1.0.pom\nProgress (1): 2.4 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-parent/1.0/weld-api-parent-1.0.pom (2.4 kB at 8.1 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-bom/1.0/weld-api-bom-1.0.pom\nProgress (1): 4.1 kB\nProgress (1): 7.9 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-api-bom/1.0/weld-api-bom-1.0.pom (7.9 kB at 32 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-parent/6/weld-parent-6.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 16 kB\nProgress (1): 20 kB\nProgress (1): 21 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-parent/6/weld-parent-6.pom (21 kB at 71 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.pom\nProgress (1): 1.0 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.pom (1.0 kB at 3.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom\nProgress (1): 612 B\nDownloaded from central: https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom (612 B at 2.4 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.2/org.eclipse.sisu.inject-0.3.2.pom\nProgress (1): 2.6 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.2/org.eclipse.sisu.inject-0.3.2.pom (2.6 kB at 9.2 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.3.2/sisu-inject-0.3.2.pom\nProgress (1): 4.1 kB\nProgress (1): 8.2 kB\nProgress (1): 12 kB \nProgress (1): 14 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.3.2/sisu-inject-0.3.2.pom (14 kB at 63 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom\nProgress (1): 815 B\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom (815 B at 3.9 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom\nProgress (1): 4.1 kB\n...skipped 10720 lines...\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 380/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 384/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 388/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 392/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 396/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 401/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 405/609 kB\nProgress (5): 193 kB | 197 kB | 223/714 kB | 420 kB | 409/609 kB\nProgress (5): 193 kB | 197 kB | 227/714 kB | 420 kB | 409/609 kB\nProgress (5): 193 kB | 197 kB | 231/714 kB | 420 kB | 409/609 kB\nProgress (5): 193 kB | 197 kB | 235/714 kB | 420 kB | 409/609 kB\nProgress (5): 193 kB | 197 kB | 239/714 kB | 420 kB | 409/609 kB\nProgress (5): 193 kB | 197 kB | 239/714 kB | 420 kB | 413/609 kB\nProgress (5): 193 kB | 197 kB | 239/714 kB | 420 kB | 417/609 kB\nProgress (5): 193 kB | 197 kB | 239/714 kB | 420 kB | 421/609 kB\nProgress (5): 193 kB | 197 kB | 239/714 kB | 420 kB | 425/609 kB\nProgress (5): 193 kB | 197 kB | 244/714 kB | 420 kB | 425/609 kB\nProgress (5): 193 kB | 197 kB | 248/714 kB | 420 kB | 425/609 kB\nProgress (5): 193 kB | 197 kB | 252/714 kB | 420 kB | 425/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 425/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 429/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 433/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 437/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 441/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 446/609 kB\nProgress (5): 193 kB | 197 kB | 256/714 kB | 420 kB | 450/609 kB\nProgress (5): 193 kB | 197 kB | 260/714 kB | 420 kB | 450/609 kB\nProgress (5): 193 kB | 197 kB | 264/714 kB | 420 kB | 450/609 kB\nProgress (5): 193 kB | 197 kB | 268/714 kB | 420 kB | 450/609 kB\nProgress (5): 193 kB | 197 kB | 268/714 kB | 420 kB | 454/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 454/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 458/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 462/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 466/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 470/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 474/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 478/609 kB\nProgress (5): 193 kB | 197 kB | 272/714 kB | 420 kB | 482/609 kB\nProgress (5): 193 kB | 197 kB | 276/714 kB | 420 kB | 482/609 kB\nProgress (5): 193 kB | 197 kB | 280/714 kB | 420 kB | 482/609 kB\nProgress (5): 193 kB | 197 kB | 284/714 kB | 420 kB | 482/609 kB\nProgress (5): 193 kB | 197 kB | 289/714 kB | 420 kB | 482/609 kB\nProgress (5): 193 kB | 197 kB | 289/714 kB | 420 kB | 487/609 kB\nProgress (5): 193 kB | 197 kB | 289/714 kB | 420 kB | 491/609 kB\nProgress (5): 193 kB | 197 kB | 289/714 kB | 420 kB | 495/609 kB\nProgress (5): 193 kB | 197 kB | 289/714 kB | 420 kB | 499/609 kB\nProgress (5): 193 kB | 197 kB | 293/714 kB | 420 kB | 499/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 499/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 503/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 507/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 511/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 515/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 519/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 523/609 kB\nProgress (5): 193 kB | 197 kB | 295/714 kB | 420 kB | 528/609 kB\nProgress (5): 193 kB | 197 kB | 299/714 kB | 420 kB | 528/609 kB\nProgress (5): 193 kB | 197 kB | 299/714 kB | 420 kB | 532/609 kB\nProgress (5): 193 kB | 197 kB | 303/714 kB | 420 kB | 532/609 kB\nProgress (5): 193 kB | 197 kB | 307/714 kB | 420 kB | 532/609 kB\nProgress (5): 193 kB | 197 kB | 311/714 kB | 420 kB | 532/609 kB\nProgress (5): 193 kB | 197 kB | 311/714 kB | 420 kB | 536/609 kB\nProgress (5): 193 kB | 197 kB | 311/714 kB | 420 kB | 540/609 kB\nProgress (5): 193 kB | 197 kB | 311/714 kB | 420 kB | 544/609 kB\nProgress (5): 193 kB | 197 kB | 311/714 kB | 420 kB | 548/609 kB\nProgress (5): 193 kB | 197 kB | 315/714 kB | 420 kB | 548/609 kB\nProgress (5): 193 kB | 197 kB | 319/714 kB | 420 kB | 548/609 kB\nProgress (5): 193 kB | 197 kB | 324/714 kB | 420 kB | 548/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 548/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 552/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 556/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 560/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 564/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 568/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 573/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 577/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 581/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 585/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 589/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 593/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 597/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 601/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 605/609 kB\nProgress (5): 193 kB | 197 kB | 328/714 kB | 420 kB | 609 kB    \nProgress (5): 193 kB | 197 kB | 332/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 336/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 340/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 344/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 348/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 352/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 356/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 360/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 365/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 369/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 373/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 377/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 381/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 385/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 389/714 kB | 420 kB | 609 kB\nProgress (5): 193 kB | 197 kB | 393/714 kB | 420 kB | 609 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.jar (193 kB at 320 kB/s)\nDownloading from central: https://repo.maven.apache.org/maven2/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar\nProgress (4): 197 kB | 397/714 kB | 420 kB | 609 kB\nProgress (4): 197 kB | 401/714 kB | 420 kB | 609 kB\nProgress (4): 197 kB | 406/714 kB | 420 kB | 609 kB\nProgress (4): 197 kB | 410/714 kB | 420 kB | 609 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.9.27/maven-resolver-util-1.9.27.jar (197 kB at 311 kB/s)\nProgress (3): 414/714 kB | 420 kB | 609 kB\nProgress (3): 418/714 kB | 420 kB | 609 kB\nProgress (3): 422/714 kB | 420 kB | 609 kB\nProgress (3): 426/714 kB | 420 kB | 609 kB\nProgress (3): 430/714 kB | 420 kB | 609 kB\nProgress (3): 434/714 kB | 420 kB | 609 kB\nProgress (3): 438/714 kB | 420 kB | 609 kB\nProgress (3): 442/714 kB | 420 kB | 609 kB\nProgress (3): 446/714 kB | 420 kB | 609 kB\nProgress (3): 451/714 kB | 420 kB | 609 kB\nProgress (3): 455/714 kB | 420 kB | 609 kB\nProgress (3): 459/714 kB | 420 kB | 609 kB\nProgress (3): 463/714 kB | 420 kB | 609 kB\nProgress (3): 467/714 kB | 420 kB | 609 kB\nProgress (3): 471/714 kB | 420 kB | 609 kB\nProgress (3): 475/714 kB | 420 kB | 609 kB\nProgress (3): 479/714 kB | 420 kB | 609 kB\nProgress (3): 483/714 kB | 420 kB | 609 kB\nProgress (3): 487/714 kB | 420 kB | 609 kB\nProgress (3): 492/714 kB | 420 kB | 609 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.22.0/commons-codec-1.22.0.jar (420 kB at 651 kB/s)\nProgress (2): 496/714 kB | 609 kB\nProgress (2): 500/714 kB | 609 kB\nProgress (2): 504/714 kB | 609 kB\nProgress (2): 508/714 kB | 609 kB\nProgress (2): 512/714 kB | 609 kB\nProgress (2): 516/714 kB | 609 kB\nProgress (2): 520/714 kB | 609 kB\nProgress (2): 524/714 kB | 609 kB\nProgress (2): 528/714 kB | 609 kB\nProgress (2): 532/714 kB | 609 kB\nProgress (2): 537/714 kB | 609 kB\nProgress (2): 541/714 kB | 609 kB\nProgress (2): 545/714 kB | 609 kB\nProgress (2): 549/714 kB | 609 kB\nProgress (2): 553/714 kB | 609 kB\nProgress (2): 557/714 kB | 609 kB\nProgress (2): 561/714 kB | 609 kB\nProgress (2): 565/714 kB | 609 kB\nProgress (2): 569/714 kB | 609 kB\nProgress (2): 573/714 kB | 609 kB\nProgress (2): 578/714 kB | 609 kB\nProgress (2): 582/714 kB | 609 kB\nProgress (2): 586/714 kB | 609 kB\nProgress (2): 590/714 kB | 609 kB\nProgress (2): 594/714 kB | 609 kB\nProgress (2): 598/714 kB | 609 kB\nProgress (2): 602/714 kB | 609 kB\nProgress (2): 606/714 kB | 609 kB\nProgress (2): 610/714 kB | 609 kB\nProgress (2): 614/714 kB | 609 kB\nProgress (2): 618/714 kB | 609 kB\nProgress (2): 623/714 kB | 609 kB\nProgress (2): 627/714 kB | 609 kB\nProgress (2): 631/714 kB | 609 kB\nProgress (2): 635/714 kB | 609 kB\nProgress (2): 639/714 kB | 609 kB\nProgress (2): 643/714 kB | 609 kB\nProgress (2): 647/714 kB | 609 kB\nProgress (2): 651/714 kB | 609 kB\nProgress (2): 655/714 kB | 609 kB\nProgress (2): 659/714 kB | 609 kB\nProgress (2): 664/714 kB | 609 kB\nProgress (2): 668/714 kB | 609 kB\nProgress (2): 672/714 kB | 609 kB\nProgress (2): 676/714 kB | 609 kB\nProgress (2): 680/714 kB | 609 kB\nProgress (2): 684/714 kB | 609 kB\nProgress (2): 688/714 kB | 609 kB\nProgress (2): 692/714 kB | 609 kB\nProgress (2): 696/714 kB | 609 kB\nProgress (2): 700/714 kB | 609 kB\nProgress (2): 705/714 kB | 609 kB\nProgress (2): 709/714 kB | 609 kB\nProgress (2): 713/714 kB | 609 kB\nProgress (2): 714 kB | 609 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.22.0/commons-io-2.22.0.jar (609 kB at 884 kB/s)\nProgress (2): 714 kB | 3.4/389 kB\nProgress (2): 714 kB | 7.5/389 kB\nProgress (2): 714 kB | 12/389 kB \nProgress (2): 714 kB | 16/389 kB\nProgress (2): 714 kB | 20/389 kB\nProgress (2): 714 kB | 24/389 kB\nProgress (2): 714 kB | 28/389 kB\nProgress (2): 714 kB | 32/389 kB\nProgress (2): 714 kB | 36/389 kB\nProgress (2): 714 kB | 40/389 kB\nProgress (2): 714 kB | 44/389 kB\nProgress (2): 714 kB | 48/389 kB\nProgress (2): 714 kB | 52/389 kB\nProgress (2): 714 kB | 56/389 kB\nProgress (2): 714 kB | 61/389 kB\nProgress (2): 714 kB | 65/389 kB\nProgress (2): 714 kB | 69/389 kB\nProgress (2): 714 kB | 73/389 kB\nProgress (2): 714 kB | 77/389 kB\nProgress (2): 714 kB | 81/389 kB\nProgress (2): 714 kB | 85/389 kB\nProgress (2): 714 kB | 89/389 kB\nProgress (2): 714 kB | 93/389 kB\nProgress (2): 714 kB | 97/389 kB\nProgress (2): 714 kB | 101/389 kB\nProgress (2): 714 kB | 106/389 kB\nProgress (2): 714 kB | 110/389 kB\nProgress (2): 714 kB | 114/389 kB\nProgress (2): 714 kB | 118/389 kB\nProgress (2): 714 kB | 122/389 kB\nProgress (2): 714 kB | 126/389 kB\nProgress (2): 714 kB | 130/389 kB\nProgress (2): 714 kB | 134/389 kB\nProgress (2): 714 kB | 138/389 kB\nProgress (2): 714 kB | 142/389 kB\nProgress (2): 714 kB | 147/389 kB\nProgress (2): 714 kB | 151/389 kB\nProgress (2): 714 kB | 155/389 kB\nProgress (2): 714 kB | 159/389 kB\nProgress (2): 714 kB | 163/389 kB\nProgress (2): 714 kB | 167/389 kB\nProgress (2): 714 kB | 171/389 kB\nProgress (2): 714 kB | 175/389 kB\nProgress (2): 714 kB | 179/389 kB\nProgress (2): 714 kB | 183/389 kB\nProgress (2): 714 kB | 187/389 kB\nProgress (2): 714 kB | 192/389 kB\nProgress (2): 714 kB | 196/389 kB\nProgress (2): 714 kB | 200/389 kB\nProgress (2): 714 kB | 204/389 kB\nProgress (2): 714 kB | 208/389 kB\nProgress (2): 714 kB | 212/389 kB\nProgress (2): 714 kB | 216/389 kB\nProgress (2): 714 kB | 220/389 kB\nProgress (2): 714 kB | 224/389 kB\nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar (714 kB at 905 kB/s)\nProgress (1): 228/389 kB\nProgress (1): 233/389 kB\nProgress (1): 237/389 kB\nProgress (1): 241/389 kB\nProgress (1): 245/389 kB\nProgress (1): 249/389 kB\nProgress (1): 253/389 kB\nProgress (1): 257/389 kB\nProgress (1): 261/389 kB\nProgress (1): 265/389 kB\nProgress (1): 269/389 kB\nProgress (1): 274/389 kB\nProgress (1): 278/389 kB\nProgress (1): 282/389 kB\nProgress (1): 286/389 kB\nProgress (1): 290/389 kB\nProgress (1): 294/389 kB\nProgress (1): 298/389 kB\nProgress (1): 302/389 kB\nProgress (1): 306/389 kB\nProgress (1): 310/389 kB\nProgress (1): 314/389 kB\nProgress (1): 319/389 kB\nProgress (1): 323/389 kB\nProgress (1): 327/389 kB\nProgress (1): 331/389 kB\nProgress (1): 335/389 kB\nProgress (1): 339/389 kB\nProgress (1): 343/389 kB\nProgress (1): 347/389 kB\nProgress (1): 351/389 kB\nProgress (1): 355/389 kB\nProgress (1): 360/389 kB\nProgress (1): 364/389 kB\nProgress (1): 368/389 kB\nProgress (1): 372/389 kB\nProgress (1): 376/389 kB\nProgress (1): 380/389 kB\nProgress (1): 384/389 kB\nProgress (1): 388/389 kB\nProgress (1): 389 kB    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar (389 kB at 405 kB/s)\n[INFO] Rule 1: org.apache.maven.enforcer.rules.BanDuplicatePomDependencyVersions passed\n[INFO] ------------------------------------------------------------------------\n[INFO\x1b[m] \x1b[1;31mBUILD FAILURE\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  6.718 s\n[INFO] Finished at: 2026-10-16T05:20:42Z\n[INFO] ------------------------------------------------------------------------\x1b[m\n[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:3.6.3:enforce (enforce)\x1b[m on project jsqlparser: \x1b[1;31m\n[ERROR] \x1b[1;31mRule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion failed with message:\n[ERROR] Detected Maven Version: 3.6.3 is not in the allowed range [3.9.0,).\n[ERROR] -> [Help 1]\n[ERROR] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the \x1b[1m-e switch.\n[ERROR] Re-run Maven using the \x1b[1m-X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1]\x1b[m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException\n ---> Removed intermediate container 80814b2c04d0\nError: The command '/bin/sh -c mvn dependency:resolve && mvn install' returned a non-zero code: 1", 'Failed to build Docker image.', False)
+2026-10-16 13:20:42.901 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-16 13:20:50.480 | INFO     | Model API request cost info: input_tokens=16309, output_tokens=234, cost=0.043113
+2026-10-16 13:20:50.481 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile fails during the Maven dependency installation step due to an incompatible Maven version. The error message indicates that Maven version `3.6.3` is not in the allowed range `[3.9.0,)`. Update the Dockerfile to install Maven version `3.9.0` or higher. Specifically, replace the line `RUN apt install -y maven` with commands to download and install the required Maven version (e.g., `RUN wget https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz && tar -xvzf apache-maven-3.9.0-bin.tar.gz && mv apache-maven-3.9.0 /opt/maven && ln -s /opt/maven/bin/mvn /usr/bin/mvn`). Verify PATH is updated to include `/opt/maven/bin` if necessary.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": ""
+}
+2026-10-16 13:20:50.481 | DEBUG    | Extracted a valid json
+2026-10-16 13:20:50.484 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-16 13:21:01.856 | INFO     | Model API request cost info: input_tokens=4633, output_tokens=980, cost=0.021383
+2026-10-16 13:21:01.857 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-16 13:32:24.378 | DEBUG    | Result of dispatch_intent: ("Step 14/26 : RUN wget https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz &&     tar -xvzf apache-maven-3.9.0-bin.tar.gz &&     mv apache-maven-3.9.0 /opt/maven &&     ln -s /opt/maven/bin/mvn /usr/bin/mvn &&     rm -f apache-maven-3.9.0-bin.tar.gz\n ---> Running in 869ab796bdaf\n--2026-10-16 05:32:22--  https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz\nResolving downloads.apache.org (downloads.apache.org)... 95.216.224.44, 88.99.208.237, 2a01:4f9:2b:1cc2::2, ...\nConnecting to downloads.apache.org (downloads.apache.org)|95.216.224.44|:443... connected.\nHTTP request sent, awaiting response... 404 Not Found\n2026-10-16 05:32:23 ERROR 404: Not Found.\n ---> Removed intermediate container 869ab796bdaf\nError: The command '/bin/sh -c wget https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz &&     tar -xvzf apache-maven-3.9.0-bin.tar.gz &&     mv apache-maven-3.9.0 /opt/maven &&     ln -s /opt/maven/bin/mvn /usr/bin/mvn &&     rm -f apache-maven-3.9.0-bin.tar.gz' returned a non-zero code: 8", 'Failed to build Docker image.', False)
+2026-10-16 13:32:24.383 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-16 13:32:38.350 | INFO     | Model API request cost info: input_tokens=2644, output_tokens=294, cost=0.009550
+2026-10-16 13:32:38.351 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile is failing during the step where Maven 3.9.0 is being downloaded using wget. The error message indicates that the URL https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz results in a 404 Not Found error. Maven 3.9.0 binaries may have been moved or removed from this location. To resolve this issue, you should locate the correct URL for the desired Maven version or opt to install Maven 3.9.0 using an alternative approach (e.g., adding it via a package manager like apt if available, or manually verifying and downloading the binaries from the website). Alternatively, consider upgrading or downgrading the Maven version and use a URL compatible with the Apache Maven official repository. Ensure the container continues past this step only after Maven is successfully installed.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": "Check the repository's README.md, CONTRIBUTING.md, or documentation files to see if a specific Maven version is required for building and testing the project. If yes, confirm the exact version needed. Also, review the repository for any custom build or environment setup scripts (such as additional Dockerfiles, environment.yml, setup.py, or similar)."
+}
+2026-10-16 13:32:38.351 | DEBUG    | Extracted a valid json
+2026-10-16 13:32:38.352 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-16 13:32:38.358 | INFO     | Task JSqlParser completed successfully.

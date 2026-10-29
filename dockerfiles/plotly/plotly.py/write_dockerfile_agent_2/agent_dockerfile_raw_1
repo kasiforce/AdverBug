@@ -1,0 +1,66 @@
+<dockerfile>
+# Use a stable base image with bash support
+FROM --platform=linux/x86_64 ubuntu:22.04
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Resolve potential GPG issues for apt-get
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Install system dependencies and essential tools
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        wget \
+        git \
+        curl \
+        locales \
+        locales-all \
+        build-essential \
+        python3.10 \
+        python3.10-venv \
+        python3-pip \
+        nodejs \
+        npm \
+        # For Kaleido: Chrome or Chromium
+        chromium-browser \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up Miniconda for dependency management
+RUN wget "https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh" -O miniconda.sh && \
+    bash miniconda.sh -b -p /opt/miniconda3 && \
+    rm miniconda.sh
+
+ENV PATH="/opt/miniconda3/bin:$PATH"
+
+RUN conda init --all && conda config --append channels conda-forge
+
+# Create and configure a virtual environment
+RUN conda create -n testbed python=3.10 -y && \
+    echo "source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed" >> /root/.bashrc
+
+# Activate and update the virtual environment within bash commands
+RUN /bin/bash -c " \
+    source /opt/miniconda3/etc/profile.d/conda.sh && \
+    conda activate testbed && \
+    conda install -y -c conda-forge python-kaleido jupyter anywidget nodejs=18 pandas black pytest inflect jupyterlab ipywidgets statsmodels numpy requests python-frontmatter twine && \
+    pip install pip==22.3.1 && \
+    pip install algoliasearch==1.20 sphinx==3.5.4 sphinxcontrib-applehelp==1.0.2 sphinxcontrib-devhelp==1.0.2 sphinxcontrib-htmlhelp==2.0.0 sphinxcontrib-jsmath==1.0.1 sphinxcontrib-qthelp==1.0.3 sphinxcontrib-serializinghtml==1.1.5 \
+"
+
+# Set working directory
+WORKDIR /testbed/
+
+# Clone the target repository and checkout to the specific commit
+RUN git clone https://github.com/plotly/plotly.py.git /testbed && \
+    chmod -R 777 /testbed && \
+    cd /testbed && \
+    git reset --hard 38374acdce011d08a71cf92ade2abd4a1e4c7c92 && \
+    git remote remove origin && \
+    source /opt/miniconda3/etc/profile.d/conda.sh && \
+    conda activate testbed && \
+    pip install -e . && \
+    pip install -e ".[dev]" && \
+    uv sync --extra dev && \
+    pip install jupyter && \
+    jupyter labextension develop .
+</dockerfile>

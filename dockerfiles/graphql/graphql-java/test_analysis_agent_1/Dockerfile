@@ -1,0 +1,58 @@
+# Use an Ubuntu-based image with Bash shell for reliable compatibility
+FROM --platform=linux/x86_64 ubuntu:22.04
+
+# Arguments for noninteractive environment setup and potential fake dates
+ARG DEBIAN_FRONTEND=noninteractive
+ARG FAKE_DATE
+ENV TZ=Etc/UTC
+ENV FAKE_SYSTEM_DATE=${FAKE_DATE}
+
+# Avoid GPG time validation issues
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Update and install necessary dependencies
+RUN apt update && apt install -y \
+    wget \
+    git \
+    curl \
+    unzip \
+    build-essential \
+    openjdk-25-jdk-headless \
+    gradle \
+    tzdata \
+    locales \
+    && rm -rf /var/lib/apt/lists/*
+
+# Setup for Java (environment variables for JDK and Gradle)
+ENV JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+ENV GRADLE_USER_HOME=/testbed/.gradle
+
+# Set timezone to avoid warnings
+RUN echo "${TZ}" > /etc/timezone && \
+    ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+
+# Install Gradle dependencies and cache configurations
+RUN mkdir -p /testbed/.gradle/init.d && \
+    echo "org.gradle.caching=true" >> /testbed/.gradle/gradle.properties && \
+    echo "org.gradle.daemon=true" >> /testbed/.gradle/gradle.properties && \
+    echo "org.gradle.parallel=true" >> /testbed/.gradle/gradle.properties && \
+    echo "org.gradle.jvmargs=-Dfile.encoding=UTF-8" >> /testbed/.gradle/gradle.properties
+
+# Set the default working directory
+WORKDIR /testbed/
+
+# Clone the target repository, configure Git, and checkout the specific commit
+RUN git clone https://github.com/graphql-java/graphql-java.git /testbed && \
+    cd /testbed && \
+    git reset --hard 4c096208ba7203c92ed6617ddfdc35653c8aca11 && \
+    git remote remove origin
+
+# Install pre-commit hooks specified in the CONTRIBUTING.md file
+RUN /bin/bash -c "chmod +x /testbed/scripts/setup-hooks.sh && \
+    /testbed/scripts/setup-hooks.sh"
+
+# Add a script to activate the environment and use it during interactive sessions
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64" >> /root/.bashrc && \
+    echo "export PATH=$JAVA_HOME/bin:$PATH" >> /root/.bashrc

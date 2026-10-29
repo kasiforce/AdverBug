@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile failed to build due to an environment setup error. The error message states 'Detected Maven Version: 3.6.3 is not in the allowed range 3.9.'. This indicates that the current Maven version installed in the Dockerfile (3.6.3) is incompatible with the Flink repository's enforced Maven version requirement (>=3.9). To fix this issue, update the Dockerfile to install Maven version 3.9 or higher. Replace the command `apt install -y maven` with instructions to install Maven version 3.9+, such as downloading Maven manually from its official website or using a package that provides the correct version. Additionally, verify that the repository enforces other environment-specific rules and dependencies by consulting files such as README.md, CONTRIBUTING.md, or relevant setup documentation. Ensure all critical version dependencies are specified correctly.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "Retrieve information about environment setup and dependency requirements. Specifically, look for any files or documentation that specify Maven version requirements, such as README.md, CONTRIBUTING.md, or Dockerfile files in the repository. Additionally, collect setup instructions, such as the Maven installation process, and check for any environment.yml or requirements.txt files that might detail dependency versions.",
+  "build_image_status": false
+}

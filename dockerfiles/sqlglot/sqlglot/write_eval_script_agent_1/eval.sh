@@ -1,0 +1,18 @@
+#!/bin/bash
+set -uxo pipefail
+
+# Activate the pre-configured Conda environment
+source /opt/miniconda3/etc/profile.d/conda.sh
+conda activate testbed
+
+# Navigate to the project directory
+cd /testbed
+
+# Run the full test suite using the all-in-one command "make check"
+make check
+
+# Capture the exit code of the test command execution
+rc=$?
+
+# Output the exit code for analysis
+echo "OMNIGRIL_EXIT_CODE=$rc"

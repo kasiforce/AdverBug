@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The test could not execute successfully due to a missing dependency. The error message is: `FileNotFoundError: [Errno 2] No such file or directory: '/tmp/pip-build-env-jgc8yfd7/normal/bin/ninja'`. This suggests that `ninja` is a required build tool that was not installed in the Dockerfile. To fix this issue, you should add `ninja-build` to the list of packages installed via `apt`. Update the Dockerfile by including `ninja-build` in this section: `RUN apt update && apt install -y \\ <other dependencies> ninja-build`.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": true
+}

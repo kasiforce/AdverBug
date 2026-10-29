@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile fails at Step 6 while attempting to download and install Maven 3.9. This is due to the URL https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz returning a 404 error (resource not found). To fix the issue, update the Dockerfile to use the correct and verified URL for downloading Maven. Visit the official Maven download page (https://maven.apache.org/download.cgi) to identify the latest and functioning URL for Maven binaries. Update the Dockerfile as follows:\n\nRUN wget <correct_url_to_maven_binary> -O apache-maven.tar.gz && \\\n    tar xzvf apache-maven.tar.gz -C /opt && \\\n    ln -s /opt/apache-maven-<version> /opt/maven && \\\n    rm apache-maven.tar.gz\n\nReplace `<correct_url_to_maven_binary>` and `<version>` with the valid URL and version number available from the Apache Maven site.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

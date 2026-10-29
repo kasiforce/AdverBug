@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile is failing to build due to an error related to the Maven compiler plugin and Java version compatibility. Specifically, the error message states: 'Fatal error compiling: error: release version 17 not supported', which indicates that the project's Maven configuration is attempting to use Java 17 while the installed Java version is Java 11. To fix this, either upgrade the Java version in the Dockerfile to Java 17 (by replacing 'openjdk-11-jdk' with 'openjdk-17-jdk') or confirm the required Java version from the repository. Additionally, ensure that the following ENV variables are properly set for Java 17: 'ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64' and 'ENV PATH=$JAVA_HOME/bin:$PATH'.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "Retrieve documentation files from the repository, such as README.md, CONTRIBUTING.md, or any setup/testing instructions (if they exist) to verify the required Java version and any Maven configurations. Also, check for files like pom.xml or similar Maven configuration files to confirm the exact Java version required.",
+  "build_image_status": false
+}

@@ -1,0 +1,47 @@
+Here is the evaluation script tailored to your requirements:
+
+```bash
+<script>
+#!/bin/bash
+set -uxo pipefail
+
+# Activate Conda environment
+source /opt/miniconda3/etc/profile.d/conda.sh
+conda activate testbed
+
+# Change to the project directory
+cd /testbed
+
+# Run all tests in the project
+pytest --no-header -rA --tb=short -p no:cacheprovider -n auto tests/
+rc=$?  # Capture exit code of the test run
+
+# Echo the exit code for result tracking
+echo "OMNIGRIL_EXIT_CODE=$rc"
+</script>
+```
+
+### Details of the Script:
+1. **Environment Activation**:
+    - `source /opt/miniconda3/etc/profile.d/conda.sh` and `conda activate testbed` ensure that the Conda environment (`testbed`) is activated before running tests.
+
+2. **Project Directory**:
+    - `cd /testbed` moves into the directory where the `textual` repository is cloned.
+
+3. **Test Execution**:
+    - `pytest` command executes all tests under the `tests/` directory (as analyzed from the `Tests_Directory_Structure_from_tests/`).
+    - Parameters:
+        - `--no-header`: Minimizes header output for concise output.
+        - `-rA`: Reports all test statuses (pass, fail, skip).
+        - `--tb=short`: Uses short traceback for clearer results in case of errors.
+        - `-p no:cacheprovider`: Disables possible caching to ensure a clean test state.
+        - `-n auto`: Runs tests in parallel using optimal worker threads.
+
+4. **Exit Code Capture**:
+    - `$rc` captures the exit code immediately after `pytest`.
+    - `echo "OMNIGRIL_EXIT_CODE=$rc"` outputs the exit code for external evaluation.
+
+5. **Efficiency**:
+    - Tests are executed in one combined `pytest` command to minimize overhead and make better use of system resources (parallel test execution).
+
+This script is designed to leverage the provided Dockerfile environment while adhering to best practices and ensuring structured, meaningful output for test log analysis.

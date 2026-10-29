@@ -1,0 +1,57 @@
+# Use Ubuntu 22.04 base image
+FROM --platform=linux/x86_64 ubuntu:22.04
+
+# Set build arguments and environment variables
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time
+
+# Install essential system dependencies
+RUN apt update && apt install -y \
+    git \
+    wget \
+    curl \
+    build-essential \
+    python3 \
+    python3-pip \
+    python-is-python3 \
+    jq \
+    locales \
+    locales-all \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js (version 20.x to comply with package.json requirements)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt install -y nodejs && npm install -g npm@latest
+
+# Set locale to UTF-8
+RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+# Define default work directory
+WORKDIR /testbed/
+
+# Clone the repository and check out the specific commit
+RUN git clone https://github.com/playcanvas/engine.git /testbed/ && \
+    cd /testbed/ && \
+    git reset --hard bf92d12401dbf450fa24be4c58eb6c62a7772103 && \
+    git remote remove origin
+
+# Install project dependencies
+RUN npm install
+
+# Set up additional dependencies needed for testing
+RUN npm install --save-dev \
+    @types/webxr \
+    @webgpu/types \
+    @playcanvas/eslint-config \
+    chai \
+    esbuild \
+    canvas \
+    mocha \
+    sinon
+
+# Set PATH to prioritize Node.js and npm binaries
+ENV PATH=/usr/local/bin:/usr/bin:/bin:/testbed/node_modules/.bin:$PATH
+
+# Ensure bash is used by default
+SHELL ["/bin/bash", "-c"]

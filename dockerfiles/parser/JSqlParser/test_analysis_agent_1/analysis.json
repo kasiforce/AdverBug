@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile fails during the Maven dependency installation step due to an incompatible Maven version. The error message indicates that Maven version `3.6.3` is not in the allowed range `[3.9.0,)`. Update the Dockerfile to install Maven version `3.9.0` or higher. Specifically, replace the line `RUN apt install -y maven` with commands to download and install the required Maven version (e.g., `RUN wget https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz && tar -xvzf apache-maven-3.9.0-bin.tar.gz && mv apache-maven-3.9.0 /opt/maven && ln -s /opt/maven/bin/mvn /usr/bin/mvn`). Verify PATH is updated to include `/opt/maven/bin` if necessary.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+set -uxo pipefail
+
+# Activate the Conda environment
+source /opt/miniconda3/etc/profile.d/conda.sh
+conda activate testbed
+
+# Change to the working directory where the repository is cloned
+cd /testbed || { echo "Failed to change directory to /testbed"; exit 1; }
+
+# Execute the target test directory using pytest
+python -m pytest --no-header -rA --tb=no -p no:cacheprovider tests/
+rc=$?  # Capture the exit code of the pytest command
+
+# Echo the exit code for evaluation
+echo "OMNIGRIL_EXIT_CODE=$rc"

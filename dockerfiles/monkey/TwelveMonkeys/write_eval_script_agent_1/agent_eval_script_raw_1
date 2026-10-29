@@ -1,0 +1,16 @@
+```bash
+<script>
+#!/bin/bash
+set -uxo pipefail
+
+# Navigate to the working directory where the source code is checked out
+cd /testbed 
+
+# Execute the Maven test command
+mvn --batch-mode --no-transfer-progress test
+rc=$? # Capture the exit code
+
+# Echo the exit code for logging and analysis
+echo "OMNIGRIL_EXIT_CODE=$rc"
+</script>
+```

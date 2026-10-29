@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile failed to build due to an incompatible Maven version detected during the build process. The error message explicitly states that the Maven version detected is 3.6.3, which does not satisfy the required version range [3.9,). Steps to address: 1. Update the Dockerfile to install Maven version 3.9 or newer. This can be done by replacing the Maven installation command in the Dockerfile (`apt install -y maven`) with a custom installation process using a PPA or by downloading Maven directly from its official website and setting it up manually. 2. Ensure that the updated Maven version is included in the PATH environment variable by modifying the Dockerfile or verifying the existing line (`ENV PATH=/usr/share/maven/bin:$PATH`).",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

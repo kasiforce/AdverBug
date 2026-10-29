@@ -1,0 +1,2086 @@
+2026-10-19 13:06:34.011 | INFO     | Model API request cost info: input_tokens=1312, output_tokens=327, cost=0.006550
+2026-10-19 13:06:34.018 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-19 13:06:37.237 | INFO     | Model API request cost info: input_tokens=926, output_tokens=117, cost=0.003485
+2026-10-19 13:06:37.239 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('README.md', 'How to set up the environment and run the project?')",
+        "browse_file_for_environment_info('package.json', 'What dependencies and scripts are defined?')",
+        "browse_file_for_environment_info('.nvmrc', 'What Node.js version is specified?')",
+        "browse_file_for_environment_info('AGENTS.md', 'Is there any setup or environment configuration info here?')"
+    ],
+    "collected_information": null,
+    "terminate": false
+}
+2026-10-19 13:06:37.239 | DEBUG    | Extracted a valid json
+2026-10-19 13:06:37.244 | INFO     | entering browse
+2026-10-19 13:06:37.244 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/README.md ===
+# PlayCanvas Engine
+
+[![NPM Version](https://img.shields.io/npm/v/playcanvas)](https://www.npmjs.com/package/playcanvas)
+[![NPM Downloads](https://img.shields.io/npm/dw/playcanvas)](https://npmtrends.com/playcanvas)
+[![License](https://img.shields.io/npm/l/playcanvas)](https://github.com/playcanvas/engine/blob/main/LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white&color=black)](https://discord.gg/RSaMRzg)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white&color=black)](https://www.reddit.com/r/PlayCanvas)
+[![X](https://img.shields.io/badge/X-000000?style=flat&logo=x&logoColor=white&color=black)](https://x.com/intent/follow?screen_name=playcanvas)
+
+| [User Manual](https://developer.playcanvas.com/user-manual/engine/) | [API Reference](https://api.playcanvas.com/engine/) | [Examples](https://playcanvas.com/examples/) | [Blog](https://blog.playcanvas.com) | [Forum](https://forum.playcanvas.com) |
+
+PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device.
+
+[English](https://github.com/playcanvas/engine/blob/main/README.md)
+[中文](https://github.com/playcanvas/engine/blob/main/README-zh.md)
+[日本語](https://github.com/playcanvas/engine/blob/main/README-ja.md)
+[한글](https://github.com/playcanvas/engine/blob/main/README-kr.md)
+
+## Install
+
+```sh
+npm install playcanvas
+```
+
+Or scaffold a full project in seconds with [`create-playcanvas`](https://github.com/playcanvas/create-playcanvas):
+
+```sh
+npm create playcanvas@latest
+```
+
+## Usage
+
+Here's a super-simple Hello World example - a spinning cube!
+
+```js
+import {
+  Application,
+  Color,
+  Entity,
+  FILLMODE_FILL_WINDOW,
+  RESOLUTION_AUTO
+} from 'playcanvas';
+
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
+const app = new Application(canvas);
+
+// fill the available space at full resolution
+app.setCanvasFillMode(FILLMODE_FILL_WINDOW);
+app.setCanvasResolution(RESOLUTION_AUTO);
+
+// ensure canvas is resized when window changes size
+window.addEventListener('resize', () => app.resizeCanvas());
+
+// create box entity
+const box = new Entity('cube');
+box.addComponent('render', {
+  type: 'box'
+});
+app.root.addChild(box);
+
+// create camera entity
+const camera = new Entity('camera');
+camera.addComponent('camera', {
+  clearColor: new Color(0.1, 0.2, 0.3)
+});
+app.root.addChild(camera);
+camera.setPosition(0, 0, 3);
+
+// create directional light entity
+const light = new Entity('light');
+light.addComponent('light');
+app.root.addChild(light);
+light.setEulerAngles(45, 0, 0);
+
+// rotate the box according to the delta time since the last frame
+app.on('update', dt => box.rotate(10 * dt, 20 * dt, 30 * dt));
+
+app.start();
+```
+
+Want to play with the code yourself? Edit it on [CodePen](https://codepen.io/playcanvas/pen/NPbxMj).
+
+A full guide to setting up a local development environment based on the PlayCanvas Engine can be found [here](https://developer.playcanvas.com/user-manual/engine/standalone/).
+
+## Features
+
+PlayCanvas is a fully-featured game engine.
+
+* 🧊 **Graphics** - Advanced 2D + 3D graphics engine built on WebGL2 & WebGPU
+* 💠 **Gaussian Splatting** - First-class support for loading and rendering [3D Gaussian Splats](https://developer.playcanvas.com/user-manual/graphics/gaussian-splatting/)
+* 🥽 **XR** - Built-in support for immersive AR and VR experiences via [WebXR](https://developer.playcanvas.com/user-manual/xr/)
+* ⚛️ **Physics** - Full integration with 3D rigid-body physics engine [ammo.js](https://github.com/kripken/ammo.js)
+* 🏃 **Animation** - Powerful state-based animations for characters and arbitrary scene properties
+* 🎮 **Input** - Mouse, keyboard, touch and gamepad APIs
+* 🔊 **Sound** - 3D positional sounds built on the Web Audio API
+* 📦 **Assets** - Asynchronous streaming system built on [glTF 2.0](https://www.khronos.org/gltf/), [Draco](https://google.github.io/draco/) and [Basis](https://github.com/BinomialLLC/basis_universal) compression
+* 📜 **Scripts** - Write game behaviors in TypeScript or JavaScript
+
+## Ecosystem
+
+Build with PlayCanvas your way:
+
+| Package | Description |
+| ------- | ----------- |
+| [`playcanvas`](https://www.npmjs.com/package/playcanvas) | Core engine (you are here) |
+| [`@playcanvas/react`](https://www.npmjs.com/package/@playcanvas/react) | React renderer for PlayCanvas |
+| [`@playcanvas/web-components`](https://www.npmjs.com/package/@playcanvas/web-components) | Declarative 3D via Custom Elements |
+| [`create-playcanvas`](https://www.npmjs.com/package/create-playcanvas) | Project scaffolding CLI |
+| [PlayCanvas Editor](https://github.com/playcanvas/editor) | Browser-based visual editor |
+
+## Project Showcase
+
+[Many games and apps](https://github.com/playcanvas/awesome-playcanvas) have been published using the PlayCanvas engine. Here is a small selection:
+
+[![Seemore](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14705/319531/O4J4VU-image-25.jpg)](https://playcanv.as/p/MflWvdTW/) [![After The Flood](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/440410/98554E-image-25.jpg)](https://playcanv.as/p/44MRmJRU/) [![Casino](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/349824/U88HJQ-image-25.jpg)](https://playcanv.as/p/LpmXGUe6/)  
+[![Swooop](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/4763/TKYXB8-image-25.jpg)](https://playcanv.as/p/JtL2iqIH/) [![dev Archer](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/415995/10A5A9-image-25.jpg)](https://playcanv.as/p/JERg21J8/) [![Gaussian Splat Statues](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/1224723/266D9C-image-25.jpg)](https://playcanv.as/p/cLkf99ZV/)  
+[![Car](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/347824/7ULQ3Y-image-25.jpg)](https://playcanv.as/p/RqJJ9oU9/) [![Star-Lord](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/333626/BGQN9H-image-25.jpg)](https://playcanv.as/p/SA7hVBLt/) [![Global Illumination](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/4373/625081/6AB32D-image-25.jpg)](https://playcanv.as/p/ZV4PW6wr/ )
+
+You can see more games on the [PlayCanvas website](https://playcanvas.com/explore).
+
+## Users
+
+PlayCanvas is used by leading companies in video games, advertising and visualization such as:  
+**Animech, Arm, BMW, Disney, Facebook, Famobi, Funday Factory, IGT, King, Miniclip, Leapfrog, Mojiworks, Mozilla, Nickelodeon, Nordeus, NOWWA, PikPok, PlaySide Studios, Polaris, Product Madness, Samsung, Snap, Spry Fox, Zeptolab, Zynga**
+
+## How to build
+
+Ensure you have [Node.js 18+](https://nodejs.org) installed. Then, install all of the required Node.js dependencies:
+
+```sh
+npm install
+```
+
+Now you can run various build options:
+
+| Command | Description | Outputs To |
+| ------- | ----------- | ---------- |
+| `npm run build` | Build all engine flavors and type declarations | `build` |
+| `npm run docs` | Build engine [API reference docs](https://api.playcanvas.com/engine/) | `docs` |
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/README.md ===
+2026-10-19 13:06:37.244 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:06:50.349 | INFO     | Model API request cost info: input_tokens=2541, output_tokens=240, cost=0.008752
+2026-10-19 13:06:50.350 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:06:50.350 | INFO     | ******
+2026-10-19 13:06:50.350 | INFO     | [Key Information from README.md]
+- **Environment Setup:**
+  - Ensure **Node.js 18+** is installed. [Download Node.js 18+](https://nodejs.org)
+  - Install necessary Node.js dependencies:
+    ```sh
+    npm install
+    ```
+  
+- **Project Build Commands:**
+  - Build all engine flavors and type declarations:
+    ```sh
+    npm run build
+    ```
+    - Output: `build` directory.
+  - Build API reference documentation:
+    ```sh
+    npm run docs
+    ```
+    - Output: `docs` directory.
+
+- **Dependencies:**
+  - Core package required: `playcanvas`.
+    - Command to install: 
+      ```sh
+      npm install playcanvas
+      ```
+
+- **Optional Project Scaffolding:**
+  - Use `create-playcanvas` for quickly setting up a PlayCanvas project:
+    ```sh
+    npm create playcanvas@latest
+    ```
+
+- **Runtime Requirements:**
+  - **Node.js version:** 18 or higher.
+
+No testing commands or testing setup instructions are described in the file.
+[/Key Information]
+2026-10-19 13:06:50.351 | INFO     | ******
+2026-10-19 13:06:50.351 | DEBUG    | Result of dispatch_intent: ('[Key Information from README.md]\n- **Environment Setup:**\n  - Ensure **Node.js 18+** is installed. [Download Node.js 18+](https://nodejs.org)\n  - Install necessary Node.js dependencies:\n    ```sh\n    npm install\n    ```\n  \n- **Project Build Commands:**\n  - Build all engine flavors and type declarations:\n    ```sh\n    npm run build\n    ```\n    - Output: `build` directory.\n  - Build API reference documentation:\n    ```sh\n    npm run docs\n    ```\n    - Output: `docs` directory.\n\n- **Dependencies:**\n  - Core package required: `playcanvas`.\n    - Command to install: \n      ```sh\n      npm install playcanvas\n      ```\n\n- **Optional Project Scaffolding:**\n  - Use `create-playcanvas` for quickly setting up a PlayCanvas project:\n    ```sh\n    npm create playcanvas@latest\n    ```\n\n- **Runtime Requirements:**\n  - **Node.js version:** 18 or higher.\n\nNo testing commands or testing setup instructions are described in the file.\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:06:50.351 | INFO     | entering browse
+2026-10-19 13:06:50.351 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/package.json ===
+{
+  "name": "playcanvas",
+  "version": "2.24.0-beta.16",
+  "packageManager": "npm@11.19.1",
+  "author": "PlayCanvas <support@playcanvas.com>",
+  "homepage": "https://playcanvas.com",
+  "description": "Open-source WebGL/WebGPU 3D engine for the web",
+  "keywords": [
+    "3d",
+    "3d-engine",
+    "ar",
+    "ecs",
+    "engine",
+    "game",
+    "game-engine",
+    "gaussian-splatting",
+    "gltf",
+    "html5",
+    "javascript",
+    "physics",
+    "playcanvas",
+    "renderer",
+    "scene-graph",
+    "typescript",
+    "vr",
+    "webgl",
+    "webgl2",
+    "webgpu",
+    "webxr"
+  ],
+  "license": "MIT",
+  "main": "build/playcanvas.js",
+  "module": "build/playcanvas/src/index.js",
+  "types": "build/playcanvas.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/playcanvas.d.ts",
+      "development": {
+        "import": "./build/playcanvas.dbg/src/index.js",
+        "require": "./build/playcanvas.dbg.js"
+      },
+      "profiler": {
+        "import": "./build/playcanvas.prf/src/index.js",
+        "require": "./build/playcanvas.prf.js"
+      },
+      "production": {
+        "import": "./build/playcanvas/src/index.js",
+        "require": "./build/playcanvas.js"
+      },
+      "default": {
+        "import": "./build/playcanvas/src/index.js",
+        "require": "./build/playcanvas.js"
+      }
+    },
+    "./debug": {
+      "types": "./build/playcanvas.d.ts",
+      "import": "./build/playcanvas.dbg/src/index.js",
+      "require": "./build/playcanvas.dbg.js"
+    },
+    "./profiler": {
+      "types": "./build/playcanvas.d.ts",
+      "import": "./build/playcanvas.prf/src/index.js",
+      "require": "./build/playcanvas.prf.js"
+    },
+    "./build/*": "./build/*",
+    "./scripts/*": "./scripts/*"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/playcanvas/engine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/playcanvas/engine.git"
+  },
+  "files": [
+    "build/playcanvas*",
+    "build/playcanvas*/*",
+    "scripts",
+    "README*.md"
+  ],
+  "dependencies": {
+    "@types/webxr": "^0.5.24",
+    "@webgpu/types": "^0.1.70"
+  },
+  "devDependencies": {
+    "@playcanvas/eslint-config": "3.0.0-beta.8",
+    "@rollup/plugin-strip": "3.0.4",
+    "@types/node": "24.13.5",
+    "acorn": "8.18.0",
+    "c8": "12.0.0",
+    "canvas": "3.2.3",
+    "chai": "6.2.2",
+    "esbuild": "0.28.2",
+    "esbuild-visualizer": "0.7.0",
+    "eslint": "9.39.5",
+    "fflate": "0.8.3",
+    "globals": "17.12.0",
+    "jscc": "1.1.1",
+    "jsdom": "30.1.0",
+    "mocha": "12.0.2",
+    "nise": "6.1.5",
+    "publint": "0.3.24",
+    "rollup": "4.63.3",
+    "rollup-plugin-dts": "6.5.1",
+    "serve": "14.2.6",
+    "sinon": "22.1.0",
+    "turbo": "2.10.13",
+    "typedoc": "0.28.20",
+    "typedoc-plugin-mdn-links": "5.1.1",
+    "typedoc-plugin-merge-modules": "7.0.0",
+    "typedoc-plugin-missing-exports": "4.1.4",
+    "typescript": "5.9.3",
+    "webgpu": "0.6.1"
+  },
+  "scripts": {
+    "build": "turbo run build:all",
+    "build:types": "node build.mjs --type=types",
+    "build:rel:umd": "node build.mjs --type=rel --format=umd",
+    "build:rel:esm": "node build.mjs --type=rel --format=esm",
+    "build:dbg:umd": "node build.mjs --type=dbg --format=umd",
+    "build:dbg:esm": "node build.mjs --type=dbg --format=esm",
+    "build:prf:umd": "node build.mjs --type=prf --format=umd",
+    "build:prf:esm": "node build.mjs --type=prf --format=esm",
+    "build:min:umd": "node build.mjs --type=min --format=umd",
+    "build:min:esm": "node build.mjs --type=min --format=esm",
+    "build:treemap": "node build.mjs --treemap",
+    "build:treenet": "node build.mjs --treenet",
+    "build:treesun": "node build.mjs --treesun",
+    "build:sourcemaps": "node build.mjs --type=rel --format=esm --sourcemaps",
+    "watch": "turbo run watch:all",
+    "watch:rel:umd": "node build.mjs --type=rel --format=umd --watch",
+    "watch:rel:esm": "node build.mjs --type=rel --format=esm --watch",
+    "watch:dbg:umd": "node build.mjs --type=dbg --format=umd --watch",
+    "watch:dbg:esm": "node build.mjs --type=dbg --format=esm --watch",
+    "watch:prf:umd": "node build.mjs --type=prf --format=umd --watch",
+    "watch:prf:esm": "node build.mjs --type=prf --format=esm --watch",
+    "watch:min:umd": "node build.mjs --type=min --format=umd --watch",
+    "watch:min:esm": "node build.mjs --type=min --format=esm --watch",
+    "watch:types": "node build.mjs --type=types --watch",
+    "clean": "node build.mjs --clean",
+    "docs": "typedoc",
+    "docs:scripts": "npm run build:types && typedoc --options typedoc.scripts.config.mjs",
+    "lint": "eslint scripts src test utils build.mjs eslint.config.mjs typedoc.scripts.config.mjs",
+    "lint:fix": "npm run lint -- --fix",
+    "publint": "publint --level error",
+    "serve": "serve build -l 51000 --cors",
+    "test": "mocha --node-option expose-gc --ignore \"test/assets/scripts/*.js\" --ignore \"test/bundles/**\" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --recursive --require test/fixtures.mjs --timeout 5000",
+    "test:webgpu": "mocha --node-option expose-gc --ignore \"test/assets/scripts/*.js\" --ignore \"test/bundles/**\" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --ignore test/platform/graphics/shader.test.mjs --recursive --require test/fixtures.mjs --require test/webgpu-device.mjs --timeout 5000 --exit",
+    "test:build": "mocha --recursive \"test/bundles/**/*.test.mjs\" --timeout 30000",
+    "test:coverage": "c8 npm test",
+    "test:types": "tsc --pretty false build/playcanvas.d.ts && tsc -p test/type-tests --pretty false"
+  },
+  "engines": {
+    "node": ">=18.3.0"
+  }
+}
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/package.json ===
+2026-10-19 13:06:50.351 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:07:03.752 | INFO     | Model API request cost info: input_tokens=2374, output_tokens=1284, cost=0.018775
+2026-10-19 13:07:03.753 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:07:03.753 | INFO     | ******
+2026-10-19 13:07:03.753 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/package.json]
+- **Dependencies**:
+  - `@types/webxr`: ^0.5.24
+  - `@webgpu/types`: ^0.1.70
+
+- **DevDependencies**:
+  - `@playcanvas/eslint-config`: 3.0.0-beta.8
+  - `@rollup/plugin-strip`: 3.0.4
+  - `@types/node`: 24.13.5
+  - `acorn`: 8.18.0
+  - `c8`: 12.0.0
+  - `canvas`: 3.2.3
+  - `chai`: 6.2.2
+  - `esbuild`: 0.28.2
+  - `esbuild-visualizer`: 0.7.0
+  - `eslint`: 9.39.5
+  - `fflate`: 0.8.3
+  - `globals`: 17.12.0
+  - `jscc`: 1.1.1
+  - `jsdom`: 30.1.0
+  - `mocha`: 12.0.2
+  - `nise`: 6.1.5
+  - `publint`: 0.3.24
+  - `rollup`: 4.63.3
+  - `rollup-plugin-dts`: 6.5.1
+  - `serve`: 14.2.6
+  - `sinon`: 22.1.0
+  - `turbo`: 2.10.13
+  - `typedoc`: 0.28.20
+  - `typedoc-plugin-mdn-links`: 5.1.1
+  - `typedoc-plugin-merge-modules`: 7.0.0
+  - `typedoc-plugin-missing-exports`: 4.1.4
+  - `typescript`: 5.9.3
+  - `webgpu`: 0.6.1
+
+- **Scripts**:
+  - `build`: turbo run build:all
+  - `build:types`: node build.mjs --type=types
+  - `build:rel:umd`: node build.mjs --type=rel --format=umd
+  - `build:rel:esm`: node build.mjs --type=rel --format=esm
+  - `build:dbg:umd`: node build.mjs --type=dbg --format=umd
+  - `build:dbg:esm`: node build.mjs --type=dbg --format=esm
+  - `build:prf:umd`: node build.mjs --type=prf --format=umd
+  - `build:prf:esm`: node build.mjs --type=prf --format=esm
+  - `build:min:umd`: node build.mjs --type=min --format=umd
+  - `build:min:esm`: node build.mjs --type=min --format=esm
+  - `build:treemap`: node build.mjs --treemap
+  - `build:treenet`: node build.mjs --treenet
+  - `build:treesun`: node build.mjs --treesun
+  - `build:sourcemaps`: node build.mjs --type=rel --format=esm --sourcemaps
+  - `watch`: turbo run watch:all
+  - `watch:rel:umd`: node build.mjs --type=rel --format=umd --watch
+  - `watch:rel:esm`: node build.mjs --type=rel --format=esm --watch
+  - `watch:dbg:umd`: node build.mjs --type=dbg --format=umd --watch
+  - `watch:dbg:esm`: node build.mjs --type=dbg --format=esm --watch
+  - `watch:prf:umd`: node build.mjs --type=prf --format=umd --watch
+  - `watch:prf:esm`: node build.mjs --type=prf --format=esm --watch
+  - `watch:min:umd`: node build.mjs --type=min --format=umd --watch
+  - `watch:min:esm`: node build.mjs --type=min --format=esm --watch
+  - `watch:types`: node build.mjs --type=types --watch
+  - `clean`: node build.mjs --clean
+  - `docs`: typedoc
+  - `docs:scripts`: npm run build:types && typedoc --options typedoc.scripts.config.mjs
+  - `lint`: eslint scripts src test utils build.mjs eslint.config.mjs typedoc.scripts.config.mjs
+  - `lint:fix`: npm run lint -- --fix
+  - `publint`: publint --level error
+  - `serve`: serve build -l 51000 --cors
+  - `test`: mocha --node-option expose-gc --ignore "test/assets/scripts/*.js" --ignore "test/bundles/**" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --recursive --require test/fixtures.mjs --timeout 5000
+  - `test:webgpu`: mocha --node-option expose-gc --ignore "test/assets/scripts/*.js" --ignore "test/bundles/**" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --ignore test/platform/graphics/shader.test.mjs --recursive --require test/fixtures.mjs --require test/webgpu-device.mjs --timeout 5000 --exit
+  - `test:build`: mocha --recursive "test/bundles/**/*.test.mjs" --timeout 30000
+  - `test:coverage`: c8 npm test
+  - `test:types`: tsc --pretty false build/playcanvas.d.ts && tsc -p test/type-tests --pretty false
+[/Key Information]
+2026-10-19 13:07:03.754 | INFO     | ******
+2026-10-19 13:07:03.754 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/package.json]\n- **Dependencies**:\n  - `@types/webxr`: ^0.5.24\n  - `@webgpu/types`: ^0.1.70\n\n- **DevDependencies**:\n  - `@playcanvas/eslint-config`: 3.0.0-beta.8\n  - `@rollup/plugin-strip`: 3.0.4\n  - `@types/node`: 24.13.5\n  - `acorn`: 8.18.0\n  - `c8`: 12.0.0\n  - `canvas`: 3.2.3\n  - `chai`: 6.2.2\n  - `esbuild`: 0.28.2\n  - `esbuild-visualizer`: 0.7.0\n  - `eslint`: 9.39.5\n  - `fflate`: 0.8.3\n  - `globals`: 17.12.0\n  - `jscc`: 1.1.1\n  - `jsdom`: 30.1.0\n  - `mocha`: 12.0.2\n  - `nise`: 6.1.5\n  - `publint`: 0.3.24\n  - `rollup`: 4.63.3\n  - `rollup-plugin-dts`: 6.5.1\n  - `serve`: 14.2.6\n  - `sinon`: 22.1.0\n  - `turbo`: 2.10.13\n  - `typedoc`: 0.28.20\n  - `typedoc-plugin-mdn-links`: 5.1.1\n  - `typedoc-plugin-merge-modules`: 7.0.0\n  - `typedoc-plugin-missing-exports`: 4.1.4\n  - `typescript`: 5.9.3\n  - `webgpu`: 0.6.1\n\n- **Scripts**:\n  - `build`: turbo run build:all\n  - `build:types`: node build.mjs --type=types\n  - `build:rel:umd`: node build.mjs --type=rel --format=umd\n  - `build:rel:esm`: node build.mjs --type=rel --format=esm\n  - `build:dbg:umd`: node build.mjs --type=dbg --format=umd\n  - `build:dbg:esm`: node build.mjs --type=dbg --format=esm\n  - `build:prf:umd`: node build.mjs --type=prf --format=umd\n  - `build:prf:esm`: node build.mjs --type=prf --format=esm\n  - `build:min:umd`: node build.mjs --type=min --format=umd\n  - `build:min:esm`: node build.mjs --type=min --format=esm\n  - `build:treemap`: node build.mjs --treemap\n  - `build:treenet`: node build.mjs --treenet\n  - `build:treesun`: node build.mjs --treesun\n  - `build:sourcemaps`: node build.mjs --type=rel --format=esm --sourcemaps\n  - `watch`: turbo run watch:all\n  - `watch:rel:umd`: node build.mjs --type=rel --format=umd --watch\n  - `watch:rel:esm`: node build.mjs --type=rel --format=esm --watch\n  - `watch:dbg:umd`: node build.mjs --type=dbg --format=umd --watch\n  - `watch:dbg:esm`: node build.mjs --type=dbg --format=esm --watch\n  - `watch:prf:umd`: node build.mjs --type=prf --format=umd --watch\n  - `watch:prf:esm`: node build.mjs --type=prf --format=esm --watch\n  - `watch:min:umd`: node build.mjs --type=min --format=umd --watch\n  - `watch:min:esm`: node build.mjs --type=min --format=esm --watch\n  - `watch:types`: node build.mjs --type=types --watch\n  - `clean`: node build.mjs --clean\n  - `docs`: typedoc\n  - `docs:scripts`: npm run build:types && typedoc --options typedoc.scripts.config.mjs\n  - `lint`: eslint scripts src test utils build.mjs eslint.config.mjs typedoc.scripts.config.mjs\n  - `lint:fix`: npm run lint -- --fix\n  - `publint`: publint --level error\n  - `serve`: serve build -l 51000 --cors\n  - `test`: mocha --node-option expose-gc --ignore "test/assets/scripts/*.js" --ignore "test/bundles/**" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --recursive --require test/fixtures.mjs --timeout 5000\n  - `test:webgpu`: mocha --node-option expose-gc --ignore "test/assets/scripts/*.js" --ignore "test/bundles/**" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --ignore test/platform/graphics/shader.test.mjs --recursive --require test/fixtures.mjs --require test/webgpu-device.mjs --timeout 5000 --exit\n  - `test:build`: mocha --recursive "test/bundles/**/*.test.mjs" --timeout 30000\n  - `test:coverage`: c8 npm test\n  - `test:types`: tsc --pretty false build/playcanvas.d.ts && tsc -p test/type-tests --pretty false\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:07:03.754 | INFO     | entering browse
+2026-10-19 13:07:03.754 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/.nvmrc ===
+18
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/.nvmrc ===
+2026-10-19 13:07:03.754 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:07:14.821 | INFO     | Model API request cost info: input_tokens=545, output_tokens=38, cost=0.001743
+2026-10-19 13:07:14.823 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:07:14.823 | INFO     | ******
+2026-10-19 13:07:14.823 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/.nvmrc]
+- Node.js version specified: 18
+[/Key Information]
+2026-10-19 13:07:14.823 | INFO     | ******
+2026-10-19 13:07:14.823 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/.nvmrc]\n- Node.js version specified: 18\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:07:14.823 | INFO     | entering browse
+2026-10-19 13:07:14.824 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/AGENTS.md ===
+# Agent Guidelines for PlayCanvas Engine
+
+This document contains rules, conventions, and best practices for AI agents and developers working on the PlayCanvas Engine codebase.
+
+## Project Overview
+
+PlayCanvas is an open-source WebGL/WebGPU game engine written in JavaScript. It's a performance-critical library used by thousands of developers worldwide.
+
+- **Language**: JavaScript (ES2022) with JSDoc for TypeScript type definitions
+- **Module System**: ES Modules
+- **Node Version**: >=18.3.0 (see `engines` in `package.json`)
+- **Build System**: esbuild for the JavaScript bundles (`build.mjs`); TypeScript plus Rollup (`rollup-plugin-dts`) for the bundled `.d.ts`
+- **Testing**: Mocha + Chai + Sinon
+- **Linting**: ESLint with @playcanvas/eslint-config
+- **License**: MIT
+
+## General Code Rules
+
+### 1. Code Style and Formatting
+
+- **Follow ESLint rules**: Always run `npm run lint` before committing
+  - **Important**: Only fix lint issues in code you are actively modifying or creating
+  - Do not fix pre-existing lint issues in unrelated code unless specifically asked
+  - Focus on ensuring new and refactored code is lint-free
+- **Use JSDoc comments**: All public APIs must have comprehensive JSDoc documentation
+- **Module imports**: Use ES6 import/export syntax
+- **Naming conventions**:
+  - Classes: PascalCase (e.g., `GraphicsDevice`, `Entity`)
+  - Functions/methods: camelCase (e.g., `createShader`, `setPosition`)
+  - Constants: UPPER_SNAKE_CASE (e.g., `PIXELFORMAT_RGBA8`)
+
+### 2. File Organization
+
+- **Source files**: All engine source code goes in `src/`
+- **Directory structure**:
+  - `src/core/` - Core utilities and data structures
+  - `src/platform/` - Platform-specific code (graphics, audio, input)
+  - `src/scene/` - Scene graph, rendering, materials, shaders
+  - `src/framework/` - High-level components and application framework
+  - `src/extras/` - Optional extras and utilities
+  - `src/deprecated/` - Side-effect-free aliases for deprecated APIs (see section 9)
+- **Build output**: Generated files go in `build/` (never edit these directly)
+- **Examples**: Live in `examples/src/examples/`
+- **Tests**: Unit tests go in `test/` with `.mjs` extension
+- **File naming**: Module file names should match the main class they contain
+  - Use kebab-case for file names (e.g., `graphics-device.js` for `GraphicsDevice` class)
+  - If a class is renamed, the file should be renamed to match
+  - Multiple related classes can share a file if they're tightly coupled
+
+#### Module Dependency Hierarchy
+
+The codebase follows a strict hierarchical structure to maintain clean architecture:
+
+```
+core → platform → scene → framework
+```
+
+**Rules**:
+- Lower-level modules **cannot import** from higher-level modules
+- Lower-level modules **cannot use instances** from higher-level modules
+- Example: `core/` cannot import from `platform/`, `scene/`, or `framework/`
+- Example: `scene/` cannot import from `framework/`
+
+**Known Exception**:
+- `CameraComponent` (from `framework/`) is currently used in multiple places at the `scene/` level
+- **Do not introduce new exceptions** unless explicitly requested and confirmed
+- When in doubt, ask before breaking the hierarchy
+
+This hierarchy ensures:
+- Clean separation of concerns
+- Prevents circular dependencies
+- Makes the codebase more maintainable and testable
+
+### 3. Documentation Standards
+
+- **JSDoc is mandatory** for all public APIs:
+  ```javascript
+  /**
+   * Brief description of the function.
+   *
+   * @param {string} name - Parameter description.
+   * @param {number} [optional=0] - Optional parameter with default.
+   * @returns {boolean} Return value description.
+   * @example
+   * const result = myFunction('test', 5);
+   */
+  ```
+- **Include examples** for complex APIs
+- **Document side effects**: Mention if a function modifies state
+- **Link related APIs**: Use `@see` tags to cross-reference
+- **Mark deprecations**: Use `@deprecated` with migration instructions
+
+### 4. TypeScript Definitions
+
+- JSDoc comments are used to generate TypeScript definitions
+- Run `npm run build:types` to generate `.d.ts` files
+- Test types with `npm run test:types`. This compiles the bundled declarations and the consumer-side type tests in `test/type-tests`, which check inference and augmentation against `build/playcanvas.d.ts`
+- Use proper JSDoc type annotations:
+  - `@type {TypeName}` for variables
+  - `@param {TypeName} paramName` for parameters
+  - `@returns {TypeName}` for return values
+  - Support for generics, unions, and complex types
+- **Type-only imports**: Use `@import` for types referenced in JSDoc comments
+  - These imports are only for type information, not runtime code
+  - Place at the top of the file in a JSDoc comment block
+  - Example:
+    ```javascript
+    /**
+     * @import { Texture } from './texture.js'
+     * @import { Shader } from './shader.js'
+     */
+    ```
+  - These help TypeScript understand types without adding runtime dependencies
+
+### 5. Testing
+
+- **Write tests** for all new features and bug fixes if instructed
+- **Test location**: `test/` directory, organized by module
+- **Test naming**: Use descriptive names that explain what is being tested
+- **Run tests**: `npm test` (or `npm run test:coverage` for coverage)
+- **Bundle tests**: `test/bundles/` checks the built bundles (exports, tree shaking, live bindings). Run `npm run build` first, then `npm run test:build`
+- **Test structure**:
+  ```javascript
+  describe('ClassName', function () {
+      describe('#methodName', function () {
+          it('should do something specific', function () {
+              // Test implementation
+          });
+      });
+  });
+  ```
+
+### 6. Performance Considerations
+
+This is a **performance-critical** engine. Always consider:
+
+- **Avoid allocations in hot paths**: Reuse objects, use object pools
+- **Minimize function calls**: Inline critical code when necessary
+- **Cache property access**: Store frequently accessed properties in local variables
+- **Use typed arrays**: For numeric data (Float32Array, Uint8Array, etc.)
+
+### 7. Graphics API Considerations
+
+- **Multi-backend support**: Code must work with both WebGL2 and WebGPU
+- **Use abstraction layers**: Don't call WebGL/WebGPU APIs directly in high-level code
+- **Shader code**: Maintain both GLSL and WGSL versions
+  - GLSL: `src/scene/shader-lib/glsl/`
+  - WGSL: `src/scene/shader-lib/wgsl/`
+- **NullGraphicsDevice**: A dummy graphics device for headless/testing scenarios
+  - When adding public API methods to `GraphicsDevice`, add stub implementations to `NullGraphicsDevice`
+  - Stub methods should be empty or return safe default values to avoid crashes
+  - This ensures the engine can run without a real graphics backend for testing/server-side use
+
+## Project-Specific Rules
+
+### 8. API Stability and Deprecation
+
+- **Backward compatibility matters**: Breaking changes require major version bump
+- **Deprecation process**:
+  1. Mark API as `@deprecated` with alternatives
+  2. Add console warning in development builds
+  3. Keep deprecated code for at least one major version
+  4. Consider removing jsdocs completely
+- **Never remove public APIs** without proper deprecation cycle
+
+### 9. Build System
+
+- **Source is in `src/`**: Never edit files in `build/` directory
+- **Module exports**: Main exports defined in `src/index.js`
+- **Bundler**: `build.mjs` drives esbuild (`utils/esbuild-build-target.mjs`). Each build type (`rel`, `dbg`, `prf`, `min`) is emitted as a UMD bundle (`build/playcanvas*.js`) and an ESM bundle (`build/playcanvas*.mjs`). The `rel`, `dbg` and `prf` ESM builds also emit an unbundled module tree (`build/playcanvas/src/`, `build/playcanvas.dbg/src/`, `build/playcanvas.prf/src/`), which is what `import 'playcanvas'` resolves to
+- **Type declarations**: `npm run build:types` runs `tsc` over the JSDoc, patches the output with `utils/plugins/rollup-types-fixup.mjs` (hand-declared `StandardMaterial` accessors, optional `ScriptType` lifecycle methods, and the `AssetMap` typedef rewritten into an augmentable interface) and bundles it with Rollup (`rollup-plugin-dts`) into `build/playcanvas.d.ts`
+- **Debug stripping**: the `Debug`, `DebugHelper`, `DebugGraphics` and `WebgpuDebug` calls listed in `STRIP_FUNCTIONS` (`utils/esbuild-build-target.mjs`) are removed from every build except `dbg`. `// #if _DEBUG` blocks survive only in `dbg`; `// #if _PROFILER` blocks survive in `dbg` and `prf`
+- **Tree shaking**: `package.json` declares `"sideEffects": false`, so consumers' bundlers drop every module they don't import from. Therefore:
+  - Never add module-scope side effects (top-level calls, prototype patches, registry writes, `window` access). Do registration inside constructors or functions
+  - Deprecated constant aliases and helper functions go in `src/deprecated/deprecated.js`, which must stay free of module-scope side effects
+  - Deprecated prototype shims (e.g. `Object.defineProperty(Foo.prototype, ...)`) go at the bottom of the module that defines the class, so they ship only when that class does
+  - `test/bundles/treeshake.test.mjs` guards both rules
+
+### 10. Dependencies
+
+- **Minimal dependencies**: Avoid adding new dependencies unless absolutely necessary
+- **Types only**: `@types/*` and `@webgpu/types` are the main dependencies
+
+### 11. Error Handling
+
+- **Debug class**: Use `Debug` class (`src/core/debug.js`) for logging and assertions
+  - Methods include: `assert()`, `warn()`, `warnOnce()`, `error()`, `errorOnce()`, `deprecated()`, `removed()`, `log()`, `logOnce()`, `trace()`
+  - **Important**: All Debug methods are stripped out in production builds
+  - Use `*Once()` variants to avoid spam in loops or frequent calls
+  - Don't use Debug in hot paths - even in debug builds, excessive logging impacts performance
+- **DebugHelper class**: Helper methods for debugging (also stripped in production)
+  - `setName()`, `setLabel()`, `setDestroyed()` for marking objects
+
+### 12. Code Comments
+
+- **Explain "why" not "what"**: Code should be self-documenting, but comments help with quick understanding
+- **Complex algorithms**: Explain the approach and any non-obvious optimizations
+- **TODOs**: Include issue reference or context
+  ```javascript
+  // TODO: Optimize this when texture streaming is implemented (#1234)
+  ```
+- **Avoid very obvious comments**: Don't state what the code clearly does
+
+### 13. Commit and PR Guidelines
+
+- **Clear commit messages**: Use conventional commits format
+  - `feat: Add feature description`
+  - `fix: Bug fix description`
+  - `perf: Performance improvement description`
+  - `docs: Documentation update`
+  - `refactor: Code refactoring`
+  - `test: Test updates`
+- **Reference issues**: Include issue number in commit message in format 'Fixed #1234'
+- **Small, focused commits**: Each commit should be a logical unit
+- **No generated files**: Don't commit files in `build/` directory
+
+### 14. Browser Compatibility
+
+- **Modern browsers only**: ES6+ features are allowed
+- **No polyfills in engine**: Users can add their own if needed
+- **WebGL 2.0 minimum**: WebGL 1.0 is not supported
+- **WebGPU support**: Must maintain compatibility with WebGPU API
+
+## Common Patterns
+
+### 15. Object Creation
+
+```javascript
+// Prefer class syntax with TypeScript-like property declarations
+class MyClass {
+    /**
+     * @type {GraphicsDevice}
+     */
+    device;
+
+    /**
+     * @type {string}
+     */
+    name;
+
+    constructor(device, options = {}) {
+        this.device = device;
+        this.name = options.name ?? 'default';
+    }
+
+    destroy() {
+        // Clean up resources
+        this.device = null;
+    }
+}
+```
+
+### 16. Resource Management
+
+```javascript
+// Always provide destroy() method for objects holding resources
+class Resource {
+    constructor() {
+        this._resource = createResource();
+    }
+
+    destroy() {
+        this._resource?.destroy();
+        this._resource = null;
+    }
+}
+```
+
+### 17. Root Cause Analysis
+
+Always address the root cause of issues rather than implementing workarounds that hide or suppress problems:
+
+- **Identify the root cause**: When you encounter an error or unexpected behavior, investigate why it's happening
+- **Don't mask symptoms**: Avoid solutions that simply hide errors or suppress warnings without fixing the underlying issue
+- **Fix at the source**: When you identify the root cause, fix it where the problem originates, not where it manifests
+
+## Things to Avoid
+
+### 18. Anti-Patterns
+
+- **Don't use `var`**: Use `const` or `let` (except in legacy `scripts/` directory)
+- **Avoid `any` types**: Be specific in JSDoc type annotations
+- **No global state**: Everything should be instance-based
+  - Exception: Module-scope variables for local optimization are allowed (e.g., reusable Mat4 instances)
+  - These must never be exported and should only be used within the module
+- **Don't bypass abstractions**: Use the platform API, not direct WebGL/WebGPU calls
+- **Don't suppress linter warnings**: Fix the underlying issue
+
+### 19. Performance Anti-Patterns
+
+- **No allocations in render loop**: Pre-allocate and reuse if feasible
+- **Don't use `try/catch` in hot paths**: It prevents optimizations
+- **No string concatenation in loops**: Build arrays and join
+- **Don't create functions in loops**: Define functions outside
+
+## AI Agent-Specific Guidelines
+
+### 20. When Making Changes
+
+- **Read existing code first**: Understand the context and patterns
+- **Follow existing style**: Match the style of surrounding code
+- **Lint your changes**: Run `npm run lint`
+- **Update documentation**: Modify JSDoc comments when changing APIs
+- **Consider performance**: This is a real-time engine, every microsecond counts
+- **Check both WebGL and WebGPU**: Changes may affect both backends
+
+### 21. When Creating Examples
+
+- Examples go in `examples/src/examples/`
+- Follow existing example structure (see other `.example.mjs` files)
+- Include descriptive comments
+- Keep examples simple and focused on one feature
+
+### 22. When Authoring Scripts
+
+- Reusable scripts live in `scripts/esm/` and expose their configuration as script attributes
+- **Attribute enums must use readable string values**: declare them as `@enum {string}` with
+  human-readable values (e.g., `LINEAR: 'linear'`), never as raw numeric engine constants
+  - Numeric constant values (e.g., `PIXELFORMAT_RGBA16F = 12`) are implementation details that
+    can change between releases and make attribute data unreadable (`"renderFormat": 12`)
+  - Import the engine constants and resolve the strings via lookup maps where the script applies
+    them (see `scripts/esm/camera-frame.mjs` for the pattern)
+  - Keep accepting raw numeric values (pass them through unchanged) so existing attribute data
+    continues to work
+
+### 23. When Writing PR Descriptions
+
+- **Format as a single code block**: Always deliver PR descriptions wrapped in triple backticks for easy copy/paste
+- **Structure**:
+  - Brief title and overview
+  - Bullet points for functionality changes
+  - Technical details section (if relevant)
+  - **Clearly list all public API changes** with before/after code examples
+  - List updated examples (if applicable)
+  - Performance considerations (if relevant)
+- **Focus on user-facing changes**: What developers using the engine will see/use
+- **Be concise but complete**: Include all breaking changes and new APIs
+- **Avoid excessive detail**: Group related changes together, don't list every tiny implementation detail or internal refactoring
+- **Only document public APIs**: Do not list functionality tagged with `@ignore`, `@protected`, or `@private` as these are internal implementation details
+
+## Resources
+
+- **API Reference**: https://api.playcanvas.com/engine/
+- **User Manual**: https://developer.playcanvas.com/user-manual/engine/
+- **Developer Site**: https://github.com/playcanvas/developer-site
+  - For large features, ask to add documentation to the User Manual
+  - Manual pages are Markdown files in the `docs/` directory
+- **Examples**: https://playcanvas.github.io
+- **Forum**: https://forum.playcanvas.com
+- **Discord**: https://discord.gg/RSaMRzg
+- **GitHub Issues**: https://github.com/playcanvas/engine/issues
+
+## Questions?
+
+When in doubt:
+1. Look at similar existing code in the codebase
+2. Check the ESLint configuration
+3. Review recent commits for patterns
+4. If unclear or multiple valid approaches exist, ask instead of picking a possibly incorrect solution
+
+---
+
+**Remember**: This is a library used by thousands of developers. Quality, performance, and stability are paramount. When in doubt, prefer conservative, well-tested changes over clever optimizations.
+
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/AGENTS.md ===
+2026-10-19 13:07:14.824 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:07:26.505 | INFO     | Model API request cost info: input_tokens=4533, output_tokens=677, cost=0.018103
+2026-10-19 13:07:26.506 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:07:26.506 | INFO     | ******
+2026-10-19 13:07:26.506 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/AGENTS.md]
+- Setup and environment configuration:
+  - **Language**: JavaScript (ES2022), with JSDoc for TypeScript type definitions.
+  - **Module System**: ES Modules.
+  - **Node.js version**: >=18.3.0 (referenced in `package.json` under `engines` field).
+  - **Build system**:
+    - JavaScript bundles: `esbuild` using `build.mjs`.
+    - TypeScript declarations: `rollup-plugin-dts` with `npm run build:types`.
+  - **Linting**: ESLint with `@playcanvas/eslint-config` (command: `npm run lint` before committing changes).
+  - **Testing**:
+    - Frameworks/tools: Mocha + Chai + Sinon.
+    - Commands:
+      - `npm test` (to execute all tests).
+      - `npm run test:coverage` (to include coverage reports).
+      - `npm run build` (to create build artifacts before running tests on bundles in `test/bundles/`).
+      - `npm run test:build` (to test compiled bundles).
+      - `npm run test:types` (to validate TypeScript definition files and consumer-side type tests in `test/type-tests`).
+  - Source code location: `src/`.
+  - Build outputs location: `build/`.
+  - Test files location: `test/` (with `.mjs` extension).
+
+- Key environment configurations and dependencies:
+  - **Node.js runtime**: >=18.3.0.
+  - **Minimal dependencies**: Avoid adding new ones unless necessary. Uses `@types/*` and `@webgpu/types` for type annotations.
+  - **WebGL2/WebGPU APIs**: Support for both backends; ensure compatibility during development.
+  - No polyfills included in the engine: Users must add their own if necessary for browsers.
+
+- Build behaviors and configuration:
+  - Debugging methods (`Debug`, `DebugHelper`) are stripped out in production builds.
+  - Types generation via JSDoc and Rollup uses `npm run build:types`.
+  - **Tree shaking**: `"sideEffects": false` declared in `package.json`, ensuring only imported modules are included in final bundles (validate using `test/bundles/treeshake.test.mjs`).
+  - Build artifacts categorized by type (`rel`, `dbg`, `prf`, `min`).
+  - Debug-only code sections controlled by `// #if _DEBUG` directives.
+
+- Testing emphasis:
+  - Unit test files located in `test/`.
+  - Tests organized by module in a `describe()` structure.
+  - `test/bundles/` ensures build integrity and correct exports.
+  - Supports headless and server-side scenarios with a dummy `NullGraphicsDevice`.
+
+- General guidelines:
+  - Update JSDoc documentation when changing APIs.
+  - Follow ESLint rules strictly, running `npm run lint` before commits.
+  - Multi-backend support (WebGL2/WebGPU): Avoid platform-specific calls in high-level code.
+  - No global state: Strict instance-based designs.
+
+[/Key Information]
+2026-10-19 13:07:26.506 | INFO     | ******
+2026-10-19 13:07:26.506 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/AGENTS.md]\n- Setup and environment configuration:\n  - **Language**: JavaScript (ES2022), with JSDoc for TypeScript type definitions.\n  - **Module System**: ES Modules.\n  - **Node.js version**: >=18.3.0 (referenced in `package.json` under `engines` field).\n  - **Build system**:\n    - JavaScript bundles: `esbuild` using `build.mjs`.\n    - TypeScript declarations: `rollup-plugin-dts` with `npm run build:types`.\n  - **Linting**: ESLint with `@playcanvas/eslint-config` (command: `npm run lint` before committing changes).\n  - **Testing**:\n    - Frameworks/tools: Mocha + Chai + Sinon.\n    - Commands:\n      - `npm test` (to execute all tests).\n      - `npm run test:coverage` (to include coverage reports).\n      - `npm run build` (to create build artifacts before running tests on bundles in `test/bundles/`).\n      - `npm run test:build` (to test compiled bundles).\n      - `npm run test:types` (to validate TypeScript definition files and consumer-side type tests in `test/type-tests`).\n  - Source code location: `src/`.\n  - Build outputs location: `build/`.\n  - Test files location: `test/` (with `.mjs` extension).\n\n- Key environment configurations and dependencies:\n  - **Node.js runtime**: >=18.3.0.\n  - **Minimal dependencies**: Avoid adding new ones unless necessary. Uses `@types/*` and `@webgpu/types` for type annotations.\n  - **WebGL2/WebGPU APIs**: Support for both backends; ensure compatibility during development.\n  - No polyfills included in the engine: Users must add their own if necessary for browsers.\n\n- Build behaviors and configuration:\n  - Debugging methods (`Debug`, `DebugHelper`) are stripped out in production builds.\n  - Types generation via JSDoc and Rollup uses `npm run build:types`.\n  - **Tree shaking**: `"sideEffects": false` declared in `package.json`, ensuring only imported modules are included in final bundles (validate using `test/bundles/treeshake.test.mjs`).\n  - Build artifacts categorized by type (`rel`, `dbg`, `prf`, `min`).\n  - Debug-only code sections controlled by `// #if _DEBUG` directives.\n\n- Testing emphasis:\n  - Unit test files located in `test/`.\n  - Tests organized by module in a `describe()` structure.\n  - `test/bundles/` ensures build integrity and correct exports.\n  - Supports headless and server-side scenarios with a dummy `NullGraphicsDevice`.\n\n- General guidelines:\n  - Update JSDoc documentation when changing APIs.\n  - Follow ESLint rules strictly, running `npm run lint` before commits.\n  - Multi-backend support (WebGL2/WebGPU): Avoid platform-specific calls in high-level code.\n  - No global state: Strict instance-based designs.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:07:35.896 | INFO     | Model API request cost info: input_tokens=4215, output_tokens=1081, cost=0.021348
+2026-10-19 13:07:35.919 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-19 13:07:39.437 | INFO     | Model API request cost info: input_tokens=1679, output_tokens=404, cost=0.008238
+2026-10-19 13:07:39.438 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "Environment Setup": {
+            "Node.js version": "18 or higher",
+            "Dependencies Installation": "npm install",
+            "Build commands": {
+                "General build": "npm run build",
+                "API reference documentation": "npm run docs",
+                "TypeScript declarations": "npm run build:types",
+                "Watch builds": "npm run watch:rel:umd",
+                "Clean builds": "npm run clean"
+            },
+            "Install Core Package": "npm install playcanvas",
+            "Optional Scaffolding": "npm create playcanvas@latest",
+            "Node.js Configuration": {
+                "Version Specified in .nvmrc": "18"
+            },
+            "Dependencies": ["@types/webxr", "@webgpu/types", "@playcanvas/eslint-config", "chai", "esbuild", "canvas", "mocha", "sinon"]
+        },
+        "Test Execution": {
+            "Language": "JavaScript (ES2022) with JSDoc for TypeScript type definitions",
+            "Module System": "ES Modules",
+            "Node.js runtime": ">=18.3.0",
+            "Frameworks/tools": ["Mocha", "Chai", "Sinon"],
+            "Commands": {
+                "General tests": "npm test",
+                "Test coverage": "npm run test:coverage",
+                "Validate TypeScript Definitions": "npm run test:types",
+                "Test Compiled Bundles": "npm run test:build",
+                "ESLint rules": "npm run lint"
+            },
+            "Test Files Locations": "test/",
+            "Other Highlights": {
+                "Multi-backend compatibility": "WebGL2 and WebGPU",
+                "Tree-shaking verification": "Validate \"sideEffects\": false in test/bundles/treeshake.test.mjs"
+            }
+        }
+    },
+    "terminate": true
+}
+2026-10-19 13:07:39.439 | DEBUG    | Extracted a valid json
+2026-10-19 13:07:39.440 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-19 13:07:44.728 | INFO     | Model API request cost info: input_tokens=2219, output_tokens=432, cost=0.009868
+2026-10-19 13:07:44.730 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-19 13:07:44.739 | INFO     | Trying to extract a eval script. Try 1 of 3.
+2026-10-19 13:07:49.812 | INFO     | Model API request cost info: input_tokens=1604, output_tokens=251, cost=0.006520
+2026-10-19 13:07:49.814 | INFO     | Raw script and produced in try 1. Writing script into file.
+2026-10-19 13:13:26.513 | DEBUG    | Result of dispatch_intent: ('Step 6/13 : RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs && npm install -g npm@latest\n ---> Running in b8f43c95933f\n2026-10-19 05:12:35 - \n===============================================================================\n                            DEPRECATION WARNING                            \n===============================================================================\nNode.js 18.x is no longer actively supported!\nYou will not receive security or critical stability updates for this version.\nYou should migrate to a supported version of Node.js as soon as possible.\nPlease see https://nodesource.com/products/distributions for details about which\nversion may be appropriate for you.\nThe NodeSource Node.js distributions site contains\ninformation both about supported versions of Node.js and N|Solid supported Linux\ndistributions. To learn more about usage, see:\nhttps://nodesource.com/products/distributions\n===============================================================================\nContinuing in 10 seconds ...\n2026-10-19 05:12:45 - Installing pre-requisites\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nGet:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]\nGet:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]\nGet:3 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7955 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]\nGet:7 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]\nGet:9 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [96.8 kB]\nGet:10 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1325 kB]\nGet:11 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [4429 kB]\nGet:12 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]\nGet:13 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [104 kB]\nGet:14 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1627 kB]\nGet:15 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [8243 kB]\nGet:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4757 kB]\nGet:17 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.9 kB]\nGet:18 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]\nFetched 49.0 MB in 11s (4448 kB/s)\nReading package lists...\nBuilding dependency tree...\nReading state information...\n31 packages can be upgraded. Run \'apt list --upgradable\' to see them.\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nReading package lists...\nBuilding dependency tree...\nReading state information...\nca-certificates is already the newest version (20260601~22.04.1).\nca-certificates set to manually installed.\ngnupg is already the newest version (2.2.27-3ubuntu2.5).\ngnupg set to manually installed.\ncurl is already the newest version (7.81.0-1ubuntu1.30).\nThe following NEW packages will be installed:\n  apt-transport-https\n0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.\nNeed to get 1510 B of archives.\nAfter this operation, 170 kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 apt-transport-https all 2.4.14 [1510 B]\ndebconf: delaying package configuration, since apt-utils is not installed\nFetched 1510 B in 1s (2433 B/s)\nSelecting previously unselected package apt-transport-https.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 26820 files and directories currently installed.)\nPreparing to unpack .../apt-transport-https_2.4.14_all.deb ...\nUnpacking apt-transport-https (2.4.14) ...\nSetting up apt-transport-https (2.4.14) ...\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nHit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease\nHit:2 http://archive.ubuntu.com/ubuntu jammy InRelease\nGet:3 https://deb.nodesource.com/node_18.x nodistro InRelease [12.1 kB]\nHit:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease\nGet:5 https://deb.nodesource.com/node_18.x nodistro/main amd64 Packages [12.1 kB]\nHit:6 http://archive.ubuntu.com/ubuntu jammy-backports InRelease\nFetched 24.2 kB in 1s (17.4 kB/s)\nReading package lists...\nBuilding dependency tree...\nReading state information...\n31 packages can be upgraded. Run \'apt list --upgradable\' to see them.\n2026-10-19 05:13:05 - Repository configured successfully.\n2026-10-19 05:13:05 - To install Node.js, run: apt install nodejs -y\n2026-10-19 05:13:05 - You can use N|solid Runtime as a node.js alternative\n2026-10-19 05:13:05 - To install N|solid Runtime, run: apt install nsolid -y \nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nReading package lists...\nBuilding dependency tree...\nReading state information...\nThe following NEW packages will be installed:\n  nodejs\n0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.\nNeed to get 29.7 MB of archives.\nAfter this operation, 187 MB of additional disk space will be used.\nGet:1 https://deb.nodesource.com/node_18.x nodistro/main amd64 nodejs amd64 18.20.8-1nodesource1 [29.7 MB]\ndebconf: delaying package configuration, since apt-utils is not installed\nFetched 29.7 MB in 5s (5510 kB/s)\nSelecting previously unselected package nodejs.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 26824 files and directories currently installed.)\nPreparing to unpack .../nodejs_18.20.8-1nodesource1_amd64.deb ...\nUnpacking nodejs (18.20.8-1nodesource1) ...\nSetting up nodejs (18.20.8-1nodesource1) ...\nnpm error code EBADENGINE\nnpm error engine Unsupported engine\nnpm error engine Not compatible with your version of node/npm: npm@12.2.0\nnpm error notsup Not compatible with your version of node/npm: npm@12.2.0\nnpm error notsup Required: {"node":"^22.22.2 || ^24.15.0 || >=26.0.0"}\nnpm error notsup Actual:   {"npm":"10.8.2","node":"v18.20.8"}\nnpm error A complete log of this run can be found in: /root/.npm/_logs/2026-10-19T05_13_18_619Z-debug-0.log\n ---> Removed intermediate container b8f43c95933f\nError: The command \'/bin/sh -c curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs && npm install -g npm@latest\' returned a non-zero code: 1', 'Failed to build Docker image.', False)
+2026-10-19 13:13:26.517 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-19 13:13:47.116 | INFO     | Model API request cost info: input_tokens=3709, output_tokens=357, cost=0.012843
+2026-10-19 13:13:47.117 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The issue lies in the Node.js version specified in the current Dockerfile. The log shows a `npm error code EBADENGINE` which states that the required Node.js version for the project is `^22.22.2 || ^24.15.0 || >=26.0.0`, but the Dockerfile is installing Node.js version `18.x`, which is incompatible. To fix this:\n\n1. Replace the line `RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs && npm install -g npm@latest` with the correct setup command for a compatible Node.js version.\n   \nFor example (recommended version `20.x`, which satisfies `^22.22.2`):\n\n```\nRUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt install -y nodejs && npm install -g npm@latest\n```\n\n2. Additionally, ensure that the project dependencies do not have version mismatches or other issues which could also cause similar errors. Consider confirming the required Node.js and npm versions from the repository's files (like `package.json`, README.md, etc.) or documentation.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": "Consider retrieving the `package.json` file from the repository. This file contains the `engines` field which specifies the exact required Node.js and npm versions for the project. This can be used to ensure that the Dockerfile installs the correct versions of dependencies to avoid compatibility issues."
+}
+2026-10-19 13:13:47.118 | DEBUG    | Extracted a valid json
+2026-10-19 13:13:51.875 | INFO     | Model API request cost info: input_tokens=1402, output_tokens=90, cost=0.004405
+2026-10-19 13:13:51.903 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-19 13:13:54.394 | INFO     | Model API request cost info: input_tokens=689, output_tokens=52, cost=0.002243
+2026-10-19 13:13:54.395 | DEBUG    | {
+    "API_calls": ["browse_file_for_environment_info(\"package.json\", \"Check specifically for the 'engines' field to identify the required Node.js and npm versions.\")"],
+    "collected_information": {},
+    "terminate": false
+}
+2026-10-19 13:13:54.395 | DEBUG    | Extracted a valid json
+2026-10-19 13:13:54.397 | INFO     | entering browse
+2026-10-19 13:13:54.398 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/package.json ===
+{
+  "name": "playcanvas",
+  "version": "2.24.0-beta.16",
+  "packageManager": "npm@11.19.1",
+  "author": "PlayCanvas <support@playcanvas.com>",
+  "homepage": "https://playcanvas.com",
+  "description": "Open-source WebGL/WebGPU 3D engine for the web",
+  "keywords": [
+    "3d",
+    "3d-engine",
+    "ar",
+    "ecs",
+    "engine",
+    "game",
+    "game-engine",
+    "gaussian-splatting",
+    "gltf",
+    "html5",
+    "javascript",
+    "physics",
+    "playcanvas",
+    "renderer",
+    "scene-graph",
+    "typescript",
+    "vr",
+    "webgl",
+    "webgl2",
+    "webgpu",
+    "webxr"
+  ],
+  "license": "MIT",
+  "main": "build/playcanvas.js",
+  "module": "build/playcanvas/src/index.js",
+  "types": "build/playcanvas.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/playcanvas.d.ts",
+      "development": {
+        "import": "./build/playcanvas.dbg/src/index.js",
+        "require": "./build/playcanvas.dbg.js"
+      },
+      "profiler": {
+        "import": "./build/playcanvas.prf/src/index.js",
+        "require": "./build/playcanvas.prf.js"
+      },
+      "production": {
+        "import": "./build/playcanvas/src/index.js",
+        "require": "./build/playcanvas.js"
+      },
+      "default": {
+        "import": "./build/playcanvas/src/index.js",
+        "require": "./build/playcanvas.js"
+      }
+    },
+    "./debug": {
+      "types": "./build/playcanvas.d.ts",
+      "import": "./build/playcanvas.dbg/src/index.js",
+      "require": "./build/playcanvas.dbg.js"
+    },
+    "./profiler": {
+      "types": "./build/playcanvas.d.ts",
+      "import": "./build/playcanvas.prf/src/index.js",
+      "require": "./build/playcanvas.prf.js"
+    },
+    "./build/*": "./build/*",
+    "./scripts/*": "./scripts/*"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/playcanvas/engine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/playcanvas/engine.git"
+  },
+  "files": [
+    "build/playcanvas*",
+    "build/playcanvas*/*",
+    "scripts",
+    "README*.md"
+  ],
+  "dependencies": {
+    "@types/webxr": "^0.5.24",
+    "@webgpu/types": "^0.1.70"
+  },
+  "devDependencies": {
+    "@playcanvas/eslint-config": "3.0.0-beta.8",
+    "@rollup/plugin-strip": "3.0.4",
+    "@types/node": "24.13.5",
+    "acorn": "8.18.0",
+    "c8": "12.0.0",
+    "canvas": "3.2.3",
+    "chai": "6.2.2",
+    "esbuild": "0.28.2",
+    "esbuild-visualizer": "0.7.0",
+    "eslint": "9.39.5",
+    "fflate": "0.8.3",
+    "globals": "17.12.0",
+    "jscc": "1.1.1",
+    "jsdom": "30.1.0",
+    "mocha": "12.0.2",
+    "nise": "6.1.5",
+    "publint": "0.3.24",
+    "rollup": "4.63.3",
+    "rollup-plugin-dts": "6.5.1",
+    "serve": "14.2.6",
+    "sinon": "22.1.0",
+    "turbo": "2.10.13",
+    "typedoc": "0.28.20",
+    "typedoc-plugin-mdn-links": "5.1.1",
+    "typedoc-plugin-merge-modules": "7.0.0",
+    "typedoc-plugin-missing-exports": "4.1.4",
+    "typescript": "5.9.3",
+    "webgpu": "0.6.1"
+  },
+  "scripts": {
+    "build": "turbo run build:all",
+    "build:types": "node build.mjs --type=types",
+    "build:rel:umd": "node build.mjs --type=rel --format=umd",
+    "build:rel:esm": "node build.mjs --type=rel --format=esm",
+    "build:dbg:umd": "node build.mjs --type=dbg --format=umd",
+    "build:dbg:esm": "node build.mjs --type=dbg --format=esm",
+    "build:prf:umd": "node build.mjs --type=prf --format=umd",
+    "build:prf:esm": "node build.mjs --type=prf --format=esm",
+    "build:min:umd": "node build.mjs --type=min --format=umd",
+    "build:min:esm": "node build.mjs --type=min --format=esm",
+    "build:treemap": "node build.mjs --treemap",
+    "build:treenet": "node build.mjs --treenet",
+    "build:treesun": "node build.mjs --treesun",
+    "build:sourcemaps": "node build.mjs --type=rel --format=esm --sourcemaps",
+    "watch": "turbo run watch:all",
+    "watch:rel:umd": "node build.mjs --type=rel --format=umd --watch",
+    "watch:rel:esm": "node build.mjs --type=rel --format=esm --watch",
+    "watch:dbg:umd": "node build.mjs --type=dbg --format=umd --watch",
+    "watch:dbg:esm": "node build.mjs --type=dbg --format=esm --watch",
+    "watch:prf:umd": "node build.mjs --type=prf --format=umd --watch",
+    "watch:prf:esm": "node build.mjs --type=prf --format=esm --watch",
+    "watch:min:umd": "node build.mjs --type=min --format=umd --watch",
+    "watch:min:esm": "node build.mjs --type=min --format=esm --watch",
+    "watch:types": "node build.mjs --type=types --watch",
+    "clean": "node build.mjs --clean",
+    "docs": "typedoc",
+    "docs:scripts": "npm run build:types && typedoc --options typedoc.scripts.config.mjs",
+    "lint": "eslint scripts src test utils build.mjs eslint.config.mjs typedoc.scripts.config.mjs",
+    "lint:fix": "npm run lint -- --fix",
+    "publint": "publint --level error",
+    "serve": "serve build -l 51000 --cors",
+    "test": "mocha --node-option expose-gc --ignore \"test/assets/scripts/*.js\" --ignore \"test/bundles/**\" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --recursive --require test/fixtures.mjs --timeout 5000",
+    "test:webgpu": "mocha --node-option expose-gc --ignore \"test/assets/scripts/*.js\" --ignore \"test/bundles/**\" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --ignore test/platform/graphics/shader.test.mjs --recursive --require test/fixtures.mjs --require test/webgpu-device.mjs --timeout 5000 --exit",
+    "test:build": "mocha --recursive \"test/bundles/**/*.test.mjs\" --timeout 30000",
+    "test:coverage": "c8 npm test",
+    "test:types": "tsc --pretty false build/playcanvas.d.ts && tsc -p test/type-tests --pretty false"
+  },
+  "engines": {
+    "node": ">=18.3.0"
+  }
+}
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/package.json ===
+2026-10-19 13:13:54.398 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:14:05.421 | INFO     | Model API request cost info: input_tokens=2386, output_tokens=61, cost=0.006575
+2026-10-19 13:14:05.422 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:14:05.422 | INFO     | ******
+2026-10-19 13:14:05.422 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/package.json]
+- Node.js version:
+  - Required: >=18.3.0
+- npm version:
+  - Package Manager specified: npm@11.19.1
+[/Key Information]
+2026-10-19 13:14:05.422 | INFO     | ******
+2026-10-19 13:14:05.422 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/package.json]\n- Node.js version:\n  - Required: >=18.3.0\n- npm version:\n  - Package Manager specified: npm@11.19.1\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:14:16.968 | INFO     | Model API request cost info: input_tokens=1847, output_tokens=404, cost=0.008658
+2026-10-19 13:14:16.976 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-19 13:14:24.458 | INFO     | Model API request cost info: input_tokens=1003, output_tokens=193, cost=0.004438
+2026-10-19 13:14:24.459 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info(\"README.md\", \"Extract environment setup and test execution instructions.\")",
+        "browse_file_for_environment_info(\"README-kr.md\", \"Extract environment setup and test execution instructions.\")",
+        "browse_file_for_environment_info(\"README-zh.md\", \"Extract environment setup and test execution instructions.\")",
+        "browse_file_for_environment_info(\"README-ja.md\", \"Extract environment setup and test execution instructions.\")",
+        "browse_folder(\".github\", \"1\")",
+        "browse_folder(\"test\", \"1\")"
+    ],
+    "collected_information": {
+        "node_version": ">=18.3.0",
+        "npm_version": "11.19.1",
+        "missing_information": [
+            "Detailed environment setup instructions",
+            "Testing commands",
+            ".env or CI configurations"
+        ]
+    },
+    "terminate": false
+}
+2026-10-19 13:14:24.459 | DEBUG    | Extracted a valid json
+2026-10-19 13:14:24.462 | INFO     | entering browse
+2026-10-19 13:14:24.462 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/README.md ===
+# PlayCanvas Engine
+
+[![NPM Version](https://img.shields.io/npm/v/playcanvas)](https://www.npmjs.com/package/playcanvas)
+[![NPM Downloads](https://img.shields.io/npm/dw/playcanvas)](https://npmtrends.com/playcanvas)
+[![License](https://img.shields.io/npm/l/playcanvas)](https://github.com/playcanvas/engine/blob/main/LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white&color=black)](https://discord.gg/RSaMRzg)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white&color=black)](https://www.reddit.com/r/PlayCanvas)
+[![X](https://img.shields.io/badge/X-000000?style=flat&logo=x&logoColor=white&color=black)](https://x.com/intent/follow?screen_name=playcanvas)
+
+| [User Manual](https://developer.playcanvas.com/user-manual/engine/) | [API Reference](https://api.playcanvas.com/engine/) | [Examples](https://playcanvas.com/examples/) | [Blog](https://blog.playcanvas.com) | [Forum](https://forum.playcanvas.com) |
+
+PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device.
+
+[English](https://github.com/playcanvas/engine/blob/main/README.md)
+[中文](https://github.com/playcanvas/engine/blob/main/README-zh.md)
+[日本語](https://github.com/playcanvas/engine/blob/main/README-ja.md)
+[한글](https://github.com/playcanvas/engine/blob/main/README-kr.md)
+
+## Install
+
+```sh
+npm install playcanvas
+```
+
+Or scaffold a full project in seconds with [`create-playcanvas`](https://github.com/playcanvas/create-playcanvas):
+
+```sh
+npm create playcanvas@latest
+```
+
+## Usage
+
+Here's a super-simple Hello World example - a spinning cube!
+
+```js
+import {
+  Application,
+  Color,
+  Entity,
+  FILLMODE_FILL_WINDOW,
+  RESOLUTION_AUTO
+} from 'playcanvas';
+
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
+const app = new Application(canvas);
+
+// fill the available space at full resolution
+app.setCanvasFillMode(FILLMODE_FILL_WINDOW);
+app.setCanvasResolution(RESOLUTION_AUTO);
+
+// ensure canvas is resized when window changes size
+window.addEventListener('resize', () => app.resizeCanvas());
+
+// create box entity
+const box = new Entity('cube');
+box.addComponent('render', {
+  type: 'box'
+});
+app.root.addChild(box);
+
+// create camera entity
+const camera = new Entity('camera');
+camera.addComponent('camera', {
+  clearColor: new Color(0.1, 0.2, 0.3)
+});
+app.root.addChild(camera);
+camera.setPosition(0, 0, 3);
+
+// create directional light entity
+const light = new Entity('light');
+light.addComponent('light');
+app.root.addChild(light);
+light.setEulerAngles(45, 0, 0);
+
+// rotate the box according to the delta time since the last frame
+app.on('update', dt => box.rotate(10 * dt, 20 * dt, 30 * dt));
+
+app.start();
+```
+
+Want to play with the code yourself? Edit it on [CodePen](https://codepen.io/playcanvas/pen/NPbxMj).
+
+A full guide to setting up a local development environment based on the PlayCanvas Engine can be found [here](https://developer.playcanvas.com/user-manual/engine/standalone/).
+
+## Features
+
+PlayCanvas is a fully-featured game engine.
+
+* 🧊 **Graphics** - Advanced 2D + 3D graphics engine built on WebGL2 & WebGPU
+* 💠 **Gaussian Splatting** - First-class support for loading and rendering [3D Gaussian Splats](https://developer.playcanvas.com/user-manual/graphics/gaussian-splatting/)
+* 🥽 **XR** - Built-in support for immersive AR and VR experiences via [WebXR](https://developer.playcanvas.com/user-manual/xr/)
+* ⚛️ **Physics** - Full integration with 3D rigid-body physics engine [ammo.js](https://github.com/kripken/ammo.js)
+* 🏃 **Animation** - Powerful state-based animations for characters and arbitrary scene properties
+* 🎮 **Input** - Mouse, keyboard, touch and gamepad APIs
+* 🔊 **Sound** - 3D positional sounds built on the Web Audio API
+* 📦 **Assets** - Asynchronous streaming system built on [glTF 2.0](https://www.khronos.org/gltf/), [Draco](https://google.github.io/draco/) and [Basis](https://github.com/BinomialLLC/basis_universal) compression
+* 📜 **Scripts** - Write game behaviors in TypeScript or JavaScript
+
+## Ecosystem
+
+Build with PlayCanvas your way:
+
+| Package | Description |
+| ------- | ----------- |
+| [`playcanvas`](https://www.npmjs.com/package/playcanvas) | Core engine (you are here) |
+| [`@playcanvas/react`](https://www.npmjs.com/package/@playcanvas/react) | React renderer for PlayCanvas |
+| [`@playcanvas/web-components`](https://www.npmjs.com/package/@playcanvas/web-components) | Declarative 3D via Custom Elements |
+| [`create-playcanvas`](https://www.npmjs.com/package/create-playcanvas) | Project scaffolding CLI |
+| [PlayCanvas Editor](https://github.com/playcanvas/editor) | Browser-based visual editor |
+
+## Project Showcase
+
+[Many games and apps](https://github.com/playcanvas/awesome-playcanvas) have been published using the PlayCanvas engine. Here is a small selection:
+
+[![Seemore](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14705/319531/O4J4VU-image-25.jpg)](https://playcanv.as/p/MflWvdTW/) [![After The Flood](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/440410/98554E-image-25.jpg)](https://playcanv.as/p/44MRmJRU/) [![Casino](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/349824/U88HJQ-image-25.jpg)](https://playcanv.as/p/LpmXGUe6/)  
+[![Swooop](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/4763/TKYXB8-image-25.jpg)](https://playcanv.as/p/JtL2iqIH/) [![dev Archer](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/415995/10A5A9-image-25.jpg)](https://playcanv.as/p/JERg21J8/) [![Gaussian Splat Statues](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/1224723/266D9C-image-25.jpg)](https://playcanv.as/p/cLkf99ZV/)  
+[![Car](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/347824/7ULQ3Y-image-25.jpg)](https://playcanv.as/p/RqJJ9oU9/) [![Star-Lord](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/333626/BGQN9H-image-25.jpg)](https://playcanv.as/p/SA7hVBLt/) [![Global Illumination](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/4373/625081/6AB32D-image-25.jpg)](https://playcanv.as/p/ZV4PW6wr/ )
+
+You can see more games on the [PlayCanvas website](https://playcanvas.com/explore).
+
+## Users
+
+PlayCanvas is used by leading companies in video games, advertising and visualization such as:  
+**Animech, Arm, BMW, Disney, Facebook, Famobi, Funday Factory, IGT, King, Miniclip, Leapfrog, Mojiworks, Mozilla, Nickelodeon, Nordeus, NOWWA, PikPok, PlaySide Studios, Polaris, Product Madness, Samsung, Snap, Spry Fox, Zeptolab, Zynga**
+
+## How to build
+
+Ensure you have [Node.js 18+](https://nodejs.org) installed. Then, install all of the required Node.js dependencies:
+
+```sh
+npm install
+```
+
+Now you can run various build options:
+
+| Command | Description | Outputs To |
+| ------- | ----------- | ---------- |
+| `npm run build` | Build all engine flavors and type declarations | `build` |
+| `npm run docs` | Build engine [API reference docs](https://api.playcanvas.com/engine/) | `docs` |
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/README.md ===
+2026-10-19 13:14:24.463 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:14:27.307 | INFO     | Model API request cost info: input_tokens=2538, output_tokens=139, cost=0.007735
+2026-10-19 13:14:27.308 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:14:27.308 | INFO     | ******
+2026-10-19 13:14:27.308 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/README.md]
+- **Environment Setup**:
+  - Install Node.js version **18+**.
+  - Install required Node.js dependencies:
+    ```sh
+    npm install
+    ```
+
+- **Build Commands** (potential for setup verification):
+  - Build all engine flavors and type declarations:
+    ```sh
+    npm run build
+    ```
+  - Build engine API reference docs:
+    ```sh
+    npm run docs
+    ```
+
+- **Testing Execution Instructions**:
+  - No explicit testing or test execution commands are mentioned in the README file.
+
+[/Key Information]
+2026-10-19 13:14:27.308 | INFO     | ******
+2026-10-19 13:14:27.309 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/README.md]\n- **Environment Setup**:\n  - Install Node.js version **18+**.\n  - Install required Node.js dependencies:\n    ```sh\n    npm install\n    ```\n\n- **Build Commands** (potential for setup verification):\n  - Build all engine flavors and type declarations:\n    ```sh\n    npm run build\n    ```\n  - Build engine API reference docs:\n    ```sh\n    npm run docs\n    ```\n\n- **Testing Execution Instructions**:\n  - No explicit testing or test execution commands are mentioned in the README file.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:14:27.309 | INFO     | entering browse
+2026-10-19 13:14:27.309 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/README-kr.md ===
+# PlayCanvas Engine
+
+[![NPM Version](https://img.shields.io/npm/v/playcanvas)](https://www.npmjs.com/package/playcanvas)
+[![NPM Downloads](https://img.shields.io/npm/dw/playcanvas)](https://npmtrends.com/playcanvas)
+[![License](https://img.shields.io/npm/l/playcanvas)](https://github.com/playcanvas/engine/blob/main/LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white&color=black)](https://discord.gg/RSaMRzg)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white&color=black)](https://www.reddit.com/r/PlayCanvas)
+[![X](https://img.shields.io/badge/X-000000?style=flat&logo=x&logoColor=white&color=black)](https://x.com/intent/follow?screen_name=playcanvas)
+
+| [사용자 매뉴얼](https://developer.playcanvas.com/user-manual/engine/) | [API 레퍼런스](https://api.playcanvas.com/engine/) | [예제](https://playcanvas.com/examples/) | [블로그](https://blog.playcanvas.com) | [포럼](https://forum.playcanvas.com) |
+
+PlayCanvas는 WebGL2와 WebGPU 기반의 오픈소스 게임 엔진입니다. 모든 브라우저, 모든 디바이스에서 실행되는 인터랙티브 3D 앱, 게임 및 시각화를 만들 수 있습니다.
+
+[English](https://github.com/playcanvas/engine/blob/main/README.md)
+[中文](https://github.com/playcanvas/engine/blob/main/README-zh.md)
+[日本語](https://github.com/playcanvas/engine/blob/main/README-ja.md)
+[한글](https://github.com/playcanvas/engine/blob/main/README-kr.md)
+
+## 설치
+
+```sh
+npm install playcanvas
+```
+
+또는 [`create-playcanvas`](https://github.com/playcanvas/create-playcanvas)로 몇 초 만에 프로젝트를 생성할 수 있습니다:
+
+```sh
+npm create playcanvas@latest
+```
+
+## 사용방법
+
+여기에 아주 간단한 Hello World의 예가 있습니다 - 회전하는 큐브!
+
+```js
+import {
+  Application,
+  Color,
+  Entity,
+  FILLMODE_FILL_WINDOW,
+  RESOLUTION_AUTO
+} from 'playcanvas';
+
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
+const app = new Application(canvas);
+
+// fill the available space at full resolution
+app.setCanvasFillMode(FILLMODE_FILL_WINDOW);
+app.setCanvasResolution(RESOLUTION_AUTO);
+
+// ensure canvas is resized when window changes size
+window.addEventListener('resize', () => app.resizeCanvas());
+
+// create box entity
+const box = new Entity('cube');
+box.addComponent('render', {
+  type: 'box'
+});
+app.root.addChild(box);
+
+// create camera entity
+const camera = new Entity('camera');
+camera.addComponent('camera', {
+  clearColor: new Color(0.1, 0.2, 0.3)
+});
+app.root.addChild(camera);
+camera.setPosition(0, 0, 3);
+
+// create directional light entity
+const light = new Entity('light');
+light.addComponent('light');
+app.root.addChild(light);
+light.setEulerAngles(45, 0, 0);
+
+// rotate the box according to the delta time since the last frame
+app.on('update', dt => box.rotate(10 * dt, 20 * dt, 30 * dt));
+
+app.start();
+```
+
+이 코드를 직접 시도하려면 [CodePen](https://codepen.io/playcanvas/pen/NPbxMj)를 클릭하세요.
+
+PlayCanvas 엔진을 기반으로 하는 로컬 개발 환경 설정에 대한 전체 가이드는 [여기](https://developer.playcanvas.com/user-manual/engine/standalone/)에서 찾을 수 있습니다.
+
+## 특징
+
+PlayCanvas는 완전한 기능의 게임 엔진입니다.
+
+* 🧊 **그래픽** - WebGL2와 WebGPU로 구축된 고도의 2D+3D 그래픽 엔진
+* 💠 **가우시안 스플래팅** - [3D 가우시안 스플랫](https://developer.playcanvas.com/user-manual/graphics/gaussian-splatting/) 로딩 및 렌더링 기본 지원
+* 🥽 **XR** - [WebXR](https://developer.playcanvas.com/user-manual/xr/)을 통한 몰입형 AR 및 VR 경험 기본 지원
+* ⚛️ **물리** - 3D 리지드 바디 물리 엔진 [ammo.js](https://github.com/kripken/ammo.js)
+* 🏃 **애니메이션** - 캐릭터나 장면에 대한 강력한 스테이트 기반 애니메이션
+* 🎮 **입력** - 마우스, 키보드, 터치, 게임패드 API
+* 🔊 **사운드** - Web Audio API를 이용한 3D 위치정보 사운드
+* 📦 **에셋** - [glTF 2.0](https://www.khronos.org/gltf/), [Draco](https://google.github.io/draco/), [Basis](https://github.com/BinomialLLC/basis_universal) 압축 기술을 이용한 비동기형 스트리밍 시스템
+* 📜 **스크립트** - TypeScript와 JavaScript 지원
+
+## 에코시스템
+
+원하는 방식으로 PlayCanvas를 사용하여 개발하세요:
+
+| 패키지 | 설명 |
+| ------ | ---- |
+| [`playcanvas`](https://www.npmjs.com/package/playcanvas) | 코어 엔진 (현재 페이지) |
+| [`@playcanvas/react`](https://www.npmjs.com/package/@playcanvas/react) | PlayCanvas용 React 렌더러 |
+| [`@playcanvas/web-components`](https://www.npmjs.com/package/@playcanvas/web-components) | 커스텀 엘리먼트를 통한 선언적 3D |
+| [`create-playcanvas`](https://www.npmjs.com/package/create-playcanvas) | 프로젝트 스캐폴딩 CLI |
+| [PlayCanvas 에디터](https://github.com/playcanvas/editor) | 브라우저 기반 비주얼 에디터 |
+
+## 프로젝트 쇼케이스
+
+PlayCanvas 엔진을 사용하여 [많은 게임과 앱](https://github.com/playcanvas/awesome-playcanvas)이 공개되어 있습니다. 다음은 그 일부를 소개하겠습니다.
+
+[![Seemore](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14705/319531/O4J4VU-image-25.jpg)](https://playcanv.as/p/MflWvdTW/) [![After The Flood](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/440410/98554E-image-25.jpg)](https://playcanv.as/p/44MRmJRU/) [![Casino](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/349824/U88HJQ-image-25.jpg)](https://playcanv.as/p/LpmXGUe6/)  
+[![Swooop](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/4763/TKYXB8-image-25.jpg)](https://playcanv.as/p/JtL2iqIH/) [![dev Archer](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/415995/10A5A9-image-25.jpg)](https://playcanv.as/p/JERg21J8/) [![Gaussian Splat Statues](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/1224723/266D9C-image-25.jpg)](https://playcanv.as/p/cLkf99ZV/)  
+[![Car](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/347824/7ULQ3Y-image-25.jpg)](https://playcanv.as/p/RqJJ9oU9/) [![Star-Lord](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/333626/BGQN9H-image-25.jpg)](https://playcanv.as/p/SA7hVBLt/) [![Global Illumination](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/4373/625081/6AB32D-image-25.jpg)](https://playcanv.as/p/ZV4PW6wr/)
+
+다른 게임은 [PlayCanvas 웹사이트](https://playcanvas.com/explore)에서 볼 수 있습니다.
+
+## 이용 실적
+
+PlayCanvas는 비디오 게임, 광고, 시각화 분야에서 대기업에 채용되고 있습니다.  
+**Animech, Arm, BMW, Disney, Facebook, Famobi, Funday Factory, IGT, King, Miniclip, Leapfrog, Mojiworks, Mozilla, Nickelodeon, Nordeus, NOWWA, PikPok, PlaySide Studios, Polaris, Product Madness, Samsung, Snap, Spry Fox, Zeptolab, Zynga**
+
+## 빌드 순서
+
+[Node.js 18+](https://nodejs.org)가 설치되어 있는지 확인합니다. 그 다음 필요한 Node.js 종속성을 모두 설치합니다.
+
+```sh
+npm install
+```
+
+이제 다양한 빌드 옵션을 실행할 수 있습니다.
+
+| 명령어 | 설명 | 출력 위치 |
+| ----- | ---- | ------- |
+| `npm run build` | 모든 엔진 빌드 대상과 타입 선언을 빌드합니다 | `build` |
+| `npm run docs` | 엔진 [API 참조 문서](https://api.playcanvas.com/engine/)를 빌드합니다 | `docs` |
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/README-kr.md ===
+2026-10-19 13:14:27.309 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:14:41.601 | INFO     | Model API request cost info: input_tokens=2712, output_tokens=82, cost=0.007600
+2026-10-19 13:14:41.602 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:14:41.603 | INFO     | ******
+2026-10-19 13:14:41.603 | INFO     | [Key Information from README-kr.md]
+- Environment setup:
+  - Node.js version requirement: **Node.js 18+**
+  - Install required Node.js dependencies: `npm install`
+- Commands for building/testing:
+  - Build all engine targets and type declarations: `npm run build`
+  - Build API reference documentation: `npm run docs`
+[/Key Information]
+2026-10-19 13:14:41.603 | INFO     | ******
+2026-10-19 13:14:41.603 | DEBUG    | Result of dispatch_intent: ('[Key Information from README-kr.md]\n- Environment setup:\n  - Node.js version requirement: **Node.js 18+**\n  - Install required Node.js dependencies: `npm install`\n- Commands for building/testing:\n  - Build all engine targets and type declarations: `npm run build`\n  - Build API reference documentation: `npm run docs`\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:14:41.603 | INFO     | entering browse
+2026-10-19 13:14:41.603 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/README-zh.md ===
+# PlayCanvas Engine
+
+[![NPM Version](https://img.shields.io/npm/v/playcanvas)](https://www.npmjs.com/package/playcanvas)
+[![NPM Downloads](https://img.shields.io/npm/dw/playcanvas)](https://npmtrends.com/playcanvas)
+[![License](https://img.shields.io/npm/l/playcanvas)](https://github.com/playcanvas/engine/blob/main/LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white&color=black)](https://discord.gg/RSaMRzg)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white&color=black)](https://www.reddit.com/r/PlayCanvas)
+[![X](https://img.shields.io/badge/X-000000?style=flat&logo=x&logoColor=white&color=black)](https://x.com/intent/follow?screen_name=playcanvas)
+
+| [用户手册](https://developer.playcanvas.com/user-manual/engine/) | [API 参考](https://api.playcanvas.com/engine/) | [例子](https://playcanvas.com/examples/) | [博客](https://blog.playcanvas.com) | [论坛](https://forum.playcanvas.com) |
+
+PlayCanvas 是一款基于 WebGL2 和 WebGPU 构建的开源游戏引擎。使用它可以创建在任何浏览器和任何设备上运行的交互式 3D 应用、游戏和可视化内容。
+
+[English](https://github.com/playcanvas/engine/blob/main/README.md)
+[中文](https://github.com/playcanvas/engine/blob/main/README-zh.md)
+[日本語](https://github.com/playcanvas/engine/blob/main/README-ja.md)
+[한글](https://github.com/playcanvas/engine/blob/main/README-kr.md)
+
+## 安装
+
+```sh
+npm install playcanvas
+```
+
+或者使用 [`create-playcanvas`](https://github.com/playcanvas/create-playcanvas) 快速创建一个完整项目：
+
+```sh
+npm create playcanvas@latest
+```
+
+## 如何使用
+
+以下为一个简单的使用案例 - 实现一个旋转的立方体！
+
+```js
+import {
+  Application,
+  Color,
+  Entity,
+  FILLMODE_FILL_WINDOW,
+  RESOLUTION_AUTO
+} from 'playcanvas';
+
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
+const app = new Application(canvas);
+
+// 在全屏模式下填满可用空间
+app.setCanvasFillMode(FILLMODE_FILL_WINDOW);
+app.setCanvasResolution(RESOLUTION_AUTO);
+
+// 确保在窗口尺寸变化同时画布也同时改变其大小
+window.addEventListener('resize', () => app.resizeCanvas());
+
+// 创建一个立方体
+const box = new Entity('cube');
+box.addComponent('render', {
+  type: 'box'
+});
+app.root.addChild(box);
+
+// 创建一个摄像头
+const camera = new Entity('camera');
+camera.addComponent('camera', {
+  clearColor: new Color(0.1, 0.2, 0.3)
+});
+app.root.addChild(camera);
+camera.setPosition(0, 0, 3);
+
+// 创建一个指向灯
+const light = new Entity('light');
+light.addComponent('light');
+app.root.addChild(light);
+light.setEulerAngles(45, 0, 0);
+
+// 根据立方体的时间增量旋转立方体
+app.on('update', dt => box.rotate(10 * dt, 20 * dt, 30 * dt));
+
+app.start();
+```
+
+想要自己动手试试？点击 [CodePen](https://codepen.io/playcanvas/pen/NPbxMj).
+
+基于 PlayCanvas 引擎设置本地开发环境的完整指南可以在[这里](https://developer.playcanvas.com/user-manual/engine/standalone/)找到。
+
+## 特点
+
+PlayCanvas 是一款优秀的全功能游戏引擎。
+
+- 🧊 **图形** - 基于 WebGL2 和 WebGPU 的超前 2D + 3D 图形引擎
+- 💠 **高斯泼溅** - 原生支持加载和渲染 [3D 高斯泼溅](https://developer.playcanvas.com/user-manual/graphics/gaussian-splatting/)
+- 🥽 **XR** - 通过 [WebXR](https://developer.playcanvas.com/user-manual/xr/) 内置支持沉浸式 AR 和 VR 体验
+- ⚛️ **物理** - 一体化的 3D 刚体物理引擎 [ammo.js](https://github.com/kripken/ammo.js)
+- 🏃 **动画** - 基于状态的强大动画功能，有效展现动画角色和随机场景属性
+- 🎮 **输入** - 支持鼠标、键盘、触控和游戏控制器 API
+- 🔊 **声音** - 基于 Web Audio API 的 3D 音效
+- 📦 **资源** - 使用 [glTF 2.0](https://www.khronos.org/gltf/), [Draco](https://google.github.io/draco/) 以及 [Basis](https://github.com/BinomialLLC/basis_universal) 的异步流媒体系统
+- 📜 **代码** - 支持 TypeScript 以及 JavaScript
+
+## 生态系统
+
+以你喜欢的方式使用 PlayCanvas 进行开发：
+
+| 包 | 描述 |
+| --- | ---- |
+| [`playcanvas`](https://www.npmjs.com/package/playcanvas) | 核心引擎（当前页面） |
+| [`@playcanvas/react`](https://www.npmjs.com/package/@playcanvas/react) | PlayCanvas 的 React 渲染器 |
+| [`@playcanvas/web-components`](https://www.npmjs.com/package/@playcanvas/web-components) | 通过自定义元素实现声明式 3D |
+| [`create-playcanvas`](https://www.npmjs.com/package/create-playcanvas) | 项目脚手架 CLI |
+| [PlayCanvas 编辑器](https://github.com/playcanvas/editor) | 基于浏览器的可视化编辑器 |
+
+## 项目展示
+
+许多团队已经成功地使用了 PlayCanvas 引擎开发并发布了游戏和应用。以下是一些项目案例：
+
+[![Seemore](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14705/319531/O4J4VU-image-25.jpg)](https://playcanv.as/p/MflWvdTW/) [![After The Flood](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/440410/98554E-image-25.jpg)](https://playcanv.as/p/44MRmJRU/) [![Casino](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/349824/U88HJQ-image-25.jpg)](https://playcanv.as/p/LpmXGUe6/)  
+[![Swooop](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/4763/TKYXB8-image-25.jpg)](https://playcanv.as/p/JtL2iqIH/) [![Master Archer](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/415995/10A5A9-image-25.jpg)](https://playcanv.as/p/JERg21J8/) [![Gaussian Splat Statues](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/1224723/266D9C-image-25.jpg)](https://playcanv.as/p/cLkf99ZV/)  
+[![Car](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/347824/7ULQ3Y-image-25.jpg)](https://playcanv.as/p/RqJJ9oU9/) [![Star-Lord](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/333626/BGQN9H-image-25.jpg)](https://playcanv.as/p/SA7hVBLt/) [![Global Illumination](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/4373/625081/6AB32D-image-25.jpg)](https://playcanv.as/p/ZV4PW6wr/)
+
+点击此链接查看更多案例： [PlayCanvas website](https://playcanvas.com/explore).
+
+## 我们的客户
+
+许多行业龙头公司在不同领域（广告，电子游戏以及产品可视化等）均使用了 PlayCanvas：  
+**Animech, Arm, BMW, Disney, Facebook, Famobi, Funday Factory, IGT, King, Miniclip, Leapfrog, Mojiworks, Mozilla, Nickelodeon, Nordeus, NOWWA, PikPok, PlaySide Studios, Polaris, Product Madness, Samsung, Snap, Spry Fox, Zeptolab, Zynga**
+
+## 如何搭建项目
+
+确保已安装 [Node.js 18+](https://nodejs.org) ，并安装 Node.js 相关依赖组件。
+
+```sh
+npm install
+```
+
+现在您就可以运行不同的搭建选项了：
+
+| 命令 | 描述 | 输出到 |
+| ---- | ---- | ----- |
+| `npm run build` | 构建所有引擎构建目标和类型声明 | `build` |
+| `npm run docs` | 构建引擎[API参考文档](https://api.playcanvas.com/engine/) | `docs` |
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/README-zh.md ===
+2026-10-19 13:14:41.603 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:14:44.176 | INFO     | Model API request cost info: input_tokens=2676, output_tokens=77, cost=0.007460
+2026-10-19 13:14:44.177 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:14:44.177 | INFO     | ******
+2026-10-19 13:14:44.177 | INFO     | [Key Information from README-zh.md]
+- **Environment Setup:**
+  - Requires Node.js version **18+**.
+  - To install general dependencies, run:
+    ```sh
+    npm install
+    ```
+
+- **Test Execution Instructions:**
+  - No explicit test commands or instructions were found in the document.
+
+[/Key Information]
+2026-10-19 13:14:44.177 | INFO     | ******
+2026-10-19 13:14:44.177 | DEBUG    | Result of dispatch_intent: ('[Key Information from README-zh.md]\n- **Environment Setup:**\n  - Requires Node.js version **18+**.\n  - To install general dependencies, run:\n    ```sh\n    npm install\n    ```\n\n- **Test Execution Instructions:**\n  - No explicit test commands or instructions were found in the document.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:14:44.177 | INFO     | entering browse
+2026-10-19 13:14:44.178 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/README-ja.md ===
+# PlayCanvas Engine
+
+[![NPM Version](https://img.shields.io/npm/v/playcanvas)](https://www.npmjs.com/package/playcanvas)
+[![NPM Downloads](https://img.shields.io/npm/dw/playcanvas)](https://npmtrends.com/playcanvas)
+[![License](https://img.shields.io/npm/l/playcanvas)](https://github.com/playcanvas/engine/blob/main/LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white&color=black)](https://discord.gg/RSaMRzg)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat&logo=reddit&logoColor=white&color=black)](https://www.reddit.com/r/PlayCanvas)
+[![X](https://img.shields.io/badge/X-000000?style=flat&logo=x&logoColor=white&color=black)](https://x.com/intent/follow?screen_name=playcanvas)
+
+| [ユーザーマニュアル](https://developer.playcanvas.com/user-manual/engine/) | [APIリファレンス](https://api.playcanvas.com/engine/) | [例](https://playcanvas.com/examples/) | [ブログ](https://blog.playcanvas.com) | [フォーラム](https://forum.playcanvas.com) |
+
+PlayCanvasは、WebGL2とWebGPU上に構築されたオープンソースのゲームエンジンです。あらゆるブラウザ、あらゆるデバイスで動作するインタラクティブな3Dアプリ、ゲーム、ビジュアライゼーションを作成できます。
+
+[English](https://github.com/playcanvas/engine/blob/main/README.md)
+[中文](https://github.com/playcanvas/engine/blob/main/README-zh.md)
+[日本語](https://github.com/playcanvas/engine/blob/main/README-ja.md)
+[한글](https://github.com/playcanvas/engine/blob/main/README-kr.md)
+
+## インストール
+
+```sh
+npm install playcanvas
+```
+
+または、[`create-playcanvas`](https://github.com/playcanvas/create-playcanvas) で数秒でプロジェクトを作成：
+
+```sh
+npm create playcanvas@latest
+```
+
+## 使用方法
+
+シンプルなHello Worldの例です - 回転するキューブ！
+
+```js
+import {
+  Application,
+  Color,
+  Entity,
+  FILLMODE_FILL_WINDOW,
+  RESOLUTION_AUTO
+} from 'playcanvas';
+
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
+const app = new Application(canvas);
+
+// fill the available space at full resolution
+app.setCanvasFillMode(FILLMODE_FILL_WINDOW);
+app.setCanvasResolution(RESOLUTION_AUTO);
+
+// ensure canvas is resized when window changes size
+window.addEventListener('resize', () => app.resizeCanvas());
+
+// create box entity
+const box = new Entity('cube');
+box.addComponent('render', {
+  type: 'box'
+});
+app.root.addChild(box);
+
+// create camera entity
+const camera = new Entity('camera');
+camera.addComponent('camera', {
+  clearColor: new Color(0.1, 0.2, 0.3)
+});
+app.root.addChild(camera);
+camera.setPosition(0, 0, 3);
+
+// create directional light entity
+const light = new Entity('light');
+light.addComponent('light');
+app.root.addChild(light);
+light.setEulerAngles(45, 0, 0);
+
+// rotate the box according to the delta time since the last frame
+app.on('update', dt => box.rotate(10 * dt, 20 * dt, 30 * dt));
+
+app.start();
+```
+
+このコードを自分で試すには[CodePen](https://codepen.io/playcanvas/pen/NPbxMj)をクリックします。
+
+PlayCanvas Engine をベースにしたローカル開発環境の設定に関する完全ガイドは[こちら](https://developer.playcanvas.com/user-manual/engine/standalone/)で見つけることができます。
+
+## 機能
+
+PlayCanvasはフル機能のゲームエンジンです。
+
+* 🧊 **グラフィックス** - WebGL2とWebGPUで構築された高度な2D + 3Dグラフィックスエンジン
+* 💠 **ガウシアンスプラッティング** - [3Dガウシアンスプラット](https://developer.playcanvas.com/user-manual/graphics/gaussian-splatting/)のロードとレンダリングをネイティブサポート
+* 🥽 **XR** - [WebXR](https://developer.playcanvas.com/user-manual/xr/)による没入型ARおよびVR体験のビルトインサポート
+* ⚛️ **物理** - 3Dリジッドボディ物理エンジン [ammo.js](https://github.com/kripken/ammo.js)
+* 🏃 **アニメーション** - キャラクターやシーンに対する強力なステートベースのアニメーション
+* 🎮 **インプット** - マウス、キーボード、タッチ、ゲームパッドのAPI
+* 🔊 **サウンド** - Web Audio APIを利用した3D位置情報サウンド
+* 📦 **アセット** - [glTF 2.0](https://www.khronos.org/gltf/)、[Draco](https://google.github.io/draco/)、[Basis](https://github.com/BinomialLLC/basis_universal) の圧縮技術を利用した非同期型ストリーミングシステム
+* 📜 **スクリプト** - TypeScriptとJavaScriptをサポート
+
+## エコシステム
+
+お好みの方法でPlayCanvasを使って開発：
+
+| パッケージ | 説明 |
+| --------- | ---- |
+| [`playcanvas`](https://www.npmjs.com/package/playcanvas) | コアエンジン（このページ） |
+| [`@playcanvas/react`](https://www.npmjs.com/package/@playcanvas/react) | PlayCanvas用Reactレンダラー |
+| [`@playcanvas/web-components`](https://www.npmjs.com/package/@playcanvas/web-components) | カスタム要素による宣言的3D |
+| [`create-playcanvas`](https://www.npmjs.com/package/create-playcanvas) | プロジェクトスキャフォールディングCLI |
+| [PlayCanvasエディター](https://github.com/playcanvas/editor) | ブラウザベースのビジュアルエディター |
+
+## ショーケース
+
+PlayCanvasエンジンを使って[多くのゲームやアプリ](https://github.com/playcanvas/awesome-playcanvas)が公開されています。ここではその一部をご紹介します。
+
+[![Seemore](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14705/319531/O4J4VU-image-25.jpg)](https://playcanv.as/p/MflWvdTW/) [![After The Flood](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/440410/98554E-image-25.jpg)](https://playcanv.as/p/44MRmJRU/) [![Casino](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/14928/349824/U88HJQ-image-25.jpg)](https://playcanv.as/p/LpmXGUe6/)  
+[![Swooop](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/4763/TKYXB8-image-25.jpg)](https://playcanv.as/p/JtL2iqIH/) [![Master Archer](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/415995/10A5A9-image-25.jpg)](https://playcanv.as/p/JERg21J8/) [![Gaussian Splat Statues](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/1224723/266D9C-image-25.jpg)](https://playcanv.as/p/cLkf99ZV/)  
+[![Car](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/347824/7ULQ3Y-image-25.jpg)](https://playcanv.as/p/RqJJ9oU9/) [![Star-Lord](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/12/333626/BGQN9H-image-25.jpg)](https://playcanv.as/p/SA7hVBLt/) [![Global Illumination](https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/projects/4373/625081/6AB32D-image-25.jpg)](https://playcanv.as/p/ZV4PW6wr/)
+
+他のゲームは[PlayCanvasのウェブサイト](https://playcanvas.com/explore)で見ることができます。
+
+## 利用実績
+
+PlayCanvasは、ビデオゲーム、広告、ビジュアライゼーションの分野で大手企業に採用されています。  
+**Animech, Arm, BMW, Disney, Facebook, Famobi, Funday Factory, IGT, King, Miniclip, Leapfrog, Mojiworks, Mozilla, Nickelodeon, Nordeus, NOWWA, PikPok, PlaySide Studios, Polaris, Product Madness, Samsung, Snap, Spry Fox, Zeptolab, Zynga**
+
+## ビルドの手順
+
+[Node.js 18+](https://nodejs.org)がインストールされていることを確認します。次に、必要なNode.jsの依存関係をすべてインストールします。
+
+```sh
+npm install
+```
+
+これで、様々なオプションでビルドを実行できるようになりました。
+
+| コマンド | 説明 | 出力先 |
+| ------- | ---- | ----- |
+| `npm run build` | すべてのエンジンビルドターゲットと型宣言をビルドする | `build` |
+| `npm run docs` | エンジンの[APIリファレンスドキュメント](https://api.playcanvas.com/engine/)をビルドする | `docs` |
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/README-ja.md ===
+2026-10-19 13:14:44.178 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:14:47.672 | INFO     | Model API request cost info: input_tokens=2850, output_tokens=130, cost=0.008425
+2026-10-19 13:14:47.673 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:14:47.673 | INFO     | ******
+2026-10-19 13:14:47.673 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/README-ja.md]
+- **Environment Setup**:
+  - Install Node.js version 18 or higher.
+  - Install Node.js dependencies:
+    ```sh
+    npm install
+    ```
+
+- **Build Instructions**:
+  - Build all engine build targets and type declarations:
+    ```sh
+    npm run build
+    ```
+  - Generate API reference documentation:
+    ```sh
+    npm run docs
+    ```
+
+- **Test Execution Instructions**:
+  - No test execution instructions were found in the file.
+
+[/Key Information]
+2026-10-19 13:14:47.673 | INFO     | ******
+2026-10-19 13:14:47.674 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/README-ja.md]\n- **Environment Setup**:\n  - Install Node.js version 18 or higher.\n  - Install Node.js dependencies:\n    ```sh\n    npm install\n    ```\n\n- **Build Instructions**:\n  - Build all engine build targets and type declarations:\n    ```sh\n    npm run build\n    ```\n  - Generate API reference documentation:\n    ```sh\n    npm run docs\n    ```\n\n- **Test Execution Instructions**:\n  - No test execution instructions were found in the file.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:14:47.674 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/engine/.github. The browsing Depth is 1.\nStructure of this directory:\n\nISSUE_TEMPLATE.md\n\nCONTRIBUTING.md\n\nPULL_REQUEST_TEMPLATE.md\n\nrenovate.json\n\nCODE_OF_CONDUCT.md\n\nworkflows/\n\n', 'folder structure collected', True)
+2026-10-19 13:14:47.674 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/engine/test. The browsing Depth is 1.\nStructure of this directory:\n\njsdom.mjs\n\nwebgpu-device.mjs\n\ndevice.mjs\n\nwebgpu-shims.mjs\n\nfixtures.mjs\n\nammo.mjs\n\napp.mjs\n\nREADME.md\n\nplatform/\n\nframework/\n\nscene/\n\ncore/\n\ntype-tests/\n\nextras/\n\nbundles/\n\nassets/\n\n', 'folder structure collected', True)
+2026-10-19 13:15:06.711 | INFO     | Model API request cost info: input_tokens=3183, output_tokens=840, cost=0.016358
+2026-10-19 13:15:06.728 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-19 13:15:10.202 | INFO     | Model API request cost info: input_tokens=1438, output_tokens=347, cost=0.007065
+2026-10-19 13:15:10.204 | DEBUG    | {
+    "API_calls": [
+        "browse_file_for_environment_info('test/README.md', 'test execution instructions or additional test details')",
+        "browse_folder('.github/workflows', '1')"
+    ],
+    "collected_information": {
+        "node_js_version": ">=18.3.0",
+        "npm_version": "npm@11.19.1",
+        "environment_setup": {
+            "general_steps": [
+                "Install Node.js version 18+",
+                "Install required dependencies: npm install",
+                "Build all engine flavors and type declarations: npm run build",
+                "Build engine API reference docs: npm run docs"
+            ],
+            "from_readme_files": {
+                "README.md": {
+                    "node_js_version": "Node.js 18+",
+                    "steps": ["npm install", "npm run build", "npm run docs"],
+                    "test_instructions": "None"
+                },
+                "README-kr.md": {
+                    "node_js_version": "Node.js 18+",
+                    "steps": ["npm install", "npm run build", "npm run docs"],
+                    "test_instructions": "None"
+                },
+                "README-zh.md": {
+                    "node_js_version": "Node.js 18+",
+                    "steps": ["npm install"],
+                    "test_instructions": "None"
+                },
+                "README-ja.md": {
+                    "node_js_version": "Node.js 18+",
+                    "steps": ["npm install", "npm run build", "npm run docs"],
+                    "test_instructions": "None"
+                }
+            }
+        }
+    },
+    "terminate": false
+}
+2026-10-19 13:15:10.204 | DEBUG    | Extracted a valid json
+2026-10-19 13:15:10.207 | INFO     | entering browse
+2026-10-19 13:15:10.207 | INFO     | === FILE START: /data/home/cjy/software-testing/projects/engine/test/README.md ===
+# Unit Tests
+
+PlayCanvas uses [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) for unit testing. All tests run in Node and load the engine's source modules directly. This means that building the engine is not a requirement for running the tests.
+
+PlayCanvas depends on a browser environment for the full set of tests to run successfully. This is achieved via [jsdom](https://github.com/jsdom/jsdom).
+
+## Running the Unit Tests
+
+To run the tests, simply do:
+
+```
+npm test
+```
+
+## Running the Unit Tests on WebGPU
+
+The tests can also run on a real WebGPU implementation, Google Dawn, through the [`webgpu`](https://www.npmjs.com/package/webgpu) package:
+
+```
+npm run test:webgpu
+```
+
+This runs the same tests with the engine's WebGPU device instead of the null device, so the engine's use of the WebGPU API is validated and its WGSL shaders are compiled. By default Dawn's `null` backend is used: it performs the full validation but executes no GPU work, so it runs anywhere, including CI machines without a GPU. Set `PC_WEBGPU_BACKEND` to `metal`, `vulkan` or `d3d12` to run on the GPU instead. Any error WebGPU reports during a test fails that test.
+
+Tests obtain their device from `createGraphicsDevice()` in `test/device.mjs`, which returns whichever device the run uses. A test that checks the behaviour of one specific device constructs that device directly. Tests that need the GLSL transpilers, which are not available in Node, are excluded from this run.
+
+## Code Coverage
+
+PlayCanvas uses [C8](https://github.com/bcoe/c8) to analyze and report unit test code coverage. To print a code coverage report, do:
+
+```
+npm run test:coverage
+```
+
+## Writing Tests
+
+The PlayCanvas Engine is made up of ES Modules. Each module should have a corresponding unit test module. For example:
+
+```
+/src/core/math/vec3.js
+```
+
+...has the corresponding unit test module:
+
+```
+/test/core/math/vec3.test.mjs
+```
+
+In short, for any given engine source module:
+
+1. Create a file in the corresponding path under `test`.
+2. Replace `.js` with `.test.mjs` (the `.mjs` extension informs Node that the file is an ES Module).
+
+Test module code should adhere to the following style:
+
+```javascript
+import { expect } from 'chai';
+
+import { SomeClass } from '../../src/path/to/some-class.js';
+
+describe('SomeClass', function () {
+
+    describe('#someProperty', function () {
+
+        it('does something', function () {
+            // test code
+        });
+
+        it('does something else', function () {
+            // test code
+        });
+
+    });
+
+    describe('#constructor()', function () {
+
+        // more tests
+
+    });
+
+    describe('#someFunc()', function () {
+
+        // more tests
+
+    });
+
+});
+```
+
+Some tips:
+
+* Group properties, then the constructor and then member functions in the test module.
+* Alphabetize the API described in the test module (as it appears in the [API reference manual](https://api.playcanvas.com/modules/Engine.html)).
+* [Avoid using arrow functions](https://mochajs.org/#arrow-functions) for `describe` and `it` calls.
+* Try to make the call to `it` read as a proper sentence:
+  * Good: `it('returns null on failure', ...`
+  * Bad: `it('null is returned', ...`
+
+## Debugging Tests
+
+Debugging tests is easy, convenient and fun! VS Code is the recommended IDE for debugging the tests. All you need to do is:
+
+1. Open the root folder of your clone of the PlayCanvas Engine repo.
+2. Select the Explorer panel (top icon in the left-hand vertical toolbar).
+3. Navigate to the test you want to debug and set a breakpoint.
+4. At the bottom of the Explorer panel, you'll find a sub-panel called NPM Scripts. Locate script `test` and click the Debug button.
+   * If you don't see NPM Scripts sub-panel, right click any visible sub-panels and select NPM Scripts from the drop-down menu.
+
+## Help Us Reach 100% Coverage
+
+Any contributions to the unit tests are very welcome! If you can see ways to improve them, feel free to open an issue to announce what you would like to do and then submit a PR.
+
+=== FILE END:   /data/home/cjy/software-testing/projects/engine/test/README.md ===
+2026-10-19 13:15:10.207 | DEBUG    | Analyzing file content. Try 1 of 3
+2026-10-19 13:15:27.271 | INFO     | Model API request cost info: input_tokens=1488, output_tokens=461, cost=0.008330
+2026-10-19 13:15:27.272 | SUCCESS  | Successfully extracted environment config
+2026-10-19 13:15:27.272 | INFO     | ******
+2026-10-19 13:15:27.273 | INFO     | [Key Information from /data/home/cjy/software-testing/projects/engine/test/README.md]
+- Test Frameworks:
+  - Mocha
+  - Chai
+  - WebGPU (for running tests on Google Dawn)
+- Test Environment:
+  - Node.js environment (no need to build the engine).
+  - Full test set requires a browser-like environment, achieved via the `jsdom` package.
+- Test Commands:
+  - **Run all standard tests**:
+    ```
+    npm test
+    ```
+  - **Run tests on WebGPU backend**:
+    ```
+    npm run test:webgpu
+    ```
+  - **Run tests with code coverage**:
+    ```
+    npm run test:coverage
+    ```
+- WebGPU Backend Details:
+  - By default, it uses Dawn's `null` backend for validation and tests.
+  - To switch WebGPU backends, set the environment variable `PC_WEBGPU_BACKEND`:
+    - Options: `metal`, `vulkan`, or `d3d12`.
+  - The backend validates API usage and compiles WGSL shaders and fails tests if WebGPU reports errors.
+- Test File Structure:
+  - Test modules should correspond to engine source `.js` files:
+    - Source file: `/src/core/math/vec3.js`
+    - Test file: `/test/core/math/vec3.test.mjs`
+  - Test code style:
+    - Use `describe` and `it` blocks from Mocha.
+    - Import assertions from Chai (`import { expect } from 'chai';`).
+    - Avoid arrow functions in `describe` and `it` calls (per Mocha recommendations for readability).
+- Debugging Instructions:
+  - **Using VS Code**:
+    - Open tests within the PlayCanvas Engine repo.
+    - Set breakpoints in the desired test file.
+    - Navigate to the NPM Scripts sub-panel in Explorer, locate `test`, and click the **Debug** button.
+    - Ensure "NPM Scripts" sub-panel is enabled in VS Code.
+- Environment Variables:
+  - `PC_WEBGPU_BACKEND`: Options include `metal`, `vulkan`, `d3d12`. Default is `null`.
+
+[/Key Information]
+2026-10-19 13:15:27.273 | INFO     | ******
+2026-10-19 13:15:27.273 | DEBUG    | Result of dispatch_intent: ('[Key Information from /data/home/cjy/software-testing/projects/engine/test/README.md]\n- Test Frameworks:\n  - Mocha\n  - Chai\n  - WebGPU (for running tests on Google Dawn)\n- Test Environment:\n  - Node.js environment (no need to build the engine).\n  - Full test set requires a browser-like environment, achieved via the `jsdom` package.\n- Test Commands:\n  - **Run all standard tests**:\n    ```\n    npm test\n    ```\n  - **Run tests on WebGPU backend**:\n    ```\n    npm run test:webgpu\n    ```\n  - **Run tests with code coverage**:\n    ```\n    npm run test:coverage\n    ```\n- WebGPU Backend Details:\n  - By default, it uses Dawn\'s `null` backend for validation and tests.\n  - To switch WebGPU backends, set the environment variable `PC_WEBGPU_BACKEND`:\n    - Options: `metal`, `vulkan`, or `d3d12`.\n  - The backend validates API usage and compiles WGSL shaders and fails tests if WebGPU reports errors.\n- Test File Structure:\n  - Test modules should correspond to engine source `.js` files:\n    - Source file: `/src/core/math/vec3.js`\n    - Test file: `/test/core/math/vec3.test.mjs`\n  - Test code style:\n    - Use `describe` and `it` blocks from Mocha.\n    - Import assertions from Chai (`import { expect } from \'chai\';`).\n    - Avoid arrow functions in `describe` and `it` calls (per Mocha recommendations for readability).\n- Debugging Instructions:\n  - **Using VS Code**:\n    - Open tests within the PlayCanvas Engine repo.\n    - Set breakpoints in the desired test file.\n    - Navigate to the NPM Scripts sub-panel in Explorer, locate `test`, and click the **Debug** button.\n    - Ensure "NPM Scripts" sub-panel is enabled in VS Code.\n- Environment Variables:\n  - `PC_WEBGPU_BACKEND`: Options include `metal`, `vulkan`, `d3d12`. Default is `null`.\n\n[/Key Information]', 'Get File Info', True)
+2026-10-19 13:15:27.273 | DEBUG    | Result of dispatch_intent: ('You are browsing the path: /data/home/cjy/software-testing/projects/engine/.github/workflows. The browsing Depth is 1.\nStructure of this directory:\n\nupload.yml\n\nbuild-size.yml\n\nbeta.yml\n\nci.yml\n\napi-report.yml\n\nalpha.yml\n\npublish.yml\n\n', 'folder structure collected', True)
+2026-10-19 13:15:52.120 | INFO     | Model API request cost info: input_tokens=4838, output_tokens=1365, cost=0.025745
+2026-10-19 13:15:52.163 | DEBUG    | Trying to select search APIs in json. Try 1 of 5.
+2026-10-19 13:16:09.541 | INFO     | Model API request cost info: input_tokens=1963, output_tokens=413, cost=0.009038
+2026-10-19 13:16:09.542 | DEBUG    | {
+    "API_calls": [],
+    "collected_information": {
+        "Environment Setup": {
+            "Node.js version": ">=18.3.0",
+            "npm version": "11.19.1",
+            "Install Commands": ["npm install"],
+            "Build Commands": ["npm run build", "npm run docs"],
+            "Docker Consideration": "Node.js and npm versions should be integrated into Docker configuration if used."
+        },
+        "Test Execution": {
+            "Test Frameworks": ["Mocha", "Chai", "WebGPU"],
+            "Node.js Environment": true,
+            "Test Commands": {
+                "Run All Tests": "npm test",
+                "WebGPU Tests": "npm run test:webgpu",
+                "Coverage Tests": "npm run test:coverage"
+            },
+            "WebGPU Backend": {
+                "Environment Variable": "PC_WEBGPU_BACKEND",
+                "Options": ["metal", "vulkan", "d3d12", "null (default)"]
+            },
+            "Test File Structure": "Test modules should correspond to source .js files (e.g., /src/core/math/vec3.js -> /test/core/math/vec3.test.mjs).",
+            "Test Code Style": "Use Mocha's describe/it with functions (not arrow functions); use Chai assertions (import { expect })."
+        },
+        "Debugging Instructions": {
+            "VS Code Debugging": {
+                "Steps": [
+                    "Open the test files in the PlayCanvas Engine repo.",
+                    "Add breakpoints in the desired test file.",
+                    "From the NPM Scripts sub-panel in Explorer, locate `test` and click Debug.",
+                    "Ensure the NPM Scripts sub-panel is enabled in VS Code."
+                ]
+            }
+        },
+        "CI/CD Consideration": "`.github/workflows/ci.yml` might contain CI/CD configuration details, but these are not critical for the current scope."
+    },
+    "terminate": true
+}
+2026-10-19 13:16:09.542 | DEBUG    | Extracted a valid json
+2026-10-19 13:16:09.544 | INFO     | Trying to extract a dockerfile. Try 1 of 3.
+2026-10-19 13:16:16.490 | INFO     | Model API request cost info: input_tokens=3976, output_tokens=438, cost=0.014320
+2026-10-19 13:16:16.491 | INFO     | Raw dockerfile and produced in try 1. Writing dockerfile into file.
+2026-10-19 13:21:14.731 | DEBUG    | Result of dispatch_intent: ('Step 6/13 : RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt install -y nodejs && npm install -g npm@latest\n ---> Running in a6983ad1fbdc\n2026-10-19 05:20:35 - Installing pre-requisites\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nGet:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]\nGet:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]\nGet:4 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [96.8 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]\nGet:7 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7955 kB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]\nGet:9 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]\nGet:10 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]\nGet:11 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [104 kB]\nGet:12 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1627 kB]\nGet:13 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [8243 kB]\nGet:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4757 kB]\nGet:15 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1325 kB]\nGet:16 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]\nGet:17 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.9 kB]\nGet:18 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [4429 kB]\nFetched 49.0 MB in 15s (3165 kB/s)\nReading package lists...\nBuilding dependency tree...\nReading state information...\n31 packages can be upgraded. Run \'apt list --upgradable\' to see them.\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nReading package lists...\nBuilding dependency tree...\nReading state information...\nca-certificates is already the newest version (20260601~22.04.1).\nca-certificates set to manually installed.\ngnupg is already the newest version (2.2.27-3ubuntu2.5).\ngnupg set to manually installed.\ncurl is already the newest version (7.81.0-1ubuntu1.30).\nThe following NEW packages will be installed:\n  apt-transport-https\n0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.\nNeed to get 1510 B of archives.\nAfter this operation, 170 kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 apt-transport-https all 2.4.14 [1510 B]\ndebconf: delaying package configuration, since apt-utils is not installed\nFetched 1510 B in 0s (3028 B/s)\nSelecting previously unselected package apt-transport-https.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 26820 files and directories currently installed.)\nPreparing to unpack .../apt-transport-https_2.4.14_all.deb ...\nUnpacking apt-transport-https (2.4.14) ...\nSetting up apt-transport-https (2.4.14) ...\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nGet:1 https://deb.nodesource.com/node_20.x nodistro InRelease [12.1 kB]\nHit:2 http://archive.ubuntu.com/ubuntu jammy InRelease\nGet:3 https://deb.nodesource.com/node_20.x nodistro/main amd64 Packages [14.7 kB]\nHit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease\nHit:5 http://archive.ubuntu.com/ubuntu jammy-updates InRelease\nHit:6 http://archive.ubuntu.com/ubuntu jammy-backports InRelease\nFetched 26.8 kB in 1s (19.9 kB/s)\nReading package lists...\nBuilding dependency tree...\nReading state information...\n31 packages can be upgraded. Run \'apt list --upgradable\' to see them.\n2026-10-19 05:20:59 - Repository configured successfully.\n2026-10-19 05:20:59 - To install Node.js, run: apt install nodejs -y\n2026-10-19 05:20:59 - You can use N|solid Runtime as a node.js alternative\n2026-10-19 05:20:59 - To install N|solid Runtime, run: apt install nsolid -y \nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\nReading package lists...\nBuilding dependency tree...\nReading state information...\nThe following NEW packages will be installed:\n  nodejs\n0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.\nNeed to get 32.2 MB of archives.\nAfter this operation, 196 MB of additional disk space will be used.\nGet:1 https://deb.nodesource.com/node_20.x nodistro/main amd64 nodejs amd64 20.20.2-1nodesource1 [32.2 MB]\ndebconf: delaying package configuration, since apt-utils is not installed\nFetched 32.2 MB in 5s (5965 kB/s)\nSelecting previously unselected package nodejs.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 26824 files and directories currently installed.)\nPreparing to unpack .../nodejs_20.20.2-1nodesource1_amd64.deb ...\nUnpacking nodejs (20.20.2-1nodesource1) ...\nSetting up nodejs (20.20.2-1nodesource1) ...\nnpm error code EBADENGINE\nnpm error engine Unsupported engine\nnpm error engine Not compatible with your version of node/npm: npm@12.2.0\nnpm error notsup Not compatible with your version of node/npm: npm@12.2.0\nnpm error notsup Required: {"node":"^22.22.2 || ^24.15.0 || >=26.0.0"}\nnpm error notsup Actual:   {"npm":"10.8.2","node":"v20.20.2"}\nnpm error A complete log of this run can be found in: /root/.npm/_logs/2026-10-19T05_21_10_790Z-debug-0.log\n ---> Removed intermediate container a6983ad1fbdc\nError: The command \'/bin/sh -c curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt install -y nodejs && npm install -g npm@latest\' returned a non-zero code: 1', 'Failed to build Docker image.', False)
+2026-10-19 13:21:14.734 | DEBUG    | Trying to analyze the test log. Try 1 of 3.
+2026-10-19 13:21:22.526 | INFO     | Model API request cost info: input_tokens=3577, output_tokens=259, cost=0.011533
+2026-10-19 13:21:22.527 | DEBUG    | {
+    "is_finish": false,
+    "guidance_for_write_dockerfile_agent": "The Dockerfile fails to build successfully due to a dependency issue with Node.js and npm versions. The error indicates 'EBADENGINE' and states that the installed npm version (10.8.2) is not compatible with the required node.js versions (>=22.22.2 or >=24.15.0 or >=26.0.0). Recommend modifying the Dockerfile to install a compatible version of Node.js and npm that matches the requirement specified in the error log. For example, instead of using 'setup_20.x' for the NodeSource repository, you might need to use 'setup_lts.x' or another compatible Node version higher than v20.x. Also, check if the repository's README.md or package.json mentions specific dependency requirements related to Node.js and npm versions.",
+    "guidance_for_write_eval_script_agent": "",
+    "guidance_for_context_retrieval_agent": "Retrieve files such as README.md and package.json from the repository to confirm the correct versions of Node.js and npm compatible with the project. These files often specify the required engine versions or dependencies. This information will help ensure that the environment is set up with the correct versions."
+}
+2026-10-19 13:21:22.527 | DEBUG    | Extracted a valid json
+2026-10-19 13:21:22.528 | INFO     | Too many rounds. Exceed largest number of tries..
+2026-10-19 13:21:22.535 | INFO     | Task engine completed successfully.

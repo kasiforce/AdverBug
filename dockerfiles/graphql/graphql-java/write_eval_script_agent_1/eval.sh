@@ -1,0 +1,19 @@
+#!/bin/bash
+set -uxo pipefail
+
+# Navigate to the project directory
+cd /testbed
+
+# Ensure pre-commit hooks and permission configurations (if needed)
+chmod +x /testbed/scripts/setup-hooks.sh
+/testbed/scripts/setup-hooks.sh
+
+# Execute tests using Gradle commands optimized for efficiency
+# Ensure test execution across all Java versions and with Jacoco coverage
+./gradlew testWithJava11 testngWithJava11 testWithJava17 testngWithJava17 testWithJava21 testngWithJava21 test testng jacocoTestReport --info --stacktrace
+
+# Capture the exit code
+rc=$?
+
+# Output the exit code for validation
+echo "OMNIGRIL_EXIT_CODE=$rc"

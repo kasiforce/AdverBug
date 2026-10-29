@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The following error occurred during the Dockerfile build process: `CondaToSNonInteractiveError: Terms of Service have not been accepted for the following channels`. To resolve this, you need to explicitly accept the Terms of Service for the specified conda channels before attempting further conda operations. Update the Dockerfile by adding the following commands before creating the Conda environment:\\n```\\nRUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \\n    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r\\n```\\nThis will accept the ToS for the required channels and ensure that the `conda create` command succeeds during the Docker build process.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

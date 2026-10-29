@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile contains a syntax error in the ENV command that sets MAVEN_OPTS. Specifically, in the following line: `ENV MAVEN_OPTS=-XX:MaxPermSize=2g -Xmx4g`, the environment variable definition lacks proper quotation marks around the value. The correct syntax should be: `ENV MAVEN_OPTS=\"-XX:MaxPermSize=2g -Xmx4g\"`. This correction will fix the issue where the Docker build fails with the error: `failed to parse Dockerfile: Syntax error - can't find = in \"-Xmx4g\". Must be of the form: name=value`.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

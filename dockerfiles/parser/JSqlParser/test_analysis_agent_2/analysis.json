@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile is failing during the step where Maven 3.9.0 is being downloaded using wget. The error message indicates that the URL https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz results in a 404 Not Found error. Maven 3.9.0 binaries may have been moved or removed from this location. To resolve this issue, you should locate the correct URL for the desired Maven version or opt to install Maven 3.9.0 using an alternative approach (e.g., adding it via a package manager like apt if available, or manually verifying and downloading the binaries from the website). Alternatively, consider upgrading or downgrading the Maven version and use a URL compatible with the Apache Maven official repository. Ensure the container continues past this step only after Maven is successfully installed.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "Check the repository's README.md, CONTRIBUTING.md, or documentation files to see if a specific Maven version is required for building and testing the project. If yes, confirm the exact version needed. Also, review the repository for any custom build or environment setup scripts (such as additional Dockerfiles, environment.yml, setup.py, or similar).",
+  "build_image_status": false
+}

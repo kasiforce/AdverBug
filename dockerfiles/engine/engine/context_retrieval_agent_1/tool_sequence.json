@@ -1,0 +1,42 @@
+[
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "README.md",
+      "custom_query": "How to set up the environment and run the project?"
+    },
+    "call_ok": true,
+    "result": "[Key Information from README.md]\n- **Environment Setup:**\n  - Ensure **Node.js 18+** is installed. [Download Node.js 18+](https://nodejs.org)\n  - Install necessary Node.js dependencies:\n    ```sh\n    npm install\n    ```\n  \n- **Project Build Commands:**\n  - Build all engine flavors and type declarations:\n    ```sh\n    npm run build\n    ```\n    - Output: `build` directory.\n  - Build API reference documentation:\n    ```sh\n    npm run docs\n    ```\n    - Output: `docs` directory.\n\n- **Dependencies:**\n  - Core package required: `playcanvas`.\n    - Command to install: \n      ```sh\n      npm install playcanvas\n      ```\n\n- **Optional Project Scaffolding:**\n  - Use `create-playcanvas` for quickly setting up a PlayCanvas project:\n    ```sh\n    npm create playcanvas@latest\n    ```\n\n- **Runtime Requirements:**\n  - **Node.js version:** 18 or higher.\n\nNo testing commands or testing setup instructions are described in the file.\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "package.json",
+      "custom_query": "What dependencies and scripts are defined?"
+    },
+    "call_ok": true,
+    "result": "[Key Information from /data/home/cjy/software-testing/projects/engine/package.json]\n- **Dependencies**:\n  - `@types/webxr`: ^0.5.24\n  - `@webgpu/types`: ^0.1.70\n\n- **DevDependencies**:\n  - `@playcanvas/eslint-config`: 3.0.0-beta.8\n  - `@rollup/plugin-strip`: 3.0.4\n  - `@types/node`: 24.13.5\n  - `acorn`: 8.18.0\n  - `c8`: 12.0.0\n  - `canvas`: 3.2.3\n  - `chai`: 6.2.2\n  - `esbuild`: 0.28.2\n  - `esbuild-visualizer`: 0.7.0\n  - `eslint`: 9.39.5\n  - `fflate`: 0.8.3\n  - `globals`: 17.12.0\n  - `jscc`: 1.1.1\n  - `jsdom`: 30.1.0\n  - `mocha`: 12.0.2\n  - `nise`: 6.1.5\n  - `publint`: 0.3.24\n  - `rollup`: 4.63.3\n  - `rollup-plugin-dts`: 6.5.1\n  - `serve`: 14.2.6\n  - `sinon`: 22.1.0\n  - `turbo`: 2.10.13\n  - `typedoc`: 0.28.20\n  - `typedoc-plugin-mdn-links`: 5.1.1\n  - `typedoc-plugin-merge-modules`: 7.0.0\n  - `typedoc-plugin-missing-exports`: 4.1.4\n  - `typescript`: 5.9.3\n  - `webgpu`: 0.6.1\n\n- **Scripts**:\n  - `build`: turbo run build:all\n  - `build:types`: node build.mjs --type=types\n  - `build:rel:umd`: node build.mjs --type=rel --format=umd\n  - `build:rel:esm`: node build.mjs --type=rel --format=esm\n  - `build:dbg:umd`: node build.mjs --type=dbg --format=umd\n  - `build:dbg:esm`: node build.mjs --type=dbg --format=esm\n  - `build:prf:umd`: node build.mjs --type=prf --format=umd\n  - `build:prf:esm`: node build.mjs --type=prf --format=esm\n  - `build:min:umd`: node build.mjs --type=min --format=umd\n  - `build:min:esm`: node build.mjs --type=min --format=esm\n  - `build:treemap`: node build.mjs --treemap\n  - `build:treenet`: node build.mjs --treenet\n  - `build:treesun`: node build.mjs --treesun\n  - `build:sourcemaps`: node build.mjs --type=rel --format=esm --sourcemaps\n  - `watch`: turbo run watch:all\n  - `watch:rel:umd`: node build.mjs --type=rel --format=umd --watch\n  - `watch:rel:esm`: node build.mjs --type=rel --format=esm --watch\n  - `watch:dbg:umd`: node build.mjs --type=dbg --format=umd --watch\n  - `watch:dbg:esm`: node build.mjs --type=dbg --format=esm --watch\n  - `watch:prf:umd`: node build.mjs --type=prf --format=umd --watch\n  - `watch:prf:esm`: node build.mjs --type=prf --format=esm --watch\n  - `watch:min:umd`: node build.mjs --type=min --format=umd --watch\n  - `watch:min:esm`: node build.mjs --type=min --format=esm --watch\n  - `watch:types`: node build.mjs --type=types --watch\n  - `clean`: node build.mjs --clean\n  - `docs`: typedoc\n  - `docs:scripts`: npm run build:types && typedoc --options typedoc.scripts.config.mjs\n  - `lint`: eslint scripts src test utils build.mjs eslint.config.mjs typedoc.scripts.config.mjs\n  - `lint:fix`: npm run lint -- --fix\n  - `publint`: publint --level error\n  - `serve`: serve build -l 51000 --cors\n  - `test`: mocha --node-option expose-gc --ignore \"test/assets/scripts/*.js\" --ignore \"test/bundles/**\" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --recursive --require test/fixtures.mjs --timeout 5000\n  - `test:webgpu`: mocha --node-option expose-gc --ignore \"test/assets/scripts/*.js\" --ignore \"test/bundles/**\" --ignore test/webgpu-device.mjs --ignore test/webgpu-shims.mjs --ignore test/platform/graphics/shader.test.mjs --recursive --require test/fixtures.mjs --require test/webgpu-device.mjs --timeout 5000 --exit\n  - `test:build`: mocha --recursive \"test/bundles/**/*.test.mjs\" --timeout 30000\n  - `test:coverage`: c8 npm test\n  - `test:types`: tsc --pretty false build/playcanvas.d.ts && tsc -p test/type-tests --pretty false\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": ".nvmrc",
+      "custom_query": "What Node.js version is specified?"
+    },
+    "call_ok": true,
+    "result": "[Key Information from /data/home/cjy/software-testing/projects/engine/.nvmrc]\n- Node.js version specified: 18\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  },
+  {
+    "func_name": "browse_file_for_environment_info",
+    "arguments": {
+      "file_path": "AGENTS.md",
+      "custom_query": "Is there any setup or environment configuration info here?"
+    },
+    "call_ok": true,
+    "result": "[Key Information from /data/home/cjy/software-testing/projects/engine/AGENTS.md]\n- Setup and environment configuration:\n  - **Language**: JavaScript (ES2022), with JSDoc for TypeScript type definitions.\n  - **Module System**: ES Modules.\n  - **Node.js version**: >=18.3.0 (referenced in `package.json` under `engines` field).\n  - **Build system**:\n    - JavaScript bundles: `esbuild` using `build.mjs`.\n    - TypeScript declarations: `rollup-plugin-dts` with `npm run build:types`.\n  - **Linting**: ESLint with `@playcanvas/eslint-config` (command: `npm run lint` before committing changes).\n  - **Testing**:\n    - Frameworks/tools: Mocha + Chai + Sinon.\n    - Commands:\n      - `npm test` (to execute all tests).\n      - `npm run test:coverage` (to include coverage reports).\n      - `npm run build` (to create build artifacts before running tests on bundles in `test/bundles/`).\n      - `npm run test:build` (to test compiled bundles).\n      - `npm run test:types` (to validate TypeScript definition files and consumer-side type tests in `test/type-tests`).\n  - Source code location: `src/`.\n  - Build outputs location: `build/`.\n  - Test files location: `test/` (with `.mjs` extension).\n\n- Key environment configurations and dependencies:\n  - **Node.js runtime**: >=18.3.0.\n  - **Minimal dependencies**: Avoid adding new ones unless necessary. Uses `@types/*` and `@webgpu/types` for type annotations.\n  - **WebGL2/WebGPU APIs**: Support for both backends; ensure compatibility during development.\n  - No polyfills included in the engine: Users must add their own if necessary for browsers.\n\n- Build behaviors and configuration:\n  - Debugging methods (`Debug`, `DebugHelper`) are stripped out in production builds.\n  - Types generation via JSDoc and Rollup uses `npm run build:types`.\n  - **Tree shaking**: `\"sideEffects\": false` declared in `package.json`, ensuring only imported modules are included in final bundles (validate using `test/bundles/treeshake.test.mjs`).\n  - Build artifacts categorized by type (`rel`, `dbg`, `prf`, `min`).\n  - Debug-only code sections controlled by `// #if _DEBUG` directives.\n\n- Testing emphasis:\n  - Unit test files located in `test/`.\n  - Tests organized by module in a `describe()` structure.\n  - `test/bundles/` ensures build integrity and correct exports.\n  - Supports headless and server-side scenarios with a dummy `NullGraphicsDevice`.\n\n- General guidelines:\n  - Update JSDoc documentation when changing APIs.\n  - Follow ESLint rules strictly, running `npm run lint` before commits.\n  - Multi-backend support (WebGL2/WebGPU): Avoid platform-specific calls in high-level code.\n  - No global state: Strict instance-based designs.\n\n[/Key Information]",
+    "agent_id": "ContextRetrievalAgent"
+  }
+]

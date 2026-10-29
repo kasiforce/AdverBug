@@ -1,0 +1,27 @@
+Here is the requested evaluation script based on the details provided:
+
+<script>
+#!/bin/bash
+set -uxo pipefail
+
+# Navigate to the work directory
+cd /testbed
+
+# Install dependencies (this step is already in the Dockerfile)
+npm install
+
+# Execute the tests in the 'test' directory using the appropriate command
+npm test
+rc=$?  # Required, save exit code
+
+# Log the exit code for evaluation
+echo "OMNIGRIL_EXIT_CODE=$rc"  # Required, echo test status
+</script>
+
+This script performs the following:
+1. **Activates the Environment**: As the Dockerfile already sets up the Node.js environment, there is no explicit need for activation.
+2. **Exhibits All Tests Output**: The `npm test` command will run tests in the `test` directory, as per the `context retrieval agent` data, and output readable results.
+3. **Captures Exit Code**: The script captures the exit code of the test execution to determine success or failure.
+4. **Respects the Eval Script Structure**: The script adheres to the specified structure, ensuring minimalism and clarity. 
+
+Let me know if additional tweaks are needed!

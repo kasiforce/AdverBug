@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile failed to build due to a missing dependency 'zip'. This dependency is required for SDKMAN installation, as indicated by the error message: 'Please install zip on your system using your favourite package manager.' To fix this, add the installation of 'zip' to the Dockerfile. Specifically, modify the RUN command where other system tools are installed by including 'zip' in this list: RUN apt update && apt install -y wget curl git unzip build-essential openjdk-11-jdk locales tzdata zip && rm -rf /var/lib/apt/lists/*. Ensure this fix is implemented before proceeding to build the Dockerfile again.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "",
+  "build_image_status": false
+}

@@ -1,0 +1,20 @@
+<script>
+#!/bin/bash
+set -uxo pipefail
+
+# Ensure the working directory is set correctly
+cd /testbed
+
+# Install project dependencies and ensure a clean environment 
+npm install
+
+# Run all test suites and linting as per the project's test setup
+# Combining test commands for Node.js tests and linting
+npm run setheapsize && npm test && npm run lint
+
+# Capture the exit code of the last command executed
+rc=$?
+
+# Output the exit code for the test log analysis agent
+echo "OMNIGRIL_EXIT_CODE=$rc"
+</script>

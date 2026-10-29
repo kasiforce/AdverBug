@@ -1,0 +1,7 @@
+{
+  "is_finish": false,
+  "guidance_for_write_dockerfile_agent": "The Dockerfile fails to build due to the error: `failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory`. This error indicates that the Docker CLI commands are being used during the Maven build process, but the Docker daemon isn't accessible or correctly configured inside the Docker container. Recommendation: Remove the line `RUN usermod -aG docker $(whoami)` and avoid using Docker CLI commands inside the Maven build process during the Docker environment setup. Ensure that the Maven build and installation process (`mvn clean install -DskipTests`) does not invoke any external Docker commands that depend on the host machine's Docker daemon. You could also adjust the Maven plugin configuration to not require Docker and skip operations relying on Docker during environment setup.",
+  "guidance_for_write_eval_script_agent": "",
+  "guidance_for_context_retrieval_agent": "Retrieve dependencies or settings files such as `.github/workflows/*`, `pom.xml`, `README.md`, or documentation in the `docs/` folder to check if the Maven build process or Docker dependency is necessary for the target repository and how to configure it properly. Specifically, look for any Maven plugins or settings invoking external dependencies (like Docker) during the build process.",
+  "build_image_status": false
+}

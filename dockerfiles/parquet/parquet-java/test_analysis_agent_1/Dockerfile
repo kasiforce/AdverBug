@@ -1,0 +1,61 @@
+# Use an official Ubuntu base image with bash
+FROM ubuntu:22.04
+
+# Set non-interactive mode for APT and timezone
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Update and install required system dependencies
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99ignore-time && \
+    apt update && \
+    apt install -y --no-install-recommends \
+    openjdk-17-jdk \
+    maven \
+    wget \
+    git \
+    build-essential \
+    autoconf \
+    flex \
+    bison \
+    libtool \
+    pkg-config \
+    unzip \
+    tzdata \
+    locales \
+    && apt clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set the default locale
+RUN locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+# Install the Thrift Compiler
+RUN wget -nv https://archive.apache.org/dist/thrift/0.25.0/thrift-0.25.0.tar.gz && \
+    tar xzf thrift-0.25.0.tar.gz && \
+    cd thrift-0.25.0 && \
+    chmod +x ./configure && \
+    ./configure --disable-libs && \
+    make install -j && \
+    cd .. && \
+    rm -rf thrift-0.25.0 thrift-0.25.0.tar.gz
+
+# Set working directory
+WORKDIR /testbed/
+
+# Clone the target repository into the working directory
+RUN git clone https://github.com/apache/parquet-java.git /testbed/
+
+# Checkout the specific commit provided by the user
+RUN git reset --hard bca2eaeac0afc88197c622f0f27c8a55739a5be9 && git remote remove origin
+
+# Compile and install Maven dependencies required for the project (skip tests and shading during setup)
+RUN ./mvnw install -DskipTests
+
+# Ensure Maven Wrapper and Java are in the PATH
+ENV PATH="/testbed/.mvn/wrapper:${PATH}"
+ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+
+# Include any additional required configurations such as setting environment
+RUN echo "export LC_ALL=C" >> /root/.bashrc
