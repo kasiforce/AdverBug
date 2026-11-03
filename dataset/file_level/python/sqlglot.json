@@ -1,0 +1,5722 @@
+{
+  "schema_version": 4,
+  "language": "python",
+  "project_root": "/data/home/cjy/Adver_bug/projects/sqlglot",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 186,
+  "selected_file_count": 20,
+  "selected_files": [
+    {
+      "src_file": "sqlglot/parser.py",
+      "nloc": 8426,
+      "concrete_method_count": 446,
+      "total_cyclomatic_complexity": 2488,
+      "callable_entry_count": 33,
+      "cross_file_internal_method_fanout": 508,
+      "resolved_cross_file_internal_method_fanout": 11,
+      "unresolved_cross_file_candidate_call_sites": 497,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "ParseError.new",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "concat_messages",
+          "start_line": 167
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "highlight_sql",
+          "start_line": 104
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "merge_errors",
+          "start_line": 175
+        },
+        {
+          "file": "sqlglot/expressions/builders.py",
+          "qualified_name": "apply_index_offset",
+          "start_line": 1154
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        },
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "in_trie",
+          "start_line": 44
+        }
+      ],
+      "total_call_sites": 4309,
+      "unresolved_project_candidate_call_sites": 525,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generator.py",
+      "nloc": 4955,
+      "concrete_method_count": 497,
+      "total_cyclomatic_complexity": 1899,
+      "callable_entry_count": 474,
+      "cross_file_internal_method_fanout": 664,
+      "resolved_cross_file_internal_method_fanout": 22,
+      "unresolved_cross_file_candidate_call_sites": 642,
+      "cross_file_internal_file_fanout": 10,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "concat_to_dpipe_sql",
+          "start_line": 2016
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_str",
+          "start_line": 2237
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_offset_to_dow",
+          "start_line": 2287
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "concat_messages",
+          "start_line": 167
+        },
+        {
+          "file": "sqlglot/expressions/builders.py",
+          "qualified_name": "apply_index_offset",
+          "start_line": 1154
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.copy",
+          "start_line": 250
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.find",
+          "start_line": 305
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.is_",
+          "start_line": 681
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.is_type",
+          "start_line": 234
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Func.sql_name",
+          "start_line": 1692
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Literal.number",
+          "start_line": 1761
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Literal.string",
+          "start_line": 1773
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "csv",
+          "start_line": 120
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "name_sequence",
+          "start_line": 260
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/simplify.py",
+          "qualified_name": "simplify",
+          "start_line": 44
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        },
+        {
+          "file": "sqlglot/transforms.py",
+          "qualified_name": "ensure_bools",
+          "start_line": 768
+        },
+        {
+          "file": "sqlglot/transforms.py",
+          "qualified_name": "move_ctes_to_top_level",
+          "start_line": 729
+        }
+      ],
+      "total_call_sites": 2250,
+      "unresolved_project_candidate_call_sites": 646,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/duckdb.py",
+      "nloc": 3291,
+      "concrete_method_count": 203,
+      "total_cyclomatic_complexity": 750,
+      "callable_entry_count": 136,
+      "cross_file_internal_method_fanout": 1278,
+      "resolved_cross_file_internal_method_fanout": 14,
+      "unresolved_cross_file_candidate_call_sites": 1264,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "arrow_json_extract_sql",
+          "start_line": 1351
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "count_if_to_sum",
+          "start_line": 1988
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_delta_to_binary_interval_op",
+          "start_line": 2207
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "explode_to_unnest_sql",
+          "start_line": 2656
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "strposition_sql",
+          "start_line": 1501
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_str",
+          "start_line": 2237
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_unit_to_dow",
+          "start_line": 2292
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "weekstart_unit_to_str",
+          "start_line": 2254
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_date_unit",
+          "start_line": 452
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        }
+      ],
+      "total_call_sites": 1913,
+      "unresolved_project_candidate_call_sites": 1269,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/simplify.py",
+      "nloc": 1376,
+      "concrete_method_count": 108,
+      "total_cyclomatic_complexity": 597,
+      "callable_entry_count": 78,
+      "cross_file_internal_method_fanout": 259,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 252,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_offset_to_dow",
+          "start_line": 2287
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "first",
+          "start_line": 374
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "merge_ranges",
+          "start_line": 405
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "while_changing",
+          "start_line": 164
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "walk_in_scope",
+          "start_line": 1036
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 732,
+      "unresolved_project_candidate_call_sites": 254,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/expressions/core.py",
+      "nloc": 1869,
+      "concrete_method_count": 261,
+      "total_cyclomatic_complexity": 560,
+      "callable_entry_count": 190,
+      "cross_file_internal_method_fanout": 97,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 90,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/expressions/datatypes.py",
+          "qualified_name": "DataType.build",
+          "start_line": 347
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "camel_to_snake_case",
+          "start_line": 159
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/serde.py",
+          "qualified_name": "dump",
+          "start_line": 23
+        },
+        {
+          "file": "sqlglot/serde.py",
+          "qualified_name": "load",
+          "start_line": 77
+        }
+      ],
+      "total_call_sites": 476,
+      "unresolved_project_candidate_call_sites": 167,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/dialects/dialect.py",
+      "nloc": 1691,
+      "concrete_method_count": 148,
+      "total_cyclomatic_complexity": 503,
+      "callable_entry_count": 114,
+      "cross_file_internal_method_fanout": 320,
+      "resolved_cross_file_internal_method_fanout": 12,
+      "unresolved_cross_file_candidate_call_sites": 308,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/expressions/builders.py",
+          "qualified_name": "apply_index_offset",
+          "start_line": 1154
+        },
+        {
+          "file": "sqlglot/generator.py",
+          "qualified_name": "unsupported_args",
+          "start_line": 34
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "flatten",
+          "start_line": 324
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_int",
+          "start_line": 244
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "suggest_closest_match_and_fail",
+          "start_line": 53
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "subsecond_precision",
+          "start_line": 65
+        },
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "new_trie",
+          "start_line": 14
+        }
+      ],
+      "total_call_sites": 781,
+      "unresolved_project_candidate_call_sites": 381,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/qualify_columns.py",
+      "nloc": 1037,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 482,
+      "callable_entry_count": 5,
+      "cross_file_internal_method_fanout": 230,
+      "resolved_cross_file_internal_method_fanout": 18,
+      "unresolved_cross_file_candidate_call_sites": 212,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.normalize_identifier",
+          "start_line": 1120
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "highlight_sql",
+          "start_line": 104
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "TypeAnnotator.annotate_scope",
+          "start_line": 399
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "TypeAnnotator.uncache",
+          "start_line": 239
+        },
+        {
+          "file": "sqlglot/optimizer/resolver.py",
+          "qualified_name": "Resolver.get_source_columns",
+          "start_line": 148
+        },
+        {
+          "file": "sqlglot/optimizer/resolver.py",
+          "qualified_name": "Resolver.get_table",
+          "start_line": 35
+        },
+        {
+          "file": "sqlglot/optimizer/resolver.py",
+          "qualified_name": "Resolver.outer_resolvers",
+          "start_line": 85
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "Scope.clear_cache",
+          "start_line": 139
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "Scope.find_all",
+          "start_line": 266
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "Scope.replace",
+          "start_line": 269
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "walk_in_scope",
+          "start_line": 1036
+        },
+        {
+          "file": "sqlglot/optimizer/simplify.py",
+          "qualified_name": "simplify_parens",
+          "start_line": 133
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 431,
+      "unresolved_project_candidate_call_sites": 212,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/annotate_types.py",
+      "nloc": 812,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 312,
+      "callable_entry_count": 7,
+      "cross_file_internal_method_fanout": 120,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 113,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_date_unit",
+          "start_line": 452
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_iso_date",
+          "start_line": 432
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_iso_datetime",
+          "start_line": 440
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 321,
+      "unresolved_project_candidate_call_sites": 114,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/transforms.py",
+      "nloc": 742,
+      "concrete_method_count": 36,
+      "total_cyclomatic_complexity": 264,
+      "callable_entry_count": 28,
+      "cross_file_internal_method_fanout": 280,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 272,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "name_sequence",
+          "start_line": 260
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/canonicalize.py",
+          "qualified_name": "ensure_bools",
+          "start_line": 149
+        },
+        {
+          "file": "sqlglot/optimizer/normalize.py",
+          "qualified_name": "normalize",
+          "start_line": 15
+        },
+        {
+          "file": "sqlglot/optimizer/normalize.py",
+          "qualified_name": "normalized",
+          "start_line": 70
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        }
+      ],
+      "total_call_sites": 468,
+      "unresolved_project_candidate_call_sites": 272,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/tokenizer_core.py",
+      "nloc": 1203,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 249,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 19,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 19,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 155,
+      "unresolved_project_candidate_call_sites": 19,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/scope.py",
+      "nloc": 693,
+      "concrete_method_count": 58,
+      "total_cyclomatic_complexity": 240,
+      "callable_entry_count": 44,
+      "cross_file_internal_method_fanout": 94,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 92,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        }
+      ],
+      "total_call_sites": 257,
+      "unresolved_project_candidate_call_sites": 99,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/snowflake.py",
+      "nloc": 900,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 239,
+      "callable_entry_count": 41,
+      "cross_file_internal_method_fanout": 242,
+      "resolved_cross_file_internal_method_fanout": 10,
+      "unresolved_cross_file_candidate_call_sites": 232,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_delta_sql",
+          "start_line": 2192
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "inline_array_sql",
+          "start_line": 1367
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "flatten",
+          "start_line": 324
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/parsers/snowflake.py",
+          "qualified_name": "build_object_construct",
+          "start_line": 1427
+        }
+      ],
+      "total_call_sites": 381,
+      "unresolved_project_candidate_call_sites": 232,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/parsers/snowflake.py",
+      "nloc": 1173,
+      "concrete_method_count": 59,
+      "total_cyclomatic_complexity": 219,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 231,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 225,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "binary_from_function",
+          "start_line": 2076
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "build_formatted_time",
+          "start_line": 1772
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_trunc_to_time",
+          "start_line": 1858
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_date_unit",
+          "start_line": 452
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_int",
+          "start_line": 244
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        }
+      ],
+      "total_call_sites": 408,
+      "unresolved_project_candidate_call_sites": 226,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/tsql.py",
+      "nloc": 566,
+      "concrete_method_count": 51,
+      "total_cyclomatic_complexity": 192,
+      "callable_entry_count": 45,
+      "cross_file_internal_method_fanout": 211,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 204,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_delta_sql",
+          "start_line": 2192
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "timestrtotime_sql",
+          "start_line": 1945
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/qualify_columns.py",
+          "qualified_name": "qualify_outputs",
+          "start_line": 1383
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        }
+      ],
+      "total_call_sites": 286,
+      "unresolved_project_candidate_call_sites": 204,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/expressions/query.py",
+      "nloc": 1372,
+      "concrete_method_count": 81,
+      "total_cyclomatic_complexity": 172,
+      "callable_entry_count": 78,
+      "cross_file_internal_method_fanout": 95,
+      "resolved_cross_file_internal_method_fanout": 10,
+      "unresolved_cross_file_candidate_call_sites": 85,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_builder",
+          "start_line": 2644
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_child_list_builder",
+          "start_line": 2669
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_conjunction_builder",
+          "start_line": 2749
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_list_builder",
+          "start_line": 2716
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_set_operation",
+          "start_line": 2810
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "alias_",
+          "start_line": 3013
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "and_",
+          "start_line": 2904
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "convert",
+          "start_line": 2391
+        },
+        {
+          "file": "sqlglot/expressions/properties.py",
+          "qualified_name": "Properties.from_dict",
+          "start_line": 663
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        }
+      ],
+      "total_call_sites": 188,
+      "unresolved_project_candidate_call_sites": 85,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/expressions/builders.py",
+      "nloc": 588,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 156,
+      "callable_entry_count": 34,
+      "cross_file_internal_method_fanout": 96,
+      "resolved_cross_file_internal_method_fanout": 20,
+      "unresolved_cross_file_candidate_call_sites": 76,
+      "cross_file_internal_file_fanout": 10,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.dfs",
+          "start_line": 380
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.find_all",
+          "start_line": 319
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.meta_get",
+          "start_line": 244
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.set",
+          "start_line": 272
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.transform",
+          "start_line": 448
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "alias_",
+          "start_line": 3013
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "convert",
+          "start_line": 2391
+        },
+        {
+          "file": "sqlglot/expressions/datatypes.py",
+          "qualified_name": "DataType.build",
+          "start_line": 347
+        },
+        {
+          "file": "sqlglot/expressions/dml.py",
+          "qualified_name": "Delete.delete",
+          "start_line": 85
+        },
+        {
+          "file": "sqlglot/expressions/dml.py",
+          "qualified_name": "Delete.where",
+          "start_line": 118
+        },
+        {
+          "file": "sqlglot/expressions/functions.py",
+          "qualified_name": "Cast.is_type",
+          "start_line": 57
+        },
+        {
+          "file": "sqlglot/expressions/query.py",
+          "qualified_name": "Query.subquery",
+          "start_line": 132
+        },
+        {
+          "file": "sqlglot/expressions/query.py",
+          "qualified_name": "Select.from_",
+          "start_line": 1205
+        },
+        {
+          "file": "sqlglot/expressions/query.py",
+          "qualified_name": "Select.select",
+          "start_line": 1365
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "split_num_words",
+          "start_line": 274
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        },
+        {
+          "file": "sqlglot/optimizer/simplify.py",
+          "qualified_name": "simplify",
+          "start_line": 44
+        }
+      ],
+      "total_call_sites": 222,
+      "unresolved_project_candidate_call_sites": 76,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/lineage.py",
+      "nloc": 521,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 150,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 69,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 64,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/optimizer/qualify.py",
+          "qualified_name": "qualify",
+          "start_line": 19
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "Schema.column_names",
+          "start_line": 54
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 170,
+      "unresolved_project_candidate_call_sites": 64,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/clickhouse.py",
+      "nloc": 622,
+      "concrete_method_count": 44,
+      "total_cyclomatic_complexity": 134,
+      "callable_entry_count": 33,
+      "cross_file_internal_method_fanout": 158,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 153,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_var",
+          "start_line": 2264
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "var_map_sql",
+          "start_line": 1701
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "weekstart_unit_to_str",
+          "start_line": 2254
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_int",
+          "start_line": 244
+        }
+      ],
+      "total_call_sites": 232,
+      "unresolved_project_candidate_call_sites": 153,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/presto.py",
+      "nloc": 560,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 127,
+      "callable_entry_count": 16,
+      "cross_file_internal_method_fanout": 151,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 143,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "bracket_to_element_at_sql",
+          "start_line": 1294
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "explode_to_unnest_sql",
+          "start_line": 2656
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "ts_or_ds_add_cast",
+          "start_line": 2162
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_str",
+          "start_line": 2237
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_unit_to_dow",
+          "start_line": 2292
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        }
+      ],
+      "total_call_sites": 212,
+      "unresolved_project_candidate_call_sites": 143,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/bigquery.py",
+      "nloc": 597,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 102,
+      "callable_entry_count": 16,
+      "cross_file_internal_method_fanout": 113,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 107,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_add_interval_sql",
+          "start_line": 1867
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "ts_or_ds_add_cast",
+          "start_line": 2162
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_var",
+          "start_line": 2264
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        }
+      ],
+      "total_call_sites": 165,
+      "unresolved_project_candidate_call_sites": 107,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": "pdoc/cli.py",
+      "nloc": 24,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "setup.py",
+      "nloc": 26,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/__init__.py",
+      "nloc": 112,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/__main__.py",
+      "nloc": 89,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/_typing.py",
+      "nloc": 53,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/anonymize.py",
+      "nloc": 223,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 70,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/__init__.py",
+      "nloc": 55,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/athena.py",
+      "nloc": 70,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/bigquery.py",
+      "nloc": 173,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/clickhouse.py",
+      "nloc": 116,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/databricks.py",
+      "nloc": 34,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/dax.py",
+      "nloc": 14,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/dialect.py",
+      "nloc": 1691,
+      "concrete_method_count": 148,
+      "total_cyclomatic_complexity": 503,
+      "callable_entry_count": 114,
+      "cross_file_internal_method_fanout": 320,
+      "resolved_cross_file_internal_method_fanout": 12,
+      "unresolved_cross_file_candidate_call_sites": 308,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/expressions/builders.py",
+          "qualified_name": "apply_index_offset",
+          "start_line": 1154
+        },
+        {
+          "file": "sqlglot/generator.py",
+          "qualified_name": "unsupported_args",
+          "start_line": 34
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "flatten",
+          "start_line": 324
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_int",
+          "start_line": 244
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "suggest_closest_match_and_fail",
+          "start_line": 53
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "subsecond_precision",
+          "start_line": 65
+        },
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "new_trie",
+          "start_line": 14
+        }
+      ],
+      "total_call_sites": 781,
+      "unresolved_project_candidate_call_sites": 381,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/dialects/doris.py",
+      "nloc": 13,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/dremio.py",
+      "nloc": 60,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/drill.py",
+      "nloc": 54,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/druid.py",
+      "nloc": 6,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/duckdb.py",
+      "nloc": 110,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/dune.py",
+      "nloc": 9,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/exasol.py",
+      "nloc": 57,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/fabric.py",
+      "nloc": 16,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/hive.py",
+      "nloc": 115,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/materialize.py",
+      "nloc": 11,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/mysql.py",
+      "nloc": 149,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/oracle.py",
+      "nloc": 95,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/postgres.py",
+      "nloc": 140,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/presto.py",
+      "nloc": 57,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/prql.py",
+      "nloc": 24,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/redshift.py",
+      "nloc": 51,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/risingwave.py",
+      "nloc": 18,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/singlestore.py",
+      "nloc": 54,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/snowflake.py",
+      "nloc": 166,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/solr.py",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/spark.py",
+      "nloc": 36,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/spark2.py",
+      "nloc": 27,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/sqlite.py",
+      "nloc": 35,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/starrocks.py",
+      "nloc": 26,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/tableau.py",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/teradata.py",
+      "nloc": 68,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/trino.py",
+      "nloc": 18,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/dialects/tsql.py",
+      "nloc": 180,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/diff.py",
+      "nloc": 311,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 109,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/errors.py",
+      "nloc": 108,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/executor/__init__.py",
+      "nloc": 50,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/executor/context.py",
+      "nloc": 71,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 35,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/executor/env.py",
+      "nloc": 258,
+      "concrete_method_count": 25,
+      "total_cyclomatic_complexity": 99,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/executor/python.py",
+      "nloc": 445,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 159,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/executor/table.py",
+      "nloc": 121,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/__init__.py",
+      "nloc": 35,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/aggregate.py",
+      "nloc": 173,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/array.py",
+      "nloc": 217,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/builders.py",
+      "nloc": 588,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 156,
+      "callable_entry_count": 34,
+      "cross_file_internal_method_fanout": 96,
+      "resolved_cross_file_internal_method_fanout": 20,
+      "unresolved_cross_file_candidate_call_sites": 76,
+      "cross_file_internal_file_fanout": 10,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.dfs",
+          "start_line": 380
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.find_all",
+          "start_line": 319
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.meta_get",
+          "start_line": 244
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.set",
+          "start_line": 272
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.transform",
+          "start_line": 448
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "alias_",
+          "start_line": 3013
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "convert",
+          "start_line": 2391
+        },
+        {
+          "file": "sqlglot/expressions/datatypes.py",
+          "qualified_name": "DataType.build",
+          "start_line": 347
+        },
+        {
+          "file": "sqlglot/expressions/dml.py",
+          "qualified_name": "Delete.delete",
+          "start_line": 85
+        },
+        {
+          "file": "sqlglot/expressions/dml.py",
+          "qualified_name": "Delete.where",
+          "start_line": 118
+        },
+        {
+          "file": "sqlglot/expressions/functions.py",
+          "qualified_name": "Cast.is_type",
+          "start_line": 57
+        },
+        {
+          "file": "sqlglot/expressions/query.py",
+          "qualified_name": "Query.subquery",
+          "start_line": 132
+        },
+        {
+          "file": "sqlglot/expressions/query.py",
+          "qualified_name": "Select.from_",
+          "start_line": 1205
+        },
+        {
+          "file": "sqlglot/expressions/query.py",
+          "qualified_name": "Select.select",
+          "start_line": 1365
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "split_num_words",
+          "start_line": 274
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        },
+        {
+          "file": "sqlglot/optimizer/simplify.py",
+          "qualified_name": "simplify",
+          "start_line": 44
+        }
+      ],
+      "total_call_sites": 222,
+      "unresolved_project_candidate_call_sites": 76,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/expressions/constraints.py",
+      "nloc": 147,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/core.py",
+      "nloc": 1869,
+      "concrete_method_count": 261,
+      "total_cyclomatic_complexity": 560,
+      "callable_entry_count": 190,
+      "cross_file_internal_method_fanout": 97,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 90,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/expressions/datatypes.py",
+          "qualified_name": "DataType.build",
+          "start_line": 347
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "camel_to_snake_case",
+          "start_line": 159
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/serde.py",
+          "qualified_name": "dump",
+          "start_line": 23
+        },
+        {
+          "file": "sqlglot/serde.py",
+          "qualified_name": "load",
+          "start_line": 77
+        }
+      ],
+      "total_call_sites": 476,
+      "unresolved_project_candidate_call_sites": 167,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/expressions/datatypes.py",
+      "nloc": 378,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/ddl.py",
+      "nloc": 320,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/dml.py",
+      "nloc": 304,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/functions.py",
+      "nloc": 308,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/json.py",
+      "nloc": 171,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/math.py",
+      "nloc": 141,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/properties.py",
+      "nloc": 385,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/query.py",
+      "nloc": 1372,
+      "concrete_method_count": 81,
+      "total_cyclomatic_complexity": 172,
+      "callable_entry_count": 78,
+      "cross_file_internal_method_fanout": 95,
+      "resolved_cross_file_internal_method_fanout": 10,
+      "unresolved_cross_file_candidate_call_sites": 85,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_builder",
+          "start_line": 2644
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_child_list_builder",
+          "start_line": 2669
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_conjunction_builder",
+          "start_line": 2749
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_list_builder",
+          "start_line": 2716
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "_apply_set_operation",
+          "start_line": 2810
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "alias_",
+          "start_line": 3013
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "and_",
+          "start_line": 2904
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "convert",
+          "start_line": 2391
+        },
+        {
+          "file": "sqlglot/expressions/properties.py",
+          "qualified_name": "Properties.from_dict",
+          "start_line": 663
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        }
+      ],
+      "total_call_sites": 188,
+      "unresolved_project_candidate_call_sites": 85,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/expressions/string.py",
+      "nloc": 364,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/expressions/temporal.py",
+      "nloc": 322,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generator.py",
+      "nloc": 4955,
+      "concrete_method_count": 497,
+      "total_cyclomatic_complexity": 1899,
+      "callable_entry_count": 474,
+      "cross_file_internal_method_fanout": 664,
+      "resolved_cross_file_internal_method_fanout": 22,
+      "unresolved_cross_file_candidate_call_sites": 642,
+      "cross_file_internal_file_fanout": 10,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "concat_to_dpipe_sql",
+          "start_line": 2016
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_str",
+          "start_line": 2237
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_offset_to_dow",
+          "start_line": 2287
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "concat_messages",
+          "start_line": 167
+        },
+        {
+          "file": "sqlglot/expressions/builders.py",
+          "qualified_name": "apply_index_offset",
+          "start_line": 1154
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.copy",
+          "start_line": 250
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.find",
+          "start_line": 305
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.is_",
+          "start_line": 681
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Expr.is_type",
+          "start_line": 234
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Func.sql_name",
+          "start_line": 1692
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Literal.number",
+          "start_line": 1761
+        },
+        {
+          "file": "sqlglot/expressions/core.py",
+          "qualified_name": "Literal.string",
+          "start_line": 1773
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "csv",
+          "start_line": 120
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "name_sequence",
+          "start_line": 260
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/simplify.py",
+          "qualified_name": "simplify",
+          "start_line": 44
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        },
+        {
+          "file": "sqlglot/transforms.py",
+          "qualified_name": "ensure_bools",
+          "start_line": 768
+        },
+        {
+          "file": "sqlglot/transforms.py",
+          "qualified_name": "move_ctes_to_top_level",
+          "start_line": 729
+        }
+      ],
+      "total_call_sites": 2250,
+      "unresolved_project_candidate_call_sites": 646,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/athena.py",
+      "nloc": 133,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/bigquery.py",
+      "nloc": 597,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 102,
+      "callable_entry_count": 16,
+      "cross_file_internal_method_fanout": 113,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 107,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_add_interval_sql",
+          "start_line": 1867
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "ts_or_ds_add_cast",
+          "start_line": 2162
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_var",
+          "start_line": 2264
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        }
+      ],
+      "total_call_sites": 165,
+      "unresolved_project_candidate_call_sites": 107,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/clickhouse.py",
+      "nloc": 622,
+      "concrete_method_count": 44,
+      "total_cyclomatic_complexity": 134,
+      "callable_entry_count": 33,
+      "cross_file_internal_method_fanout": 158,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 153,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_var",
+          "start_line": 2264
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "var_map_sql",
+          "start_line": 1701
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "weekstart_unit_to_str",
+          "start_line": 2254
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_int",
+          "start_line": 244
+        }
+      ],
+      "total_call_sites": 232,
+      "unresolved_project_candidate_call_sites": 153,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/databricks.py",
+      "nloc": 107,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/dax.py",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/doris.py",
+      "nloc": 614,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 23,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 28,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 28,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 36,
+      "unresolved_project_candidate_call_sites": 28,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/dremio.py",
+      "nloc": 84,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/drill.py",
+      "nloc": 114,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/druid.py",
+      "nloc": 22,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/duckdb.py",
+      "nloc": 3291,
+      "concrete_method_count": 203,
+      "total_cyclomatic_complexity": 750,
+      "callable_entry_count": 136,
+      "cross_file_internal_method_fanout": 1278,
+      "resolved_cross_file_internal_method_fanout": 14,
+      "unresolved_cross_file_candidate_call_sites": 1264,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "arrow_json_extract_sql",
+          "start_line": 1351
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "count_if_to_sum",
+          "start_line": 1988
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_delta_to_binary_interval_op",
+          "start_line": 2207
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "explode_to_unnest_sql",
+          "start_line": 2656
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "strposition_sql",
+          "start_line": 1501
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_str",
+          "start_line": 2237
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_unit_to_dow",
+          "start_line": 2292
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "weekstart_unit_to_str",
+          "start_line": 2254
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_date_unit",
+          "start_line": 452
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        }
+      ],
+      "total_call_sites": 1913,
+      "unresolved_project_candidate_call_sites": 1269,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/dune.py",
+      "nloc": 10,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/exasol.py",
+      "nloc": 835,
+      "concrete_method_count": 23,
+      "total_cyclomatic_complexity": 99,
+      "callable_entry_count": 10,
+      "cross_file_internal_method_fanout": 112,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 110,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        }
+      ],
+      "total_call_sites": 168,
+      "unresolved_project_candidate_call_sites": 110,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/fabric.py",
+      "nloc": 98,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/hive.py",
+      "nloc": 487,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 106,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/materialize.py",
+      "nloc": 49,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/mysql.py",
+      "nloc": 758,
+      "concrete_method_count": 35,
+      "total_cyclomatic_complexity": 89,
+      "callable_entry_count": 27,
+      "cross_file_internal_method_fanout": 97,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 94,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "build_date_delta",
+          "start_line": 1812
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "build_date_delta_with_interval",
+          "start_line": 1834
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_var",
+          "start_line": 2264
+        }
+      ],
+      "total_call_sites": 144,
+      "unresolved_project_candidate_call_sites": 94,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/oracle.py",
+      "nloc": 171,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/postgres.py",
+      "nloc": 481,
+      "concrete_method_count": 33,
+      "total_cyclomatic_complexity": 103,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/presto.py",
+      "nloc": 560,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 127,
+      "callable_entry_count": 16,
+      "cross_file_internal_method_fanout": 151,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 143,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "bracket_to_element_at_sql",
+          "start_line": 1294
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "explode_to_unnest_sql",
+          "start_line": 2656
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "ts_or_ds_add_cast",
+          "start_line": 2162
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "unit_to_str",
+          "start_line": 2237
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_unit_to_dow",
+          "start_line": 2292
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        }
+      ],
+      "total_call_sites": 212,
+      "unresolved_project_candidate_call_sites": 143,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/prql.py",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/python.py",
+      "nloc": 104,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/redshift.py",
+      "nloc": 349,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/risingwave.py",
+      "nloc": 24,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/singlestore.py",
+      "nloc": 1567,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 69,
+      "callable_entry_count": 18,
+      "cross_file_internal_method_fanout": 68,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 66,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "json_extract_segments",
+          "start_line": 2428
+        },
+        {
+          "file": "sqlglot/expressions/datatypes.py",
+          "qualified_name": "DataType.is_type",
+          "start_line": 419
+        }
+      ],
+      "total_call_sites": 102,
+      "unresolved_project_candidate_call_sites": 66,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/snowflake.py",
+      "nloc": 900,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 239,
+      "callable_entry_count": 41,
+      "cross_file_internal_method_fanout": 242,
+      "resolved_cross_file_internal_method_fanout": 10,
+      "unresolved_cross_file_candidate_call_sites": 232,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_delta_sql",
+          "start_line": 2192
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "inline_array_sql",
+          "start_line": 1367
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "flatten",
+          "start_line": 324
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/parsers/snowflake.py",
+          "qualified_name": "build_object_construct",
+          "start_line": 1427
+        }
+      ],
+      "total_call_sites": 381,
+      "unresolved_project_candidate_call_sites": 232,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/generators/solr.py",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/spark.py",
+      "nloc": 174,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/spark2.py",
+      "nloc": 214,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 41,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/sqlite.py",
+      "nloc": 321,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 90,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/starrocks.py",
+      "nloc": 341,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/tableau.py",
+      "nloc": 39,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/teradata.py",
+      "nloc": 159,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/trino.py",
+      "nloc": 145,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/generators/tsql.py",
+      "nloc": 566,
+      "concrete_method_count": 51,
+      "total_cyclomatic_complexity": 192,
+      "callable_entry_count": 45,
+      "cross_file_internal_method_fanout": 211,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 204,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_delta_sql",
+          "start_line": 2192
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "rename_func",
+          "start_line": 1290
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "timestrtotime_sql",
+          "start_line": 1945
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/qualify_columns.py",
+          "qualified_name": "qualify_outputs",
+          "start_line": 1383
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        }
+      ],
+      "total_call_sites": 286,
+      "unresolved_project_candidate_call_sites": 204,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/helper.py",
+      "nloc": 212,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 81,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/jsonpath.py",
+      "nloc": 179,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 59,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/lineage.py",
+      "nloc": 521,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 150,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 69,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 64,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/optimizer/qualify.py",
+          "qualified_name": "qualify",
+          "start_line": 19
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "Schema.column_names",
+          "start_line": 54
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 170,
+      "unresolved_project_candidate_call_sites": 64,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/__init__.py",
+      "nloc": 38,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/annotate_types.py",
+      "nloc": 812,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 312,
+      "callable_entry_count": 7,
+      "cross_file_internal_method_fanout": 120,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 113,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_date_unit",
+          "start_line": 452
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_iso_date",
+          "start_line": 432
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_iso_datetime",
+          "start_line": 440
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 321,
+      "unresolved_project_candidate_call_sites": 114,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/canonicalize.py",
+      "nloc": 182,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 74,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/canonicalize_internal_names.py",
+      "nloc": 219,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 95,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/eliminate_ctes.py",
+      "nloc": 29,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/eliminate_joins.py",
+      "nloc": 117,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/eliminate_subqueries.py",
+      "nloc": 126,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 45,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/helpers.py",
+      "nloc": 32,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/isolate_table_selects.py",
+      "nloc": 39,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/journal.py",
+      "nloc": 12,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/merge_subqueries.py",
+      "nloc": 404,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 166,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/normalize.py",
+      "nloc": 119,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/normalize_identifiers.py",
+      "nloc": 40,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/optimize_joins.py",
+      "nloc": 75,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/optimizer.py",
+      "nloc": 69,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/pushdown_predicates.py",
+      "nloc": 208,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 80,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/pushdown_projections.py",
+      "nloc": 378,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 157,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/qualify.py",
+      "nloc": 62,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/qualify_columns.py",
+      "nloc": 1037,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 482,
+      "callable_entry_count": 5,
+      "cross_file_internal_method_fanout": 230,
+      "resolved_cross_file_internal_method_fanout": 18,
+      "unresolved_cross_file_candidate_call_sites": 212,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.normalize_identifier",
+          "start_line": 1120
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "highlight_sql",
+          "start_line": 104
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "TypeAnnotator.annotate_scope",
+          "start_line": 399
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "TypeAnnotator.uncache",
+          "start_line": 239
+        },
+        {
+          "file": "sqlglot/optimizer/resolver.py",
+          "qualified_name": "Resolver.get_source_columns",
+          "start_line": 148
+        },
+        {
+          "file": "sqlglot/optimizer/resolver.py",
+          "qualified_name": "Resolver.get_table",
+          "start_line": 35
+        },
+        {
+          "file": "sqlglot/optimizer/resolver.py",
+          "qualified_name": "Resolver.outer_resolvers",
+          "start_line": 85
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "Scope.clear_cache",
+          "start_line": 139
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "Scope.find_all",
+          "start_line": 266
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "Scope.replace",
+          "start_line": 269
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "build_scope",
+          "start_line": 703
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "walk_in_scope",
+          "start_line": 1036
+        },
+        {
+          "file": "sqlglot/optimizer/simplify.py",
+          "qualified_name": "simplify_parens",
+          "start_line": 133
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 431,
+      "unresolved_project_candidate_call_sites": 212,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/qualify_tables.py",
+      "nloc": 194,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 101,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/resolver.py",
+      "nloc": 282,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 130,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/optimizer/scope.py",
+      "nloc": 693,
+      "concrete_method_count": 58,
+      "total_cyclomatic_complexity": 240,
+      "callable_entry_count": 44,
+      "cross_file_internal_method_fanout": 94,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 92,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        }
+      ],
+      "total_call_sites": 257,
+      "unresolved_project_candidate_call_sites": 99,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/simplify.py",
+      "nloc": 1376,
+      "concrete_method_count": 108,
+      "total_cyclomatic_complexity": 597,
+      "callable_entry_count": 78,
+      "cross_file_internal_method_fanout": 259,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 252,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "week_offset_to_dow",
+          "start_line": 2287
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "first",
+          "start_line": 374
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "merge_ranges",
+          "start_line": 405
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "while_changing",
+          "start_line": 164
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "walk_in_scope",
+          "start_line": 1036
+        },
+        {
+          "file": "sqlglot/schema.py",
+          "qualified_name": "ensure_schema",
+          "start_line": 707
+        }
+      ],
+      "total_call_sites": 732,
+      "unresolved_project_candidate_call_sites": 254,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/optimizer/unnest_subqueries.py",
+      "nloc": 303,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 129,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parser.py",
+      "nloc": 8426,
+      "concrete_method_count": 446,
+      "total_cyclomatic_complexity": 2488,
+      "callable_entry_count": 33,
+      "cross_file_internal_method_fanout": 508,
+      "resolved_cross_file_internal_method_fanout": 11,
+      "unresolved_cross_file_candidate_call_sites": 497,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "ParseError.new",
+          "start_line": 46
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "concat_messages",
+          "start_line": 167
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "highlight_sql",
+          "start_line": 104
+        },
+        {
+          "file": "sqlglot/errors.py",
+          "qualified_name": "merge_errors",
+          "start_line": 175
+        },
+        {
+          "file": "sqlglot/expressions/builders.py",
+          "qualified_name": "apply_index_offset",
+          "start_line": 1154
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "ensure_list",
+          "start_line": 75
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_in_scope",
+          "start_line": 1112
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        },
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "in_trie",
+          "start_line": 44
+        }
+      ],
+      "total_call_sites": 4309,
+      "unresolved_project_candidate_call_sites": 525,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/parsers/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/athena.py",
+      "nloc": 68,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/base.py",
+      "nloc": 13,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/bigquery.py",
+      "nloc": 600,
+      "concrete_method_count": 38,
+      "total_cyclomatic_complexity": 137,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 158,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 154,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "build_formatted_time",
+          "start_line": 1772
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "split_num_words",
+          "start_line": 274
+        },
+        {
+          "file": "sqlglot/optimizer/annotate_types.py",
+          "qualified_name": "annotate_types",
+          "start_line": 46
+        }
+      ],
+      "total_call_sites": 281,
+      "unresolved_project_candidate_call_sites": 154,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/clickhouse.py",
+      "nloc": 822,
+      "concrete_method_count": 49,
+      "total_cyclomatic_complexity": 155,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 172,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 170,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "build_formatted_time",
+          "start_line": 1772
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        }
+      ],
+      "total_call_sites": 298,
+      "unresolved_project_candidate_call_sites": 170,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/databricks.py",
+      "nloc": 64,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/dax.py",
+      "nloc": 34,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/doris.py",
+      "nloc": 133,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 30,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/dremio.py",
+      "nloc": 106,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/drill.py",
+      "nloc": 24,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/druid.py",
+      "nloc": 7,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/duckdb.py",
+      "nloc": 341,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/dune.py",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/exasol.py",
+      "nloc": 134,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/fabric.py",
+      "nloc": 18,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/hive.py",
+      "nloc": 247,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 47,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/materialize.py",
+      "nloc": 33,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/mysql.py",
+      "nloc": 610,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 122,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 165,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 164,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        }
+      ],
+      "total_call_sites": 234,
+      "unresolved_project_candidate_call_sites": 165,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/oracle.py",
+      "nloc": 269,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/postgres.py",
+      "nloc": 266,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/presto.py",
+      "nloc": 121,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/prql.py",
+      "nloc": 160,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 45,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/redshift.py",
+      "nloc": 136,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/risingwave.py",
+      "nloc": 48,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/singlestore.py",
+      "nloc": 229,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/snowflake.py",
+      "nloc": 1173,
+      "concrete_method_count": 59,
+      "total_cyclomatic_complexity": 219,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 231,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 225,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "binary_from_function",
+          "start_line": 2076
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "build_formatted_time",
+          "start_line": 1772
+        },
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "date_trunc_to_time",
+          "start_line": 1858
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_date_unit",
+          "start_line": 452
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "is_int",
+          "start_line": 244
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        }
+      ],
+      "total_call_sites": 408,
+      "unresolved_project_candidate_call_sites": 226,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/parsers/solr.py",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/spark.py",
+      "nloc": 108,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/spark2.py",
+      "nloc": 116,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/sqlite.py",
+      "nloc": 150,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/starrocks.py",
+      "nloc": 178,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/tableau.py",
+      "nloc": 13,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/teradata.py",
+      "nloc": 193,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/trino.py",
+      "nloc": 211,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/parsers/tsql.py",
+      "nloc": 690,
+      "concrete_method_count": 44,
+      "total_cyclomatic_complexity": 149,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 165,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 163,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/time.py",
+          "qualified_name": "format_time",
+          "start_line": 10
+        }
+      ],
+      "total_call_sites": 299,
+      "unresolved_project_candidate_call_sites": 163,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/planner.py",
+      "nloc": 341,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 123,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/schema.py",
+      "nloc": 487,
+      "concrete_method_count": 42,
+      "total_cyclomatic_complexity": 152,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/serde.py",
+      "nloc": 89,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/time.py",
+      "nloc": 649,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 6,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 4,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "in_trie",
+          "start_line": 44
+        },
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "new_trie",
+          "start_line": 14
+        }
+      ],
+      "total_call_sites": 13,
+      "unresolved_project_candidate_call_sites": 4,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": false,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/tokenizer_core.py",
+      "nloc": 1203,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 249,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 19,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 19,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 155,
+      "unresolved_project_candidate_call_sites": 19,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/tokens.py",
+      "nloc": 553,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 26,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 8,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 6,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/dialects/dialect.py",
+          "qualified_name": "Dialect.get_or_raise",
+          "start_line": 1023
+        },
+        {
+          "file": "sqlglot/trie.py",
+          "qualified_name": "new_trie",
+          "start_line": 14
+        }
+      ],
+      "total_call_sites": 32,
+      "unresolved_project_candidate_call_sites": 6,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/transforms.py",
+      "nloc": 742,
+      "concrete_method_count": 36,
+      "total_cyclomatic_complexity": 264,
+      "callable_entry_count": 28,
+      "cross_file_internal_method_fanout": 280,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 272,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "find_new_name",
+          "start_line": 221
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "name_sequence",
+          "start_line": 260
+        },
+        {
+          "file": "sqlglot/helper.py",
+          "qualified_name": "seq_get",
+          "start_line": 67
+        },
+        {
+          "file": "sqlglot/optimizer/canonicalize.py",
+          "qualified_name": "ensure_bools",
+          "start_line": 149
+        },
+        {
+          "file": "sqlglot/optimizer/normalize.py",
+          "qualified_name": "normalize",
+          "start_line": 15
+        },
+        {
+          "file": "sqlglot/optimizer/normalize.py",
+          "qualified_name": "normalized",
+          "start_line": 70
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "find_all_in_scope",
+          "start_line": 1090
+        },
+        {
+          "file": "sqlglot/optimizer/scope.py",
+          "qualified_name": "traverse_scope",
+          "start_line": 667
+        }
+      ],
+      "total_call_sites": 468,
+      "unresolved_project_candidate_call_sites": 272,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "sqlglot/trie.py",
+      "nloc": 27,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/__init__.py",
+      "nloc": 401,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/bigquery.py",
+      "nloc": 295,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/clickhouse.py",
+      "nloc": 22,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/databricks.py",
+      "nloc": 41,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/duckdb.py",
+      "nloc": 130,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/hive.py",
+      "nloc": 92,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/mysql.py",
+      "nloc": 176,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/postgres.py",
+      "nloc": 73,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/presto.py",
+      "nloc": 33,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/redshift.py",
+      "nloc": 20,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/snowflake.py",
+      "nloc": 456,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/spark.py",
+      "nloc": 50,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/spark2.py",
+      "nloc": 67,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglot/typing/tsql.py",
+      "nloc": 57,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "sqlglotc/setup.py",
+      "nloc": 128,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}

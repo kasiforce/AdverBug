@@ -1,0 +1,1507 @@
+{
+  "schema_version": 4,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/bitcoinjs-lib",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 62,
+  "selected_file_count": 4,
+  "selected_files": [
+    {
+      "src_file": "src/cjs/psbt.cjs",
+      "nloc": 1767,
+      "concrete_method_count": 131,
+      "total_cyclomatic_complexity": 294,
+      "callable_entry_count": 48,
+      "cross_file_internal_method_fanout": 74,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 73,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/cjs/transaction.cjs",
+          "qualified_name": "Transaction.fromBuffer",
+          "start_line": 99
+        }
+      ],
+      "total_call_sites": 493,
+      "unresolved_project_candidate_call_sites": 73,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/esm/psbt.js",
+      "nloc": 1685,
+      "concrete_method_count": 126,
+      "total_cyclomatic_complexity": 278,
+      "callable_entry_count": 48,
+      "cross_file_internal_method_fanout": 83,
+      "resolved_cross_file_internal_method_fanout": 17,
+      "unresolved_cross_file_candidate_call_sites": 66,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/esm/address.js",
+          "qualified_name": "fromOutputScript",
+          "start_line": 125
+        },
+        {
+          "file": "src/esm/address.js",
+          "qualified_name": "toOutputScript",
+          "start_line": 155
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "cloneBuffer",
+          "start_line": 35
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "reverseBuffer",
+          "start_line": 23
+        },
+        {
+          "file": "src/esm/payments/bip341.js",
+          "qualified_name": "tapleafHash",
+          "start_line": 73
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "checkTaprootInputFields",
+          "start_line": 101
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "checkTaprootInputForSigs",
+          "start_line": 200
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "checkTaprootOutputFields",
+          "start_line": 112
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "isTaprootInput",
+          "start_line": 65
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "serializeTaprootSignature",
+          "start_line": 54
+        },
+        {
+          "file": "src/esm/psbt/psbtutils.js",
+          "qualified_name": "checkInputForSig",
+          "start_line": 92
+        },
+        {
+          "file": "src/esm/psbt/psbtutils.js",
+          "qualified_name": "pubkeyInScript",
+          "start_line": 83
+        },
+        {
+          "file": "src/esm/psbt/psbtutils.js",
+          "qualified_name": "witnessStackToScriptWitness",
+          "start_line": 34
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "decompile",
+          "start_line": 150
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "isCanonicalPubKey",
+          "start_line": 247
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "isCanonicalScriptSignature",
+          "start_line": 271
+        },
+        {
+          "file": "src/esm/transaction.js",
+          "qualified_name": "Transaction.fromBuffer",
+          "start_line": 57
+        }
+      ],
+      "total_call_sites": 487,
+      "unresolved_project_candidate_call_sites": 66,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/cjs/transaction.cjs",
+      "nloc": 566,
+      "concrete_method_count": 56,
+      "total_cyclomatic_complexity": 130,
+      "callable_entry_count": 21,
+      "cross_file_internal_method_fanout": 106,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 105,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/cjs/bufferutils.cjs",
+          "qualified_name": "BufferWriter.withCapacity",
+          "start_line": 95
+        }
+      ],
+      "total_call_sites": 234,
+      "unresolved_project_candidate_call_sites": 105,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/esm/transaction.js",
+      "nloc": 509,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 115,
+      "callable_entry_count": 21,
+      "cross_file_internal_method_fanout": 90,
+      "resolved_cross_file_internal_method_fanout": 16,
+      "unresolved_cross_file_candidate_call_sites": 74,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readInt64",
+          "start_line": 127
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readSlice",
+          "start_line": 137
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readUInt32",
+          "start_line": 122
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readUInt8",
+          "start_line": 112
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readVarInt",
+          "start_line": 132
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readVarSlice",
+          "start_line": 147
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readVector",
+          "start_line": 150
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.withCapacity",
+          "start_line": 46
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.writeUInt32",
+          "start_line": 66
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.writeUInt8",
+          "start_line": 57
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.writeVarInt",
+          "start_line": 72
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "reverseBuffer",
+          "start_line": 23
+        },
+        {
+          "file": "src/esm/crypto.js",
+          "qualified_name": "hash256",
+          "start_line": 27
+        },
+        {
+          "file": "src/esm/crypto.js",
+          "qualified_name": "taggedHash",
+          "start_line": 121
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "compile",
+          "start_line": 108
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "decompile",
+          "start_line": 150
+        }
+      ],
+      "total_call_sites": 228,
+      "unresolved_project_candidate_call_sites": 74,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": "eslint.config.js",
+      "nloc": 68,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "fixup.cjs",
+      "nloc": 20,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/address.cjs",
+      "nloc": 211,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 63,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/bip66.cjs",
+      "nloc": 74,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 51,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/block.cjs",
+      "nloc": 259,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/bufferutils.cjs",
+      "nloc": 195,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/crypto.cjs",
+      "nloc": 155,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/ecc_lib.cjs",
+      "nloc": 134,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/index.cjs",
+      "nloc": 109,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/merkle.cjs",
+      "nloc": 66,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/networks.cjs",
+      "nloc": 36,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/ops.cjs",
+      "nloc": 125,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/bip341.cjs",
+      "nloc": 138,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/embed.cjs",
+      "nloc": 88,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/index.cjs",
+      "nloc": 67,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/lazy.cjs",
+      "nloc": 31,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2ms.cjs",
+      "nloc": 210,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 89,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2pk.cjs",
+      "nloc": 119,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2pkh.cjs",
+      "nloc": 181,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 76,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2sh.cjs",
+      "nloc": 236,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 99,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2tr.cjs",
+      "nloc": 333,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 126,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2wpkh.cjs",
+      "nloc": 173,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 75,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/payments/p2wsh.cjs",
+      "nloc": 252,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/psbt.cjs",
+      "nloc": 1767,
+      "concrete_method_count": 131,
+      "total_cyclomatic_complexity": 294,
+      "callable_entry_count": 48,
+      "cross_file_internal_method_fanout": 74,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 73,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/cjs/transaction.cjs",
+          "qualified_name": "Transaction.fromBuffer",
+          "start_line": 99
+        }
+      ],
+      "total_call_sites": 493,
+      "unresolved_project_candidate_call_sites": 73,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/cjs/psbt/bip371.cjs",
+      "nloc": 377,
+      "concrete_method_count": 44,
+      "total_cyclomatic_complexity": 141,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/psbt/psbtutils.cjs",
+      "nloc": 174,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/push_data.cjs",
+      "nloc": 104,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/script.cjs",
+      "nloc": 218,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 72,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/script_number.cjs",
+      "nloc": 104,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/script_signature.cjs",
+      "nloc": 97,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cjs/transaction.cjs",
+      "nloc": 566,
+      "concrete_method_count": 56,
+      "total_cyclomatic_complexity": 130,
+      "callable_entry_count": 21,
+      "cross_file_internal_method_fanout": 106,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 105,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/cjs/bufferutils.cjs",
+          "qualified_name": "BufferWriter.withCapacity",
+          "start_line": 95
+        }
+      ],
+      "total_call_sites": 234,
+      "unresolved_project_candidate_call_sites": 105,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/cjs/types.cjs",
+      "nloc": 136,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/address.js",
+      "nloc": 151,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 45,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/bip66.js",
+      "nloc": 69,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 51,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/block.js",
+      "nloc": 216,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/bufferutils.js",
+      "nloc": 144,
+      "concrete_method_count": 25,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/crypto.js",
+      "nloc": 81,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/ecc_lib.js",
+      "nloc": 86,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/index.js",
+      "nloc": 11,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/merkle.js",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/networks.js",
+      "nloc": 33,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/ops.js",
+      "nloc": 123,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/bip341.js",
+      "nloc": 81,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/embed.js",
+      "nloc": 41,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/index.js",
+      "nloc": 9,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/lazy.js",
+      "nloc": 27,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2ms.js",
+      "nloc": 157,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 74,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2pk.js",
+      "nloc": 71,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2pkh.js",
+      "nloc": 133,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 58,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2sh.js",
+      "nloc": 184,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 81,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2tr.js",
+      "nloc": 286,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 111,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2wpkh.js",
+      "nloc": 126,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/payments/p2wsh.js",
+      "nloc": 211,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 86,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/psbt.js",
+      "nloc": 1685,
+      "concrete_method_count": 126,
+      "total_cyclomatic_complexity": 278,
+      "callable_entry_count": 48,
+      "cross_file_internal_method_fanout": 83,
+      "resolved_cross_file_internal_method_fanout": 17,
+      "unresolved_cross_file_candidate_call_sites": 66,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/esm/address.js",
+          "qualified_name": "fromOutputScript",
+          "start_line": 125
+        },
+        {
+          "file": "src/esm/address.js",
+          "qualified_name": "toOutputScript",
+          "start_line": 155
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "cloneBuffer",
+          "start_line": 35
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "reverseBuffer",
+          "start_line": 23
+        },
+        {
+          "file": "src/esm/payments/bip341.js",
+          "qualified_name": "tapleafHash",
+          "start_line": 73
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "checkTaprootInputFields",
+          "start_line": 101
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "checkTaprootInputForSigs",
+          "start_line": 200
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "checkTaprootOutputFields",
+          "start_line": 112
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "isTaprootInput",
+          "start_line": 65
+        },
+        {
+          "file": "src/esm/psbt/bip371.js",
+          "qualified_name": "serializeTaprootSignature",
+          "start_line": 54
+        },
+        {
+          "file": "src/esm/psbt/psbtutils.js",
+          "qualified_name": "checkInputForSig",
+          "start_line": 92
+        },
+        {
+          "file": "src/esm/psbt/psbtutils.js",
+          "qualified_name": "pubkeyInScript",
+          "start_line": 83
+        },
+        {
+          "file": "src/esm/psbt/psbtutils.js",
+          "qualified_name": "witnessStackToScriptWitness",
+          "start_line": 34
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "decompile",
+          "start_line": 150
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "isCanonicalPubKey",
+          "start_line": 247
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "isCanonicalScriptSignature",
+          "start_line": 271
+        },
+        {
+          "file": "src/esm/transaction.js",
+          "qualified_name": "Transaction.fromBuffer",
+          "start_line": 57
+        }
+      ],
+      "total_call_sites": 487,
+      "unresolved_project_candidate_call_sites": 66,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/esm/psbt/bip371.js",
+      "nloc": 311,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 125,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/psbt/psbtutils.js",
+      "nloc": 114,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/push_data.js",
+      "nloc": 48,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/script.js",
+      "nloc": 156,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/script_number.js",
+      "nloc": 56,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/script_signature.js",
+      "nloc": 49,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/esm/transaction.js",
+      "nloc": 509,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 115,
+      "callable_entry_count": 21,
+      "cross_file_internal_method_fanout": 90,
+      "resolved_cross_file_internal_method_fanout": 16,
+      "unresolved_cross_file_candidate_call_sites": 74,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readInt64",
+          "start_line": 127
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readSlice",
+          "start_line": 137
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readUInt32",
+          "start_line": 122
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readUInt8",
+          "start_line": 112
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readVarInt",
+          "start_line": 132
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readVarSlice",
+          "start_line": 147
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferReader.readVector",
+          "start_line": 150
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.withCapacity",
+          "start_line": 46
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.writeUInt32",
+          "start_line": 66
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.writeUInt8",
+          "start_line": 57
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "BufferWriter.writeVarInt",
+          "start_line": 72
+        },
+        {
+          "file": "src/esm/bufferutils.js",
+          "qualified_name": "reverseBuffer",
+          "start_line": 23
+        },
+        {
+          "file": "src/esm/crypto.js",
+          "qualified_name": "hash256",
+          "start_line": 27
+        },
+        {
+          "file": "src/esm/crypto.js",
+          "qualified_name": "taggedHash",
+          "start_line": 121
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "compile",
+          "start_line": 108
+        },
+        {
+          "file": "src/esm/script.js",
+          "qualified_name": "decompile",
+          "start_line": 150
+        }
+      ],
+      "total_call_sites": 228,
+      "unresolved_project_candidate_call_sites": 74,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/esm/types.js",
+      "nloc": 72,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}

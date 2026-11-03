@@ -1,0 +1,5217 @@
+{
+  "schema_version": 4,
+  "language": "python",
+  "project_root": "/data/home/cjy/Adver_bug/projects/jc",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 314,
+  "selected_file_count": 4,
+  "selected_files": [
+    {
+      "src_file": "jc/parsers/asn1crypto/core.py",
+      "nloc": 2745,
+      "concrete_method_count": 182,
+      "total_cyclomatic_complexity": 852,
+      "callable_entry_count": 79,
+      "cross_file_internal_method_fanout": 258,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 258,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 933,
+      "unresolved_project_candidate_call_sites": 366,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/x509.py",
+      "nloc": 1836,
+      "concrete_method_count": 100,
+      "total_cyclomatic_complexity": 297,
+      "callable_entry_count": 69,
+      "cross_file_internal_method_fanout": 102,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 101,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "jc/utils.py",
+          "qualified_name": "warning_message",
+          "start_line": 52
+        }
+      ],
+      "total_call_sites": 283,
+      "unresolved_project_candidate_call_sites": 102,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/cli.py",
+      "nloc": 683,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 182,
+      "callable_entry_count": 29,
+      "cross_file_internal_method_fanout": 62,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 62,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 255,
+      "unresolved_project_candidate_call_sites": 63,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/parsers/tomli/_parser.py",
+      "nloc": 514,
+      "concrete_method_count": 36,
+      "total_cyclomatic_complexity": 158,
+      "callable_entry_count": 32,
+      "cross_file_internal_method_fanout": 20,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 20,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 169,
+      "unresolved_project_candidate_call_sites": 33,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": "build-completions.py",
+      "nloc": 7,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "completions/jc_xonsh_completion.py",
+      "nloc": 467,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "doc2md.py",
+      "nloc": 56,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/__init__.py",
+      "nloc": 13,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/__main__.py",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/appdirs.py",
+      "nloc": 280,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 86,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/cli.py",
+      "nloc": 683,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 182,
+      "callable_entry_count": 29,
+      "cross_file_internal_method_fanout": 62,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 62,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 255,
+      "unresolved_project_candidate_call_sites": 63,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/cli_data.py",
+      "nloc": 86,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/exceptions.py",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/jc_types.py",
+      "nloc": 38,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/lib.py",
+      "nloc": 458,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 74,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/acpi.py",
+      "nloc": 115,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/airport.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/airport_s.py",
+      "nloc": 37,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/amixer.py",
+      "nloc": 85,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/apt_cache_show.py",
+      "nloc": 21,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/apt_get_sqq.py",
+      "nloc": 58,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/arp.py",
+      "nloc": 83,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asciitable.py",
+      "nloc": 154,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 70,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asciitable_m.py",
+      "nloc": 242,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 123,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/__init__.py",
+      "nloc": 33,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_errors.py",
+      "nloc": 13,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_inet.py",
+      "nloc": 120,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_int.py",
+      "nloc": 5,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_iri.py",
+      "nloc": 140,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 51,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_ordereddict.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_teletex_codec.py",
+      "nloc": 290,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/_types.py",
+      "nloc": 12,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/algos.py",
+      "nloc": 832,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 73,
+      "callable_entry_count": 13,
+      "cross_file_internal_method_fanout": 32,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 32,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 73,
+      "unresolved_project_candidate_call_sites": 32,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/cms.py",
+      "nloc": 692,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 12,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 4,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 4,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 9,
+      "unresolved_project_candidate_call_sites": 4,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/core.py",
+      "nloc": 2745,
+      "concrete_method_count": 182,
+      "total_cyclomatic_complexity": 852,
+      "callable_entry_count": 79,
+      "cross_file_internal_method_fanout": 258,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 258,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 933,
+      "unresolved_project_candidate_call_sites": 366,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/crl.py",
+      "nloc": 297,
+      "concrete_method_count": 23,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/csr.py",
+      "nloc": 85,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/jc_global.py",
+      "nloc": 1,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/keys.py",
+      "nloc": 731,
+      "concrete_method_count": 30,
+      "total_cyclomatic_complexity": 93,
+      "callable_entry_count": 23,
+      "cross_file_internal_method_fanout": 30,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 30,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 118,
+      "unresolved_project_candidate_call_sites": 31,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/ocsp.py",
+      "nloc": 393,
+      "concrete_method_count": 25,
+      "total_cyclomatic_complexity": 58,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/parser.py",
+      "nloc": 120,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/pdf.py",
+      "nloc": 58,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/pem.py",
+      "nloc": 108,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/pkcs12.py",
+      "nloc": 127,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/tsp.py",
+      "nloc": 218,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/util.py",
+      "nloc": 240,
+      "concrete_method_count": 53,
+      "total_cyclomatic_complexity": 88,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/version.py",
+      "nloc": 3,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/asn1crypto/x509.py",
+      "nloc": 1836,
+      "concrete_method_count": 100,
+      "total_cyclomatic_complexity": 297,
+      "callable_entry_count": 69,
+      "cross_file_internal_method_fanout": 102,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 101,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "jc/utils.py",
+          "qualified_name": "warning_message",
+          "start_line": 52
+        }
+      ],
+      "total_call_sites": 283,
+      "unresolved_project_candidate_call_sites": 102,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/parsers/authorized_keys.py",
+      "nloc": 73,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/blkid.py",
+      "nloc": 60,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/bluetoothctl.py",
+      "nloc": 292,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 59,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/broken_parser.py",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/cbt.py",
+      "nloc": 65,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/cef.py",
+      "nloc": 168,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/cef_s.py",
+      "nloc": 154,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/certbot.py",
+      "nloc": 78,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/chage.py",
+      "nloc": 53,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/cksum.py",
+      "nloc": 33,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/clf.py",
+      "nloc": 53,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/clf_s.py",
+      "nloc": 62,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/crontab.py",
+      "nloc": 64,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/crontab_u.py",
+      "nloc": 65,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/csv.py",
+      "nloc": 53,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/csv_ih.py",
+      "nloc": 21,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/csv_ih_s.py",
+      "nloc": 23,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/csv_s.py",
+      "nloc": 66,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/curl_head.py",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/date.py",
+      "nloc": 83,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/datetime_iso.py",
+      "nloc": 97,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/debconf_show.py",
+      "nloc": 36,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/df.py",
+      "nloc": 82,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/dig.py",
+      "nloc": 224,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 65,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/dir.py",
+      "nloc": 49,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/disabled_parser.py",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/dmidecode.py",
+      "nloc": 148,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/dpkg_l.py",
+      "nloc": 63,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/du.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/efibootmgr.py",
+      "nloc": 57,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/email_address.py",
+      "nloc": 39,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/env.py",
+      "nloc": 38,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ethtool.py",
+      "nloc": 207,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 48,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/file.py",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/find.py",
+      "nloc": 42,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/findmnt.py",
+      "nloc": 52,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/finger.py",
+      "nloc": 66,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/foo.py",
+      "nloc": 28,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/foo_s.py",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/free.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/fstab.py",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/getfacl.py",
+      "nloc": 65,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/git_diff.py",
+      "nloc": 52,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/git_log.py",
+      "nloc": 187,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 64,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/git_log_s.py",
+      "nloc": 185,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/git_ls_remote.py",
+      "nloc": 39,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/gpg.py",
+      "nloc": 131,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/group.py",
+      "nloc": 39,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/gshadow.py",
+      "nloc": 37,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/hash.py",
+      "nloc": 29,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/hashsum.py",
+      "nloc": 48,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/hciconfig.py",
+      "nloc": 119,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/history.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/host.py",
+      "nloc": 102,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/hosts.py",
+      "nloc": 40,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/http_headers.py",
+      "nloc": 177,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 30,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/id.py",
+      "nloc": 68,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ifconfig.py",
+      "nloc": 241,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 58,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/iftop.py",
+      "nloc": 263,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 68,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ini.py",
+      "nloc": 54,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ini_dup.py",
+      "nloc": 66,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/iostat.py",
+      "nloc": 80,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/iostat_s.py",
+      "nloc": 80,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ip_address.py",
+      "nloc": 173,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ip_route.py",
+      "nloc": 75,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ipconfig.py",
+      "nloc": 266,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 86,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/iptables.py",
+      "nloc": 80,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/iw_scan.py",
+      "nloc": 146,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/iwconfig.py",
+      "nloc": 75,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/jar_manifest.py",
+      "nloc": 77,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/jobs.py",
+      "nloc": 58,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/jwt.py",
+      "nloc": 45,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/kv.py",
+      "nloc": 14,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/kv_dup.py",
+      "nloc": 14,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/last.py",
+      "nloc": 94,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ldd.py",
+      "nloc": 92,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ls.py",
+      "nloc": 122,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ls_s.py",
+      "nloc": 87,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lsattr.py",
+      "nloc": 70,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lsb_release.py",
+      "nloc": 20,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lsblk.py",
+      "nloc": 53,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lsmod.py",
+      "nloc": 33,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lsof.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lspci.py",
+      "nloc": 72,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/lsusb.py",
+      "nloc": 208,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/m3u.py",
+      "nloc": 68,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/mdadm.py",
+      "nloc": 153,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/mount.py",
+      "nloc": 72,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/mpstat.py",
+      "nloc": 64,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/mpstat_s.py",
+      "nloc": 71,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/needrestart.py",
+      "nloc": 73,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/net_localgroup.py",
+      "nloc": 91,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 30,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/net_user.py",
+      "nloc": 182,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 55,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/netrc.py",
+      "nloc": 82,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/netstat.py",
+      "nloc": 64,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/netstat_freebsd_osx.py",
+      "nloc": 241,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 73,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/netstat_linux.py",
+      "nloc": 197,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/netstat_windows.py",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/nmcli.py",
+      "nloc": 237,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 81,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/nsd_control.py",
+      "nloc": 136,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ntpq.py",
+      "nloc": 44,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/openvpn.py",
+      "nloc": 132,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 41,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/os_prober.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/os_release.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pacman.py",
+      "nloc": 115,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/passwd.py",
+      "nloc": 39,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/path.py",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/path_list.py",
+      "nloc": 22,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/StrParse.py",
+      "nloc": 317,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 61,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/Switch.py",
+      "nloc": 14,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/__init__.py",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/pbItem.py",
+      "nloc": 202,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/pbParser.py",
+      "nloc": 224,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 63,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/pbPlist.py",
+      "nloc": 22,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/pbRoot.py",
+      "nloc": 69,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pbPlist/pbSerializer.py",
+      "nloc": 41,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pci_ids.py",
+      "nloc": 93,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pgpass.py",
+      "nloc": 55,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pidstat.py",
+      "nloc": 62,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pidstat_s.py",
+      "nloc": 77,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ping.py",
+      "nloc": 377,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 94,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ping_s.py",
+      "nloc": 421,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 133,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pip_list.py",
+      "nloc": 34,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pip_show.py",
+      "nloc": 65,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pkg_index_apk.py",
+      "nloc": 66,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pkg_index_deb.py",
+      "nloc": 20,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/plist.py",
+      "nloc": 78,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/postconf.py",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc.py",
+      "nloc": 132,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_buddyinfo.py",
+      "nloc": 39,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_cmdline.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_consoles.py",
+      "nloc": 60,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_cpuinfo.py",
+      "nloc": 64,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_crypto.py",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_devices.py",
+      "nloc": 49,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_diskstats.py",
+      "nloc": 38,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_driver_rtc.py",
+      "nloc": 37,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_filesystems.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_interrupts.py",
+      "nloc": 54,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_iomem.py",
+      "nloc": 36,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_ioports.py",
+      "nloc": 23,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_loadavg.py",
+      "nloc": 40,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_locks.py",
+      "nloc": 45,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_meminfo.py",
+      "nloc": 26,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_modules.py",
+      "nloc": 58,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_mtrr.py",
+      "nloc": 53,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_arp.py",
+      "nloc": 28,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_dev.py",
+      "nloc": 37,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_dev_mcast.py",
+      "nloc": 36,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_if_inet6.py",
+      "nloc": 27,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_igmp.py",
+      "nloc": 66,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_igmp6.py",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_ipv6_route.py",
+      "nloc": 27,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_netlink.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_netstat.py",
+      "nloc": 45,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_packet.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_protocols.py",
+      "nloc": 34,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_route.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_tcp.py",
+      "nloc": 98,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_net_unix.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pagetypeinfo.py",
+      "nloc": 62,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_partitions.py",
+      "nloc": 33,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_fdinfo.py",
+      "nloc": 68,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_io.py",
+      "nloc": 26,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_maps.py",
+      "nloc": 53,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_mountinfo.py",
+      "nloc": 58,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_numa_maps.py",
+      "nloc": 46,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_smaps.py",
+      "nloc": 100,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_stat.py",
+      "nloc": 50,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_statm.py",
+      "nloc": 33,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_pid_status.py",
+      "nloc": 50,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_slabinfo.py",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_softirqs.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_stat.py",
+      "nloc": 68,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_swaps.py",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_uptime.py",
+      "nloc": 28,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_version.py",
+      "nloc": 29,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_vmallocinfo.py",
+      "nloc": 56,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_vmstat.py",
+      "nloc": 26,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/proc_zoneinfo.py",
+      "nloc": 84,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ps.py",
+      "nloc": 43,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pyedid/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pyedid/edid.py",
+      "nloc": 150,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pyedid/helpers/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pyedid/helpers/edid_helper.py",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pyedid/helpers/registry.py",
+      "nloc": 72,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/pyedid/main.py",
+      "nloc": 17,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/resolve_conf.py",
+      "nloc": 67,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/route.py",
+      "nloc": 67,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/route_print.py",
+      "nloc": 218,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/route_windows.py",
+      "nloc": 78,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/rpm_qi.py",
+      "nloc": 72,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/rsync.py",
+      "nloc": 368,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/rsync_s.py",
+      "nloc": 382,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 47,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/semver.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/sfdisk.py",
+      "nloc": 142,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 47,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/shadow.py",
+      "nloc": 40,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/srt.py",
+      "nloc": 89,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ss.py",
+      "nloc": 133,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ssh_conf.py",
+      "nloc": 105,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/sshd_conf.py",
+      "nloc": 118,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/stat.py",
+      "nloc": 115,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/stat_s.py",
+      "nloc": 142,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/swapon.py",
+      "nloc": 85,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/sysctl.py",
+      "nloc": 54,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/syslog.py",
+      "nloc": 115,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/syslog_bsd.py",
+      "nloc": 61,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/syslog_bsd_s.py",
+      "nloc": 70,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/syslog_s.py",
+      "nloc": 124,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/systemctl.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/systemctl_lj.py",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/systemctl_ls.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/systemctl_luf.py",
+      "nloc": 36,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/systeminfo.py",
+      "nloc": 171,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/time.py",
+      "nloc": 132,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/timedatectl.py",
+      "nloc": 55,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/timestamp.py",
+      "nloc": 56,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/toml.py",
+      "nloc": 50,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tomli/__init__.py",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tomli/_parser.py",
+      "nloc": 514,
+      "concrete_method_count": 36,
+      "total_cyclomatic_complexity": 158,
+      "callable_entry_count": 32,
+      "cross_file_internal_method_fanout": 20,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 20,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 169,
+      "unresolved_project_candidate_call_sites": 33,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "jc/parsers/tomli/_re.py",
+      "nloc": 55,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tomli/_types.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/top.py",
+      "nloc": 262,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/top_s.py",
+      "nloc": 274,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tracepath.py",
+      "nloc": 69,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/traceroute.py",
+      "nloc": 214,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 68,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/traceroute_s.py",
+      "nloc": 65,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tsv.py",
+      "nloc": 21,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tsv_ih.py",
+      "nloc": 21,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tsv_ih_s.py",
+      "nloc": 22,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tsv_s.py",
+      "nloc": 22,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/tune2fs.py",
+      "nloc": 50,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/typeset.py",
+      "nloc": 188,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/udevadm.py",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ufw.py",
+      "nloc": 193,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 59,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ufw_appinfo.py",
+      "nloc": 150,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 62,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/uname.py",
+      "nloc": 51,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/universal.py",
+      "nloc": 48,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/update_alt_gs.py",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/update_alt_q.py",
+      "nloc": 83,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/upower.py",
+      "nloc": 150,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 61,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/upsc.py",
+      "nloc": 42,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/uptime.py",
+      "nloc": 65,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/url.py",
+      "nloc": 179,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 63,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/ver.py",
+      "nloc": 71,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/veracrypt.py",
+      "nloc": 132,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/vmstat.py",
+      "nloc": 109,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/vmstat_s.py",
+      "nloc": 118,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/w.py",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/wc.py",
+      "nloc": 35,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/wg_show.py",
+      "nloc": 94,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/who.py",
+      "nloc": 103,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/x509_cert.py",
+      "nloc": 110,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/x509_crl.py",
+      "nloc": 35,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/x509_csr.py",
+      "nloc": 35,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/xml.py",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/xrandr.py",
+      "nloc": 299,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/yaml.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/zipinfo.py",
+      "nloc": 70,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/zpool_iostat.py",
+      "nloc": 62,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/parsers/zpool_status.py",
+      "nloc": 72,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/shell_completions.py",
+      "nloc": 485,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/streaming.py",
+      "nloc": 46,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/tracebackplus.py",
+      "nloc": 138,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 41,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "jc/utils.py",
+      "nloc": 406,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 122,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "llmsgen.py",
+      "nloc": 37,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "mangen.py",
+      "nloc": 10,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "readmegen.py",
+      "nloc": 10,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "setup.py",
+      "nloc": 33,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}

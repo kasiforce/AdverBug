@@ -1,0 +1,5100 @@
+{
+  "schema_version": 4,
+  "language": "python",
+  "project_root": "/data/home/cjy/Adver_bug/projects/darts",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 185,
+  "selected_file_count": 13,
+  "selected_files": [
+    {
+      "src_file": "darts/timeseries.py",
+      "nloc": 3103,
+      "concrete_method_count": 171,
+      "total_cyclomatic_complexity": 741,
+      "callable_entry_count": 115,
+      "cross_file_internal_method_fanout": 81,
+      "resolved_cross_file_internal_method_fanout": 14,
+      "unresolved_cross_file_candidate_call_sites": 67,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/config.py",
+          "qualified_name": "get_option",
+          "start_line": 358
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "format_bytes",
+          "start_line": 1
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "format_dict",
+          "start_line": 36
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "make_collapsible_section",
+          "start_line": 135
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "make_paragraph",
+          "start_line": 161
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_maybe_cast_array_dtype",
+          "start_line": 823
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "dataframe_col_to_time_index",
+          "start_line": 756
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "expand_arr",
+          "start_line": 618
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "infer_freq_intersection",
+          "start_line": 477
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 1131,
+      "unresolved_project_candidate_call_sites": 151,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/forecasting_model.py",
+      "nloc": 1959,
+      "concrete_method_count": 97,
+      "total_cyclomatic_complexity": 354,
+      "callable_entry_count": 40,
+      "cross_file_internal_method_fanout": 87,
+      "resolved_cross_file_internal_method_fanout": 27,
+      "unresolved_cross_file_candidate_call_sites": 60,
+      "cross_file_internal_file_fanout": 8,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries._assert_deterministic",
+          "start_line": 5290
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.end_time",
+          "start_line": 1996
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.has_same_time_as",
+          "start_line": 3052
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.slice_intersect",
+          "start_line": 2717
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.start_time",
+          "start_line": 1980
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_apply_data_transformers",
+          "start_line": 1415
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_apply_inverse_data_transformers",
+          "start_line": 1480
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_convert_data_transformers",
+          "start_line": 1400
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_extend_series_for_overlap_end",
+          "start_line": 1633
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_get_historical_forecasts_setup",
+          "start_line": 709
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_historical_forecasts_general_checks",
+          "start_line": 40
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_pack_series_in_list",
+          "start_line": 1553
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_process_historical_forecast_for_backtest",
+          "start_line": 1572
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_slice_intersect_series",
+          "start_line": 1512
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "likelihood_component_names",
+          "start_line": 128
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_interval_names",
+          "start_line": 167
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/serialization/base.py",
+          "qualified_name": "restricted_pickle_load",
+          "start_line": 542
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "_build_forecast_series",
+          "start_line": 763
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "_generate_new_dates",
+          "start_line": 897
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        }
+      ],
+      "total_call_sites": 420,
+      "unresolved_project_candidate_call_sites": 75,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/torch_forecasting_model.py",
+      "nloc": 1903,
+      "concrete_method_count": 84,
+      "total_cyclomatic_complexity": 293,
+      "callable_entry_count": 39,
+      "cross_file_internal_method_fanout": 84,
+      "resolved_cross_file_internal_method_fanout": 21,
+      "unresolved_cross_file_candidate_call_sites": 63,
+      "cross_file_internal_file_fanout": 11,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "suppress_lightning_warnings",
+          "start_line": 164
+        },
+        {
+          "file": "darts/models/forecasting/forecasting_model.py",
+          "qualified_name": "ForecastingModel.predict",
+          "start_line": 380
+        },
+        {
+          "file": "darts/models/forecasting/pl_forecasting_module.py",
+          "qualified_name": "PLForecastingModule.set_predict_parameters",
+          "start_line": 373
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/_data_module.py",
+          "qualified_name": "TorchDataModule.val_dataloader",
+          "start_line": 68
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_as_inference_sample",
+          "start_line": 324
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_as_training_sample",
+          "start_line": 312
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_coerce_training_sample",
+          "start_line": 275
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_train_sample_from_shapes",
+          "start_line": 395
+        },
+        {
+          "file": "darts/utils/historical_forecasts/optimized_historical_forecasts_torch.py",
+          "qualified_name": "_optimized_historical_forecasts",
+          "start_line": 21
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_check_optimizable_historical_forecasts_global_models",
+          "start_line": 1326
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_process_historical_forecast_input",
+          "start_line": 1335
+        },
+        {
+          "file": "darts/utils/onnx/export.py",
+          "qualified_name": "to_onnx",
+          "start_line": 67
+        },
+        {
+          "file": "darts/utils/serialization/torch.py",
+          "qualified_name": "load_ckpt_safely",
+          "start_line": 92
+        },
+        {
+          "file": "darts/utils/serialization/torch.py",
+          "qualified_name": "load_wrapper_safely",
+          "start_line": 42
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "seq2series",
+          "start_line": 139
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        }
+      ],
+      "total_call_sites": 416,
+      "unresolved_project_candidate_call_sites": 63,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/sklearn_model.py",
+      "nloc": 1400,
+      "concrete_method_count": 47,
+      "total_cyclomatic_complexity": 262,
+      "callable_entry_count": 17,
+      "cross_file_internal_method_fanout": 100,
+      "resolved_cross_file_internal_method_fanout": 13,
+      "unresolved_cross_file_candidate_call_sites": 87,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_deprecation_warning",
+          "start_line": 31
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/data/tabularization/tabularization.py",
+          "qualified_name": "_create_lagged_data_autoregression",
+          "start_line": 1401
+        },
+        {
+          "file": "darts/utils/data/tabularization/tabularization.py",
+          "qualified_name": "create_lagged_component_names",
+          "start_line": 822
+        },
+        {
+          "file": "darts/utils/data/tabularization/tabularization.py",
+          "qualified_name": "create_lagged_training_data",
+          "start_line": 434
+        },
+        {
+          "file": "darts/utils/historical_forecasts/optimized_historical_forecasts_regression.py",
+          "qualified_name": "_optimized_historical_forecasts_regression",
+          "start_line": 23
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_check_optimizable_historical_forecasts_global_models",
+          "start_line": 1326
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_process_historical_forecast_input",
+          "start_line": 1335
+        },
+        {
+          "file": "darts/utils/likelihood_models/sklearn.py",
+          "qualified_name": "_get_likelihood",
+          "start_line": 672
+        },
+        {
+          "file": "darts/utils/multioutput.py",
+          "qualified_name": "get_multioutput_estimator_cls",
+          "start_line": 180
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "seq2series",
+          "start_line": 139
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 346,
+      "unresolved_project_candidate_call_sites": 91,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/mlflow.py",
+      "nloc": 918,
+      "concrete_method_count": 33,
+      "total_cyclomatic_complexity": 180,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 36,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 28,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "register_metric_callback",
+          "start_line": 161
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "unregister_metric_callback",
+          "start_line": 166
+        },
+        {
+          "file": "darts/models/forecasting/forecasting_model.py",
+          "qualified_name": "ForecastingModel.initialize_encoders",
+          "start_line": 2416
+        },
+        {
+          "file": "darts/models/forecasting/forecasting_model.py",
+          "qualified_name": "ForecastingModel.save",
+          "start_line": 2727
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 248,
+      "unresolved_project_candidate_call_sites": 28,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/data/tabularization/tabularization.py",
+      "nloc": 1033,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 176,
+      "callable_entry_count": 8,
+      "cross_file_internal_method_fanout": 72,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 66,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.all_values",
+          "start_line": 2107
+        },
+        {
+          "file": "darts/utils/data/utils.py",
+          "qualified_name": "_process_sample_weight",
+          "start_line": 69
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 260,
+      "unresolved_project_candidate_call_sites": 66,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/metrics/utils.py",
+      "nloc": 746,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 143,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 33,
+      "resolved_cross_file_internal_method_fanout": 13,
+      "unresolved_cross_file_candidate_call_sites": 20,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.all_values",
+          "start_line": 2107
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.end_time",
+          "start_line": 1996
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.has_same_time_as",
+          "start_line": 3052
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.slice_intersect_values",
+          "start_line": 2748
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.start_time",
+          "start_line": 1980
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "likelihood_component_names",
+          "start_line": 128
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 261,
+      "unresolved_project_candidate_call_sites": 21,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/ensemble_model.py",
+      "nloc": 570,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 139,
+      "callable_entry_count": 14,
+      "cross_file_internal_method_fanout": 38,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 35,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "concatenate",
+          "start_line": 5978
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 140,
+      "unresolved_project_candidate_call_sites": 42,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/dataprocessing/encoders/encoders.py",
+      "nloc": 747,
+      "concrete_method_count": 56,
+      "total_cyclomatic_complexity": 132,
+      "callable_entry_count": 31,
+      "cross_file_internal_method_fanout": 40,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 33,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/dataprocessing/encoders/encoder_base.py",
+          "qualified_name": "SequentialEncoderTransformer.transform",
+          "start_line": 855
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "concatenate",
+          "start_line": 5978
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "datetime_attribute_timeseries",
+          "start_line": 544
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "seq2series",
+          "start_line": 139
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        }
+      ],
+      "total_call_sites": 164,
+      "unresolved_project_candidate_call_sites": 33,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/statistics.py",
+      "nloc": 610,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 128,
+      "callable_entry_count": 15,
+      "cross_file_internal_method_fanout": 37,
+      "resolved_cross_file_internal_method_fanout": 13,
+      "unresolved_cross_file_candidate_call_sites": 24,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/metrics/metrics.py",
+          "qualified_name": "_tolerance_coverages",
+          "start_line": 2643
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_tolerance_levels",
+          "start_line": 1144
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries._assert_deterministic",
+          "start_line": 5290
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries._assert_univariate",
+          "start_line": 5282
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.has_same_time_as",
+          "start_line": 3052
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.plot",
+          "start_line": 4438
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.slice_intersect",
+          "start_line": 2717
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.to_series",
+          "start_line": 1748
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.univariate_values",
+          "start_line": 2126
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.values",
+          "start_line": 2058
+        },
+        {
+          "file": "darts/utils/missing_values.py",
+          "qualified_name": "fill_missing_values",
+          "start_line": 28
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        }
+      ],
+      "total_call_sites": 245,
+      "unresolved_project_candidate_call_sites": 24,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/likelihood_models/torch.py",
+      "nloc": 734,
+      "concrete_method_count": 102,
+      "total_cyclomatic_complexity": 127,
+      "callable_entry_count": 22,
+      "cross_file_internal_method_fanout": 43,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 40,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_check_quantiles",
+          "start_line": 258
+        }
+      ],
+      "total_call_sites": 242,
+      "unresolved_project_candidate_call_sites": 40,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/conformal_models.py",
+      "nloc": 855,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 111,
+      "callable_entry_count": 23,
+      "cross_file_internal_method_fanout": 58,
+      "resolved_cross_file_internal_method_fanout": 12,
+      "unresolved_cross_file_candidate_call_sites": 46,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_adjust_historical_forecasts_time_index",
+          "start_line": 1003
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_slice_intersect_series",
+          "start_line": 1512
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "_build_forecast_series",
+          "start_line": 763
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_check_quantiles",
+          "start_line": 258
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "sample_from_quantiles",
+          "start_line": 626
+        }
+      ],
+      "total_call_sites": 160,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/ad/utils.py",
+      "nloc": 502,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 102,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 20,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 16,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.values",
+          "start_line": 2058
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.window_transform",
+          "start_line": 3887
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 167,
+      "unresolved_project_candidate_call_sites": 16,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": "darts/__init__.py",
+      "nloc": 25,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/__init__.py",
+      "nloc": 46,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/aggregators/__init__.py",
+      "nloc": 11,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/aggregators/aggregators.py",
+      "nloc": 102,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/aggregators/and_aggregator.py",
+      "nloc": 29,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/aggregators/ensemble_sklearn_aggregator.py",
+      "nloc": 37,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/aggregators/or_aggregator.py",
+      "nloc": 27,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/anomaly_model/__init__.py",
+      "nloc": 6,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/anomaly_model/anomaly_model.py",
+      "nloc": 194,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/anomaly_model/filtering_am.py",
+      "nloc": 101,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/anomaly_model/forecasting_am.py",
+      "nloc": 229,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/detectors/__init__.py",
+      "nloc": 8,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/detectors/detectors.py",
+      "nloc": 146,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/detectors/iqr_detector.py",
+      "nloc": 34,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/detectors/quantile_detector.py",
+      "nloc": 62,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/detectors/threshold_detector.py",
+      "nloc": 56,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/__init__.py",
+      "nloc": 27,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/difference_scorer.py",
+      "nloc": 15,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/kmeans_scorer.py",
+      "nloc": 30,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/nll_cauchy_scorer.py",
+      "nloc": 13,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/nll_exponential_scorer.py",
+      "nloc": 14,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/nll_gamma_scorer.py",
+      "nloc": 13,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/nll_gaussian_scorer.py",
+      "nloc": 14,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/nll_laplace_scorer.py",
+      "nloc": 14,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/nll_poisson_scorer.py",
+      "nloc": 13,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/norm_scorer.py",
+      "nloc": 21,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/pyod_scorer.py",
+      "nloc": 32,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/scorers.py",
+      "nloc": 484,
+      "concrete_method_count": 39,
+      "total_cyclomatic_complexity": 78,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/scorers/wasserstein_scorer.py",
+      "nloc": 43,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/ad/utils.py",
+      "nloc": 502,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 102,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 20,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 16,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.values",
+          "start_line": 2058
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.window_transform",
+          "start_line": 3887
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 167,
+      "unresolved_project_candidate_call_sites": 16,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/config.py",
+      "nloc": 241,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 49,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/__init__.py",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/dtw/__init__.py",
+      "nloc": 19,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/dtw/_plot.py",
+      "nloc": 103,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/dtw/cost_matrix.py",
+      "nloc": 92,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/dtw/dtw.py",
+      "nloc": 187,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/dtw/window.py",
+      "nloc": 180,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/encoders/__init__.py",
+      "nloc": 22,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/encoders/encoder_base.py",
+      "nloc": 476,
+      "concrete_method_count": 37,
+      "total_cyclomatic_complexity": 109,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/encoders/encoders.py",
+      "nloc": 747,
+      "concrete_method_count": 56,
+      "total_cyclomatic_complexity": 132,
+      "callable_entry_count": 31,
+      "cross_file_internal_method_fanout": 40,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 33,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/dataprocessing/encoders/encoder_base.py",
+          "qualified_name": "SequentialEncoderTransformer.transform",
+          "start_line": 855
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "concatenate",
+          "start_line": 5978
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "datetime_attribute_timeseries",
+          "start_line": 544
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "seq2series",
+          "start_line": 139
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        }
+      ],
+      "total_call_sites": 164,
+      "unresolved_project_candidate_call_sites": 33,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/dataprocessing/pipeline.py",
+      "nloc": 140,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/__init__.py",
+      "nloc": 56,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/base_data_transformer.py",
+      "nloc": 302,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 69,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/boxcox.py",
+      "nloc": 112,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/diff.py",
+      "nloc": 149,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/fittable_data_transformer.py",
+      "nloc": 189,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/invertible_data_transformer.py",
+      "nloc": 180,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/mappers.py",
+      "nloc": 54,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/midas.py",
+      "nloc": 318,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/missing_values_filler.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/reconciliation.py",
+      "nloc": 147,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/scaler.py",
+      "nloc": 88,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/static_covariates_transformer.py",
+      "nloc": 294,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/dataprocessing/transformers/window_transformer.py",
+      "nloc": 27,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/datasets/__init__.py",
+      "nloc": 66,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/datasets/dataset_loaders.py",
+      "nloc": 132,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/datasets/datasets.py",
+      "nloc": 389,
+      "concrete_method_count": 35,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/__init__.py",
+      "nloc": 25,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/explainability.py",
+      "nloc": 102,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/explainability_result.py",
+      "nloc": 222,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/shap_adapters/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/shap_adapters/shap_adapter.py",
+      "nloc": 241,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/shap_adapters/sklearn_shap_adapter.py",
+      "nloc": 213,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/shap_adapters/torch_shap_adapter.py",
+      "nloc": 223,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/shap_explainer.py",
+      "nloc": 349,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/tft_explainer.py",
+      "nloc": 347,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 51,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/explainability/utils.py",
+      "nloc": 273,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/logging.py",
+      "nloc": 64,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/metrics/__init__.py",
+      "nloc": 135,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/metrics/metrics.py",
+      "nloc": 1292,
+      "concrete_method_count": 48,
+      "total_cyclomatic_complexity": 52,
+      "callable_entry_count": 44,
+      "cross_file_internal_method_fanout": 15,
+      "resolved_cross_file_internal_method_fanout": 9,
+      "unresolved_cross_file_candidate_call_sites": 6,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_compute_score",
+          "start_line": 1081
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_confusion_matrix",
+          "start_line": 984
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_error_scale",
+          "start_line": 846
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_quantile_intervals",
+          "start_line": 685
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_tolerance_levels",
+          "start_line": 1144
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_values_or_raise",
+          "start_line": 577
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_wrapped_metric",
+          "start_line": 784
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_safe_divide",
+          "start_line": 879
+        }
+      ],
+      "total_call_sites": 163,
+      "unresolved_project_candidate_call_sites": 6,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/metrics/utils.py",
+      "nloc": 746,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 143,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 33,
+      "resolved_cross_file_internal_method_fanout": 13,
+      "unresolved_cross_file_candidate_call_sites": 20,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.all_values",
+          "start_line": 2107
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.end_time",
+          "start_line": 1996
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.has_same_time_as",
+          "start_line": 3052
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.slice_intersect_values",
+          "start_line": 2748
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.start_time",
+          "start_line": 1980
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "likelihood_component_names",
+          "start_line": 128
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 261,
+      "unresolved_project_candidate_call_sites": 21,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/__init__.py",
+      "nloc": 204,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/chronos2_submodels.py",
+      "nloc": 525,
+      "concrete_method_count": 33,
+      "total_cyclomatic_complexity": 53,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 17,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 16,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        }
+      ],
+      "total_call_sites": 173,
+      "unresolved_project_candidate_call_sites": 18,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/feed_forward.py",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/glu_variants.py",
+      "nloc": 56,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/huggingface_connector.py",
+      "nloc": 95,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/layer_norm_variants.py",
+      "nloc": 50,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/patchtst_fm_submodels.py",
+      "nloc": 237,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/tft_submodels.py",
+      "nloc": 444,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 100,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/timesfm2p5_submodels.py",
+      "nloc": 361,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/timesfm3_submodels.py",
+      "nloc": 642,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 70,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 23,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 22,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        }
+      ],
+      "total_call_sites": 239,
+      "unresolved_project_candidate_call_sites": 22,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/components/transformer.py",
+      "nloc": 19,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/filtering/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/filtering/filtering_model.py",
+      "nloc": 14,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/filtering/gaussian_process_filter.py",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/filtering/kalman_filter.py",
+      "nloc": 146,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/filtering/moving_average_filter.py",
+      "nloc": 18,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/arima.py",
+      "nloc": 128,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/baselines.py",
+      "nloc": 115,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/block_rnn_model.py",
+      "nloc": 186,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/catboost_model.py",
+      "nloc": 284,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/chronos2_model.py",
+      "nloc": 420,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 30,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/conformal_models.py",
+      "nloc": 855,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 111,
+      "callable_entry_count": 23,
+      "cross_file_internal_method_fanout": 58,
+      "resolved_cross_file_internal_method_fanout": 12,
+      "unresolved_cross_file_candidate_call_sites": 46,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_adjust_historical_forecasts_time_index",
+          "start_line": 1003
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_slice_intersect_series",
+          "start_line": 1512
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "_build_forecast_series",
+          "start_line": 763
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_check_quantiles",
+          "start_line": 258
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "sample_from_quantiles",
+          "start_line": 626
+        }
+      ],
+      "total_call_sites": 160,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/dlinear.py",
+      "nloc": 181,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/ensemble_model.py",
+      "nloc": 570,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 139,
+      "callable_entry_count": 14,
+      "cross_file_internal_method_fanout": 38,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 35,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "concatenate",
+          "start_line": 5978
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 140,
+      "unresolved_project_candidate_call_sites": 42,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/exponential_smoothing.py",
+      "nloc": 96,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/fft.py",
+      "nloc": 190,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/forecasting_model.py",
+      "nloc": 1959,
+      "concrete_method_count": 97,
+      "total_cyclomatic_complexity": 354,
+      "callable_entry_count": 40,
+      "cross_file_internal_method_fanout": 87,
+      "resolved_cross_file_internal_method_fanout": 27,
+      "unresolved_cross_file_candidate_call_sites": 60,
+      "cross_file_internal_file_fanout": 8,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries._assert_deterministic",
+          "start_line": 5290
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.end_time",
+          "start_line": 1996
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.has_same_time_as",
+          "start_line": 3052
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.slice_intersect",
+          "start_line": 2717
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.start_time",
+          "start_line": 1980
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_apply_data_transformers",
+          "start_line": 1415
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_apply_inverse_data_transformers",
+          "start_line": 1480
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_convert_data_transformers",
+          "start_line": 1400
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_extend_series_for_overlap_end",
+          "start_line": 1633
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_get_historical_forecasts_setup",
+          "start_line": 709
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_historical_forecasts_general_checks",
+          "start_line": 40
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_pack_series_in_list",
+          "start_line": 1553
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_process_historical_forecast_for_backtest",
+          "start_line": 1572
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_slice_intersect_series",
+          "start_line": 1512
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "likelihood_component_names",
+          "start_line": 128
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_interval_names",
+          "start_line": 167
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/serialization/base.py",
+          "qualified_name": "restricted_pickle_load",
+          "start_line": 542
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "_build_forecast_series",
+          "start_line": 763
+        },
+        {
+          "file": "darts/utils/timeseries_generation.py",
+          "qualified_name": "_generate_new_dates",
+          "start_line": 897
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        }
+      ],
+      "total_call_sites": 420,
+      "unresolved_project_candidate_call_sites": 75,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/foundation_model.py",
+      "nloc": 57,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/global_baseline_models.py",
+      "nloc": 242,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/kalman_forecaster.py",
+      "nloc": 96,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/lgbm.py",
+      "nloc": 219,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/linear_regression_model.py",
+      "nloc": 110,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/multivariate_model.py",
+      "nloc": 189,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/naive_ensemble_model.py",
+      "nloc": 132,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/nbeats.py",
+      "nloc": 367,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/nf_model.py",
+      "nloc": 315,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/nhits.py",
+      "nloc": 341,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/nlinear.py",
+      "nloc": 171,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/patchtst_fm_model.py",
+      "nloc": 288,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/pl_forecasting_module.py",
+      "nloc": 433,
+      "concrete_method_count": 33,
+      "total_cyclomatic_complexity": 78,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/prophet_model.py",
+      "nloc": 414,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 86,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/random_forest.py",
+      "nloc": 77,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/regression_ensemble_model.py",
+      "nloc": 348,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 65,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/rnn_model.py",
+      "nloc": 218,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 30,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_auto_arima.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_auto_ces.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_auto_ets.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_auto_mfles.py",
+      "nloc": 22,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_auto_tbats.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_auto_theta.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_croston.py",
+      "nloc": 48,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_model.py",
+      "nloc": 250,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sf_tbats.py",
+      "nloc": 19,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/sklearn_model.py",
+      "nloc": 1400,
+      "concrete_method_count": 47,
+      "total_cyclomatic_complexity": 262,
+      "callable_entry_count": 17,
+      "cross_file_internal_method_fanout": 100,
+      "resolved_cross_file_internal_method_fanout": 13,
+      "unresolved_cross_file_candidate_call_sites": 87,
+      "cross_file_internal_file_fanout": 7,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_deprecation_warning",
+          "start_line": 31
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/data/tabularization/tabularization.py",
+          "qualified_name": "_create_lagged_data_autoregression",
+          "start_line": 1401
+        },
+        {
+          "file": "darts/utils/data/tabularization/tabularization.py",
+          "qualified_name": "create_lagged_component_names",
+          "start_line": 822
+        },
+        {
+          "file": "darts/utils/data/tabularization/tabularization.py",
+          "qualified_name": "create_lagged_training_data",
+          "start_line": 434
+        },
+        {
+          "file": "darts/utils/historical_forecasts/optimized_historical_forecasts_regression.py",
+          "qualified_name": "_optimized_historical_forecasts_regression",
+          "start_line": 23
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_check_optimizable_historical_forecasts_global_models",
+          "start_line": 1326
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_process_historical_forecast_input",
+          "start_line": 1335
+        },
+        {
+          "file": "darts/utils/likelihood_models/sklearn.py",
+          "qualified_name": "_get_likelihood",
+          "start_line": 672
+        },
+        {
+          "file": "darts/utils/multioutput.py",
+          "qualified_name": "get_multioutput_estimator_cls",
+          "start_line": 180
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "seq2series",
+          "start_line": 139
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 346,
+      "unresolved_project_candidate_call_sites": 91,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/t0_model.py",
+      "nloc": 150,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/tcn_model.py",
+      "nloc": 224,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/tft_model.py",
+      "nloc": 657,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 74,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 16,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 13,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/models/components/tft_submodels.py",
+          "qualified_name": "get_embedding_size",
+          "start_line": 35
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "PLModuleInput.concatenate_past_features",
+          "start_line": 138
+        }
+      ],
+      "total_call_sites": 138,
+      "unresolved_project_candidate_call_sites": 13,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/theta.py",
+      "nloc": 314,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/tide_model.py",
+      "nloc": 326,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 47,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/timesfm2p5_model.py",
+      "nloc": 261,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/timesfm3_model.py",
+      "nloc": 650,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 64,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 37,
+      "resolved_cross_file_internal_method_fanout": 11,
+      "unresolved_cross_file_candidate_call_sites": 26,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "_ResidualBlock.set_input_dims",
+          "start_line": 689
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "_cpm_iterative_revin_refine",
+          "start_line": 1019
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "_get_output_patch_via_roll",
+          "start_line": 892
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "_get_running_stats",
+          "start_line": 803
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "_revin",
+          "start_line": 851
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "_stitch_patches",
+          "start_line": 962
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "build_residual_block_config",
+          "start_line": 114
+        },
+        {
+          "file": "darts/models/components/timesfm3_submodels.py",
+          "qualified_name": "build_stacked_transformers_config",
+          "start_line": 124
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "PLModuleInput.concatenate_future_along_time",
+          "start_line": 153
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_parse_input_chunk_length",
+          "start_line": 413
+        }
+      ],
+      "total_call_sites": 190,
+      "unresolved_project_candidate_call_sites": 26,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/tirex2_model.py",
+      "nloc": 189,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/tirex_model.py",
+      "nloc": 175,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/torch_forecasting_model.py",
+      "nloc": 1903,
+      "concrete_method_count": 84,
+      "total_cyclomatic_complexity": 293,
+      "callable_entry_count": 39,
+      "cross_file_internal_method_fanout": 84,
+      "resolved_cross_file_internal_method_fanout": 21,
+      "unresolved_cross_file_candidate_call_sites": 63,
+      "cross_file_internal_file_fanout": 11,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "suppress_lightning_warnings",
+          "start_line": 164
+        },
+        {
+          "file": "darts/models/forecasting/forecasting_model.py",
+          "qualified_name": "ForecastingModel.predict",
+          "start_line": 380
+        },
+        {
+          "file": "darts/models/forecasting/pl_forecasting_module.py",
+          "qualified_name": "PLForecastingModule.set_predict_parameters",
+          "start_line": 373
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/_data_module.py",
+          "qualified_name": "TorchDataModule.val_dataloader",
+          "start_line": 68
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_as_inference_sample",
+          "start_line": 324
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_as_training_sample",
+          "start_line": 312
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_coerce_training_sample",
+          "start_line": 275
+        },
+        {
+          "file": "darts/utils/data/torch_datasets/utils.py",
+          "qualified_name": "_train_sample_from_shapes",
+          "start_line": 395
+        },
+        {
+          "file": "darts/utils/historical_forecasts/optimized_historical_forecasts_torch.py",
+          "qualified_name": "_optimized_historical_forecasts",
+          "start_line": 21
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_check_optimizable_historical_forecasts_global_models",
+          "start_line": 1326
+        },
+        {
+          "file": "darts/utils/historical_forecasts/utils.py",
+          "qualified_name": "_process_historical_forecast_input",
+          "start_line": 1335
+        },
+        {
+          "file": "darts/utils/onnx/export.py",
+          "qualified_name": "to_onnx",
+          "start_line": 67
+        },
+        {
+          "file": "darts/utils/serialization/torch.py",
+          "qualified_name": "load_ckpt_safely",
+          "start_line": 92
+        },
+        {
+          "file": "darts/utils/serialization/torch.py",
+          "qualified_name": "load_wrapper_safely",
+          "start_line": 42
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "seq2series",
+          "start_line": 139
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        }
+      ],
+      "total_call_sites": 416,
+      "unresolved_project_candidate_call_sites": 63,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/models/forecasting/transformer_model.py",
+      "nloc": 273,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/tsmixer_model.py",
+      "nloc": 360,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/varima.py",
+      "nloc": 171,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/models/forecasting/xgboost.py",
+      "nloc": 201,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/timeseries.py",
+      "nloc": 3103,
+      "concrete_method_count": 171,
+      "total_cyclomatic_complexity": 741,
+      "callable_entry_count": 115,
+      "cross_file_internal_method_fanout": 81,
+      "resolved_cross_file_internal_method_fanout": 14,
+      "unresolved_cross_file_candidate_call_sites": 67,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/config.py",
+          "qualified_name": "get_option",
+          "start_line": 358
+        },
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "format_bytes",
+          "start_line": 1
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "format_dict",
+          "start_line": 36
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "make_collapsible_section",
+          "start_line": 135
+        },
+        {
+          "file": "darts/utils/_formatting.py",
+          "qualified_name": "make_paragraph",
+          "start_line": 161
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_build_tqdm_iterator",
+          "start_line": 94
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_maybe_cast_array_dtype",
+          "start_line": 823
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_parallel_apply",
+          "start_line": 208
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "dataframe_col_to_time_index",
+          "start_line": 756
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "expand_arr",
+          "start_line": 618
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "generate_index",
+          "start_line": 521
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "infer_freq_intersection",
+          "start_line": 477
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 1131,
+      "unresolved_project_candidate_call_sites": 151,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/typing.py",
+      "nloc": 9,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/__init__.py",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/_formatting.py",
+      "nloc": 73,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/_lazy.py",
+      "nloc": 37,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/_plotting.py",
+      "nloc": 408,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 74,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/_statsmodels_utils.py",
+      "nloc": 9,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/callbacks.py",
+      "nloc": 149,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/__init__.py",
+      "nloc": 97,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/tabularization/__init__.py",
+      "nloc": 26,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/tabularization/tabularization.py",
+      "nloc": 1033,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 176,
+      "callable_entry_count": 8,
+      "cross_file_internal_method_fanout": 72,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 66,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.all_values",
+          "start_line": 2107
+        },
+        {
+          "file": "darts/utils/data/utils.py",
+          "qualified_name": "_process_sample_weight",
+          "start_line": 69
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 260,
+      "unresolved_project_candidate_call_sites": 66,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/data/torch_datasets/__init__.py",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/torch_datasets/_data_module.py",
+      "nloc": 45,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/torch_datasets/dataset.py",
+      "nloc": 166,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/torch_datasets/inference_dataset.py",
+      "nloc": 180,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/torch_datasets/training_dataset.py",
+      "nloc": 257,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/torch_datasets/utils.py",
+      "nloc": 292,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 62,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/data/utils.py",
+      "nloc": 76,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/historical_forecasts/__init__.py",
+      "nloc": 28,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/historical_forecasts/optimized_historical_forecasts_regression.py",
+      "nloc": 258,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/historical_forecasts/optimized_historical_forecasts_torch.py",
+      "nloc": 158,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/historical_forecasts/utils.py",
+      "nloc": 1200,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 229,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 57,
+      "resolved_cross_file_internal_method_fanout": 10,
+      "unresolved_cross_file_candidate_call_sites": 47,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.drop_before",
+          "start_line": 2553
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.end_time",
+          "start_line": 1996
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.get_index_at_point",
+          "start_line": 2371
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.start_time",
+          "start_line": 1980
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "slice_intersect",
+          "start_line": 6120
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "n_steps_between",
+          "start_line": 381
+        }
+      ],
+      "total_call_sites": 303,
+      "unresolved_project_candidate_call_sites": 47,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/likelihood_models/__init__.py",
+      "nloc": 69,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/likelihood_models/base.py",
+      "nloc": 104,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/likelihood_models/sklearn.py",
+      "nloc": 385,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 61,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/likelihood_models/statsforecast.py",
+      "nloc": 47,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/likelihood_models/torch.py",
+      "nloc": 734,
+      "concrete_method_count": 102,
+      "total_cyclomatic_complexity": 127,
+      "callable_entry_count": 22,
+      "cross_file_internal_method_fanout": 43,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 40,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/utils/likelihood_models/base.py",
+          "qualified_name": "quantile_names",
+          "start_line": 149
+        },
+        {
+          "file": "darts/utils/utils.py",
+          "qualified_name": "_check_quantiles",
+          "start_line": 258
+        }
+      ],
+      "total_call_sites": 242,
+      "unresolved_project_candidate_call_sites": 40,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/losses.py",
+      "nloc": 29,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/missing_values.py",
+      "nloc": 66,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/mlflow.py",
+      "nloc": 918,
+      "concrete_method_count": 33,
+      "total_cyclomatic_complexity": 180,
+      "callable_entry_count": 6,
+      "cross_file_internal_method_fanout": 36,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 28,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "register_metric_callback",
+          "start_line": 161
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "unregister_metric_callback",
+          "start_line": 166
+        },
+        {
+          "file": "darts/models/forecasting/forecasting_model.py",
+          "qualified_name": "ForecastingModel.initialize_encoders",
+          "start_line": 2416
+        },
+        {
+          "file": "darts/models/forecasting/forecasting_model.py",
+          "qualified_name": "ForecastingModel.save",
+          "start_line": 2727
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_series_seq_type",
+          "start_line": 185
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "series2seq",
+          "start_line": 56
+        }
+      ],
+      "total_call_sites": 248,
+      "unresolved_project_candidate_call_sites": 28,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/model_selection.py",
+      "nloc": 162,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/multioutput.py",
+      "nloc": 119,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/onnx/__init__.py",
+      "nloc": 5,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/onnx/export.py",
+      "nloc": 222,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/onnx/inference.py",
+      "nloc": 335,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 69,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/serialization/__init__.py",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/serialization/base.py",
+      "nloc": 404,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 62,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/serialization/registry.py",
+      "nloc": 98,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/serialization/torch.py",
+      "nloc": 96,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/statistics.py",
+      "nloc": 610,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 128,
+      "callable_entry_count": 15,
+      "cross_file_internal_method_fanout": 37,
+      "resolved_cross_file_internal_method_fanout": 13,
+      "unresolved_cross_file_candidate_call_sites": 24,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "darts/logging.py",
+          "qualified_name": "raise_log",
+          "start_line": 54
+        },
+        {
+          "file": "darts/metrics/metrics.py",
+          "qualified_name": "_tolerance_coverages",
+          "start_line": 2643
+        },
+        {
+          "file": "darts/metrics/utils.py",
+          "qualified_name": "_get_tolerance_levels",
+          "start_line": 1144
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries._assert_deterministic",
+          "start_line": 5290
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries._assert_univariate",
+          "start_line": 5282
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.has_same_time_as",
+          "start_line": 3052
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.plot",
+          "start_line": 4438
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.slice_intersect",
+          "start_line": 2717
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.to_series",
+          "start_line": 1748
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.univariate_values",
+          "start_line": 2126
+        },
+        {
+          "file": "darts/timeseries.py",
+          "qualified_name": "TimeSeries.values",
+          "start_line": 2058
+        },
+        {
+          "file": "darts/utils/missing_values.py",
+          "qualified_name": "fill_missing_values",
+          "start_line": 28
+        },
+        {
+          "file": "darts/utils/ts_utils.py",
+          "qualified_name": "get_single_series",
+          "start_line": 157
+        }
+      ],
+      "total_call_sites": 245,
+      "unresolved_project_candidate_call_sites": 24,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "darts/utils/timeseries_generation.py",
+      "nloc": 490,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 72,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/torch.py",
+      "nloc": 43,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/ts_utils.py",
+      "nloc": 132,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "darts/utils/utils.py",
+      "nloc": 444,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 115,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}

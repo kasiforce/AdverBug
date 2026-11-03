@@ -1,0 +1,4425 @@
+{
+  "schema_version": 4,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/imba",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 238,
+  "selected_file_count": 6,
+  "selected_files": [
+    {
+      "src_file": "packages/imba/src/compiler/nodes.mjs",
+      "nloc": 17802,
+      "concrete_method_count": 1514,
+      "total_cyclomatic_complexity": 4357,
+      "callable_entry_count": 1273,
+      "cross_file_internal_method_fanout": 1768,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 1762,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/src/compiler/compilation.mjs",
+          "qualified_name": "Compilation.error",
+          "start_line": 26
+        },
+        {
+          "file": "packages/imba/src/compiler/sourcemap.mjs",
+          "qualified_name": "SourceMap",
+          "start_line": 13
+        },
+        {
+          "file": "packages/imba/src/compiler/sourcemapper.mjs",
+          "qualified_name": "SourceMapper.strip",
+          "start_line": 2
+        },
+        {
+          "file": "packages/imba/src/compiler/styler.mjs",
+          "qualified_name": "StyleTheme.instance",
+          "start_line": 698
+        },
+        {
+          "file": "packages/imba/src/compiler/styler.mjs",
+          "qualified_name": "StyleTheme.propAbbr",
+          "start_line": 702
+        },
+        {
+          "file": "packages/imba/src/compiler/utils.mjs",
+          "qualified_name": "extractGenericNames",
+          "start_line": 50
+        }
+      ],
+      "total_call_sites": 6380,
+      "unresolved_project_candidate_call_sites": 4625,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/src/compiler/lexer.mjs",
+      "nloc": 2104,
+      "concrete_method_count": 87,
+      "total_cyclomatic_complexity": 894,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 261,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 261,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 571,
+      "unresolved_project_candidate_call_sites": 261,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/volume.js",
+      "nloc": 2045,
+      "concrete_method_count": 242,
+      "total_cyclomatic_complexity": 593,
+      "callable_entry_count": 10,
+      "cross_file_internal_method_fanout": 142,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 140,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/polyfills/fs/encoding.js",
+          "qualified_name": "assertEncoding",
+          "start_line": 7
+        },
+        {
+          "file": "packages/imba/polyfills/fs/encoding.js",
+          "qualified_name": "strToEncoding",
+          "start_line": 12
+        }
+      ],
+      "total_call_sites": 744,
+      "unresolved_project_candidate_call_sites": 142,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/polyfills/buffer/index.js",
+      "nloc": 1535,
+      "concrete_method_count": 115,
+      "total_cyclomatic_complexity": 552,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 77,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 77,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 323,
+      "unresolved_project_candidate_call_sites": 84,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/src/compiler/styler.mjs",
+      "nloc": 1595,
+      "concrete_method_count": 133,
+      "total_cyclomatic_complexity": 367,
+      "callable_entry_count": 113,
+      "cross_file_internal_method_fanout": 167,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 162,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/src/compiler/colord.mjs",
+          "qualified_name": "toLchArray",
+          "start_line": 8
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "layerize",
+          "start_line": 418
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "parse",
+          "start_line": 516
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "render",
+          "start_line": 469
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "unwrap",
+          "start_line": 493
+        }
+      ],
+      "total_call_sites": 358,
+      "unresolved_project_candidate_call_sites": 167,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/deflate.js",
+      "nloc": 1063,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 224,
+      "callable_entry_count": 8,
+      "cross_file_internal_method_fanout": 17,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 11,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_align",
+          "start_line": 1036
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_flush_block",
+          "start_line": 1046
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_init",
+          "start_line": 1001
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_stored_block",
+          "start_line": 1022
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_tally",
+          "start_line": 1135
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/utils.js",
+          "qualified_name": "arraySet",
+          "start_line": 34
+        }
+      ],
+      "total_call_sites": 137,
+      "unresolved_project_candidate_call_sites": 11,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": "apps/imba.io/public/imdb.js",
+      "nloc": 8038,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 6,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 2,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 2,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 4,
+      "unresolved_project_candidate_call_sites": 2,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "apps/imba.io/src/util/mousetrap.js",
+      "nloc": 443,
+      "concrete_method_count": 39,
+      "total_cyclomatic_complexity": 133,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/create-imba/bin/create-imba.js",
+      "nloc": 5898,
+      "concrete_method_count": 845,
+      "total_cyclomatic_complexity": 2001,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 0,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 0,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 0,
+      "unresolved_project_candidate_call_sites": 0,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/create-imba/src/runtime-shim.js",
+      "nloc": 3,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba-language-server/bin/imba-language-server.js",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba-monarch/src/monarch/common.js",
+      "nloc": 155,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba-monarch/src/monarch/compile.js",
+      "nloc": 458,
+      "concrete_method_count": 30,
+      "total_cyclomatic_complexity": 153,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba-monarch/src/monarch/lexer.js",
+      "nloc": 518,
+      "concrete_method_count": 43,
+      "total_cyclomatic_complexity": 154,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 55,
+      "resolved_cross_file_internal_method_fanout": 11,
+      "unresolved_cross_file_candidate_call_sites": 44,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "createError",
+          "start_line": 25
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "findRules",
+          "start_line": 118
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "fixCase",
+          "start_line": 16
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "isFuzzyAction",
+          "start_line": 4
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "isIAction",
+          "start_line": 10
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "isString",
+          "start_line": 7
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "log",
+          "start_line": 22
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "sanitize",
+          "start_line": 19
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/common.js",
+          "qualified_name": "substituteMatches",
+          "start_line": 65
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/token.js",
+          "qualified_name": "Token.Token",
+          "start_line": 2
+        },
+        {
+          "file": "packages/imba-monarch/src/monarch/token.js",
+          "qualified_name": "TokenizationResult.TokenizationResult",
+          "start_line": 55
+        }
+      ],
+      "total_call_sites": 117,
+      "unresolved_project_candidate_call_sites": 45,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba-monarch/src/monarch/token.js",
+      "nloc": 61,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba-monarch/src/monarch/types.js",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/hmr.js",
+      "nloc": 116,
+      "concrete_method_count": 23,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/index.js",
+      "nloc": 9,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/__inject__.js",
+      "nloc": 1,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/assert/index.cjs",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/assert/index.js",
+      "nloc": 335,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 139,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/buffer/index.js",
+      "nloc": 1535,
+      "concrete_method_count": 115,
+      "total_cyclomatic_complexity": 552,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 77,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 77,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 323,
+      "unresolved_project_candidate_call_sites": 84,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/polyfills/console/index.js",
+      "nloc": 12,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/constants/index.js",
+      "nloc": 488,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/api.js",
+      "nloc": 44,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/base/buffer.js",
+      "nloc": 130,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 48,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/base/index.js",
+      "nloc": 6,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/base/node.js",
+      "nloc": 485,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 163,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/base/reporter.js",
+      "nloc": 98,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/constants/der.js",
+      "nloc": 50,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/constants/index.js",
+      "nloc": 13,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/decoders/der.js",
+      "nloc": 274,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 79,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/decoders/index.js",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/decoders/pem.js",
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/encoders/der.js",
+      "nloc": 243,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 72,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/encoders/index.js",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/encoders/pem.js",
+      "nloc": 19,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/asn1/index.js",
+      "nloc": 8,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/bn.js",
+      "nloc": 2912,
+      "concrete_method_count": 193,
+      "total_cyclomatic_complexity": 585,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 97,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 97,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 1051,
+      "unresolved_project_candidate_call_sites": 876,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/brorand/index.js",
+      "nloc": 19,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/aes.js",
+      "nloc": 184,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/authCipher.js",
+      "nloc": 103,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/decrypter.js",
+      "nloc": 114,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/encrypter.js",
+      "nloc": 97,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/ghash.js",
+      "nloc": 70,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/incr32.js",
+      "nloc": 16,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/index.js",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/cbc.js",
+      "nloc": 12,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/cfb.js",
+      "nloc": 28,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/cfb1.js",
+      "nloc": 34,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/cfb8.js",
+      "nloc": 18,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/ctr.js",
+      "nloc": 27,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/ecb.js",
+      "nloc": 6,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/index.js",
+      "nloc": 22,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/modes/ofb.js",
+      "nloc": 13,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-aes/streamCipher.js",
+      "nloc": 21,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-cipher/index.js",
+      "nloc": 63,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-cipher/test.js",
+      "nloc": 56,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-des/index.js",
+      "nloc": 50,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-des/test.js",
+      "nloc": 84,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-rsa/index.js",
+      "nloc": 31,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-sign/index.js",
+      "nloc": 81,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-sign/sign.js",
+      "nloc": 132,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/browserify-sign/verify.js",
+      "nloc": 83,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/buffer-xor/index.js",
+      "nloc": 8,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/buffer-xor/inline.js",
+      "nloc": 1,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/buffer-xor/inplace.js",
+      "nloc": 7,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/cipher-base/index.js",
+      "nloc": 93,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/cipher-base/test.js",
+      "nloc": 101,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/create-ecdh/index.js",
+      "nloc": 114,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/create-hash/index.js",
+      "nloc": 25,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/create-hash/md5.js",
+      "nloc": 4,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/create-hash/test.js",
+      "nloc": 35,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/create-hmac/index.js",
+      "nloc": 52,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/create-hmac/legacy.js",
+      "nloc": 36,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/des/index.js",
+      "nloc": 11,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/des/lib/cbc.js",
+      "nloc": 51,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/des/lib/cipher.js",
+      "nloc": 101,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/des/lib/des.js",
+      "nloc": 102,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/des/lib/ede.js",
+      "nloc": 44,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/des/lib/utils.js",
+      "nloc": 209,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 35,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/diffie-hellman/index.js",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/diffie-hellman/lib/dh.js",
+      "nloc": 146,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/diffie-hellman/lib/generatePrime.js",
+      "nloc": 95,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/index.js",
+      "nloc": 8,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/curve/base.js",
+      "nloc": 307,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 79,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/curve/edwards.js",
+      "nloc": 301,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 79,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/curve/index.js",
+      "nloc": 6,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/curve/mont.js",
+      "nloc": 126,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/curve/short.js",
+      "nloc": 708,
+      "concrete_method_count": 47,
+      "total_cyclomatic_complexity": 156,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 482,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 482,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 501,
+      "unresolved_project_candidate_call_sites": 495,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/curves.js",
+      "nloc": 186,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/ec/index.js",
+      "nloc": 175,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/ec/key.js",
+      "nloc": 91,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/ec/signature.js",
+      "nloc": 142,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/eddsa/index.js",
+      "nloc": 80,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/eddsa/key.js",
+      "nloc": 68,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/eddsa/signature.js",
+      "nloc": 43,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/precomputed/secp256k1.js",
+      "nloc": 782,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 0,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 0,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 0,
+      "unresolved_project_candidate_call_sites": 0,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/elliptic/lib/utils.js",
+      "nloc": 102,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/evp_bytestokey/index.js",
+      "nloc": 39,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash-base/index.js",
+      "nloc": 83,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/common.js",
+      "nloc": 74,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/hmac.js",
+      "nloc": 35,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/ripemd.js",
+      "nloc": 123,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha.js",
+      "nloc": 5,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha/1.js",
+      "nloc": 61,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha/224.js",
+      "nloc": 24,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha/256.js",
+      "nloc": 92,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha/384.js",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha/512.js",
+      "nloc": 265,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/sha/common.js",
+      "nloc": 40,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/hash/utils.js",
+      "nloc": 249,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 63,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hash/index.js",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/hmac-drbg/index.js",
+      "nloc": 88,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/md5/index.js",
+      "nloc": 124,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/miller-rabin/1.js",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/miller-rabin/index.js",
+      "nloc": 83,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/miller-rabin/test.js",
+      "nloc": 24,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/parse-asn1/asn1.js",
+      "nloc": 46,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/parse-asn1/certificate.js",
+      "nloc": 41,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/parse-asn1/fixProc.js",
+      "nloc": 30,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/parse-asn1/index.js",
+      "nloc": 99,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/pbkdf2/index.js",
+      "nloc": 4,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/pbkdf2/lib/async.js",
+      "nloc": 93,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/pbkdf2/lib/default-encoding.js",
+      "nloc": 12,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/pbkdf2/lib/precondition.js",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/pbkdf2/lib/sync.js",
+      "nloc": 88,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/pbkdf2/lib/to-buffer.js",
+      "nloc": 14,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/public-encrypt/index.js",
+      "nloc": 8,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/public-encrypt/mgf.js",
+      "nloc": 16,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/public-encrypt/privateDecrypt.js",
+      "nloc": 105,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/public-encrypt/publicEncrypt.js",
+      "nloc": 92,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/public-encrypt/withPublic.js",
+      "nloc": 9,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/public-encrypt/xor.js",
+      "nloc": 8,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/randombytes/index.js",
+      "nloc": 28,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/randombytes/test.js",
+      "nloc": 70,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/randomfill/index.js",
+      "nloc": 96,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/randomfill/test.js",
+      "nloc": 27,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/ripemd160/index.js",
+      "nloc": 137,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/bin.js",
+      "nloc": 38,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/hash.js",
+      "nloc": 56,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/index.js",
+      "nloc": 27,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/sha.js",
+      "nloc": 70,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/sha1.js",
+      "nloc": 73,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/sha224.js",
+      "nloc": 34,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/sha256.js",
+      "nloc": 105,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/sha384.js",
+      "nloc": 45,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/sha/sha512.js",
+      "nloc": 216,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/string_decoder/lib/string_decoder.js",
+      "nloc": 257,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 102,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/util-deprecate/browser.js",
+      "nloc": 36,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/util-deprecate/node.js",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/esm/lib/utils.js",
+      "nloc": 54,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/crypto/index.js",
+      "nloc": 45,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/domain/index.js",
+      "nloc": 70,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/empty.js",
+      "nloc": 1,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/events/index.js",
+      "nloc": 378,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 121,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/Dirent.js",
+      "nloc": 46,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/Stats.js",
+      "nloc": 63,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/constants.js",
+      "nloc": 51,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/correctPath.js",
+      "nloc": 42,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/encoding.js",
+      "nloc": 19,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/getBigInt.js",
+      "nloc": 5,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/index.js",
+      "nloc": 48,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/internal/buffer.js",
+      "nloc": 23,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/internal/errors.js",
+      "nloc": 237,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 58,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/node.js",
+      "nloc": 344,
+      "concrete_method_count": 57,
+      "total_cyclomatic_complexity": 116,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/process.js",
+      "nloc": 34,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/promises.js",
+      "nloc": 153,
+      "concrete_method_count": 49,
+      "total_cyclomatic_complexity": 59,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/setImmediate.js",
+      "nloc": 8,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/setTimeoutUnref.js",
+      "nloc": 9,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/volume-localstorage.js",
+      "nloc": 108,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/fs/volume.js",
+      "nloc": 2045,
+      "concrete_method_count": 242,
+      "total_cyclomatic_complexity": 593,
+      "callable_entry_count": 10,
+      "cross_file_internal_method_fanout": 142,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 140,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/polyfills/fs/encoding.js",
+          "qualified_name": "assertEncoding",
+          "start_line": 7
+        },
+        {
+          "file": "packages/imba/polyfills/fs/encoding.js",
+          "qualified_name": "strToEncoding",
+          "start_line": 12
+        }
+      ],
+      "total_call_sites": 744,
+      "unresolved_project_candidate_call_sites": 142,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/polyfills/http/http-lib/capability.js",
+      "nloc": 39,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/http/http-lib/request.js",
+      "nloc": 223,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 71,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/http/http-lib/response.js",
+      "nloc": 159,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/http/http-lib/to-arraybuffer.js",
+      "nloc": 20,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/http/index.js",
+      "nloc": 120,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/os/index.js",
+      "nloc": 76,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/path/index.js",
+      "nloc": 153,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/path/path2.js",
+      "nloc": 396,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 154,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/perf_hooks/index.js",
+      "nloc": 1,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/process/index.js",
+      "nloc": 188,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/punycode/index.js",
+      "nloc": 259,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/querystring/index.js",
+      "nloc": 102,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/buffer-list.js",
+      "nloc": 51,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/duplex.js",
+      "nloc": 28,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/index.js",
+      "nloc": 75,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/passthrough.js",
+      "nloc": 11,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/readable.js",
+      "nloc": 598,
+      "concrete_method_count": 54,
+      "total_cyclomatic_complexity": 239,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 76,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 76,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 171,
+      "unresolved_project_candidate_call_sites": 79,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/transform.js",
+      "nloc": 80,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/stream/writable.js",
+      "nloc": 316,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 104,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/string_decoder/index.js",
+      "nloc": 123,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 48,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/timers/index.js",
+      "nloc": 66,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/timers/setimmediate.js",
+      "nloc": 138,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/tty/index.js",
+      "nloc": 14,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/url/index.js",
+      "nloc": 522,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 81,
+      "callable_entry_count": 7,
+      "cross_file_internal_method_fanout": 97,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 97,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 144,
+      "unresolved_project_candidate_call_sites": 97,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/util/index.js",
+      "nloc": 442,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 144,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/util/inherits.js",
+      "nloc": 23,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/vm/index.js",
+      "nloc": 162,
+      "concrete_method_count": 25,
+      "total_cyclomatic_complexity": 47,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/index.js",
+      "nloc": 474,
+      "concrete_method_count": 50,
+      "total_cyclomatic_complexity": 144,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/adler32.js",
+      "nloc": 17,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/binding.js",
+      "nloc": 215,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/crc32.js",
+      "nloc": 22,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/deflate.js",
+      "nloc": 1063,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 224,
+      "callable_entry_count": 8,
+      "cross_file_internal_method_fanout": 17,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 11,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_align",
+          "start_line": 1036
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_flush_block",
+          "start_line": 1046
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_init",
+          "start_line": 1001
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_stored_block",
+          "start_line": 1022
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+          "qualified_name": "_tr_tally",
+          "start_line": 1135
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/utils.js",
+          "qualified_name": "arraySet",
+          "start_line": 34
+        }
+      ],
+      "total_call_sites": 137,
+      "unresolved_project_candidate_call_sites": 11,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/inffast.js",
+      "nloc": 231,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/inflate.js",
+      "nloc": 1215,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 86,
+      "callable_entry_count": 9,
+      "cross_file_internal_method_fanout": 16,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 13,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/inffast.js",
+          "qualified_name": "inflate_fast",
+          "start_line": 41
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/inftrees.js",
+          "qualified_name": "inflate_table",
+          "start_line": 33
+        },
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/utils.js",
+          "qualified_name": "arraySet",
+          "start_line": 34
+        }
+      ],
+      "total_call_sites": 45,
+      "unresolved_project_candidate_call_sites": 13,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/inftrees.js",
+      "nloc": 194,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/messages.js",
+      "nloc": 11,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/trees.js",
+      "nloc": 604,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 134,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 1,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 0,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/polyfills/zlib/zlib-lib/utils.js",
+          "qualified_name": "arraySet",
+          "start_line": 34
+        }
+      ],
+      "total_call_sites": 71,
+      "unresolved_project_candidate_call_sites": 0,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/utils.js",
+      "nloc": 53,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/polyfills/zlib/zlib-lib/zstream.js",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/profiling/benchmark-lets-compile.mjs",
+      "nloc": 245,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 67,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/profiling/compare-lets-compile.mjs",
+      "nloc": 247,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/profiling/profile-compile-cpu.mjs",
+      "nloc": 237,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 63,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/profiling/profile-compile.mjs",
+      "nloc": 415,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 117,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/profiling/profile-parse-cpu.mjs",
+      "nloc": 221,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 57,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/profiling/verify-compile-output.mjs",
+      "nloc": 185,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/ast/style.mjs",
+      "nloc": 1143,
+      "concrete_method_count": 110,
+      "total_cyclomatic_complexity": 313,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 236,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 236,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 356,
+      "unresolved_project_candidate_call_sites": 251,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/colord.mjs",
+      "nloc": 8,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/compilation.mjs",
+      "nloc": 235,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/compiler.mjs",
+      "nloc": 77,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/constants.mjs",
+      "nloc": 447,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/errors.mjs",
+      "nloc": 154,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 58,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/grammar.mjs",
+      "nloc": 1025,
+      "concrete_method_count": 205,
+      "total_cyclomatic_complexity": 210,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 298,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 298,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 558,
+      "unresolved_project_candidate_call_sites": 298,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/helpers.mjs",
+      "nloc": 490,
+      "concrete_method_count": 67,
+      "total_cyclomatic_complexity": 165,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/imbaconfig.mjs",
+      "nloc": 39,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/index.mjs",
+      "nloc": 54,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/lexer.mjs",
+      "nloc": 2104,
+      "concrete_method_count": 87,
+      "total_cyclomatic_complexity": 894,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 261,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 261,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 571,
+      "unresolved_project_candidate_call_sites": 261,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/src/compiler/nodes.mjs",
+      "nloc": 17802,
+      "concrete_method_count": 1514,
+      "total_cyclomatic_complexity": 4357,
+      "callable_entry_count": 1273,
+      "cross_file_internal_method_fanout": 1768,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 1762,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/src/compiler/compilation.mjs",
+          "qualified_name": "Compilation.error",
+          "start_line": 26
+        },
+        {
+          "file": "packages/imba/src/compiler/sourcemap.mjs",
+          "qualified_name": "SourceMap",
+          "start_line": 13
+        },
+        {
+          "file": "packages/imba/src/compiler/sourcemapper.mjs",
+          "qualified_name": "SourceMapper.strip",
+          "start_line": 2
+        },
+        {
+          "file": "packages/imba/src/compiler/styler.mjs",
+          "qualified_name": "StyleTheme.instance",
+          "start_line": 698
+        },
+        {
+          "file": "packages/imba/src/compiler/styler.mjs",
+          "qualified_name": "StyleTheme.propAbbr",
+          "start_line": 702
+        },
+        {
+          "file": "packages/imba/src/compiler/utils.mjs",
+          "qualified_name": "extractGenericNames",
+          "start_line": 50
+        }
+      ],
+      "total_call_sites": 6380,
+      "unresolved_project_candidate_call_sites": 4625,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/src/compiler/parser.mjs",
+      "nloc": 1155,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 635,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 207,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 207,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 1019,
+      "unresolved_project_candidate_call_sites": 210,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/rewriter.mjs",
+      "nloc": 814,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 231,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 52,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 52,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 126,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/selparse.mjs",
+      "nloc": 412,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 121,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/sourcemap.mjs",
+      "nloc": 226,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 47,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/sourcemapper.mjs",
+      "nloc": 27,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/styler.mjs",
+      "nloc": 1595,
+      "concrete_method_count": 133,
+      "total_cyclomatic_complexity": 367,
+      "callable_entry_count": 113,
+      "cross_file_internal_method_fanout": 167,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 162,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "packages/imba/src/compiler/colord.mjs",
+          "qualified_name": "toLchArray",
+          "start_line": 8
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "layerize",
+          "start_line": 418
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "parse",
+          "start_line": 516
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "render",
+          "start_line": 469
+        },
+        {
+          "file": "packages/imba/src/compiler/selparse.mjs",
+          "qualified_name": "unwrap",
+          "start_line": 493
+        }
+      ],
+      "total_call_sites": 358,
+      "unresolved_project_candidate_call_sites": 167,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "packages/imba/src/compiler/theme.mjs",
+      "nloc": 648,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 0,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 0,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 0,
+      "unresolved_project_candidate_call_sites": 0,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/token.mjs",
+      "nloc": 113,
+      "concrete_method_count": 25,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/compiler/utils.mjs",
+      "nloc": 49,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/imba/events/mousetrap.mjs",
+      "nloc": 484,
+      "concrete_method_count": 39,
+      "total_cyclomatic_complexity": 133,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/imba/hmr.js",
+      "nloc": 93,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/imba/runtime.mjs",
+      "nloc": 237,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/templates/sharedworker.js",
+      "nloc": 6,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/templates/worker.js",
+      "nloc": 6,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "packages/imba/src/templates/workerurl.js",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}

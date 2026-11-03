@@ -1,0 +1,4418 @@
+{
+  "schema_version": 4,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/parse-server",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 222,
+  "selected_file_count": 7,
+  "selected_files": [
+    {
+      "src_file": "src/Adapters/Storage/Mongo/MongoTransform.js",
+      "nloc": 1269,
+      "concrete_method_count": 55,
+      "total_cyclomatic_complexity": 437,
+      "callable_entry_count": 7,
+      "cross_file_internal_method_fanout": 34,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 31,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isDate",
+          "start_line": 128
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isRegExp",
+          "start_line": 137
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.relativeTimeToDate",
+          "start_line": 274
+        }
+      ],
+      "total_call_sites": 253,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/triggers.js",
+      "nloc": 1040,
+      "concrete_method_count": 82,
+      "total_cyclomatic_complexity": 329,
+      "callable_entry_count": 30,
+      "cross_file_internal_method_fanout": 49,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 48,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isNativeError",
+          "start_line": 164
+        }
+      ],
+      "total_call_sites": 241,
+      "unresolved_project_candidate_call_sites": 48,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/middlewares.js",
+      "nloc": 737,
+      "concrete_method_count": 48,
+      "total_cyclomatic_complexity": 241,
+      "callable_entry_count": 16,
+      "cross_file_internal_method_fanout": 75,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 70,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.get",
+          "start_line": 47
+        },
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.put",
+          "start_line": 107
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedHttpError",
+          "start_line": 32
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isObject",
+          "start_line": 191
+        }
+      ],
+      "total_call_sites": 231,
+      "unresolved_project_candidate_call_sites": 70,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/Routers/UsersRouter.js",
+      "nloc": 697,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 197,
+      "callable_entry_count": 11,
+      "cross_file_internal_method_fanout": 89,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 81,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/AccountLockout.js",
+          "qualified_name": "AccountLockout.handleLoginAttempt",
+          "start_line": 125
+        },
+        {
+          "file": "src/AuthDataLock.js",
+          "qualified_name": "applyAuthDataOptimisticLock",
+          "start_line": 15
+        },
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.validateEmailConfiguration",
+          "start_line": 527
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "getRequestObject",
+          "start_line": 275
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "inflate",
+          "start_line": 1035
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "maybeRunTrigger",
+          "start_line": 928
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "resolveError",
+          "start_line": 704
+        }
+      ],
+      "total_call_sites": 196,
+      "unresolved_project_candidate_call_sites": 81,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/GraphQL/loaders/defaultGraphQLTypes.js",
+      "nloc": 1239,
+      "concrete_method_count": 47,
+      "total_cyclomatic_complexity": 140,
+      "callable_entry_count": 21,
+      "cross_file_internal_method_fanout": 57,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 56,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isDate",
+          "start_line": 128
+        }
+      ],
+      "total_call_sites": 122,
+      "unresolved_project_candidate_call_sites": 59,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/Routers/PagesRouter.js",
+      "nloc": 514,
+      "concrete_method_count": 54,
+      "total_cyclomatic_complexity": 138,
+      "callable_entry_count": 26,
+      "cross_file_internal_method_fanout": 30,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 26,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.get",
+          "start_line": 47
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.getLocalizedPath",
+          "start_line": 43
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isPath",
+          "start_line": 97
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isPromise",
+          "start_line": 175
+        }
+      ],
+      "total_call_sites": 132,
+      "unresolved_project_candidate_call_sites": 26,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/Auth.js",
+      "nloc": 572,
+      "concrete_method_count": 42,
+      "total_cyclomatic_complexity": 133,
+      "callable_entry_count": 12,
+      "cross_file_internal_method_fanout": 55,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 53,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "getRequestObject",
+          "start_line": 275
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "resolveError",
+          "start_line": 704
+        }
+      ],
+      "total_call_sites": 159,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": ".releaserc.js",
+      "nloc": 93,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "ci/CiVersionCheck.js",
+      "nloc": 152,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "ci/ciCheck.js",
+      "nloc": 55,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "ci/definitionsCheck.js",
+      "nloc": 26,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "ci/nodeEngineCheck.js",
+      "nloc": 104,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "eslint.config.js",
+      "nloc": 85,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "postinstall.js",
+      "nloc": 36,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "resources/buildConfigDefinitions.js",
+      "nloc": 369,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 95,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/cloud/cloudCodeAbsoluteFile.js",
+      "nloc": 3,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/cloud/cloudCodeModuleFile.js",
+      "nloc": 3,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/cloud/cloudCodeRelativeFile.js",
+      "nloc": 3,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/dependencies/mock-files-adapter/index.js",
+      "nloc": 27,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/dependencies/mock-mail-adapter/index.js",
+      "nloc": 11,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/eslint.config.js",
+      "nloc": 107,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/graphQLObjectsQueries.js",
+      "nloc": 113,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/helper.js",
+      "nloc": 589,
+      "concrete_method_count": 61,
+      "total_cyclomatic_complexity": 132,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 26,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 26,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 130,
+      "unresolved_project_candidate_call_sites": 26,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/CurrentSpecReporter.js",
+      "nloc": 74,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/CustomAuth.js",
+      "nloc": 11,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/CustomAuthFunction.js",
+      "nloc": 13,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/CustomMiddleware.js",
+      "nloc": 4,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/FailingServer.js",
+      "nloc": 22,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/MockAdapter.js",
+      "nloc": 5,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/MockDatabaseAdapter.js",
+      "nloc": 9,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/MockEmailAdapter.js",
+      "nloc": 5,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/MockEmailAdapterWithOptions.js",
+      "nloc": 20,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/MockLdapServer.js",
+      "nloc": 52,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/MockPushAdapter.js",
+      "nloc": 9,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/dev.js",
+      "nloc": 47,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "spec/support/myoauth.js",
+      "nloc": 13,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/AccountLockout.js",
+      "nloc": 110,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/AdapterLoader.js",
+      "nloc": 37,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Analytics/AnalyticsAdapter.js",
+      "nloc": 9,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/AuthAdapter.js",
+      "nloc": 33,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/BaseCodeAuthAdapter.js",
+      "nloc": 83,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/OAuth1Client.js",
+      "nloc": 150,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/apple.js",
+      "nloc": 70,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/facebook.js",
+      "nloc": 125,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 34,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/gcenter.js",
+      "nloc": 125,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/github.js",
+      "nloc": 48,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/google.js",
+      "nloc": 72,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/gpgames.js",
+      "nloc": 64,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/httpsRequest.js",
+      "nloc": 35,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/index.js",
+      "nloc": 294,
+      "concrete_method_count": 23,
+      "total_cyclomatic_complexity": 85,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/instagram.js",
+      "nloc": 43,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/janraincapture.js",
+      "nloc": 28,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/janrainengage.js",
+      "nloc": 45,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/keycloak.js",
+      "nloc": 95,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/ldap.js",
+      "nloc": 141,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 36,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/line.js",
+      "nloc": 66,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/linkedin.js",
+      "nloc": 40,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/meetup.js",
+      "nloc": 32,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/mfa.js",
+      "nloc": 213,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 65,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/microsoft.js",
+      "nloc": 38,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/oauth2.js",
+      "nloc": 52,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/phantauth.js",
+      "nloc": 33,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/qq.js",
+      "nloc": 40,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/spotify.js",
+      "nloc": 46,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/twitter.js",
+      "nloc": 137,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/utils.js",
+      "nloc": 17,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/vkontakte.js",
+      "nloc": 65,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/wechat.js",
+      "nloc": 33,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Auth/weibo.js",
+      "nloc": 54,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/CacheAdapter.js",
+      "nloc": 6,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/InMemoryCache.js",
+      "nloc": 47,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/InMemoryCacheAdapter.js",
+      "nloc": 26,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/LRUCache.js",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/NullCacheAdapter.js",
+      "nloc": 18,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/RedisCacheAdapter.js",
+      "nloc": 79,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Cache/SchemaCache.js",
+      "nloc": 18,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Email/MailAdapter.js",
+      "nloc": 4,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Files/FilesAdapter.js",
+      "nloc": 22,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Files/GridFSBucketAdapter.js",
+      "nloc": 258,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 57,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Files/GridStoreAdapter.js",
+      "nloc": 3,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Logger/LoggerAdapter.js",
+      "nloc": 5,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Logger/WinstonLogger.js",
+      "nloc": 104,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Logger/WinstonLoggerAdapter.js",
+      "nloc": 49,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/MessageQueue/EventEmitterMQ.js",
+      "nloc": 48,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/PubSub/EventEmitterPubSub.js",
+      "nloc": 46,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/PubSub/PubSubAdapter.js",
+      "nloc": 12,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/PubSub/RedisPubSub.js",
+      "nloc": 23,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Push/PushAdapter.js",
+      "nloc": 7,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Mongo/MongoCollection.js",
+      "nloc": 190,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Mongo/MongoSchemaCollection.js",
+      "nloc": 262,
+      "concrete_method_count": 25,
+      "total_cyclomatic_complexity": 66,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Mongo/MongoStorageAdapter.js",
+      "nloc": 1083,
+      "concrete_method_count": 138,
+      "total_cyclomatic_complexity": 225,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 85,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 80,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Adapters/Storage/Mongo/MongoTransform.js",
+          "qualified_name": "mongoObjectToParseObject",
+          "start_line": 1106
+        },
+        {
+          "file": "src/Adapters/Storage/Mongo/MongoTransform.js",
+          "qualified_name": "transformKey",
+          "start_line": 7
+        },
+        {
+          "file": "src/Adapters/Storage/Mongo/MongoTransform.js",
+          "qualified_name": "transformPointerString",
+          "start_line": 1092
+        },
+        {
+          "file": "src/Adapters/Storage/Mongo/MongoTransform.js",
+          "qualified_name": "transformWhere",
+          "start_line": 362
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.getCircularReplacer",
+          "start_line": 502
+        }
+      ],
+      "total_call_sites": 188,
+      "unresolved_project_candidate_call_sites": 83,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Mongo/MongoTransform.js",
+      "nloc": 1269,
+      "concrete_method_count": 55,
+      "total_cyclomatic_complexity": 437,
+      "callable_entry_count": 7,
+      "cross_file_internal_method_fanout": 34,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 31,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isDate",
+          "start_line": 128
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isRegExp",
+          "start_line": 137
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.relativeTimeToDate",
+          "start_line": 274
+        }
+      ],
+      "total_call_sites": 253,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/Adapters/Storage/Postgres/PostgresClient.js",
+      "nloc": 28,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Postgres/PostgresConfigParser.js",
+      "nloc": 81,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 35,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Postgres/PostgresStorageAdapter.js",
+      "nloc": 2545,
+      "concrete_method_count": 108,
+      "total_cyclomatic_complexity": 419,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 25,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 23,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Adapters/Storage/Postgres/PostgresClient.js",
+          "qualified_name": "createClient",
+          "start_line": 3
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.relativeTimeToDate",
+          "start_line": 274
+        }
+      ],
+      "total_call_sites": 461,
+      "unresolved_project_candidate_call_sites": 165,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/Postgres/sql/index.js",
+      "nloc": 24,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/Storage/StorageAdapter.js",
+      "nloc": 134,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/WebSocketServer/WSAdapter.js",
+      "nloc": 19,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Adapters/WebSocketServer/WSSAdapter.js",
+      "nloc": 10,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Auth.js",
+      "nloc": 572,
+      "concrete_method_count": 42,
+      "total_cyclomatic_complexity": 133,
+      "callable_entry_count": 12,
+      "cross_file_internal_method_fanout": 55,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 53,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "getRequestObject",
+          "start_line": 275
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "resolveError",
+          "start_line": 704
+        }
+      ],
+      "total_call_sites": 159,
+      "unresolved_project_candidate_call_sites": 53,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/AuthDataLock.js",
+      "nloc": 32,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Config.js",
+      "nloc": 919,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 85,
+      "callable_entry_count": 40,
+      "cross_file_internal_method_fanout": 16,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 14,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Deprecator/Deprecator.js",
+          "qualified_name": "Deprecator.logRuntimeDeprecation",
+          "start_line": 66
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isRegExp",
+          "start_line": 137
+        }
+      ],
+      "total_call_sites": 151,
+      "unresolved_project_candidate_call_sites": 14,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/AdaptableController.js",
+      "nloc": 49,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/AnalyticsController.js",
+      "nloc": 32,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/CacheController.js",
+      "nloc": 55,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/DatabaseController.js",
+      "nloc": 1830,
+      "concrete_method_count": 184,
+      "total_cyclomatic_complexity": 576,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 55,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 50,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Adapters/Cache/SchemaCache.js",
+          "qualified_name": "del",
+          "start_line": 16
+        },
+        {
+          "file": "src/Controllers/SchemaController.js",
+          "qualified_name": "convertSchemaToAdapterSchema",
+          "start_line": 526
+        },
+        {
+          "file": "src/Controllers/SchemaController.js",
+          "qualified_name": "fieldNameIsValid",
+          "start_line": 460
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isObject",
+          "start_line": 191
+        }
+      ],
+      "total_call_sites": 195,
+      "unresolved_project_candidate_call_sites": 50,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/FilesController.js",
+      "nloc": 107,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/HooksController.js",
+      "nloc": 228,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 69,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/LiveQueryController.js",
+      "nloc": 75,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/LoggerController.js",
+      "nloc": 191,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/ParseGraphQLController.js",
+      "nloc": 322,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 95,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/PushController.js",
+      "nloc": 196,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/SchemaController.js",
+      "nloc": 1394,
+      "concrete_method_count": 92,
+      "total_cyclomatic_complexity": 352,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 28,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 26,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Adapters/Cache/SchemaCache.js",
+          "qualified_name": "clear",
+          "start_line": 20
+        },
+        {
+          "file": "src/Adapters/Cache/SchemaCache.js",
+          "qualified_name": "put",
+          "start_line": 12
+        }
+      ],
+      "total_call_sites": 145,
+      "unresolved_project_candidate_call_sites": 26,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/UserController.js",
+      "nloc": 349,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 86,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/index.js",
+      "nloc": 213,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Controllers/types.js",
+      "nloc": 33,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Deprecator/Deprecations.js",
+      "nloc": 104,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Deprecator/Deprecator.js",
+      "nloc": 50,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Error.js",
+      "nloc": 21,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/FileUrlValidator.js",
+      "nloc": 49,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/ParseGraphQLSchema.js",
+      "nloc": 447,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/ParseGraphQLServer.js",
+      "nloc": 334,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 106,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/helpers/objectsMutations.js",
+      "nloc": 18,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/helpers/objectsQueries.js",
+      "nloc": 266,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 62,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/helpers/queryComplexity.js",
+      "nloc": 118,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/configMutations.js",
+      "nloc": 67,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/configQueries.js",
+      "nloc": 51,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/defaultGraphQLMutations.js",
+      "nloc": 13,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/defaultGraphQLQueries.js",
+      "nloc": 20,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/defaultGraphQLTypes.js",
+      "nloc": 1239,
+      "concrete_method_count": 47,
+      "total_cyclomatic_complexity": 140,
+      "callable_entry_count": 21,
+      "cross_file_internal_method_fanout": 57,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 56,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isDate",
+          "start_line": 128
+        }
+      ],
+      "total_call_sites": 122,
+      "unresolved_project_candidate_call_sites": 59,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/GraphQL/loaders/defaultRelaySchema.js",
+      "nloc": 45,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/filesMutations.js",
+      "nloc": 88,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/functionsMutations.js",
+      "nloc": 70,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/parseClassMutations.js",
+      "nloc": 314,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 55,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/parseClassQueries.js",
+      "nloc": 125,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/parseClassTypes.js",
+      "nloc": 507,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 85,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 22,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 17,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/GraphQL/helpers/objectsQueries.js",
+          "qualified_name": "findObjects",
+          "start_line": 86
+        },
+        {
+          "file": "src/GraphQL/parseGraphQLUtils.js",
+          "qualified_name": "getParseClassMutationConfig",
+          "start_line": 55
+        },
+        {
+          "file": "src/GraphQL/transformers/constraintType.js",
+          "qualified_name": "transformConstraintTypeToGraphQL",
+          "start_line": 3
+        },
+        {
+          "file": "src/GraphQL/transformers/inputType.js",
+          "qualified_name": "transformInputTypeToGraphQL",
+          "start_line": 4
+        },
+        {
+          "file": "src/GraphQL/transformers/outputType.js",
+          "qualified_name": "transformOutputTypeToGraphQL",
+          "start_line": 4
+        }
+      ],
+      "total_call_sites": 84,
+      "unresolved_project_candidate_call_sites": 17,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/schemaDirectives.js",
+      "nloc": 51,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/schemaMutations.js",
+      "nloc": 149,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/schemaQueries.js",
+      "nloc": 68,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/schemaTypes.js",
+      "nloc": 389,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/usersMutations.js",
+      "nloc": 399,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/loaders/usersQueries.js",
+      "nloc": 86,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/parseGraphQLUtils.js",
+      "nloc": 52,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/className.js",
+      "nloc": 7,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/constraintType.js",
+      "nloc": 51,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/inputType.js",
+      "nloc": 51,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/mutation.js",
+      "nloc": 263,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/outputType.js",
+      "nloc": 51,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/query.js",
+      "nloc": 232,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/GraphQL/transformers/schemaFields.js",
+      "nloc": 132,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 29,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/InstallationDedup.js",
+      "nloc": 135,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/KeyPromiseQueue.js",
+      "nloc": 36,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/Client.js",
+      "nloc": 119,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/Id.js",
+      "nloc": 19,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/ParseCloudCodePublisher.js",
+      "nloc": 47,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/ParsePubSub.js",
+      "nloc": 31,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/ParseWebSocketServer.js",
+      "nloc": 58,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/QueryTools.js",
+      "nloc": 354,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 123,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/RequestSchema.js",
+      "nloc": 154,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/SessionTokenCache.js",
+      "nloc": 45,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/Subscription.js",
+      "nloc": 44,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/LiveQuery/equalObjects.js",
+      "nloc": 42,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Options/Definitions.js",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Options/docs.js",
+      "nloc": 0,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Options/index.js",
+      "nloc": 381,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Options/parsers.js",
+      "nloc": 85,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 27,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Page.js",
+      "nloc": 20,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/ParseMessageQueue.js",
+      "nloc": 18,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/ParseServerRESTController.js",
+      "nloc": 165,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 46,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/PromiseRouter.js",
+      "nloc": 144,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Push/PushQueue.js",
+      "nloc": 54,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Push/PushWorker.js",
+      "nloc": 84,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 18,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Push/utils.js",
+      "nloc": 117,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/RestQuery.js",
+      "nloc": 1156,
+      "concrete_method_count": 103,
+      "total_cyclomatic_complexity": 348,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 56,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 50,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Controllers/DatabaseController.js",
+          "qualified_name": "logicalOperatorError",
+          "start_line": 113
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/SharedRest.js",
+          "qualified_name": "enforceRoleSecurity",
+          "start_line": 15
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.checkProhibitedKeywords",
+          "start_line": 435
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "maybeRunQueryTrigger",
+          "start_line": 569
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "triggerExists",
+          "start_line": 230
+        }
+      ],
+      "total_call_sites": 302,
+      "unresolved_project_candidate_call_sites": 50,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/RestWrite.js",
+      "nloc": 1927,
+      "concrete_method_count": 153,
+      "total_cyclomatic_complexity": 703,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 143,
+      "resolved_cross_file_internal_method_fanout": 19,
+      "unresolved_cross_file_candidate_call_sites": 124,
+      "cross_file_internal_file_fanout": 8,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Auth.js",
+          "qualified_name": "checkIfUserHasProvidedConfiguredProvidersForLogin",
+          "start_line": 526
+        },
+        {
+          "file": "src/Auth.js",
+          "qualified_name": "findUsersWithAuthData",
+          "start_line": 430
+        },
+        {
+          "file": "src/Auth.js",
+          "qualified_name": "handleAuthDataValidation",
+          "start_line": 585
+        },
+        {
+          "file": "src/Auth.js",
+          "qualified_name": "hasMutatedAuthData",
+          "start_line": 485
+        },
+        {
+          "file": "src/Auth.js",
+          "qualified_name": "maintenance",
+          "start_line": 57
+        },
+        {
+          "file": "src/Auth.js",
+          "qualified_name": "master",
+          "start_line": 52
+        },
+        {
+          "file": "src/AuthDataLock.js",
+          "qualified_name": "applyAuthDataOptimisticLock",
+          "start_line": 15
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/InstallationDedup.js",
+          "qualified_name": "applyDuplicateDeviceTokenMerge",
+          "start_line": 117
+        },
+        {
+          "file": "src/InstallationDedup.js",
+          "qualified_name": "removeConflictingDeviceToken",
+          "start_line": 65
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.checkProhibitedKeywords",
+          "start_line": 435
+        },
+        {
+          "file": "src/cryptoUtils.js",
+          "qualified_name": "newObjectId",
+          "start_line": 36
+        },
+        {
+          "file": "src/cryptoUtils.js",
+          "qualified_name": "newToken",
+          "start_line": 41
+        },
+        {
+          "file": "src/cryptoUtils.js",
+          "qualified_name": "randomString",
+          "start_line": 22
+        },
+        {
+          "file": "src/password.js",
+          "qualified_name": "compare",
+          "start_line": 22
+        },
+        {
+          "file": "src/password.js",
+          "qualified_name": "hash",
+          "start_line": 16
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "inflate",
+          "start_line": 1035
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "maybeRunTrigger",
+          "start_line": 928
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "triggerExists",
+          "start_line": 230
+        }
+      ],
+      "total_call_sites": 519,
+      "unresolved_project_candidate_call_sites": 124,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/AggregateRouter.js",
+      "nloc": 135,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 40,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/AnalyticsRouter.js",
+      "nloc": 15,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/AudiencesRouter.js",
+      "nloc": 66,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/ClassesRouter.js",
+      "nloc": 231,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 64,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/CloudCodeRouter.js",
+      "nloc": 115,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/FeaturesRouter.js",
+      "nloc": 60,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/FilesRouter.js",
+      "nloc": 752,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 84,
+      "callable_entry_count": 7,
+      "cross_file_internal_method_fanout": 57,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 49,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.get",
+          "start_line": 47
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedHttpError",
+          "start_line": 32
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.checkProhibitedKeywords",
+          "start_line": 435
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.getFileExtension",
+          "start_line": 590
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.parseSizeToBytes",
+          "start_line": 554
+        },
+        {
+          "file": "src/middlewares.js",
+          "qualified_name": "checkIp",
+          "start_line": 50
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "maybeRunFileTrigger",
+          "start_line": 1080
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "resolveError",
+          "start_line": 704
+        }
+      ],
+      "total_call_sites": 290,
+      "unresolved_project_candidate_call_sites": 54,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/FunctionsRouter.js",
+      "nloc": 374,
+      "concrete_method_count": 37,
+      "total_cyclomatic_complexity": 88,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/GlobalConfigRouter.js",
+      "nloc": 93,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/GraphQLRouter.js",
+      "nloc": 35,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/HooksRouter.js",
+      "nloc": 148,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/IAPValidationRouter.js",
+      "nloc": 100,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/InstallationsRouter.js",
+      "nloc": 42,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/LogsRouter.js",
+      "nloc": 44,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/PagesRouter.js",
+      "nloc": 514,
+      "concrete_method_count": 54,
+      "total_cyclomatic_complexity": 138,
+      "callable_entry_count": 26,
+      "cross_file_internal_method_fanout": 30,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 26,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.get",
+          "start_line": 47
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.getLocalizedPath",
+          "start_line": 43
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isPath",
+          "start_line": 97
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isPromise",
+          "start_line": 175
+        }
+      ],
+      "total_call_sites": 132,
+      "unresolved_project_candidate_call_sites": 26,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/Routers/PurgeRouter.js",
+      "nloc": 38,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/PushRouter.js",
+      "nloc": 74,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/RolesRouter.js",
+      "nloc": 24,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/SchemasRouter.js",
+      "nloc": 143,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/SecurityRouter.js",
+      "nloc": 30,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/SessionsRouter.js",
+      "nloc": 121,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Routers/UsersRouter.js",
+      "nloc": 697,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 197,
+      "callable_entry_count": 11,
+      "cross_file_internal_method_fanout": 89,
+      "resolved_cross_file_internal_method_fanout": 8,
+      "unresolved_cross_file_candidate_call_sites": 81,
+      "cross_file_internal_file_fanout": 5,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/AccountLockout.js",
+          "qualified_name": "AccountLockout.handleLoginAttempt",
+          "start_line": 125
+        },
+        {
+          "file": "src/AuthDataLock.js",
+          "qualified_name": "applyAuthDataOptimisticLock",
+          "start_line": 15
+        },
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.validateEmailConfiguration",
+          "start_line": 527
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "getRequestObject",
+          "start_line": 275
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "inflate",
+          "start_line": 1035
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "maybeRunTrigger",
+          "start_line": 928
+        },
+        {
+          "file": "src/triggers.js",
+          "qualified_name": "resolveError",
+          "start_line": 704
+        }
+      ],
+      "total_call_sites": 196,
+      "unresolved_project_candidate_call_sites": 81,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/SchemaMigrations/DefinedSchemas.js",
+      "nloc": 362,
+      "concrete_method_count": 44,
+      "total_cyclomatic_complexity": 110,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/SchemaMigrations/Migrations.js",
+      "nloc": 74,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Security/Check.js",
+      "nloc": 46,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Security/CheckGroup.js",
+      "nloc": 24,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Security/CheckGroups/CheckGroupDatabase.js",
+      "nloc": 36,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Security/CheckGroups/CheckGroupServerConfig.js",
+      "nloc": 185,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Security/CheckGroups/CheckGroups.js",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Security/CheckRunner.js",
+      "nloc": 117,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/SharedRest.js",
+      "nloc": 58,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/StatusHandler.js",
+      "nloc": 303,
+      "concrete_method_count": 30,
+      "total_cyclomatic_complexity": 71,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/TestUtils.js",
+      "nloc": 70,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 22,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/Utils.js",
+      "nloc": 317,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/batch.js",
+      "nloc": 177,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 64,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cache.js",
+      "nloc": 3,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cli/definitions/parse-live-query-server.js",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cli/definitions/parse-server.js",
+      "nloc": 2,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cli/parse-live-query-server.js",
+      "nloc": 10,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cli/parse-server.js",
+      "nloc": 109,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cli/utils/commander.js",
+      "nloc": 122,
+      "concrete_method_count": 16,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cli/utils/runner.js",
+      "nloc": 43,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cloud-code/Parse.Cloud.js",
+      "nloc": 307,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 68,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cloud-code/Parse.Server.js",
+      "nloc": 8,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/cryptoUtils.js",
+      "nloc": 31,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/defaults.js",
+      "nloc": 56,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/deprecated.js",
+      "nloc": 5,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/middlewares.js",
+      "nloc": 737,
+      "concrete_method_count": 48,
+      "total_cyclomatic_complexity": 241,
+      "callable_entry_count": 16,
+      "cross_file_internal_method_fanout": 75,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 70,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.get",
+          "start_line": 47
+        },
+        {
+          "file": "src/Config.js",
+          "qualified_name": "Config.put",
+          "start_line": 107
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedError",
+          "start_line": 13
+        },
+        {
+          "file": "src/Error.js",
+          "qualified_name": "createSanitizedHttpError",
+          "start_line": 32
+        },
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isObject",
+          "start_line": 191
+        }
+      ],
+      "total_call_sites": 231,
+      "unresolved_project_candidate_call_sites": 70,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "src/password.js",
+      "nloc": 24,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/request.js",
+      "nloc": 153,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 42,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/requiredParameter.js",
+      "nloc": 3,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/rest.js",
+      "nloc": 278,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 69,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "src/triggers.js",
+      "nloc": 1040,
+      "concrete_method_count": 82,
+      "total_cyclomatic_complexity": 329,
+      "callable_entry_count": 30,
+      "cross_file_internal_method_fanout": 49,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 48,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/Utils.js",
+          "qualified_name": "Utils.isNativeError",
+          "start_line": 164
+        }
+      ],
+      "total_call_sites": 241,
+      "unresolved_project_candidate_call_sites": 48,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "types/eslint.config.mjs",
+      "nloc": 29,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}

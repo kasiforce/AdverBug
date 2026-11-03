@@ -1,0 +1,3364 @@
+{
+  "schema_version": 4,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/undici",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 500,
+    "min_concrete_methods": 5,
+    "min_callable_entries": 2,
+    "min_total_cyclomatic_complexity": 100,
+    "min_cross_file_internal_method_fanout": 5
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 116,
+  "selected_file_count": 9,
+  "selected_files": [
+    {
+      "src_file": "lib/web/fetch/index.js",
+      "nloc": 1230,
+      "concrete_method_count": 39,
+      "total_cyclomatic_complexity": 253,
+      "callable_entry_count": 5,
+      "cross_file_internal_method_fanout": 155,
+      "resolved_cross_file_internal_method_fanout": 49,
+      "unresolved_cross_file_candidate_call_sites": 106,
+      "cross_file_internal_file_fanout": 10,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "addAbortListener",
+          "start_line": 691
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bufferToLowerCasedHeaderName",
+          "start_line": 416
+        },
+        {
+          "file": "lib/global.js",
+          "qualified_name": "getGlobalDispatcher",
+          "start_line": 57
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "extractBody",
+          "start_line": 39
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "safelyExtractBody",
+          "start_line": 278
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "dataURLProcessor",
+          "start_line": 21
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "minimizeSupportedMimeType",
+          "start_line": 536
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "serializeAMimeType",
+          "start_line": 472
+        },
+        {
+          "file": "lib/web/fetch/headers.js",
+          "qualified_name": "HeadersList.get",
+          "start_line": 303
+        },
+        {
+          "file": "lib/web/fetch/request.js",
+          "qualified_name": "cloneRequest",
+          "start_line": 958
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "filterResponse",
+          "start_line": 425
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "fromInnerResponse",
+          "start_line": 550
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "makeAppropriateNetworkError",
+          "start_line": 479
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "makeNetworkError",
+          "start_line": 384
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "makeResponse",
+          "start_line": 365
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "TAOCheck",
+          "start_line": 225
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "appendFetchMetadata",
+          "start_line": 231
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "appendRequestOriginHeader",
+          "start_line": 261
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "buildContentRange",
+          "start_line": 1221
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "clampAndCoarsenConnectionTimingInfo",
+          "start_line": 322
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "clonePolicyContainer",
+          "start_line": 375
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "coarsenedSharedCurrentTime",
+          "start_line": 345
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "corsCheck",
+          "start_line": 219
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "createInflate",
+          "start_line": 1289
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "createOpaqueTimingInfo",
+          "start_line": 350
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "crossOriginResourcePolicyCheck",
+          "start_line": 213
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "determineRequestsReferrer",
+          "start_line": 386
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "extractMimeType",
+          "start_line": 1297
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "fullyReadBody",
+          "start_line": 946
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "hasAuthenticationEntry",
+          "start_line": 1441
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "includesCredentials",
+          "start_line": 1449
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isAborted",
+          "start_line": 713
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isCancelled",
+          "start_line": 717
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isErrorLike",
+          "start_line": 105
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isTraversableNavigable",
+          "start_line": 1458
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "makePolicyContainer",
+          "start_line": 367
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "readableStreamClose",
+          "start_line": 974
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "requestBadPort",
+          "start_line": 91
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "requestCurrentURL",
+          "start_line": 87
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "responseLocationURL",
+          "start_line": 25
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "sameOrigin",
+          "start_line": 697
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "setRequestReferrerPolicyOnRedirect",
+          "start_line": 201
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "simpleRangeHeaderValue",
+          "start_line": 1085
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "tryUpgradeRequestToAPotentiallyTrustworthyURL",
+          "start_line": 688
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlHasHttpsScheme",
+          "start_line": 1046
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlIsHttpHttpsScheme",
+          "start_line": 1065
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlIsLocal",
+          "start_line": 1032
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "isomorphicEncode",
+          "start_line": 149
+        },
+        {
+          "file": "lib/web/subresource-integrity/subresource-integrity.js",
+          "qualified_name": "bytesMatch",
+          "start_line": 89
+        }
+      ],
+      "total_call_sites": 379,
+      "unresolved_project_candidate_call_sites": 116,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/fetch/util.js",
+      "nloc": 789,
+      "concrete_method_count": 71,
+      "total_cyclomatic_complexity": 242,
+      "callable_entry_count": 43,
+      "cross_file_internal_method_fanout": 36,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 30,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "collectAnHTTPQuotedString",
+          "start_line": 397
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "parseMIMEType",
+          "start_line": 219
+        },
+        {
+          "file": "lib/web/fetch/global.js",
+          "qualified_name": "getGlobalOrigin",
+          "start_line": 7
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "collectASequenceOfCodePoints",
+          "start_line": 14
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "isomorphicEncode",
+          "start_line": 149
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "removeChars",
+          "start_line": 200
+        }
+      ],
+      "total_call_sites": 156,
+      "unresolved_project_candidate_call_sites": 31,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/core/util.js",
+      "nloc": 642,
+      "concrete_method_count": 59,
+      "total_cyclomatic_complexity": 226,
+      "callable_entry_count": 39,
+      "cross_file_internal_method_fanout": 31,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 29,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "clearFastTimeout",
+          "start_line": 384
+        },
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "setFastTimeout",
+          "start_line": 375
+        }
+      ],
+      "total_call_sites": 152,
+      "unresolved_project_candidate_call_sites": 29,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/fetch/request.js",
+      "nloc": 672,
+      "concrete_method_count": 35,
+      "total_cyclomatic_complexity": 199,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 36,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 29,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "addAbortListener",
+          "start_line": 691
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isDisturbed",
+          "start_line": 637
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "bodyUnusable",
+          "start_line": 524
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "cloneBody",
+          "start_line": 293
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "extractBody",
+          "start_line": 39
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "URLSerializer",
+          "start_line": 123
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "sameOrigin",
+          "start_line": 697
+        }
+      ],
+      "total_call_sites": 125,
+      "unresolved_project_candidate_call_sites": 33,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/mock/mock-utils.js",
+      "nloc": 559,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 185,
+      "callable_entry_count": 17,
+      "cross_file_internal_method_fanout": 53,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 51,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseHeaders",
+          "start_line": 449
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "serializePathWithQuery",
+          "start_line": 107
+        }
+      ],
+      "total_call_sites": 177,
+      "unresolved_project_candidate_call_sites": 51,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/handler/cache-handler.js",
+      "nloc": 639,
+      "concrete_method_count": 50,
+      "total_cyclomatic_complexity": 164,
+      "callable_entry_count": 8,
+      "cross_file_internal_method_fanout": 57,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 50,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "hasInvalidCacheControlDirective",
+          "start_line": 119
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "hasVaryStar",
+          "start_line": 600
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "isEtagUsable",
+          "start_line": 660
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "isInvalidOrWildcardVaryHeader",
+          "start_line": 647
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "parseCacheControlHeader",
+          "start_line": 360
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "parseVaryHeader",
+          "start_line": 616
+        },
+        {
+          "file": "lib/util/date.js",
+          "qualified_name": "parseHttpDate",
+          "start_line": 9
+        }
+      ],
+      "total_call_sites": 174,
+      "unresolved_project_candidate_call_sites": 79,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/util/cache.js",
+      "nloc": 554,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 119,
+      "callable_entry_count": 15,
+      "cross_file_internal_method_fanout": 27,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 22,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "hasSafeIterator",
+          "start_line": 322
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isValidHTTPToken",
+          "start_line": 738
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "pathHasQueryOrFragment",
+          "start_line": 95
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "serializePathWithQuery",
+          "start_line": 107
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "setHeader",
+          "start_line": 431
+        }
+      ],
+      "total_call_sites": 140,
+      "unresolved_project_candidate_call_sites": 22,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/cache/cache.js",
+      "nloc": 515,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 113,
+      "callable_entry_count": 9,
+      "cross_file_internal_method_fanout": 45,
+      "resolved_cross_file_internal_method_fanout": 9,
+      "unresolved_cross_file_candidate_call_sites": 36,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isDisturbed",
+          "start_line": 637
+        },
+        {
+          "file": "lib/web/cache/util.js",
+          "qualified_name": "getFieldValues",
+          "start_line": 26
+        },
+        {
+          "file": "lib/web/cache/util.js",
+          "qualified_name": "urlEquals",
+          "start_line": 14
+        },
+        {
+          "file": "lib/web/fetch/index.js",
+          "qualified_name": "fetching",
+          "start_line": 407
+        },
+        {
+          "file": "lib/web/fetch/request.js",
+          "qualified_name": "fromInnerRequest",
+          "start_line": 982
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "cloneResponse",
+          "start_line": 339
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "fromInnerResponse",
+          "start_line": 550
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "readAllBytes",
+          "start_line": 994
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlIsHttpHttpsScheme",
+          "start_line": 1065
+        }
+      ],
+      "total_call_sites": 151,
+      "unresolved_project_candidate_call_sites": 36,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/handler/retry-handler.js",
+      "nloc": 519,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 101,
+      "callable_entry_count": 11,
+      "cross_file_internal_method_fanout": 41,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 37,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "hasSafeIterator",
+          "start_line": 322
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isDisturbed",
+          "start_line": 637
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseRangeHeader",
+          "start_line": 784
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "wrapRequestBody",
+          "start_line": 34
+        }
+      ],
+      "total_call_sites": 112,
+      "unresolved_project_candidate_call_sites": 39,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "src_file": "deps/milo/parser/wasm/src/template.js",
+      "nloc": 88,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "eslint.config.js",
+      "nloc": 39,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "index-fetch.js",
+      "nloc": 49,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "index.js",
+      "nloc": 190,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/abort-signal.js",
+      "nloc": 46,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/api-connect.js",
+      "nloc": 88,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/api-pipeline.js",
+      "nloc": 208,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 59,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/api-request.js",
+      "nloc": 198,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 68,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/api-stream.js",
+      "nloc": 212,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 78,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/api-upgrade.js",
+      "nloc": 96,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/index.js",
+      "nloc": 6,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/api/readable.js",
+      "nloc": 329,
+      "concrete_method_count": 30,
+      "total_cyclomatic_complexity": 103,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/cache/memory-cache-store.js",
+      "nloc": 226,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/cache/sqlite-cache-store.js",
+      "nloc": 373,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/connect.js",
+      "nloc": 155,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 44,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/constants.js",
+      "nloc": 114,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/diagnostics.js",
+      "nloc": 187,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 35,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/errors.js",
+      "nloc": 451,
+      "concrete_method_count": 80,
+      "total_cyclomatic_complexity": 136,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/request.js",
+      "nloc": 465,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 138,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/socks5-client.js",
+      "nloc": 289,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 51,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/socks5-utils.js",
+      "nloc": 152,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/symbols.js",
+      "nloc": 80,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/tree.js",
+      "nloc": 107,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/core/util.js",
+      "nloc": 642,
+      "concrete_method_count": 59,
+      "total_cyclomatic_complexity": 226,
+      "callable_entry_count": 39,
+      "cross_file_internal_method_fanout": 31,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 29,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "clearFastTimeout",
+          "start_line": 384
+        },
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "setFastTimeout",
+          "start_line": 375
+        }
+      ],
+      "total_call_sites": 152,
+      "unresolved_project_candidate_call_sites": 29,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/dispatcher/agent.js",
+      "nloc": 143,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 51,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/balanced-pool.js",
+      "nloc": 160,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 52,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/client-h1.js",
+      "nloc": 1219,
+      "concrete_method_count": 62,
+      "total_cyclomatic_complexity": 370,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 103,
+      "resolved_cross_file_internal_method_fanout": 16,
+      "unresolved_cross_file_candidate_call_sites": 87,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "addListener",
+          "start_line": 805
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bodyLength",
+          "start_line": 332
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bufferToLowerCasedHeaderName",
+          "start_line": 416
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "destroy",
+          "start_line": 362
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "errorRequest",
+          "start_line": 832
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "getSocketInfo",
+          "start_line": 658
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isAsyncIterable",
+          "start_line": 302
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isBlobLike",
+          "start_line": 87
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isBuffer",
+          "start_line": 578
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isFormDataLike",
+          "start_line": 677
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isIterable",
+          "start_line": 310
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isStream",
+          "start_line": 79
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isValidHeaderValue",
+          "start_line": 765
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseKeepAliveTimeout",
+          "start_line": 395
+        },
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "clearTimeout",
+          "start_line": 351
+        },
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "setFastTimeout",
+          "start_line": 375
+        }
+      ],
+      "total_call_sites": 355,
+      "unresolved_project_candidate_call_sites": 96,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/client-h2.js",
+      "nloc": 1306,
+      "concrete_method_count": 84,
+      "total_cyclomatic_complexity": 383,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 120,
+      "resolved_cross_file_internal_method_fanout": 12,
+      "unresolved_cross_file_candidate_call_sites": 108,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "addListener",
+          "start_line": 805
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bodyLength",
+          "start_line": 332
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "destroy",
+          "start_line": 362
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "errorRequest",
+          "start_line": 832
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "getSocketInfo",
+          "start_line": 658
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isBlobLike",
+          "start_line": 87
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isBuffer",
+          "start_line": 578
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isFormDataLike",
+          "start_line": 677
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isIterable",
+          "start_line": 310
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isStream",
+          "start_line": 79
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "removeAllListeners",
+          "start_line": 817
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "setHeader",
+          "start_line": 431
+        }
+      ],
+      "total_call_sites": 348,
+      "unresolved_project_candidate_call_sites": 108,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/client.js",
+      "nloc": 589,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 100,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 18,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 13,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bodyLength",
+          "start_line": 332
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "destroy",
+          "start_line": 362
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "errorRequest",
+          "start_line": 832
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isIterable",
+          "start_line": 310
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseOrigin",
+          "start_line": 239
+        }
+      ],
+      "total_call_sites": 142,
+      "unresolved_project_candidate_call_sites": 17,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/dispatcher-base.js",
+      "nloc": 146,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 59,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/dispatcher.js",
+      "nloc": 45,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/dispatcher1-wrapper.js",
+      "nloc": 94,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/env-http-proxy-agent.js",
+      "nloc": 135,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 53,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/fixed-queue.js",
+      "nloc": 49,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/h2c-client.js",
+      "nloc": 42,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/parser-h1.js",
+      "nloc": 898,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 47,
+      "callable_entry_count": 18,
+      "cross_file_internal_method_fanout": 48,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 42,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bufferToLowerCasedHeaderName",
+          "start_line": 416
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "destroy",
+          "start_line": 362
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "getSocketInfo",
+          "start_line": 658
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseKeepAliveTimeout",
+          "start_line": 395
+        },
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "clearTimeout",
+          "start_line": 351
+        },
+        {
+          "file": "lib/util/timers.js",
+          "qualified_name": "setFastTimeout",
+          "start_line": 375
+        }
+      ],
+      "total_call_sites": 220,
+      "unresolved_project_candidate_call_sites": 42,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/pool-base.js",
+      "nloc": 261,
+      "concrete_method_count": 27,
+      "total_cyclomatic_complexity": 74,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/pool.js",
+      "nloc": 179,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 60,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/proxy-agent.js",
+      "nloc": 317,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 90,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/retry-agent.js",
+      "nloc": 38,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/round-robin-pool.js",
+      "nloc": 135,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 39,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/dispatcher/socks5-proxy-agent.js",
+      "nloc": 263,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 69,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/encoding/index.js",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/global.js",
+      "nloc": 64,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/handler/cache-handler.js",
+      "nloc": 639,
+      "concrete_method_count": 50,
+      "total_cyclomatic_complexity": 164,
+      "callable_entry_count": 8,
+      "cross_file_internal_method_fanout": 57,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 50,
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "hasInvalidCacheControlDirective",
+          "start_line": 119
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "hasVaryStar",
+          "start_line": 600
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "isEtagUsable",
+          "start_line": 660
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "isInvalidOrWildcardVaryHeader",
+          "start_line": 647
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "parseCacheControlHeader",
+          "start_line": 360
+        },
+        {
+          "file": "lib/util/cache.js",
+          "qualified_name": "parseVaryHeader",
+          "start_line": 616
+        },
+        {
+          "file": "lib/util/date.js",
+          "qualified_name": "parseHttpDate",
+          "start_line": 9
+        }
+      ],
+      "total_call_sites": 174,
+      "unresolved_project_candidate_call_sites": 79,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/handler/cache-revalidation-handler.js",
+      "nloc": 79,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/handler/decorator-handler.js",
+      "nloc": 50,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/handler/deduplication-handler.js",
+      "nloc": 311,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/handler/redirect-handler.js",
+      "nloc": 177,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/handler/retry-handler.js",
+      "nloc": 519,
+      "concrete_method_count": 24,
+      "total_cyclomatic_complexity": 101,
+      "callable_entry_count": 11,
+      "cross_file_internal_method_fanout": 41,
+      "resolved_cross_file_internal_method_fanout": 4,
+      "unresolved_cross_file_candidate_call_sites": 37,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "hasSafeIterator",
+          "start_line": 322
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isDisturbed",
+          "start_line": 637
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseRangeHeader",
+          "start_line": 784
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "wrapRequestBody",
+          "start_line": 34
+        }
+      ],
+      "total_call_sites": 112,
+      "unresolved_project_candidate_call_sites": 39,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/interceptor/cache.js",
+      "nloc": 477,
+      "concrete_method_count": 42,
+      "total_cyclomatic_complexity": 154,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/decompress.js",
+      "nloc": 386,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 130,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/deduplicate.js",
+      "nloc": 80,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/dns.js",
+      "nloc": 482,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 63,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/dump.js",
+      "nloc": 75,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 23,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/redirect.js",
+      "nloc": 16,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/response-error.js",
+      "nloc": 111,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 30,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/interceptor/retry.js",
+      "nloc": 18,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/llhttp/constants.js",
+      "nloc": 497,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/llhttp/llhttp-wasm.js",
+      "nloc": 11,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/llhttp/llhttp_simd-wasm.js",
+      "nloc": 11,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/llhttp/utils.js",
+      "nloc": 12,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/milo/no-simd.js",
+      "nloc": 923,
+      "concrete_method_count": 56,
+      "total_cyclomatic_complexity": 58,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 9,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 9,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 129,
+      "unresolved_project_candidate_call_sites": 9,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/milo/simd.js",
+      "nloc": 923,
+      "concrete_method_count": 56,
+      "total_cyclomatic_complexity": 58,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 9,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 9,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 129,
+      "unresolved_project_candidate_call_sites": 9,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-agent.js",
+      "nloc": 192,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-call-history.js",
+      "nloc": 192,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-client.js",
+      "nloc": 52,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-errors.js",
+      "nloc": 20,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-interceptor.js",
+      "nloc": 145,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 41,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-pool.js",
+      "nloc": 52,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-symbols.js",
+      "nloc": 31,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/mock-utils.js",
+      "nloc": 559,
+      "concrete_method_count": 52,
+      "total_cyclomatic_complexity": 185,
+      "callable_entry_count": 17,
+      "cross_file_internal_method_fanout": 53,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 51,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "parseHeaders",
+          "start_line": 449
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "serializePathWithQuery",
+          "start_line": 107
+        }
+      ],
+      "total_call_sites": 177,
+      "unresolved_project_candidate_call_sites": 51,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/mock/pending-interceptors-formatter.js",
+      "nloc": 34,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/snapshot-agent.js",
+      "nloc": 221,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 43,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/snapshot-recorder.js",
+      "nloc": 295,
+      "concrete_method_count": 28,
+      "total_cyclomatic_complexity": 106,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/mock/snapshot-utils.js",
+      "nloc": 82,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 37,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/util/cache.js",
+      "nloc": 554,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 119,
+      "callable_entry_count": 15,
+      "cross_file_internal_method_fanout": 27,
+      "resolved_cross_file_internal_method_fanout": 5,
+      "unresolved_cross_file_candidate_call_sites": 22,
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "hasSafeIterator",
+          "start_line": 322
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isValidHTTPToken",
+          "start_line": 738
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "pathHasQueryOrFragment",
+          "start_line": 95
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "serializePathWithQuery",
+          "start_line": 107
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "setHeader",
+          "start_line": 431
+        }
+      ],
+      "total_call_sites": 140,
+      "unresolved_project_candidate_call_sites": 22,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/util/date.js",
+      "nloc": 589,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 345,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 0,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 0,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 62,
+      "unresolved_project_candidate_call_sites": 0,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/util/runtime-features.js",
+      "nloc": 49,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/util/stats.js",
+      "nloc": 28,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/util/timers.js",
+      "nloc": 113,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/cache/cache.js",
+      "nloc": 515,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 113,
+      "callable_entry_count": 9,
+      "cross_file_internal_method_fanout": 45,
+      "resolved_cross_file_internal_method_fanout": 9,
+      "unresolved_cross_file_candidate_call_sites": 36,
+      "cross_file_internal_file_fanout": 6,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isDisturbed",
+          "start_line": 637
+        },
+        {
+          "file": "lib/web/cache/util.js",
+          "qualified_name": "getFieldValues",
+          "start_line": 26
+        },
+        {
+          "file": "lib/web/cache/util.js",
+          "qualified_name": "urlEquals",
+          "start_line": 14
+        },
+        {
+          "file": "lib/web/fetch/index.js",
+          "qualified_name": "fetching",
+          "start_line": 407
+        },
+        {
+          "file": "lib/web/fetch/request.js",
+          "qualified_name": "fromInnerRequest",
+          "start_line": 982
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "cloneResponse",
+          "start_line": 339
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "fromInnerResponse",
+          "start_line": 550
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "readAllBytes",
+          "start_line": 994
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlIsHttpHttpsScheme",
+          "start_line": 1065
+        }
+      ],
+      "total_call_sites": 151,
+      "unresolved_project_candidate_call_sites": 36,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/cache/cachestorage.js",
+      "nloc": 86,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/cache/util.js",
+      "nloc": 24,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/cookies/constants.js",
+      "nloc": 7,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/cookies/index.js",
+      "nloc": 137,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 25,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/cookies/parse.js",
+      "nloc": 133,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/cookies/util.js",
+      "nloc": 203,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 85,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/eventsource/eventsource-stream.js",
+      "nloc": 371,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 105,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/eventsource/eventsource.js",
+      "nloc": 296,
+      "concrete_method_count": 23,
+      "total_cyclomatic_complexity": 50,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/eventsource/util.js",
+      "nloc": 34,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/body.js",
+      "nloc": 303,
+      "concrete_method_count": 36,
+      "total_cyclomatic_complexity": 73,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/constants.js",
+      "nloc": 93,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/data-url.js",
+      "nloc": 279,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 88,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/formdata-parser.js",
+      "nloc": 349,
+      "concrete_method_count": 21,
+      "total_cyclomatic_complexity": 143,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/formdata.js",
+      "nloc": 159,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 20,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/global.js",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/headers.js",
+      "nloc": 404,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 95,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/index.js",
+      "nloc": 1230,
+      "concrete_method_count": 39,
+      "total_cyclomatic_complexity": 253,
+      "callable_entry_count": 5,
+      "cross_file_internal_method_fanout": 155,
+      "resolved_cross_file_internal_method_fanout": 49,
+      "unresolved_cross_file_candidate_call_sites": 106,
+      "cross_file_internal_file_fanout": 10,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "addAbortListener",
+          "start_line": 691
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "bufferToLowerCasedHeaderName",
+          "start_line": 416
+        },
+        {
+          "file": "lib/global.js",
+          "qualified_name": "getGlobalDispatcher",
+          "start_line": 57
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "extractBody",
+          "start_line": 39
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "safelyExtractBody",
+          "start_line": 278
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "dataURLProcessor",
+          "start_line": 21
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "minimizeSupportedMimeType",
+          "start_line": 536
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "serializeAMimeType",
+          "start_line": 472
+        },
+        {
+          "file": "lib/web/fetch/headers.js",
+          "qualified_name": "HeadersList.get",
+          "start_line": 303
+        },
+        {
+          "file": "lib/web/fetch/request.js",
+          "qualified_name": "cloneRequest",
+          "start_line": 958
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "filterResponse",
+          "start_line": 425
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "fromInnerResponse",
+          "start_line": 550
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "makeAppropriateNetworkError",
+          "start_line": 479
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "makeNetworkError",
+          "start_line": 384
+        },
+        {
+          "file": "lib/web/fetch/response.js",
+          "qualified_name": "makeResponse",
+          "start_line": 365
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "TAOCheck",
+          "start_line": 225
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "appendFetchMetadata",
+          "start_line": 231
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "appendRequestOriginHeader",
+          "start_line": 261
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "buildContentRange",
+          "start_line": 1221
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "clampAndCoarsenConnectionTimingInfo",
+          "start_line": 322
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "clonePolicyContainer",
+          "start_line": 375
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "coarsenedSharedCurrentTime",
+          "start_line": 345
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "corsCheck",
+          "start_line": 219
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "createInflate",
+          "start_line": 1289
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "createOpaqueTimingInfo",
+          "start_line": 350
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "crossOriginResourcePolicyCheck",
+          "start_line": 213
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "determineRequestsReferrer",
+          "start_line": 386
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "extractMimeType",
+          "start_line": 1297
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "fullyReadBody",
+          "start_line": 946
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "hasAuthenticationEntry",
+          "start_line": 1441
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "includesCredentials",
+          "start_line": 1449
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isAborted",
+          "start_line": 713
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isCancelled",
+          "start_line": 717
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isErrorLike",
+          "start_line": 105
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "isTraversableNavigable",
+          "start_line": 1458
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "makePolicyContainer",
+          "start_line": 367
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "readableStreamClose",
+          "start_line": 974
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "requestBadPort",
+          "start_line": 91
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "requestCurrentURL",
+          "start_line": 87
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "responseLocationURL",
+          "start_line": 25
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "sameOrigin",
+          "start_line": 697
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "setRequestReferrerPolicyOnRedirect",
+          "start_line": 201
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "simpleRangeHeaderValue",
+          "start_line": 1085
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "tryUpgradeRequestToAPotentiallyTrustworthyURL",
+          "start_line": 688
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlHasHttpsScheme",
+          "start_line": 1046
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlIsHttpHttpsScheme",
+          "start_line": 1065
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "urlIsLocal",
+          "start_line": 1032
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "isomorphicEncode",
+          "start_line": 149
+        },
+        {
+          "file": "lib/web/subresource-integrity/subresource-integrity.js",
+          "qualified_name": "bytesMatch",
+          "start_line": 89
+        }
+      ],
+      "total_call_sites": 379,
+      "unresolved_project_candidate_call_sites": 116,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/fetch/request.js",
+      "nloc": 672,
+      "concrete_method_count": 35,
+      "total_cyclomatic_complexity": 199,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 36,
+      "resolved_cross_file_internal_method_fanout": 7,
+      "unresolved_cross_file_candidate_call_sites": 29,
+      "cross_file_internal_file_fanout": 4,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "addAbortListener",
+          "start_line": 691
+        },
+        {
+          "file": "lib/core/util.js",
+          "qualified_name": "isDisturbed",
+          "start_line": 637
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "bodyUnusable",
+          "start_line": 524
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "cloneBody",
+          "start_line": 293
+        },
+        {
+          "file": "lib/web/fetch/body.js",
+          "qualified_name": "extractBody",
+          "start_line": 39
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "URLSerializer",
+          "start_line": 123
+        },
+        {
+          "file": "lib/web/fetch/util.js",
+          "qualified_name": "sameOrigin",
+          "start_line": 697
+        }
+      ],
+      "total_call_sites": 125,
+      "unresolved_project_candidate_call_sites": 33,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/fetch/response.js",
+      "nloc": 392,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 88,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/fetch/util.js",
+      "nloc": 789,
+      "concrete_method_count": 71,
+      "total_cyclomatic_complexity": 242,
+      "callable_entry_count": 43,
+      "cross_file_internal_method_fanout": 36,
+      "resolved_cross_file_internal_method_fanout": 6,
+      "unresolved_cross_file_candidate_call_sites": 30,
+      "cross_file_internal_file_fanout": 3,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "collectAnHTTPQuotedString",
+          "start_line": 397
+        },
+        {
+          "file": "lib/web/fetch/data-url.js",
+          "qualified_name": "parseMIMEType",
+          "start_line": 219
+        },
+        {
+          "file": "lib/web/fetch/global.js",
+          "qualified_name": "getGlobalOrigin",
+          "start_line": 7
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "collectASequenceOfCodePoints",
+          "start_line": 14
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "isomorphicEncode",
+          "start_line": 149
+        },
+        {
+          "file": "lib/web/infra/index.js",
+          "qualified_name": "removeChars",
+          "start_line": 200
+        }
+      ],
+      "total_call_sites": 156,
+      "unresolved_project_candidate_call_sites": 31,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "src_file": "lib/web/infra/index.js",
+      "nloc": 116,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 38,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/subresource-integrity/subresource-integrity.js",
+      "nloc": 130,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 32,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/webidl/index.js",
+      "nloc": 608,
+      "concrete_method_count": 46,
+      "total_cyclomatic_complexity": 161,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 3,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 3,
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 167,
+      "unresolved_project_candidate_call_sites": 3,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/connection.js",
+      "nloc": 163,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/constants.js",
+      "nloc": 50,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/events.js",
+      "nloc": 277,
+      "concrete_method_count": 36,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/frame.js",
+      "nloc": 89,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/permessage-deflate.js",
+      "nloc": 66,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 13,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/receiver.js",
+      "nloc": 346,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 99,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/sender.js",
+      "nloc": 74,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 17,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/stream/websocketerror.js",
+      "nloc": 72,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 19,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/stream/websocketstream.js",
+      "nloc": 291,
+      "concrete_method_count": 40,
+      "total_cyclomatic_complexity": 80,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/util.js",
+      "nloc": 179,
+      "concrete_method_count": 19,
+      "total_cyclomatic_complexity": 71,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "src_file": "lib/web/websocket/websocket.js",
+      "nloc": 474,
+      "concrete_method_count": 29,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    }
+  ],
+  "index_skipped": []
+}
