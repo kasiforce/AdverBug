@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "language": "java",
+  "project_root": "/data/home/cjy/Adver_bug/projects/undertow",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 336,
+    "project_candidate_module_total_cyclomatic_complexity_median": 65,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 884,
+  "candidate_module_count": 11,
+  "selected_module_count": 2,
+  "selected_modules": [
+    {
+      "module": "core/src/main/java/io/undertow/client/http2",
+      "file_count": 5,
+      "nloc": 1095,
+      "concrete_method_count": 89,
+      "callable_entry_count": 54,
+      "total_cyclomatic_complexity": 166,
+      "files": [
+        "core/src/main/java/io/undertow/client/http2/Http2ClearClientProvider.java",
+        "core/src/main/java/io/undertow/client/http2/Http2ClientConnection.java",
+        "core/src/main/java/io/undertow/client/http2/Http2ClientExchange.java",
+        "core/src/main/java/io/undertow/client/http2/Http2ClientProvider.java",
+        "core/src/main/java/io/undertow/client/http2/Http2PriorKnowledgeClientProvider.java"
+      ],
+      "cross_module_fanout": 151,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "core/src/main/java/io/undertow/server/protocol/http2",
+      "file_count": 5,
+      "nloc": 1018,
+      "concrete_method_count": 69,
+      "callable_entry_count": 64,
+      "total_cyclomatic_complexity": 123,
+      "files": [
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2OpenListener.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2ReceiveListener.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2ServerConnection.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2SslSessionInfo.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2UpgradeHandler.java"
+      ],
+      "cross_module_fanout": 219,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "core/src/main/java/io/undertow/client/http2",
+      "file_count": 5,
+      "nloc": 1095,
+      "concrete_method_count": 89,
+      "callable_entry_count": 54,
+      "total_cyclomatic_complexity": 166,
+      "files": [
+        "core/src/main/java/io/undertow/client/http2/Http2ClearClientProvider.java",
+        "core/src/main/java/io/undertow/client/http2/Http2ClientConnection.java",
+        "core/src/main/java/io/undertow/client/http2/Http2ClientExchange.java",
+        "core/src/main/java/io/undertow/client/http2/Http2ClientProvider.java",
+        "core/src/main/java/io/undertow/client/http2/Http2PriorKnowledgeClientProvider.java"
+      ],
+      "cross_module_fanout": 151,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "core/src/main/java/io/undertow/server/protocol/http2",
+      "file_count": 5,
+      "nloc": 1018,
+      "concrete_method_count": 69,
+      "callable_entry_count": 64,
+      "total_cyclomatic_complexity": 123,
+      "files": [
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2OpenListener.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2ReceiveListener.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2ServerConnection.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2SslSessionInfo.java",
+        "core/src/main/java/io/undertow/server/protocol/http2/Http2UpgradeHandler.java"
+      ],
+      "cross_module_fanout": 219,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "core/src/main/java/io/undertow/client/ajp",
+      "file_count": 3,
+      "nloc": 598,
+      "concrete_method_count": 57,
+      "callable_entry_count": 49,
+      "total_cyclomatic_complexity": 88,
+      "files": [
+        "core/src/main/java/io/undertow/client/ajp/AjpClientConnection.java",
+        "core/src/main/java/io/undertow/client/ajp/AjpClientExchange.java",
+        "core/src/main/java/io/undertow/client/ajp/AjpClientProvider.java"
+      ],
+      "cross_module_fanout": 49,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "core/src/main/java/io/undertow/websockets/client",
+      "file_count": 4,
+      "nloc": 568,
+      "concrete_method_count": 40,
+      "callable_entry_count": 36,
+      "total_cyclomatic_complexity": 85,
+      "files": [
+        "core/src/main/java/io/undertow/websockets/client/WebSocket13ClientHandshake.java",
+        "core/src/main/java/io/undertow/websockets/client/WebSocketClient.java",
+        "core/src/main/java/io/undertow/websockets/client/WebSocketClientHandshake.java",
+        "core/src/main/java/io/undertow/websockets/client/WebSocketClientNegotiation.java"
+      ],
+      "cross_module_fanout": 39,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "core/src/main/java/io/undertow/server/handlers/sse",
+      "file_count": 3,
+      "nloc": 531,
+      "concrete_method_count": 33,
+      "callable_entry_count": 28,
+      "total_cyclomatic_complexity": 83,
+      "files": [
+        "core/src/main/java/io/undertow/server/handlers/sse/ServerSentEventConnection.java",
+        "core/src/main/java/io/undertow/server/handlers/sse/ServerSentEventConnectionCallback.java",
+        "core/src/main/java/io/undertow/server/handlers/sse/ServerSentEventHandler.java"
+      ],
+      "cross_module_fanout": 78,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "core/src/main/java/io/undertow/websockets/core/function",
+      "file_count": 5,
+      "nloc": 330,
+      "concrete_method_count": 48,
+      "callable_entry_count": 45,
+      "total_cyclomatic_complexity": 65,
+      "files": [
+        "core/src/main/java/io/undertow/websockets/core/function/ChannelFunction.java",
+        "core/src/main/java/io/undertow/websockets/core/function/ChannelFunctionFileChannel.java",
+        "core/src/main/java/io/undertow/websockets/core/function/ChannelFunctionReadableByteChannel.java",
+        "core/src/main/java/io/undertow/websockets/core/function/ChannelFunctionStreamSourceChannel.java",
+        "core/src/main/java/io/undertow/websockets/core/function/ChannelFunctionWritableByteChannel.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "core/src/main/java/io/undertow/websockets/spi",
+      "file_count": 3,
+      "nloc": 335,
+      "concrete_method_count": 25,
+      "callable_entry_count": 25,
+      "total_cyclomatic_complexity": 45,
+      "files": [
+        "core/src/main/java/io/undertow/websockets/spi/AsyncWebSocketHttpServerExchange.java",
+        "core/src/main/java/io/undertow/websockets/spi/BlockingWebSocketHttpServerExchange.java",
+        "core/src/main/java/io/undertow/websockets/spi/WebSocketHttpExchange.java"
+      ],
+      "cross_module_fanout": 52,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "servlet/src/main/java/io/undertow/servlet/websockets",
+      "file_count": 3,
+      "nloc": 289,
+      "concrete_method_count": 27,
+      "callable_entry_count": 27,
+      "total_cyclomatic_complexity": 45,
+      "files": [
+        "servlet/src/main/java/io/undertow/servlet/websockets/SecurityActions.java",
+        "servlet/src/main/java/io/undertow/servlet/websockets/ServletWebSocketHttpExchange.java",
+        "servlet/src/main/java/io/undertow/servlet/websockets/WebSocketServlet.java"
+      ],
+      "cross_module_fanout": 25,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "servlet/src/main/java/io/undertow/servlet/predicate",
+      "file_count": 3,
+      "nloc": 228,
+      "concrete_method_count": 24,
+      "callable_entry_count": 24,
+      "total_cyclomatic_complexity": 38,
+      "files": [
+        "servlet/src/main/java/io/undertow/servlet/predicate/DirectoryPredicate.java",
+        "servlet/src/main/java/io/undertow/servlet/predicate/DispatcherTypePredicate.java",
+        "servlet/src/main/java/io/undertow/servlet/predicate/FilePredicate.java"
+      ],
+      "cross_module_fanout": 12,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "core/src/main/java/io/undertow/websockets",
+      "file_count": 3,
+      "nloc": 218,
+      "concrete_method_count": 11,
+      "callable_entry_count": 11,
+      "total_cyclomatic_complexity": 27,
+      "files": [
+        "core/src/main/java/io/undertow/websockets/WebSocketConnectionCallback.java",
+        "core/src/main/java/io/undertow/websockets/WebSocketExtension.java",
+        "core/src/main/java/io/undertow/websockets/WebSocketProtocolHandshakeHandler.java"
+      ],
+      "cross_module_fanout": 12,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "servlet/src/main/java/io/undertow/servlet",
+      "file_count": 5,
+      "nloc": 336,
+      "concrete_method_count": 21,
+      "callable_entry_count": 21,
+      "total_cyclomatic_complexity": 23,
+      "files": [
+        "servlet/src/main/java/io/undertow/servlet/ExceptionLog.java",
+        "servlet/src/main/java/io/undertow/servlet/ServletExtension.java",
+        "servlet/src/main/java/io/undertow/servlet/Servlets.java",
+        "servlet/src/main/java/io/undertow/servlet/UndertowServletLogger.java",
+        "servlet/src/main/java/io/undertow/servlet/UndertowServletMessages.java"
+      ],
+      "cross_module_fanout": 14,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

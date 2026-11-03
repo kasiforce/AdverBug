@@ -1,0 +1,770 @@
+{
+  "schema_version": 1,
+  "language": "python",
+  "project_root": "/data/home/cjy/Adver_bug/projects/scikit-learn",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 844,
+    "project_candidate_module_total_cyclomatic_complexity_median": 157,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 363,
+  "candidate_module_count": 21,
+  "selected_module_count": 12,
+  "selected_modules": [
+    {
+      "module": "sklearn/gaussian_process",
+      "file_count": 4,
+      "nloc": 1492,
+      "concrete_method_count": 130,
+      "callable_entry_count": 62,
+      "total_cyclomatic_complexity": 369,
+      "files": [
+        "sklearn/gaussian_process/__init__.py",
+        "sklearn/gaussian_process/_gpc.py",
+        "sklearn/gaussian_process/_gpr.py",
+        "sklearn/gaussian_process/kernels.py"
+      ],
+      "cross_module_fanout": 127,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/tree",
+      "file_count": 4,
+      "nloc": 1682,
+      "concrete_method_count": 69,
+      "callable_entry_count": 27,
+      "total_cyclomatic_complexity": 315,
+      "files": [
+        "sklearn/tree/__init__.py",
+        "sklearn/tree/_classes.py",
+        "sklearn/tree/_export.py",
+        "sklearn/tree/_reingold_tilford.py"
+      ],
+      "cross_module_fanout": 97,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/impute",
+      "file_count": 4,
+      "nloc": 1133,
+      "concrete_method_count": 46,
+      "callable_entry_count": 16,
+      "total_cyclomatic_complexity": 221,
+      "files": [
+        "sklearn/impute/__init__.py",
+        "sklearn/impute/_base.py",
+        "sklearn/impute/_iterative.py",
+        "sklearn/impute/_knn.py"
+      ],
+      "cross_module_fanout": 115,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/compose",
+      "file_count": 3,
+      "nloc": 844,
+      "concrete_method_count": 45,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 208,
+      "files": [
+        "sklearn/compose/__init__.py",
+        "sklearn/compose/_column_transformer.py",
+        "sklearn/compose/_target.py"
+      ],
+      "cross_module_fanout": 86,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/inspection/_plot",
+      "file_count": 3,
+      "nloc": 1013,
+      "concrete_method_count": 15,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 202,
+      "files": [
+        "sklearn/inspection/_plot/__init__.py",
+        "sklearn/inspection/_plot/decision_boundary.py",
+        "sklearn/inspection/_plot/partial_dependence.py"
+      ],
+      "cross_module_fanout": 108,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/linear_model/_glm",
+      "file_count": 3,
+      "nloc": 1280,
+      "concrete_method_count": 45,
+      "callable_entry_count": 24,
+      "total_cyclomatic_complexity": 201,
+      "files": [
+        "sklearn/linear_model/_glm/__init__.py",
+        "sklearn/linear_model/_glm/_newton_solver.py",
+        "sklearn/linear_model/_glm/glm.py"
+      ],
+      "cross_module_fanout": 110,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/neural_network",
+      "file_count": 5,
+      "nloc": 1119,
+      "concrete_method_count": 69,
+      "callable_entry_count": 31,
+      "total_cyclomatic_complexity": 193,
+      "files": [
+        "sklearn/neural_network/__init__.py",
+        "sklearn/neural_network/_base.py",
+        "sklearn/neural_network/_multilayer_perceptron.py",
+        "sklearn/neural_network/_rbm.py",
+        "sklearn/neural_network/_stochastic_optimizers.py"
+      ],
+      "cross_module_fanout": 86,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/mixture",
+      "file_count": 4,
+      "nloc": 1062,
+      "concrete_method_count": 75,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 175,
+      "files": [
+        "sklearn/mixture/__init__.py",
+        "sklearn/mixture/_base.py",
+        "sklearn/mixture/_bayesian_mixture.py",
+        "sklearn/mixture/_gaussian_mixture.py"
+      ],
+      "cross_module_fanout": 95,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/externals",
+      "file_count": 3,
+      "nloc": 518,
+      "concrete_method_count": 45,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 174,
+      "files": [
+        "sklearn/externals/__init__.py",
+        "sklearn/externals/_arff.py",
+        "sklearn/externals/_array_api_compat_vendor.py"
+      ],
+      "cross_module_fanout": 25,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/svm",
+      "file_count": 4,
+      "nloc": 1275,
+      "concrete_method_count": 51,
+      "callable_entry_count": 15,
+      "total_cyclomatic_complexity": 159,
+      "files": [
+        "sklearn/svm/__init__.py",
+        "sklearn/svm/_base.py",
+        "sklearn/svm/_bounds.py",
+        "sklearn/svm/_classes.py"
+      ],
+      "cross_module_fanout": 80,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/_loss",
+      "file_count": 3,
+      "nloc": 915,
+      "concrete_method_count": 71,
+      "callable_entry_count": 41,
+      "total_cyclomatic_complexity": 157,
+      "files": [
+        "sklearn/_loss/__init__.py",
+        "sklearn/_loss/link.py",
+        "sklearn/_loss/loss.py"
+      ],
+      "cross_module_fanout": 79,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "build_tools",
+      "file_count": 4,
+      "nloc": 1223,
+      "concrete_method_count": 37,
+      "callable_entry_count": 37,
+      "total_cyclomatic_complexity": 128,
+      "files": [
+        "build_tools/check-meson-openmp-dependencies.py",
+        "build_tools/generate_authors_table.py",
+        "build_tools/get_comment.py",
+        "build_tools/update_environments_and_lock_files.py"
+      ],
+      "cross_module_fanout": 27,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "sklearn/gaussian_process",
+      "file_count": 4,
+      "nloc": 1492,
+      "concrete_method_count": 130,
+      "callable_entry_count": 62,
+      "total_cyclomatic_complexity": 369,
+      "files": [
+        "sklearn/gaussian_process/__init__.py",
+        "sklearn/gaussian_process/_gpc.py",
+        "sklearn/gaussian_process/_gpr.py",
+        "sklearn/gaussian_process/kernels.py"
+      ],
+      "cross_module_fanout": 127,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/tree",
+      "file_count": 4,
+      "nloc": 1682,
+      "concrete_method_count": 69,
+      "callable_entry_count": 27,
+      "total_cyclomatic_complexity": 315,
+      "files": [
+        "sklearn/tree/__init__.py",
+        "sklearn/tree/_classes.py",
+        "sklearn/tree/_export.py",
+        "sklearn/tree/_reingold_tilford.py"
+      ],
+      "cross_module_fanout": 97,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/impute",
+      "file_count": 4,
+      "nloc": 1133,
+      "concrete_method_count": 46,
+      "callable_entry_count": 16,
+      "total_cyclomatic_complexity": 221,
+      "files": [
+        "sklearn/impute/__init__.py",
+        "sklearn/impute/_base.py",
+        "sklearn/impute/_iterative.py",
+        "sklearn/impute/_knn.py"
+      ],
+      "cross_module_fanout": 115,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/compose",
+      "file_count": 3,
+      "nloc": 844,
+      "concrete_method_count": 45,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 208,
+      "files": [
+        "sklearn/compose/__init__.py",
+        "sklearn/compose/_column_transformer.py",
+        "sklearn/compose/_target.py"
+      ],
+      "cross_module_fanout": 86,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/inspection/_plot",
+      "file_count": 3,
+      "nloc": 1013,
+      "concrete_method_count": 15,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 202,
+      "files": [
+        "sklearn/inspection/_plot/__init__.py",
+        "sklearn/inspection/_plot/decision_boundary.py",
+        "sklearn/inspection/_plot/partial_dependence.py"
+      ],
+      "cross_module_fanout": 108,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/linear_model/_glm",
+      "file_count": 3,
+      "nloc": 1280,
+      "concrete_method_count": 45,
+      "callable_entry_count": 24,
+      "total_cyclomatic_complexity": 201,
+      "files": [
+        "sklearn/linear_model/_glm/__init__.py",
+        "sklearn/linear_model/_glm/_newton_solver.py",
+        "sklearn/linear_model/_glm/glm.py"
+      ],
+      "cross_module_fanout": 110,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/neural_network",
+      "file_count": 5,
+      "nloc": 1119,
+      "concrete_method_count": 69,
+      "callable_entry_count": 31,
+      "total_cyclomatic_complexity": 193,
+      "files": [
+        "sklearn/neural_network/__init__.py",
+        "sklearn/neural_network/_base.py",
+        "sklearn/neural_network/_multilayer_perceptron.py",
+        "sklearn/neural_network/_rbm.py",
+        "sklearn/neural_network/_stochastic_optimizers.py"
+      ],
+      "cross_module_fanout": 86,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/mixture",
+      "file_count": 4,
+      "nloc": 1062,
+      "concrete_method_count": 75,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 175,
+      "files": [
+        "sklearn/mixture/__init__.py",
+        "sklearn/mixture/_base.py",
+        "sklearn/mixture/_bayesian_mixture.py",
+        "sklearn/mixture/_gaussian_mixture.py"
+      ],
+      "cross_module_fanout": 95,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/externals",
+      "file_count": 3,
+      "nloc": 518,
+      "concrete_method_count": 45,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 174,
+      "files": [
+        "sklearn/externals/__init__.py",
+        "sklearn/externals/_arff.py",
+        "sklearn/externals/_array_api_compat_vendor.py"
+      ],
+      "cross_module_fanout": 25,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/svm",
+      "file_count": 4,
+      "nloc": 1275,
+      "concrete_method_count": 51,
+      "callable_entry_count": 15,
+      "total_cyclomatic_complexity": 159,
+      "files": [
+        "sklearn/svm/__init__.py",
+        "sklearn/svm/_base.py",
+        "sklearn/svm/_bounds.py",
+        "sklearn/svm/_classes.py"
+      ],
+      "cross_module_fanout": 80,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/_loss",
+      "file_count": 3,
+      "nloc": 915,
+      "concrete_method_count": 71,
+      "callable_entry_count": 41,
+      "total_cyclomatic_complexity": 157,
+      "files": [
+        "sklearn/_loss/__init__.py",
+        "sklearn/_loss/link.py",
+        "sklearn/_loss/loss.py"
+      ],
+      "cross_module_fanout": 79,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "build_tools",
+      "file_count": 4,
+      "nloc": 1223,
+      "concrete_method_count": 37,
+      "callable_entry_count": 37,
+      "total_cyclomatic_complexity": 128,
+      "files": [
+        "build_tools/check-meson-openmp-dependencies.py",
+        "build_tools/generate_authors_table.py",
+        "build_tools/get_comment.py",
+        "build_tools/update_environments_and_lock_files.py"
+      ],
+      "cross_module_fanout": 27,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "sklearn/externals/_packaging",
+      "file_count": 3,
+      "nloc": 333,
+      "concrete_method_count": 62,
+      "callable_entry_count": 26,
+      "total_cyclomatic_complexity": 121,
+      "files": [
+        "sklearn/externals/_packaging/__init__.py",
+        "sklearn/externals/_packaging/_structures.py",
+        "sklearn/externals/_packaging/version.py"
+      ],
+      "cross_module_fanout": 5,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "sklearn/inspection",
+      "file_count": 4,
+      "nloc": 485,
+      "concrete_method_count": 11,
+      "callable_entry_count": 2,
+      "total_cyclomatic_complexity": 106,
+      "files": [
+        "sklearn/inspection/__init__.py",
+        "sklearn/inspection/_partial_dependence.py",
+        "sklearn/inspection/_pd_utils.py",
+        "sklearn/inspection/_permutation_importance.py"
+      ],
+      "cross_module_fanout": 40,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "sklearn/metrics/cluster",
+      "file_count": 4,
+      "nloc": 617,
+      "concrete_method_count": 26,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 84,
+      "files": [
+        "sklearn/metrics/cluster/__init__.py",
+        "sklearn/metrics/cluster/_bicluster.py",
+        "sklearn/metrics/cluster/_supervised.py",
+        "sklearn/metrics/cluster/_unsupervised.py"
+      ],
+      "cross_module_fanout": 102,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "sklearn/semi_supervised",
+      "file_count": 3,
+      "nloc": 477,
+      "concrete_method_count": 22,
+      "callable_entry_count": 11,
+      "total_cyclomatic_complexity": 62,
+      "files": [
+        "sklearn/semi_supervised/__init__.py",
+        "sklearn/semi_supervised/_label_propagation.py",
+        "sklearn/semi_supervised/_self_training.py"
+      ],
+      "cross_module_fanout": 79,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "sklearn/externals/array_api_compat/dask/array",
+      "file_count": 5,
+      "nloc": 465,
+      "concrete_method_count": 21,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 58,
+      "files": [
+        "sklearn/externals/array_api_compat/dask/array/__init__.py",
+        "sklearn/externals/array_api_compat/dask/array/_aliases.py",
+        "sklearn/externals/array_api_compat/dask/array/_info.py",
+        "sklearn/externals/array_api_compat/dask/array/fft.py",
+        "sklearn/externals/array_api_compat/dask/array/linalg.py"
+      ],
+      "cross_module_fanout": 23,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "maint_tools",
+      "file_count": 3,
+      "nloc": 314,
+      "concrete_method_count": 9,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 43,
+      "files": [
+        "maint_tools/bump-dependencies-versions.py",
+        "maint_tools/check_xfailed_checks.py",
+        "maint_tools/update_tracking_issue.py"
+      ],
+      "cross_module_fanout": 9,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "build_tools/github",
+      "file_count": 3,
+      "nloc": 137,
+      "concrete_method_count": 3,
+      "callable_entry_count": 3,
+      "total_cyclomatic_complexity": 10,
+      "files": [
+        "build_tools/github/autoclose_prs.py",
+        "build_tools/github/check_wheels.py",
+        "build_tools/github/vendor.py"
+      ],
+      "cross_module_fanout": 1,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "sklearn/_build_utils",
+      "file_count": 3,
+      "nloc": 41,
+      "concrete_method_count": 2,
+      "callable_entry_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "files": [
+        "sklearn/_build_utils/__init__.py",
+        "sklearn/_build_utils/tempita.py",
+        "sklearn/_build_utils/version.py"
+      ],
+      "cross_module_fanout": 2,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "sklearn/experimental",
+      "file_count": 4,
+      "nloc": 24,
+      "concrete_method_count": 0,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "files": [
+        "sklearn/experimental/__init__.py",
+        "sklearn/experimental/enable_halving_search_cv.py",
+        "sklearn/experimental/enable_hist_gradient_boosting.py",
+        "sklearn/experimental/enable_iterative_imputer.py"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

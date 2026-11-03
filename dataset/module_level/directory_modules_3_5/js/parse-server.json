@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/parse-server",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 310.0,
+    "project_candidate_module_total_cyclomatic_complexity_median": 67.0,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 222,
+  "candidate_module_count": 14,
+  "selected_module_count": 3,
+  "selected_modules": [
+    {
+      "module": "src/Adapters/Storage/Mongo",
+      "file_count": 4,
+      "nloc": 2804,
+      "concrete_method_count": 236,
+      "callable_entry_count": 25,
+      "total_cyclomatic_complexity": 768,
+      "files": [
+        "src/Adapters/Storage/Mongo/MongoCollection.js",
+        "src/Adapters/Storage/Mongo/MongoSchemaCollection.js",
+        "src/Adapters/Storage/Mongo/MongoStorageAdapter.js",
+        "src/Adapters/Storage/Mongo/MongoTransform.js"
+      ],
+      "cross_module_fanout": 103,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "src/Adapters/Storage/Postgres",
+      "file_count": 3,
+      "nloc": 2654,
+      "concrete_method_count": 112,
+      "callable_entry_count": 3,
+      "total_cyclomatic_complexity": 464,
+      "files": [
+        "src/Adapters/Storage/Postgres/PostgresClient.js",
+        "src/Adapters/Storage/Postgres/PostgresConfigParser.js",
+        "src/Adapters/Storage/Postgres/PostgresStorageAdapter.js"
+      ],
+      "cross_module_fanout": 29,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "src/GraphQL",
+      "file_count": 3,
+      "nloc": 833,
+      "concrete_method_count": 63,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 162,
+      "files": [
+        "src/GraphQL/ParseGraphQLSchema.js",
+        "src/GraphQL/ParseGraphQLServer.js",
+        "src/GraphQL/parseGraphQLUtils.js"
+      ],
+      "cross_module_fanout": 52,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "src/Adapters/Storage/Mongo",
+      "file_count": 4,
+      "nloc": 2804,
+      "concrete_method_count": 236,
+      "callable_entry_count": 25,
+      "total_cyclomatic_complexity": 768,
+      "files": [
+        "src/Adapters/Storage/Mongo/MongoCollection.js",
+        "src/Adapters/Storage/Mongo/MongoSchemaCollection.js",
+        "src/Adapters/Storage/Mongo/MongoStorageAdapter.js",
+        "src/Adapters/Storage/Mongo/MongoTransform.js"
+      ],
+      "cross_module_fanout": 103,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "src/Adapters/Storage/Postgres",
+      "file_count": 3,
+      "nloc": 2654,
+      "concrete_method_count": 112,
+      "callable_entry_count": 3,
+      "total_cyclomatic_complexity": 464,
+      "files": [
+        "src/Adapters/Storage/Postgres/PostgresClient.js",
+        "src/Adapters/Storage/Postgres/PostgresConfigParser.js",
+        "src/Adapters/Storage/Postgres/PostgresStorageAdapter.js"
+      ],
+      "cross_module_fanout": 29,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "src/GraphQL",
+      "file_count": 3,
+      "nloc": 833,
+      "concrete_method_count": 63,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 162,
+      "files": [
+        "src/GraphQL/ParseGraphQLSchema.js",
+        "src/GraphQL/ParseGraphQLServer.js",
+        "src/GraphQL/parseGraphQLUtils.js"
+      ],
+      "cross_module_fanout": 52,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "spec",
+      "file_count": 3,
+      "nloc": 809,
+      "concrete_method_count": 81,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 152,
+      "files": [
+        "spec/eslint.config.js",
+        "spec/graphQLObjectsQueries.js",
+        "spec/helper.js"
+      ],
+      "cross_module_fanout": 43,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "src/GraphQL/helpers",
+      "file_count": 3,
+      "nloc": 402,
+      "concrete_method_count": 15,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 106,
+      "files": [
+        "src/GraphQL/helpers/objectsMutations.js",
+        "src/GraphQL/helpers/objectsQueries.js",
+        "src/GraphQL/helpers/queryComplexity.js"
+      ],
+      "cross_module_fanout": 15,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ci",
+      "file_count": 4,
+      "nloc": 337,
+      "concrete_method_count": 31,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 70,
+      "files": [
+        "ci/CiVersionCheck.js",
+        "ci/ciCheck.js",
+        "ci/definitionsCheck.js",
+        "ci/nodeEngineCheck.js"
+      ],
+      "cross_module_fanout": 38,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Push",
+      "file_count": 3,
+      "nloc": 255,
+      "concrete_method_count": 32,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 68,
+      "files": [
+        "src/Push/PushQueue.js",
+        "src/Push/PushWorker.js",
+        "src/Push/utils.js"
+      ],
+      "cross_module_fanout": 25,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Adapters/Files",
+      "file_count": 3,
+      "nloc": 283,
+      "concrete_method_count": 38,
+      "callable_entry_count": 5,
+      "total_cyclomatic_complexity": 66,
+      "files": [
+        "src/Adapters/Files/FilesAdapter.js",
+        "src/Adapters/Files/GridFSBucketAdapter.js",
+        "src/Adapters/Files/GridStoreAdapter.js"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Security/CheckGroups",
+      "file_count": 3,
+      "nloc": 223,
+      "concrete_method_count": 20,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 43,
+      "files": [
+        "src/Security/CheckGroups/CheckGroupDatabase.js",
+        "src/Security/CheckGroups/CheckGroupServerConfig.js",
+        "src/Security/CheckGroups/CheckGroups.js"
+      ],
+      "cross_module_fanout": 10,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Security",
+      "file_count": 3,
+      "nloc": 187,
+      "concrete_method_count": 21,
+      "callable_entry_count": 8,
+      "total_cyclomatic_complexity": 35,
+      "files": [
+        "src/Security/Check.js",
+        "src/Security/CheckGroup.js",
+        "src/Security/CheckRunner.js"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Options",
+      "file_count": 4,
+      "nloc": 466,
+      "concrete_method_count": 12,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 27,
+      "files": [
+        "src/Options/Definitions.js",
+        "src/Options/docs.js",
+        "src/Options/index.js",
+        "src/Options/parsers.js"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Adapters/Logger",
+      "file_count": 3,
+      "nloc": 158,
+      "concrete_method_count": 13,
+      "callable_entry_count": 7,
+      "total_cyclomatic_complexity": 27,
+      "files": [
+        "src/Adapters/Logger/LoggerAdapter.js",
+        "src/Adapters/Logger/WinstonLogger.js",
+        "src/Adapters/Logger/WinstonLoggerAdapter.js"
+      ],
+      "cross_module_fanout": 10,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "src/Adapters/PubSub",
+      "file_count": 3,
+      "nloc": 81,
+      "concrete_method_count": 20,
+      "callable_entry_count": 6,
+      "total_cyclomatic_complexity": 21,
+      "files": [
+        "src/Adapters/PubSub/EventEmitterPubSub.js",
+        "src/Adapters/PubSub/PubSubAdapter.js",
+        "src/Adapters/PubSub/RedisPubSub.js"
+      ],
+      "cross_module_fanout": 5,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "spec/cloud",
+      "file_count": 3,
+      "nloc": 9,
+      "concrete_method_count": 3,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 3,
+      "files": [
+        "spec/cloud/cloudCodeAbsoluteFile.js",
+        "spec/cloud/cloudCodeModuleFile.js",
+        "spec/cloud/cloudCodeRelativeFile.js"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

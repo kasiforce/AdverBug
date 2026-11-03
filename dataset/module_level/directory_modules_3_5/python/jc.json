@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "language": "python",
+  "project_root": "/data/home/cjy/Adver_bug/projects/jc",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 167,
+    "project_candidate_module_total_cyclomatic_complexity_median": 35,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 314,
+  "candidate_module_count": 3,
+  "selected_module_count": 1,
+  "selected_modules": [
+    {
+      "module": "jc/parsers/tomli",
+      "file_count": 4,
+      "nloc": 573,
+      "concrete_method_count": 40,
+      "callable_entry_count": 36,
+      "total_cyclomatic_complexity": 169,
+      "files": [
+        "jc/parsers/tomli/__init__.py",
+        "jc/parsers/tomli/_parser.py",
+        "jc/parsers/tomli/_re.py",
+        "jc/parsers/tomli/_types.py"
+      ],
+      "cross_module_fanout": 19,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "jc/parsers/tomli",
+      "file_count": 4,
+      "nloc": 573,
+      "concrete_method_count": 40,
+      "callable_entry_count": 36,
+      "total_cyclomatic_complexity": 169,
+      "files": [
+        "jc/parsers/tomli/__init__.py",
+        "jc/parsers/tomli/_parser.py",
+        "jc/parsers/tomli/_re.py",
+        "jc/parsers/tomli/_types.py"
+      ],
+      "cross_module_fanout": 19,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "jc/parsers/pyedid/helpers",
+      "file_count": 3,
+      "nloc": 104,
+      "concrete_method_count": 12,
+      "callable_entry_count": 11,
+      "total_cyclomatic_complexity": 35,
+      "files": [
+        "jc/parsers/pyedid/helpers/__init__.py",
+        "jc/parsers/pyedid/helpers/edid_helper.py",
+        "jc/parsers/pyedid/helpers/registry.py"
+      ],
+      "cross_module_fanout": 9,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "jc/parsers/pyedid",
+      "file_count": 3,
+      "nloc": 167,
+      "concrete_method_count": 4,
+      "callable_entry_count": 1,
+      "total_cyclomatic_complexity": 22,
+      "files": [
+        "jc/parsers/pyedid/__init__.py",
+        "jc/parsers/pyedid/edid.py",
+        "jc/parsers/pyedid/main.py"
+      ],
+      "cross_module_fanout": 9,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

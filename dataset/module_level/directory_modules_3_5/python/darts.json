@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "language": "python",
+  "project_root": "/data/home/cjy/Adver_bug/projects/darts",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 598.5,
+    "project_candidate_module_total_cyclomatic_complexity_median": 106.5,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 185,
+  "candidate_module_count": 14,
+  "selected_module_count": 7,
+  "selected_modules": [
+    {
+      "module": "darts",
+      "file_count": 5,
+      "nloc": 3442,
+      "concrete_method_count": 201,
+      "callable_entry_count": 126,
+      "total_cyclomatic_complexity": 805,
+      "files": [
+        "darts/__init__.py",
+        "darts/config.py",
+        "darts/logging.py",
+        "darts/timeseries.py",
+        "darts/typing.py"
+      ],
+      "cross_module_fanout": 42,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/dataprocessing/encoders",
+      "file_count": 3,
+      "nloc": 1245,
+      "concrete_method_count": 93,
+      "callable_entry_count": 45,
+      "total_cyclomatic_complexity": 241,
+      "files": [
+        "darts/dataprocessing/encoders/__init__.py",
+        "darts/dataprocessing/encoders/encoder_base.py",
+        "darts/dataprocessing/encoders/encoders.py"
+      ],
+      "cross_module_fanout": 49,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/utils/likelihood_models",
+      "file_count": 5,
+      "nloc": 1339,
+      "concrete_method_count": 148,
+      "callable_entry_count": 43,
+      "total_cyclomatic_complexity": 220,
+      "files": [
+        "darts/utils/likelihood_models/__init__.py",
+        "darts/utils/likelihood_models/base.py",
+        "darts/utils/likelihood_models/sklearn.py",
+        "darts/utils/likelihood_models/statsforecast.py",
+        "darts/utils/likelihood_models/torch.py"
+      ],
+      "cross_module_fanout": 50,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/metrics",
+      "file_count": 3,
+      "nloc": 2173,
+      "concrete_method_count": 77,
+      "callable_entry_count": 50,
+      "total_cyclomatic_complexity": 199,
+      "files": [
+        "darts/metrics/__init__.py",
+        "darts/metrics/metrics.py",
+        "darts/metrics/utils.py"
+      ],
+      "cross_module_fanout": 39,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/dataprocessing/dtw",
+      "file_count": 5,
+      "nloc": 581,
+      "concrete_method_count": 57,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 123,
+      "files": [
+        "darts/dataprocessing/dtw/__init__.py",
+        "darts/dataprocessing/dtw/_plot.py",
+        "darts/dataprocessing/dtw/cost_matrix.py",
+        "darts/dataprocessing/dtw/dtw.py",
+        "darts/dataprocessing/dtw/window.py"
+      ],
+      "cross_module_fanout": 40,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/explainability/shap_adapters",
+      "file_count": 4,
+      "nloc": 677,
+      "concrete_method_count": 25,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 108,
+      "files": [
+        "darts/explainability/shap_adapters/__init__.py",
+        "darts/explainability/shap_adapters/shap_adapter.py",
+        "darts/explainability/shap_adapters/sklearn_shap_adapter.py",
+        "darts/explainability/shap_adapters/torch_shap_adapter.py"
+      ],
+      "cross_module_fanout": 30,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/utils/onnx",
+      "file_count": 3,
+      "nloc": 562,
+      "concrete_method_count": 19,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 105,
+      "files": [
+        "darts/utils/onnx/__init__.py",
+        "darts/utils/onnx/export.py",
+        "darts/utils/onnx/inference.py"
+      ],
+      "cross_module_fanout": 35,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "darts",
+      "file_count": 5,
+      "nloc": 3442,
+      "concrete_method_count": 201,
+      "callable_entry_count": 126,
+      "total_cyclomatic_complexity": 805,
+      "files": [
+        "darts/__init__.py",
+        "darts/config.py",
+        "darts/logging.py",
+        "darts/timeseries.py",
+        "darts/typing.py"
+      ],
+      "cross_module_fanout": 42,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/utils/historical_forecasts",
+      "file_count": 4,
+      "nloc": 1644,
+      "concrete_method_count": 29,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 286,
+      "files": [
+        "darts/utils/historical_forecasts/__init__.py",
+        "darts/utils/historical_forecasts/optimized_historical_forecasts_regression.py",
+        "darts/utils/historical_forecasts/optimized_historical_forecasts_torch.py",
+        "darts/utils/historical_forecasts/utils.py"
+      ],
+      "cross_module_fanout": 92,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "darts/dataprocessing/encoders",
+      "file_count": 3,
+      "nloc": 1245,
+      "concrete_method_count": 93,
+      "callable_entry_count": 45,
+      "total_cyclomatic_complexity": 241,
+      "files": [
+        "darts/dataprocessing/encoders/__init__.py",
+        "darts/dataprocessing/encoders/encoder_base.py",
+        "darts/dataprocessing/encoders/encoders.py"
+      ],
+      "cross_module_fanout": 49,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/utils/likelihood_models",
+      "file_count": 5,
+      "nloc": 1339,
+      "concrete_method_count": 148,
+      "callable_entry_count": 43,
+      "total_cyclomatic_complexity": 220,
+      "files": [
+        "darts/utils/likelihood_models/__init__.py",
+        "darts/utils/likelihood_models/base.py",
+        "darts/utils/likelihood_models/sklearn.py",
+        "darts/utils/likelihood_models/statsforecast.py",
+        "darts/utils/likelihood_models/torch.py"
+      ],
+      "cross_module_fanout": 50,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/metrics",
+      "file_count": 3,
+      "nloc": 2173,
+      "concrete_method_count": 77,
+      "callable_entry_count": 50,
+      "total_cyclomatic_complexity": 199,
+      "files": [
+        "darts/metrics/__init__.py",
+        "darts/metrics/metrics.py",
+        "darts/metrics/utils.py"
+      ],
+      "cross_module_fanout": 39,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/dataprocessing/dtw",
+      "file_count": 5,
+      "nloc": 581,
+      "concrete_method_count": 57,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 123,
+      "files": [
+        "darts/dataprocessing/dtw/__init__.py",
+        "darts/dataprocessing/dtw/_plot.py",
+        "darts/dataprocessing/dtw/cost_matrix.py",
+        "darts/dataprocessing/dtw/dtw.py",
+        "darts/dataprocessing/dtw/window.py"
+      ],
+      "cross_module_fanout": 40,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/explainability/shap_adapters",
+      "file_count": 4,
+      "nloc": 677,
+      "concrete_method_count": 25,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 108,
+      "files": [
+        "darts/explainability/shap_adapters/__init__.py",
+        "darts/explainability/shap_adapters/shap_adapter.py",
+        "darts/explainability/shap_adapters/sklearn_shap_adapter.py",
+        "darts/explainability/shap_adapters/torch_shap_adapter.py"
+      ],
+      "cross_module_fanout": 30,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/utils/onnx",
+      "file_count": 3,
+      "nloc": 562,
+      "concrete_method_count": 19,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 105,
+      "files": [
+        "darts/utils/onnx/__init__.py",
+        "darts/utils/onnx/export.py",
+        "darts/utils/onnx/inference.py"
+      ],
+      "cross_module_fanout": 35,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "darts/utils/serialization",
+      "file_count": 4,
+      "nloc": 610,
+      "concrete_method_count": 34,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 95,
+      "files": [
+        "darts/utils/serialization/__init__.py",
+        "darts/utils/serialization/base.py",
+        "darts/utils/serialization/registry.py",
+        "darts/utils/serialization/torch.py"
+      ],
+      "cross_module_fanout": 16,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "darts/datasets",
+      "file_count": 3,
+      "nloc": 587,
+      "concrete_method_count": 46,
+      "callable_entry_count": 1,
+      "total_cyclomatic_complexity": 71,
+      "files": [
+        "darts/datasets/__init__.py",
+        "darts/datasets/dataset_loaders.py",
+        "darts/datasets/datasets.py"
+      ],
+      "cross_module_fanout": 49,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "darts/ad/anomaly_model",
+      "file_count": 4,
+      "nloc": 530,
+      "concrete_method_count": 26,
+      "callable_entry_count": 15,
+      "total_cyclomatic_complexity": 68,
+      "files": [
+        "darts/ad/anomaly_model/__init__.py",
+        "darts/ad/anomaly_model/anomaly_model.py",
+        "darts/ad/anomaly_model/filtering_am.py",
+        "darts/ad/anomaly_model/forecasting_am.py"
+      ],
+      "cross_module_fanout": 26,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "darts/ad/detectors",
+      "file_count": 5,
+      "nloc": 306,
+      "concrete_method_count": 26,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 67,
+      "files": [
+        "darts/ad/detectors/__init__.py",
+        "darts/ad/detectors/detectors.py",
+        "darts/ad/detectors/iqr_detector.py",
+        "darts/ad/detectors/quantile_detector.py",
+        "darts/ad/detectors/threshold_detector.py"
+      ],
+      "cross_module_fanout": 15,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "darts/models/filtering",
+      "file_count": 5,
+      "nloc": 208,
+      "concrete_method_count": 10,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 33,
+      "files": [
+        "darts/models/filtering/__init__.py",
+        "darts/models/filtering/filtering_model.py",
+        "darts/models/filtering/gaussian_process_filter.py",
+        "darts/models/filtering/kalman_filter.py",
+        "darts/models/filtering/moving_average_filter.py"
+      ],
+      "cross_module_fanout": 13,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "darts/ad/aggregators",
+      "file_count": 5,
+      "nloc": 206,
+      "concrete_method_count": 21,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 29,
+      "files": [
+        "darts/ad/aggregators/__init__.py",
+        "darts/ad/aggregators/aggregators.py",
+        "darts/ad/aggregators/and_aggregator.py",
+        "darts/ad/aggregators/ensemble_sklearn_aggregator.py",
+        "darts/ad/aggregators/or_aggregator.py"
+      ],
+      "cross_module_fanout": 27,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

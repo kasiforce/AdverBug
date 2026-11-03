@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/CyberChef",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 420.5,
+    "project_candidate_module_total_cyclomatic_complexity_median": 92.0,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 674,
+  "candidate_module_count": 2,
+  "selected_module_count": 0,
+  "selected_modules": [],
+  "all_candidate_modules": [
+    {
+      "module": "src/web/workers",
+      "file_count": 4,
+      "nloc": 803,
+      "concrete_method_count": 51,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 178,
+      "files": [
+        "src/web/workers/DishWorker.mjs",
+        "src/web/workers/InputWorker.mjs",
+        "src/web/workers/LoaderWorker.js",
+        "src/web/workers/ZipWorker.mjs"
+      ],
+      "cross_module_fanout": 50,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "src/core/errors",
+      "file_count": 4,
+      "nloc": 38,
+      "concrete_method_count": 3,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 6,
+      "files": [
+        "src/core/errors/DishError.mjs",
+        "src/core/errors/ExcludedOperationError.mjs",
+        "src/core/errors/OperationError.mjs",
+        "src/core/errors/index.mjs"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

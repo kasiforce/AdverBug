@@ -1,0 +1,602 @@
+{
+  "schema_version": 1,
+  "language": "java",
+  "project_root": "/data/home/cjy/Adver_bug/projects/TwelveMonkeys",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 293.5,
+    "project_candidate_module_total_cyclomatic_complexity_median": 53.0,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 552,
+  "candidate_module_count": 18,
+  "selected_module_count": 7,
+  "selected_modules": [
+    {
+      "module": "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio",
+      "file_count": 4,
+      "nloc": 1164,
+      "concrete_method_count": 88,
+      "callable_entry_count": 65,
+      "total_cyclomatic_complexity": 213,
+      "files": [
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/AbstractMetadata.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/ImageReaderBase.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/ImageWriterBase.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/StandardImageMetadataSupport.java"
+      ],
+      "cross_module_fanout": 48,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "common/common-io/src/main/java/com/twelvemonkeys/io/ole2",
+      "file_count": 5,
+      "nloc": 673,
+      "concrete_method_count": 63,
+      "callable_entry_count": 47,
+      "total_cyclomatic_complexity": 153,
+      "files": [
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/CompoundDocument.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/CorruptDocumentException.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/Entry.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/SIdChain.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/package-info.java"
+      ],
+      "cross_module_fanout": 56,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg",
+      "file_count": 4,
+      "nloc": 524,
+      "concrete_method_count": 36,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 152,
+      "files": [
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEG.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEGQuality.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEGSegment.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEGSegmentUtil.java"
+      ],
+      "cross_module_fanout": 13,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg",
+      "file_count": 4,
+      "nloc": 644,
+      "concrete_method_count": 39,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 144,
+      "files": [
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGImageReader.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGImageReaderSpi.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGProviderInfo.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGReadParam.java"
+      ],
+      "cross_module_fanout": 38,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path",
+      "file_count": 5,
+      "nloc": 657,
+      "concrete_method_count": 27,
+      "callable_entry_count": 16,
+      "total_cyclomatic_complexity": 133,
+      "files": [
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathBuilder.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathReader.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathSegment.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathWriter.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/Paths.java"
+      ],
+      "cross_module_fanout": 23,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "common/common-io/src/main/java/com/twelvemonkeys/xml",
+      "file_count": 3,
+      "nloc": 516,
+      "concrete_method_count": 34,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 104,
+      "files": [
+        "common/common-io/src/main/java/com/twelvemonkeys/xml/DOMSerializer.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/xml/XMLSerializer.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/xml/package_info.java"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb",
+      "file_count": 4,
+      "nloc": 530,
+      "concrete_method_count": 54,
+      "callable_entry_count": 37,
+      "total_cyclomatic_complexity": 103,
+      "files": [
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/Catalog.java",
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReader.java",
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReaderSpi.java",
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBProviderInfo.java"
+      ],
+      "cross_module_fanout": 48,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio",
+      "file_count": 4,
+      "nloc": 1164,
+      "concrete_method_count": 88,
+      "callable_entry_count": 65,
+      "total_cyclomatic_complexity": 213,
+      "files": [
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/AbstractMetadata.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/ImageReaderBase.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/ImageWriterBase.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/StandardImageMetadataSupport.java"
+      ],
+      "cross_module_fanout": 48,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "common/common-io/src/main/java/com/twelvemonkeys/io/ole2",
+      "file_count": 5,
+      "nloc": 673,
+      "concrete_method_count": 63,
+      "callable_entry_count": 47,
+      "total_cyclomatic_complexity": 153,
+      "files": [
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/CompoundDocument.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/CorruptDocumentException.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/Entry.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/SIdChain.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/io/ole2/package-info.java"
+      ],
+      "cross_module_fanout": 56,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg",
+      "file_count": 4,
+      "nloc": 524,
+      "concrete_method_count": 36,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 152,
+      "files": [
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEG.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEGQuality.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEGSegment.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/jpeg/JPEGSegmentUtil.java"
+      ],
+      "cross_module_fanout": 13,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg",
+      "file_count": 4,
+      "nloc": 644,
+      "concrete_method_count": 39,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 144,
+      "files": [
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGImageReader.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGImageReaderSpi.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGProviderInfo.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/svg/SVGReadParam.java"
+      ],
+      "cross_module_fanout": 38,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path",
+      "file_count": 5,
+      "nloc": 657,
+      "concrete_method_count": 27,
+      "callable_entry_count": 16,
+      "total_cyclomatic_complexity": 133,
+      "files": [
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathBuilder.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathReader.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathSegment.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/AdobePathWriter.java",
+        "imageio/imageio-clippath/src/main/java/com/twelvemonkeys/imageio/path/Paths.java"
+      ],
+      "cross_module_fanout": 23,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "common/common-io/src/main/java/com/twelvemonkeys/xml",
+      "file_count": 3,
+      "nloc": 516,
+      "concrete_method_count": 34,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 104,
+      "files": [
+        "common/common-io/src/main/java/com/twelvemonkeys/xml/DOMSerializer.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/xml/XMLSerializer.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/xml/package_info.java"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb",
+      "file_count": 4,
+      "nloc": 530,
+      "concrete_method_count": 54,
+      "callable_entry_count": 37,
+      "total_cyclomatic_complexity": 103,
+      "files": [
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/Catalog.java",
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReader.java",
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBImageReaderSpi.java",
+        "imageio/imageio-thumbsdb/src/main/java/com/twelvemonkeys/imageio/plugins/thumbsdb/ThumbsDBProviderInfo.java"
+      ],
+      "cross_module_fanout": 48,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/iptc",
+      "file_count": 5,
+      "nloc": 297,
+      "concrete_method_count": 11,
+      "callable_entry_count": 5,
+      "total_cyclomatic_complexity": 58,
+      "files": [
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/iptc/IPTC.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/iptc/IPTCDirectory.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/iptc/IPTCEntry.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/iptc/IPTCReader.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/iptc/IPTCWriter.java"
+      ],
+      "cross_module_fanout": 12,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "common/common-lang/src/main/java/com/twelvemonkeys/util/service",
+      "file_count": 4,
+      "nloc": 290,
+      "concrete_method_count": 24,
+      "callable_entry_count": 17,
+      "total_cyclomatic_complexity": 57,
+      "files": [
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/service/RegisterableService.java",
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/service/ServiceConfigurationError.java",
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/service/ServiceRegistry.java",
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/service/package_info.java"
+      ],
+      "cross_module_fanout": 27,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "common/common-io/src/main/java/com/twelvemonkeys/net",
+      "file_count": 3,
+      "nloc": 236,
+      "concrete_method_count": 16,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 49,
+      "files": [
+        "common/common-io/src/main/java/com/twelvemonkeys/net/HTTPUtil.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/net/MIMEUtil.java",
+        "common/common-io/src/main/java/com/twelvemonkeys/net/package_info.java"
+      ],
+      "cross_module_fanout": 7,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-pcx/src/main/java/com/twelvemonkeys/imageio/plugins/dcx",
+      "file_count": 5,
+      "nloc": 257,
+      "concrete_method_count": 29,
+      "callable_entry_count": 18,
+      "total_cyclomatic_complexity": 38,
+      "files": [
+        "imageio/imageio-pcx/src/main/java/com/twelvemonkeys/imageio/plugins/dcx/DCX.java",
+        "imageio/imageio-pcx/src/main/java/com/twelvemonkeys/imageio/plugins/dcx/DCXHeader.java",
+        "imageio/imageio-pcx/src/main/java/com/twelvemonkeys/imageio/plugins/dcx/DCXImageReader.java",
+        "imageio/imageio-pcx/src/main/java/com/twelvemonkeys/imageio/plugins/dcx/DCXImageReaderSpi.java",
+        "imageio/imageio-pcx/src/main/java/com/twelvemonkeys/imageio/plugins/dcx/DCXProviderInfo.java"
+      ],
+      "cross_module_fanout": 20,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/psd",
+      "file_count": 4,
+      "nloc": 172,
+      "concrete_method_count": 12,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 30,
+      "files": [
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/psd/PSD.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/psd/PSDDirectory.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/psd/PSDEntry.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/psd/PSDReader.java"
+      ],
+      "cross_module_fanout": 16,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/spi",
+      "file_count": 5,
+      "nloc": 193,
+      "concrete_method_count": 27,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 29,
+      "files": [
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/spi/ImageReaderSpiBase.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/spi/ImageWriterSpiBase.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/spi/ProviderInfo.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/spi/ReaderWriterProviderInfo.java",
+        "imageio/imageio-core/src/main/java/com/twelvemonkeys/imageio/spi/package-info.java"
+      ],
+      "cross_module_fanout": 2,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-pict/src/main/java/com/twelvemonkeys/imageio/plugins/pntg",
+      "file_count": 4,
+      "nloc": 179,
+      "concrete_method_count": 14,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 29,
+      "files": [
+        "imageio/imageio-pict/src/main/java/com/twelvemonkeys/imageio/plugins/pntg/PNTGImageReader.java",
+        "imageio/imageio-pict/src/main/java/com/twelvemonkeys/imageio/plugins/pntg/PNTGImageReaderSpi.java",
+        "imageio/imageio-pict/src/main/java/com/twelvemonkeys/imageio/plugins/pntg/PNTGMetadata.java",
+        "imageio/imageio-pict/src/main/java/com/twelvemonkeys/imageio/plugins/pntg/PNTGProviderInfo.java"
+      ],
+      "cross_module_fanout": 15,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/wmf",
+      "file_count": 4,
+      "nloc": 155,
+      "concrete_method_count": 13,
+      "callable_entry_count": 11,
+      "total_cyclomatic_complexity": 27,
+      "files": [
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/wmf/WMF.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/wmf/WMFImageReader.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/wmf/WMFImageReaderSpi.java",
+        "imageio/imageio-batik/src/main/java/com/twelvemonkeys/imageio/plugins/wmf/WMFProviderInfo.java"
+      ],
+      "cross_module_fanout": 12,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "common/common-lang/src/main/java/com/twelvemonkeys/util/regex",
+      "file_count": 3,
+      "nloc": 483,
+      "concrete_method_count": 10,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 20,
+      "files": [
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/regex/RegExTokenIterator.java",
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/regex/WildcardStringParser.java",
+        "common/common-lang/src/main/java/com/twelvemonkeys/util/regex/package_info.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/exif",
+      "file_count": 5,
+      "nloc": 157,
+      "concrete_method_count": 18,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 20,
+      "files": [
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/exif/EXIF.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/exif/EXIFReader.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/exif/EXIFWriter.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/exif/Rational.java",
+        "imageio/imageio-metadata/src/main/java/com/twelvemonkeys/imageio/metadata/exif/TIFF.java"
+      ],
+      "cross_module_fanout": 3,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "imageio/imageio-hdr/src/main/java/com/twelvemonkeys/imageio/plugins/hdr/tonemap",
+      "file_count": 4,
+      "nloc": 44,
+      "concrete_method_count": 3,
+      "callable_entry_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "files": [
+        "imageio/imageio-hdr/src/main/java/com/twelvemonkeys/imageio/plugins/hdr/tonemap/DefaultToneMapper.java",
+        "imageio/imageio-hdr/src/main/java/com/twelvemonkeys/imageio/plugins/hdr/tonemap/GammaToneMapper.java",
+        "imageio/imageio-hdr/src/main/java/com/twelvemonkeys/imageio/plugins/hdr/tonemap/NullToneMapper.java",
+        "imageio/imageio-hdr/src/main/java/com/twelvemonkeys/imageio/plugins/hdr/tonemap/ToneMapper.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

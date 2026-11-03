@@ -1,0 +1,16 @@
+{
+  "target_type": "module",
+  "module_scope": "recursive_directory",
+  "production_file_count": {
+    "min": 3,
+    "max": 10
+  },
+  "min_total_nloc": 500,
+  "min_callable_entry_count": {
+    "minimum": 1,
+    "definition": "Non-empty, non-abstract test entries: Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods in non-private classes."
+  },
+  "primary_selection": "Eligible modules containing a loc_ge_100 target function.",
+  "fallback_selection": "If a project has no primary module, use all size-eligible modules.",
+  "overlap_resolution": "For overlapping parent/child candidates, retain deeper non-overlapping modules."
+}

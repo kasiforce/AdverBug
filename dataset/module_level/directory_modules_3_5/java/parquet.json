@@ -1,0 +1,570 @@
+{
+  "schema_version": 1,
+  "language": "java",
+  "project_root": "/data/home/cjy/Adver_bug/projects/parquet-java",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 358,
+    "project_candidate_module_total_cyclomatic_complexity_median": 61,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 562,
+  "candidate_module_count": 21,
+  "selected_module_count": 3,
+  "selected_modules": [
+    {
+      "module": "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking",
+      "file_count": 3,
+      "nloc": 2747,
+      "concrete_method_count": 305,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 324,
+      "files": [
+        "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking/ByteBitPacking512VectorLE.java",
+        "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking/ParquetReadRouter.java",
+        "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking/VectorSupport.java"
+      ],
+      "cross_module_fanout": 15,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite",
+      "file_count": 3,
+      "nloc": 1343,
+      "concrete_method_count": 71,
+      "callable_entry_count": 35,
+      "total_cyclomatic_complexity": 189,
+      "files": [
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite/MaskMode.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite/ParquetRewriter.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite/RewriteOptions.java"
+      ],
+      "cross_module_fanout": 311,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary",
+      "file_count": 4,
+      "nloc": 873,
+      "concrete_method_count": 76,
+      "callable_entry_count": 72,
+      "total_cyclomatic_complexity": 129,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/DictionaryValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/DictionaryValuesWriter.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/IntList.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/PlainValuesDictionary.java"
+      ],
+      "cross_module_fanout": 83,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking",
+      "file_count": 3,
+      "nloc": 2747,
+      "concrete_method_count": 305,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 324,
+      "files": [
+        "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking/ByteBitPacking512VectorLE.java",
+        "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking/ParquetReadRouter.java",
+        "parquet-plugins/parquet-encoding-vector/src/main/java/org/apache/parquet/column/values/bitpacking/VectorSupport.java"
+      ],
+      "cross_module_fanout": 15,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite",
+      "file_count": 3,
+      "nloc": 1343,
+      "concrete_method_count": 71,
+      "callable_entry_count": 35,
+      "total_cyclomatic_complexity": 189,
+      "files": [
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite/MaskMode.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite/ParquetRewriter.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/rewrite/RewriteOptions.java"
+      ],
+      "cross_module_fanout": 311,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary",
+      "file_count": 4,
+      "nloc": 873,
+      "concrete_method_count": 76,
+      "callable_entry_count": 72,
+      "total_cyclomatic_complexity": 129,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/DictionaryValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/DictionaryValuesWriter.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/IntList.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/dictionary/PlainValuesDictionary.java"
+      ],
+      "cross_module_fanout": 83,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/statistics/geospatial",
+      "file_count": 3,
+      "nloc": 468,
+      "concrete_method_count": 58,
+      "callable_entry_count": 46,
+      "total_cyclomatic_complexity": 124,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/statistics/geospatial/BoundingBox.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/statistics/geospatial/GeospatialStatistics.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/statistics/geospatial/GeospatialTypes.java"
+      ],
+      "cross_module_fanout": 2,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": true,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-cli/src/main/java/org/apache/parquet/cli/csv",
+      "file_count": 4,
+      "nloc": 488,
+      "concrete_method_count": 33,
+      "callable_entry_count": 21,
+      "total_cyclomatic_complexity": 99,
+      "files": [
+        "parquet-cli/src/main/java/org/apache/parquet/cli/csv/AvroCSV.java",
+        "parquet-cli/src/main/java/org/apache/parquet/cli/csv/AvroCSVReader.java",
+        "parquet-cli/src/main/java/org/apache/parquet/cli/csv/CSVProperties.java",
+        "parquet-cli/src/main/java/org/apache/parquet/cli/csv/RecordBuilder.java"
+      ],
+      "cross_module_fanout": 4,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-common/src/main/java/org/apache/parquet/util",
+      "file_count": 3,
+      "nloc": 500,
+      "concrete_method_count": 53,
+      "callable_entry_count": 49,
+      "total_cyclomatic_complexity": 94,
+      "files": [
+        "parquet-common/src/main/java/org/apache/parquet/util/AutoCloseables.java",
+        "parquet-common/src/main/java/org/apache/parquet/util/DynConstructors.java",
+        "parquet-common/src/main/java/org/apache/parquet/util/DynMethods.java"
+      ],
+      "cross_module_fanout": 5,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-common/src/main/java/org/apache/parquet/glob",
+      "file_count": 4,
+      "nloc": 318,
+      "concrete_method_count": 31,
+      "callable_entry_count": 24,
+      "total_cyclomatic_complexity": 80,
+      "files": [
+        "parquet-common/src/main/java/org/apache/parquet/glob/GlobExpander.java",
+        "parquet-common/src/main/java/org/apache/parquet/glob/GlobNode.java",
+        "parquet-common/src/main/java/org/apache/parquet/glob/GlobParser.java",
+        "parquet-common/src/main/java/org/apache/parquet/glob/WildcardPath.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values/delta",
+      "file_count": 5,
+      "nloc": 400,
+      "concrete_method_count": 35,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 67,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/delta/DeltaBinaryPackingConfig.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/delta/DeltaBinaryPackingValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/delta/DeltaBinaryPackingValuesWriter.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/delta/DeltaBinaryPackingValuesWriterForInteger.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/delta/DeltaBinaryPackingValuesWriterForLong.java"
+      ],
+      "cross_module_fanout": 36,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/wrapped/io",
+      "file_count": 5,
+      "nloc": 369,
+      "concrete_method_count": 38,
+      "callable_entry_count": 32,
+      "total_cyclomatic_complexity": 65,
+      "files": [
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/wrapped/io/BindingUtils.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/wrapped/io/FileRangeBridge.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/wrapped/io/FutureIO.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/wrapped/io/VectorIoBridge.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/wrapped/io/package-info.java"
+      ],
+      "cross_module_fanout": 23,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values/factory",
+      "file_count": 4,
+      "nloc": 398,
+      "concrete_method_count": 28,
+      "callable_entry_count": 8,
+      "total_cyclomatic_complexity": 64,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/factory/DefaultV1ValuesWriterFactory.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/factory/DefaultV2ValuesWriterFactory.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/factory/DefaultValuesWriterFactory.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/factory/ValuesWriterFactory.java"
+      ],
+      "cross_module_fanout": 35,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values/rle",
+      "file_count": 5,
+      "nloc": 358,
+      "concrete_method_count": 31,
+      "callable_entry_count": 26,
+      "total_cyclomatic_complexity": 61,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/rle/RunLengthBitPackingHybridDecoder.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/rle/RunLengthBitPackingHybridEncoder.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/rle/RunLengthBitPackingHybridValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/rle/RunLengthBitPackingHybridValuesWriter.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/rle/ZeroIntegerValuesReader.java"
+      ],
+      "cross_module_fanout": 31,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-arrow/src/main/java/org/apache/parquet/arrow/schema",
+      "file_count": 4,
+      "nloc": 962,
+      "concrete_method_count": 40,
+      "callable_entry_count": 28,
+      "total_cyclomatic_complexity": 50,
+      "files": [
+        "parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/List3Levels.java",
+        "parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/Map3Levels.java",
+        "parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/SchemaConverter.java",
+        "parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/SchemaMapping.java"
+      ],
+      "cross_module_fanout": 124,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values/bitpacking",
+      "file_count": 5,
+      "nloc": 266,
+      "concrete_method_count": 36,
+      "callable_entry_count": 34,
+      "total_cyclomatic_complexity": 45,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/bitpacking/BitPackingValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/bitpacking/BitPackingValuesWriter.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/bitpacking/ByteBitPackingValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/bitpacking/ByteBitPackingValuesWriter.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/bitpacking/DevNullValuesWriter.java"
+      ],
+      "cross_module_fanout": 34,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/amend",
+      "file_count": 4,
+      "nloc": 357,
+      "concrete_method_count": 29,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 42,
+      "files": [
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/amend/DefaultEventsVisitor.java",
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/amend/DefaultProtocolEventsGenerator.java",
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/amend/ProtocolEventsAmender.java",
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/amend/ReadFieldBeginProtocol.java"
+      ],
+      "cross_module_fanout": 17,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-format-structures/src/main/java/org/apache/parquet/format/event",
+      "file_count": 4,
+      "nloc": 329,
+      "concrete_method_count": 32,
+      "callable_entry_count": 32,
+      "total_cyclomatic_complexity": 40,
+      "files": [
+        "parquet-format-structures/src/main/java/org/apache/parquet/format/event/Consumers.java",
+        "parquet-format-structures/src/main/java/org/apache/parquet/format/event/EventBasedThriftReader.java",
+        "parquet-format-structures/src/main/java/org/apache/parquet/format/event/FieldConsumer.java",
+        "parquet-format-structures/src/main/java/org/apache/parquet/format/event/TypedConsumer.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/mapred",
+      "file_count": 4,
+      "nloc": 264,
+      "concrete_method_count": 28,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 39,
+      "files": [
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/mapred/Container.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/mapred/DeprecatedParquetInputFormat.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/mapred/DeprecatedParquetOutputFormat.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/mapred/MapredParquetOutputCommitter.java"
+      ],
+      "cross_module_fanout": 28,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection",
+      "file_count": 4,
+      "nloc": 193,
+      "concrete_method_count": 20,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 39,
+      "files": [
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/FieldProjectionFilter.java",
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/FieldsPath.java",
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/StrictFieldProjectionFilter.java",
+        "parquet-thrift/src/main/java/org/apache/parquet/thrift/projection/ThriftProjectionException.java"
+      ],
+      "cross_module_fanout": 13,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/internal/filter2/columnindex",
+      "file_count": 3,
+      "nloc": 219,
+      "concrete_method_count": 20,
+      "callable_entry_count": 15,
+      "total_cyclomatic_complexity": 37,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/internal/filter2/columnindex/ColumnIndexFilter.java",
+        "parquet-column/src/main/java/org/apache/parquet/internal/filter2/columnindex/ColumnIndexStore.java",
+        "parquet-column/src/main/java/org/apache/parquet/internal/filter2/columnindex/RowRanges.java"
+      ],
+      "cross_module_fanout": 61,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-common/src/main/java/org/apache/parquet/hadoop/metadata",
+      "file_count": 3,
+      "nloc": 151,
+      "concrete_method_count": 20,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 31,
+      "files": [
+        "parquet-common/src/main/java/org/apache/parquet/hadoop/metadata/Canonicalizer.java",
+        "parquet-common/src/main/java/org/apache/parquet/hadoop/metadata/ColumnPath.java",
+        "parquet-common/src/main/java/org/apache/parquet/hadoop/metadata/CompressionCodecName.java"
+      ],
+      "cross_module_fanout": 8,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-column/src/main/java/org/apache/parquet/column/values",
+      "file_count": 4,
+      "nloc": 122,
+      "concrete_method_count": 20,
+      "callable_entry_count": 20,
+      "total_cyclomatic_complexity": 23,
+      "files": [
+        "parquet-column/src/main/java/org/apache/parquet/column/values/RequiresFallback.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/RequiresPreviousReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/ValuesReader.java",
+        "parquet-column/src/main/java/org/apache/parquet/column/values/ValuesWriter.java"
+      ],
+      "cross_module_fanout": 5,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/counters",
+      "file_count": 3,
+      "nloc": 73,
+      "concrete_method_count": 12,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 12,
+      "files": [
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/counters/BenchmarkCounter.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/counters/CounterLoader.java",
+        "parquet-hadoop/src/main/java/org/apache/parquet/hadoop/util/counters/ICounter.java"
+      ],
+      "cross_module_fanout": 2,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

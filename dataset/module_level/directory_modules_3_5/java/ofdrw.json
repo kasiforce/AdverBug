@@ -1,0 +1,999 @@
+{
+  "schema_version": 1,
+  "language": "java",
+  "project_root": "/data/home/cjy/Adver_bug/projects/ofdrw",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_module_files": 3,
+    "max_module_files": 5,
+    "min_callable_entries": 2,
+    "min_module_nloc": 500,
+    "min_cross_module_fanout": 3,
+    "project_candidate_module_nloc_median": 178,
+    "project_candidate_module_total_cyclomatic_complexity_median": 36,
+    "min_total_cyclomatic_complexity": 100
+  },
+  "production_file_count": 504,
+  "candidate_module_count": 41,
+  "selected_module_count": 2,
+  "selected_modules": [
+    {
+      "module": "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword",
+      "file_count": 3,
+      "nloc": 579,
+      "concrete_method_count": 37,
+      "callable_entry_count": 17,
+      "total_cyclomatic_complexity": 158,
+      "files": [
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword/KeywordExtractor.java",
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword/KeywordPosition.java",
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword/KeywordResource.java"
+      ],
+      "cross_module_fanout": 115,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter",
+      "file_count": 4,
+      "nloc": 522,
+      "concrete_method_count": 21,
+      "callable_entry_count": 15,
+      "total_cyclomatic_complexity": 103,
+      "files": [
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/DocConverter.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/ImageConverter.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/PDFConverter.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/TextConverter.java"
+      ],
+      "cross_module_fanout": 58,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    }
+  ],
+  "all_candidate_modules": [
+    {
+      "module": "ofdrw-converter/src/main/java/com/itextpdf/io/font",
+      "file_count": 3,
+      "nloc": 783,
+      "concrete_method_count": 37,
+      "callable_entry_count": 23,
+      "total_cyclomatic_complexity": 179,
+      "files": [
+        "ofdrw-converter/src/main/java/com/itextpdf/io/font/ItextFontUtil.java",
+        "ofdrw-converter/src/main/java/com/itextpdf/io/font/ItextOpenTypeParser.java",
+        "ofdrw-converter/src/main/java/com/itextpdf/io/font/ItextTrueTypeFont.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword",
+      "file_count": 3,
+      "nloc": 579,
+      "concrete_method_count": 37,
+      "callable_entry_count": 17,
+      "total_cyclomatic_complexity": 158,
+      "files": [
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword/KeywordExtractor.java",
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword/KeywordPosition.java",
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/keyword/KeywordResource.java"
+      ],
+      "cross_module_fanout": 115,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter",
+      "file_count": 4,
+      "nloc": 522,
+      "concrete_method_count": 21,
+      "callable_entry_count": 15,
+      "total_cyclomatic_complexity": 103,
+      "files": [
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/DocConverter.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/ImageConverter.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/PDFConverter.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/ofdconverter/TextConverter.java"
+      ],
+      "cross_module_fanout": 58,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": true,
+        "nloc": true
+      },
+      "selected": true
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/text/text",
+      "file_count": 3,
+      "nloc": 291,
+      "concrete_method_count": 38,
+      "callable_entry_count": 29,
+      "total_cyclomatic_complexity": 82,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/text/text/CT_Text.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/text/text/Direction.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/text/text/Weight.java"
+      ],
+      "cross_module_fanout": 13,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/annotation/pageannot",
+      "file_count": 5,
+      "nloc": 325,
+      "concrete_method_count": 37,
+      "callable_entry_count": 36,
+      "total_cyclomatic_complexity": 81,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/annotation/pageannot/AnnPage.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/annotation/pageannot/Annot.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/annotation/pageannot/AnnotType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/annotation/pageannot/Appearance.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/annotation/pageannot/PageAnnot.java"
+      ],
+      "cross_module_fanout": 35,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-crypto/src/main/java/org/ofdrw/crypto",
+      "file_count": 4,
+      "nloc": 490,
+      "concrete_method_count": 25,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 79,
+      "files": [
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/ContainerFileFilter.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/ContainerPath.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/OFDDecryptor.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/OFDEncryptor.java"
+      ],
+      "cross_module_fanout": 60,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/signatures/sig",
+      "file_count": 5,
+      "nloc": 313,
+      "concrete_method_count": 41,
+      "callable_entry_count": 41,
+      "total_cyclomatic_complexity": 76,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/sig/Parameter.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/sig/Parameters.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/sig/Provider.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/sig/Signature.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/sig/SignedInfo.java"
+      ],
+      "cross_module_fanout": 30,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-font/src/main/java/org/ofdrw/font",
+      "file_count": 3,
+      "nloc": 276,
+      "concrete_method_count": 28,
+      "callable_entry_count": 24,
+      "total_cyclomatic_complexity": 69,
+      "files": [
+        "ofdrw-font/src/main/java/org/ofdrw/font/EnvFont.java",
+        "ofdrw-font/src/main/java/org/ofdrw/font/Font.java",
+        "ofdrw-font/src/main/java/org/ofdrw/font/FontName.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/ofd/docInfo",
+      "file_count": 5,
+      "nloc": 252,
+      "concrete_method_count": 43,
+      "callable_entry_count": 42,
+      "total_cyclomatic_complexity": 58,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/ofd/docInfo/CT_DocInfo.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/ofd/docInfo/CustomData.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/ofd/docInfo/CustomDatas.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/ofd/docInfo/DocUsage.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/ofd/docInfo/Keywords.java"
+      ],
+      "cross_module_fanout": 36,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-layout/src/main/java/org/ofdrw/layout/areaholder",
+      "file_count": 4,
+      "nloc": 232,
+      "concrete_method_count": 19,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 53,
+      "files": [
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/areaholder/AreaHolderBlocks.java",
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/areaholder/AreaHolderBlocksProcess.java",
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/areaholder/AreaHolderContext.java",
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/areaholder/CT_AreaHolderBlock.java"
+      ],
+      "cross_module_fanout": 26,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/versions",
+      "file_count": 5,
+      "nloc": 245,
+      "concrete_method_count": 31,
+      "callable_entry_count": 31,
+      "total_cyclomatic_complexity": 52,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/versions/DocVersion.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/versions/File.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/versions/FileList.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/versions/Version.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/versions/Versions.java"
+      ],
+      "cross_module_fanout": 14,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/pattern",
+      "file_count": 4,
+      "nloc": 193,
+      "concrete_method_count": 21,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 52,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/pattern/CT_Pattern.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/pattern/CellContent.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/pattern/ReflectMethod.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/pattern/RelativeTo.java"
+      ],
+      "cross_module_fanout": 14,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/drawParam",
+      "file_count": 3,
+      "nloc": 183,
+      "concrete_method_count": 23,
+      "callable_entry_count": 21,
+      "total_cyclomatic_complexity": 50,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/drawParam/CT_DrawParam.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/drawParam/LineCapType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/drawParam/LineJoinType.java"
+      ],
+      "cross_module_fanout": 28,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/extensions",
+      "file_count": 3,
+      "nloc": 189,
+      "concrete_method_count": 24,
+      "callable_entry_count": 24,
+      "total_cyclomatic_complexity": 49,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/extensions/CT_Extension.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/extensions/Extensions.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/extensions/Property.java"
+      ],
+      "cross_module_fanout": 12,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/image",
+      "file_count": 3,
+      "nloc": 175,
+      "concrete_method_count": 23,
+      "callable_entry_count": 21,
+      "total_cyclomatic_complexity": 44,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/image/Border.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/image/BorderColor.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/image/CT_Image.java"
+      ],
+      "cross_module_fanout": 16,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/actionGoto",
+      "file_count": 5,
+      "nloc": 182,
+      "concrete_method_count": 21,
+      "callable_entry_count": 20,
+      "total_cyclomatic_complexity": 40,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/actionGoto/Bookmark.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/actionGoto/CT_Dest.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/actionGoto/DestType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/actionGoto/Goto.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/actionGoto/OFDGotoTarget.java"
+      ],
+      "cross_module_fanout": 16,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/colorSpace",
+      "file_count": 5,
+      "nloc": 184,
+      "concrete_method_count": 22,
+      "callable_entry_count": 16,
+      "total_cyclomatic_complexity": 39,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/colorSpace/BitsPerComponent.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/colorSpace/CT_ColorSpace.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/colorSpace/CV.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/colorSpace/OFDColorSpaceType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/color/colorSpace/Palette.java"
+      ],
+      "cross_module_fanout": 17,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj",
+      "file_count": 4,
+      "nloc": 190,
+      "concrete_method_count": 25,
+      "callable_entry_count": 25,
+      "total_cyclomatic_complexity": 38,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/CT_TemplatePage.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/Content.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/Page.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/Template.java"
+      ],
+      "cross_module_fanout": 31,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res",
+      "file_count": 4,
+      "nloc": 154,
+      "concrete_method_count": 15,
+      "callable_entry_count": 14,
+      "total_cyclomatic_complexity": 38,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/CT_MultiMedia.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/MediaType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/OFDResource.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/Res.java"
+      ],
+      "cross_module_fanout": 15,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-gm/src/main/java/org/ofdrw/gm/ses/parse",
+      "file_count": 3,
+      "nloc": 147,
+      "concrete_method_count": 15,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 37,
+      "files": [
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/ses/parse/SESVersion.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/ses/parse/SESVersionHolder.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/ses/parse/VersionParser.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType",
+      "file_count": 4,
+      "nloc": 167,
+      "concrete_method_count": 17,
+      "callable_entry_count": 17,
+      "total_cyclomatic_complexity": 36,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/GotoA.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/OFDAction.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/Sound.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/actionType/URI.java"
+      ],
+      "cross_module_fanout": 10,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-gm/src/main/java/org/ofdrw/gm/sm2strut/builder",
+      "file_count": 3,
+      "nloc": 193,
+      "concrete_method_count": 10,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 35,
+      "files": [
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/sm2strut/builder/CertSigHolder.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/sm2strut/builder/PKCS9SignedDataBuilder.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/sm2strut/builder/SignedDataBuilder.java"
+      ],
+      "cross_module_fanout": 6,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-pkg/src/main/java/org/ofdrw/pkg/tool",
+      "file_count": 3,
+      "nloc": 178,
+      "concrete_method_count": 11,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 34,
+      "files": [
+        "ofdrw-pkg/src/main/java/org/ofdrw/pkg/tool/ElemCup.java",
+        "ofdrw-pkg/src/main/java/org/ofdrw/pkg/tool/OFDNameSpaceModifier.java",
+        "ofdrw-pkg/src/main/java/org/ofdrw/pkg/tool/SAXReaderFactory.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/integrity",
+      "file_count": 3,
+      "nloc": 167,
+      "concrete_method_count": 20,
+      "callable_entry_count": 20,
+      "total_cyclomatic_complexity": 34,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/integrity/File.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/integrity/FileList.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/integrity/OFDEntries.java"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/compositeObj",
+      "file_count": 3,
+      "nloc": 136,
+      "concrete_method_count": 18,
+      "callable_entry_count": 16,
+      "total_cyclomatic_complexity": 29,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/compositeObj/CT_Composite.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/compositeObj/CT_VectorG.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/compositeObj/Content.java"
+      ],
+      "cross_module_fanout": 17,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/signatures",
+      "file_count": 3,
+      "nloc": 111,
+      "concrete_method_count": 13,
+      "callable_entry_count": 12,
+      "total_cyclomatic_complexity": 29,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/SigType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/Signature.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/Signatures.java"
+      ],
+      "cross_module_fanout": 9,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer",
+      "file_count": 3,
+      "nloc": 98,
+      "concrete_method_count": 8,
+      "callable_entry_count": 5,
+      "total_cyclomatic_complexity": 28,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/CT_Layer.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/PageBlockType.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/Type.java"
+      ],
+      "cross_module_fanout": 8,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-reader/src/main/java/org/ofdrw/reader/tools",
+      "file_count": 3,
+      "nloc": 137,
+      "concrete_method_count": 17,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 26,
+      "files": [
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/tools/ImageUtils.java",
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/tools/NameSpaceCleaner.java",
+        "ofdrw-reader/src/main/java/org/ofdrw/reader/tools/NameSpaceModifier.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/clips",
+      "file_count": 4,
+      "nloc": 128,
+      "concrete_method_count": 13,
+      "callable_entry_count": 13,
+      "total_cyclomatic_complexity": 24,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/clips/Area.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/clips/CT_Clip.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/clips/ClipAble.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/pageDescription/clips/Clips.java"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/container",
+      "file_count": 5,
+      "nloc": 203,
+      "concrete_method_count": 7,
+      "callable_entry_count": 4,
+      "total_cyclomatic_complexity": 21,
+      "files": [
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/container/DigitalValidateContainer.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/container/GBT35275ValidateContainer.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/container/SESV1ValidateContainer.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/container/SESV4ValidateContainer.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/container/SESV5ValidateContainer.java"
+      ],
+      "cross_module_fanout": 27,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-gm/src/main/java/org/ofdrw/gm/cert",
+      "file_count": 4,
+      "nloc": 248,
+      "concrete_method_count": 19,
+      "callable_entry_count": 19,
+      "total_cyclomatic_complexity": 20,
+      "files": [
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/cert/CertTools.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/cert/PEMLoader.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/cert/PKCGenerate.java",
+        "ofdrw-gm/src/main/java/org/ofdrw/gm/cert/PKCS12Tools.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/block",
+      "file_count": 5,
+      "nloc": 165,
+      "concrete_method_count": 13,
+      "callable_entry_count": 13,
+      "total_cyclomatic_complexity": 20,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/block/CT_PageBlock.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/block/CompositeObject.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/block/ImageObject.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/block/PathObject.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/pageObj/layer/block/TextObject.java"
+      ],
+      "cross_module_fanout": 6,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/resources",
+      "file_count": 5,
+      "nloc": 146,
+      "concrete_method_count": 10,
+      "callable_entry_count": 10,
+      "total_cyclomatic_complexity": 20,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/resources/ColorSpaces.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/resources/CompositeGraphicUnits.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/resources/DrawParams.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/resources/Fonts.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/basicStructure/res/resources/MultiMedias.java"
+      ],
+      "cross_module_fanout": 11,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/signatures/range",
+      "file_count": 3,
+      "nloc": 94,
+      "concrete_method_count": 9,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 20,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/range/CheckMethod.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/range/Reference.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/signatures/range/References.java"
+      ],
+      "cross_module_fanout": 9,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-converter/src/main/java/org/ofdrw/converter/point",
+      "file_count": 3,
+      "nloc": 111,
+      "concrete_method_count": 18,
+      "callable_entry_count": 18,
+      "total_cyclomatic_complexity": 18,
+      "files": [
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/point/PathPoint.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/point/TextCodePoint.java",
+        "ofdrw-converter/src/main/java/org/ofdrw/converter/point/Tuple2.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-archive/src/main/java/org/ofdrw/archive/check",
+      "file_count": 3,
+      "nloc": 140,
+      "concrete_method_count": 10,
+      "callable_entry_count": 9,
+      "total_cyclomatic_complexity": 16,
+      "files": [
+        "ofdrw-archive/src/main/java/org/ofdrw/archive/check/ArchiveRule.java",
+        "ofdrw-archive/src/main/java/org/ofdrw/archive/check/ArchiveViolation.java",
+        "ofdrw-archive/src/main/java/org/ofdrw/archive/check/OFDArchiveChecker.java"
+      ],
+      "cross_module_fanout": 3,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-core/src/main/java/org/ofdrw/core/action",
+      "file_count": 3,
+      "nloc": 88,
+      "concrete_method_count": 9,
+      "callable_entry_count": 8,
+      "total_cyclomatic_complexity": 16,
+      "files": [
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/Actions.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/CT_Action.java",
+        "ofdrw-core/src/main/java/org/ofdrw/core/action/EventType.java"
+      ],
+      "cross_module_fanout": 5,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/exceptions",
+      "file_count": 4,
+      "nloc": 78,
+      "concrete_method_count": 13,
+      "callable_entry_count": 7,
+      "total_cyclomatic_complexity": 13,
+      "files": [
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/exceptions/DocNotSignException.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/exceptions/FileIntegrityException.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/exceptions/InvalidSignedValueException.java",
+        "ofdrw-sign/src/main/java/org/ofdrw/sign/verify/exceptions/OFDVerifyException.java"
+      ],
+      "cross_module_fanout": 1,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-crypto/src/main/java/org/ofdrw/crypto/decryptor",
+      "file_count": 4,
+      "nloc": 134,
+      "concrete_method_count": 9,
+      "callable_entry_count": 8,
+      "total_cyclomatic_complexity": 12,
+      "files": [
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/decryptor/DecryptResult.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/decryptor/UserCertDecryptor.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/decryptor/UserFEKDecryptor.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/decryptor/UserPasswordDecryptor.java"
+      ],
+      "cross_module_fanout": 7,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-crypto/src/main/java/org/ofdrw/crypto/enryptor",
+      "file_count": 3,
+      "nloc": 132,
+      "concrete_method_count": 7,
+      "callable_entry_count": 6,
+      "total_cyclomatic_complexity": 11,
+      "files": [
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/enryptor/UserCertEncryptor.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/enryptor/UserFEKEncryptor.java",
+        "ofdrw-crypto/src/main/java/org/ofdrw/crypto/enryptor/UserPasswordEncryptor.java"
+      ],
+      "cross_module_fanout": 9,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": true,
+        "cross_module_fanout": true,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    },
+    {
+      "module": "ofdrw-layout/src/main/java/org/ofdrw/layout/handler",
+      "file_count": 3,
+      "nloc": 21,
+      "concrete_method_count": 0,
+      "callable_entry_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "files": [
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/handler/ElementRenderFinishHandler.java",
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/handler/RenderFinishHandler.java",
+        "ofdrw-layout/src/main/java/org/ofdrw/layout/handler/VPageHandler.java"
+      ],
+      "cross_module_fanout": 0,
+      "predicates": {
+        "file_count_3_to_5": true,
+        "callable_entry_count": false,
+        "cross_module_fanout": false,
+        "total_cyclomatic_complexity": false,
+        "nloc": false
+      },
+      "selected": false
+    }
+  ]
+}

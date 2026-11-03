@@ -1,0 +1,462 @@
+[
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils",
+    "test_module": "flink-formats/flink-avro/src/test/java/org/apache/flink/formats/avro/typeutils",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroFactory.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroSchemaConverter.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroSerializer.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroSerializerDebugInitHelper.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroSerializerSnapshot.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroTypeInfo.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/GenericRecordAvroTypeInfo.java",
+      "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/SerializableAvroSchema.java"
+    ],
+    "file_count": 8,
+    "nloc": 1234,
+    "callable_entry_count": 58,
+    "concrete_method_count": 93,
+    "total_cyclomatic_complexity": 263,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "convertToSchema",
+        "method_key": "convertToSchema(\n            LogicalType logicalType, String rowName, boolean legacyTimestampMapping)",
+        "src_file": "flink-formats/flink-avro/src/main/java/org/apache/flink/formats/avro/typeutils/AvroSchemaConverter.java",
+        "start_line": 430,
+        "end_line": 583,
+        "loc": 148,
+        "complexity": 48
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer",
+    "test_module": "flink-libraries/flink-state-processing-api/src/test/java/org/apache/flink/state/api/input/deserializer",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer/EnumNameDeserializer.java",
+      "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer/InternalTypeConverter.java",
+      "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer/MissingClassSerializerFactory.java",
+      "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer/PojoDeserializerCompatibilitySnapshot.java",
+      "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer/PojoToRowDataDeserializer.java"
+    ],
+    "file_count": 5,
+    "nloc": 597,
+    "callable_entry_count": 33,
+    "concrete_method_count": 48,
+    "total_cyclomatic_complexity": 136,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "toInternal",
+        "method_key": "toInternal(@Nullable Object value, LogicalType type)",
+        "src_file": "flink-libraries/flink-state-processing-api/src/main/java/org/apache/flink/state/api/input/deserializer/InternalTypeConverter.java",
+        "start_line": 85,
+        "end_line": 232,
+        "loc": 133,
+        "complexity": 51
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component",
+    "test_module": "flink-runtime/src/test/java/org/apache/flink/runtime/entrypoint/component",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/AbstractUserClassPathJobGraphRetriever.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/DefaultDispatcherResourceManagerComponentFactory.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/DispatcherResourceManagerComponent.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/DispatcherResourceManagerComponentFactory.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/FileJobGraphRetriever.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/JobGraphRetriever.java"
+    ],
+    "file_count": 6,
+    "nloc": 508,
+    "callable_entry_count": 10,
+    "concrete_method_count": 19,
+    "total_cyclomatic_complexity": 39,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "create",
+        "method_key": "create(\n            Configuration configuration,\n            ResourceID resourceId,\n            Executor ioExecutor,\n            RpcService rpcService,\n            HighAvailabilityServices highAvailabilityServices,\n            BlobServer blobServer,\n            HeartbeatServices heartbeatServices,\n            DelegationTokenManager delegationTokenManager,\n            MetricRegistry metricRegistry,\n            ArchivedApplicationStore archivedApplicationStore,\n            MetricQueryServiceRetriever metricQueryServiceRetriever,\n            Collection<FailureEnricher> failureEnrichers,\n            FatalErrorHandler fatalErrorHandler)",
+        "src_file": "flink-runtime/src/main/java/org/apache/flink/runtime/entrypoint/component/DefaultDispatcherResourceManagerComponentFactory.java",
+        "start_line": 103,
+        "end_line": 293,
+        "loc": 162,
+        "complexity": 11
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task",
+    "test_module": "flink-runtime/src/test/java/org/apache/flink/runtime/iterative/task",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/AbstractIterativeTask.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/IterationHeadTask.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/IterationIntermediateTask.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/IterationSynchronizationSinkTask.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/IterationTailTask.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/RuntimeAggregatorRegistry.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/SyncEventHandler.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/Terminable.java"
+    ],
+    "file_count": 8,
+    "nloc": 1106,
+    "callable_entry_count": 33,
+    "concrete_method_count": 42,
+    "total_cyclomatic_complexity": 155,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "run",
+        "method_key": "run()",
+        "src_file": "flink-runtime/src/main/java/org/apache/flink/runtime/iterative/task/IterationHeadTask.java",
+        "start_line": 269,
+        "end_line": 450,
+        "loc": 136,
+        "complexity": 19
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-runtime/src/main/java/org/apache/flink/runtime/net",
+    "test_module": "flink-runtime/src/test/java/org/apache/flink/runtime/net",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-runtime/src/main/java/org/apache/flink/runtime/net/ConnectionUtils.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/net/RedirectingSslHandler.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/net/SSLUtils.java"
+    ],
+    "file_count": 3,
+    "nloc": 838,
+    "callable_entry_count": 15,
+    "concrete_method_count": 40,
+    "total_cyclomatic_complexity": 137,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "findConnectingAddress",
+        "method_key": "findConnectingAddress(Duration timeout, Duration startLoggingAfter)",
+        "src_file": "flink-runtime/src/main/java/org/apache/flink/runtime/net/ConnectionUtils.java",
+        "start_line": 392,
+        "end_line": 517,
+        "loc": 106,
+        "complexity": 19
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-runtime/src/main/java/org/apache/flink/runtime/rest/handler/legacy/metrics",
+    "test_module": "flink-runtime/src/test/java/org/apache/flink/runtime/rest/handler/legacy/metrics",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-runtime/src/main/java/org/apache/flink/runtime/rest/handler/legacy/metrics/MetricFetcher.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/rest/handler/legacy/metrics/MetricFetcherImpl.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/rest/handler/legacy/metrics/MetricStore.java",
+      "flink-runtime/src/main/java/org/apache/flink/runtime/rest/handler/legacy/metrics/VoidMetricFetcher.java"
+    ],
+    "file_count": 4,
+    "nloc": 725,
+    "callable_entry_count": 35,
+    "concrete_method_count": 52,
+    "total_cyclomatic_complexity": 108,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "add",
+        "method_key": "add(MetricDump metric)",
+        "src_file": "flink-runtime/src/main/java/org/apache/flink/runtime/rest/handler/legacy/metrics/MetricStore.java",
+        "start_line": 250,
+        "end_line": 389,
+        "loc": 112,
+        "complexity": 14
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-runtime/src/main/java/org/apache/flink/streaming/util",
+    "test_module": "flink-runtime/src/test/java/org/apache/flink/streaming/util",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/LatencyStats.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/RemoteEnvironmentConfigUtils.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/functions/StreamingFunctionUtils.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/graph/StreamGraphUtils.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/keys/KeySelectorUtil.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/typeutils/FieldAccessor.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/typeutils/FieldAccessorFactory.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/typeutils/ScalaProductFieldAccessorFactory.java",
+      "flink-runtime/src/main/java/org/apache/flink/streaming/util/watermark/WatermarkUtils.java"
+    ],
+    "file_count": 9,
+    "nloc": 1083,
+    "callable_entry_count": 35,
+    "concrete_method_count": 55,
+    "total_cyclomatic_complexity": 121,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "getAccessor",
+        "method_key": "getAccessor(\n            TypeInformation<T> typeInfo, String field, ExecutionConfig config)",
+        "src_file": "flink-runtime/src/main/java/org/apache/flink/streaming/util/typeutils/FieldAccessorFactory.java",
+        "start_line": 128,
+        "end_line": 260,
+        "loc": 117,
+        "complexity": 21
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/rex",
+    "test_module": "flink-table/flink-table-planner/src/test/java/org/apache/calcite/rex",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/rex/RexBuilder.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/rex/RexSimplify.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/rex/RexUtil.java"
+    ],
+    "file_count": 3,
+    "nloc": 6651,
+    "callable_entry_count": 250,
+    "concrete_method_count": 407,
+    "total_cyclomatic_complexity": 1686,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "makeLiteral",
+        "method_key": "makeLiteral(\n            @Nullable Object value, RelDataType type, boolean allowCast, boolean trim)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/rex/RexBuilder.java",
+        "start_line": 1885,
+        "end_line": 2033,
+        "loc": 148,
+        "complexity": 58
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate",
+    "test_module": "flink-table/flink-table-planner/src/test/java/org/apache/calcite/sql/validate",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/ExtraCalciteResource.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/IdentifierSnapshotNamespace.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/ProcedureNamespace.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/SnapshotScope.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/SqlValidatorImpl.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/SqlValidatorWithSnapshot.java"
+    ],
+    "file_count": 6,
+    "nloc": 6651,
+    "callable_entry_count": 144,
+    "concrete_method_count": 293,
+    "total_cyclomatic_complexity": 1327,
+    "loc_ge_100_target_count": 3,
+    "loc_ge_100_targets": [
+      {
+        "name": "performUnconditionalRewrites",
+        "method_key": "performUnconditionalRewrites(\n            @PolyNull SqlNode node, boolean underFrom)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/SqlValidatorImpl.java",
+        "start_line": 1426,
+        "end_line": 1633,
+        "loc": 172,
+        "complexity": 34
+      },
+      {
+        "name": "validateJoin",
+        "method_key": "validateJoin(SqlJoin join, SqlValidatorScope scope)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/SqlValidatorImpl.java",
+        "start_line": 3712,
+        "end_line": 3847,
+        "loc": 116,
+        "complexity": 27
+      },
+      {
+        "name": "validateMatchRecognize",
+        "method_key": "validateMatchRecognize(SqlCall call)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql/validate/SqlValidatorImpl.java",
+        "start_line": 6180,
+        "end_line": 6326,
+        "loc": 125,
+        "complexity": 25
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel",
+    "test_module": "flink-table/flink-table-planner/src/test/java/org/apache/calcite/sql2rel",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/AggConverter.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/AuxiliaryConverter.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/RelDecorrelator.java",
+      "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/SqlToRelConverter.java"
+    ],
+    "file_count": 4,
+    "nloc": 7884,
+    "callable_entry_count": 176,
+    "concrete_method_count": 321,
+    "total_cyclomatic_complexity": 1342,
+    "loc_ge_100_target_count": 4,
+    "loc_ge_100_targets": [
+      {
+        "name": "decorrelateRel",
+        "method_key": "decorrelateRel(\n            Aggregate rel, boolean isCorVarDefined, boolean parentPropagatesNullValues)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/RelDecorrelator.java",
+        "start_line": 635,
+        "end_line": 857,
+        "loc": 143,
+        "complexity": 27
+      },
+      {
+        "name": "onMatch",
+        "method_key": "onMatch(RelOptRuleCall call)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/RelDecorrelator.java",
+        "start_line": 2680,
+        "end_line": 3013,
+        "loc": 160,
+        "complexity": 26
+      },
+      {
+        "name": "convertFrom",
+        "method_key": "convertFrom(\n            Blackboard bb, @Nullable SqlNode from, @Nullable List<String> fieldNames)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/SqlToRelConverter.java",
+        "start_line": 2549,
+        "end_line": 2729,
+        "loc": 139,
+        "complexity": 32
+      },
+      {
+        "name": "convertExpression",
+        "method_key": "convertExpression(SqlNode expr)",
+        "src_file": "flink-table/flink-table-planner/src/main/java/org/apache/calcite/sql2rel/SqlToRelConverter.java",
+        "start_line": 5884,
+        "end_line": 6084,
+        "loc": 156,
+        "complexity": 51
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data",
+    "test_module": "flink-table/flink-table-runtime/src/test/java/org/apache/flink/table/data",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/BoxedWrapperRowData.java",
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/DecimalDataUtils.java",
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/UpdatableRowData.java",
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/binary/BinaryRowDataUtil.java",
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/binary/BinaryStringDataUtil.java",
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/util/DataFormatConverters.java",
+      "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/util/RowDataUtil.java"
+    ],
+    "file_count": 7,
+    "nloc": 2663,
+    "callable_entry_count": 226,
+    "concrete_method_count": 247,
+    "total_cyclomatic_complexity": 580,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "getConverterForDataType",
+        "method_key": "getConverterForDataType(DataType originDataType)",
+        "src_file": "flink-table/flink-table-runtime/src/main/java/org/apache/flink/table/data/util/DataFormatConverters.java",
+        "start_line": 171,
+        "end_line": 362,
+        "loc": 181,
+        "complexity": 57
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  },
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/flink",
+    "language": "java",
+    "target_type": "module",
+    "module": "flink-yarn/src/main/java/org/apache/flink/yarn/cli",
+    "test_module": "flink-yarn/src/test/java/org/apache/flink/yarn/cli",
+    "module_scope": "recursive_directory",
+    "files": [
+      "flink-yarn/src/main/java/org/apache/flink/yarn/cli/AbstractYarnCli.java",
+      "flink-yarn/src/main/java/org/apache/flink/yarn/cli/FallbackYarnSessionCli.java",
+      "flink-yarn/src/main/java/org/apache/flink/yarn/cli/FlinkYarnSessionCli.java",
+      "flink-yarn/src/main/java/org/apache/flink/yarn/cli/YarnApplicationStatusMonitor.java"
+    ],
+    "file_count": 4,
+    "nloc": 910,
+    "callable_entry_count": 13,
+    "concrete_method_count": 33,
+    "total_cyclomatic_complexity": 122,
+    "loc_ge_100_target_count": 1,
+    "loc_ge_100_targets": [
+      {
+        "name": "run",
+        "method_key": "run(String[] args)",
+        "src_file": "flink-yarn/src/main/java/org/apache/flink/yarn/cli/FlinkYarnSessionCli.java",
+        "start_line": 549,
+        "end_line": 675,
+        "loc": 101,
+        "complexity": 10
+      }
+    ],
+    "selection_source": "target_function_module",
+    "overlap_resolution": "deepest_non_overlapping"
+  }
+]
