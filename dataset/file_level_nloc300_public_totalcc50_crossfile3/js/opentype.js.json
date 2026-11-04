@@ -1,0 +1,5120 @@
+{
+  "schema_version": 5,
+  "language": "javascript",
+  "project_root": "/data/home/cjy/Adver_bug/projects/opentype.js",
+  "selection_logic": "AND",
+  "thresholds": {
+    "min_nloc": 300,
+    "min_concrete_methods": 3,
+    "min_callable_entries": 1,
+    "min_total_cyclomatic_complexity": 50,
+    "min_cross_file_internal_method_fanout": 3
+  },
+  "metric_notes": {
+    "nloc": "Lizard file-level NLOC; a file must meet the configured minimum before other metrics are evaluated.",
+    "concrete_method_count": "Lizard-recognized concrete functions/methods; constructors excluded for Java.",
+    "callable_entry_count": "Non-empty, non-abstract test entries: Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods.",
+    "total_cyclomatic_complexity": "Sum of Lizard function/method cyclomatic complexity.",
+    "cross_file_internal_method_fanout": "Unique resolved production functions/methods in other project files plus unresolved call sites with cross-file project candidates.",
+    "resolved_cross_file_internal_method_fanout": "Unique statically resolved production functions/methods in other project files.",
+    "unresolved_cross_file_candidate_call_sites": "Call sites that have cross-file project candidates but cannot be resolved to one definition; each site counts once."
+  },
+  "production_file_count": 73,
+  "selected_file_count": 12,
+  "selected_files": [
+    {
+      "target_type": "source_file",
+      "src_file": "src/hintingtt.mjs",
+      "test_file": "test/hintingtt.test.js",
+      "nloc": 1827,
+      "concrete_method_count": 136,
+      "total_cyclomatic_complexity": 446,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 3,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 3,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "getCvarTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 449,
+      "unresolved_project_candidate_call_sites": 3,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/cff.mjs",
+      "test_file": "test/tables/cff.test.js",
+      "nloc": 1382,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 324,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 30,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 29,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getByte",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getOffset",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getBytes",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getByte",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getOffset",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getByte",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getBytes",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        },
+        {
+          "callee": "getBlendVector",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getBytes",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "GlyphSet",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "cffGlyphLoader",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "cffGlyphLoader",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "CffEncoding",
+          "start_line": 241
+        }
+      ],
+      "total_call_sites": 423,
+      "unresolved_project_candidate_call_sites": 29,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/parse.mjs",
+      "test_file": "test/parse.test.js",
+      "nloc": 826,
+      "concrete_method_count": 77,
+      "total_cyclomatic_complexity": 176,
+      "callable_entry_count": 11,
+      "cross_file_internal_method_fanout": 7,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 7,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 206,
+      "unresolved_project_candidate_call_sites": 7,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/path.mjs",
+      "test_file": "test/path.test.js",
+      "nloc": 513,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 173,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 3,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 3,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "BoundingBox",
+          "candidate_files": [
+            "src/bbox.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 111,
+      "unresolved_project_candidate_call_sites": 3,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/featureQuery.mjs",
+      "test_file": "test/features/featureQuery.test.js",
+      "nloc": 448,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 137,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 7,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 5,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/char.mjs",
+          "qualified_name": "isTashkeelArabicChar",
+          "start_line": 25
+        },
+        {
+          "file": "src/tokenizer.mjs",
+          "qualified_name": "ContextParams",
+          "start_line": 55
+        }
+      ],
+      "total_call_sites": 108,
+      "unresolved_project_candidate_call_sites": 6,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/font.mjs",
+      "test_file": "test/font.test.js",
+      "nloc": 391,
+      "concrete_method_count": 37,
+      "total_cyclomatic_complexity": 126,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 17,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 15,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "GlyphSet",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "Position",
+          "candidate_files": [
+            "src/position.mjs"
+          ]
+        },
+        {
+          "callee": "Substitution",
+          "candidate_files": [
+            "src/substitution.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Bidi",
+          "candidate_files": [
+            "src/bidi.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "DefaultEncoding",
+          "start_line": 196
+        },
+        {
+          "file": "src/tables/cff.mjs",
+          "qualified_name": "applyPaintType",
+          "start_line": 611
+        }
+      ],
+      "total_call_sites": 94,
+      "unresolved_project_candidate_call_sites": 15,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/variationprocessor.mjs",
+      "test_file": "test/variationprocessor.test.js",
+      "nloc": 387,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 126,
+      "callable_entry_count": 17,
+      "cross_file_internal_method_fanout": 12,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 9,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Glyph",
+          "candidate_files": [
+            "src/glyph.mjs"
+          ]
+        },
+        {
+          "callee": "Glyph",
+          "candidate_files": [
+            "src/glyph.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/tables/glyf.mjs",
+          "qualified_name": "getPath",
+          "start_line": 220
+        },
+        {
+          "file": "src/tables/glyf.mjs",
+          "qualified_name": "transformPoints",
+          "start_line": 187
+        },
+        {
+          "file": "src/util.mjs",
+          "qualified_name": "copyComponent",
+          "start_line": 117
+        }
+      ],
+      "total_call_sites": 65,
+      "unresolved_project_candidate_call_sites": 9,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/glyph.mjs",
+      "test_file": "test/glyph.test.js",
+      "nloc": 327,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 120,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 21,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 19,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "exec",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/tables/cpal.mjs",
+          "qualified_name": "formatColor",
+          "start_line": 269
+        },
+        {
+          "file": "src/tables/cpal.mjs",
+          "qualified_name": "getPaletteColor",
+          "start_line": 68
+        }
+      ],
+      "total_call_sites": 83,
+      "unresolved_project_candidate_call_sites": 19,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/opentype.mjs",
+      "test_file": "test/opentype.test.js",
+      "nloc": 379,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 77,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 48,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 45,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Font",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "CmapEncoding",
+          "start_line": 222
+        },
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "GlyphNames",
+          "start_line": 262
+        },
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "addGlyphNames",
+          "start_line": 357
+        }
+      ],
+      "total_call_sites": 114,
+      "unresolved_project_candidate_call_sites": 45,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/cmap.mjs",
+      "test_file": "test/tables/cmap.test.js",
+      "nloc": 333,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 75,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 20,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 19,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "skip",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "skip",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/tables/name.mjs",
+          "qualified_name": "getEncoding",
+          "start_line": 607
+        }
+      ],
+      "total_call_sites": 88,
+      "unresolved_project_candidate_call_sites": 19,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/sfnt.mjs",
+      "test_file": "test/tables/sfnt.test.js",
+      "nloc": 332,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 72,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 6,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 6,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "getUnicodeRange",
+          "candidate_files": [
+            "src/tables/os2.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 83,
+      "unresolved_project_candidate_call_sites": 6,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/gsub.mjs",
+      "test_file": "test/tables/gsub.test.js",
+      "nloc": 361,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 61,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 78,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 77,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "fail",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ClassDef",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ScriptList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "FeatureList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "LookupList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/parse.mjs",
+          "qualified_name": "Parser",
+          "start_line": 122
+        }
+      ],
+      "total_call_sites": 195,
+      "unresolved_project_candidate_call_sites": 77,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "all_files": [
+    {
+      "target_type": "source_file",
+      "src_file": "eslint.config.mjs",
+      "test_file": "test/eslint.config.test.js",
+      "nloc": 48,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "externs/opentype.js",
+      "test_file": "test/externs/opentype.test.js",
+      "nloc": 81,
+      "concrete_method_count": 76,
+      "total_cyclomatic_complexity": 76,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/bbox.mjs",
+      "test_file": "test/bbox.test.js",
+      "nloc": 89,
+      "concrete_method_count": 8,
+      "total_cyclomatic_complexity": 33,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/bidi.mjs",
+      "test_file": "test/bidi.test.js",
+      "nloc": 195,
+      "concrete_method_count": 22,
+      "total_cyclomatic_complexity": 54,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/char.mjs",
+      "test_file": "test/char.test.js",
+      "nloc": 18,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/check.mjs",
+      "test_file": "test/check.test.js",
+      "nloc": 10,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/draw.mjs",
+      "test_file": "test/draw.test.js",
+      "nloc": 7,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 1,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/encoding.mjs",
+      "test_file": "test/encoding.test.js",
+      "nloc": 299,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/applySubstitution.mjs",
+      "test_file": "test/features/applySubstitution.test.js",
+      "nloc": 45,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/arab/arabicPresentationForms.mjs",
+      "test_file": "test/features/arab/arabicPresentationForms.test.js",
+      "nloc": 68,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/arab/arabicRequiredLigatures.mjs",
+      "test_file": "test/features/arab/arabicRequiredLigatures.test.js",
+      "nloc": 26,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/arab/contextCheck/arabicSentence.mjs",
+      "test_file": "test/features/arab/contextCheck/arabicSentence.test.js",
+      "nloc": 36,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/arab/contextCheck/arabicWord.mjs",
+      "test_file": "test/features/arab/contextCheck/arabicWord.test.js",
+      "nloc": 20,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/ccmp/ccmpReplacementLigatures.mjs",
+      "test_file": "test/features/ccmp/ccmpReplacementLigatures.test.js",
+      "nloc": 29,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 8,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/ccmp/contextCheck/ccmpReplacement.mjs",
+      "test_file": "test/features/ccmp/contextCheck/ccmpReplacement.test.js",
+      "nloc": 10,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/featureQuery.mjs",
+      "test_file": "test/features/featureQuery.test.js",
+      "nloc": 448,
+      "concrete_method_count": 32,
+      "total_cyclomatic_complexity": 137,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 7,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 5,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/char.mjs",
+          "qualified_name": "isTashkeelArabicChar",
+          "start_line": 25
+        },
+        {
+          "file": "src/tokenizer.mjs",
+          "qualified_name": "ContextParams",
+          "start_line": 55
+        }
+      ],
+      "total_call_sites": 108,
+      "unresolved_project_candidate_call_sites": 6,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/latn/contextCheck/latinWord.mjs",
+      "test_file": "test/features/latn/contextCheck/latinWord.test.js",
+      "nloc": 20,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/latn/latinLigatures.mjs",
+      "test_file": "test/features/latn/latinLigatures.test.js",
+      "nloc": 25,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/thai/contextCheck/thaiWord.mjs",
+      "test_file": "test/features/thai/contextCheck/thaiWord.test.js",
+      "nloc": 20,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/thai/thaiGlyphComposition.mjs",
+      "test_file": "test/features/thai/thaiGlyphComposition.test.js",
+      "nloc": 25,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/thai/thaiLigatures.mjs",
+      "test_file": "test/features/thai/thaiLigatures.test.js",
+      "nloc": 25,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/thai/thaiRequiredLigatures.mjs",
+      "test_file": "test/features/thai/thaiRequiredLigatures.test.js",
+      "nloc": 25,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/unicode/contextCheck/variationSequenceCheck.mjs",
+      "test_file": "test/features/unicode/contextCheck/variationSequenceCheck.test.js",
+      "nloc": 28,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/features/unicode/variationSequences.mjs",
+      "test_file": "test/features/unicode/variationSequences.test.js",
+      "nloc": 22,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/font.mjs",
+      "test_file": "test/font.test.js",
+      "nloc": 391,
+      "concrete_method_count": 37,
+      "total_cyclomatic_complexity": 126,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 17,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 15,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "GlyphSet",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "Position",
+          "candidate_files": [
+            "src/position.mjs"
+          ]
+        },
+        {
+          "callee": "Substitution",
+          "candidate_files": [
+            "src/substitution.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Bidi",
+          "candidate_files": [
+            "src/bidi.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "DefaultEncoding",
+          "start_line": 196
+        },
+        {
+          "file": "src/tables/cff.mjs",
+          "qualified_name": "applyPaintType",
+          "start_line": 611
+        }
+      ],
+      "total_call_sites": 94,
+      "unresolved_project_candidate_call_sites": 15,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/glyph.mjs",
+      "test_file": "test/glyph.test.js",
+      "nloc": 327,
+      "concrete_method_count": 20,
+      "total_cyclomatic_complexity": 120,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 21,
+      "resolved_cross_file_internal_method_fanout": 2,
+      "unresolved_cross_file_candidate_call_sites": 19,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "exec",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "line",
+          "candidate_files": [
+            "src/draw.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "getTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/tables/cpal.mjs",
+          "qualified_name": "formatColor",
+          "start_line": 269
+        },
+        {
+          "file": "src/tables/cpal.mjs",
+          "qualified_name": "getPaletteColor",
+          "start_line": 68
+        }
+      ],
+      "total_call_sites": 83,
+      "unresolved_project_candidate_call_sites": 19,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/glyphset.mjs",
+      "test_file": "test/glyphset.test.js",
+      "nloc": 101,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 28,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/hintingtt.mjs",
+      "test_file": "test/hintingtt.test.js",
+      "nloc": 1827,
+      "concrete_method_count": 136,
+      "total_cyclomatic_complexity": 446,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 3,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 3,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "getPath",
+          "candidate_files": [
+            "src/tables/glyf.mjs"
+          ]
+        },
+        {
+          "callee": "getCvarTransform",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 449,
+      "unresolved_project_candidate_call_sites": 3,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/index.mjs",
+      "test_file": "test/index.test.js",
+      "nloc": 3,
+      "concrete_method_count": 0,
+      "total_cyclomatic_complexity": 0,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/layers.mjs",
+      "test_file": "test/layers.test.js",
+      "nloc": 133,
+      "concrete_method_count": 5,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/layout.mjs",
+      "test_file": "test/layout.test.js",
+      "nloc": 219,
+      "concrete_method_count": 15,
+      "total_cyclomatic_complexity": 66,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/opentype.mjs",
+      "test_file": "test/opentype.test.js",
+      "nloc": 379,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 77,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 48,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 45,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Font",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getTag",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "CmapEncoding",
+          "start_line": 222
+        },
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "GlyphNames",
+          "start_line": 262
+        },
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "addGlyphNames",
+          "start_line": 357
+        }
+      ],
+      "total_call_sites": 114,
+      "unresolved_project_candidate_call_sites": 45,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/palettes.mjs",
+      "test_file": "test/palettes.test.js",
+      "nloc": 177,
+      "concrete_method_count": 7,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/parse.mjs",
+      "test_file": "test/parse.test.js",
+      "nloc": 826,
+      "concrete_method_count": 77,
+      "total_cyclomatic_complexity": 176,
+      "callable_entry_count": 11,
+      "cross_file_internal_method_fanout": 7,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 7,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "recordList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 206,
+      "unresolved_project_candidate_call_sites": 7,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/path.mjs",
+      "test_file": "test/path.test.js",
+      "nloc": 513,
+      "concrete_method_count": 26,
+      "total_cyclomatic_complexity": 173,
+      "callable_entry_count": 1,
+      "cross_file_internal_method_fanout": 3,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 3,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "BoundingBox",
+          "candidate_files": [
+            "src/bbox.mjs"
+          ]
+        },
+        {
+          "callee": "parse",
+          "candidate_files": [
+            "src/tables/cff.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 111,
+      "unresolved_project_candidate_call_sites": 3,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/position.mjs",
+      "test_file": "test/position.test.js",
+      "nloc": 44,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 16,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/substitution.mjs",
+      "test_file": "test/substitution.test.js",
+      "nloc": 248,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/svgimages.mjs",
+      "test_file": "test/svgimages.test.js",
+      "nloc": 137,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 26,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/table.mjs",
+      "test_file": "test/table.test.js",
+      "nloc": 174,
+      "concrete_method_count": 17,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/avar.mjs",
+      "test_file": "test/tables/avar.test.js",
+      "nloc": 70,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 10,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/cff.mjs",
+      "test_file": "test/tables/cff.test.js",
+      "nloc": 1382,
+      "concrete_method_count": 45,
+      "total_cyclomatic_complexity": 324,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 30,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 29,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getByte",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getOffset",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getBytes",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getByte",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getOffset",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getByte",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getBytes",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Path",
+          "candidate_files": [
+            "src/path.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "extend",
+          "candidate_files": [
+            "src/palettes.mjs"
+          ]
+        },
+        {
+          "callee": "getBlendVector",
+          "candidate_files": [
+            "src/variationprocessor.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getBytes",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "GlyphSet",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "cffGlyphLoader",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "cffGlyphLoader",
+          "candidate_files": [
+            "src/glyphset.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/encoding.mjs",
+          "qualified_name": "CffEncoding",
+          "start_line": 241
+        }
+      ],
+      "total_call_sites": 423,
+      "unresolved_project_candidate_call_sites": 29,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/cmap.mjs",
+      "test_file": "test/tables/cmap.test.js",
+      "nloc": 333,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 75,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 20,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 19,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "skip",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "skip",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getUShort",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "getULong",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/tables/name.mjs",
+          "qualified_name": "getEncoding",
+          "start_line": 607
+        }
+      ],
+      "total_call_sites": 88,
+      "unresolved_project_candidate_call_sites": 19,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/colr.mjs",
+      "test_file": "test/tables/colr.test.js",
+      "nloc": 52,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/cpal.mjs",
+      "test_file": "test/tables/cpal.test.js",
+      "nloc": 269,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 78,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/cvar.mjs",
+      "test_file": "test/tables/cvar.test.js",
+      "nloc": 23,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/fvar.mjs",
+      "test_file": "test/tables/fvar.test.js",
+      "nloc": 124,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/gasp.mjs",
+      "test_file": "test/tables/gasp.test.js",
+      "nloc": 30,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/gdef.mjs",
+      "test_file": "test/tables/gdef.test.js",
+      "nloc": 52,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 15,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/glyf.mjs",
+      "test_file": "test/tables/glyf.test.js",
+      "nloc": 285,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 56,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/gpos.mjs",
+      "test_file": "test/tables/gpos.test.js",
+      "nloc": 105,
+      "concrete_method_count": 13,
+      "total_cyclomatic_complexity": 21,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/gsub.mjs",
+      "test_file": "test/tables/gsub.test.js",
+      "nloc": 361,
+      "concrete_method_count": 31,
+      "total_cyclomatic_complexity": 61,
+      "callable_entry_count": 2,
+      "cross_file_internal_method_fanout": 78,
+      "resolved_cross_file_internal_method_fanout": 1,
+      "unresolved_cross_file_candidate_call_sites": 77,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "fail",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ClassDef",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Coverage",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "assert",
+          "candidate_files": [
+            "src/font.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "tableList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ushortList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "ScriptList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "FeatureList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "LookupList",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 1,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/parse.mjs",
+          "qualified_name": "Parser",
+          "start_line": 122
+        }
+      ],
+      "total_call_sites": 195,
+      "unresolved_project_candidate_call_sites": 77,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/gvar.mjs",
+      "test_file": "test/tables/gvar.test.js",
+      "nloc": 27,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 5,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/head.mjs",
+      "test_file": "test/tables/head.test.js",
+      "nloc": 54,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/hhea.mjs",
+      "test_file": "test/tables/hhea.test.js",
+      "nloc": 43,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 2,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/hmtx.mjs",
+      "test_file": "test/tables/hmtx.test.js",
+      "nloc": 50,
+      "concrete_method_count": 4,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/hvar.mjs",
+      "test_file": "test/tables/hvar.test.js",
+      "nloc": 35,
+      "concrete_method_count": 6,
+      "total_cyclomatic_complexity": 7,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/kern.mjs",
+      "test_file": "test/tables/kern.test.js",
+      "nloc": 53,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/loca.mjs",
+      "test_file": "test/tables/loca.test.js",
+      "nloc": 15,
+      "concrete_method_count": 1,
+      "total_cyclomatic_complexity": 4,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/ltag.mjs",
+      "test_file": "test/tables/ltag.test.js",
+      "nloc": 42,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/maxp.mjs",
+      "test_file": "test/tables/maxp.test.js",
+      "nloc": 31,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 3,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/meta.mjs",
+      "test_file": "test/tables/meta.test.js",
+      "nloc": 44,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 6,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/name.mjs",
+      "test_file": "test/tables/name.test.js",
+      "nloc": 747,
+      "concrete_method_count": 11,
+      "total_cyclomatic_complexity": 64,
+      "callable_entry_count": 4,
+      "cross_file_internal_method_fanout": 2,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 2,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "Parser",
+          "candidate_files": [
+            "src/parse.mjs"
+          ]
+        },
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 47,
+      "unresolved_project_candidate_call_sites": 2,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/os2.mjs",
+      "test_file": "test/tables/os2.test.js",
+      "nloc": 236,
+      "concrete_method_count": 3,
+      "total_cyclomatic_complexity": 9,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/post.mjs",
+      "test_file": "test/tables/post.test.js",
+      "nloc": 67,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 11,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/sfnt.mjs",
+      "test_file": "test/tables/sfnt.test.js",
+      "nloc": 332,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 72,
+      "callable_entry_count": 3,
+      "cross_file_internal_method_fanout": 6,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 6,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "Table",
+          "candidate_files": [
+            "src/table.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "getUnicodeRange",
+          "candidate_files": [
+            "src/tables/os2.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 83,
+      "unresolved_project_candidate_call_sites": 6,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/stat.mjs",
+      "test_file": "test/tables/stat.test.js",
+      "nloc": 203,
+      "concrete_method_count": 14,
+      "total_cyclomatic_complexity": 24,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tables/svg.mjs",
+      "test_file": "test/tables/svg.test.js",
+      "nloc": 83,
+      "concrete_method_count": 2,
+      "total_cyclomatic_complexity": 12,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": false,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tiny-inflate@1.0.3.esm.mjs",
+      "test_file": "test/tiny-inflate@1.0.3.esm.test.js",
+      "nloc": 220,
+      "concrete_method_count": 12,
+      "total_cyclomatic_complexity": 55,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/tokenizer.mjs",
+      "test_file": "test/tokenizer.test.js",
+      "nloc": 322,
+      "concrete_method_count": 43,
+      "total_cyclomatic_complexity": 94,
+      "callable_entry_count": 5,
+      "cross_file_internal_method_fanout": 0,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 0,
+      "unresolved_cross_file_candidate_call_site_details": [],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 91,
+      "unresolved_project_candidate_call_sites": 0,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/types.mjs",
+      "test_file": "test/types.test.js",
+      "nloc": 563,
+      "concrete_method_count": 48,
+      "total_cyclomatic_complexity": 140,
+      "callable_entry_count": 0,
+      "cross_file_internal_method_fanout": 13,
+      "resolved_cross_file_internal_method_fanout": 0,
+      "unresolved_cross_file_candidate_call_sites": 13,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "exec",
+          "candidate_files": [
+            "src/hintingtt.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "set",
+          "candidate_files": [
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "set",
+          "candidate_files": [
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        },
+        {
+          "callee": "argument",
+          "candidate_files": [
+            "src/check.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 0,
+      "resolved_cross_file_dependencies": [],
+      "total_call_sites": 101,
+      "unresolved_project_candidate_call_sites": 13,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/util.mjs",
+      "test_file": "test/util.test.js",
+      "nloc": 97,
+      "concrete_method_count": 9,
+      "total_cyclomatic_complexity": 31,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/variation.mjs",
+      "test_file": "test/variation.test.js",
+      "nloc": 80,
+      "concrete_method_count": 10,
+      "total_cyclomatic_complexity": 14,
+      "extended_metrics_evaluated": false,
+      "cross_file_fanout_evaluated": false,
+      "predicates": {
+        "nloc": false,
+        "concrete_method_count": true,
+        "callable_entry_count": false,
+        "total_cyclomatic_complexity": false,
+        "cross_file_internal_method_fanout": false
+      },
+      "selected": false
+    },
+    {
+      "target_type": "source_file",
+      "src_file": "src/variationprocessor.mjs",
+      "test_file": "test/variationprocessor.test.js",
+      "nloc": 387,
+      "concrete_method_count": 18,
+      "total_cyclomatic_complexity": 126,
+      "callable_entry_count": 17,
+      "cross_file_internal_method_fanout": 12,
+      "resolved_cross_file_internal_method_fanout": 3,
+      "unresolved_cross_file_candidate_call_sites": 9,
+      "unresolved_cross_file_candidate_call_site_details": [
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "Glyph",
+          "candidate_files": [
+            "src/glyph.mjs"
+          ]
+        },
+        {
+          "callee": "Glyph",
+          "candidate_files": [
+            "src/glyph.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        },
+        {
+          "callee": "get",
+          "candidate_files": [
+            "src/layers.mjs",
+            "src/palettes.mjs",
+            "src/svgimages.mjs",
+            "src/variation.mjs"
+          ]
+        }
+      ],
+      "cross_file_internal_file_fanout": 2,
+      "resolved_cross_file_dependencies": [
+        {
+          "file": "src/tables/glyf.mjs",
+          "qualified_name": "getPath",
+          "start_line": 220
+        },
+        {
+          "file": "src/tables/glyf.mjs",
+          "qualified_name": "transformPoints",
+          "start_line": 187
+        },
+        {
+          "file": "src/util.mjs",
+          "qualified_name": "copyComponent",
+          "start_line": 117
+        }
+      ],
+      "total_call_sites": 65,
+      "unresolved_project_candidate_call_sites": 9,
+      "extended_metrics_evaluated": true,
+      "cross_file_fanout_evaluated": true,
+      "predicates": {
+        "nloc": true,
+        "concrete_method_count": true,
+        "callable_entry_count": true,
+        "total_cyclomatic_complexity": true,
+        "cross_file_internal_method_fanout": true
+      },
+      "selected": true
+    }
+  ],
+  "index_skipped": []
+}
