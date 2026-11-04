@@ -1,0 +1,16 @@
+[
+  {
+    "name": "calPdfPathPoint",
+    "original_status": "equivalent_mutation",
+    "corrected_status": "accepted_manual_review",
+    "reason": "The final mutation adds composite boundary/CTM processing to A arc points; this can change observable endpoint coordinates.",
+    "missing_coverage": "A point with compositeObjectBoundary or compositeObjectCTM"
+  },
+  {
+    "name": "calPdfTextCoordinate",
+    "original_status": "equivalent_mutation",
+    "corrected_status": "accepted_manual_review",
+    "reason": "The final mutation makes DeltaY fallback depend on DeltaX length under CTM, changing observable vertical offsets for mismatched delta lists.",
+    "missing_coverage": "hasCtm=true with DeltaX shorter than DeltaY"
+  }
+]
