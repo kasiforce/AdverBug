@@ -27,6 +27,24 @@ done < <(find . -type f -name '*.java' -print0)
 
 cp -a /eval-input/files/. /testbed/
 
+if [[ -d /eval-input/bug_patch ]]; then
+    BUG_SOURCE="$(tr -d '\r\n' < /eval-input/bug_patch/src_file.txt)"
+    case "$BUG_SOURCE" in
+        ""|/*|*../*|../*) PATCH_EXIT=3 ;;
+        *)
+            perl /eval/java_apply_bug.pl "/testbed/$BUG_SOURCE" \
+                /eval-input/bug_patch/original_code.txt \
+                /eval-input/bug_patch/buggy_code.txt \
+                > /results/bug_patch.log 2>&1
+            PATCH_EXIT=$?
+            ;;
+    esac
+    printf '%s\n' "$PATCH_EXIT" > /results/bug_patch_exit_code.txt
+    if [[ $PATCH_EXIT -ne 0 ]]; then
+        exit 0
+    fi
+fi
+
 TEST_FILE="$(tr -d '\r\n' < /eval-input/test_file.txt)"
 TEST_CLASS="$(basename "$TEST_FILE" .java)"
 TEST_DIR="$(dirname "$TEST_FILE")"

@@ -32,6 +32,7 @@ except ImportError:  # Reported explicitly in the output instead of aborting eva
 
 EVAL_DIR = Path(__file__).resolve().parent
 INSTANCE_SCRIPT = EVAL_DIR / "java_eval_container.sh"
+BUG_PATCH_SCRIPT = EVAL_DIR / "java_apply_bug.pl"
 MERGE_SCRIPT = EVAL_DIR / "java_merge_coverage.sh"
 DEFAULT_JACOCO_VERSION = "0.8.14"
 
@@ -51,7 +52,14 @@ def _safe_name(value: str, max_length: int = 70) -> str:
 def _instance_id(index: int, item: dict[str, Any]) -> str:
     identity = "|".join(
         str(item.get(key, ""))
-        for key in ("src_file", "class_name", "method_key", "name", "start_line")
+        for key in (
+            "src_file",
+            "class_name",
+            "method_key",
+            "name",
+            "start_line",
+            "evaluation_code_variant",
+        )
     )
     digest = hashlib.sha1(identity.encode("utf-8")).hexdigest()[:10]
     return f"{index:04d}_{_safe_name(str(item.get('name', 'method')), 35)}_{digest}"
@@ -274,6 +282,111 @@ def _stage_item(item: dict[str, Any], stage_dir: Path) -> None:
         config_path = _safe_relative_path(str(config["path"]), "generated_config_files.path")
         _write_text(stage_dir / "files" / Path(*config_path.parts), str(config.get("code", "")))
 
+    bug_patch = item.get("bug_patch")
+    if bug_patch is not None:
+        if not isinstance(bug_patch, dict):
+            raise ValueError("bug_patch must be an object")
+        src_file = _safe_relative_path(str(bug_patch.get("src_file", "")), "bug_patch.src_file")
+        original_code = str(bug_patch.get("original_code") or "")
+        buggy_code = str(bug_patch.get("buggy_code") or "")
+        if not original_code or not buggy_code:
+            raise ValueError("bug_patch original_code and buggy_code must be non-empty")
+        if original_code == buggy_code:
+            raise ValueError("bug_patch does not change the original code")
+        _write_text(stage_dir / "bug_patch" / "src_file.txt", src_file.as_posix() + "\n")
+        _write_text(stage_dir / "bug_patch" / "original_code.txt", original_code)
+        _write_text(stage_dir / "bug_patch" / "buggy_code.txt", buggy_code)
+
+
+def _last_buggy_code(value: Any) -> str:
+    if isinstance(value, str):
+        return value.strip()
+    if isinstance(value, list):
+        for candidate in reversed(value):
+            if isinstance(candidate, str) and candidate.strip():
+                return candidate.strip()
+    return ""
+
+
+def attach_bug_patches(
+    test_items: list[dict[str, Any]], bug_items: list[dict[str, Any]]
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Match generated tests to saved bugs and attach exact method replacements.
+
+    Matching first uses source file plus method signature.  A source/name/start-line
+    fallback supports older datasets that do not carry method_key.  Ambiguous bugs
+    are rejected instead of silently selecting the wrong mutation.
+    """
+    by_method: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    by_location: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
+    by_name: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for bug in bug_items:
+        src_file = str(bug.get("src_file") or "")
+        method_key = str(bug.get("method_key") or "")
+        name = str(bug.get("name") or "")
+        start_line = str(bug.get("start_line") or "")
+        if src_file and method_key:
+            by_method.setdefault((src_file, method_key), []).append(bug)
+        if src_file and name and start_line:
+            by_location.setdefault((src_file, name, start_line), []).append(bug)
+        if src_file and name:
+            by_name.setdefault((src_file, name), []).append(bug)
+
+    matched: list[dict[str, Any]] = []
+    unmatched: list[dict[str, Any]] = []
+    for item in test_items:
+        src_file = str(item.get("src_file") or "")
+        method_key = str(item.get("method_key") or "")
+        name = str(item.get("name") or "")
+        start_line = str(item.get("start_line") or "")
+        candidates: list[dict[str, Any]] = []
+        match_kind = ""
+        if src_file and method_key:
+            candidates = by_method.get((src_file, method_key), [])
+            match_kind = "src_file+method_key"
+        if not candidates and src_file and name and start_line:
+            candidates = by_location.get((src_file, name, start_line), [])
+            match_kind = "src_file+name+start_line"
+        if not candidates and src_file and name:
+            candidates = by_name.get((src_file, name), [])
+            match_kind = "src_file+name"
+
+        if not candidates:
+            unmatched.append(
+                {
+                    "instance_id": (item.get("mini_swe_agent") or {}).get("instance_id"),
+                    "name": name,
+                    "method_key": method_key,
+                    "src_file": src_file,
+                    "reason": "no_matching_bug",
+                }
+            )
+            continue
+        if len(candidates) != 1:
+            raise ValueError(
+                f"Ambiguous bug match ({match_kind}) for {src_file} {method_key or name}: "
+                f"{len(candidates)} candidates"
+            )
+
+        bug = candidates[0]
+        original_code = str(bug.get("code") or "")
+        buggy_code = _last_buggy_code(bug.get("buggy_code"))
+        if not original_code or not buggy_code:
+            raise ValueError(
+                f"Matched bug for {src_file} {method_key or name} has empty code or buggy_code"
+            )
+        patched = dict(item)
+        patched["evaluation_code_variant"] = "buggy"
+        patched["bug_patch"] = {
+            "src_file": src_file,
+            "original_code": original_code,
+            "buggy_code": buggy_code,
+            "match_kind": match_kind,
+            "bug_summary": bug.get("bug_summary"),
+        }
+        matched.append(patched)
+    return matched, unmatched
+
 
 def analyse_java_syntax(item: dict[str, Any]) -> dict[str, Any]:
     """Parse the complete generated test as a Java compilation unit.
@@ -372,6 +485,8 @@ def evaluate_instance(
             f"{run_dir}:/results",
             "-v",
             f"{INSTANCE_SCRIPT}:/eval/java_eval_container.sh:ro",
+            "-v",
+            f"{BUG_PATCH_SCRIPT}:/eval/java_apply_bug.pl:ro",
             "-e",
             f"JACOCO_VERSION={jacoco_version}",
             image,
@@ -401,6 +516,11 @@ def evaluate_instance(
             )
             raise
 
+        patch_requested = item.get("evaluation_code_variant") == "buggy"
+        patch_exit = _read_int(run_dir / "bug_patch_exit_code.txt")
+        evaluation["code_variant"] = "buggy" if patch_requested else "original"
+        evaluation["bug_patch_exit_code"] = patch_exit
+        evaluation["bug_applied"] = patch_requested and patch_exit == 0
         compile_exit = _read_int(run_dir / "compile_exit_code.txt")
         test_exit = _read_int(run_dir / "test_exit_code.txt")
         evaluation["compile_exit_code"] = compile_exit
@@ -418,8 +538,22 @@ def evaluate_instance(
             and junit["errors"] == 0
         )
 
+        if patch_requested:
+            if patch_exit != 0:
+                evaluation["mutation_outcome"] = "patch_failed"
+            elif compile_exit != 0:
+                evaluation["mutation_outcome"] = "compile_failed"
+            elif junit["total"] > 0 and (junit["failures"] > 0 or junit["errors"] > 0):
+                evaluation["mutation_outcome"] = "killed"
+            elif evaluation["test_pass"]:
+                evaluation["mutation_outcome"] = "survived"
+            else:
+                evaluation["mutation_outcome"] = "inconclusive"
+
         if evaluation["failure_stage"] is None:
-            if compile_exit is None:
+            if patch_requested and patch_exit != 0:
+                evaluation["failure_stage"] = "bug_patch"
+            elif compile_exit is None:
                 evaluation["failure_stage"] = "infrastructure"
             elif compile_exit != 0:
                 evaluation["failure_stage"] = "compile"
@@ -456,7 +590,7 @@ def evaluate_instance(
                         "=== docker stderr ===\n" + completed.stderr,
                     ]
                 )
-            for name in ("compile.log", "test.log", "coverage.log"):
+            for name in ("bug_patch.log", "compile.log", "test.log", "coverage.log"):
                 log_path = run_dir / name
                 if log_path.is_file():
                     log_parts.append(f"=== {name} ===\n" + log_path.read_text(encoding="utf-8", errors="replace"))
@@ -638,6 +772,21 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
     if not isinstance(source_items, list):
         raise ValueError("The generated-test JSON must contain a top-level list")
     source_target_count = len(source_items)
+    unmatched_bug_targets: list[dict[str, Any]] = []
+    bug_data_file: Path | None = None
+    if args.bug_data_file:
+        bug_data_file = args.bug_data_file.resolve()
+        bug_items = json.loads(bug_data_file.read_text(encoding="utf-8"))
+        if not isinstance(bug_items, list):
+            raise ValueError("The bug JSON must contain a top-level list")
+        source_items, unmatched_bug_targets = attach_bug_patches(source_items, bug_items)
+        print(
+            f"Bug filter: matched {len(source_items)}/{source_target_count} generated-test targets; "
+            f"skipped {len(unmatched_bug_targets)} without a saved bug",
+            flush=True,
+        )
+    bug_matched_count = len(source_items) if args.bug_data_file else 0
+    generation_candidate_count = len(source_items)
     if args.only_successfully_generated:
         source_items = [
             item
@@ -645,11 +794,11 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
             if (item.get("mini_swe_agent") or {}).get("exit_status") == "Submitted"
         ]
         print(
-            f"Generation filter: evaluating {len(source_items)}/{source_target_count} "
+            f"Generation filter: evaluating {len(source_items)}/{generation_candidate_count} "
             "items with exit_status=Submitted",
             flush=True,
         )
-    skipped_generation_count = source_target_count - len(source_items)
+    skipped_generation_count = generation_candidate_count - len(source_items)
 
     if args.resume and evaluated_path.is_file():
         previous = json.loads(evaluated_path.read_text(encoding="utf-8"))
@@ -669,7 +818,12 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
                 refreshed = dict(source_item)
                 instance_id = (source_item.get("mini_swe_agent") or {}).get("instance_id")
                 previous_item = previous_by_instance_id.get(instance_id) or {}
-                if previous_item.get("evaluation"):
+                previous_evaluation = previous_item.get("evaluation") or {}
+                wanted_variant = str(source_item.get("evaluation_code_variant") or "original")
+                if (
+                    previous_evaluation
+                    and previous_evaluation.get("code_variant", "original") == wanted_variant
+                ):
                     refreshed["evaluation"] = previous_item["evaluation"]
                     reused += 1
                 results.append(refreshed)
@@ -734,7 +888,14 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
 
     merge_summaries: dict[str, Any] = {}
     file_coverage: dict[str, Any] = {}
-    if not args.no_merge:
+    merge_disabled_for_buggy_code = bool(args.bug_data_file and not args.no_merge)
+    if merge_disabled_for_buggy_code:
+        print(
+            "Buggy-code mode: skipping merged coverage because the fresh merge container "
+            "contains original class files. Per-instance coverage remains available.",
+            flush=True,
+        )
+    if not args.no_merge and not args.bug_data_file:
         for kind in ("all_executed", "passing"):
             status = merge_coverage(
                 image=args.image,
@@ -755,6 +916,8 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
     syntax_parser_available = _get_tree_sitter_parser is not None
     summary = {
         "input": str(data_file),
+        "code_variant": "buggy" if args.bug_data_file else "original",
+        "bug_input": str(bug_data_file) if bug_data_file else None,
         "image": args.image,
         "source_target_count": source_target_count,
         "skipped_generation_count": skipped_generation_count,
@@ -763,6 +926,21 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
         "compile_pass_count": sum(entry.get("compile_pass") is True for entry in evaluated),
         "test_pass_count": sum(entry.get("test_pass") is True for entry in evaluated),
         "exec_count": sum(bool(entry.get("jacoco_exec")) for entry in evaluated),
+        "bug_matching": {
+            "matched_count": bug_matched_count,
+            "unmatched_count": len(unmatched_bug_targets),
+            "unmatched_targets": unmatched_bug_targets,
+        },
+        "mutation_outcomes": {
+            outcome: sum(entry.get("mutation_outcome") == outcome for entry in evaluated)
+            for outcome in (
+                "killed",
+                "survived",
+                "compile_failed",
+                "patch_failed",
+                "inconclusive",
+            )
+        },
         "syntax": {
             "parser": "tree-sitter-java",
             "parser_available": syntax_parser_available,
@@ -772,6 +950,7 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
             "correct_rate": syntax_correct / len(syntax_results) if syntax_results else 0.0,
         },
         "merge": merge_summaries,
+        "merge_disabled_for_buggy_code": merge_disabled_for_buggy_code,
     }
     _atomic_json_dump(evaluated_path, results)
     _atomic_json_dump(output_dir / "file_coverage.json", file_coverage)
@@ -784,6 +963,14 @@ def build_parser() -> argparse.ArgumentParser:
         description="Evaluate each generated Java test in a fresh container and merge JaCoCo exec data."
     )
     parser.add_argument("--data-file", type=Path, required=True, help="Generated-test JSON")
+    parser.add_argument(
+        "--bug-data-file",
+        type=Path,
+        help=(
+            "Saved-bug JSON containing code and buggy_code. Matching generated tests are "
+            "run against buggy_code; unmatched tests are skipped."
+        ),
+    )
     parser.add_argument("--image", help="Prebuilt project image")
     parser.add_argument("--dockerfile", type=Path, help="Build an image from this Dockerfile first")
     parser.add_argument("--build-context", type=Path, default=Path("."))

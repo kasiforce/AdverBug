@@ -2,8 +2,8 @@
 """Prototype dynamic direct-call coverage for Java function-level targets.
 
 This is intentionally separate from ``eval_java.py``.  It reuses the existing
-isolated Java evaluation container, adds a small Java agent through
-``JAVA_TOOL_OPTIONS``, and records runtime caller-to-callee edges.  JaCoCo's
+isolated Java evaluation container, adds a small Java agent through Maven's
+agent argument, and records runtime caller-to-callee edges.  JaCoCo's
 method counters are then attached to the directly called production methods.
 
 The result is deliberately limited to direct calls observed at runtime.  Calls
@@ -34,6 +34,7 @@ from eval_java import _copy_if_present, _safe_name, _stage_item
 EVAL_DIR = Path(__file__).resolve().parent
 INSTANCE_SCRIPT = EVAL_DIR / "java_eval_container.sh"
 DEFAULT_JACOCO_VERSION = "0.8.14"
+ASM_JAR = EVAL_DIR / "vendor" / "asm-9.8.jar"
 
 
 AGENT_SOURCE = r'''
@@ -47,11 +48,11 @@ import java.security.ProtectionDomain;
 import java.util.HashMap;
 import java.util.Map;
 
-import jdk.internal.org.objectweb.asm.ClassReader;
-import jdk.internal.org.objectweb.asm.ClassVisitor;
-import jdk.internal.org.objectweb.asm.ClassWriter;
-import jdk.internal.org.objectweb.asm.MethodVisitor;
-import jdk.internal.org.objectweb.asm.Opcodes;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 public final class TraceAgent {
     public static void premain(String arguments, Instrumentation instrumentation) {
@@ -83,13 +84,8 @@ public final class TraceAgent {
 
     private static final class Transformer implements ClassFileTransformer {
         private final String prefix;
-        private final String targetClass;
-        private final String targetMethod;
-
         Transformer(String prefix, String targetClass, String targetMethod) {
             this.prefix = prefix;
-            this.targetClass = targetClass;
-            this.targetMethod = targetMethod;
         }
 
         @Override
@@ -107,32 +103,31 @@ public final class TraceAgent {
             try {
                 ClassReader reader = new ClassReader(classfileBuffer);
                 ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS);
-                ClassVisitor visitor = new ClassVisitor(Opcodes.ASM6, writer) {
+                ClassVisitor visitor = new ClassVisitor(Opcodes.ASM9, writer) {
                     @Override
                     public MethodVisitor visitMethod(
                             int access, String name, String descriptor,
                             String signature, String[] exceptions) {
                         MethodVisitor delegate = super.visitMethod(
                                 access, name, descriptor, signature, exceptions);
-                        final boolean isTarget = className.equals(targetClass)
-                                && name.equals(targetMethod);
                         // Injecting before invokespecial in a constructor can
                         // violate the JVM's uninitialized-this rules.
                         if ("<init>".equals(name) || "<clinit>".equals(name)
                                 || (access & (Opcodes.ACC_ABSTRACT | Opcodes.ACC_NATIVE)) != 0) {
                             return delegate;
                         }
-                        return new MethodVisitor(Opcodes.ASM6, delegate) {
+                        return new MethodVisitor(Opcodes.ASM9, delegate) {
                             @Override
                             public void visitMethodInsn(
                                     int opcode, String owner, String calledName,
                                     String calledDescriptor, boolean isInterface) {
-                                if (isTarget && owner.startsWith(prefix)
+                                if (owner.startsWith(prefix)
                                         && !"<init>".equals(calledName)
                                         && !"<clinit>".equals(calledName)
                                         && !"$jacocoInit".equals(calledName)
                                         && !calledName.startsWith("access$")) {
-                                    Trace.recordStatic(owner, calledName, calledDescriptor);
+                                    Trace.recordStatic(
+                                            className, name, owner, calledName, calledDescriptor);
                                 }
                                 super.visitMethodInsn(
                                         opcode, owner, calledName, calledDescriptor, isInterface);
@@ -217,12 +212,17 @@ public final class TraceAgent {
         }
 
         public static synchronized void recordStatic(
+                String callerClass, String callerMethod,
                 String calleeClass, String calleeMethod, String descriptor) {
             if (writer == null) {
                 return;
             }
             try {
                 writer.write("S\t");
+                writer.write(callerClass);
+                writer.write('\t');
+                writer.write(callerMethod);
+                writer.write('\t');
                 writer.write(calleeClass);
                 writer.write('\t');
                 writer.write(calleeMethod);
@@ -246,16 +246,20 @@ def _build_agent(output_dir: Path) -> Path:
     classes_dir.mkdir(parents=True, exist_ok=True)
     source = source_dir / "TraceAgent.java"
     source.write_text(textwrap.dedent(AGENT_SOURCE), encoding="utf-8")
+    if not ASM_JAR.is_file():
+        raise FileNotFoundError(f"Java ASM dependency is missing: {ASM_JAR}")
     subprocess.run(
         [
             "javac",
-            "--add-exports=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED",
+            "-cp", str(ASM_JAR),
+            "--release", "8",
             "-d",
             str(classes_dir),
             str(source),
         ],
         check=True,
     )
+    subprocess.run(["jar", "xf", str(ASM_JAR)], cwd=classes_dir, check=True)
     manifest = output_dir / "agent-manifest.txt"
     manifest.write_text("Premain-Class: TraceAgent\nCan-Redefine-Classes: false\n\n", encoding="utf-8")
     jar = output_dir / "trace-agent.jar"
@@ -362,15 +366,18 @@ def _dynamic_edges(path: Path, item: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
-def _static_edges(path: Path) -> list[dict[str, str]]:
+def _static_edges(path: Path, item: dict[str, Any]) -> list[dict[str, str]]:
     if not path.is_file():
         return []
     edges: set[tuple[str, str, str]] = set()
     for raw in path.read_text(encoding="utf-8", errors="replace").splitlines():
         parts = raw.split("\t")
-        if len(parts) != 4 or parts[0] != "S":
+        if len(parts) != 6 or parts[0] != "S":
             continue
-        _, callee_class, callee_method, descriptor = parts
+        _, caller_class, caller_method, callee_class, callee_method, descriptor = parts
+        target_class = str(item.get("full_class_name") or "").replace(".", "/")
+        if caller_class != target_class or caller_method != str(item.get("name") or ""):
+            continue
         edges.add((callee_class, callee_method, descriptor))
     return [
         {
@@ -388,6 +395,39 @@ def _method_key(entry: dict[str, Any]) -> tuple[str, str, str]:
         str(entry["callee_method"]),
         str(entry["descriptor"]),
     )
+
+
+def _aggregate_candidate_coverage(
+    methods: dict[tuple[str, str, str], dict[str, Any]],
+    candidate_keys: set[tuple[str, str, str]],
+) -> dict[str, Any]:
+    """Aggregate JaCoCo counters for the statically or dynamically called methods.
+
+    Keep the denominator aligned with the Python dynamic-call evaluator: the
+    candidate set is S union D.  A candidate absent from the JaCoCo report is
+    reported through the match counts, but is not silently treated as a method
+    with zero executable lines or branches.
+    """
+    result: dict[str, Any] = {
+        "line": {"covered": 0, "total": 0, "rate": None},
+        "branch": {"covered": 0, "total": 0, "rate": None},
+        "matched_function_count": 0,
+        "unmatched_function_count": 0,
+    }
+    for key in candidate_keys:
+        coverage = methods.get(key)
+        if coverage is None:
+            result["unmatched_function_count"] += 1
+            continue
+        result["matched_function_count"] += 1
+        for kind in ("line", "branch"):
+            counter = coverage.get(kind) or {}
+            result[kind]["covered"] += int(counter.get("covered", 0) or 0)
+            result[kind]["total"] += int(counter.get("total", 0) or 0)
+    for kind in ("line", "branch"):
+        total = result[kind]["total"]
+        result[kind]["rate"] = result[kind]["covered"] / total if total else None
+    return result
 
 
 def _evaluate_one(
@@ -409,7 +449,6 @@ def _evaluate_one(
             "-v", f"{INSTANCE_SCRIPT}:/eval/java_eval_container.sh:ro",
             "-v", f"{agent_jar}:/trace/trace-agent.jar:ro",
             "-v", f"{agent_jar.with_name('mvn-wrapper')}:/trace-bin/mvn:ro",
-            "-e", "JAVA_TOOL_OPTIONS=--add-exports=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED",
             "-e", "PATH=/trace-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             "-e", "TRACE_AGENT_ARGUMENT=-javaagent:/trace/trace-agent.jar=output=/results/calls.tsv,prefix=" + prefix
                 + ",targetClass=" + str(item.get("full_class_name") or "").replace(".", "/")
@@ -441,7 +480,7 @@ def _evaluate_one(
         edge["coverage"] = methods.get(key)
         if edge["coverage"] is None:
             edge["coverage_status"] = "not_present_in_jacoco_report"
-    static_edges = _static_edges(run_dir / "calls.tsv")
+    static_edges = _static_edges(run_dir / "calls.tsv", item)
     for edge in static_edges:
         edge["coverage"] = methods.get(_method_key(edge))
         if edge["coverage"] is None:
@@ -449,7 +488,9 @@ def _evaluate_one(
     static_keys = {_method_key(edge) for edge in static_edges}
     dynamic_keys = {_method_key(edge) for edge in edges}
     candidate_keys = static_keys | dynamic_keys
+    candidate_coverage = _aggregate_candidate_coverage(methods, candidate_keys)
     called_function_coverage = {
+        "candidate_scope": "instrumented_project_methods",
         "static_called_function_count": len(static_keys),
         "executed_called_function_count": len(dynamic_keys),
         "candidate_called_function_count": len(candidate_keys),
@@ -459,6 +500,10 @@ def _evaluate_one(
         "static_and_dynamic_count": len(static_keys & dynamic_keys),
         "static_only_count": len(static_keys - dynamic_keys),
         "dynamic_only_count": len(dynamic_keys - static_keys),
+        "line": candidate_coverage["line"],
+        "branch": candidate_coverage["branch"],
+        "matched_function_count": candidate_coverage["matched_function_count"],
+        "unmatched_function_count": candidate_coverage["unmatched_function_count"],
     }
     result = {
         "instance_id": instance_id,

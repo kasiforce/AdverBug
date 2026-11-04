@@ -40,6 +40,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-files", type=int, default=10)
     parser.add_argument("--min-nloc", type=int, default=500)
     parser.add_argument("--min-callable-entries", type=int, default=1)
+    parser.add_argument("--min-total-cyclomatic-complexity", type=int, default=0)
     parser.add_argument(
         "--recursive-files",
         action="store_true",
@@ -90,6 +91,7 @@ def build_project_entries(
     recursive_files: bool = False,
     deepest_non_overlapping: bool = False,
     min_callable_entries: int = 1,
+    min_total_cyclomatic_complexity: int = 0,
 ) -> list[dict[str, Any]]:
     function_targets = json.loads(function_dataset.read_text(encoding="utf-8"))
     metrics_payload = json.loads(metrics_dataset.read_text(encoding="utf-8"))
@@ -161,6 +163,11 @@ def build_project_entries(
         nloc = sum(record.get("nloc", 0) for record in files)
         if nloc < min_nloc:
             continue
+        total_cyclomatic_complexity = sum(
+            record.get("total_cyclomatic_complexity", 0) for record in files
+        )
+        if total_cyclomatic_complexity < min_total_cyclomatic_complexity:
+            continue
         callable_entry_count = sum(
             callable_entries_by_file.get(record["src_file"], 0) for record in files
         )
@@ -181,9 +188,7 @@ def build_project_entries(
                 "concrete_method_count": sum(
                     record.get("concrete_method_count", 0) for record in files
                 ),
-                "total_cyclomatic_complexity": sum(
-                    record.get("total_cyclomatic_complexity", 0) for record in files
-                ),
+                "total_cyclomatic_complexity": total_cyclomatic_complexity,
                 "loc_ge_100_target_count": len(targets_by_module.get(module, [])),
                 "loc_ge_100_targets": [
                     compact_function_target(record)
@@ -234,6 +239,7 @@ def main() -> int:
                 args.recursive_files,
                 args.deepest_non_overlapping,
                 args.min_callable_entries,
+                args.min_total_cyclomatic_complexity,
             )
             if not records:
                 projects_without_targets.append(f"{language}/{project}")

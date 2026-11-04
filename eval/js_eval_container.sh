@@ -48,7 +48,7 @@ fi
 
 export NODE_OPTIONS="${NODE_OPTIONS:-} --experimental-vm-modules"
 set +e
-"${jest_command[@]}" \
+ADVER_TRACE_DISABLED=1 "${jest_command[@]}" \
   --runTestsByPath "$test_file" \
   --runInBand \
   --forceExit \
@@ -61,6 +61,14 @@ set +e
 test_exit=$?
 printf '%s\n' "$test_exit" > /results/test_exit_code.txt
 
+coverage_collect_args=(--collectCoverageFrom="$src_file")
+if [[ "${ADVER_TRACE_COLLECT_LOADED:-0}" == "1" ]]; then
+  # Dynamic-call evaluation needs Istanbul data for callees in other files.
+  # With no explicit pattern, Jest reports every production module loaded by
+  # this isolated generated test.
+  coverage_collect_args=()
+fi
+
 "${jest_command[@]}" \
   --runTestsByPath "$test_file" \
   --runInBand \
@@ -69,7 +77,7 @@ printf '%s\n' "$test_exit" > /results/test_exit_code.txt
   --outputFile=/results/coverage-report.json \
   --coverage \
   --coverageProvider="${JEST_COVERAGE_PROVIDER:-babel}" \
-  --collectCoverageFrom="$src_file" \
+  "${coverage_collect_args[@]}" \
   --coverageDirectory=/results/coverage \
   --coverageReporters=json \
   --coverageReporters=json-summary \

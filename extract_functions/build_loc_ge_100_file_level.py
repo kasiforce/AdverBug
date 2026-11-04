@@ -54,8 +54,8 @@ def parse_args() -> argparse.Namespace:
         "--fallback-empty-projects",
         action="store_true",
         help=(
-            "For a project with no eligible loc_ge_100 target file, select every production "
-            "file that meets the size thresholds."
+            "For a project with no eligible loc_ge_100 target file, select production "
+            "files that meet the hard thresholds."
         ),
     )
     parser.add_argument(
@@ -65,6 +65,15 @@ def parse_args() -> argparse.Namespace:
         help=(
             "When fallback is enabled, supplement projects having fewer than this many "
             "primary files with every other production file meeting the hard thresholds."
+        ),
+    )
+    parser.add_argument(
+        "--fallback-max-files",
+        type=int,
+        default=0,
+        help=(
+            "Maximum fallback files per project; 0 keeps every eligible fallback. "
+            "Candidates are ranked by total complexity, cross-file fanout, and NLOC."
         ),
     )
     parser.add_argument(
@@ -310,6 +319,8 @@ def filter_by_callable_entries(
 
 def main() -> int:
     args = parse_args()
+    if args.fallback_max_files < 0:
+        raise ValueError("--fallback-max-files must be non-negative")
     function_targets, projects = load_function_targets(args.loc_dataset)
     metrics, project_roots = load_file_metrics(
         args.file_metrics,
@@ -360,9 +371,20 @@ def main() -> int:
             if len(primary_records) >= args.fallback_min_primary_files:
                 continue
             existing_paths = {record["src_file"] for record in primary_records}
-            entries.setdefault(project, []).extend(
+            candidates = sorted(
+                (
                 record for record in records if record["src_file"] not in existing_paths
+                ),
+                key=lambda record: (
+                    -record["total_cyclomatic_complexity"],
+                    -record["cross_file_internal_method_fanout"],
+                    -record["nloc"],
+                    record["src_file"],
+                ),
             )
+            if args.fallback_max_files:
+                candidates = candidates[: args.fallback_max_files]
+            entries.setdefault(project, []).extend(candidates)
     write_entries(args.output, entries, projects)
     file_count = sum(len(records) for records in entries.values())
     function_count = sum(

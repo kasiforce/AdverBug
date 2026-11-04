@@ -32,8 +32,6 @@ agent:
 
     ## Dependency and Test Boundaries
 
-    - Use real, deterministic repository code and direct internal collaborators when practical. Do not mock
-      the target or mock every internal collaborator by default.
     - Control external, nondeterministic, unavailable, unsafe, or expensive boundaries with existing
       abstractions or lightweight substitutes such as in-memory implementations and temporary directories.
     - When replacing a collaborator, assert only behavior or interactions in the target's observable
@@ -52,12 +50,11 @@ agent:
 
     ## Test Quality Requirements
 
-    - Cover applicable normal cases, boundaries, invalid inputs, exceptions, side effects, and meaningful
-      internal collaborator paths.
+    - Cover applicable normal cases, boundaries, invalid inputs, exceptions, and observable side effects.
     - Use meaningful assertions; no assertion-free smoke tests, tautologies, or expected values that
       reproduce the production algorithm.
-    - Keep tests deterministic and independent; restore or isolate modified files, environment variables,
-      global state, clocks, randomness, and other shared resources.
+    - Keep tests deterministic and independent; isolate or restore test-controlled state such as temporary
+      files, environment variables, global state, clocks, randomness, and other shared resources.
     - Match the project layout and prefer distinct behavioral cases over redundant coverage.
 
     ## Recommended Workflow

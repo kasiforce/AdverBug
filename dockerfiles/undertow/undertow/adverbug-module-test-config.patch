@@ -1,0 +1,85 @@
+diff --git a/servlet/pom.xml b/servlet/pom.xml
+--- a/servlet/pom.xml
++++ b/servlet/pom.xml
+@@ -88,7 +88,32 @@
+         <dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <!-- AdverBug-generated tests use JUnit 5. -->
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-api</artifactId>
++            <version>5.10.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-engine</artifactId>
++            <version>5.10.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-core</artifactId>
++            <version>5.14.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-junit-jupiter</artifactId>
++            <version>5.14.2</version>
++            <scope>test</scope>
++        </dependency>
+ 
+         <dependency>
+             <groupId>org.apache.httpcomponents</groupId>
+diff --git a/websockets-jsr/pom.xml b/websockets-jsr/pom.xml
+--- a/websockets-jsr/pom.xml
++++ b/websockets-jsr/pom.xml
+@@ -86,7 +86,32 @@
+         <dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <!-- AdverBug-generated tests use JUnit 5. -->
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-api</artifactId>
++            <version>5.10.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-engine</artifactId>
++            <version>5.10.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-core</artifactId>
++            <version>5.14.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-junit-jupiter</artifactId>
++            <version>5.14.2</version>
++            <scope>test</scope>
++        </dependency>
+         <dependency>
+             <groupId>io.netty</groupId>
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml
++++ b/pom.xml
+@@ -320,6 +320,7 @@
+                     <artifactId>maven-surefire-plugin</artifactId>
+                     <version>${version.surefire.plugin}</version>
+                     <configuration>
+-                        <groups>${test.categories}</groups>
++                        <!-- Do not pass the JUnit 4 category expression to the
++                             JUnit 5 provider as a tag expression. -->
+                     </configuration>
+                 </plugin>
