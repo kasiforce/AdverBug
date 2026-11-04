@@ -1,0 +1,95 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24360 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] --------------------< io.undertow:undertow-servlet >--------------------
+[INFO] Building Undertow Servlet 2.5.0.Alpha1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ undertow-servlet ---
+[INFO] Deleting /testbed/servlet/target
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce-java-version) @ undertow-servlet ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.BannedRepositories passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce-maven-version) @ undertow-servlet ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce-no-release-files) @ undertow-servlet ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.files.RequireFilesDontExist passed
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (get-scm-revision) @ undertow-servlet ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Executing: /bin/sh -c cd '/testbed/servlet' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'
+[INFO] Working directory: /testbed/servlet
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of UNKNOWN : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: UNKNOWN at timestamp: 1793787635066
+[INFO] Executing: /bin/sh -c cd '/testbed/servlet' && 'git' 'symbolic-ref' 'HEAD'
+[INFO] Working directory: /testbed/servlet
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[INFO] Executing: /bin/sh -c cd '/testbed/servlet' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'
+[INFO] Working directory: /testbed/servlet
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- dependencypath:1.1.1:set (set-all) @ undertow-servlet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ undertow-servlet ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ undertow-servlet ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 166 source files with javac [forked debug release 17] to target/classes
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[27,15] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[27,15] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[27,15] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[27,15] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[37,33] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[37,33] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[37,33] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[37,33] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[250,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[250,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[250,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[250,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[253,84] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[254,23] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[262,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[262,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[262,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[262,19] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[264,30] Unsafe is internal proprietary API and may be removed in a future release
+[WARNING] /testbed/servlet/src/main/java/io/undertow/servlet/spec/ServletPrintWriterDelegate.java:[266,20] Unsafe is internal proprietary API and may be removed in a future release
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (check-style) @ undertow-servlet ---
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-releases (https://maven.java.net/content/repositories/releases/): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- bundle:6.0.2:manifest (generate-manifest) @ undertow-servlet ---
+[INFO] No MANIFEST.MF file found, generating manifest.
+[INFO] Writing manifest: /testbed/servlet/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ undertow-servlet ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] Copying 16 resources from src/test/java to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ undertow-servlet ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [forked debug release 17] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.499 s
+[INFO] Finished at: 2026-11-04T10:20:44Z
+[INFO] ------------------------------------------------------------------------
