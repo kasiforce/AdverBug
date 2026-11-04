@@ -57,15 +57,15 @@ TARGET_SCOPE_INSTRUCTIONS = {
         "increase their coverage."
     ),
     "source_file": (
-        "Exercise the externally meaningful behavior implemented by the specified source file. Prioritize "
+        "Exercise the externally observable behavior implemented by the specified source file. Prioritize "
         "its public functions, classes, and their interactions. Cover private helpers through those entry "
         "points unless they are themselves part of the file's observable contract."
     ),
     "module": (
-        "Exercise representative public APIs and workflows of the specified module, including meaningful "
+        "Exercise the public APIs and workflows of the specified module, including "
         "interactions between its internal components. Keep the suite focused on the named module instead "
         "of expanding into unrelated repository behavior. Treat the listed production files as the complete "
-        "module boundary, and do not attempt shallow coverage of every callable."
+        "module boundary."
     ),
 }
 
