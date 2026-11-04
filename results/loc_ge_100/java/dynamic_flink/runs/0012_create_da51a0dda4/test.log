@@ -1,0 +1,78 @@
+Picked up JAVA_TOOL_OPTIONS: --add-exports=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< org.apache.flink:flink-runtime >-------------------
+[INFO] Building Flink : Runtime 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ flink-runtime ---
+[INFO] flink.surefire.baseArgLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:+UseG1GC -Xms256m -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED -Djunit.platform.reflection.search.useLegacySemantics=true --sun-misc-unsafe-memory-access=allow --enable-native-access=ALL-UNNAMED
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-runtime ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-runtime ---
+[INFO] Spotless.Java is keeping 3267 files clean - 0 needs changes to be clean, 0 were already clean, 3267 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- git-commit-id:4.0.2:revision (get-the-git-infos) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-runtime ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-runtime ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-runtime ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-runtime ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-runtime ---
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources-filtered to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] The encoding used to copy filtered properties files has not been set. This means that the same encoding will be used to copy filtered properties files as when copying other filtered resources. This might not be what you want! Run your build with --debug to see which files might be affected. Read more at https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-runtime ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-runtime ---
+[INFO] Copying 377 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-runtime ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.2:test (default-test) @ flink-runtime ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+Picked up JAVA_TOOL_OPTIONS: --add-exports=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
+[INFO] Running org.apache.flink.runtime.io.network.partition.ResultPartitionFactoryCreateTests
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.406 s -- in org.apache.flink.runtime.io.network.partition.ResultPartitionFactoryCreateTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.118 s
+[INFO] Finished at: 2026-11-04T08:17:47Z
+[INFO] ------------------------------------------------------------------------
