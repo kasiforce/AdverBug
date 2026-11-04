@@ -1,0 +1,30 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset dataset/loc_ge_100_out_3_loose_file_level_nloc300_public_totalcc50_crossfile3_fallback_max5/js/bitcoinjs-lib.json --image adverbug-js-bitcoinjs-lib:loc100 --model deepseek/deepseek-flash --workers 2 --output-dataset results/file_level_final/deepseek_flash/js/bitcoinjs-lib.json --output results/file_level_final/deepseek_flash/js/bitcoinjs-lib_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to 'results/file_level_final/deepseek_flash/js/bitcoinjs-lib_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-d2680421 -w /testbed --rm adverbug-js-bitcoinjs-lib:loc100  
+sleep 45m                                                                       
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-76451116 -w /testbed --rm adverbug-js-bitcoinjs-lib:loc100  
+sleep 45m                                                                       
+minisweagent.environment: INFO: Started container minisweagent-d2680421 with ID 
+2b801a39a9993cf7bf85a5880d4e60248ed5245fb13cf3dcd45ec02a6111dd8b                
+minisweagent.environment: INFO: Started container minisweagent-76451116 with ID 
+9d50f5bcd66819f9747a5197e4f86a58e83613a08386558c4c7248fbe9a0d25e                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-eb2d9ce3 -w /testbed --rm adverbug-js-bitcoinjs-lib:loc100  
+sleep 45m                                                                       
+minisweagent.environment: INFO: Started container minisweagent-eb2d9ce3 with ID 
+f97b2b9056a917d1468703b1d18b8866a075df5b58e82ebb2b77dbceaa29c522                
+  Overall Progress ($0.22) ━━━━━━━━━━━━━━━━━━━━━━━ 3/3 100% 0:08:53 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     3 │ bitcoinjs-lib__transaction__2__2,                      │
+│             │       │ bitcoinjs-lib__tra...                                  │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+results/file_level_final/deepseek_flash/js/bitcoinjs-lib.json                   

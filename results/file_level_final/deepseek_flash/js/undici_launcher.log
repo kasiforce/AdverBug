@@ -1,0 +1,22 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset dataset/loc_ge_100_out_3_loose_file_level_nloc300_public_totalcc50_crossfile3_fallback_max5/js/undici.json --image adverbug-js-undici:check --model deepseek/deepseek-flash --workers 2 --output-dataset results/file_level_final/deepseek_flash/js/undici.json --output results/file_level_final/deepseek_flash/js/undici_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to 'results/file_level_final/deepseek_flash/js/undici_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-966736ff -w /testbed --rm adverbug-js-undici:check sleep 45m
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-27c86bad -w /testbed --rm adverbug-js-undici:check sleep 45m
+minisweagent.environment: INFO: Started container minisweagent-27c86bad with ID 
+1337cea60dc250f70788d0297753c770e54850c99669085cbbf0210df4ad4d00                
+minisweagent.environment: INFO: Started container minisweagent-966736ff with ID 
+63f5a30e916d2eda591d67b03699d5c2403c98cedc9e6eb76738e66cf5076916                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+  Overall Progress ($0.12) ━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:05:16 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     2 │ undici__receiver__1__1, undici__cache__0__0            │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+results/file_level_final/deepseek_flash/js/undici.json                          

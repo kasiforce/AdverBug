@@ -1,0 +1,46 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset dataset/loc_ge_100_out_3_loose_file_level_nloc300_public_totalcc50_crossfile3_fallback_max5/js/opentype.js.json --image adverbug-js-opentype:check --model deepseek/deepseek-flash --workers 2 --output-dataset results/file_level_final/deepseek_flash/js/opentype.js.json --output results/file_level_final/deepseek_flash/js/opentype.js_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to 'results/file_level_final/deepseek_flash/js/opentype.js_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-3a3a2753 -w /testbed --rm adverbug-js-opentype:check sleep  
+45m                                                                             
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-8fdfaaee -w /testbed --rm adverbug-js-opentype:check sleep  
+45m                                                                             
+minisweagent.environment: INFO: Started container minisweagent-8fdfaaee with ID 
+4c6c90e0435a4dba9a3b37e0d1f3d81f07a78c8c851993fe3f7edfc67f5356b9                
+minisweagent.environment: INFO: Started container minisweagent-3a3a2753 with ID 
+b3bb19b5c50b7ba81943a52808cd85101b5fb7765a9d27696b8dd77d5c71777a                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-e1b8b004 -w /testbed --rm adverbug-js-opentype:check sleep  
+45m                                                                             
+minisweagent.environment: INFO: Started container minisweagent-e1b8b004 with ID 
+51abead9d614e2ac604cd1a09cdd48ead51e6ae4632f5d5b1367c53878a10491                
+minisweagent: ERROR: Error processing opentype.js__cmap__2__2: Failed to delete 
+compiled test artifacts:                                                        
+Traceback (most recent call last):                                              
+  File                                                                          
+"/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/testgen
+.py", line 472, in process_instance                                             
+    removed_test_files = remove_existing_tests(env, language)                   
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                   
+  File                                                                          
+"/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/testgen
+.py", line 235, in remove_existing_tests                                        
+    raise RuntimeError(f"Failed to delete compiled test artifacts:              
+{artifact_cleanup['output']}")                                                  
+RuntimeError: Failed to delete compiled test artifacts:                         
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-841656b5 -w /testbed --rm adverbug-js-opentype:check sleep  
+45m                                                                             
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-ec6bd324 -w /testbed --rm adverbug-js-opentype:check sleep  
+45m                                                                             
+minisweagent.environment: INFO: Started container minisweagent-841656b5 with ID 
+77ea313eb27ff6dbc5813c135beec4e6505061da42f9109f2c8a508a0be29908                
+minisweagent.environment: INFO: Started container minisweagent-ec6bd324 with ID 
+2c011a2e639825abf5e2136973b671725d225e740340b4e51e379da7e3185ae6                

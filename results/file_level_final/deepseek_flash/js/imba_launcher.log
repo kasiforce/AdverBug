@@ -1,0 +1,22 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset dataset/loc_ge_100_out_3_loose_file_level_nloc300_public_totalcc50_crossfile3_fallback_max5/js/imba.json --image adverbug-js-imba:check --model deepseek/deepseek-flash --workers 2 --output-dataset results/file_level_final/deepseek_flash/js/imba.json --output results/file_level_final/deepseek_flash/js/imba_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to 'results/file_level_final/deepseek_flash/js/imba_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-50e23f9a -w /testbed --rm adverbug-js-imba:check sleep 45m  
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-213a56f4 -w /testbed --rm adverbug-js-imba:check sleep 45m  
+minisweagent.environment: INFO: Started container minisweagent-50e23f9a with ID 
+09719a7d0430d6893dd94c1ece868706800cf0f9d733418928e305c66ba42699                
+minisweagent.environment: INFO: Started container minisweagent-213a56f4 with ID 
+031b36128de50275352b560aea484855e550eee94c4490426e9d3826d3a07fda                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+  Overall Progress ($0.15) ━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:04:28 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     2 │ imba__inflate__0__0, imba__selparse__1__1              │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+results/file_level_final/deepseek_flash/js/imba.json                            

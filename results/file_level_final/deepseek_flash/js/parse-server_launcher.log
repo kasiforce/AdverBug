@@ -1,0 +1,36 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset dataset/loc_ge_100_out_3_loose_file_level_nloc300_public_totalcc50_crossfile3_fallback_max5/js/parse-server.json --image adverbug-js-parse-server:loc100 --model deepseek/deepseek-flash --workers 2 --output-dataset results/file_level_final/deepseek_flash/js/parse-server.json --output results/file_level_final/deepseek_flash/js/parse-server_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to 'results/file_level_final/deepseek_flash/js/parse-server_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-61dd4da7 -w /testbed --rm adverbug-js-parse-server:loc100   
+sleep 45m                                                                       
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-490b6460 -w /testbed --rm adverbug-js-parse-server:loc100   
+sleep 45m                                                                       
+minisweagent.environment: INFO: Started container minisweagent-490b6460 with ID 
+76d18fb2d5f9f8842c00f1a217baef91d99f5e50abc23806bae0adf472c2a3f3                
+minisweagent.environment: INFO: Started container minisweagent-61dd4da7 with ID 
+128c484b10753c0bb39a14b3f99b6ca580fd69c3b9fe6c8a4a85e262ba4b730c                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-73fe7301 -w /testbed --rm adverbug-js-parse-server:loc100   
+sleep 45m                                                                       
+minisweagent.environment: INFO: Started container minisweagent-73fe7301 with ID 
+4fe5885ddf365e4a2f4139871c22ae7cbce861f25cbd79de089068d8c59e54ea                
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-3059fd83 -w /testbed --rm adverbug-js-parse-server:loc100   
+sleep 45m                                                                       
+minisweagent.environment: INFO: Started container minisweagent-3059fd83 with ID 
+a66db673ef8af0c3a9fc54d773951f9101e8e7cf005efc7de2262e8f157923e4                
+  Overall Progress ($0.28) ━━━━━━━━━━━━━━━━━━━━━━━ 4/4 100% 0:08:58 eta: 0:00:00
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status         ┃ Count ┃ Most recent instances                          ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted           │     3 │ parse-server__middlewares__3__3,               │
+│                     │       │ parse-server__parse...                         │
+│ RepeatedFormatError │     1 │ parse-server__UsersRouter__2__2                │
+└─────────────────────┴───────┴────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+results/file_level_final/deepseek_flash/js/parse-server.json                    
