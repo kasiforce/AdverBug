@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Generate tests for function-level benchmark entries with mini-SWE-agent."""
+"""Generate tests for target-scoped benchmark entries with mini-SWE-agent."""
 
 import concurrent.futures
 import copy
@@ -25,10 +25,11 @@ from minisweagent.run.benchmarks.utils.common import ProgressTrackingAgent
 from minisweagent.utils.log import add_file_handler, logger
 from minisweagent.utils.serialize import UNSET, recursive_merge
 
-DEFAULT_CONFIG_FILE = builtin_config_dir / "benchmarks" / "testgen.yaml"
+DEFAULT_CONFIG_FILE = builtin_config_dir / "benchmarks" / "testgen_target_scoped.yaml"
 app = typer.Typer(rich_markup_mode="rich", add_completion=False)
 _RESULTS_LOCK = threading.Lock()
 _RUN_ARTIFACTS_LOCK = threading.Lock()
+TARGET_SCOPE_PROMPT_VERSION = "1"
 
 TEST_FRAMEWORKS = {
     "java": "JUnit 5",
@@ -39,17 +40,34 @@ TEST_FRAMEWORKS = {
 LANGUAGE_AGNOSTIC_TASK_TEMPLATE = """Testing framework:
 {test_framework}
 
-Target function:
-{target_function}
+Test target:
+{target}
 
-Production file:
-{production_file}
+Testing focus:
+{scope_contract}
 
-{target_class}
-
-Required test file:
-You MUST write the complete generated test suite to exactly `{required_test_file}`.
+{test_output_contract}
 """
+
+TARGET_SCOPE_INSTRUCTIONS = {
+    "function": (
+        "Exercise the specified function or method through its intended callable or public entry point. "
+        "Cover its observable outcomes, important branches, error paths, side effects, and meaningful "
+        "interactions with direct collaborators. Do not call out-of-scope helpers directly merely to "
+        "increase their coverage."
+    ),
+    "source_file": (
+        "Exercise the externally meaningful behavior implemented by the specified source file. Prioritize "
+        "its public functions, classes, and their interactions. Cover private helpers through those entry "
+        "points unless they are themselves part of the file's observable contract."
+    ),
+    "module": (
+        "Exercise representative public APIs and workflows of the specified module, including meaningful "
+        "interactions between its internal components. Keep the suite focused on the named module instead "
+        "of expanding into unrelated repository behavior. Treat the listed production files as the complete "
+        "module boundary, and do not attempt shallow coverage of every callable."
+    ),
+}
 
 TEST_DIRECTORY_NAMES = (
     "test",
@@ -72,6 +90,12 @@ TEST_SOURCE_EXPRESSIONS = {
         r"\( -name '*.js' -o -name '*.jsx' -o -name '*.mjs' -o -name '*.cjs' "
         r"-o -name '*.ts' -o -name '*.tsx' \)"
     ),
+}
+
+TEST_SOURCE_SUFFIXES = {
+    "java": {".java", ".scala", ".kt", ".groovy"},
+    "python": {".py"},
+    "javascript": {".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx"},
 }
 
 TEST_FILE_PRUNE_DIR_NAMES = {
@@ -130,14 +154,18 @@ def infer_language(entry: dict, requested: str = "auto") -> str:
     if requested != "auto":
         language = requested.lower()
         return "javascript" if language in {"js", "javascript"} else language
-    suffix = Path(entry.get("src_file", "")).suffix.lower()
+    if entry.get("language"):
+        language = str(entry["language"]).lower()
+        return "javascript" if language in {"js", "javascript"} else language
+    target_files = entry.get("target_files") or entry.get("files") or []
+    suffix = Path(entry.get("src_file") or (target_files[0] if target_files else "")).suffix.lower()
     if suffix == ".java":
         return "java"
     if suffix == ".py":
         return "python"
-    if suffix in {".js", ".jsx", ".mjs", ".cjs"}:
+    if suffix in {".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx"}:
         return "javascript"
-    raise ValueError(f"Cannot infer language from src_file={entry.get('src_file')!r}")
+    raise ValueError("Cannot infer language from entry.language, src_file, or target files")
 
 
 def validate_test_path(test_file: str) -> PurePosixPath:
@@ -145,6 +173,29 @@ def validate_test_path(test_file: str) -> PurePosixPath:
     if not test_file or path.is_absolute() or ".." in path.parts:
         raise ValueError(f"test_file must be a safe relative path, got {test_file!r}")
     return path
+
+
+def resolve_test_output(entry: dict, target_type: str | None = None) -> tuple[PurePosixPath, bool]:
+    resolved_type = target_type or resolve_target_type(entry)
+    if resolved_type == "module":
+        return validate_test_path(entry.get("test_module", "")), True
+    return validate_test_path(entry.get("test_file", "")), False
+
+
+def format_test_output_contract(path: PurePosixPath, is_module: bool) -> str:
+    if is_module:
+        return (
+            "Required test module:\n"
+            f"You MUST write every generated test file under exactly `{path}`. You may create as many "
+            "cohesive test files as the target module needs, but do not create test files outside this directory."
+        )
+    return f"Required test file:\nYou MUST write the complete generated test suite to exactly `{path}`."
+
+
+def apply_target_budget(config: dict, target_type: str) -> dict:
+    instance_config = copy.deepcopy(config)
+    target_budgets = instance_config.pop("target_budgets", {})
+    return recursive_merge(instance_config, target_budgets.get(target_type, {}))
 
 
 def build_test_file_find_command(language: str, *, delete: bool = False) -> str:
@@ -203,7 +254,8 @@ def remove_existing_tests(env, language: str) -> list[str]:
 
 def make_instance_id(entry: dict, index: int) -> str:
     project = Path(entry.get("project_root", "project")).name or "project"
-    raw = f"{project}__{entry.get('name', 'function')}__{entry.get('start_line', index)}__{index}"
+    target = entry.get("name") or entry.get("module") or Path(entry.get("src_file", "target")).stem
+    raw = f"{project}__{target}__{entry.get('start_line', index)}__{index}"
     return re.sub(r"[^A-Za-z0-9_.-]+", "-", raw)
 
 
@@ -218,23 +270,70 @@ def resolve_test_framework(entry: dict, language: str, override: str | None = No
         raise ValueError(f"Unsupported language: {language!r}") from error
 
 
+def resolve_target_type(entry: dict) -> str:
+    raw_type = entry.get("target_type") or entry.get("type")
+    if raw_type is None:
+        if "module" in entry:
+            return "module"
+        if "src_file" in entry and "code" not in entry:
+            return "source_file"
+        return "function"
+    aliases = {
+        "function": "function",
+        "method": "function",
+        "function_or_method": "function",
+        "file": "source_file",
+        "source_file": "source_file",
+        "module": "module",
+        "directory_module": "module",
+    }
+    try:
+        return aliases[str(raw_type).lower()]
+    except KeyError as error:
+        raise ValueError(f"Unsupported target type: {raw_type!r}") from error
+
+
+def format_target(entry: dict, target_type: str) -> str:
+    if target_type == "function":
+        target_class = entry.get("full_class_name") or entry.get("class_name")
+        class_description = f"\n\nTarget class:\n{target_class}" if target_class else ""
+        return (
+            f"Target function or method:\n<target_code>\n{entry.get('code', '')}\n</target_code>\n\n"
+            f"Production file:\n{entry.get('src_file', '')}{class_description}"
+        )
+    if target_type == "source_file":
+        return f"Production source file:\n{entry.get('src_file', '')}"
+    files = entry.get("target_files") or entry.get("files") or []
+    file_description = "\n".join(f"- {path}" for path in files)
+    if entry.get("module_scope") == "recursive_directory":
+        scope_description = (
+            "This directory is a recursive module. The production files listed below are its complete "
+            "test scope; do not test repository files outside this list."
+        )
+    else:
+        scope_description = (
+            "The production files listed below are the complete module test scope; do not test repository "
+            "files outside this list."
+        )
+    return (
+        f"Module:\n{entry.get('module') or entry.get('target_name', '')}\n\n"
+        f"Module scope:\n{scope_description}\n\nProduction files:\n{file_description}"
+    )
+
+
 def build_task(
     entry: dict,
     language: str,
     test_framework: str | None = None,
 ) -> str:
-    test_file = validate_test_path(entry.get("test_file", ""))
     resolved_framework = resolve_test_framework(entry, language, test_framework)
-    target_function = f"""<target_code>
-{entry.get("code", "")}
-</target_code>"""
-    target_class = entry.get("full_class_name") or entry.get("class_name")
+    target_type = resolve_target_type(entry)
+    test_output, is_module = resolve_test_output(entry, target_type)
     return LANGUAGE_AGNOSTIC_TASK_TEMPLATE.format(
         test_framework=resolved_framework,
-        target_function=target_function,
-        production_file=entry.get("src_file", ""),
-        target_class=f"\nTarget class:\n{target_class}\n" if target_class else "",
-        required_test_file=test_file,
+        target=format_target(entry, target_type),
+        scope_contract=TARGET_SCOPE_INSTRUCTIONS[target_type],
+        test_output_contract=format_test_output_contract(test_output, is_module),
     )
 
 
@@ -259,10 +358,23 @@ def is_build_or_test_config_path(path: str) -> bool:
     )
 
 
-def is_allowed_modified_path(path: str, required_test_file: str | PurePosixPath) -> bool:
+def is_path_within(path: str | PurePosixPath, directory: str | PurePosixPath) -> bool:
+    path_parts = PurePosixPath(path).parts
+    directory_parts = PurePosixPath(directory).parts
+    return path_parts[: len(directory_parts)] == directory_parts
+
+
+def is_allowed_modified_path(
+    path: str, required_test_output: str | PurePosixPath, *, output_is_module: bool = False
+) -> bool:
     if any(part.lower() in {".circleci", ".github", ".gitlab"} for part in PurePosixPath(path).parts):
         return False
-    return PurePosixPath(path) == PurePosixPath(required_test_file) or is_build_or_test_config_path(path)
+    output_matches = (
+        is_path_within(path, required_test_output)
+        if output_is_module
+        else PurePosixPath(path) == PurePosixPath(required_test_output)
+    )
+    return output_matches or is_build_or_test_config_path(path)
 
 
 def is_completed_result(result: dict) -> bool:
@@ -336,7 +448,9 @@ def process_instance(
 ) -> None:
     index = instance["_index"]
     instance_id = instance["instance_id"]
-    test_path = validate_test_path(instance["test_file"])
+    target_type = resolve_target_type(instance)
+    test_path, output_is_module = resolve_test_output(instance, target_type)
+    instance_config = apply_target_budget(config, target_type)
     progress_manager.on_instance_start(instance_id)
     progress_manager.update_instance_status(instance_id, "Starting environment")
 
@@ -350,7 +464,6 @@ def process_instance(
     removed_test_files: list[str] = []
     started = time.monotonic()
     try:
-        instance_config = copy.deepcopy(config)
         environment_config = instance_config.setdefault("environment", {})
         environment_config["image"] = image
         environment_config.setdefault("cwd", "/testbed")
@@ -366,9 +479,12 @@ def process_instance(
                         json.dumps(removed_test_files, indent=2, ensure_ascii=False), encoding="utf-8"
                     )
         target = PurePosixPath("/testbed") / test_path
-        setup = env.execute(
-            {"command": f"mkdir -p {shlex.quote(str(target.parent))} && rm -f {shlex.quote(str(target))}"}
+        setup_command = (
+            f"mkdir -p {shlex.quote(str(target))}"
+            if output_is_module
+            else f"mkdir -p {shlex.quote(str(target.parent))} && rm -f {shlex.quote(str(target))}"
         )
+        setup = env.execute({"command": setup_command})
         if setup["returncode"] != 0:
             raise RuntimeError(f"Failed to prepare target test path: {setup['output']}")
 
@@ -389,7 +505,17 @@ def process_instance(
 
         status = env.execute({"command": "git status --porcelain --untracked-files=all"})
         modified_files = parse_modified_files(status["output"])
-        for position, path in enumerate([str(test_path)]):
+        generated_paths = (
+            [
+                path
+                for path in modified_files
+                if is_path_within(path, test_path)
+                and PurePosixPath(path).suffix.lower() in TEST_SOURCE_SUFFIXES[language]
+            ]
+            if output_is_module
+            else [str(test_path)]
+        )
+        for position, path in enumerate(generated_paths):
             safe_path = validate_test_path(path)
             exists = env.execute({"command": f"test -f {shlex.quote(str(PurePosixPath('/testbed') / safe_path))}"})
             if exists["returncode"] != 0:
@@ -440,13 +566,22 @@ def process_instance(
             write_run_artifact(output_dir, "trajectories.json", instance_id, trajectory)
         result = dict(results[index])
         result["generated_tests"] = [item["code"] for item in generated_files]
-        result.pop("generated_test_files", None)
+        result["generated_test_files"] = generated_files
         result["generated_config_files"] = generated_config_files
         result["mini_swe_agent"] = {
             "instance_id": instance_id,
             "image": image,
             "language": language,
+            "target_type": target_type,
+            "target_scope_prompt_version": TARGET_SCOPE_PROMPT_VERSION,
             "test_framework": resolve_test_framework(instance, language, test_framework),
+            "resource_limits": {
+                "step_limit": instance_config.get("agent", {}).get("step_limit", 0),
+                "cost_limit": instance_config.get("agent", {}).get("cost_limit", 0),
+                "wall_time_limit_seconds": instance_config.get("agent", {}).get("wall_time_limit_seconds", 0),
+                "command_timeout_seconds": instance_config.get("environment", {}).get("timeout"),
+                "container_timeout": instance_config.get("environment", {}).get("container_timeout"),
+            },
             "test_isolation": {
                 "existing_tests_removed": remove_tests,
                 "removed_test_file_count": len(removed_test_files),
@@ -454,10 +589,13 @@ def process_instance(
                 "manifest": str(output_dir / "removed_original_tests.json") if remove_tests else None,
             },
             "exit_status": exit_status,
-            "test_file_created": any(item["path"] == str(test_path) for item in generated_files),
+            "test_output": {"path": str(test_path), "kind": "module" if output_is_module else "file"},
+            "test_file_created": bool(generated_files),
             "modified_files": modified_files,
             "policy_violations": [
-                path for path in modified_files if not is_allowed_modified_path(path, test_path)
+                path
+                for path in modified_files
+                if not is_allowed_modified_path(path, test_path, output_is_module=output_is_module)
             ],
             "time_seconds": elapsed,
             "model_cost": agent.cost if agent is not None else 0.0,
@@ -474,7 +612,7 @@ def process_instance(
 
 @app.command()
 def main(
-    dataset: Path = typer.Option(..., "--dataset", exists=True, readable=True, help="Input function dataset JSON"),
+    dataset: Path = typer.Option(..., "--dataset", exists=True, readable=True, help="Input target dataset JSON"),
     image: str = typer.Option(..., "--image", help="Docker image containing the clean project"),
     output_dataset: Path | None = typer.Option(None, "--output-dataset", help="Result JSON with generated test code"),
     output: Path | None = typer.Option(None, "-o", "--output", help="Trajectory and extracted-file directory"),
@@ -508,8 +646,6 @@ def main(
     results = json.loads(result_path.read_text(encoding="utf-8")) if result_path.exists() else raw
     if len(results) != len(raw):
         raise typer.BadParameter("Existing output dataset length does not match the input dataset")
-    for result in results:
-        result.pop("generated_test_files", None)
     write_results(result_path, results)
     add_file_handler(output_path / "minisweagent.log")
 

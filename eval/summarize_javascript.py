@@ -40,15 +40,17 @@ def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any
         if evaluation.get("test_pass") is True:
             totals["test_passed"] += 1
 
-        target = (evaluation.get("coverage") or {}).get("target_function") or {}
-        line = target.get("line") or {}
-        branch = target.get("branch") or {}
-        if target.get("matched_methods"):
-            totals["function_reports"] += 1
-            totals["function_line_total"] += int(line.get("total", 0))
-            totals["function_line_covered"] += int(line.get("covered", 0))
-            totals["function_branch_total"] += int(branch.get("total", 0))
-            totals["function_branch_covered"] += int(branch.get("covered", 0))
+        if str(item.get("target_type") or "").lower() != "source_file":
+            totals["function_targets"] += 1
+            target = (evaluation.get("coverage") or {}).get("target_function") or {}
+            line = target.get("line") or {}
+            branch = target.get("branch") or {}
+            if target.get("matched_methods"):
+                totals["function_reports"] += 1
+                totals["function_line_total"] += int(line.get("total", 0))
+                totals["function_line_covered"] += int(line.get("covered", 0))
+                totals["function_branch_total"] += int(branch.get("total", 0))
+                totals["function_branch_covered"] += int(branch.get("covered", 0))
 
     totals["files"] = len(files)
     for entry in files.values():
@@ -96,24 +98,29 @@ def main() -> int:
         projects[project_dir.name] = metrics
         _add_totals(aggregate, totals)
 
+    definitions = {
+        "execution_pass": (
+            "The generated test suite compiled and produced a parseable Jest report with "
+            "zero runtime errors. Assertion failures are allowed."
+        ),
+        "test_pass": "The generated test suite completed with zero failures and zero errors.",
+        "coverage_rate": "Micro-average: sum(covered) / sum(total).",
+        "file_coverage": (
+            f"Coverage of unique target production files after merging the {args.coverage_set} "
+            "Istanbul execution data within each project."
+        ),
+    }
+    if aggregate["function_targets"]:
+        definitions["function_coverage"] = (
+            "Coverage of each benchmark target function in its isolated run."
+        )
+
     report = {
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "language": "JavaScript",
         "coverage_set": args.coverage_set,
-        "definitions": {
-            "execution_pass": (
-                "The generated test suite compiled and produced a parseable Jest report with "
-                "zero runtime errors. Assertion failures are allowed."
-            ),
-            "test_pass": "The generated test suite completed with zero failures and zero errors.",
-            "coverage_rate": "Micro-average: sum(covered) / sum(total).",
-            "function_coverage": "Coverage of each benchmark target function in its isolated run.",
-            "file_coverage": (
-                f"Coverage of unique target production files after merging the {args.coverage_set} "
-                "Istanbul execution data within each project."
-            ),
-        },
+        "definitions": definitions,
         "overall": render_metrics(aggregate),
         "projects": projects,
     }

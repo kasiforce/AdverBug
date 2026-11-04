@@ -154,6 +154,23 @@ class FilterTestGenerationAgent:
             logger.error(f"[{self.model_name}] LLM 调用失败: {e}")
             return ""
 
+    def _call_without_tools(self, system, user, temperature=0.2):
+        """Call the model without exposing repository/source exploration tools."""
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[{"role": "system", "content": system},
+                          {"role": "user", "content": user}],
+                temperature=temperature,
+                max_tokens=16384,
+            )
+            usage_tracker.record(self.model_name, response)
+            content = response.choices[0].message.content or ""
+            return extract_java_code(content) if extract_java_code else content.strip()
+        except Exception as e:
+            logger.error(f"[{self.model_name}] 受限测试修复调用失败: {e}")
+            return ""
+
     def fix_compile(self, tests, error):
         """修复编译错误（复制自 test_gen.fix_test_prompt 的语义）。"""
         context = java_compilation_context(self.current_entry or {})
@@ -219,4 +236,44 @@ The test code below has the following problems:
         print(f"修复测试 ({len(prompt)} chars)")
         return self.normalize_tests(
             self._call("You are a helpful assistant that fixes failing test code.", prompt))
+
+    def repair_false_positive(self, tests, failure_output):
+        """Repair a suite that also failed on the correct original source.
+
+        This is intentionally a closed-book repair: the request contains only
+        the generated test and its original-source failure output, and the API
+        call has no production-code exploration tools attached.
+        """
+        prompt = f"""The Java test suite below fails against the correct original
+implementation. Repair the test using only the test source and failure output
+in this request. You have no repository, shell, file-search, source-code,
+specification, or external-tool access.
+
+Do not modify any assertion, expected value, test input used to exercise the
+behavior, test method, or test count. In particular, never change assert*
+arguments, exception expectations, or comparison values. If the failure output
+shows an assertion mismatch (AssertionError, AssertionFailedError, or an
+equivalent assertion failure), return the original test unchanged; it is not a
+repairable infrastructure error. Only repair imports, setup, object
+construction, API usage, or other non-assertion infrastructure errors. Do not
+disable or skip tests, weaken them into tautologies, or catch and ignore
+failures. Return
+the complete Java compilation unit with no Markdown fences, using only the
+JUnit version and imports visible in the test.
+
+Tests:
+```java
+{tests}
+```
+
+Failure output:
+```
+{failure_output[-6000:]}
+```
+"""
+        repaired = self._call_without_tools(
+            "You repair Java tests using only the supplied test code and error output.",
+            prompt,
+        )
+        return self.normalize_tests(repaired, self._expected_class(self.current_entry or {}))
         

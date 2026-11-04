@@ -42,6 +42,7 @@ def _empty_totals() -> dict[str, int]:
         "compile_passed": 0,
         "execution_passed": 0,
         "test_passed": 0,
+        "function_targets": 0,
         "function_reports": 0,
         "function_line_total": 0,
         "function_line_covered": 0,
@@ -100,15 +101,17 @@ def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any
         if evaluation.get("test_pass") is True:
             totals["test_passed"] += 1
 
-        target = (evaluation.get("coverage") or {}).get("target_function") or {}
-        line = target.get("line") or {}
-        branch = target.get("branch") or {}
-        if target.get("matched_methods"):
-            totals["function_reports"] += 1
-            totals["function_line_total"] += int(line.get("total", 0))
-            totals["function_line_covered"] += int(line.get("covered", 0))
-            totals["function_branch_total"] += int(branch.get("total", 0))
-            totals["function_branch_covered"] += int(branch.get("covered", 0))
+        if str(item.get("target_type") or "").lower() != "source_file":
+            totals["function_targets"] += 1
+            target = (evaluation.get("coverage") or {}).get("target_function") or {}
+            line = target.get("line") or {}
+            branch = target.get("branch") or {}
+            if target.get("matched_methods"):
+                totals["function_reports"] += 1
+                totals["function_line_total"] += int(line.get("total", 0))
+                totals["function_line_covered"] += int(line.get("covered", 0))
+                totals["function_branch_total"] += int(branch.get("total", 0))
+                totals["function_branch_covered"] += int(branch.get("covered", 0))
 
     totals["files"] = len(files)
     for entry in files.values():
@@ -127,20 +130,12 @@ def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any
 
 def render_metrics(totals: dict[str, int]) -> dict[str, Any]:
     targets = totals["targets"]
-    return {
+    metrics = {
         "target_count": targets,
         "syntax": _metric(totals["syntax_passed"], targets),
         "compilation": _metric(totals["compile_passed"], targets),
         "execution": _metric(totals["execution_passed"], targets),
         "tests": _metric(totals["test_passed"], targets),
-        "function_coverage": {
-            "targets_total": targets,
-            "targets_with_report": totals["function_reports"],
-            "line": _coverage(totals["function_line_covered"], totals["function_line_total"]),
-            "branch": _coverage(
-                totals["function_branch_covered"], totals["function_branch_total"]
-            ),
-        },
         "file_coverage": {
             "files_total": totals["files"],
             "files_with_report": totals["file_reports"],
@@ -148,6 +143,16 @@ def render_metrics(totals: dict[str, int]) -> dict[str, Any]:
             "branch": _coverage(totals["file_branch_covered"], totals["file_branch_total"]),
         },
     }
+    if totals["function_targets"]:
+        metrics["function_coverage"] = {
+            "targets_total": totals["function_targets"],
+            "targets_with_report": totals["function_reports"],
+            "line": _coverage(totals["function_line_covered"], totals["function_line_total"]),
+            "branch": _coverage(
+                totals["function_branch_covered"], totals["function_branch_total"]
+            ),
+        }
+    return metrics
 
 
 def atomic_dump(path: Path, value: Any) -> None:
@@ -194,24 +199,29 @@ def main() -> int:
         projects[project_dir.name] = metrics
         _add_totals(aggregate, totals)
 
+    definitions = {
+        "execution_pass": (
+            "The generated test suite compiled and produced a parseable JUnit report with "
+            "zero runtime errors. Assertion failures are allowed."
+        ),
+        "test_pass": "The generated test suite completed with zero failures and zero errors.",
+        "coverage_rate": "Micro-average: sum(covered) / sum(total).",
+        "file_coverage": (
+            f"Coverage of unique target production files after merging the {args.coverage_set} "
+            "JaCoCo execution data within each project."
+        ),
+    }
+    if aggregate["function_targets"]:
+        definitions["function_coverage"] = (
+            "Coverage of each benchmark target method in its isolated run."
+        )
+
     report = {
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "language": "Java",
         "coverage_set": args.coverage_set,
-        "definitions": {
-            "execution_pass": (
-                "The generated test suite compiled and produced a parseable JUnit report with "
-                "zero runtime errors. Assertion failures are allowed."
-            ),
-            "test_pass": "The generated test suite completed with zero failures and zero errors.",
-            "coverage_rate": "Micro-average: sum(covered) / sum(total).",
-            "function_coverage": "Coverage of each benchmark target method in its isolated run.",
-            "file_coverage": (
-                f"Coverage of unique target production files after merging the {args.coverage_set} "
-                "JaCoCo execution data within each project."
-            ),
-        },
+        "definitions": definitions,
         "overall": render_metrics(aggregate),
         "projects": projects,
     }

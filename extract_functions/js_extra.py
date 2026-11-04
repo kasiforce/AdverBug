@@ -10,6 +10,11 @@ from unittest import result
 from multi_parser import js_parser
 
 try:
+    from extract_func import build_repository_index, resolve_project_callee_metrics
+except ImportError:  # package-style import
+    from .extract_func import build_repository_index, resolve_project_callee_metrics
+
+try:
     import lizard
 except ImportError:  # pragma: no cover - fallback is used only without lizard
     lizard = None
@@ -28,6 +33,20 @@ TEST_FILE_PATTERNS = [
     re.compile(r'.*[_\.]test\.(?:js|jsx|mjs|cjs)$', re.IGNORECASE),
     re.compile(r'.*[_\.]spec\.(?:js|jsx|mjs|cjs)$', re.IGNORECASE),
 ]
+
+
+def gen_test_file_path(project_root: str, file_path: str, function_name: str | None = None) -> str:
+    """Map a production file to the established JavaScript test layout."""
+    rel = os.path.relpath(file_path, project_root)
+    rel_no_ext = os.path.splitext(rel)[0]
+    parts = rel_no_ext.split(os.sep)
+    if parts and parts[0] == "src":
+        parts[0] = "test"
+    else:
+        parts = ["test"] + parts
+    if function_name:
+        return "/".join(parts) + f"/{function_name}.test.js"
+    return "/".join(parts[:-1] + [f"{parts[-1]}.test.js"])
 
 CLASS_NODE_TYPES = {
     'class_declaration',
@@ -85,7 +104,7 @@ class JSProjectTestScopeExtractor:
 
     def __init__(self, project_root, file_list, output_file=None,
                  min_loc_threshold=50, min_complexity_threshold=10,
-                 min_outgoing_degree_threshold=5, random_seed=42,
+                 min_outgoing_degree_threshold=3, random_seed=42,
                  only_exported=True, min_project_functions=1):
         self.project_root = str(Path(project_root).resolve())
         self.files = file_list
@@ -96,6 +115,7 @@ class JSProjectTestScopeExtractor:
         self.random_seed = random_seed
         self.only_exported = only_exported
         self.min_project_functions = min_project_functions
+        self.repository_index = None
 
         self.stats = defaultdict(lambda: defaultdict(int))
         self.metric_stats = defaultdict(int)
@@ -2197,28 +2217,49 @@ module.exports = { normalize };
     # 测试文件路径
     # ------------------------------------------------------------------
     def _find_test_file(self, file_path, func_name):
-        rel = os.path.relpath(file_path, self.project_root)
-        rel_no_ext = os.path.splitext(rel)[0]
-        parts = rel_no_ext.split(os.sep)
-
-        if parts and parts[0] == 'src':
-            parts[0] = 'test'
-        else:
-            parts = ['test'] + parts
-
-        return '/'.join(parts) + f'/{func_name}.test.js'
+        return gen_test_file_path(self.project_root, file_path, func_name)
 
     # ------------------------------------------------------------------
     # 过滤规则
     # ------------------------------------------------------------------
+    def _project_outgoing_metrics(self, method_info: Dict[str, Any]) -> Dict[str, Any]:
+        """Measure strict and loose direct project callees."""
+        if self.repository_index is None:
+            raise RuntimeError('repository index has not been built')
+        names = [
+            method_info.get('name'),
+            method_info.get('member_name'),
+            method_info.get('exported_name'),
+            f"<anonymous>@{method_info.get('start_line')}",
+        ]
+        for name in dict.fromkeys(name for name in names if name):
+            record = {
+                'src_file': method_info.get('src_file'),
+                'name': name,
+                'class_name': method_info.get('class_name'),
+                'start_line': method_info.get('start_line'),
+            }
+            try:
+                return resolve_project_callee_metrics(record, self.repository_index)
+            except ValueError:
+                continue
+        self.metric_stats['project_call_target_unmatched'] += 1
+        return {
+            'resolved_project_callee_count': 0,
+            'loose_project_outgoing_degree': 0,
+            'unresolved_project_candidate_call_sites': 0,
+        }
+
     def _should_filter_method(self, method_info: Dict[str, Any]) -> Tuple[bool, str]:
         reasons = []
         if method_info.get('loc', 0) < self.min_loc_threshold:
             reasons.append(f"loc<{self.min_loc_threshold}")
         if method_info.get('complexity', 0) < self.min_complexity_threshold:
             reasons.append(f"complexity<{self.min_complexity_threshold}")
-        if method_info.get('outgoing_degree', 0) < self.min_outgoing_degree_threshold:
-            reasons.append(f"outgoing_degree<{self.min_outgoing_degree_threshold}")
+        if method_info.get('loose_project_outgoing_degree', 0) < self.min_outgoing_degree_threshold:
+            reasons.append(
+                f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}"
+            )
         return bool(reasons), ','.join(reasons)
 
     # ------------------------------------------------------------------
@@ -2226,12 +2267,35 @@ module.exports = { normalize };
     # ------------------------------------------------------------------
     def extract_and_select_functions(self) -> List[Dict[str, Any]]:
         print(f"开始提取项目函数，文件数量: {len(self.files)}")
+        relative_files = [
+            Path(path).resolve().relative_to(Path(self.project_root)).as_posix()
+            for path in self.files
+        ]
+        self.repository_index = build_repository_index(
+            self.project_root, allowed_files=relative_files
+        )
         all_functions = self._extract_project_functions()
         all_selected_methods = []
 
         for method in all_functions:
             file_name = os.path.basename(method.get('src_file', ''))
             self.stats[file_name]['total'] += 1
+            if (method.get('loc', 0) < self.min_loc_threshold
+                    or method.get('complexity', 0) < self.min_complexity_threshold):
+                method['project_outgoing_degree'] = 0
+                method['loose_project_outgoing_degree'] = 0
+                method['unresolved_project_candidate_call_sites'] = 0
+            else:
+                call_metrics = self._project_outgoing_metrics(method)
+                method['project_outgoing_degree'] = call_metrics[
+                    'resolved_project_callee_count'
+                ]
+                method['loose_project_outgoing_degree'] = call_metrics[
+                    'loose_project_outgoing_degree'
+                ]
+                method['unresolved_project_candidate_call_sites'] = call_metrics[
+                    'unresolved_project_candidate_call_sites'
+                ]
             should_filter, _ = self._should_filter_method(method)
             if should_filter:
                 self.stats[file_name]['filtered'] += 1
@@ -2271,6 +2335,11 @@ module.exports = { normalize };
             'loc': func.get('loc', 0),
             'complexity': func.get('complexity', 0),
             'outgoing_degree': func.get('outgoing_degree', 0),
+            'project_outgoing_degree': func.get('project_outgoing_degree', 0),
+            'loose_project_outgoing_degree': func.get('loose_project_outgoing_degree', 0),
+            'unresolved_project_candidate_call_sites': func.get(
+                'unresolved_project_candidate_call_sites', 0
+            ),
             'start_line': func.get('start_line'),
             'end_line': func.get('end_line'),
             'imports': func.get('imports') or [],
@@ -2308,10 +2377,14 @@ module.exports = { normalize };
             f"无法测量并排除={self.metric_stats['lizard_unmeasured']}"
         )
         print(
+            "项目调用解析: "
+            f"目标无法匹配={self.metric_stats['project_call_target_unmatched']}"
+        )
+        print(
             "筛选条件："
             f"LOC >= {self.min_loc_threshold}, "
             f"CC >= {self.min_complexity_threshold}, "
-            f"outgoing degree >= {self.min_outgoing_degree_threshold}"
+            f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}"
         )
         print(f"导出限制: {'仅导出函数' if self.only_exported else '包含未导出函数'}")
 
@@ -2350,7 +2423,11 @@ def main():
     parser.add_argument('--output', default='selected_functions.json', help='输出 JSON 路径')
     parser.add_argument('--min-loc', type=int, default=50, help='最小非空代码行数，默认 50')
     parser.add_argument('--min-complexity', type=int, default=10, help='最小圈复杂度，默认 10')
-    parser.add_argument('--min-outgoing-degree', type=int, default=5, help='最小调用出度，默认 5')
+    parser.add_argument(
+        '--min-outgoing-degree', type=int, default=3,
+        help=('最小宽松项目内调用出度（严格解析的项目函数数 + '
+              '未消歧的项目候选调用点数；不含内置、运行时和第三方调用），默认 3'),
+    )
     parser.add_argument(
         '--min-project-functions', type=int, default=5,
         help='项目至少需要保留的合格函数数，默认 5；不足时输出空数据集'

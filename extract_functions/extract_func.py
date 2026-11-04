@@ -2079,6 +2079,105 @@ def annotate_outgoing_degree(record: Dict[str, Any], repository_index: Dict[str,
     return result
 
 
+def resolve_project_callee_metrics(
+    record: Dict[str, Any], repository_index: Dict[str, Any]
+) -> Dict[str, Any]:
+    """Measure strict and loose direct project callees for one function.
+
+    Calls to builtins, the standard library, third-party packages, and ambiguous
+    same-named definitions are omitted from the strict callee set.  The loose
+    metric additionally counts each unresolved call site that has at least one
+    same-project production candidate.
+    """
+    target = match_target(record, repository_index)
+    target_calls = repository_index["caller_calls"].get(target.id, [])
+    by_name = repository_index["by_name"]
+    dependencies: Dict[str, FunctionInfo] = {}
+    unresolved_project_candidate_call_sites = 0
+    imported_definitions_by_alias: Optional[Dict[str, List[FunctionInfo]]] = None
+    visible_imports = _visible_imports(repository_index, target.path, target.id)
+    import_aliases = _import_alias_originals(visible_imports, target.language)
+    renamed_aliases = {
+        alias
+        for statement in visible_imports
+        for original, alias in _import_alias_pairs(statement, target.language)
+        if original == "default" or original != alias
+    }
+
+    for call in target_calls:
+        if not call.callee_name or call.callee_name == target.name:
+            continue
+        candidate_names = {call.callee_name}
+        candidate_names.update(import_aliases.get(call.callee_name, set()))
+        candidates: List[FunctionInfo] = []
+        for symbol in candidate_names:
+            candidates.extend(by_name.get((target.language, symbol), []))
+        if not candidates and call.callee_name in renamed_aliases:
+            if imported_definitions_by_alias is None:
+                alias_index: Dict[str, List[FunctionInfo]] = defaultdict(list)
+                for definition in repository_index["functions"]:
+                    if definition.language != target.language:
+                        continue
+                    for alias in _imported_aliases_for_definition(
+                        target.path, definition, repository_index, target.id
+                    ):
+                        alias_index[alias].append(definition)
+                imported_definitions_by_alias = alias_index
+            candidates = list(imported_definitions_by_alias.get(call.callee_name, []))
+        if not candidates and call.syntax_kind in {
+            "call", "object_creation_expression", "new_expression"
+        }:
+            candidates = [
+                definition
+                for definition in repository_index["functions"]
+                if definition.language == target.language
+                and definition.is_constructor
+                and call.callee_name in _class_names_and_aliases(
+                    target.path, definition, repository_index, target.id
+                )
+            ]
+        project_candidates = {
+            candidate.id: candidate
+            for candidate in candidates
+            if candidate.id != target.id
+        }
+        matching = [
+            candidate
+            for candidate in project_candidates.values()
+            if _call_resolves_to_definition(call, target, candidate, repository_index)
+        ]
+        local = [candidate for candidate in matching if candidate.path == target.path]
+        if local:
+            matching = local
+        matching = _narrow_by_arity(call, matching)
+        if len(matching) == 1:
+            dependencies[matching[0].id] = matching[0]
+        elif project_candidates:
+            unresolved_project_candidate_call_sites += 1
+
+    resolved_callees = sorted(
+        dependencies.values(),
+        key=lambda item: (item.path, item.start_line, item.qualified_name),
+    )
+    return {
+        "resolved_callees": resolved_callees,
+        "resolved_project_callee_count": len(resolved_callees),
+        "unresolved_project_candidate_call_sites": (
+            unresolved_project_candidate_call_sites
+        ),
+        "loose_project_outgoing_degree": (
+            len(resolved_callees) + unresolved_project_candidate_call_sites
+        ),
+    }
+
+
+def resolve_project_callees(
+    record: Dict[str, Any], repository_index: Dict[str, Any]
+) -> List[FunctionInfo]:
+    """Return only uniquely resolved direct project production callees."""
+    return resolve_project_callee_metrics(record, repository_index)["resolved_callees"]
+
+
 def function_records_from_document(data: Any) -> List[Dict[str, Any]]:
     """Return the mutable record list inside an input JSON document."""
     if isinstance(data, list):

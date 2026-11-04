@@ -8,10 +8,11 @@ adver_dual.py —— 双大模型过滤的错误代码生成流程。
 2. 过滤协议与评测管线同源：复用 gen_test/llm_gentests.py 的 TestCodeGenerator
    （specification 模式模板、temperature=0、max_K=3 重试），输入为"错误代码 + 规范"，
    与被评测模型看到的信息一致——过滤准则即"在评测协议下该模型未检出此 bug"。
-3. 只在错误代码上运行过滤测试，按 surefire 失败类型分流（不跑原代码做差分）：
-   - 断言失败（failure）= 过滤模型检出 bug → 反馈给 bug 生成器重试；
-   - 执行异常（error）→ 迭代修复测试套件，bug 保留；
-   - 编译始终失败 / 空套件 = 套件问题 → 重新生成套件，不判检出。
+3. 生成测试在错误代码上失败时，使用同一测试复测原始正确代码：
+   - 原代码通过 = 差分检出 bug → 反馈给 bug 生成器重新生成；
+   - 原代码也失败 = 测试问题 → 只向过滤模型提供测试代码与错误输出进行修复。
+   测试编译失败仍保留原 restricted 修复通道，可使用受限的生产代码搜索工具
+   修正 import/API/签名等编译问题；这与原代码运行失败后的闭卷修复是两条通道。
 4. 等效判定沿用 valid_agent.py 的语义行为一致性判定。
 
 用法（容器内，WORKDIR=/testbed 为项目根目录）：
@@ -668,29 +669,30 @@ def evaluate_filter_model(agent, entry, bug_code, src_file, original_code,
                           test_file, suite_retries=1, initial_tests=None):
     """用一个过滤模型评估当前 bug（Stage 2 单模型分支）。
 
-    每个模型最多生成两套独立测试。普通生成器中，每套测试的编译错误和
-    运行时基础设施错误共用五次模型修复额度。连续 Bash agent 已在单次
-    会话内自行编译和修复，外层只独立验证一次，不再启动额外修复会话。
-    两套都不可用时，直接放弃当前 bug 候选。
-    断言失败是检出证据，绝不作为测试修复对象。
+    每个模型最多生成两套独立测试，每套的编译错误和运行失败
+    共用五次模型修复额度。编译错误沿用可搜索生产代码的 restricted
+    修复通道。任何在 bug 版上的运行失败都必须再用同一
+    套件运行原始正确代码：只有原代码通过才是检出证据；原代码也失败
+    则属于测试误报，并且修复模型只能看到测试源码和原代码运行错误。
 
     每轮先过编译闸门（compile_test_suite 只做确定性修复），再运行并按
-    surefire 失败类型分流（协议约定：不跑原代码做差分仲裁）——
+    surefire 失败类型分流——
     - 全部通过 → bug 逃逸（undetected=True）；
-    - 断言失败（failure）→ 过滤模型检出 bug，立即返回，绝不修复断言；
-    - 执行异常（error）/空套件 → 套件自身问题，修复后进下一轮；
-    - 修复后的代码下一轮重新过编译闸门，编译错误先由确定性规则、
-      后由 fix_compile 处理。
+    - bug 失败 ∧ 原代码通过 → 过滤模型检出 bug；
+    - bug 失败 ∧ 原代码失败 → 受限修复测试后重试；
+    - 编译错误 → restricted 编译修复；
+    - 空套件 → 套件自身问题，不作为检出证据。
 
     返回 (undetected, tests, info)：
     - undetected=True ：套件在 bug 版上全部通过 → 未检出；
-    - undetected=False 且 info["detected"]=True ：断言失败视为检出；
+    - undetected=False 且 info["detected"]=True ：bug 版失败且原代码通过；
     - undetected=False 且 info["detected"]=False ：套件本身失败（编译不过/空/纯异常未修复）。
     """
     total_false_positives = None
     last_compile_error = ""
     auto_repairs = []
     suite_diagnostics = []
+    repair_history = []
     last_tests = ""
     # ``suite_retries`` is retained for CLI compatibility, but the agreed
     # policy permits at most one fresh rewrite after the initial suite.
@@ -725,8 +727,15 @@ def evaluate_filter_model(agent, entry, bug_code, src_file, original_code,
                 print(f"测试套件编译失败，{compile_err}")
                 last_compile_error = compile_err
                 suite_error = compile_err
+                # Preserve the original compile-repair policy. The restricted
+                # generator may use its production-code search tools to resolve
+                # imports, API names and signatures. A continuous Bash agent has
+                # already spent its generation session compiling and repairing,
+                # so the outer evaluator only verifies its final submission.
                 if self_managed_repairs:
-                    suite_error = "bash agent submission failed independent compilation: " + compile_err
+                    suite_error = (
+                        "bash agent submission failed independent compilation: "
+                        + compile_err)
                     break
                 if repair_attempts >= MAX_TEST_REPAIRS:
                     break
@@ -751,6 +760,7 @@ def evaluate_filter_model(agent, entry, bug_code, src_file, original_code,
                 return True, tests, {"detected": False, "total_cases": len(executed),
                                      "note": "passed_on_buggy",
                                      "auto_repairs": auto_repairs,
+                                     "repair_history": repair_history,
                                      "suite": suite_index,
                                      "repair_attempts": repair_attempts,
                                      "suite_diagnostics": suite_diagnostics + [{
@@ -759,43 +769,95 @@ def evaluate_filter_model(agent, entry, bug_code, src_file, original_code,
                                          "reason": "passed_on_buggy",
                                      }]}
 
-            failures = [k for k, s in executed.items() if s == "failed"]
-            if failures:
-                # 断言失败 → 过滤模型检出 bug（协议约定，不做差分仲裁）
-                names = ", ".join(f"{c}.{n}" for c, n in failures)
-                print(f"过滤模型检出 bug（断言失败）: {names}")
-                return False, tests, {"detected": True, "total_cases": len(executed),
-                                      "false_positives": total_false_positives,
-                                      "note": f"detected_by: {names}",
-                                      "auto_repairs": auto_repairs,
-                                      "suite": suite_index,
-                                      "repair_attempts": repair_attempts,
-                                      "suite_diagnostics": suite_diagnostics + [{
-                                          "suite": suite_index,
-                                          "repair_attempts": repair_attempts,
-                                          "reason": "detected_by_filter",
-                                      }],
-                                      "feedback": ((buggy_run.stdout or "") +
-                                                   (buggy_run.stderr or ""))[-6000:]}
+            # bug 版上任何失败都不能单独证明检出了 bug。切换回原始
+            # 正确实现，用完全相同的已生成套件复测后再做差分判定。
+            buggy_feedback = ((buggy_run.stdout or "") +
+                              (buggy_run.stderr or ""))[-6000:]
+            if not buggy_feedback:
+                buggy_feedback = "generated test failed on the buggy implementation"
+            buggy_source_file = read_text(src_file)
+            original_run = None
+            original_results = {}
+            original_executed = {}
+            original_feedback = ""
+            try:
+                if not set_src_code(src_file, original_code, bug_code):
+                    original_feedback = (
+                        "Could not restore the original implementation for differential rerun.")
+                else:
+                    # Re-enter test-compile so target/classes definitely contains the
+                    # original implementation rather than the previously compiled bug.
+                    original_compile = mvn(
+                        ["test-compile"], timeout=1800, source_path=test_file)
+                    if original_compile.returncode != 0:
+                        original_feedback = maven_compile_diagnostics(
+                            (original_compile.stdout or "") +
+                            (original_compile.stderr or ""))
+                    else:
+                        clean_surefire_reports()
+                        original_run = run_compiled_test(
+                            test_class_name(test_file), test_file=test_file, timeout=1800)
+                        original_results = parse_surefire_results()
+                        original_executed = {
+                            k: s for k, s in original_results.items() if s != "skipped"}
+                        original_feedback = ((original_run.stdout or "") +
+                                             (original_run.stderr or ""))[-6000:]
+            finally:
+                # The next repair round must again be compiled and exercised on the
+                # buggy implementation. Restoring the complete file is safer than a
+                # second fragment replacement if a build plugin touched the source.
+                write_text(src_file, buggy_source_file)
 
-            if not executed:
-                feedback = ((buggy_run.stdout or "") + (buggy_run.stderr or ""))[-4000:] \
-                    or "no tests were executed"
-                print(f"测试套件未执行任何用例，{feedback}")
-            else:
-                errors = [k for k, s in executed.items() if s == "error"]
-                names = ", ".join(f"{c}.{n}" for c, n in errors)
-                feedback = (buggy_run.stdout or "") + (buggy_run.stderr or "")
-                print(f"测试套件存在 {len(errors)} 个执行异常，修复后重试: {names}")
+            original_passed = bool(
+                original_run is not None
+                and original_run.returncode == 0
+                and original_executed)
+            if original_passed:
+                failed_on_bug = [
+                    f"{c}.{n}" for (c, n), status in executed.items()
+                    if status in ("failed", "error")]
+                names = ", ".join(failed_on_bug) or "test process failure"
+                print(f"差分检出 bug（bug 版失败，原代码通过）: {names}")
+                return False, tests, {
+                    "detected": True,
+                    "total_cases": len(executed),
+                    "original_total_cases": len(original_executed),
+                    "false_positives": total_false_positives,
+                    "note": f"differentially_detected_by: {names}",
+                    "auto_repairs": auto_repairs,
+                    "repair_history": repair_history,
+                    "suite": suite_index,
+                    "repair_attempts": repair_attempts,
+                    "suite_diagnostics": suite_diagnostics + [{
+                        "suite": suite_index,
+                        "repair_attempts": repair_attempts,
+                        "reason": "differential_detection",
+                    }],
+                    "feedback": buggy_feedback,
+                }
 
-            suite_error = feedback[-4000:]
-            if self_managed_repairs:
-                suite_error = "bash agent submission failed independent runtime verification: " + suite_error
-                break
+            false_positive_cases = [
+                f"{c}.{n}" for (c, n), status in original_executed.items()
+                if status in ("failed", "error")]
+            total_false_positives = false_positive_cases
+            if not original_feedback:
+                original_feedback = "no tests were executed on the original implementation"
+            print("原代码也未通过，判定为测试问题，进入受限修复")
+            suite_error = original_feedback[-4000:]
             if repair_attempts >= MAX_TEST_REPAIRS:
                 break
-            fixed = agent.repair_tests(tests, feedback)
+            tests_before_repair = tests
+            fixed = agent.repair_false_positive(tests, original_feedback)
             repair_attempts += 1
+            repair_history.append({
+                "type": "runtime_false_positive",
+                "suite": suite_index,
+                "repair_attempt": repair_attempts,
+                "original_failure_output": original_feedback[-6000:],
+                "tests_before": tests_before_repair,
+                "tests_after": fixed or "",
+                "repair_succeeded": bool(fixed and fixed != tests_before_repair),
+            })
             if not fixed or fixed == tests:
                 suite_error = "test runtime repair returned no change"
                 break
@@ -809,8 +871,9 @@ def evaluate_filter_model(agent, entry, bug_code, src_file, original_code,
         })
 
     return False, last_tests, {"detected": False, "total_cases": 0,
-                               "false_positives": total_false_positives,
-                               "note": "suite_generation_failed",
+                              "false_positives": total_false_positives,
+                              "repair_history": repair_history,
+                              "note": "suite_generation_failed",
                                "auto_repairs": auto_repairs,
                                "compile_error": last_compile_error,
                                "suite_diagnostics": suite_diagnostics}
@@ -1188,7 +1251,7 @@ if __name__ == "__main__":
                         help="输入 JSON 数据文件路径（需含 specification 字段）")
     parser.add_argument("--bug-model", type=str, default="gpt-5-nano",
                         help="bug 生成模型")
-    parser.add_argument("--judge-model", type=str, default="gpt-5-nano",
+    parser.add_argument("--judge-model", type=str, default="gpt-5.6-luna",
                         help="等效判定模型")
     parser.add_argument("--filter-model-a", type=str, default="gpt-5-nano",
                         help="过滤模型 A（应与被评测模型不同厂商/代际）")
@@ -1202,8 +1265,9 @@ if __name__ == "__main__":
                         help="每个函数的 bug 对抗尝试次数上限")
     parser.add_argument("--suite-retries", type=int, default=1, choices=(1,),
                         help="固定为 1：每个过滤模型生成初始测试并重写一次，共两套测试")
-    parser.add_argument("--test-agent", choices=("mini-swe", "restricted"), default="mini-swe",
-                        help="测试生成器；mini-swe 使用连续 Bash 会话，restricted 保留旧受限搜索模式")
+    parser.add_argument("--test-agent", choices=("mini-swe", "restricted"), default="restricted",
+                        help="测试生成器；restricted（默认）仅提供只读生产代码搜索工具，"
+                             "mini-swe 使用连续 Bash 会话")
     parser.add_argument("--test-agent-steps", type=int, default=100,
                         help="mini-swe 单次生成或修复会话的最大模型调用数")
     parser.add_argument("--test-agent-timeout", type=int, default=1200,

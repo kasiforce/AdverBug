@@ -33,9 +33,10 @@ MAX_CONSECUTIVE_FORMAT_ERRORS = 3
 class MiniSweTestAgent:
     """OpenAI-compatible continuous Bash test agent."""
 
-    # This agent inspects, writes, compiles, and repairs inside one continuous
-    # Bash conversation.  The outer evaluator must only verify its submission;
-    # it must not start another repair conversation for the same suite.
+    # Initial generation performs ordinary compile/setup repair inside one Bash
+    # conversation. If independent differential verification later shows that
+    # the suite also fails on the original source, the evaluator may invoke the
+    # separate closed-book ``repair_false_positive`` call below.
     self_managed_repairs = True
 
     def __init__(self, config, *, step_limit=100, wall_time_limit=1200):
@@ -215,3 +216,53 @@ Configured Java version: {java_version}
 The test source path is {entry['test_file']}.
 
 Inspect APIs instead of guessing. Use {framework}, not another JUnit version. Compile the test and run that exact test before submitting, and verify that at least one case executes. Fix compilation, discovery, and runtime/setup errors. If a specification-based assertion fails on the supplied implementation, preserve it because it has detected the defect. Leave the final complete test at the required path.""")
+
+    @staticmethod
+    def _extract_java(content):
+        fenced = re.search(r"```(?:java)?\s*(.*?)```", content or "", re.S | re.I)
+        return (fenced.group(1) if fenced else (content or "")).strip()
+
+    def repair_false_positive(self, tests, failure_output):
+        """Closed-book repair using no Bash tool and no source/specification."""
+        prompt = f"""The Java test suite below fails against the correct original
+implementation. Repair the test using only the test source and failure output
+in this request. You have no repository, shell, file-search, source-code,
+specification, or external-tool access.
+
+Do not modify any assertion, expected value, test input used to exercise the
+behavior, test method, or test count. In particular, never change assert*
+arguments, exception expectations, or comparison values. If the failure output
+shows an assertion mismatch (AssertionError, AssertionFailedError, or an
+equivalent assertion failure), return the original test unchanged; it is not a
+repairable infrastructure error. Only repair imports, setup, object
+construction, API usage, or other non-assertion infrastructure errors. Do not
+disable or skip tests, weaken them into tautologies, or catch and ignore
+failures. Return
+the complete Java compilation unit with no Markdown fences, using only the
+JUnit version and imports visible in the test.
+
+Tests:
+```java
+{tests}
+```
+
+Failure output:
+```
+{failure_output[-6000:]}
+```
+"""
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {"role": "system", "content":
+                     "You repair Java tests using only the supplied test code and error output."},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.2,
+                max_tokens=16384,
+            )
+            usage_tracker.record(self.model_name, response)
+            return self._extract_java(response.choices[0].message.content or "")
+        except Exception:
+            return ""

@@ -200,7 +200,10 @@ def _target_function_metrics(
 
 
 def parse_instance_coverage(path: Path, item: dict[str, Any]) -> dict[str, Any]:
-    empty = {"report_found": False, "target_file": None, "target_function": None}
+    is_file_target = str(item.get("target_type") or "").lower() == "source_file"
+    empty = {"report_found": False, "target_file": None}
+    if not is_file_target:
+        empty["target_function"] = None
     if not path.is_file():
         return empty
     try:
@@ -209,15 +212,17 @@ def parse_instance_coverage(path: Path, item: dict[str, Any]) -> dict[str, Any]:
         return {**empty, "parse_error": str(error)}
     file_key, entry = _find_file_entry(coverage, item)
     if entry is None:
-        return {"report_found": True, "target_file": None, "target_function": None}
-    return {
+        return {**empty, "report_found": True}
+    result = {
         "report_found": True,
         "target_file": {
             "file_key": _normalize_path(file_key or _source_key(item)),
             **_file_metrics(entry),
         },
-        "target_function": _target_function_metrics(entry, item),
     }
+    if not is_file_target:
+        result["target_function"] = _target_function_metrics(entry, item)
+    return result
 
 
 def parse_jest_report(path: Path) -> dict[str, Any]:

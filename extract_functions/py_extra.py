@@ -8,6 +8,11 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 from multi_parser import python_parser
 
 try:
+    from extract_func import build_repository_index, resolve_project_callee_metrics
+except ImportError:  # package-style import
+    from .extract_func import build_repository_index, resolve_project_callee_metrics
+
+try:
     import lizard
 except ImportError:  # pragma: no cover - fallback is used only without lizard
     lizard = None
@@ -28,6 +33,26 @@ TEST_FILE_PATTERNS = [
     re.compile(r'.*_test\.py$', re.IGNORECASE),
     re.compile(r'^conftest\.py$', re.IGNORECASE),
 ]
+
+
+def gen_test_file_path(project_root: str, file_path: str, function_name: Optional[str] = None) -> str:
+    """Map a production file to the established Python test layout."""
+    try:
+        rel = os.path.relpath(file_path, project_root)
+    except ValueError:
+        rel = str(file_path)
+    rel_no_ext = os.path.splitext(rel)[0]
+    file_name = os.path.basename(rel_no_ext)
+    test_path = (
+        os.path.join(
+            os.path.dirname(rel_no_ext), "Test" + file_name, "test_" + function_name + ".py"
+        )
+        if function_name
+        else os.path.join(os.path.dirname(rel_no_ext), "test_" + file_name + ".py")
+    ).replace(os.sep, "/")
+    if "src/" in test_path:
+        return test_path.replace("src/", "test/", 1)
+    return "tests/" + test_path
 
 
 def discover_python_files(project_root: str) -> List[str]:
@@ -61,7 +86,7 @@ class EnhancedPythonFocalExtractor:
 
     def __init__(self, project_root, file_list, output_file=None,
                  min_loc_threshold=50, min_complexity_threshold=10,
-                 min_outgoing_degree_threshold=5, random_seed=42):
+                 min_outgoing_degree_threshold=3, random_seed=42):
         self.project_root = str(Path(project_root).resolve())
         self.files = file_list
         self.output_file = output_file
@@ -69,11 +94,20 @@ class EnhancedPythonFocalExtractor:
         self.min_complexity_threshold = min_complexity_threshold
         self.min_outgoing_degree_threshold = min_outgoing_degree_threshold
         self.random_seed = random_seed
+        self.repository_index = None
 
         self.stats = defaultdict(lambda: defaultdict(int))
 
     def extract_and_select_functions(self):
         all_selected_methods = []
+
+        relative_files = [
+            Path(path).resolve().relative_to(Path(self.project_root)).as_posix()
+            for path in self.files
+        ]
+        self.repository_index = build_repository_index(
+            self.project_root, allowed_files=relative_files
+        )
 
         for file_path in self.files:
             try:
@@ -122,8 +156,10 @@ class EnhancedPythonFocalExtractor:
             reasons.append(f"loc<{self.min_loc_threshold}")
         if method_info.get('complexity', 0) < self.min_complexity_threshold:
             reasons.append(f"complexity<{self.min_complexity_threshold}")
-        if method_info.get('outgoing_degree', 0) < self.min_outgoing_degree_threshold:
-            reasons.append(f"outgoing_degree<{self.min_outgoing_degree_threshold}")
+        if method_info.get('loose_project_outgoing_degree', 0) < self.min_outgoing_degree_threshold:
+            reasons.append(
+                f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}"
+            )
         return bool(reasons), ','.join(reasons)
 
     @staticmethod
@@ -142,6 +178,11 @@ class EnhancedPythonFocalExtractor:
             'code': method.get('code', ''), 'is_async': method.get('is_async', False),
             'type': method.get('type', 'function'), 'loc': method.get('loc', 0),
             'complexity': method.get('complexity', 0), 'outgoing_degree': method.get('outgoing_degree', 0),
+            'project_outgoing_degree': method.get('project_outgoing_degree', 0),
+            'loose_project_outgoing_degree': method.get('loose_project_outgoing_degree', 0),
+            'unresolved_project_candidate_call_sites': method.get(
+                'unresolved_project_candidate_call_sites', 0
+            ),
             'param_count': method.get('param_count', 0), 'start_line': method.get('start_line'),
             'end_line': method.get('end_line'), 'imports': method.get('imports') or [],
         }
@@ -264,6 +305,23 @@ class EnhancedPythonFocalExtractor:
                         else:
                             method_info['type'] = 'function'
 
+                        if (loc < self.min_loc_threshold
+                                or complexity < self.min_complexity_threshold):
+                            method_info['project_outgoing_degree'] = 0
+                            method_info['loose_project_outgoing_degree'] = 0
+                            method_info['unresolved_project_candidate_call_sites'] = 0
+                        else:
+                            call_metrics = self._compute_project_outgoing_metrics(method_info)
+                            method_info['project_outgoing_degree'] = call_metrics[
+                                'resolved_project_callee_count'
+                            ]
+                            method_info['loose_project_outgoing_degree'] = call_metrics[
+                                'loose_project_outgoing_degree'
+                            ]
+                            method_info['unresolved_project_candidate_call_sites'] = call_metrics[
+                                'unresolved_project_candidate_call_sites'
+                            ]
+
                         focal_methods.append(method_info)
 
                     continue  # 不再遍历函数体内的嵌套函数
@@ -328,24 +386,15 @@ class EnhancedPythonFocalExtractor:
         visit(function_node, is_root=True)
         return len(callees)
 
+    def _compute_project_outgoing_metrics(self, method_info) -> Dict[str, Any]:
+        """Measure strict and loose direct project callees."""
+        if self.repository_index is None:
+            raise RuntimeError('repository index has not been built')
+        return resolve_project_callee_metrics(method_info, self.repository_index)
+
     # ★ 修复：用 os.path 处理路径，避免 split 出 IndexError
     def _gen_test_file_path(self, file_path, function_name):
-        try:
-            rel = os.path.relpath(file_path, str(self.project_root))
-        except ValueError:
-            rel = str(file_path)
-
-        temp_path2 = rel.split(".py")[0]
-        file_name = os.path.basename(temp_path2)
-        temp_dir = os.path.dirname(temp_path2)
-
-        test_path = os.path.join(
-            temp_dir, "Test" + file_name, "test_" + function_name + ".py"
-        ).replace(os.sep, '/')
-
-        if "src/" in test_path:
-            return test_path.replace('src/', 'test/')
-        return "tests/" + test_path
+        return gen_test_file_path(str(self.project_root), file_path, function_name)
 
     # ★ 修复：imports 拍平成 list，与 Java 版保持一致
     def _extract_imports(self, root_node, code):
@@ -564,7 +613,7 @@ class EnhancedPythonFocalExtractor:
             "  筛选条件："
             f"LOC >= {self.min_loc_threshold}, "
             f"CC >= {self.min_complexity_threshold}, "
-            f"outgoing degree >= {self.min_outgoing_degree_threshold}"
+            f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}"
         )
 
 
@@ -576,7 +625,11 @@ def main():
     parser.add_argument('--output', default='selected_functions.json', help='输出 JSON 路径')
     parser.add_argument('--min-loc', type=int, default=50, help='最小非空代码行数，默认 50')
     parser.add_argument('--min-complexity', type=int, default=10, help='最小圈复杂度，默认 10')
-    parser.add_argument('--min-outgoing-degree', type=int, default=5, help='最小调用出度，默认 5')
+    parser.add_argument(
+        '--min-outgoing-degree', type=int, default=3,
+        help=('最小宽松项目内调用出度（严格解析的项目函数数 + '
+              '未消歧的项目候选调用点数；不含内置、标准库和第三方调用），默认 3'),
+    )
     args = parser.parse_args()
 
     project_root = str(Path(args.project_root).resolve())

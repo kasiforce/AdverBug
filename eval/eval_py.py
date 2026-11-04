@@ -221,8 +221,11 @@ def _reported_function_coverage(
 
 
 def parse_instance_coverage(json_path: Path, item: dict[str, Any]) -> dict[str, Any]:
-    """Read target function and target source-file coverage from one run."""
-    empty = {"report_found": False, "target_file": None, "target_function": None}
+    """Read target source-file coverage and, for function targets, function coverage."""
+    is_file_target = str(item.get("target_type") or "").lower() == "source_file"
+    empty = {"report_found": False, "target_file": None}
+    if not is_file_target:
+        empty["target_function"] = None
     if not json_path.is_file():
         return empty
     try:
@@ -232,11 +235,16 @@ def parse_instance_coverage(json_path: Path, item: dict[str, Any]) -> dict[str, 
 
     file_key, file_data = _find_file_entry(report, item)
     if file_data is None:
-        return {"report_found": True, "target_file": None, "target_function": None}
+        return {**empty, "report_found": True}
     target_file = {
         "file_key": _normalize_path(file_key or _source_key(item)),
         **_summary_coverage(file_data.get("summary") or {}),
     }
+    if is_file_target:
+        return {
+            "report_found": True,
+            "target_file": target_file,
+        }
     target_function = _reported_function_coverage(file_data, item)
     if target_function is None:
         target_function = _range_function_coverage(file_data, item)

@@ -121,12 +121,14 @@ def _sourcefile_elements(root: ET.Element) -> Iterable[tuple[str, ET.Element]]:
 
 
 def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, Any]:
-    """Read target method and target source-file coverage from one run."""
+    """Read target source-file coverage and, for function targets, method coverage."""
+    is_file_target = str(item.get("target_type") or "").lower() == "source_file"
     empty = {
         "report_found": False,
         "target_file": None,
-        "target_function": None,
     }
+    if not is_file_target:
+        empty["target_function"] = None
     if not xml_path.is_file():
         return empty
 
@@ -141,6 +143,12 @@ def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, A
         if key == file_key:
             target_file = {"file_key": key, **_coverage_pair(source)}
             break
+
+    if is_file_target:
+        return {
+            "report_found": True,
+            "target_file": target_file,
+        }
 
     requested_name = str(item.get("name", ""))
     class_name = str(item.get("class_name") or "")

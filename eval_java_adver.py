@@ -372,13 +372,13 @@ def resolve_dockerfile(dockerfile_path, repo_name):
 
 def create_and_run_java(dockerfile_path, repo_dir, data_file, *,
                         bug_model="gpt-5-nano",
-                        judge_model="gpt-5-nano",
+                        judge_model="gpt-5.6-luna",
                         filter_model_a="gpt-5-nano",
                         filter_model_b="qwen3.5-flash",
                         attempts=3,
                         suite_retries=1,
                         qwen_api_endpoint=None,
-                        test_agent="mini-swe",
+                        test_agent="restricted",
                         test_agent_steps=100,
                         test_agent_timeout=1200,
                         start_index=0,
@@ -605,7 +605,7 @@ if __name__ == "__main__":
                         help="用于推导镜像名和结果目录的项目路径")
     parser.add_argument("--data-file", default="tem/flink_10.json")
     parser.add_argument("--bug-model", default="gpt-5-nano")
-    parser.add_argument("--judge-model", default="gpt-5-nano")
+    parser.add_argument("--judge-model", default="gpt-5.6-luna")
     parser.add_argument("--filter-model-a", default="gpt-5-nano")
     parser.add_argument("--filter-model-b", default="qwen3.5-flash")
     parser.add_argument("--attempts", type=int, default=3)
@@ -614,8 +614,9 @@ if __name__ == "__main__":
                         help="固定为 1：初始测试失败后重写一次，合计两套测试")
     parser.add_argument("--qwen-api-endpoint", default=None,
                         help="Qwen 过滤模型的 OpenAI-compatible endpoint")
-    parser.add_argument("--test-agent", choices=("mini-swe", "restricted"), default="mini-swe",
-                        help="mini-swe 为连续 Bash 测试智能体；restricted 为旧受限搜索模式")
+    parser.add_argument("--test-agent", choices=("mini-swe", "restricted"), default="restricted",
+                        help="restricted（默认）为只读生产代码搜索模式；"
+                             "mini-swe 为连续 Bash 测试智能体")
     parser.add_argument("--test-agent-steps", type=int, default=100)
     parser.add_argument("--test-agent-timeout", type=int, default=1200)
     parser.add_argument("--start-index", type=int, default=0,

@@ -25,7 +25,7 @@ cp -a /eval-input/files/. /testbed/
 TEST_FILE="$(tr -d '\r\n' < /eval-input/test_file.txt)"
 SRC_FILE="$(tr -d '\r\n' < /eval-input/src_file.txt)"
 
-python -m pytest "$TEST_FILE" \
+ADVER_TRACE_DISABLED=1 python -m pytest "$TEST_FILE" \
     --collect-only \
     --import-mode=importlib \
     -q --disable-warnings --tb=no \

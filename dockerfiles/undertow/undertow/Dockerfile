@@ -10,15 +10,21 @@ ENV TZ=Etc/UTC \
     MAVEN_OPTS=-Xmx1g
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends git ca-certificates locales tzdata \
+    && apt-get install -y --no-install-recommends git ca-certificates locales tzdata python3 python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN PIP_BREAK_SYSTEM_PACKAGES=1 python3 -m pip install --no-cache-dir 'openai>=1,<3'
+
 WORKDIR /testbed
+
+COPY dockerfiles/undertow/undertow/adverbug-test-dependencies.patch /tmp/adverbug-test-dependencies.patch
 
 # Pin the benchmark to the exact source revision used for function extraction.
 RUN git clone https://github.com/undertow-io/undertow.git . \
     && git checkout --detach 77dc917cea6f40468ea481e1bafa7e15657eb887 \
     && git remote remove origin
+
+RUN git apply /tmp/adverbug-test-dependencies.patch
 
 # Compile the project and test sources while caching all Maven dependencies.
 RUN mvn -B -ntp clean install -DskipTests -Dmaven.javadoc.skip=true

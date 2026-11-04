@@ -14,7 +14,7 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-MAX_PRODUCTION_TOOL_CALLS = 5
+MAX_PRODUCTION_TOOL_CALLS = 10
 MAX_SEARCH_RESULTS = 50
 MAX_TOOL_OUTPUT_CHARS = 12000
 MAX_READ_LINES = 600

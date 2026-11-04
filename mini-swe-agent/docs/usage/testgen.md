@@ -1,6 +1,6 @@
-# Function test generation
+# Target-scoped test generation
 
-`mini-extra testgen` runs one fresh mini-SWE-agent Docker environment per function entry, extracts the complete generated test files, and writes them back to a result JSON file.
+`mini-extra testgen` runs one fresh mini-SWE-agent Docker environment per function, source-file, or module entry, extracts the complete generated test files, and writes them back to a result JSON file.
 
 ## Example
 
@@ -17,12 +17,14 @@ mini-extra testgen \
 ```
 
 Use `--slice 0:2` for an initial smoke run. A mini-SWE-agent result is skipped only when it
-submitted successfully, created the required test file, and made no disallowed changes. Failed or
+submitted successfully, created test source under the required output, and made no disallowed changes. Failed or
 policy-violating attempts are retried automatically. Legacy results that contain non-empty
 `generated_tests` and no `mini_swe_agent` metadata remain compatible and are skipped. Pass
 `--redo-existing` to run completed entries again.
 
-The input must be a JSON array. Each entry needs at least these fields:
+The input must be a JSON array. Function and source-file entries provide a safe relative `test_file`.
+Module entries provide a safe relative `test_module`; the model may choose test filenames only within that
+module. Function entries remain backwards compatible with `type` set to `function` or `method`:
 
 ```json
 {
@@ -37,9 +39,19 @@ The input must be a JSON array. Each entry needs at least these fields:
 }
 ```
 
+Source-file and module entries use an explicit `target_type`:
+
+```json
+{"target_type": "source_file", "src_file": "pkg/api.py", "test_file": "tests/test_api.py"}
+{"target_type": "module", "module": "pkg/core", "files": ["pkg/core/a.py", "pkg/core/b.py"], "test_module": "tests/pkg/core"}
+```
+
+Set `language` explicitly when it cannot be inferred from `src_file` or the first module file.
+
 The output preserves every original field and adds:
 
 - `generated_tests`: complete source code strings, compatible with the previous Copilot result format.
+- `generated_test_files`: generated test paths paired with their complete source, required for multi-file module output.
 - `generated_config_files`: modified build or test configuration path and source code pairs.
 - `mini_swe_agent`: execution status, image, language, modified files, policy violations, runtime, model cost, API calls, and trajectory path.
 
@@ -55,17 +67,22 @@ Use `--keep-existing-tests` only for an explicit ablation that allows access to 
 
 Run `scripts/verify_test_isolation.py` to repeat the image-level check: it removes original tests in disposable containers, creates one new smoke test, and invokes each project's native test runner. The checked-in `docs/usage/test_isolation_report.json` records the latest result.
 
-## Language-independent prompt
+## Shared prompt and target-specific scope
 
-The benchmark uses one fixed task template for every supported language. The prompt receives only:
+The benchmark uses one fixed common template for every supported language and target type. The runner selects
+exactly one fixed scope contract from the structured target type; the model is not asked to choose among
+function, source-file, and module instructions. The prompt receives:
 
 - the project-configured test framework;
-- the complete target function or method source code;
-- the production file path;
+- the normalized target type and its single scope contract;
+- the target function source, production file, or module file list as applicable;
 - the containing class name when the target is a method;
-- the required test file path.
+- the required test file path, or the required test module for module targets.
 
-All behavioral requirements, quality constraints, file-mutation rules, execution instructions, and completion criteria are identical across languages. The template is defined as `LANGUAGE_AGNOSTIC_TASK_TEMPLATE` in `minisweagent.run.benchmarks.testgen`.
+All dependency boundaries, quality constraints, file-mutation rules, execution instructions, and completion
+criteria remain common. The output metadata records the normalized `target_type` and
+`target_scope_prompt_version` for reproducibility. The template and fixed scope contracts are defined in
+`minisweagent.run.benchmarks.testgen`.
 
 The defaults are JUnit 5 (Jupiter) for Java, pytest for Python, and Jest for JavaScript. A dataset entry may set `test_framework`, or a whole run can override it with `--test-framework`:
 

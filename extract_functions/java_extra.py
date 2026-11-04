@@ -5,7 +5,7 @@
 A method is retained only when all three conditions hold:
     LOC >= 50
     cyclomatic complexity >= 10
-    unique callee-expression count >= 5
+    loose project-internal outgoing degree >= 3
 
 This version does not use the external StratifiedFunctionSelector or
 FileQualityAnalyzer. It recursively discovers production .java files itself,
@@ -24,6 +24,11 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 # from tree_sitter import Language, Parser
 # import tree_sitter_java
 from multi_parser import java_parser
+
+try:
+    from extract_func import build_repository_index, resolve_project_callee_metrics
+except ImportError:  # package-style import
+    from .extract_func import build_repository_index, resolve_project_callee_metrics
 
 try:
     import lizard
@@ -48,6 +53,7 @@ MODIFIER_TYPES = {
 IGNORED_DIRS = {
     'test', 'tests', '__tests__', '__pycache__', '.git', '.svn', '.hg',
     'venv', 'env', '.env', 'virtualenv', 'envs',
+    'vendor',
     '.vscode', '.idea', '.pytest_cache', '.mypy_cache',
     'build', 'dist', '*.egg-info', 'node_modules',
     'target', 'doc', 'docs', 'example', 'examples', 'coverage', 'script', 'scripts', 'benchmarks',
@@ -82,6 +88,22 @@ TEST_FILE_PATTERNS = [
     re.compile(r".*TestCase\.java$", re.IGNORECASE),
     re.compile(r".*IT\.java$"),  # common integration-test suffix
 ]
+
+
+def gen_test_file_path(project_root: str, file_path: str, function_name: Optional[str] = None) -> str:
+    """Map a production file to the established Java test layout."""
+    rel = os.path.relpath(file_path, project_root)
+    rel_no_ext = os.path.splitext(rel)[0]
+    path_parts = list(Path(rel_no_ext).parts)
+    for index in range(len(path_parts) - 1):
+        if path_parts[index] == "main" and path_parts[index + 1] == "java":
+            path_parts[index] = "test"
+            break
+    rel_no_ext = Path(*path_parts).as_posix()
+    package_dir = os.path.dirname(rel_no_ext)
+    class_name = os.path.basename(rel_no_ext)
+    method_name = function_name[:1].upper() + function_name[1:] if function_name else ""
+    return f"{package_dir}/{class_name}{method_name}Tests.java"
 
 def get_point_row(point):
     """兼容 Tree-sitter 0.21.3 的元组和新版 Point 对象。"""
@@ -214,7 +236,7 @@ class JavaProjectTestScopeExtractor:
         output_file: Optional[str] = None,
         min_loc_threshold: int = 50,
         min_complexity_threshold: int = 10,
-        min_outgoing_degree_threshold: int = 5,
+        min_outgoing_degree_threshold: int = 3,
     ):
         self.project_root = str(Path(project_root).resolve())
         self.files = file_list
@@ -223,6 +245,7 @@ class JavaProjectTestScopeExtractor:
         self.min_complexity_threshold = min_complexity_threshold
         self.min_outgoing_degree_threshold = min_outgoing_degree_threshold
         self.parser = create_java_parser()
+        self.repository_index = None
         # Keyed by simple class name to keep compatibility with the original inheritance code.
         self.classes: Dict[str, Dict[str, Any]] = {}
         self.stats: Dict[str, Dict[str, int]] = defaultdict(lambda: defaultdict(int))
@@ -451,11 +474,11 @@ class JavaProjectTestScopeExtractor:
             reasons.append(f"loc<{self.min_loc_threshold}")
         if method_info.get("complexity", 0) < self.min_complexity_threshold:
             reasons.append(f"complexity<{self.min_complexity_threshold}")
-        unique_callee_count = method_info.get(
-            "unique_callee_count", method_info.get("outgoing_degree", 0)
-        )
-        if unique_callee_count < self.min_outgoing_degree_threshold:
-            reasons.append(f"unique_callee_count<{self.min_outgoing_degree_threshold}")
+        loose_project_outgoing_degree = method_info.get("loose_project_outgoing_degree", 0)
+        if loose_project_outgoing_degree < self.min_outgoing_degree_threshold:
+            reasons.append(
+                f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}"
+            )
         return bool(reasons), ",".join(reasons)
 
     # def _compute_test_scope_for_class(self, class_key: str) -> List[Dict[str, Any]]:
@@ -493,18 +516,7 @@ class JavaProjectTestScopeExtractor:
         return methods
 
     def _gen_test_file_path(self, file_path: str, function_name: str) -> str:
-        rel = os.path.relpath(file_path, self.project_root)
-        rel_no_ext = os.path.splitext(rel)[0]
-        path_parts = list(Path(rel_no_ext).parts)
-        for index in range(len(path_parts) - 1):
-            if path_parts[index] == "main" and path_parts[index + 1] == "java":
-                path_parts[index] = "test"
-                break
-        rel_no_ext = Path(*path_parts).as_posix()
-        package_dir = os.path.dirname(rel_no_ext)
-        class_name = os.path.basename(rel_no_ext)
-        method_capitalized = function_name[:1].upper() + function_name[1:] if function_name else "Method"
-        return f"{package_dir}/{class_name}{method_capitalized}Tests.java"
+        return gen_test_file_path(self.project_root, file_path, function_name)
 
     def extract_and_select_functions(self) -> List[Dict[str, Any]]:
         """Parse all supplied files, filter methods, and keep all passing methods.
@@ -512,6 +524,13 @@ class JavaProjectTestScopeExtractor:
         Despite retaining the historical method name for caller compatibility, this
         function no longer invokes any external function selector or sampling logic.
         """
+        relative_files = [
+            Path(path).resolve().relative_to(Path(self.project_root)).as_posix()
+            for path in self.files
+        ]
+        self.repository_index = build_repository_index(
+            self.project_root, allowed_files=relative_files
+        )
         self._parse_project()
         selected_methods: List[Dict[str, Any]] = []
         self.stats.clear()
@@ -535,6 +554,42 @@ class JavaProjectTestScopeExtractor:
             passed = 0
             filtered = 0
             for method in file_methods:
+                # Resolve the repository-wide call graph only after the cheap
+                # thresholds pass. This is equivalent for selection and avoids
+                # spending most extraction time on obviously ineligible methods.
+                if (method.get("loc", 0) < self.min_loc_threshold
+                        or method.get("complexity", 0) < self.min_complexity_threshold):
+                    method["project_outgoing_degree"] = 0
+                    method["loose_project_outgoing_degree"] = 0
+                    method["unresolved_project_candidate_call_sites"] = 0
+                else:
+                    try:
+                        call_metrics = resolve_project_callee_metrics(
+                            {
+                                "src_file": method["src_file"],
+                                "name": method["name"],
+                                "class_name": method.get("class_name"),
+                                "start_line": method.get("start_line"),
+                            },
+                            self.repository_index,
+                        )
+                        method["project_outgoing_degree"] = call_metrics[
+                            "resolved_project_callee_count"
+                        ]
+                        method["loose_project_outgoing_degree"] = call_metrics[
+                            "loose_project_outgoing_degree"
+                        ]
+                        method["unresolved_project_candidate_call_sites"] = call_metrics[
+                            "unresolved_project_candidate_call_sites"
+                        ]
+                    except ValueError as exc:
+                        print(
+                            f"警告：无法解析项目内调用，按 0 处理："
+                            f"{method['src_file']}::{method['name']}：{exc}"
+                        )
+                        method["project_outgoing_degree"] = 0
+                        method["loose_project_outgoing_degree"] = 0
+                        method["unresolved_project_candidate_call_sites"] = 0
                 should_filter, reason = self._should_filter_method(method)
                 if should_filter:
                     filtered += 1
@@ -556,6 +611,13 @@ class JavaProjectTestScopeExtractor:
                     "outgoing_degree": method.get("outgoing_degree", 0),
                     "unique_callee_count": method.get(
                         "unique_callee_count", method.get("outgoing_degree", 0)
+                    ),
+                    "project_outgoing_degree": method.get("project_outgoing_degree", 0),
+                    "loose_project_outgoing_degree": method.get(
+                        "loose_project_outgoing_degree", 0
+                    ),
+                    "unresolved_project_candidate_call_sites": method.get(
+                        "unresolved_project_candidate_call_sites", 0
                     ),
                     "start_line": method.get("start_line", 0),
                     "end_line": method.get("end_line", 0),
@@ -595,7 +657,7 @@ class JavaProjectTestScopeExtractor:
             "筛选条件："
             f"LOC >= {self.min_loc_threshold}, "
             f"CC >= {self.min_complexity_threshold}, "
-            f"unique callee expressions >= {self.min_outgoing_degree_threshold}"
+            f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}"
         )
 
     def _save_to_json(self, data: List[Dict[str, Any]]) -> None:
@@ -622,7 +684,11 @@ def main() -> None:
     parser.add_argument("--output", default="selected_methods.json", help="输出 JSON 路径")
     parser.add_argument("--min-loc", type=int, default=50, help="最小非空代码行数，默认 50")
     parser.add_argument("--min-complexity", type=int, default=10, help="最小圈复杂度，默认 10")
-    parser.add_argument("--min-outgoing-degree", type=int, default=5, help="最小不同调用表达式数，默认 5")
+    parser.add_argument(
+        "--min-outgoing-degree", type=int, default=3,
+        help=("最小宽松项目内调用出度（严格解析的项目方法数 + "
+              "未消歧的项目候选调用点数；不含 JDK 和第三方调用），默认 3"),
+    )
     args = parser.parse_args()
 
     project_root = str(Path(args.project_root).resolve())

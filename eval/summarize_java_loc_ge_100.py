@@ -74,6 +74,7 @@ def _copy_exec_files(items: list[dict[str, Any]], source: Path, destination: Pat
 def _collect_totals(items: list[dict[str, Any]], files: dict[str, Any]) -> dict[str, int]:
     totals = _empty_totals()
     totals["targets"] = len(items)
+    totals["function_targets"] = len(items)
     for item in items:
         if (item.get("syntax_evaluation") or {}).get("correct") is True:
             totals["syntax_passed"] += 1

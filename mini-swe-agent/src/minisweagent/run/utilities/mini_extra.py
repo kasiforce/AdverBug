@@ -16,7 +16,7 @@ subcommands = [
     ("minisweagent.run.benchmarks.swebench", ["swebench"], "Evaluate on SWE-bench (batch mode)"),
     ("minisweagent.run.benchmarks.swebench_single", ["swebench-single"], "Evaluate on SWE-bench (single instance)"),
     ("minisweagent.run.benchmarks.programbench", ["programbench"], "Run on ProgramBench (batch mode)"),
-    ("minisweagent.run.benchmarks.testgen", ["testgen"], "Generate tests for function datasets"),
+    ("minisweagent.run.benchmarks.testgen", ["testgen"], "Generate tests for target-scoped datasets"),
 ]
 
 
