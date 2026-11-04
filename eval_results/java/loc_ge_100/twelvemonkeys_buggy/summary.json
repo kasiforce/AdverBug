@@ -1,0 +1,57 @@
+{
+  "input": "/data/home/cjy/Adver_bug/results/loc_ge_100/java/twelvemonkeys_deepseek_testgen.json",
+  "code_variant": "buggy",
+  "bug_input": "/data/home/cjy/Adver_bug/test_results/java/TwelveMonkeys/adver_100/final_results.json",
+  "image": "adverbug-twelvemonkeys-check:latest",
+  "source_target_count": 10,
+  "skipped_generation_count": 0,
+  "target_count": 7,
+  "evaluated_count": 7,
+  "compile_pass_count": 7,
+  "test_pass_count": 5,
+  "exec_count": 7,
+  "bug_matching": {
+    "matched_count": 7,
+    "unmatched_count": 3,
+    "unmatched_targets": [
+      {
+        "instance_id": "TwelveMonkeys__predictUV__433__43",
+        "name": "predictUV",
+        "method_key": "predictUV(VP8Frame frame)",
+        "src_file": "imageio/imageio-webp/src/main/java/com/twelvemonkeys/imageio/plugins/webp/vp8/MacroBlock.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "TwelveMonkeys__predictY__624__44",
+        "name": "predictY",
+        "method_key": "predictY(VP8Frame frame)",
+        "src_file": "imageio/imageio-webp/src/main/java/com/twelvemonkeys/imageio/plugins/webp/vp8/MacroBlock.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "TwelveMonkeys__predict__478__45",
+        "name": "predict",
+        "method_key": "predict(VP8Frame frame)",
+        "src_file": "imageio/imageio-webp/src/main/java/com/twelvemonkeys/imageio/plugins/webp/vp8/SubBlock.java",
+        "reason": "no_matching_bug"
+      }
+    ]
+  },
+  "mutation_outcomes": {
+    "killed": 2,
+    "survived": 5,
+    "compile_failed": 0,
+    "patch_failed": 0,
+    "inconclusive": 0
+  },
+  "syntax": {
+    "parser": "tree-sitter-java",
+    "parser_available": true,
+    "total": 7,
+    "correct": 7,
+    "incorrect": 0,
+    "correct_rate": 1.0
+  },
+  "merge": {},
+  "merge_disabled_for_buggy_code": false
+}

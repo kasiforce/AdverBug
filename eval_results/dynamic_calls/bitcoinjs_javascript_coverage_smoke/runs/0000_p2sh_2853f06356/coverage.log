@@ -1,0 +1,80 @@
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/cjs/payments/p2sh/p2sh.test.js
+  p2sh (valid fixtures)
+    ✓ valid vector #0: p2sh-*, out (from address) (6 ms)
+    ✓ valid vector #1: p2sh-*, out (from hash) (2 ms)
+    ✓ valid vector #2: p2sh-*, out (from output) (2 ms)
+    ✓ valid vector #3: p2sh-p2pkh, out (from redeem) (3 ms)
+    ✓ valid vector #4: p2sh-p2wpkh, out (from redeem) (1 ms)
+    ✓ valid vector #5: p2sh-p2pk, out (from redeem) (2 ms)
+    ✓ valid vector #6: p2sh-p2pkh, in and out (from redeem) (2 ms)
+    ✓ valid vector #7: p2sh-p2wpkh, in and out (from redeem w/ witness) (1 ms)
+    ✓ valid vector #8: p2sh-p2pk, in and out (from input) (2 ms)
+    ✓ valid vector #9: p2sh-p2wpkh, in and out (from input AND witness) (2 ms)
+    ✓ valid vector #10: p2sh-p2pkh, out (network derived from redeem) (2 ms)
+  p2sh (invalid fixtures)
+    ✓ invalid vector #0 throws Not enough data (34 ms)
+    ✓ invalid vector #1 throws Non-minimally encoded (non BIP62 compliant): ValiError: Invalid length: Expected 23 but received 24 (2 ms)
+    ✓ invalid vector #2 throws Expected OP_HASH160: Output is invalid (1 ms)
+    ✓ invalid vector #3 throws Unexpected OP_RESERVED: Output is invalid
+    ✓ invalid vector #4 throws address.hash != H: Hash mismatch (1 ms)
+    ✓ invalid vector #5 throws address.hash != output.hash: Hash mismatch (1 ms)
+    ✓ invalid vector #6 throws output.hash != H: Hash mismatch (6 ms)
+    ✓ invalid vector #7 throws H(redeem.output) != H: Hash mismatch (1 ms)
+    ✓ invalid vector #8 throws Invalid version or Network mismatch
+    ✓ invalid vector #9 throws Invalid address
+    ✓ invalid vector #10 throws Invalid address (1 ms)
+    ✓ invalid vector #11 throws Input too short
+    ✓ invalid vector #12 throws Input too short (1 ms)
+    ✓ invalid vector #13 throws Redeem.output too short
+    ✓ invalid vector #14 throws Redeem.output unspendable if larger than 520 bytes
+    ✓ invalid vector #15 throws Input is invalid (1 ms)
+    ✓ invalid vector #16 throws Redeem.input mismatch (1 ms)
+    ✓ invalid vector #17 throws Redeem.output mismatch
+    ✓ invalid vector #18 throws Redeem.output too short
+    ✓ invalid vector #19 throws Input and witness provided (1 ms)
+    ✓ invalid vector #20 throws Non push-only scriptSig
+    ✓ invalid vector #21 throws Redeem.output too short (1 ms)
+    ✓ invalid vector #22 throws Witness and redeem.witness mismatch (1 ms)
+    ✓ invalid vector #23 throws Hash mismatch
+    ✓ invalid vector #24 throws Network mismatch
+    ✓ invalid vector #25 throws Network mismatch
+    ✓ invalid vector #26 throws Empty input
+  p2sh (behaviour)
+    ✓ throws a TypeError when no usable data is supplied (1 ms)
+    ✓ defaults the network to bitcoin
+    ✓ derives hash/output/address from a supplied address
+    ✓ derives hash/address/output from redeem.output (1 ms)
+    ✓ uses testnet network from redeem and creates a testnet address (1 ms)
+    ✓ derives redeem input/output from a combined scriptSig (1 ms)
+    ✓ treats a trailing OP_FALSE in a scriptSig as an empty redeem output (1 ms)
+    ✓ propagates redeem.witness to witness (1 ms)
+    ✓ includes redeem.name in the payment name
+    ✓ does not validate when opts.validate is false (1 ms)
+    ✓ does not reject a wrong-version address when validation is disabled (1 ms)
+    ✓ does not reject a network mismatch when validation is disabled (1 ms)
+    ✓ accepts a redeem.output of exactly 520 bytes (2 ms)
+    ✓ rejects a redeem.output of 521 bytes (1 ms)
+    ✓ accepts a redeem.output with exactly 201 non-push operations (1 ms)
+    ✓ rejects a redeem.output with 202 non-push operations (2 ms)
+    ✓ rejects a hash that is not 20 bytes (1 ms)
+    ✓ rejects an output that is not 23 bytes
+    ✓ rejects witness data on its own as insufficient (1 ms)
+    ✓ accepts consistent address, hash and output values (1 ms)
+    ✓ accepts consistent input and redeem values
+    ✓ rejects a non-push scriptSig in redeem.input
+    ✓ rejects redeem.input combined with redeem.witness (1 ms)
+    ✓ rejects an empty redeem.input without witness (1 ms)
+    ✓ rejects a witness that differs from redeem.witness (1 ms)
+    ✓ matches identical witness and redeem.witness
+    ✓ rejects mismatching address and hash (1 ms)
+    ✓ rejects a truncated input script
+
+Test Suites: 1 passed, 1 total
+Tests:       66 passed, 66 total
+Snapshots:   0 total
+Time:        0.684 s, estimated 2 s
+Ran all test suites within paths "test/cjs/payments/p2sh/p2sh.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,78 @@
+{
+  "input": "/data/home/cjy/Adver_bug/results/loc_ge_100/java/ofdrw_deepseek_testgen.json",
+  "code_variant": "buggy",
+  "bug_input": "/data/home/cjy/Adver_bug/test_results/java/ofdrw/ofdrw_specification_restricted_gpt_20261102/final_results.json",
+  "image": "adver-ofdrw:test",
+  "source_target_count": 8,
+  "skipped_generation_count": 0,
+  "target_count": 2,
+  "evaluated_count": 2,
+  "compile_pass_count": 2,
+  "test_pass_count": 1,
+  "exec_count": 2,
+  "bug_matching": {
+    "matched_count": 2,
+    "unmatched_count": 6,
+    "unmatched_targets": [
+      {
+        "instance_id": "ofdrw__calPdfPathPoint__321__4",
+        "name": "calPdfPathPoint",
+        "method_key": "calPdfPathPoint(double width, double height, ST_Box boundary, List<PathPoint> abbreviatedPoint, boolean hasCtm, ST_Array ctm, ST_Box compositeObjectBoundary, ST_Array compositeObjectCTM, boolean fixOriginToPdf, double scale)",
+        "src_file": "ofdrw-converter/src/main/java/org/ofdrw/converter/utils/PointUtil.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "ofdrw__calPdfTextCoordinate__513__6",
+        "name": "calPdfTextCoordinate",
+        "method_key": "calPdfTextCoordinate(double width, double height, ST_Box boundary, float fontSize, List<TextCode> textCodes, List<CT_CGTransform> cgTransforms, ST_Box compositeObjectBoundary, ST_Array compositeObjectCTM, boolean hasCtm, ST_Array ctm, boolean fixOriginToPdf, double scale)",
+        "src_file": "ofdrw-converter/src/main/java/org/ofdrw/converter/utils/PointUtil.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "ofdrw__render__50__16",
+        "name": "render",
+        "method_key": "render(CT_PageBlock layer, Div<?> e, AtomicInteger maxUnitID)",
+        "src_file": "ofdrw-layout/src/main/java/org/ofdrw/layout/engine/render/DivRender.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "ofdrw__render__54__17",
+        "name": "render",
+        "method_key": "render(CT_PageBlock layer, ResManager resManager, Paragraph e, AtomicInteger maxUnitID)",
+        "src_file": "ofdrw-layout/src/main/java/org/ofdrw/layout/engine/render/ParagraphRender.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "ofdrw__getAppearance__77__19",
+        "name": "getAppearance",
+        "method_key": "getAppearance(OFDReader ctx, SignIDProvider idProvider)",
+        "src_file": "ofdrw-sign/src/main/java/org/ofdrw/sign/stamppos/CuttingRideStampPos.java",
+        "reason": "no_matching_bug"
+      },
+      {
+        "instance_id": "ofdrw__getAppearance__201__20",
+        "name": "getAppearance",
+        "method_key": "getAppearance(OFDReader ctx, SignIDProvider idProvider)",
+        "src_file": "ofdrw-sign/src/main/java/org/ofdrw/sign/stamppos/RidingStampPos.java",
+        "reason": "no_matching_bug"
+      }
+    ]
+  },
+  "mutation_outcomes": {
+    "killed": 1,
+    "survived": 1,
+    "compile_failed": 0,
+    "patch_failed": 0,
+    "inconclusive": 0
+  },
+  "syntax": {
+    "parser": "tree-sitter-java",
+    "parser_available": true,
+    "total": 2,
+    "correct": 2,
+    "incorrect": 0,
+    "correct_rate": 1.0
+  },
+  "merge": {},
+  "merge_disabled_for_buggy_code": false
+}
