@@ -1,0 +1,5632 @@
+[
+  {
+    "instance_id": "0000_renderFragment_f5672cb781",
+    "src_file": "lib/thymeleaf-spring5/src/main/java/org/thymeleaf/spring5/view/ThymeleafView.java",
+    "class_name": "org.thymeleaf.spring5.view.ThymeleafView",
+    "target_function": "renderFragment",
+    "target_start_line": 198,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 51.09562474722043,
+    "trace_prefix": "org/thymeleaf/spring5",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.spring5.ISpringTemplateEngine",
+        "callee_method": "getAllowedClassOverridesForViews",
+        "descriptor": "()Ljava/util/Collection;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.ISpringTemplateEngine",
+        "callee_method": "getConfiguration",
+        "descriptor": "()Lorg/thymeleaf/IEngineConfiguration;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.ISpringTemplateEngine",
+        "callee_method": "process",
+        "descriptor": "(Ljava/lang/String;Ljava/util/Set;Lorg/thymeleaf/context/IContext;Ljava/io/Writer;)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.util.SpringContentTypeUtils",
+        "callee_method": "computeViewContentType",
+        "descriptor": "(Lorg/thymeleaf/web/IWebExchange;Ljava/lang/String;Ljava/nio/charset/Charset;)Ljava/lang/String;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.util.SpringContentTypeUtils",
+          "method": "computeViewContentType",
+          "descriptor": "(Lorg/thymeleaf/web/IWebExchange;Ljava/lang/String;Ljava/nio/charset/Charset;)Ljava/lang/String;",
+          "line": {
+            "total": 17,
+            "covered": 14,
+            "missed": 3,
+            "rate": 0.8235294117647058
+          },
+          "branch": {
+            "total": 10,
+            "covered": 6,
+            "missed": 4,
+            "rate": 0.6
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.util.SpringRequestUtils",
+        "callee_method": "checkViewNameNotInRequest",
+        "descriptor": "(Ljava/lang/String;Lorg/thymeleaf/web/IWebRequest;)V",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.util.SpringRequestUtils",
+          "method": "checkViewNameNotInRequest",
+          "descriptor": "(Ljava/lang/String;Lorg/thymeleaf/web/IWebRequest;)V",
+          "line": {
+            "total": 50,
+            "covered": 3,
+            "missed": 47,
+            "rate": 0.06
+          },
+          "branch": {
+            "total": 74,
+            "covered": 1,
+            "missed": 73,
+            "rate": 0.013513513513513514
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "addRequestContextAsVariable",
+        "descriptor": "(Ljava/util/Map;Ljava/lang/String;Lorg/springframework/web/servlet/support/RequestContext;)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getApplicationContext",
+        "descriptor": "()Lorg/springframework/context/ApplicationContext;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getCharacterEncoding",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getContentType",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getForceContentType",
+        "descriptor": "()Z",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getLocale",
+        "descriptor": "()Ljava/util/Locale;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getProducePartialOutputWhileProcessing",
+        "descriptor": "()Z",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getServletContext",
+        "descriptor": "()Ljavax/servlet/ServletContext;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getStaticVariables",
+        "descriptor": "()Ljava/util/Map;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getTemplateEngine",
+        "descriptor": "()Lorg/thymeleaf/spring5/ISpringTemplateEngine;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.util.SpringContentTypeUtils",
+        "callee_method": "computeViewContentType",
+        "descriptor": "(Lorg/thymeleaf/web/IWebExchange;Ljava/lang/String;Ljava/nio/charset/Charset;)Ljava/lang/String;",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.util.SpringContentTypeUtils",
+          "method": "computeViewContentType",
+          "descriptor": "(Lorg/thymeleaf/web/IWebExchange;Ljava/lang/String;Ljava/nio/charset/Charset;)Ljava/lang/String;",
+          "line": {
+            "total": 17,
+            "covered": 14,
+            "missed": 3,
+            "rate": 0.8235294117647058
+          },
+          "branch": {
+            "total": 10,
+            "covered": 6,
+            "missed": 4,
+            "rate": 0.6
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.util.SpringRequestUtils",
+        "callee_method": "checkViewNameNotInRequest",
+        "descriptor": "(Ljava/lang/String;Lorg/thymeleaf/web/IWebRequest;)V",
+        "call_count": 6,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.util.SpringRequestUtils",
+          "method": "checkViewNameNotInRequest",
+          "descriptor": "(Ljava/lang/String;Lorg/thymeleaf/web/IWebRequest;)V",
+          "line": {
+            "total": 50,
+            "covered": 3,
+            "missed": 47,
+            "rate": 0.06
+          },
+          "branch": {
+            "total": 74,
+            "covered": 1,
+            "missed": 73,
+            "rate": 0.013513513513513514
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "addRequestContextAsVariable",
+        "descriptor": "(Ljava/util/Map;Ljava/lang/String;Lorg/springframework/web/servlet/support/RequestContext;)V",
+        "call_count": 44,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "addRequestContextAsVariable",
+          "descriptor": "(Ljava/util/Map;Ljava/lang/String;Lorg/springframework/web/servlet/support/RequestContext;)V",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getCharacterEncoding",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getCharacterEncoding",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getContentType",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getContentType",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getForceContentType",
+        "descriptor": "()Z",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getForceContentType",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getLocale",
+        "descriptor": "()Ljava/util/Locale;",
+        "call_count": 70,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getLocale",
+          "descriptor": "()Ljava/util/Locale;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getProducePartialOutputWhileProcessing",
+        "descriptor": "()Z",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getProducePartialOutputWhileProcessing",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getStaticVariables",
+        "descriptor": "()Ljava/util/Map;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getStaticVariables",
+          "descriptor": "()Ljava/util/Map;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getTemplateEngine",
+        "descriptor": "()Lorg/thymeleaf/spring5/ISpringTemplateEngine;",
+        "call_count": 28,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getTemplateEngine",
+          "descriptor": "()Lorg/thymeleaf/spring5/ISpringTemplateEngine;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 28,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.AbstractThymeleafView",
+          "method": "getTemplateName",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.ThymeleafView",
+        "caller_method": "renderFragment",
+        "callee_class": "org.thymeleaf.spring5.view.ThymeleafViewRenderFragmentTests$TrackingPrintWriter",
+        "callee_method": "flush",
+        "descriptor": "()V",
+        "call_count": 2,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 16,
+      "executed_called_function_count": 12,
+      "candidate_called_function_count": 26,
+      "covered_candidate_count": 12,
+      "coverage_rate": 0.46153846153846156,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 2,
+      "static_only_count": 14,
+      "dynamic_only_count": 10,
+      "line": {
+        "covered": 30,
+        "total": 81,
+        "rate": 0.37037037037037035
+      },
+      "branch": {
+        "covered": 10,
+        "total": 88,
+        "rate": 0.11363636363636363
+      },
+      "matched_function_count": 11,
+      "unmatched_function_count": 15
+    },
+    "trace_record_count": 302,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0001_renderFragmentInternal_043c156b6c",
+    "src_file": "lib/thymeleaf-spring5/src/main/java/org/thymeleaf/spring5/view/reactive/ThymeleafReactiveView.java",
+    "class_name": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+    "target_function": "renderFragmentInternal",
+    "target_start_line": 359,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 52.2613270082511,
+    "trace_prefix": "org/thymeleaf/spring5",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.spring5.ISpringWebFluxTemplateEngine",
+        "callee_method": "getAllowedClassOverridesForViews",
+        "descriptor": "()Ljava/util/Collection;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.ISpringWebFluxTemplateEngine",
+        "callee_method": "getConfiguration",
+        "descriptor": "()Lorg/thymeleaf/IEngineConfiguration;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.ISpringWebFluxTemplateEngine",
+        "callee_method": "processStream",
+        "descriptor": "(Ljava/lang/String;Ljava/util/Set;Lorg/thymeleaf/context/IContext;Lorg/springframework/core/io/buffer/DataBufferFactory;Lorg/springframework/http/MediaType;Ljava/nio/charset/Charset;I)Lorg/reactivestreams/Publisher;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "createRequestContext",
+        "descriptor": "(Lorg/springframework/web/server/ServerWebExchange;Ljava/util/Map;)Lorg/springframework/web/reactive/result/view/RequestContext;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getApplicationContext",
+        "descriptor": "()Lorg/springframework/context/ApplicationContext;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getCharset",
+        "descriptor": "(Lorg/springframework/http/MediaType;)Ljava/util/Optional;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getCharset",
+          "descriptor": "(Lorg/springframework/http/MediaType;)Ljava/util/Optional;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getDefaultCharset",
+        "descriptor": "()Ljava/nio/charset/Charset;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getLocale",
+        "descriptor": "()Ljava/util/Locale;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getLocale",
+          "descriptor": "()Ljava/util/Locale;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getReactiveAdapterRegistry",
+        "descriptor": "()Lorg/springframework/core/ReactiveAdapterRegistry;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getReactiveAdapterRegistry",
+          "descriptor": "()Lorg/springframework/core/ReactiveAdapterRegistry;",
+          "line": {
+            "total": 7,
+            "covered": 4,
+            "missed": 3,
+            "rate": 0.5714285714285714
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getResponseMaxChunkSizeBytes",
+        "descriptor": "()I",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getResponseMaxChunkSizeBytes",
+          "descriptor": "()I",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getStaticVariables",
+        "descriptor": "()Ljava/util/Map;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getStaticVariables",
+          "descriptor": "()Ljava/util/Map;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getTemplateEngine",
+        "descriptor": "()Lorg/thymeleaf/spring5/ISpringWebFluxTemplateEngine;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getTemplateEngine",
+          "descriptor": "()Lorg/thymeleaf/spring5/ISpringWebFluxTemplateEngine;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getTemplateName",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "isDataDriven",
+        "descriptor": "(Ljava/util/Map;)Z",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "isDataDriven",
+          "descriptor": "(Ljava/util/Map;)Z",
+          "line": {
+            "total": 7,
+            "covered": 6,
+            "missed": 1,
+            "rate": 0.8571428571428571
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+        "callee_method": "buildApplication",
+        "descriptor": "(Lorg/springframework/core/ReactiveAdapterRegistry;)Lorg/thymeleaf/spring5/web/webflux/SpringWebFluxWebApplication;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+          "method": "buildApplication",
+          "descriptor": "(Lorg/springframework/core/ReactiveAdapterRegistry;)Lorg/thymeleaf/spring5/web/webflux/SpringWebFluxWebApplication;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+        "callee_method": "buildExchange",
+        "descriptor": "(Lorg/springframework/web/server/ServerWebExchange;Ljava/util/Locale;Lorg/springframework/http/MediaType;Ljava/nio/charset/Charset;)Lorg/thymeleaf/spring5/web/webflux/ISpringWebFluxWebExchange;",
+        "coverage": {
+          "class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+          "method": "buildExchange",
+          "descriptor": "(Lorg/springframework/web/server/ServerWebExchange;Ljava/util/Locale;Lorg/springframework/http/MediaType;Ljava/nio/charset/Charset;)Lorg/thymeleaf/spring5/web/webflux/ISpringWebFluxWebExchange;",
+          "line": {
+            "total": 6,
+            "covered": 6,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getCharset",
+        "descriptor": "(Lorg/springframework/http/MediaType;)Ljava/util/Optional;",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getCharset",
+          "descriptor": "(Lorg/springframework/http/MediaType;)Ljava/util/Optional;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getLocale",
+        "descriptor": "()Ljava/util/Locale;",
+        "call_count": 56,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getLocale",
+          "descriptor": "()Ljava/util/Locale;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getReactiveAdapterRegistry",
+        "descriptor": "()Lorg/springframework/core/ReactiveAdapterRegistry;",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getReactiveAdapterRegistry",
+          "descriptor": "()Lorg/springframework/core/ReactiveAdapterRegistry;",
+          "line": {
+            "total": 7,
+            "covered": 4,
+            "missed": 3,
+            "rate": 0.5714285714285714
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getResponseMaxChunkSizeBytes",
+        "descriptor": "()I",
+        "call_count": 15,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getResponseMaxChunkSizeBytes",
+          "descriptor": "()I",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getStaticVariables",
+        "descriptor": "()Ljava/util/Map;",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getStaticVariables",
+          "descriptor": "()Ljava/util/Map;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getTemplateEngine",
+        "descriptor": "()Lorg/thymeleaf/spring5/ISpringWebFluxTemplateEngine;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getTemplateEngine",
+          "descriptor": "()Lorg/thymeleaf/spring5/ISpringWebFluxTemplateEngine;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "getTemplateName",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "callee_method": "isDataDriven",
+        "descriptor": "(Ljava/util/Map;)Z",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+          "method": "isDataDriven",
+          "descriptor": "(Ljava/util/Map;)Z",
+          "line": {
+            "total": 7,
+            "covered": 6,
+            "missed": 1,
+            "rate": 0.8571428571428571
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewRenderFragmentInternalTests$TestView",
+        "callee_method": "createRequestContext",
+        "descriptor": "(Lorg/springframework/web/server/ServerWebExchange;Ljava/util/Map;)Lorg/springframework/web/reactive/result/view/RequestContext;",
+        "call_count": 18,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+        "callee_method": "buildApplication",
+        "descriptor": "(Lorg/springframework/core/ReactiveAdapterRegistry;)Lorg/thymeleaf/spring5/web/webflux/SpringWebFluxWebApplication;",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+          "method": "buildApplication",
+          "descriptor": "(Lorg/springframework/core/ReactiveAdapterRegistry;)Lorg/thymeleaf/spring5/web/webflux/SpringWebFluxWebApplication;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.spring5.view.reactive.ThymeleafReactiveView",
+        "caller_method": "renderFragmentInternal",
+        "callee_class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+        "callee_method": "buildExchange",
+        "descriptor": "(Lorg/springframework/web/server/ServerWebExchange;Ljava/util/Locale;Lorg/springframework/http/MediaType;Ljava/nio/charset/Charset;)Lorg/thymeleaf/spring5/web/webflux/ISpringWebFluxWebExchange;",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.spring5.web.webflux.SpringWebFluxWebApplication",
+          "method": "buildExchange",
+          "descriptor": "(Lorg/springframework/web/server/ServerWebExchange;Ljava/util/Locale;Lorg/springframework/http/MediaType;Ljava/nio/charset/Charset;)Lorg/thymeleaf/spring5/web/webflux/ISpringWebFluxWebExchange;",
+          "line": {
+            "total": 6,
+            "covered": 6,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 16,
+      "executed_called_function_count": 11,
+      "candidate_called_function_count": 17,
+      "covered_candidate_count": 11,
+      "coverage_rate": 0.6470588235294118,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 10,
+      "static_only_count": 6,
+      "dynamic_only_count": 1,
+      "line": {
+        "covered": 26,
+        "total": 30,
+        "rate": 0.8666666666666667
+      },
+      "branch": {
+        "covered": 13,
+        "total": 18,
+        "rate": 0.7222222222222222
+      },
+      "matched_function_count": 10,
+      "unmatched_function_count": 7
+    },
+    "trace_record_count": 241,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0002_renderFragment_408cc3bea4",
+    "src_file": "lib/thymeleaf-spring6/src/main/java/org/thymeleaf/spring6/view/ThymeleafView.java",
+    "class_name": "org.thymeleaf.spring6.view.ThymeleafView",
+    "target_function": "renderFragment",
+    "target_start_line": 198,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 52.42385659972206,
+    "trace_prefix": "org/thymeleaf/spring6",
+    "static_called_functions": [],
+    "direct_called_functions": [],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 0,
+      "executed_called_function_count": 0,
+      "candidate_called_function_count": 0,
+      "covered_candidate_count": 0,
+      "coverage_rate": null,
+      "coverage_status": "no_called_functions",
+      "static_and_dynamic_count": 0,
+      "static_only_count": 0,
+      "dynamic_only_count": 0,
+      "line": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "branch": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "matched_function_count": 0,
+      "unmatched_function_count": 0
+    },
+    "trace_record_count": 0,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0003_renderFragmentInternal_acfa89f44e",
+    "src_file": "lib/thymeleaf-spring6/src/main/java/org/thymeleaf/spring6/view/reactive/ThymeleafReactiveView.java",
+    "class_name": "org.thymeleaf.spring6.view.reactive.ThymeleafReactiveView",
+    "target_function": "renderFragmentInternal",
+    "target_start_line": 359,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 48.46845802478492,
+    "trace_prefix": "org/thymeleaf/spring6",
+    "static_called_functions": [],
+    "direct_called_functions": [],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 0,
+      "executed_called_function_count": 0,
+      "candidate_called_function_count": 0,
+      "covered_candidate_count": 0,
+      "coverage_rate": null,
+      "coverage_status": "no_called_functions",
+      "static_and_dynamic_count": 0,
+      "static_only_count": 0,
+      "dynamic_only_count": 0,
+      "line": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "branch": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "matched_function_count": 0,
+      "unmatched_function_count": 0
+    },
+    "trace_record_count": 0,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0004_build_92df683c18",
+    "src_file": "lib/thymeleaf/src/main/java/org/thymeleaf/DialectSetConfiguration.java",
+    "class_name": "org.thymeleaf.DialectSetConfiguration",
+    "target_function": "build",
+    "target_start_line": 97,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 305.2067863740958,
+    "trace_prefix": "org/thymeleaf",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.DialectConfiguration",
+        "callee_method": "getDialect",
+        "descriptor": "()Lorg/thymeleaf/dialect/IDialect;",
+        "coverage": {
+          "class": "org.thymeleaf.DialectConfiguration",
+          "method": "getDialect",
+          "descriptor": "()Lorg/thymeleaf/dialect/IDialect;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectConfiguration",
+        "callee_method": "getPrefix",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": {
+          "class": "org.thymeleaf.DialectConfiguration",
+          "method": "getPrefix",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectConfiguration",
+        "callee_method": "isPrefixSpecified",
+        "descriptor": "()Z",
+        "coverage": {
+          "class": "org.thymeleaf.DialectConfiguration",
+          "method": "isPrefixSpecified",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "initializeDefinitionsForPostProcessors",
+        "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "initializeDefinitionsForPostProcessors",
+          "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+          "line": {
+            "total": 10,
+            "covered": 10,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "initializeDefinitionsForPreProcessors",
+        "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "initializeDefinitionsForPreProcessors",
+          "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+          "line": {
+            "total": 10,
+            "covered": 10,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 8,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "initializeDefinitionsForProcessors",
+        "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "initializeDefinitionsForProcessors",
+          "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+          "line": {
+            "total": 10,
+            "covered": 10,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "listMapToSetMap",
+        "descriptor": "(Ljava/util/EnumMap;)Ljava/util/EnumMap;",
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "listMapToSetMap",
+          "descriptor": "(Ljava/util/EnumMap;)Ljava/util/EnumMap;",
+          "line": {
+            "total": 5,
+            "covered": 5,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.DialectSetConfiguration$AggregateExpressionObjectFactory",
+        "callee_method": "add",
+        "descriptor": "(Lorg/thymeleaf/expression/IExpressionObjectFactory;)V",
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration$AggregateExpressionObjectFactory",
+          "method": "add",
+          "descriptor": "(Lorg/thymeleaf/expression/IExpressionObjectFactory;)V",
+          "line": {
+            "total": 9,
+            "covered": 9,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.dialect.IExecutionAttributeDialect",
+        "callee_method": "getExecutionAttributes",
+        "descriptor": "()Ljava/util/Map;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.dialect.IExpressionObjectDialect",
+        "callee_method": "getExpressionObjectFactory",
+        "descriptor": "()Lorg/thymeleaf/expression/IExpressionObjectFactory;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.dialect.IPostProcessorDialect",
+        "callee_method": "getPostProcessors",
+        "descriptor": "()Ljava/util/Set;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.dialect.IPreProcessorDialect",
+        "callee_method": "getPreProcessors",
+        "descriptor": "()Ljava/util/Set;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.dialect.IProcessorDialect",
+        "callee_method": "getPrefix",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.dialect.IProcessorDialect",
+        "callee_method": "getProcessors",
+        "descriptor": "(Ljava/lang/String;)Ljava/util/Set;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.postprocessor.IPostProcessor",
+        "callee_method": "getHandlerClass",
+        "descriptor": "()Ljava/lang/Class;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.postprocessor.IPostProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.preprocessor.IPreProcessor",
+        "callee_method": "getHandlerClass",
+        "descriptor": "()Ljava/lang/Class;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.preprocessor.IPreProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.processor.IProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/comment/ICommentProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/comment/ICommentProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/comment/ICommentProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/comment/ICommentProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/element/IElementProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/element/IElementProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+          "line": {
+            "total": 9,
+            "covered": 4,
+            "missed": 5,
+            "rate": 0.4444444444444444
+          },
+          "branch": {
+            "total": 6,
+            "covered": 2,
+            "missed": 4,
+            "rate": 0.3333333333333333
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/text/ITextProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/text/ITextProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/text/ITextProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/text/ITextProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.util.Validate",
+        "callee_method": "notNull",
+        "descriptor": "(Ljava/lang/Object;Ljava/lang/String;)V",
+        "coverage": {
+          "class": "org.thymeleaf.util.Validate",
+          "method": "notNull",
+          "descriptor": "(Ljava/lang/Object;Ljava/lang/String;)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectConfiguration",
+        "callee_method": "getDialect",
+        "descriptor": "()Lorg/thymeleaf/dialect/IDialect;",
+        "call_count": 60,
+        "coverage": {
+          "class": "org.thymeleaf.DialectConfiguration",
+          "method": "getDialect",
+          "descriptor": "()Lorg/thymeleaf/dialect/IDialect;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectConfiguration",
+        "callee_method": "getPrefix",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.DialectConfiguration",
+          "method": "getPrefix",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectConfiguration",
+        "callee_method": "isPrefixSpecified",
+        "descriptor": "()Z",
+        "call_count": 24,
+        "coverage": {
+          "class": "org.thymeleaf.DialectConfiguration",
+          "method": "isPrefixSpecified",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "initializeDefinitionsForPostProcessors",
+        "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+        "call_count": 34,
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "initializeDefinitionsForPostProcessors",
+          "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+          "line": {
+            "total": 10,
+            "covered": 10,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "initializeDefinitionsForPreProcessors",
+        "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+        "call_count": 34,
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "initializeDefinitionsForPreProcessors",
+          "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+          "line": {
+            "total": 10,
+            "covered": 10,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 8,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "initializeDefinitionsForProcessors",
+        "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+        "call_count": 272,
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "initializeDefinitionsForProcessors",
+          "descriptor": "(Ljava/util/EnumMap;Lorg/thymeleaf/engine/ElementDefinitions;Lorg/thymeleaf/engine/AttributeDefinitions;)V",
+          "line": {
+            "total": 10,
+            "covered": 10,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfiguration",
+        "callee_method": "listMapToSetMap",
+        "descriptor": "(Ljava/util/EnumMap;)Ljava/util/EnumMap;",
+        "call_count": 340,
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration",
+          "method": "listMapToSetMap",
+          "descriptor": "(Ljava/util/EnumMap;)Ljava/util/EnumMap;",
+          "line": {
+            "total": 5,
+            "covered": 5,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfiguration$AggregateExpressionObjectFactory",
+        "callee_method": "add",
+        "descriptor": "(Lorg/thymeleaf/expression/IExpressionObjectFactory;)V",
+        "call_count": 9,
+        "coverage": {
+          "class": "org.thymeleaf.DialectSetConfiguration$AggregateExpressionObjectFactory",
+          "method": "add",
+          "descriptor": "(Lorg/thymeleaf/expression/IExpressionObjectFactory;)V",
+          "line": {
+            "total": 9,
+            "covered": 9,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$AbstractTestProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "call_count": 25,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$NullTemplateModeTextProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "call_count": 1,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestExecutionAttributeDialect",
+        "callee_method": "getExecutionAttributes",
+        "descriptor": "()Ljava/util/Map;",
+        "call_count": 6,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestExpressionObjectDialect",
+        "callee_method": "getExpressionObjectFactory",
+        "descriptor": "()Lorg/thymeleaf/expression/IExpressionObjectFactory;",
+        "call_count": 6,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestMultiFeatureDialect",
+        "callee_method": "getExecutionAttributes",
+        "descriptor": "()Ljava/util/Map;",
+        "call_count": 1,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestMultiFeatureDialect",
+        "callee_method": "getExpressionObjectFactory",
+        "descriptor": "()Lorg/thymeleaf/expression/IExpressionObjectFactory;",
+        "call_count": 1,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestMultiFeatureDialect",
+        "callee_method": "getPreProcessors",
+        "descriptor": "()Ljava/util/Set;",
+        "call_count": 1,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestMultiFeatureDialect",
+        "callee_method": "getProcessors",
+        "descriptor": "(Ljava/lang/String;)Ljava/util/Set;",
+        "call_count": 1,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestPostProcessor",
+        "callee_method": "getHandlerClass",
+        "descriptor": "()Ljava/lang/Class;",
+        "call_count": 7,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestPostProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "call_count": 8,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestPostProcessorDialect",
+        "callee_method": "getPostProcessors",
+        "descriptor": "()Ljava/util/Set;",
+        "call_count": 8,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestPreProcessor",
+        "callee_method": "getHandlerClass",
+        "descriptor": "()Ljava/lang/Class;",
+        "call_count": 8,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestPreProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "call_count": 9,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestPreProcessorDialect",
+        "callee_method": "getPreProcessors",
+        "descriptor": "()Ljava/util/Set;",
+        "call_count": 9,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.DialectSetConfigurationBuildTests$TestProcessorDialect",
+        "callee_method": "getProcessors",
+        "descriptor": "(Ljava/lang/String;)Ljava/util/Set;",
+        "call_count": 19,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.dialect.AbstractProcessorDialect",
+        "callee_method": "getPrefix",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.dialect.AbstractProcessorDialect",
+          "method": "getPrefix",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.preprocessor.PreProcessor",
+        "callee_method": "getHandlerClass",
+        "descriptor": "()Ljava/lang/Class;",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.preprocessor.PreProcessor",
+          "method": "getHandlerClass",
+          "descriptor": "()Ljava/lang/Class;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.preprocessor.PreProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.preprocessor.PreProcessor",
+          "method": "getTemplateMode",
+          "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.processor.AbstractProcessor",
+        "callee_method": "getTemplateMode",
+        "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+        "call_count": 1262,
+        "coverage": {
+          "class": "org.thymeleaf.processor.AbstractProcessor",
+          "method": "getTemplateMode",
+          "descriptor": "()Lorg/thymeleaf/templatemode/TemplateMode;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.standard.StandardDialect",
+        "callee_method": "getExecutionAttributes",
+        "descriptor": "()Ljava/util/Map;",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.standard.StandardDialect",
+          "method": "getExecutionAttributes",
+          "descriptor": "()Ljava/util/Map;",
+          "line": {
+            "total": 12,
+            "covered": 12,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.standard.StandardDialect",
+        "callee_method": "getExpressionObjectFactory",
+        "descriptor": "()Lorg/thymeleaf/expression/IExpressionObjectFactory;",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.standard.StandardDialect",
+          "method": "getExpressionObjectFactory",
+          "descriptor": "()Lorg/thymeleaf/expression/IExpressionObjectFactory;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.standard.StandardDialect",
+        "callee_method": "getProcessors",
+        "descriptor": "(Ljava/lang/String;)Ljava/util/Set;",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.standard.StandardDialect",
+          "method": "getProcessors",
+          "descriptor": "(Ljava/lang/String;)Ljava/util/Set;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;",
+        "call_count": 9,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/cdatasection/ICDATASectionProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/comment/ICommentProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/comment/ICommentProcessor;",
+        "call_count": 15,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/comment/ICommentProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/comment/ICommentProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;",
+        "call_count": 5,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/doctype/IDocTypeProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/element/IElementProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+        "call_count": 1198,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/element/IElementProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+          "line": {
+            "total": 9,
+            "covered": 4,
+            "missed": 5,
+            "rate": 0.4444444444444444
+          },
+          "branch": {
+            "total": 6,
+            "covered": 2,
+            "missed": 4,
+            "rate": 0.3333333333333333
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/processinginstruction/IProcessingInstructionProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;",
+        "call_count": 21,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/templateboundaries/ITemplateBoundariesProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/text/ITextProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/text/ITextProcessor;",
+        "call_count": 37,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/text/ITextProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/text/ITextProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+        "callee_method": "wrap",
+        "descriptor": "(Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.util.ProcessorConfigurationUtils",
+          "method": "wrap",
+          "descriptor": "(Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;Lorg/thymeleaf/dialect/IProcessorDialect;)Lorg/thymeleaf/processor/xmldeclaration/IXMLDeclarationProcessor;",
+          "line": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.DialectSetConfiguration",
+        "caller_method": "build",
+        "callee_class": "org.thymeleaf.util.Validate",
+        "callee_method": "notNull",
+        "descriptor": "(Ljava/lang/Object;Ljava/lang/String;)V",
+        "call_count": 49,
+        "coverage": {
+          "class": "org.thymeleaf.util.Validate",
+          "method": "notNull",
+          "descriptor": "(Ljava/lang/Object;Ljava/lang/String;)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 28,
+      "executed_called_function_count": 39,
+      "candidate_called_function_count": 50,
+      "covered_candidate_count": 39,
+      "coverage_rate": 0.78,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 17,
+      "static_only_count": 11,
+      "dynamic_only_count": 22,
+      "line": {
+        "covered": 95,
+        "total": 107,
+        "rate": 0.8878504672897196
+      },
+      "branch": {
+        "covered": 38,
+        "total": 56,
+        "rate": 0.6785714285714286
+      },
+      "matched_function_count": 24,
+      "unmatched_function_count": 26
+    },
+    "trace_record_count": 3519,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0005_handleStandaloneElement_a805ddace9",
+    "src_file": "lib/thymeleaf/src/main/java/org/thymeleaf/engine/ProcessorTemplateHandler.java",
+    "class_name": "org.thymeleaf.engine.ProcessorTemplateHandler",
+    "target_function": "handleStandaloneElement",
+    "target_start_line": 822,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 47.50807205867022,
+    "trace_prefix": "org/thymeleaf/engine",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 7,
+            "missed": 8,
+            "rate": 0.4666666666666667
+          },
+          "branch": {
+            "total": 14,
+            "covered": 6,
+            "missed": 8,
+            "rate": 0.42857142857142855
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 13,
+            "covered": 11,
+            "missed": 2,
+            "rate": 0.8461538461538461
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "lastWasRepeated",
+        "descriptor": "()Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "lastWasRepeated",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "next",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "next",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+          "line": {
+            "total": 22,
+            "covered": 21,
+            "missed": 1,
+            "rate": 0.9545454545454546
+          },
+          "branch": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "setLastToBeRepeated",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "setLastToBeRepeated",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyAttributes",
+        "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyAttributes",
+          "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+          "line": {
+            "total": 18,
+            "covered": 8,
+            "missed": 10,
+            "rate": 0.4444444444444444
+          },
+          "branch": {
+            "total": 16,
+            "covered": 6,
+            "missed": 10,
+            "rate": 0.375
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 7,
+            "missed": 8,
+            "rate": 0.4666666666666667
+          },
+          "branch": {
+            "total": 14,
+            "covered": 6,
+            "missed": 8,
+            "rate": 0.42857142857142855
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 20,
+            "covered": 18,
+            "missed": 2,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.GatheringModelProcessable",
+        "callee_method": "process",
+        "descriptor": "()Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.GatheringModelProcessable",
+          "method": "process",
+          "descriptor": "()Z",
+          "line": {
+            "total": 11,
+            "covered": 10,
+            "missed": 1,
+            "rate": 0.9090909090909091
+          },
+          "branch": {
+            "total": 14,
+            "covered": 4,
+            "missed": 10,
+            "rate": 0.2857142857142857
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "getInnerModel",
+        "descriptor": "()Lorg/thymeleaf/engine/Model;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "initializeProcessorExecutionVars",
+        "descriptor": "()Lorg/thymeleaf/engine/ProcessorExecutionVars;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "process",
+        "descriptor": "()Z",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "resetGatheredSkipFlags",
+        "descriptor": "()V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ITemplateHandler",
+        "callee_method": "handleStandaloneElement",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "add",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "add",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "addModel",
+        "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "addModel",
+          "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "insertModel",
+        "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "insertModel",
+          "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 17,
+            "covered": 8,
+            "missed": 9,
+            "rate": 0.47058823529411764
+          },
+          "branch": {
+            "total": 14,
+            "covered": 7,
+            "missed": 7,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "process",
+        "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "process",
+          "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "sameAs",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "sameAs",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+          "line": {
+            "total": 6,
+            "covered": 5,
+            "missed": 1,
+            "rate": 0.8333333333333334
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "size",
+        "descriptor": "()I",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "size",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "obtainCurrentGatheringModel",
+        "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "obtainCurrentGatheringModel",
+          "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueEvent",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueEvent",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 19,
+            "covered": 9,
+            "missed": 10,
+            "rate": 0.47368421052631576
+          },
+          "branch": {
+            "total": 6,
+            "covered": 1,
+            "missed": 5,
+            "rate": 0.16666666666666666
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueProcessable",
+        "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueProcessable",
+          "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+          "line": {
+            "total": 14,
+            "covered": 12,
+            "missed": 2,
+            "rate": 0.8571428571428571
+          },
+          "branch": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "resetModel",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "resetModel",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.StandaloneElementTag",
+        "callee_method": "asEngineStandaloneElementTag",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Lorg/thymeleaf/engine/StandaloneElementTag;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.StandaloneElementTag",
+          "method": "asEngineStandaloneElementTag",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Lorg/thymeleaf/engine/StandaloneElementTag;",
+          "line": {
+            "total": 21,
+            "covered": 2,
+            "missed": 19,
+            "rate": 0.09523809523809523
+          },
+          "branch": {
+            "total": 10,
+            "covered": 1,
+            "missed": 9,
+            "rate": 0.1
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.StandaloneElementTag",
+        "callee_method": "getCol",
+        "descriptor": "()I",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.StandaloneElementTag",
+        "callee_method": "getLine",
+        "descriptor": "()I",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.StandaloneElementTag",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.StandaloneElementTag",
+        "callee_method": "hasAssociatedProcessors",
+        "descriptor": "()Z",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "createStandaloneEquivalentModel",
+        "descriptor": "(Lorg/thymeleaf/engine/StandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)Lorg/thymeleaf/engine/GatheringModelProcessable;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "createStandaloneEquivalentModel",
+          "descriptor": "(Lorg/thymeleaf/engine/StandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)Lorg/thymeleaf/engine/GatheringModelProcessable;",
+          "line": {
+            "total": 9,
+            "covered": 9,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "getGatheredModel",
+        "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "getGatheredModel",
+          "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "resetGathering",
+        "descriptor": "()V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "resetGathering",
+          "descriptor": "()V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "shouldProcessStandaloneElement",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "shouldProcessStandaloneElement",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Z",
+          "line": {
+            "total": 15,
+            "covered": 10,
+            "missed": 5,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 8,
+            "covered": 4,
+            "missed": 4,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringDelayedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringDelayedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+          "line": {
+            "total": 6,
+            "covered": 6,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringIteratedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringIteratedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V",
+          "line": {
+            "total": 7,
+            "covered": 7,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractGatheringModelProcessable",
+        "callee_method": "getInnerModel",
+        "descriptor": "()Lorg/thymeleaf/engine/Model;",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractGatheringModelProcessable",
+          "method": "getInnerModel",
+          "descriptor": "()Lorg/thymeleaf/engine/Model;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractGatheringModelProcessable",
+        "callee_method": "initializeProcessorExecutionVars",
+        "descriptor": "()Lorg/thymeleaf/engine/ProcessorExecutionVars;",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractGatheringModelProcessable",
+          "method": "initializeProcessorExecutionVars",
+          "descriptor": "()Lorg/thymeleaf/engine/ProcessorExecutionVars;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractGatheringModelProcessable",
+        "callee_method": "resetGatheredSkipFlags",
+        "descriptor": "()V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractGatheringModelProcessable",
+          "method": "resetGatheredSkipFlags",
+          "descriptor": "()V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractProcessableElementTag",
+        "callee_method": "hasAssociatedProcessors",
+        "descriptor": "()Z",
+        "call_count": 23,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractProcessableElementTag",
+          "method": "hasAssociatedProcessors",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractTemplateEvent",
+        "callee_method": "getCol",
+        "descriptor": "()I",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractTemplateEvent",
+          "method": "getCol",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractTemplateEvent",
+        "callee_method": "getLine",
+        "descriptor": "()I",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractTemplateEvent",
+          "method": "getLine",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.AbstractTemplateEvent",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractTemplateEvent",
+          "method": "getTemplateName",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 7,
+            "missed": 8,
+            "rate": 0.4666666666666667
+          },
+          "branch": {
+            "total": 14,
+            "covered": 6,
+            "missed": 8,
+            "rate": 0.42857142857142855
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "call_count": 25,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 13,
+            "covered": 11,
+            "missed": 2,
+            "rate": 0.8461538461538461
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "lastWasRepeated",
+        "descriptor": "()Z",
+        "call_count": 5,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "lastWasRepeated",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "next",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+        "call_count": 30,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "next",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+          "line": {
+            "total": 22,
+            "covered": 21,
+            "missed": 1,
+            "rate": 0.9545454545454546
+          },
+          "branch": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "setLastToBeRepeated",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "setLastToBeRepeated",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyAttributes",
+        "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyAttributes",
+          "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+          "line": {
+            "total": 18,
+            "covered": 8,
+            "missed": 10,
+            "rate": 0.4444444444444444
+          },
+          "branch": {
+            "total": 16,
+            "covered": 6,
+            "missed": 10,
+            "rate": 0.375
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 7,
+            "missed": 8,
+            "rate": 0.4666666666666667
+          },
+          "branch": {
+            "total": 14,
+            "covered": 6,
+            "missed": 8,
+            "rate": 0.42857142857142855
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "call_count": 25,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 20,
+            "covered": 18,
+            "missed": 2,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.GatheringModelProcessable",
+        "callee_method": "process",
+        "descriptor": "()Z",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.GatheringModelProcessable",
+          "method": "process",
+          "descriptor": "()Z",
+          "line": {
+            "total": 11,
+            "covered": 10,
+            "missed": 1,
+            "rate": 0.9090909090909091
+          },
+          "branch": {
+            "total": 14,
+            "covered": 4,
+            "missed": 10,
+            "rate": 0.2857142857142857
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.IteratedGatheringModelProcessable",
+        "callee_method": "initializeProcessorExecutionVars",
+        "descriptor": "()Lorg/thymeleaf/engine/ProcessorExecutionVars;",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.IteratedGatheringModelProcessable",
+          "method": "initializeProcessorExecutionVars",
+          "descriptor": "()Lorg/thymeleaf/engine/ProcessorExecutionVars;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.IteratedGatheringModelProcessable",
+        "callee_method": "process",
+        "descriptor": "()Z",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.IteratedGatheringModelProcessable",
+          "method": "process",
+          "descriptor": "()Z",
+          "line": {
+            "total": 56,
+            "covered": 42,
+            "missed": 14,
+            "rate": 0.75
+          },
+          "branch": {
+            "total": 56,
+            "covered": 23,
+            "missed": 33,
+            "rate": 0.4107142857142857
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "add",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "call_count": 9,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "add",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "addModel",
+        "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+        "call_count": 5,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "addModel",
+          "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "insertModel",
+        "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "insertModel",
+          "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 17,
+            "covered": 8,
+            "missed": 9,
+            "rate": 0.47058823529411764
+          },
+          "branch": {
+            "total": 14,
+            "covered": 7,
+            "missed": 7,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "process",
+        "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+        "call_count": 8,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "process",
+          "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "sameAs",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "sameAs",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+          "line": {
+            "total": 6,
+            "covered": 5,
+            "missed": 1,
+            "rate": 0.8333333333333334
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "size",
+        "descriptor": "()I",
+        "call_count": 5,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "size",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "obtainCurrentGatheringModel",
+        "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+        "call_count": 27,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "obtainCurrentGatheringModel",
+          "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueEvent",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueEvent",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 19,
+            "covered": 9,
+            "missed": 10,
+            "rate": 0.47368421052631576
+          },
+          "branch": {
+            "total": 6,
+            "covered": 1,
+            "missed": 5,
+            "rate": 0.16666666666666666
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueProcessable",
+        "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueProcessable",
+          "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+          "line": {
+            "total": 14,
+            "covered": 12,
+            "missed": 2,
+            "rate": 0.8571428571428571
+          },
+          "branch": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "resetModel",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+        "call_count": 16,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "resetModel",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandlerHandleStandaloneElementTests$RecordingTemplateHandler",
+        "callee_method": "handleStandaloneElement",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)V",
+        "call_count": 8,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.StandaloneElementTag",
+        "callee_method": "asEngineStandaloneElementTag",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Lorg/thymeleaf/engine/StandaloneElementTag;",
+        "call_count": 27,
+        "coverage": {
+          "class": "org.thymeleaf.engine.StandaloneElementTag",
+          "method": "asEngineStandaloneElementTag",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Lorg/thymeleaf/engine/StandaloneElementTag;",
+          "line": {
+            "total": 21,
+            "covered": 2,
+            "missed": 19,
+            "rate": 0.09523809523809523
+          },
+          "branch": {
+            "total": 10,
+            "covered": 1,
+            "missed": 9,
+            "rate": 0.1
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "createStandaloneEquivalentModel",
+        "descriptor": "(Lorg/thymeleaf/engine/StandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)Lorg/thymeleaf/engine/GatheringModelProcessable;",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "createStandaloneEquivalentModel",
+          "descriptor": "(Lorg/thymeleaf/engine/StandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)Lorg/thymeleaf/engine/GatheringModelProcessable;",
+          "line": {
+            "total": 9,
+            "covered": 9,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "getGatheredModel",
+        "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "getGatheredModel",
+          "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "resetGathering",
+        "descriptor": "()V",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "resetGathering",
+          "descriptor": "()V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "shouldProcessStandaloneElement",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Z",
+        "call_count": 27,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "shouldProcessStandaloneElement",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;)Z",
+          "line": {
+            "total": 15,
+            "covered": 10,
+            "missed": 5,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 8,
+            "covered": 4,
+            "missed": 4,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringDelayedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringDelayedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+          "line": {
+            "total": 6,
+            "covered": 6,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleStandaloneElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringIteratedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringIteratedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IStandaloneElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V",
+          "line": {
+            "total": 7,
+            "covered": 7,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 1,
+            "missed": 1,
+            "rate": 0.5
+          }
+        }
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 35,
+      "executed_called_function_count": 36,
+      "candidate_called_function_count": 45,
+      "covered_candidate_count": 36,
+      "coverage_rate": 0.8,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 26,
+      "static_only_count": 9,
+      "dynamic_only_count": 10,
+      "line": {
+        "covered": 224,
+        "total": 320,
+        "rate": 0.7
+      },
+      "branch": {
+        "covered": 92,
+        "total": 208,
+        "rate": 0.4423076923076923
+      },
+      "matched_function_count": 35,
+      "unmatched_function_count": 10
+    },
+    "trace_record_count": 323,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0006_handleOpenElement_e3178a868f",
+    "src_file": "lib/thymeleaf/src/main/java/org/thymeleaf/engine/ProcessorTemplateHandler.java",
+    "class_name": "org.thymeleaf.engine.ProcessorTemplateHandler",
+    "target_function": "handleOpenElement",
+    "target_start_line": 1229,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 43.44408496376127,
+    "trace_prefix": "org/thymeleaf/engine",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 7,
+            "missed": 8,
+            "rate": 0.4666666666666667
+          },
+          "branch": {
+            "total": 14,
+            "covered": 6,
+            "missed": 8,
+            "rate": 0.42857142857142855
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 13,
+            "covered": 11,
+            "missed": 2,
+            "rate": 0.8461538461538461
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "lastWasRepeated",
+        "descriptor": "()Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "lastWasRepeated",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "next",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "next",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+          "line": {
+            "total": 22,
+            "covered": 21,
+            "missed": 1,
+            "rate": 0.9545454545454546
+          },
+          "branch": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "setLastToBeRepeated",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "setLastToBeRepeated",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyAttributes",
+        "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyAttributes",
+          "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+          "line": {
+            "total": 18,
+            "covered": 8,
+            "missed": 10,
+            "rate": 0.4444444444444444
+          },
+          "branch": {
+            "total": 16,
+            "covered": 6,
+            "missed": 10,
+            "rate": 0.375
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 8,
+            "missed": 7,
+            "rate": 0.5333333333333333
+          },
+          "branch": {
+            "total": 14,
+            "covered": 7,
+            "missed": 7,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 20,
+            "covered": 18,
+            "missed": 2,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "getInnerModel",
+        "descriptor": "()Lorg/thymeleaf/engine/Model;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "initializeProcessorExecutionVars",
+        "descriptor": "()Lorg/thymeleaf/engine/ProcessorExecutionVars;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.IGatheringModelProcessable",
+        "callee_method": "resetGatheredSkipFlags",
+        "descriptor": "()V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ITemplateHandler",
+        "callee_method": "handleOpenElement",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "add",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "add",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "addModel",
+        "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "addModel",
+          "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "insertModel",
+        "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "insertModel",
+          "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 17,
+            "covered": 8,
+            "missed": 9,
+            "rate": 0.47058823529411764
+          },
+          "branch": {
+            "total": 14,
+            "covered": 7,
+            "missed": 7,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "process",
+        "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "process",
+          "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "sameAs",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "sameAs",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+          "line": {
+            "total": 6,
+            "covered": 5,
+            "missed": 1,
+            "rate": 0.8333333333333334
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "size",
+        "descriptor": "()I",
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "size",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.OpenElementTag",
+        "callee_method": "asEngineOpenElementTag",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Lorg/thymeleaf/engine/OpenElementTag;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.OpenElementTag",
+          "method": "asEngineOpenElementTag",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Lorg/thymeleaf/engine/OpenElementTag;",
+          "line": {
+            "total": 21,
+            "covered": 2,
+            "missed": 19,
+            "rate": 0.09523809523809523
+          },
+          "branch": {
+            "total": 10,
+            "covered": 1,
+            "missed": 9,
+            "rate": 0.1
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.OpenElementTag",
+        "callee_method": "getCol",
+        "descriptor": "()I",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.OpenElementTag",
+        "callee_method": "getLine",
+        "descriptor": "()I",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.OpenElementTag",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.OpenElementTag",
+        "callee_method": "hasAssociatedProcessors",
+        "descriptor": "()Z",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "obtainCurrentGatheringModel",
+        "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "obtainCurrentGatheringModel",
+          "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueEvent",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueEvent",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 19,
+            "covered": 13,
+            "missed": 6,
+            "rate": 0.6842105263157895
+          },
+          "branch": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueProcessable",
+        "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueProcessable",
+          "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+          "line": {
+            "total": 14,
+            "covered": 10,
+            "missed": 4,
+            "rate": 0.7142857142857143
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "resetModel",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "resetModel",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "shouldProcessOpenElement",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Z",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "shouldProcessOpenElement",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Z",
+          "line": {
+            "total": 13,
+            "covered": 11,
+            "missed": 2,
+            "rate": 0.8461538461538461
+          },
+          "branch": {
+            "total": 8,
+            "covered": 5,
+            "missed": 3,
+            "rate": 0.625
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "skip",
+        "descriptor": "(Lorg/thymeleaf/engine/TemplateModelController$SkipBody;Z)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "skip",
+          "descriptor": "(Lorg/thymeleaf/engine/TemplateModelController$SkipBody;Z)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringDelayedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringDelayedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+          "line": {
+            "total": 6,
+            "covered": 6,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringIteratedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V",
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringIteratedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V",
+          "line": {
+            "total": 7,
+            "covered": 0,
+            "missed": 7,
+            "rate": 0.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.AbstractProcessableElementTag",
+        "callee_method": "hasAssociatedProcessors",
+        "descriptor": "()Z",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractProcessableElementTag",
+          "method": "hasAssociatedProcessors",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.AbstractTemplateEvent",
+        "callee_method": "getCol",
+        "descriptor": "()I",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractTemplateEvent",
+          "method": "getCol",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.AbstractTemplateEvent",
+        "callee_method": "getLine",
+        "descriptor": "()I",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractTemplateEvent",
+          "method": "getLine",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.AbstractTemplateEvent",
+        "callee_method": "getTemplateName",
+        "descriptor": "()Ljava/lang/String;",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.AbstractTemplateEvent",
+          "method": "getTemplateName",
+          "descriptor": "()Ljava/lang/String;",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 7,
+            "missed": 8,
+            "rate": 0.4666666666666667
+          },
+          "branch": {
+            "total": 14,
+            "covered": 6,
+            "missed": 8,
+            "rate": 0.42857142857142855
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementModelStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementModelStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 13,
+            "covered": 11,
+            "missed": 2,
+            "rate": 0.8461538461538461
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "lastWasRepeated",
+        "descriptor": "()Z",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "lastWasRepeated",
+          "descriptor": "()Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "next",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+        "call_count": 31,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "next",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/processor/element/IElementProcessor;",
+          "line": {
+            "total": 22,
+            "covered": 21,
+            "missed": 1,
+            "rate": 0.9545454545454546
+          },
+          "branch": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementProcessorIterator",
+        "callee_method": "setLastToBeRepeated",
+        "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementProcessorIterator",
+          "method": "setLastToBeRepeated",
+          "descriptor": "(Lorg/thymeleaf/engine/AbstractProcessableElementTag;)V",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyAttributes",
+        "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+        "call_count": 15,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyAttributes",
+          "descriptor": "(Lorg/thymeleaf/engine/AttributeDefinitions;Lorg/thymeleaf/engine/AbstractProcessableElementTag;)Lorg/thymeleaf/engine/AbstractProcessableElementTag;",
+          "line": {
+            "total": 18,
+            "covered": 8,
+            "missed": 10,
+            "rate": 0.4444444444444444
+          },
+          "branch": {
+            "total": 16,
+            "covered": 6,
+            "missed": 10,
+            "rate": 0.375
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "applyContextModifications",
+        "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+        "call_count": 15,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "applyContextModifications",
+          "descriptor": "(Lorg/thymeleaf/context/IEngineContext;)V",
+          "line": {
+            "total": 15,
+            "covered": 8,
+            "missed": 7,
+            "rate": 0.5333333333333333
+          },
+          "branch": {
+            "total": 14,
+            "covered": 7,
+            "missed": 7,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ElementTagStructureHandler",
+        "callee_method": "reset",
+        "descriptor": "()V",
+        "call_count": 20,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ElementTagStructureHandler",
+          "method": "reset",
+          "descriptor": "()V",
+          "line": {
+            "total": 20,
+            "covered": 18,
+            "missed": 2,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 8,
+            "covered": 2,
+            "missed": 6,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "add",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "add",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "addModel",
+        "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+        "call_count": 4,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "addModel",
+          "descriptor": "(Lorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "insertModel",
+        "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "insertModel",
+          "descriptor": "(ILorg/thymeleaf/model/IModel;)V",
+          "line": {
+            "total": 17,
+            "covered": 8,
+            "missed": 9,
+            "rate": 0.47058823529411764
+          },
+          "branch": {
+            "total": 14,
+            "covered": 7,
+            "missed": 7,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "process",
+        "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+        "call_count": 7,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "process",
+          "descriptor": "(Lorg/thymeleaf/engine/ITemplateHandler;)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 2,
+            "covered": 2,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "sameAs",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "sameAs",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;)Z",
+          "line": {
+            "total": 6,
+            "covered": 5,
+            "missed": 1,
+            "rate": 0.8333333333333334
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.Model",
+        "callee_method": "size",
+        "descriptor": "()I",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.Model",
+          "method": "size",
+          "descriptor": "()I",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.OpenElementTag",
+        "callee_method": "asEngineOpenElementTag",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Lorg/thymeleaf/engine/OpenElementTag;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.engine.OpenElementTag",
+          "method": "asEngineOpenElementTag",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Lorg/thymeleaf/engine/OpenElementTag;",
+          "line": {
+            "total": 21,
+            "covered": 2,
+            "missed": 19,
+            "rate": 0.09523809523809523
+          },
+          "branch": {
+            "total": 10,
+            "covered": 1,
+            "missed": 9,
+            "rate": 0.1
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "obtainCurrentGatheringModel",
+        "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+        "call_count": 22,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "obtainCurrentGatheringModel",
+          "descriptor": "()Lorg/thymeleaf/engine/IGatheringModelProcessable;",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueEvent",
+        "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+        "call_count": 2,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueEvent",
+          "descriptor": "(Lorg/thymeleaf/model/ITemplateEvent;)V",
+          "line": {
+            "total": 19,
+            "covered": 13,
+            "missed": 6,
+            "rate": 0.6842105263157895
+          },
+          "branch": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "queueProcessable",
+        "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "queueProcessable",
+          "descriptor": "(Lorg/thymeleaf/engine/IEngineProcessable;)V",
+          "line": {
+            "total": 14,
+            "covered": 10,
+            "missed": 4,
+            "rate": 0.7142857142857143
+          },
+          "branch": {
+            "total": 4,
+            "covered": 2,
+            "missed": 2,
+            "rate": 0.5
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "callee_method": "resetModel",
+        "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+        "call_count": 12,
+        "coverage": {
+          "class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+          "method": "resetModel",
+          "descriptor": "(Lorg/thymeleaf/engine/Model;Z)Lorg/thymeleaf/engine/Model;",
+          "line": {
+            "total": 6,
+            "covered": 4,
+            "missed": 2,
+            "rate": 0.6666666666666666
+          },
+          "branch": {
+            "total": 4,
+            "covered": 3,
+            "missed": 1,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.ProcessorTemplateHandlerHandleOpenElementTests$RecordingTemplateHandler",
+        "callee_method": "handleOpenElement",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)V",
+        "call_count": 13,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "shouldProcessOpenElement",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Z",
+        "call_count": 27,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "shouldProcessOpenElement",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;)Z",
+          "line": {
+            "total": 13,
+            "covered": 11,
+            "missed": 2,
+            "rate": 0.8461538461538461
+          },
+          "branch": {
+            "total": 8,
+            "covered": 5,
+            "missed": 3,
+            "rate": 0.625
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "skip",
+        "descriptor": "(Lorg/thymeleaf/engine/TemplateModelController$SkipBody;Z)V",
+        "call_count": 15,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "skip",
+          "descriptor": "(Lorg/thymeleaf/engine/TemplateModelController$SkipBody;Z)V",
+          "line": {
+            "total": 3,
+            "covered": 3,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.engine.ProcessorTemplateHandler",
+        "caller_method": "handleOpenElement",
+        "callee_class": "org.thymeleaf.engine.TemplateModelController",
+        "callee_method": "startGatheringDelayedModel",
+        "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+        "call_count": 1,
+        "coverage": {
+          "class": "org.thymeleaf.engine.TemplateModelController",
+          "method": "startGatheringDelayedModel",
+          "descriptor": "(Lorg/thymeleaf/model/IOpenElementTag;Lorg/thymeleaf/engine/ProcessorExecutionVars;)V",
+          "line": {
+            "total": 6,
+            "covered": 6,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 0,
+            "covered": 0,
+            "missed": 0,
+            "rate": 0.0
+          }
+        }
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 31,
+      "executed_called_function_count": 27,
+      "candidate_called_function_count": 36,
+      "covered_candidate_count": 27,
+      "coverage_rate": 0.75,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 22,
+      "static_only_count": 9,
+      "dynamic_only_count": 5,
+      "line": {
+        "covered": 155,
+        "total": 237,
+        "rate": 0.6540084388185654
+      },
+      "branch": {
+        "covered": 66,
+        "total": 132,
+        "rate": 0.5
+      },
+      "matched_function_count": 27,
+      "unmatched_function_count": 9
+    },
+    "trace_record_count": 266,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0007_performLiteralSubstitution_ecfee24d40",
+    "src_file": "lib/thymeleaf/src/main/java/org/thymeleaf/standard/expression/LiteralSubstitutionUtil.java",
+    "class_name": "org.thymeleaf.standard.expression.LiteralSubstitutionUtil",
+    "target_function": "performLiteralSubstitution",
+    "target_start_line": 62,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 47.81633298704401,
+    "trace_prefix": "org/thymeleaf/standard",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.standard.expression.TextLiteralExpression",
+        "callee_method": "isDelimiterEscaped",
+        "descriptor": "(Ljava/lang/String;I)Z",
+        "coverage": {
+          "class": "org.thymeleaf.standard.expression.TextLiteralExpression",
+          "method": "isDelimiterEscaped",
+          "descriptor": "(Ljava/lang/String;I)Z",
+          "line": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 10,
+            "covered": 8,
+            "missed": 2,
+            "rate": 0.8
+          }
+        }
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.standard.expression.LiteralSubstitutionUtil",
+        "caller_method": "performLiteralSubstitution",
+        "callee_class": "org.thymeleaf.standard.expression.TextLiteralExpression",
+        "callee_method": "isDelimiterEscaped",
+        "descriptor": "(Ljava/lang/String;I)Z",
+        "call_count": 13,
+        "coverage": {
+          "class": "org.thymeleaf.standard.expression.TextLiteralExpression",
+          "method": "isDelimiterEscaped",
+          "descriptor": "(Ljava/lang/String;I)Z",
+          "line": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 10,
+            "covered": 8,
+            "missed": 2,
+            "rate": 0.8
+          }
+        }
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 1,
+      "executed_called_function_count": 1,
+      "candidate_called_function_count": 1,
+      "covered_candidate_count": 1,
+      "coverage_rate": 1.0,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 1,
+      "static_only_count": 0,
+      "dynamic_only_count": 0,
+      "line": {
+        "covered": 9,
+        "total": 10,
+        "rate": 0.9
+      },
+      "branch": {
+        "covered": 8,
+        "total": 10,
+        "rate": 0.8
+      },
+      "matched_function_count": 1,
+      "unmatched_function_count": 0
+    },
+    "trace_record_count": 13,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  },
+  {
+    "instance_id": "0008_parseAttributeSequence_9b14575187",
+    "src_file": "lib/thymeleaf/src/main/java/org/thymeleaf/templateparser/text/TextParsingAttributeSequenceUtil.java",
+    "class_name": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+    "target_function": "parseAttributeSequence",
+    "target_start_line": 47,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 40.81427746405825,
+    "trace_prefix": "org/thymeleaf/templateparser",
+    "static_called_functions": [
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.ITextHandler",
+        "callee_method": "handleAttribute",
+        "descriptor": "([CIIIIIIIIIIIIII)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "callee_method": "isValueSurroundedByCommas",
+        "descriptor": "([CII)Z",
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+          "method": "isValueSurroundedByCommas",
+          "descriptor": "([CII)Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextAnyCharAvoidQuotesWildcard",
+        "descriptor": "([CII[I)I",
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextAnyCharAvoidQuotesWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 23,
+            "covered": 22,
+            "missed": 1,
+            "rate": 0.9565217391304348
+          },
+          "branch": {
+            "total": 22,
+            "covered": 20,
+            "missed": 2,
+            "rate": 0.9090909090909091
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextNonOperatorCharWildcard",
+        "descriptor": "([CII[I)I",
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextNonOperatorCharWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 28,
+            "covered": 16,
+            "missed": 12,
+            "rate": 0.5714285714285714
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextNonWhitespaceCharWildcard",
+        "descriptor": "([CII[I)I",
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextNonWhitespaceCharWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 11,
+            "covered": 11,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 28,
+            "covered": 20,
+            "missed": 8,
+            "rate": 0.7142857142857143
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextOperatorCharWildcard",
+        "descriptor": "([CII[I)I",
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextOperatorCharWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 28,
+            "covered": 16,
+            "missed": 12,
+            "rate": 0.5714285714285714
+          }
+        }
+      },
+      {
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextWhitespaceCharWildcard",
+        "descriptor": "([CIIZ[I)I",
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextWhitespaceCharWildcard",
+          "descriptor": "([CIIZ[I)I",
+          "line": {
+            "total": 16,
+            "covered": 13,
+            "missed": 3,
+            "rate": 0.8125
+          },
+          "branch": {
+            "total": 46,
+            "covered": 19,
+            "missed": 27,
+            "rate": 0.41304347826086957
+          }
+        }
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "callee_method": "isValueSurroundedByCommas",
+        "descriptor": "([CII)Z",
+        "call_count": 18,
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+          "method": "isValueSurroundedByCommas",
+          "descriptor": "([CII)Z",
+          "line": {
+            "total": 1,
+            "covered": 1,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests$RecordingHandler",
+        "callee_method": "handleAttribute",
+        "descriptor": "([CIIIIIIIIIIIIII)V",
+        "call_count": 25,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextAnyCharAvoidQuotesWildcard",
+        "descriptor": "([CII[I)I",
+        "call_count": 7,
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextAnyCharAvoidQuotesWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 23,
+            "covered": 22,
+            "missed": 1,
+            "rate": 0.9565217391304348
+          },
+          "branch": {
+            "total": 22,
+            "covered": 20,
+            "missed": 2,
+            "rate": 0.9090909090909091
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextNonOperatorCharWildcard",
+        "descriptor": "([CII[I)I",
+        "call_count": 23,
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextNonOperatorCharWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 28,
+            "covered": 16,
+            "missed": 12,
+            "rate": 0.5714285714285714
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextNonWhitespaceCharWildcard",
+        "descriptor": "([CII[I)I",
+        "call_count": 28,
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextNonWhitespaceCharWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 11,
+            "covered": 11,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 28,
+            "covered": 20,
+            "missed": 8,
+            "rate": 0.7142857142857143
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextOperatorCharWildcard",
+        "descriptor": "([CII[I)I",
+        "call_count": 27,
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextOperatorCharWildcard",
+          "descriptor": "([CII[I)I",
+          "line": {
+            "total": 10,
+            "covered": 9,
+            "missed": 1,
+            "rate": 0.9
+          },
+          "branch": {
+            "total": 28,
+            "covered": 16,
+            "missed": 12,
+            "rate": 0.5714285714285714
+          }
+        }
+      },
+      {
+        "caller_class": "org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtil",
+        "caller_method": "parseAttributeSequence",
+        "callee_class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+        "callee_method": "findNextWhitespaceCharWildcard",
+        "descriptor": "([CIIZ[I)I",
+        "call_count": 11,
+        "coverage": {
+          "class": "org.thymeleaf.templateparser.text.TextParsingUtil",
+          "method": "findNextWhitespaceCharWildcard",
+          "descriptor": "([CIIZ[I)I",
+          "line": {
+            "total": 16,
+            "covered": 13,
+            "missed": 3,
+            "rate": 0.8125
+          },
+          "branch": {
+            "total": 46,
+            "covered": 19,
+            "missed": 27,
+            "rate": 0.41304347826086957
+          }
+        }
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 7,
+      "executed_called_function_count": 7,
+      "candidate_called_function_count": 8,
+      "covered_candidate_count": 7,
+      "coverage_rate": 0.875,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 6,
+      "static_only_count": 1,
+      "dynamic_only_count": 1,
+      "line": {
+        "covered": 65,
+        "total": 71,
+        "rate": 0.9154929577464789
+      },
+      "branch": {
+        "covered": 100,
+        "total": 162,
+        "rate": 0.6172839506172839
+      },
+      "matched_function_count": 6,
+      "unmatched_function_count": 2
+    },
+    "trace_record_count": 139,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  }
+]
