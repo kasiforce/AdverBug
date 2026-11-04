@@ -1,0 +1,15 @@
+{
+  "target_type": "source_file",
+  "min_nloc": 300,
+  "min_concrete_method_count": 3,
+  "min_total_cyclomatic_complexity": 50,
+  "min_callable_entry_count": {
+    "minimum": 1,
+    "definition": "Non-empty, non-abstract test entries: Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods in non-private classes."
+  },
+  "primary_selection": "Eligible files containing a loc_ge_100 target function.",
+  "fallback_selection": "If a project has fewer than 5 primary files, retain them and supplement with all other size-eligible files.",
+  "excluded_paths": [
+    "packages/imba/src/compiler/nodes.mjs"
+  ]
+}

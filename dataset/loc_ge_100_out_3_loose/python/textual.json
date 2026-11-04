@@ -1,0 +1,31 @@
+[
+  {
+    "project_root": "/data/home/cjy/Adver_bug/projects/textual",
+    "name": "resolve_box_models",
+    "src_file": "src/textual/_resolve.py",
+    "test_file": "test/textual/Test_resolve/test_resolve_box_models.py",
+    "code": "def resolve_box_models(\n    dimensions: list[Scalar | None],\n    widgets: list[Widget],\n    size: Size,\n    viewport_size: Size,\n    margin: Size,\n    resolve_dimension: Literal[\"width\", \"height\"] = \"width\",\n    greedy: bool = True,\n) -> list[BoxModel]:\n    \"\"\"Resolve box models for a list of dimensions\n\n    Args:\n        dimensions: A list of Scalars or Nones for each dimension.\n        widgets: Widgets in resolve.\n        size: Size of container.\n        viewport_size: Viewport size.\n        margin: Total space occupied by margin\n        resolve_dimension: Which dimension to resolve.\n\n    Returns:\n        List of resolved box models.\n    \"\"\"\n\n    margin_width, margin_height = margin\n    fraction_width = Fraction(size.width)\n    fraction_height = Fraction(size.height)\n    fraction_zero = Fraction(0)\n    margin_size = size - margin\n\n    margins = [widget.styles.margin.totals for widget in widgets]\n\n    # Fixed box models\n    box_models: list[BoxModel | None] = [\n        (\n            None\n            if _dimension is not None and _dimension.is_fraction\n            else widget._get_box_model(\n                size,\n                viewport_size,\n                (\n                    fraction_zero\n                    if (_width := fraction_width - margin_width) < 0\n                    else _width\n                ),\n                (\n                    fraction_zero\n                    if (_height := fraction_height - margin_height) < 0\n                    else _height\n                ),\n                greedy=greedy,\n            )\n        )\n        for (_dimension, widget, (margin_width, margin_height)) in zip(\n            dimensions, widgets, margins\n        )\n    ]\n\n    if None not in box_models:\n        # No fr units, so we're done\n        return cast(\"list[BoxModel]\", box_models)\n\n    # If all box models have been calculated\n    widget_styles = [widget.styles for widget in widgets]\n    if resolve_dimension == \"width\":\n        total_remaining = int(\n            sum(\n                [\n                    box_model.width\n                    for widget, box_model in zip(widgets, box_models)\n                    if (box_model is not None and widget.styles.overlay != \"screen\")\n                ]\n            )\n        )\n\n        remaining_space = int(max(0, size.width - total_remaining - margin_width))\n        fraction_unit = resolve_fraction_unit(\n            [\n                styles\n                for styles in widget_styles\n                if styles.width is not None\n                and styles.width.is_fraction\n                and styles.overlay != \"screen\"\n            ],\n            size,\n            viewport_size,\n            Fraction(remaining_space),\n            resolve_dimension,\n        )\n        width_fraction = fraction_unit\n        height_fraction = Fraction(margin_size.height)\n    else:\n        total_remaining = int(\n            sum(\n                [\n                    box_model.height\n                    for widget, box_model in zip(widgets, box_models)\n                    if (box_model is not None and widget.styles.overlay != \"screen\")\n                ]\n            )\n        )\n\n        remaining_space = int(max(0, size.height - total_remaining - margin_height))\n\n        fraction_unit = resolve_fraction_unit(\n            [\n                styles\n                for styles in widget_styles\n                if (\n                    styles.height is not None\n                    and styles.height.is_fraction\n                    and styles.overlay != \"screen\"\n                )\n            ],\n            size,\n            viewport_size,\n            Fraction(remaining_space),\n            resolve_dimension,\n        )\n        width_fraction = Fraction(margin_size.width)\n        height_fraction = fraction_unit\n\n    box_models = [\n        box_model\n        or widget._get_box_model(\n            size, viewport_size, width_fraction, height_fraction, greedy=greedy\n        )\n        for widget, box_model in zip(widgets, box_models)\n    ]\n\n    return cast(\"list[BoxModel]\", box_models)",
+    "is_async": false,
+    "type": "function",
+    "loc": 104,
+    "complexity": 26,
+    "outgoing_degree": 8,
+    "project_outgoing_degree": 1,
+    "loose_project_outgoing_degree": 3,
+    "unresolved_project_candidate_call_sites": 2,
+    "param_count": 8,
+    "start_line": 218,
+    "end_line": 347,
+    "imports": [
+      "from fractions import Fraction",
+      "from itertools import accumulate",
+      "from typing import TYPE_CHECKING, Iterable, Sequence, cast",
+      "from typing_extensions import Literal",
+      "from textual.box_model import BoxModel",
+      "from textual.css.scalar import Scalar",
+      "from textual.css.styles import RenderStyles",
+      "from textual.geometry import Size",
+      "from textual.widget import Widget"
+    ]
+  }
+]

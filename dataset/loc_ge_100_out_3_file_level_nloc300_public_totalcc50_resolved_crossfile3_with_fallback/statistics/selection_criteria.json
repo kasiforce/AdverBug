@@ -1,0 +1,17 @@
+{
+  "target_type": "source_file",
+  "min_nloc": 300,
+  "min_concrete_method_count": 3,
+  "min_total_cyclomatic_complexity": 50,
+  "min_cross_file_internal_method_fanout": 0,
+  "min_resolved_cross_file_internal_method_fanout": 3,
+  "min_callable_entry_count": {
+    "minimum": 1,
+    "definition": "Non-empty, non-abstract test entries: Python public-by-naming-convention functions/methods; JavaScript exported functions and public methods of exported classes; Java non-private concrete methods in non-private classes."
+  },
+  "primary_selection": "Eligible files containing a loc_ge_100 target function.",
+  "fallback_selection": "If a project has no primary file, use all size-eligible files.",
+  "excluded_paths": [
+    "packages/imba/src/compiler/nodes.mjs"
+  ]
+}
