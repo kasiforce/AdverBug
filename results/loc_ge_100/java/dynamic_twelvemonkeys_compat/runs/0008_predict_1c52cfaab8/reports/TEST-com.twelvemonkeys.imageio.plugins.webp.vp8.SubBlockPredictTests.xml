@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.318" tests="15" errors="0" skipped="0" failures="0" flakes="0">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/testbed/imageio/imageio-webp/target/test-classes:/testbed/imageio/imageio-webp/target/classes:/root/.m2/repository/com/twelvemonkeys/imageio/imageio-core/3.15.4-SNAPSHOT/imageio-core-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/imageio/imageio-metadata/3.15.4-SNAPSHOT/imageio-metadata-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/imageio/imageio-core/3.15.4-SNAPSHOT/imageio-core-3.15.4-SNAPSHOT-tests.jar:/root/.m2/repository/com/twelvemonkeys/common/common-lang/3.15.4-SNAPSHOT/common-lang-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/common/common-io/3.15.4-SNAPSHOT/common-io-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/common/common-image/3.15.4-SNAPSHOT/common-image-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/common/common-lang/3.15.4-SNAPSHOT/common-lang-3.15.4-SNAPSHOT-tests.jar:/root/.m2/repository/com/twelvemonkeys/common/common-io/3.15.4-SNAPSHOT/common-io-3.15.4-SNAPSHOT-tests.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.14.4/junit-jupiter-engine-5.14.4.jar:/root/.m2/repository/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.jar:/root/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.14.4/junit-jupiter-api-5.14.4.jar:/root/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/root/.m2/repository/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.jar:/root/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/root/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/root/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/root/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar"/>
+    <property name="jacoco.destFile" value="/results/jacoco.exec"/>
+    <property name="java.vm.vendor" value="Temurin"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.font.fontmanager" value="sun.awt.X11FontManager"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="rat.skip" value="true"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/opt/java/openjdk/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/testbed/imageio/imageio-webp/target/surefire/surefirebooter-20261104084107831_3.jar /testbed/imageio/imageio-webp/target/surefire 2026-11-04T08-41-06_737-jvmRun1 surefire-20261104084107831_1tmp surefire_0-20261104084107831_2tmp"/>
+    <property name="test" value="SubBlockPredictTests"/>
+    <property name="surefire.test.class.path" value="/testbed/imageio/imageio-webp/target/test-classes:/testbed/imageio/imageio-webp/target/classes:/root/.m2/repository/com/twelvemonkeys/imageio/imageio-core/3.15.4-SNAPSHOT/imageio-core-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/imageio/imageio-metadata/3.15.4-SNAPSHOT/imageio-metadata-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/imageio/imageio-core/3.15.4-SNAPSHOT/imageio-core-3.15.4-SNAPSHOT-tests.jar:/root/.m2/repository/com/twelvemonkeys/common/common-lang/3.15.4-SNAPSHOT/common-lang-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/common/common-io/3.15.4-SNAPSHOT/common-io-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/common/common-image/3.15.4-SNAPSHOT/common-image-3.15.4-SNAPSHOT.jar:/root/.m2/repository/com/twelvemonkeys/common/common-lang/3.15.4-SNAPSHOT/common-lang-3.15.4-SNAPSHOT-tests.jar:/root/.m2/repository/com/twelvemonkeys/common/common-io/3.15.4-SNAPSHOT/common-io-3.15.4-SNAPSHOT-tests.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.14.4/junit-jupiter-engine-5.14.4.jar:/root/.m2/repository/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.jar:/root/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.14.4/junit-jupiter-api-5.14.4.jar:/root/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/root/.m2/repository/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.jar:/root/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/root/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/root/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/root/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/root"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/opt/java/openjdk/jre"/>
+    <property name="basedir" value="/testbed/imageio/imageio-webp"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="jacoco.propertyName" value="argLine"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="/testbed/imageio/imageio-webp/target/surefire/surefirebooter-20261104084107831_3.jar:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar:/trace/trace-agent.jar"/>
+    <property name="sun.boot.class.path" value="/opt/java/openjdk/jre/lib/resources.jar:/opt/java/openjdk/jre/lib/rt.jar:/opt/java/openjdk/jre/lib/sunrsasign.jar:/opt/java/openjdk/jre/lib/jsse.jar:/opt/java/openjdk/jre/lib/jce.jar:/opt/java/openjdk/jre/lib/charsets.jar:/opt/java/openjdk/jre/lib/jfr.jar:/opt/java/openjdk/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_504-b01"/>
+    <property name="user.name" value="root"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.8.0-136-generic"/>
+    <property name="java.endorsed.dirs" value="/opt/java/openjdk/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="surefire.failIfNoSpecifiedTests" value="false"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="skipTests" value="false"/>
+    <property name="localRepository" value="/root/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="maven.test.skip" value="false"/>
+    <property name="java.version" value="1.8.0_504"/>
+    <property name="user.dir" value="/testbed/imageio/imageio-webp"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="failIfNoTests" value="false"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Temurin"/>
+    <property name="java.vm.version" value="25.504-b01"/>
+    <property name="java.specification.maintenance.version" value="6"/>
+    <property name="java.ext.dirs" value="/opt/java/openjdk/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="argLine" value="-javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -javaagent:/trace/trace-agent.jar=output=/results/calls.tsv,prefix=com/twelvemonkeys/imageio,targetClass=com/twelvemonkeys/imageio/plugins/webp/vp8/SubBlock,targetMethod=predict"/>
+  </properties>
+  <testcase name="usesAboveBorderWhenOnlyLeftWasReconstructed" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.078"/>
+  <testcase name="predictsHorizontalDownDiagonal" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.015"/>
+  <testcase name="usesLeftBorderWhenAboveWasReconstructed" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="predictsHorizontalFromFilteredLeftSamples" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="rejectsUnknownPredictionMode" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.017"/>
+  <testcase name="predictsVerticalFromFilteredAboveSamples" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="predictsTrueMotionAndClampsNegativeSamples" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="predictsVerticalLeftDiagonal" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.013"/>
+  <testcase name="predictsHorizontalUpDiagonal" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="predictsVerticalRightDiagonal" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="predictsDcFromAboveAndLeftSamples" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="predictsRightDownDiagonal" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="trueMotionClampsPredictionsAbove255" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.014"/>
+  <testcase name="usesAboveBorderWhenNeitherNeighbourWasReconstructed" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.013"/>
+  <testcase name="predictsLeftDownDiagonal" classname="com.twelvemonkeys.imageio.plugins.webp.vp8.SubBlockPredictTests" time="0.013"/>
+</testsuite>

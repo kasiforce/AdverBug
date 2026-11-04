@@ -1,0 +1,304 @@
+[
+  {
+    "instance_id": "0000_read_844ddc95b3",
+    "src_file": "core/src/main/java/io/undertow/conduits/ChunkedStreamSourceConduit.java",
+    "class_name": "io.undertow.conduits.ChunkedStreamSourceConduit",
+    "target_function": "read",
+    "target_start_line": 181,
+    "compile_pass": true,
+    "test_pass": true,
+    "compile_exit_code": "0",
+    "test_exit_code": "0",
+    "duration_seconds": 59.813432780094445,
+    "trace_prefix": "io/undertow",
+    "static_called_functions": [
+      {
+        "callee_class": "io.undertow.conduits.ChunkReader",
+        "callee_method": "getChunkRemaining",
+        "descriptor": "()J",
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkReader",
+          "method": "getChunkRemaining",
+          "descriptor": "()J",
+          "line": {
+            "total": 5,
+            "covered": 5,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 4,
+            "covered": 4,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "callee_class": "io.undertow.conduits.ChunkReader",
+        "callee_method": "readChunk",
+        "descriptor": "(Ljava/nio/ByteBuffer;)J",
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkReader",
+          "method": "readChunk",
+          "descriptor": "(Ljava/nio/ByteBuffer;)J",
+          "line": {
+            "total": 55,
+            "covered": 43,
+            "missed": 12,
+            "rate": 0.7818181818181819
+          },
+          "branch": {
+            "total": 52,
+            "covered": 28,
+            "missed": 24,
+            "rate": 0.5384615384615384
+          }
+        }
+      },
+      {
+        "callee_class": "io.undertow.conduits.ChunkReader",
+        "callee_method": "setChunkRemaining",
+        "descriptor": "(J)V",
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkReader",
+          "method": "setChunkRemaining",
+          "descriptor": "(J)V",
+          "line": {
+            "total": 8,
+            "covered": 8,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "callee_method": "read",
+        "descriptor": "(Ljava/nio/ByteBuffer;)I",
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+          "method": "read",
+          "descriptor": "(Ljava/nio/ByteBuffer;)I",
+          "line": {
+            "total": 72,
+            "covered": 70,
+            "missed": 2,
+            "rate": 0.9722222222222222
+          },
+          "branch": {
+            "total": 44,
+            "covered": 37,
+            "missed": 7,
+            "rate": 0.8409090909090909
+          }
+        }
+      },
+      {
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduit$BufferWrapper",
+        "callee_method": "allocate",
+        "descriptor": "()Lio/undertow/connector/PooledByteBuffer;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduit$BufferWrapper",
+        "callee_method": "pushBack",
+        "descriptor": "(Lio/undertow/connector/PooledByteBuffer;)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "io.undertow.conduits.ConduitListener",
+        "callee_method": "handleEvent",
+        "descriptor": "(Lorg/xnio/conduits/Conduit;)V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "io.undertow.connector.PooledByteBuffer",
+        "callee_method": "close",
+        "descriptor": "()V",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "callee_class": "io.undertow.connector.PooledByteBuffer",
+        "callee_method": "getBuffer",
+        "descriptor": "()Ljava/nio/ByteBuffer;",
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      }
+    ],
+    "direct_called_functions": [
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkReader",
+        "callee_method": "getChunkRemaining",
+        "descriptor": "()J",
+        "call_count": 27,
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkReader",
+          "method": "getChunkRemaining",
+          "descriptor": "()J",
+          "line": {
+            "total": 5,
+            "covered": 5,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 4,
+            "covered": 4,
+            "missed": 0,
+            "rate": 1.0
+          }
+        }
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkReader",
+        "callee_method": "readChunk",
+        "descriptor": "(Ljava/nio/ByteBuffer;)J",
+        "call_count": 18,
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkReader",
+          "method": "readChunk",
+          "descriptor": "(Ljava/nio/ByteBuffer;)J",
+          "line": {
+            "total": 55,
+            "covered": 43,
+            "missed": 12,
+            "rate": 0.7818181818181819
+          },
+          "branch": {
+            "total": 52,
+            "covered": 28,
+            "missed": 24,
+            "rate": 0.5384615384615384
+          }
+        }
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkReader",
+        "callee_method": "setChunkRemaining",
+        "descriptor": "(J)V",
+        "call_count": 17,
+        "coverage": {
+          "class": "io.undertow.conduits.ChunkReader",
+          "method": "setChunkRemaining",
+          "descriptor": "(J)V",
+          "line": {
+            "total": 8,
+            "covered": 8,
+            "missed": 0,
+            "rate": 1.0
+          },
+          "branch": {
+            "total": 8,
+            "covered": 6,
+            "missed": 2,
+            "rate": 0.75
+          }
+        }
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduitReadTests$FakeSourceConduit",
+        "callee_method": "read",
+        "descriptor": "(Ljava/nio/ByteBuffer;)I",
+        "call_count": 28,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduitReadTests$RecordingBufferWrapper",
+        "callee_method": "allocate",
+        "descriptor": "()Lio/undertow/connector/PooledByteBuffer;",
+        "call_count": 24,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduitReadTests$RecordingBufferWrapper",
+        "callee_method": "pushBack",
+        "descriptor": "(Lio/undertow/connector/PooledByteBuffer;)V",
+        "call_count": 8,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduitReadTests$RecordingConduitListener",
+        "callee_method": "handleEvent",
+        "descriptor": "(Lorg/xnio/conduits/Conduit;)V",
+        "call_count": 7,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduitReadTests$TestPooledBuffer",
+        "callee_method": "close",
+        "descriptor": "()V",
+        "call_count": 16,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      },
+      {
+        "caller_class": "io.undertow.conduits.ChunkedStreamSourceConduit",
+        "caller_method": "read",
+        "callee_class": "io.undertow.conduits.ChunkedStreamSourceConduitReadTests$TestPooledBuffer",
+        "callee_method": "getBuffer",
+        "descriptor": "()Ljava/nio/ByteBuffer;",
+        "call_count": 24,
+        "coverage": null,
+        "coverage_status": "not_present_in_jacoco_report"
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "instrumented_project_methods",
+      "static_called_function_count": 9,
+      "executed_called_function_count": 9,
+      "candidate_called_function_count": 15,
+      "covered_candidate_count": 9,
+      "coverage_rate": 0.6,
+      "coverage_status": "measured",
+      "static_and_dynamic_count": 3,
+      "static_only_count": 6,
+      "dynamic_only_count": 6,
+      "line": {
+        "covered": 126,
+        "total": 140,
+        "rate": 0.9
+      },
+      "branch": {
+        "covered": 75,
+        "total": 108,
+        "rate": 0.6944444444444444
+      },
+      "matched_function_count": 4,
+      "unmatched_function_count": 11
+    },
+    "trace_record_count": 169,
+    "jacoco_report_found": true,
+    "container_exit_code": 0
+  }
+]
