@@ -1,0 +1,76 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.flink:flink-table-runtime >----------------
+[INFO] Building Flink : Table : Runtime 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-table-runtime ---
+[INFO] Deleting /testbed/flink-table/flink-table-runtime/target
+[INFO] Deleting /testbed/flink-table/flink-table-runtime (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-table-runtime ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-table-runtime ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 691 files clean - 1 needs changes to be clean, 690 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  43.264 s
+[INFO] Finished at: 2026-11-04T07:24:07Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-table-runtime: The following files had format violations:
+[ERROR]     src/test/java/org/apache/flink/table/runtime/operators/join/stream/StreamingJoinOperatorTests.java
+[ERROR]         @@ -425,8 +425,7 @@
+[ERROR]          ····}
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]         -····void·testNonEquiUpsertWithBothVersionsMatchingKeepsAssociationCountStable()
+[ERROR]         -············throws·Exception·{
+[ERROR]         +····void·testNonEquiUpsertWithBothVersionsMatchingKeepsAssociationCountStable()·throws·Exception·{
+[ERROR]          ········try·(KeyedTwoInputStreamOperatorTestHarness<Long,·RowData,·RowData,·RowData>·harness·=
+[ERROR]          ················createHarness(
+[ERROR]          ························THREE_LONG_TYPE,
+[ERROR]         @@ -538,15 +537,10 @@
+[ERROR]          
+[ERROR]          ····private·static·RuntimeChangelogMode·allChanges()·{
+[ERROR]          ········return·changelogMode(
+[ERROR]         -················false,
+[ERROR]         -················RowKind.INSERT,
+[ERROR]         -················RowKind.UPDATE_BEFORE,
+[ERROR]         -················RowKind.UPDATE_AFTER,
+[ERROR]         -················RowKind.DELETE);
+[ERROR]         +················false,·RowKind.INSERT,·RowKind.UPDATE_BEFORE,·RowKind.UPDATE_AFTER,·RowKind.DELETE);
+[ERROR]          ····}
+[ERROR]          
+[ERROR]         -····private·static·RuntimeChangelogMode·changelogMode(
+[ERROR]         -············boolean·keyOnlyDeletes,·RowKind...·rowKinds)·{
+[ERROR]         +····private·static·RuntimeChangelogMode·changelogMode(boolean·keyOnlyDeletes,·RowKind...·rowKinds)·{
+[ERROR]          ········ChangelogMode.Builder·builder·=·ChangelogMode.newBuilder().keyOnlyDeletes(keyOnlyDeletes);
+[ERROR]          ········for·(RowKind·rowKind·:·rowKinds)·{
+[ERROR]          ············builder.addContainedKind(rowKind);
+[ERROR]         @@ -558,8 +552,7 @@
+[ERROR]          ········return·GenericRowData.ofKind(kind,·key,·value);
+[ERROR]          ····}
+[ERROR]          
+[ERROR]         -····private·static·GenericRowData·row3(
+[ERROR]         -············RowKind·kind,·Long·uniqueKey,·Long·joinKey,·Long·value)·{
+[ERROR]         +····private·static·GenericRowData·row3(RowKind·kind,·Long·uniqueKey,·Long·joinKey,·Long·value)·{
+[ERROR]          ········return·GenericRowData.ofKind(kind,·uniqueKey,·joinKey,·value);
+[ERROR]          ····}
+[ERROR]          
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

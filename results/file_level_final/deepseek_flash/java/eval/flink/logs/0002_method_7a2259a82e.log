@@ -1,0 +1,79 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.apache.flink:flink-core >---------------------
+[INFO] Building Flink : Core 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-core ---
+[INFO] Deleting /testbed/flink-core/target
+[INFO] Deleting /testbed/flink-core (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-core ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-core ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 877 files clean - 1 needs changes to be clean, 876 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.015 s
+[INFO] Finished at: 2026-11-04T06:32:55Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-core: The following files had format violations:
+[ERROR]     src/test/java/org/apache/flink/types/RecordTests.java
+[ERROR]         @@ -294,8 +294,7 @@
+[ERROR]          
+[ERROR]          ········DeserializationException·exception·=
+[ERROR]          ················assertThrows(
+[ERROR]         -························DeserializationException.class,
+[ERROR]         -························()·->·record.getField(0,·IntValue.class));
+[ERROR]         +························DeserializationException.class,·()·->·record.getField(0,·IntValue.class));
+[ERROR]          ········assertTrue(exception.getMessage().contains("Error·reading·field·0"));
+[ERROR]          ········assertTrue(exception.getCause()·instanceof·EOFException);
+[ERROR]          ····}
+[ERROR]         @@ -458,7 +457,9 @@
+[ERROR]          
+[ERROR]          ········assertFalse(
+[ERROR]          ················record.equalsFields(
+[ERROR]         -························new·int[]·{0},·new·Value[]·{new·IntValue(1)},·new·Value[]·{new·IntValue()}));
+[ERROR]         +························new·int[]·{0},
+[ERROR]         +························new·Value[]·{new·IntValue(1)},
+[ERROR]         +························new·Value[]·{new·IntValue()}));
+[ERROR]          ····}
+[ERROR]          
+[ERROR]          ····//·--------------------------------------------------------------------------------------------
+[ERROR]         @@ -872,8 +873,7 @@
+[ERROR]          ········byte[]·truncated·=·Arrays.copyOf(out.getCopyOfBuffer(),·4);
+[ERROR]          
+[ERROR]          ········assertThrows(
+[ERROR]         -················EOFException.class,
+[ERROR]         -················()·->·new·Record().read(new·DataInputDeserializer(truncated)));
+[ERROR]         +················EOFException.class,·()·->·new·Record().read(new·DataInputDeserializer(truncated)));
+[ERROR]          ····}
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]         @@ -953,8 +953,7 @@
+[ERROR]          
+[ERROR]          ········byte[]·serialized·=·InstantiationUtil.serializeObject(record);
+[ERROR]          ········Record·copy·=
+[ERROR]         -················InstantiationUtil.deserializeObject(
+[ERROR]         -························serialized,·RecordTests.class.getClassLoader());
+[ERROR]         +················InstantiationUtil.deserializeObject(serialized,·RecordTests.class.getClassLoader());
+[ERROR]          
+[ERROR]          ········assertEquals(3,·copy.getNumFields());
+[ERROR]          ········assertEquals(1,·intAt(copy,·0));
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

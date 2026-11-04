@@ -1,0 +1,104 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] Artifact org.sonatype.oss:oss-parent:pom:7 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases), sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, snapshots)]
+[INFO] Artifact org.sonatype.oss:oss-parent:pom:7 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases), sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, snapshots)]
+[INFO] ------------------------------------------------------------------------
+[INFO] Detecting the operating system and CPU architecture
+[INFO] ------------------------------------------------------------------------
+[INFO] os.detected.name: linux
+[INFO] os.detected.arch: x86_64
+[INFO] os.detected.bitness: 64
+[INFO] os.detected.version: 6.8
+[INFO] os.detected.version.major: 6
+[INFO] os.detected.version.minor: 8
+[INFO] os.detected.release: ubuntu
+[INFO] os.detected.release.version: 22.04
+[INFO] os.detected.release.like.ubuntu: true
+[INFO] os.detected.release.like.debian: true
+[INFO] os.detected.classifier: linux-x86_64
+[INFO] 
+[INFO] -------------------< org.apache.flink:flink-parquet >-------------------
+[INFO] Building Flink : Formats : Parquet 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-parquet ---
+[INFO] Deleting /testbed/flink-formats/flink-parquet/target
+[INFO] Deleting /testbed/flink-formats/flink-parquet (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-parquet ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-parquet ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 49 files clean - 1 needs changes to be clean, 48 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  41.841 s
+[INFO] Finished at: 2026-11-04T06:36:26Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-parquet: The following files had format violations:
+[ERROR]     src/test/java/org/apache/flink/formats/parquet/vector/ParquetSplitReaderUtilTests.java
+[ERROR]         @@ -158,11 +158,13 @@
+[ERROR]          ········HeapBytesVector·stringHeap·=·assertInstanceOf(HeapBytesVector.class,·stringVector);
+[ERROR]          ········for·(int·i·=·0;·i·<·batchSize;·i++)·{
+[ERROR]          ············assertFalse(stringHeap.isNullAt(i));
+[ERROR]         -············assertArrayEquals("hello".getBytes(StandardCharsets.UTF_8),·stringHeap.getBytes(i).getBytes());
+[ERROR]         +············assertArrayEquals(
+[ERROR]         +····················"hello".getBytes(StandardCharsets.UTF_8),·stringHeap.getBytes(i).getBytes());
+[ERROR]          ········}
+[ERROR]          
+[ERROR]          ········byte[]·binary·=·new·byte[]·{1,·2,·3,·-1};
+[ERROR]         -········ColumnVector·binaryVector·=·createVectorFromConstant(new·VarBinaryType(),·binary,·batchSize);
+[ERROR]         +········ColumnVector·binaryVector·=
+[ERROR]         +················createVectorFromConstant(new·VarBinaryType(),·binary,·batchSize);
+[ERROR]          ········HeapBytesVector·binaryHeap·=·assertInstanceOf(HeapBytesVector.class,·binaryVector);
+[ERROR]          ········for·(int·i·=·0;·i·<·batchSize;·i++)·{
+[ERROR]          ············assertArrayEquals(binary,·binaryHeap.getBytes(i).getBytes());
+[ERROR]         @@ -280,8 +282,7 @@
+[ERROR]          ········int·batchSize·=·2;
+[ERROR]          
+[ERROR]          ········ColumnVector·decimal32·=
+[ERROR]         -················createVectorFromConstant(
+[ERROR]         -························new·DecimalType(5,·2),·new·BigDecimal("12.34"),·batchSize);
+[ERROR]         +················createVectorFromConstant(new·DecimalType(5,·2),·new·BigDecimal("12.34"),·batchSize);
+[ERROR]          ········ParquetDecimalVector·decimal32Vector·=
+[ERROR]          ················assertInstanceOf(ParquetDecimalVector.class,·decimal32);
+[ERROR]          ········assertInstanceOf(HeapIntVector.class,·decimal32Vector.getVector());
+[ERROR]         @@ -308,12 +309,10 @@
+[ERROR]          ················assertInstanceOf(ParquetDecimalVector.class,·decimalBinary);
+[ERROR]          ········assertInstanceOf(HeapBytesVector.class,·decimalBinaryVector.getVector());
+[ERROR]          ········assertEquals(
+[ERROR]         -················DecimalData.fromBigDecimal(
+[ERROR]         -························new·BigDecimal("12345678901234567890123.45"),·25,·2),
+[ERROR]         +················DecimalData.fromBigDecimal(new·BigDecimal("12345678901234567890123.45"),·25,·2),
+[ERROR]          ················decimalBinaryVector.getDecimal(0,·25,·2));
+[ERROR]          
+[ERROR]         -········ColumnVector·nullDecimal·=
+[ERROR]         -················createVectorFromConstant(new·DecimalType(5,·2),·null,·batchSize);
+[ERROR]         +········ColumnVector·nullDecimal·=·createVectorFromConstant(new·DecimalType(5,·2),·null,·batchSize);
+[ERROR]          ········ParquetDecimalVector·nullDecimalVector·=
+[ERROR]          ················assertInstanceOf(ParquetDecimalVector.class,·nullDecimal);
+[ERROR]          ········assertAllNull(nullDecimalVector,·batchSize);
+[ERROR]         @@ -337,9 +336,7 @@
+[ERROR]          ····@Test
+[ERROR]          ····void·testLookupColumnByNameExactCaseInsensitiveAndMissing()·{
+[ERROR]          ········MessageColumnIO·columnIO·=
+[ERROR]         -················columnIO(
+[ERROR]         -························parse(
+[ERROR]         -································"message·test·{·required·int32·id;·optional·binary·Name·(UTF8);·}"));
+[ERROR]         +················columnIO(parse("message·test·{·required·int32·id;·optional·binary·Name·(UTF8);·}"));
+[ERROR]     ... (152 more lines that didn't fit)
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

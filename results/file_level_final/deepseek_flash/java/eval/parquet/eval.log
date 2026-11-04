@@ -1,0 +1,60 @@
+Generation filter: evaluating 1/1 items with exit_status=Submitted
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+[1/1] evaluating None in a fresh container
+{
+  "input": "/data/home/cjy/Adver_bug/results/file_level_final/deepseek_flash/java/parquet.json",
+  "code_variant": "original",
+  "bug_input": null,
+  "image": "adver-parquet:test",
+  "source_target_count": 1,
+  "skipped_generation_count": 0,
+  "target_count": 1,
+  "evaluated_count": 1,
+  "compile_pass_count": 1,
+  "test_pass_count": 1,
+  "exec_count": 1,
+  "bug_matching": {
+    "matched_count": 0,
+    "unmatched_count": 0,
+    "unmatched_targets": []
+  },
+  "mutation_outcomes": {
+    "killed": 0,
+    "survived": 0,
+    "compile_failed": 0,
+    "patch_failed": 0,
+    "inconclusive": 0
+  },
+  "syntax": {
+    "parser": "tree-sitter-java",
+    "parser_available": true,
+    "total": 1,
+    "correct": 1,
+    "incorrect": 0,
+    "correct_rate": 1.0
+  },
+  "merge": {
+    "all_executed": {
+      "kind": "all_executed",
+      "exec_count": 1,
+      "success": true,
+      "modules": {
+        "parquet-hadoop": "parquet-hadoop_88160265"
+      },
+      "file_group_count": 1,
+      "container_exit_code": 0
+    },
+    "passing": {
+      "kind": "passing",
+      "exec_count": 1,
+      "success": true,
+      "modules": {
+        "parquet-hadoop": "parquet-hadoop_88160265"
+      },
+      "file_group_count": 1,
+      "container_exit_code": 0
+    }
+  },
+  "merge_disabled_for_buggy_code": false
+}

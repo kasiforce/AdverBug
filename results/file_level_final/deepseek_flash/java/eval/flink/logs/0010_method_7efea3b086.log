@@ -1,0 +1,88 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< org.apache.flink:flink-runtime >-------------------
+[INFO] Building Flink : Runtime 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-runtime ---
+[INFO] Deleting /testbed/flink-runtime/target
+[INFO] Deleting /testbed/flink-runtime (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-runtime ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-runtime ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 3267 files clean - 1 needs changes to be clean, 3266 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:03 min
+[INFO] Finished at: 2026-11-04T06:52:34Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.46.1:check (spotless-check) on project flink-runtime: The following files had format violations:
+[ERROR]     src/test/java/org/apache/flink/runtime/rest/handler/legacy/metrics/MetricStoreTests.java
+[ERROR]         @@ -40,6 +40,7 @@
+[ERROR]          import·org.apache.flink.runtime.rest.handler.legacy.metrics.MetricStore.SubtaskMetricStore;
+[ERROR]          import·org.apache.flink.runtime.rest.handler.legacy.metrics.MetricStore.TaskManagerMetricStore;
+[ERROR]          import·org.apache.flink.runtime.rest.handler.legacy.metrics.MetricStore.TaskMetricStore;
+[ERROR]         +
+[ERROR]          import·org.junit.jupiter.api.Test;
+[ERROR]          
+[ERROR]          import·java.util.ArrayList;
+[ERROR]         @@ -93,8 +94,7 @@
+[ERROR]          ····void·metricScopeIsPrependedToMetricName()·{
+[ERROR]          ········MetricStore·metricStore·=·new·MetricStore();
+[ERROR]          
+[ERROR]         -········metricStore.add(
+[ERROR]         -················new·GaugeDump(new·JobManagerQueryScopeInfo("status"),·"uptime",·"42"));
+[ERROR]         +········metricStore.add(new·GaugeDump(new·JobManagerQueryScopeInfo("status"),·"uptime",·"42"));
+[ERROR]          
+[ERROR]          ········ComponentMetricStore·jobManagerStore·=·metricStore.getJobManagerMetricStore();
+[ERROR]          ········assertEquals("42",·jobManagerStore.getMetric("status.uptime"));
+[ERROR]         @@ -119,9 +119,10 @@
+[ERROR]          ················metricStore.getTaskManagerMetricStore(TASK_MANAGER_ID);
+[ERROR]          ········assertNotNull(taskManagerStore);
+[ERROR]          ········assertEquals("3",·taskManagerStore.getMetric(gcScope·+·".Count"));
+[ERROR]         +········assertEquals("1024",·taskManagerStore.getMetric("Status.JVM.Memory.HeapUsed"));
+[ERROR]          ········assertEquals(
+[ERROR]         -················"1024",·taskManagerStore.getMetric("Status.JVM.Memory.HeapUsed"));
+[ERROR]         -········assertEquals(Collections.singleton("G1·Young·Generation"),·taskManagerStore.garbageCollectorNames);
+[ERROR]         +················Collections.singleton("G1·Young·Generation"),
+[ERROR]         +················taskManagerStore.garbageCollectorNames);
+[ERROR]          ········assertTrue(metricStore.getTaskManagers().containsKey(TASK_MANAGER_ID));
+[ERROR]          ····}
+[ERROR]          
+[ERROR]         @@ -176,8 +177,7 @@
+[ERROR]          
+[ERROR]          ········metricStore.add(new·MeterDump(new·JobManagerQueryScopeInfo(),·"throughput",·12.5));
+[ERROR]          
+[ERROR]         -········assertEquals(
+[ERROR]         -················"12.5",·metricStore.getJobManagerMetricStore().getMetric("throughput"));
+[ERROR]         +········assertEquals("12.5",·metricStore.getJobManagerMetricStore().getMetric("throughput"));
+[ERROR]          ····}
+[ERROR]          
+[ERROR]          ····@Test
+[ERROR]         @@ -187,8 +187,7 @@
+[ERROR]          ········metricStore.add(new·GaugeDump(new·JobManagerQueryScopeInfo(),·"metric",·"first"));
+[ERROR]          ········metricStore.add(new·GaugeDump(new·JobManagerQueryScopeInfo(),·"metric",·"second"));
+[ERROR]          
+[ERROR]         -········assertEquals(
+[ERROR]         -················"second",·metricStore.getJobManagerMetricStore().getMetric("metric"));
+[ERROR]         +········assertEquals("second",·metricStore.getJobManagerMetricStore().getMetric("metric"));
+[ERROR]          ····}
+[ERROR]     ... (214 more lines that didn't fit)
+[ERROR] Run 'mvn spotless:apply' to fix these violations.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
