@@ -1,0 +1,72 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sqlglot/test_lineage.py::TestNode::test_walk_yields_a_single_node
+tests/sqlglot/test_lineage.py::TestNode::test_walk_is_depth_first_and_visits_shared_nodes_once
+tests/sqlglot/test_lineage.py::TestNode::test_walk_terminates_on_cyclic_downstream
+tests/sqlglot/test_lineage.py::TestNode::test_defaults_are_independent_per_instance
+tests/sqlglot/test_lineage.py::TestNode::test_constructor_accepts_payload_and_source_names
+tests/sqlglot/test_lineage.py::TestNode::test_node_is_frozen
+tests/sqlglot/test_lineage.py::TestNode::test_to_html_describes_final_source_and_column_nodes
+tests/sqlglot/test_lineage.py::TestNode::test_to_html_links_every_hop_of_a_multi_node_graph
+tests/sqlglot/test_lineage.py::TestNode::test_to_html_forwards_graph_options
+tests/sqlglot/test_lineage.py::TestNode::test_to_html_renders_sql_using_the_requested_dialect
+tests/sqlglot/test_lineage.py::TestGraphHTML::test_stores_nodes_edges_imports_and_default_options
+tests/sqlglot/test_lineage.py::TestGraphHTML::test_options_are_merged_shallowly_on_top_of_defaults
+tests/sqlglot/test_lineage.py::TestGraphHTML::test_str_embeds_nodes_edges_and_options_as_json
+tests/sqlglot/test_lineage.py::TestGraphHTML::test_str_includes_vis_imports_by_default
+tests/sqlglot/test_lineage.py::TestGraphHTML::test_str_can_omit_vis_imports
+tests/sqlglot/test_lineage.py::TestGraphHTML::test_repr_html_matches_str
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_simple_column_lineage
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_column_can_be_an_expression
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_trim_selects_drops_unrelated_projections
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_unknown_column_raises
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_unknown_column_name_is_normalized_for_the_dialect
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_identifiers_are_normalized_for_the_dialect
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_non_select_statements_raise[CREATE TABLE z (a INT)]
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_non_select_statements_raise[DELETE FROM x]
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_non_select_statements_raise[INSERT INTO x VALUES (1)]
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_unparsable_sql_raises_parse_error
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_cte_lineage_traces_every_scope
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_derived_table_lineage_sets_the_reference_node
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_sources_argument_expands_the_named_query
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_sources_argument_accepts_parsed_queries
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_nested_sources_propagate_source_names
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_union_lineage_creates_one_branch_per_select
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_star_projection_resolves_to_concrete_columns
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_unqualified_column_is_attributed_to_the_only_source_without_schema
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_unqualified_column_with_several_sources_degrades_to_placeholder
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_copy_defaults_to_true_and_leaves_the_input_untouched
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_copy_false_qualifies_the_given_expression_in_place
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_prebuilt_scope_is_reused
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_on_node_is_called_for_every_node_after_downstream_is_populated
+tests/sqlglot/test_lineage.py::TestLineageSingleColumn::test_shared_nodes_are_created_once
+tests/sqlglot/test_lineage.py::TestLineageAllColumns::test_returns_one_node_per_output_column_in_order
+tests/sqlglot/test_lineage.py::TestLineageAllColumns::test_nodes_share_the_upstream_cache
+tests/sqlglot/test_lineage.py::TestLineageAllColumns::test_set_operation_output_columns
+tests/sqlglot/test_lineage.py::TestLineageAllColumns::test_star_query_yields_each_expanded_column
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivot_column_maps_to_the_aggregated_source_column
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivot_named_aggregate_output_column
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivot_passthrough_column_keeps_its_source
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivot_alias_column_list_renames_outputs
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivot_over_a_derived_table_traces_through_it
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivot_over_a_cte_traces_through_it
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_pivots_on_different_sources_are_not_folded
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_unpivot_columns_trace_back_to_all_input_columns[v]
+tests/sqlglot/test_lineage.py::TestPivotLineage::test_unpivot_columns_trace_back_to_all_input_columns[cat]
+tests/sqlglot/test_lineage.py::TestToNode::test_column_can_be_selected_by_index
+tests/sqlglot/test_lineage.py::TestToNode::test_out_of_range_index_raises
+tests/sqlglot/test_lineage.py::TestToNode::test_scope_name_prefixes_the_node_name
+tests/sqlglot/test_lineage.py::TestToNode::test_upstream_node_gets_the_new_node_appended
+tests/sqlglot/test_lineage.py::TestToNode::test_cache_returns_the_same_node_instance
+
+58 tests collected in 1.03s
+
+=== test.log ===
+..........................................................               [100%]
+58 passed in 1.50s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

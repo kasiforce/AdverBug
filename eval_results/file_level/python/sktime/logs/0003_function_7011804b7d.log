@@ -1,0 +1,103 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_growing_context_uses_full_history
+tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_context_window_is_truncated_at_max_context
+tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_inputs_are_clipped_before_encoding
+tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_averages_predictions_over_samples
+tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_returns_batch_of_generated_windows
+tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_batch_and_sample_expansion
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorInit::test_defaults_and_attribute_contract
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorInit::test_custom_settings_are_stored_and_models_moved
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorInit::test_autodetects_cuda
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorInit::test_explicit_device_wins_over_available_accelerator
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorInit::test_autodetects_mps_when_cuda_unavailable
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorInit::test_falls_back_to_cpu_when_no_accelerator
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_keeps_exactly_k_largest
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_takes_precedence_over_top_p
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_larger_than_vocabulary_keeps_everything
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_no_filtering_returns_none_and_keeps_logits
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_respects_min_tokens_to_keep
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_p_keeps_nucleus_with_at_least_requested_mass
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_custom_filter_value_used_for_dropped_tokens
+tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_min_tokens_to_keep_applies_to_top_p
+tests/sktime/libs/kronos/test_kronos.py::TestGenerate::test_converts_to_tensors_and_returns_last_pred_len_rows
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_inconsistent_list_lengths
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_missing_volume_handled_per_series
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_timestamp_length_mismatch
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_each_series_uses_its_own_normalisation_statistics
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_non_dataframe_element
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_result_order_follows_input_order
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_normalised_batch_rows_match_per_series_preprocessing
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_missing_price_columns_with_index
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_nan_values_with_index
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_inconsistent_historical_lengths
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_sampling_parameters_are_forwarded
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_returns_one_frame_per_series
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_non_sequence_container[0]
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_non_sequence_container[1]
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_accepts_tuples_as_inputs
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_future_stamp_length_not_matching_pred_len
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_non_sequence_container[2]
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_single_series_batch
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_batches_all_series_in_one_call
+tests/sktime/libs/kronos/test_kronos.py::TestCalcTimeStamps::test_preserves_non_default_index
+tests/sktime/libs/kronos/test_kronos.py::TestCalcTimeStamps::test_preserves_row_count_and_row_order
+tests/sktime/libs/kronos/test_kronos.py::TestCalcTimeStamps::test_returns_documented_calendar_columns
+tests/sktime/libs/kronos/test_kronos.py::TestCalcTimeStamps::test_rejects_datetime_index_without_dt_accessor
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_sampling_parameters_are_forwarded
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_missing_volume_and_amount_are_filled_with_zeros
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_input_frame_is_not_mutated
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_normalizes_input_with_zscore_and_sends_it_to_inference
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_rejects_non_dataframe
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_rejects_missing_price_columns
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_output_shape_columns_and_index
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_clips_normalized_input_at_configured_bound
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_missing_amount_is_derived_from_volume_and_mean_price
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_rejects_nan_in_price_columns
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_single_row_prediction
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_rejects_nan_in_volume
+tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredict::test_denormalizes_predictions_with_input_statistics
+tests/sktime/libs/kronos/test_kronos.py::TestModuleSurface::test_package_reexports_public_api
+tests/sktime/libs/kronos/test_kronos.py::TestModuleSurface::test_public_api_names_are_importable
+tests/sktime/libs/kronos/test_kronos.py::TestModuleSurface::test_classes_defined_without_torch
+tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_tiny_top_p_keeps_only_most_likely_token
+tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_argmax_sampling_without_noise
+tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_top_k_one_makes_sampling_deterministic
+tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_sampling_returns_valid_token_range
+tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_temperature_does_not_change_argmax
+
+65 tests collected in 6.48s
+
+=== test.log ===
+bringing up nodes...
+bringing up nodes...
+
+..s..............................................................        [100%]
+============================= slowest 20 durations =============================
+1.61s call     tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_averages_predictions_over_samples
+1.60s call     tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_returns_batch_of_generated_windows
+1.60s call     tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_inputs_are_clipped_before_encoding
+1.60s call     tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_batch_and_sample_expansion
+1.60s call     tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_growing_context_uses_full_history
+1.60s call     tests/sktime/libs/kronos/test_kronos.py::TestAutoRegressiveInference::test_context_window_is_truncated_at_max_context
+1.56s call     tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_sampling_returns_valid_token_range
+1.56s call     tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_tiny_top_p_keeps_only_most_likely_token
+1.55s call     tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_top_k_one_makes_sampling_deterministic
+1.47s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_min_tokens_to_keep_applies_to_top_p
+1.35s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_p_keeps_nucleus_with_at_least_requested_mass
+1.23s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_larger_than_vocabulary_keeps_everything
+1.22s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_takes_precedence_over_top_p
+1.22s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_respects_min_tokens_to_keep
+1.22s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_top_k_keeps_exactly_k_largest
+1.18s call     tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_temperature_does_not_change_argmax
+1.18s call     tests/sktime/libs/kronos/test_kronos.py::TestSampleFromLogits::test_argmax_sampling_without_noise
+0.97s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_custom_filter_value_used_for_dropped_tokens
+0.78s call     tests/sktime/libs/kronos/test_kronos.py::TestTopKTopPFiltering::test_no_filtering_returns_none_and_keeps_logits
+0.12s setup    tests/sktime/libs/kronos/test_kronos.py::TestKronosPredictorPredictBatch::test_rejects_non_sequence_container[1]
+64 passed, 1 skipped in 49.13s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json
