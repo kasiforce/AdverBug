@@ -1,0 +1,25 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/java/leaf.json --image adverbug-leaf-check:latest --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/java/leaf.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/java/leaf_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/java/leaf_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-9199da2a -w /testbed --rm adverbug-leaf-check:latest sleep  
+1h                                                                              
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-b5a0e582 -w /testbed --rm adverbug-leaf-check:latest sleep  
+1h                                                                              
+minisweagent.environment: INFO: Started container minisweagent-b5a0e582 with ID 
+15a3885aece8a3d98a4933d42be5fa53853ade125f50de6e846e086f769f1998                
+minisweagent.environment: INFO: Started container minisweagent-9199da2a with ID 
+97296b9543246810708b4af1174af978f30833ecc94d2de736d43c95728fa721                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+  Overall Progress ($0.29) ━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:09:31 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     2 │ thymeleaf__lib-thymeleaf-spring5-src-main-java-org-t.… │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/java/leaf.jso
+n                                                                               

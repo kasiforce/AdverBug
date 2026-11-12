@@ -1,0 +1,83 @@
+[
+  {
+    "instance_id": "0000_stream_chat_0e16d3c3a3",
+    "src_file": "backend/services/llm_service.py",
+    "target_function": "stream_chat",
+    "compile_pass": true,
+    "test_pass": true,
+    "static_called_functions": [
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.check_provider_health",
+        "first_line": 200
+      },
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.get_client",
+        "first_line": 119
+      },
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.get_model_name",
+        "first_line": 193
+      },
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.get_provider_config",
+        "first_line": 115
+      }
+    ],
+    "executed_called_functions": [
+      {
+        "file": "<frozen codecs>",
+        "qualname": "BufferedIncrementalDecoder.reset",
+        "first_line": 327,
+        "call_count": 808
+      },
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.stream_chat.<locals>.<genexpr>",
+        "first_line": 327,
+        "call_count": 254
+      },
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.stream_chat.<locals>.<genexpr>",
+        "first_line": 353,
+        "call_count": 370
+      },
+      {
+        "file": "backend/services/llm_service.py",
+        "qualname": "LLMService.stream_chat.<locals>.<genexpr>",
+        "first_line": 381,
+        "call_count": 262
+      }
+    ],
+    "called_function_coverage": {
+      "candidate_scope": "static_union_dynamic_project_production_functions",
+      "static_called_function_count": 4,
+      "executed_called_function_count": 4,
+      "executed_called_functions_all_phases": 4,
+      "candidate_called_function_count": 8,
+      "covered_candidate_count": 4,
+      "coverage_rate": 0.5,
+      "coverage_status": "measured",
+      "static_only_count": 4,
+      "dynamic_only_count": 4,
+      "line": {
+        "covered": 0,
+        "total": 62,
+        "rate": 0.0
+      },
+      "branch": {
+        "covered": 0,
+        "total": 38,
+        "rate": 0.0
+      },
+      "matched_function_count": 4,
+      "unmatched_function_count": 4
+    },
+    "duration_seconds": 110.09287732699886,
+    "container_exit_code": 0
+  }
+]

@@ -1,0 +1,114 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.12/site-packages (9.2.0)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=2 in /usr/local/lib/python3.12/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=24 in /usr/local/lib/python3.12/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.6 in /usr/local/lib/python3.12/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.15 in /usr/local/lib/python3.12/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Collecting typing-extensions>=4.12 (from pytest-asyncio)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (263 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: typing-extensions, coverage, pytest-timeout, pytest-mock, pytest-metadata, pytest-asyncio, pytest-json-report
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0 typing-extensions-4.16.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+
+=== compile.log ===
+/usr/local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+test/Testrepl/test_evaluate.py::test_blank_input_returns_empty_string_without_dispatch[]
+test/Testrepl/test_evaluate.py::test_blank_input_returns_empty_string_without_dispatch[   ]
+test/Testrepl/test_evaluate.py::test_blank_input_returns_empty_string_without_dispatch[\t\n  ]
+test/Testrepl/test_evaluate.py::test_input_is_stripped_before_debug_logging_and_dispatch
+test/Testrepl/test_evaluate.py::test_input_of_exactly_maximum_length_is_accepted
+test/Testrepl/test_evaluate.py::test_input_over_maximum_length_is_rejected_before_collaborator_dispatch
+test/Testrepl/test_evaluate.py::test_prime_command_normalizes_name_and_formats_boolean[97-True-is_prime(97) = True]
+test/Testrepl/test_evaluate.py::test_prime_command_normalizes_name_and_formats_boolean[4-False-is_prime(4) = False]
+test/Testrepl/test_evaluate.py::test_factor_command_formats_sorted_factorization
+test/Testrepl/test_evaluate.py::test_gcd_command_parses_two_integers_and_formats_result
+test/Testrepl/test_evaluate.py::test_lcm_command_parses_two_integers_and_formats_result
+test/Testrepl/test_evaluate.py::test_solve_command_converts_coefficients_to_float
+test/Testrepl/test_evaluate.py::test_derive_command_parses_function_and_point
+test/Testrepl/test_evaluate.py::test_derive_command_rejects_malformed_at_keyword
+test/Testrepl/test_evaluate.py::test_derive_command_wraps_unknown_function_as_input_error
+test/Testrepl/test_evaluate.py::test_integrate_command_parses_function_and_bounds
+test/Testrepl/test_evaluate.py::test_limit_command_converts_numeric_point_or_passes_symbolic_point[limit sin(x)/x x 0-0.0-1-lim(sin(x)/x, x \u2192 0) = 1]
+test/Testrepl/test_evaluate.py::test_limit_command_converts_numeric_point_or_passes_symbolic_point[limit 1/x x oo-oo-0-lim(1/x, x \u2192 oo) = 0]
+test/Testrepl/test_evaluate.py::test_eigenvalues_command_parses_json_and_formats_float_and_non_float_values
+test/Testrepl/test_evaluate.py::test_eigenvalues_command_reports_invalid_json
+test/Testrepl/test_evaluate.py::test_fft_command_parses_json_and_formats_amplitudes
+test/Testrepl/test_evaluate.py::test_fft_command_reports_invalid_json
+test/Testrepl/test_evaluate.py::test_goldbach_command_formats_decomposition_or_absence[collaborator_result0-goldbach(10) = 3 + 7]
+test/Testrepl/test_evaluate.py::test_goldbach_command_formats_decomposition_or_absence[None-goldbach(10) = Keine Zerlegung gefunden]
+test/Testrepl/test_evaluate.py::test_collatz_command_formats_stopping_time
+test/Testrepl/test_evaluate.py::test_phi_command_formats_euler_phi
+test/Testrepl/test_evaluate.py::test_modinv_command_parses_two_integers_and_formats_result
+test/Testrepl/test_evaluate.py::test_sqrt_command_converts_input_and_formats_result[sqrt 9-sqrt(9.0) = 3.00000000]
+test/Testrepl/test_evaluate.py::test_sqrt_command_converts_input_and_formats_result[sqrt 2.25-sqrt(2.25) = 1.50000000]
+test/Testrepl/test_evaluate.py::test_help_without_argument_delegates_to_help_method
+test/Testrepl/test_evaluate.py::test_help_with_known_command_is_case_insensitive
+test/Testrepl/test_evaluate.py::test_help_with_unknown_command_reports_normalized_target
+test/Testrepl/test_evaluate.py::test_exit_and_quit_return_exit_sentinel[exit]
+test/Testrepl/test_evaluate.py::test_exit_and_quit_return_exit_sentinel[quit]
+test/Testrepl/test_evaluate.py::test_exit_and_quit_return_exit_sentinel[EXIT]
+test/Testrepl/test_evaluate.py::test_exit_and_quit_return_exit_sentinel[  quit  ]
+test/Testrepl/test_evaluate.py::test_unknown_command_uses_normalized_command_name
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[prime-Fehler: prime erwartet genau 1 Argument (Zahl)]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[prime 2 3-Fehler: prime erwartet genau 1 Argument (Zahl)]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[factor-Fehler: factor erwartet genau 1 Argument]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[gcd 5-Fehler: gcd erwartet 2 Argumente]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[lcm 5-Fehler: lcm erwartet 2 Argumente]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[solve 1 2-Fehler: solve erwartet 3 Koeffizienten (a b c)]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[derive sin-Fehler: Format: derive FUNC at X]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[integrate id 0-Fehler: integrate erwartet 3 Argumente: FUNC A B]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[limit x x-Fehler: limit erwartet 3 Argumente: EXPR VAR PUNKT]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[eigenvalues-Fehler: eigenvalues erwartet eine Matrix als JSON]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[fft-Fehler: fft erwartet eine Liste als JSON]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[goldbach-Fehler: goldbach erwartet 1 Argument]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[collatz-Fehler: collatz erwartet 1 Argument]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[phi-Fehler: phi erwartet 1 Argument]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[modinv 3-Fehler: modinv erwartet 2 Argumente]
+test/Testrepl/test_evaluate.py::test_argument_count_errors_are_reported_without_calling_collaborators[sqrt-Fehler: sqrt erwartet 1 Argument]
+test/Testrepl/test_evaluate.py::test_invalid_integer_argument_is_reported_as_input_error
+test/Testrepl/test_evaluate.py::test_invalid_float_argument_is_reported_as_input_error
+test/Testrepl/test_evaluate.py::test_negative_sqrt_reports_math_domain_value_error
+test/Testrepl/test_evaluate.py::test_collaborator_exceptions_are_converted_to_error_strings[exception0-Eingabefehler: ung\xfcltiger Wert]
+test/Testrepl/test_evaluate.py::test_collaborator_exceptions_are_converted_to_error_strings[exception1-Fehler bei 'prime 97': RuntimeError: kaputt]
+
+58 tests collected in 0.55s
+
+=== test.log ===
+/usr/local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+..........................................................               [100%]
+58 passed in 0.99s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

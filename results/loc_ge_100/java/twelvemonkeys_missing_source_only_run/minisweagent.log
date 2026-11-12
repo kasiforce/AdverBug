@@ -1,0 +1,182 @@
+2026-11-11 20:26:09,980 - minisweagent - INFO - Instance filter: 12 -> 2 instances
+2026-11-11 20:26:10,198 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f6f90821 -w /testbed --rm adverbug-twelvemonkeys-check:latest sleep 35m
+2026-11-11 20:26:12,604 - minisweagent.environment - INFO - Started container minisweagent-f6f90821 with ID a51254e10d61277bd314c3a25b169866204832feba90c904d2d25cd804375a6f
+2026-11-11 20:27:32,724 - minisweagent - ERROR - Error processing TwelveMonkeys__main__1217__0: litellm.AuthenticationError: AuthenticationError: DeepseekException - Authentication Fails (governor) You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 364, in _make_common_sync_call
+    response = sync_httpx_client.post(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/http_handler.py", line 1342, in post
+    _raise_masked_sync_error(e, stream)
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/http_handler.py", line 467, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '401 Authorization Required' for url 'https://api.deepseek.com/beta/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 5642, in completion
+    response = _complete_deepseek(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 1519, in _complete_deepseek
+    raise e
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 1492, in _complete_deepseek
+    response: Final = base_llm_http_handler.completion(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 660, in completion
+    response: Final = self._make_common_sync_call(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 381, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 5987, in _handle_error
+    raise provider_error
+litellm.llms.openai.common_utils.OpenAIError: Authentication Fails (governor)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py", line 633, in process_instance
+    info = agent.run(
+           ^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/agents/default.py", line 98, in run
+    self.step()
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/utils/common.py", line 17, in step
+    return super().step()
+           ^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/agents/default.py", line 128, in step
+    return self.execute_actions(self.query())
+                                ^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/agents/default.py", line 149, in query
+    message = self.model.query(self.messages)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 82, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 84, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 74, in _query
+    raise e
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 66, in _query
+    return litellm.completion(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/utils.py", line 1745, in wrapper
+    raise e
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/utils.py", line 1591, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 5837, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2675, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2436, in exception_type
+    _map_openai_exception(
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 409, in _map_openai_exception
+    raise AuthenticationError(
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: DeepseekException - Authentication Fails (governor) You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-11-11 20:27:32,757 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-de84a6ec -w /testbed --rm adverbug-twelvemonkeys-check:latest sleep 35m
+2026-11-11 20:27:36,109 - minisweagent.environment - INFO - Started container minisweagent-de84a6ec with ID 0ae1623bcfd043328db4dde2b422b73ccd982b73e3c1e04463bc32b7c7331c58
+2026-11-11 20:27:45,545 - minisweagent - ERROR - Error processing TwelveMonkeys__main__1398__4: litellm.AuthenticationError: AuthenticationError: DeepseekException - Authentication Fails (governor) You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 364, in _make_common_sync_call
+    response = sync_httpx_client.post(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/http_handler.py", line 1342, in post
+    _raise_masked_sync_error(e, stream)
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/http_handler.py", line 467, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '401 Authorization Required' for url 'https://api.deepseek.com/beta/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 5642, in completion
+    response = _complete_deepseek(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 1519, in _complete_deepseek
+    raise e
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 1492, in _complete_deepseek
+    response: Final = base_llm_http_handler.completion(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 660, in completion
+    response: Final = self._make_common_sync_call(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 381, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 5987, in _handle_error
+    raise provider_error
+litellm.llms.openai.common_utils.OpenAIError: Authentication Fails (governor)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py", line 633, in process_instance
+    info = agent.run(
+           ^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/agents/default.py", line 98, in run
+    self.step()
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/run/benchmarks/utils/common.py", line 17, in step
+    return super().step()
+           ^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/agents/default.py", line 128, in step
+    return self.execute_actions(self.query())
+                                ^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/agents/default.py", line 149, in query
+    message = self.model.query(self.messages)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 82, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 84, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 74, in _query
+    raise e
+  File "/data/home/cjy/Adver_bug/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 66, in _query
+    return litellm.completion(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/utils.py", line 1745, in wrapper
+    raise e
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/utils.py", line 1591, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/main.py", line 5837, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2675, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2436, in exception_type
+    _map_openai_exception(
+  File "/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 409, in _map_openai_exception
+    raise AuthenticationError(
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: DeepseekException - Authentication Fails (governor) You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-11-11 20:27:45,630 - minisweagent - INFO - Generated tests written to results/loc_ge_100/java/twelvemonkeys_deepseek_testgen_full.json

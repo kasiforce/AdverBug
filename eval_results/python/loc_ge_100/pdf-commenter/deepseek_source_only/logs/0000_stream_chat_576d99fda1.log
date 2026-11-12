@@ -1,0 +1,90 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.12/site-packages (9.2.0)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=2 in /usr/local/lib/python3.12/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=24 in /usr/local/lib/python3.12/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.6 in /usr/local/lib/python3.12/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.15 in /usr/local/lib/python3.12/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.12/site-packages (from pytest-asyncio) (4.15.0)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (263 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-metadata, pytest-asyncio, pytest-json-report
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+
+=== compile.log ===
+/usr/local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unhealthy_provider_yields_warning_and_skips_client
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unsupported_provider_type_yields_explicit_error
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_content_chunks_are_joined_and_yielded_at_completion
+tests/backend/services/Testllm_service/test_stream_chat.py::test_content_without_punctuation_is_still_flushed
+tests/backend/services/Testllm_service/test_stream_chat.py::test_long_content_is_yielded_progressively_once_streaming_started
+tests/backend/services/Testllm_service/test_stream_chat.py::test_reasoning_then_content_emits_thinking_tags
+tests/backend/services/Testllm_service/test_stream_chat.py::test_reasoning_only_response_is_closed_at_end
+tests/backend/services/Testllm_service/test_stream_chat.py::test_reasoning_then_unpunctuated_content_is_flushed_after_tag_closes
+tests/backend/services/Testllm_service/test_stream_chat.py::test_empty_stream_is_reported_as_yielded_error
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_model_error_text_raises_provider_unavailable[model not found]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_model_error_text_raises_provider_unavailable[this model is not available]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_model_error_text_raises_provider_unavailable[the requested model is not supported]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_model_error_text_raises_provider_unavailable[this deployment has been deprecated]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_model_error_text_raises_provider_unavailable[that model does not exist]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_model_error_text_raises_provider_unavailable[service is currently overloaded]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_short_plain_error_word_is_reported_as_yielded_error
+tests/backend/services/Testllm_service/test_stream_chat.py::test_long_content_with_error_word_is_streamed_normally
+tests/backend/services/Testllm_service/test_stream_chat.py::test_max_tokens_resolution[config0-None-1234]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_max_tokens_resolution[config1-None-4096]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_max_tokens_resolution[config2-500-100]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_max_tokens_resolution[config3-50-50]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_max_tokens_resolution[config4-500-500]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_max_tokens_resolution[config5-None-0]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_request_forwards_arguments_and_uses_requested_keys
+tests/backend/services/Testllm_service/test_stream_chat.py::test_ollama_provider_type_uses_the_same_streaming_path
+tests/backend/services/Testllm_service/test_stream_chat.py::test_context_window_errors_are_translated[This model's maximum context length is 8192 tokens]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_context_window_errors_are_translated[error code: context_length_exceeded]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unavailable_http_status_raises_provider_unavailable[404]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unavailable_http_status_raises_provider_unavailable[503]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unavailable_keyword_errors_raise_provider_unavailable[model not found]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unavailable_keyword_errors_raise_provider_unavailable[model is not supported]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unavailable_keyword_errors_raise_provider_unavailable[deployment was deprecated]
+tests/backend/services/Testllm_service/test_stream_chat.py::test_generic_create_error_is_yielded_as_error_text
+tests/backend/services/Testllm_service/test_stream_chat.py::test_generic_stream_iteration_error_is_yielded_as_error_text
+tests/backend/services/Testllm_service/test_stream_chat.py::test_content_yielded_before_iteration_error_is_preserved
+tests/backend/services/Testllm_service/test_stream_chat.py::test_unavailable_keyword_during_iteration_raises_provider_unavailable
+
+36 tests collected in 0.48s
+
+=== test.log ===
+/usr/local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+....................................                                     [100%]
+36 passed in 1.37s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

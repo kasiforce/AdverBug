@@ -1,0 +1,76 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.12/site-packages (9.2.0)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=2 in /usr/local/lib/python3.12/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=24 in /usr/local/lib/python3.12/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.6 in /usr/local/lib/python3.12/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.15 in /usr/local/lib/python3.12/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Collecting typing-extensions>=4.12 (from pytest-asyncio)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (263 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: typing-extensions, coverage, pytest-timeout, pytest-mock, pytest-metadata, pytest-asyncio, pytest-json-report
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0 typing-extensions-4.16.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+
+=== compile.log ===
+/usr/local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+test/webapp/Testapp/test_api_tensor_curvature.py::test_falsy_json_bodies_are_rejected
+test/webapp/Testapp/test_api_tensor_curvature.py::test_missing_manifold_uses_sphere_defaults
+test/webapp/Testapp/test_api_tensor_curvature.py::test_sphere_uses_radius_and_coordinates_in_metric_and_output
+test/webapp/Testapp/test_api_tensor_curvature.py::test_torus_curvature_changes_sign_with_theta[0.0-9.0-3.0000-0.3333333333333333-0.6666666666666666-Positiv gekr\xfcmmt]
+test/webapp/Testapp/test_api_tensor_curvature.py::test_torus_curvature_changes_sign_with_theta[3.141592653589793-1.0-1.0000--1.0--2.0-Negativ gekr\xfcmmt]
+test/webapp/Testapp/test_api_tensor_curvature.py::test_torus_curvature_changes_sign_with_theta[1.5707963267948966-4.0-2.0000-0.0-0.0-Flach (K \u2248 0)]
+test/webapp/Testapp/test_api_tensor_curvature.py::test_hyperbolic_plane_reports_constant_negative_curvature
+test/webapp/Testapp/test_api_tensor_curvature.py::test_hyperbolic_nonpositive_y_is_clamped[0.0]
+test/webapp/Testapp/test_api_tensor_curvature.py::test_hyperbolic_nonpositive_y_is_clamped[-3.0]
+test/webapp/Testapp/test_api_tensor_curvature.py::test_hyperbolic_clamped_boundary_retains_constant_negative_curvature
+test/webapp/Testapp/test_api_tensor_curvature.py::test_saddle_metric_and_curvature_at_nonzero_point
+test/webapp/Testapp/test_api_tensor_curvature.py::test_flat_plane_has_zero_curvature_and_euclidean_metric
+test/webapp/Testapp/test_api_tensor_curvature.py::test_unknown_manifold_returns_descriptive_400
+test/webapp/Testapp/test_api_tensor_curvature.py::test_invalid_numeric_parameter_is_reported_as_calculation_error
+test/webapp/Testapp/test_api_tensor_curvature.py::test_plot_generation_exception_does_not_fail_curvature_response
+test/webapp/Testapp/test_api_tensor_curvature.py::test_plot_encoding_exception_does_not_fail_curvature_response
+test/webapp/Testapp/test_api_tensor_curvature.py::test_plot_helper_returning_none_leaves_plot_empty
+test/webapp/Testapp/test_api_tensor_curvature.py::test_plot_pipeline_receives_manifold_point_and_returns_encoded_figure
+
+18 tests collected in 2.04s
+
+=== test.log ===
+/usr/local/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+.........F........                                                       [100%]
+=========================== short test summary info ============================
+FAILED test/webapp/Testapp/test_api_tensor_curvature.py::test_hyperbolic_clamped_boundary_retains_constant_negative_curvature
+1 failed, 17 passed in 2.85s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json
