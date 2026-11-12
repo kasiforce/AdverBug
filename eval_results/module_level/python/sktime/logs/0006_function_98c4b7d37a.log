@@ -1,0 +1,102 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+test_patched_decoder.py::test_shift_padded_seq_rolls_rows_by_first_padding_position
+test_patched_decoder.py::test_decode_returns_context_forecast_when_requested
+test_patched_decoder.py::test_forward_transform_normalizes_and_preserves_padding_value
+test_patched_decoder.py::test_default_quantiles_are_returned_by_factory
+test_patched_decoder.py::test_decode_rejects_padding_length_mismatch
+test_patched_decoder.py::test_decode_concatenates_horizon_steps_and_returns_mean
+test_patched_decoder.py::test_masked_mean_std_selects_first_complete_patch
+test_patched_decoder.py::test_masked_mean_std_uses_valid_values_from_selected_patch
+test_patched_decoder.py::test_quantile_loss_uses_pinball_formula
+test_patched_decoder.py::test_forward_and_reverse_transform_round_trip
+test_patched_decoder.py::test_forward_transform_uses_unit_scale_for_constant_patch
+test_patched_decoder.py::test_masked_mean_std_handles_fully_padded_patch
+test_data_loader.py::test_test_val_gen_honors_mode_and_shift[test-11]
+test_data_loader.py::test_tf_dataset_wraps_generator_and_sets_tensor_types
+test_data_loader.py::test_missing_covariate_columns_are_replaced_with_zero_columns
+test_data_loader.py::test_test_val_gen_rejects_unknown_mode
+test_data_loader.py::test_get_features_and_ts_splits_history_and_forecast_windows
+test_data_loader.py::test_test_val_gen_honors_mode_and_shift[val-6]
+test_data_loader.py::test_initialization_aligns_targets_covariates_and_calendar_features
+test_data_loader.py::test_train_gen_yields_batches_with_expected_shapes
+test_data_loader.py::test_normalization_is_fitted_on_training_slice_only
+test_data_loader.py::test_missing_values_are_filled_with_zero
+test_time_features.py::test_get_covariates_returns_raw_calendar_components
+test_time_features.py::test_get_covariates_normalizes_calendar_components_to_unit_interval
+test_time_features.py::test_distance_to_holiday_asserts_when_no_holiday_is_in_window
+test_time_features.py::test_distance_to_holiday_reports_signed_days_from_new_year
+test_time_features.py::test_holiday_covariates_are_appended_and_standardized
+test_time_features.py::test_get_covariates_handles_empty_datetime_index
+test_timesfm_utils.py::test_forecast_can_return_context_forecast_without_trimming
+test_timesfm_utils.py::test_forecast_requires_loaded_checkpoint[None-model0]
+test_timesfm_utils.py::test_constructor_sets_configuration_and_default_quantiles
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[D-0]
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[B-0]
+test_timesfm_utils.py::test_moving_average_returns_smoothed_values_and_residuals
+test_timesfm_utils.py::test_normalize_and_renormalize_round_trip
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[Q-2]
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[W-1]
+test_timesfm_utils.py::test_forecast_on_df_groups_sorts_and_adds_quantile_columns
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[MS-1]
+test_timesfm_utils.py::test_moving_average_with_unit_window_is_identity
+test_timesfm_utils.py::test_freq_map_rejects_unknown_frequency[A]
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[M-1]
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[5min-0]
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[15T-0]
+test_timesfm_utils.py::test_forecast_with_covariates_rejects_horizon_beyond_model
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[Y-2]
+test_timesfm_utils.py::test_forecast_removes_batch_padding
+test_timesfm_utils.py::test_forecast_on_df_requires_id_time_and_value_columns[dataframe1]
+test_timesfm_utils.py::test_forecast_with_covariates_requires_at_least_one_covariate
+test_timesfm_utils.py::test_forecast_on_df_requires_id_time_and_value_columns[dataframe0]
+test_timesfm_utils.py::test_forecast_requires_loaded_checkpoint[train_state1-None]
+test_timesfm_utils.py::test_freq_map_rejects_unknown_frequency[]
+test_timesfm_utils.py::test_preprocess_front_pads_short_series_and_truncates_long_series
+test_timesfm_utils.py::test_forecast_on_df_requires_id_time_and_value_columns[dataframe2]
+test_timesfm_utils.py::test_forecast_keeps_negative_values_when_input_contains_negative
+test_timesfm_utils.py::test_freq_map_rejects_unknown_frequency[seconds]
+test_timesfm_utils.py::test_forecast_with_covariates_rejects_unknown_mode
+test_timesfm_utils.py::test_forecast_shapes_pmapped_inputs_trims_padding_and_clamps
+test_timesfm_utils.py::test_process_group_takes_tail_and_returns_float32_values
+test_timesfm_utils.py::test_get_sample_inputs_uses_configured_batch_and_lengths
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[h-0]
+test_timesfm_utils.py::test_forecast_with_covariates_orchestrates_xreg_and_residual_forecast
+test_timesfm_utils.py::test_freq_map_maps_supported_frequencies[U-0]
+test_xreg_lib.py::test_assert_covariates_requires_matching_presence[covariate_kwargs0-train_dynamic_numerical_covariates and test_dynamic]
+test_xreg_lib.py::test_create_covariate_matrix_normalizes_numeric_dynamic_features
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs5-train_dynamic_numerical_covariates has key x]
+test_xreg_lib.py::test_linear_fit_recovers_linear_relationship
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs2-targets\\[0\\] has length]
+test_xreg_lib.py::test_unnest_and_repeat_flatten_ragged_values
+test_xreg_lib.py::test_create_covariate_matrix_repeats_static_numeric_covariates
+test_xreg_lib.py::test_init_defaults_unset_covariates_to_empty_dicts
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs4-static_categorical_covariates has key s]
+test_xreg_lib.py::test_base_fit_is_not_implemented
+test_xreg_lib.py::test_to_padded_jax_array_pads_to_power_of_two[array1-expected1]
+test_xreg_lib.py::test_to_padded_jax_array_rejects_more_than_two_dimensions
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs3-static_numerical_covariates has key s]
+test_xreg_lib.py::test_assert_covariates_rejects_mismatched_categorical_keys
+test_xreg_lib.py::test_assert_covariates_accepts_consistent_shape_metadata
+test_xreg_lib.py::test_create_covariate_matrix_encodes_dynamic_and_static_categories
+test_xreg_lib.py::test_assert_covariates_rejects_mismatched_numeric_keys
+test_xreg_lib.py::test_linear_fit_debug_info_returns_context_predictions_and_padded_arrays
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs1-train_lens and test_lens]
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs0-targets and train_lens]
+test_xreg_lib.py::test_to_padded_jax_array_pads_to_power_of_two[array0-expected0]
+test_xreg_lib.py::test_assert_covariates_requires_matching_presence[covariate_kwargs1-train_dynamic_categorical_covariates and test_dynamic]
+test_xreg_lib.py::test_create_covariate_matrix_can_keep_all_category_levels
+test_xreg_lib.py::test_assert_covariates_validates_shapes[kwargs6-train_dynamic_categorical_covariates has key x]
+
+87 tests collected in 2.42s
+
+=== test.log ===
+........................................................................ [ 82%]
+...............                                                          [100%]
+87 passed in 4.12s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,194 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (8.4.2)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: coverage in /usr/local/lib/python3.11/site-packages (7.16.2)
+Requirement already satisfied: pytest-asyncio in /usr/local/lib/python3.11/site-packages (1.4.0)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=20 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: pytest-timeout, pytest-mock, pytest-metadata, pytest-json-report
+
+Successfully installed pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+test/textual/document/test_document.py::test_newline_detection[-\n]
+test/textual/document/test_document.py::test_newline_detection[one line-\n]
+test/textual/document/test_document.py::test_newline_detection[one\ntwo-\n]
+test/textual/document/test_document.py::test_newline_detection[one\r\ntwo-\r\n]
+test/textual/document/test_document.py::test_newline_detection[one\rtwo-\r]
+test/textual/document/test_document.py::test_newline_detection[one\r\ntwo\nthree-\r\n]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[-expected_lines0]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[abc-expected_lines1]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[abc\n-expected_lines2]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[a\nb-expected_lines3]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[a\r\nb-expected_lines4]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[a\rb-expected_lines5]
+test/textual/document/test_document.py::test_lines_and_text_preserve_document_boundaries[a\nb\n-expected_lines6]
+test/textual/document/test_document.py::test_document_basic_accessors
+test/textual/document/test_document.py::test_get_size_expands_tabs_and_accounts_for_cell_width
+test/textual/document/test_document.py::test_base_document_syntax_query_defaults
+test/textual/document/test_document.py::test_replace_range_inserts_and_returns_edit_result
+test/textual/document/test_document.py::test_replace_range_deletes_text
+test/textual/document/test_document.py::test_replace_range_spanning_lines
+test/textual/document/test_document.py::test_replace_range_with_reversed_endpoints_and_trailing_newline
+test/textual/document/test_document.py::test_replace_range_can_delete_an_entire_trailing_line
+test/textual/document/test_document.py::test_replace_range_with_empty_text_at_a_cursor_is_a_noop
+test/textual/document/test_document.py::test_get_text_range_within_one_line_and_reversed
+test/textual/document/test_document.py::test_get_text_range_across_lines
+test/textual/document/test_document.py::test_get_index_from_location[location0-0]
+test/textual/document/test_document.py::test_get_index_from_location[location1-3]
+test/textual/document/test_document.py::test_get_index_from_location[location2-4]
+test/textual/document/test_document.py::test_get_index_from_location[location3-6]
+test/textual/document/test_document.py::test_get_index_from_location[location4-7]
+test/textual/document/test_document.py::test_get_index_from_location[location5-8]
+test/textual/document/test_document.py::test_get_location_from_index[0-location0]
+test/textual/document/test_document.py::test_get_location_from_index[1-location1]
+test/textual/document/test_document.py::test_get_location_from_index[2-location2]
+test/textual/document/test_document.py::test_get_location_from_index[3-location3]
+test/textual/document/test_document.py::test_get_location_from_index[4-location4]
+test/textual/document/test_document.py::test_get_location_from_index[5-location5]
+test/textual/document/test_document.py::test_get_location_from_index[6-location6]
+test/textual/document/test_document.py::test_get_location_from_index[7-location7]
+test/textual/document/test_document.py::test_get_location_from_index[8-location8]
+test/textual/document/test_document.py::test_index_and_location_conversions_round_trip_for_utf8_text
+test/textual/document/test_document.py::test_get_location_from_index_rejects_out_of_bounds[-1]
+test/textual/document/test_document.py::test_get_location_from_index_rejects_out_of_bounds[9]
+test/textual/document/test_document.py::test_get_location_from_index_rejects_out_of_bounds[100]
+test/textual/document/test_document.py::test_selection_cursor_and_emptiness
+test/textual/document/test_document.py::test_selection_contains_line[selection0-0-False]
+test/textual/document/test_document.py::test_selection_contains_line[selection1-1-True]
+test/textual/document/test_document.py::test_selection_contains_line[selection2-2-True]
+test/textual/document/test_document.py::test_selection_contains_line[selection3-3-True]
+test/textual/document/test_document.py::test_selection_contains_line[selection4-4-False]
+test/textual/document/test_document.py::test_selection_contains_line[selection5-3-True]
+test/textual/document/test_document.py::test_document_is_a_document_base
+test/textual/document/test_document_navigator.py::test_boundary_queries_for_wrapped_document
+test/textual/document/test_document_navigator.py::test_last_wrapped_line_uses_final_wrap_offset
+test/textual/document/test_document_navigator.py::test_horizontal_movement_wraps_between_document_lines
+test/textual/document/test_document_navigator.py::test_vertical_movement_crosses_wrapped_sections
+test/textual/document/test_document_navigator.py::test_vertical_movement_restores_last_horizontal_offset
+test/textual/document/test_document_navigator.py::test_vertical_movement_uses_current_visual_column_without_remembered_offset
+test/textual/document/test_document_navigator.py::test_home_moves_to_start_of_visual_section[location0-expected0]
+test/textual/document/test_document_navigator.py::test_home_moves_to_start_of_visual_section[location1-expected1]
+test/textual/document/test_document_navigator.py::test_home_moves_to_start_of_visual_section[location2-expected2]
+test/textual/document/test_document_navigator.py::test_home_moves_to_start_of_visual_section[location3-expected3]
+test/textual/document/test_document_navigator.py::test_home_moves_to_start_of_visual_section[location4-expected4]
+test/textual/document/test_document_navigator.py::test_smart_home_moves_to_first_non_whitespace[location0-expected0-expected_smart0]
+test/textual/document/test_document_navigator.py::test_smart_home_moves_to_first_non_whitespace[location1-expected1-expected_smart1]
+test/textual/document/test_document_navigator.py::test_smart_home_moves_to_first_non_whitespace[location2-expected2-expected_smart2]
+test/textual/document/test_document_navigator.py::test_smart_home_moves_to_first_non_whitespace[location3-expected3-expected_smart3]
+test/textual/document/test_document_navigator.py::test_smart_home_moves_to_first_non_whitespace[location4-expected4-expected_smart4]
+test/textual/document/test_document_navigator.py::test_end_moves_to_end_of_visual_section[location0-expected0]
+test/textual/document/test_document_navigator.py::test_end_moves_to_end_of_visual_section[location1-expected1]
+test/textual/document/test_document_navigator.py::test_end_moves_to_end_of_visual_section[location2-expected2]
+test/textual/document/test_document_navigator.py::test_end_moves_to_end_of_visual_section[location3-expected3]
+test/textual/document/test_document_navigator.py::test_apply_visual_vertical_offset[location0-1-expected0]
+test/textual/document/test_document_navigator.py::test_apply_visual_vertical_offset[location1-1-expected1]
+test/textual/document/test_document_navigator.py::test_apply_visual_vertical_offset[location2-1-expected2]
+test/textual/document/test_document_navigator.py::test_apply_visual_vertical_offset[location3--1-expected3]
+test/textual/document/test_document_navigator.py::test_apply_visual_vertical_offset[location4-100-expected4]
+test/textual/document/test_document_navigator.py::test_clamp_reachable[location0-expected0]
+test/textual/document/test_document_navigator.py::test_clamp_reachable[location1-expected1]
+test/textual/document/test_document_navigator.py::test_clamp_reachable[location2-expected2]
+test/textual/document/test_document_navigator.py::test_clamp_reachable[location3-expected3]
+test/textual/document/test_document_navigator.py::test_clamp_reachable[location4-expected4]
+test/textual/document/test_document_navigator.py::test_clamp_reachable[location5-expected5]
+test/textual/document/test_document_navigator.py::test_index_finds_first_equal_item_or_minus_one
+test/textual/document/test_document_navigator.py::test_navigation_without_wrapping_uses_document_line_bounds
+test/textual/document/test_edit_and_history.py::test_edit_top_and_bottom_are_order_independent
+test/textual/document/test_edit_and_history.py::test_do_replaces_document_and_records_selection_for_undo
+test/textual/document/test_edit_and_history.py::test_after_applies_adjusted_selection_and_records_cursor_width
+test/textual/document/test_edit_and_history.py::test_maintain_selection_offset_shifts_a_selection_after_inserted_text
+test/textual/document/test_edit_and_history.py::test_maintain_selection_offset_shifts_rows_for_multiline_insertion
+test/textual/document/test_edit_and_history.py::test_without_maintain_offset_selection_moves_to_edit_end
+test/textual/document/test_edit_and_history.py::test_undo_restores_text_and_original_selection
+test/textual/document/test_edit_and_history.py::test_undo_restores_deleted_text
+test/textual/document/test_edit_and_history.py::test_after_without_updated_selection_only_records_cursor_width
+test/textual/document/test_edit_and_history.py::test_record_requires_an_edit_that_has_been_performed
+test/textual/document/test_edit_and_history.py::test_empty_noop_edits_are_not_recorded
+test/textual/document/test_edit_and_history.py::test_consecutive_single_character_insertions_are_batched
+test/textual/document/test_edit_and_history.py::test_paste_creates_an_isolated_batch_and_forces_next_batch
+test/textual/document/test_edit_and_history.py::test_newline_insertion_creates_an_isolated_batch
+test/textual/document/test_edit_and_history.py::test_carriage_return_insertion_creates_an_isolated_batch
+test/textual/document/test_edit_and_history.py::test_replacements_batch_together_but_not_with_insertions
+test/textual/document/test_edit_and_history.py::test_timer_expiry_starts_a_new_batch
+test/textual/document/test_edit_and_history.py::test_character_limit_starts_a_new_batch
+test/textual/document/test_edit_and_history.py::test_checkpoint_forces_next_edit_into_a_new_batch
+test/textual/document/test_edit_and_history.py::test_undo_stack_respects_max_checkpoints
+test/textual/document/test_edit_and_history.py::test_undo_and_redo_stack_transitions
+test/textual/document/test_edit_and_history.py::test_recording_a_new_edit_clears_the_redo_stack
+test/textual/document/test_edit_and_history.py::test_clear_removes_both_stacks_and_resets_batching_state
+test/textual/document/test_edit_and_history.py::test_empty_history_has_nothing_to_undo_or_redo
+test/textual/document/test_syntax_aware_document.py::test_constructor_raises_when_tree_sitter_is_unavailable
+test/textual/document/test_syntax_aware_document.py::test_constructor_builds_initial_syntax_tree
+test/textual/document/test_syntax_aware_document.py::test_prepare_query_uses_document_language
+test/textual/document/test_syntax_aware_document.py::test_query_syntax_tree_returns_cursor_captures
+test/textual/document/test_syntax_aware_document.py::test_query_syntax_tree_applies_requested_point_range[start_point0-None-expected_range0]
+test/textual/document/test_syntax_aware_document.py::test_query_syntax_tree_applies_requested_point_range[None-end_point1-expected_range1]
+test/textual/document/test_syntax_aware_document.py::test_query_syntax_tree_applies_requested_point_range[start_point2-end_point2-expected_range2]
+test/textual/document/test_syntax_aware_document.py::test_get_line_matches_document_access
+test/textual/document/test_syntax_aware_document.py::test_replace_range_updates_text_and_incremental_syntax_tree
+test/textual/document/test_syntax_aware_document.py::test_location_conversions_use_utf8_byte_offsets[location0-0-point0]
+test/textual/document/test_syntax_aware_document.py::test_location_conversions_use_utf8_byte_offsets[location1-1-point1]
+test/textual/document/test_syntax_aware_document.py::test_location_conversions_use_utf8_byte_offsets[location2-3-point2]
+test/textual/document/test_syntax_aware_document.py::test_location_conversions_use_utf8_byte_offsets[location3-5-point3]
+test/textual/document/test_syntax_aware_document.py::test_location_conversions_use_utf8_byte_offsets[location4-8-point4]
+test/textual/document/test_syntax_aware_document.py::test_location_conversions_use_utf8_byte_offsets[location5-11-point5]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point0-a\xc3\xa9\r\n]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point1-\xc3\xa9\r\n]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point2-\r]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point3-\n]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point4-]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point5-b\r\n]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_returns_utf8_bytes_through_line_end[point6-]
+test/textual/document/test_syntax_aware_document.py::test_read_callable_handles_single_character_newline
+test/textual/document/test_wrapped_document.py::test_no_wrapping_by_default
+test/textual/document/test_wrapped_document.py::test_wrapped_property_reports_whether_content_actually_wraps[ABCDEF-3-True]
+test/textual/document/test_wrapped_document.py::test_wrapped_property_reports_whether_content_actually_wraps[ABC-3-False]
+test/textual/document/test_wrapped_document.py::test_wrapping_splits_long_lines_into_sections
+test/textual/document/test_wrapped_document.py::test_rewrap_replaces_previous_sections
+test/textual/document/test_wrapped_document.py::test_empty_document_has_one_visual_line
+test/textual/document/test_wrapped_document.py::test_tabs_are_measured_and_split_at_the_configured_width
+test/textual/document/test_wrapped_document.py::test_get_offsets_rejects_out_of_bounds_line_indices
+test/textual/document/test_wrapped_document.py::test_location_and_offset_translation_round_trips
+test/textual/document/test_wrapped_document.py::test_offset_to_location_clamps_visual_offsets
+test/textual/document/test_wrapped_document.py::test_get_target_document_column_clamps_non_final_sections
+test/textual/document/test_wrapped_document.py::test_location_to_offset_uses_cell_width_for_wide_characters
+test/textual/document/test_wrapped_document.py::test_location_to_offset_clamps_a_line_index_past_the_end
+test/textual/document/test_wrapped_document.py::test_incremental_wrap_after_inserted_newline_matches_full_rewrap
+test/textual/document/test_wrapped_document.py::test_incremental_wrap_after_long_insert_matches_full_rewrap
+test/textual/document/test_wrapped_document.py::test_incremental_wrap_after_multiline_delete_matches_full_rewrap
+
+147 tests collected in 0.18s
+
+=== test.log ===
+........................................................................ [ 48%]
+..........................F.................................FF.........F [ 97%]
+...                                                                      [100%]
+=========================== short test summary info ============================
+FAILED test/textual/document/test_edit_and_history.py::test_carriage_return_insertion_creates_an_isolated_batch
+FAILED test/textual/document/test_wrapped_document.py::test_wrapped_property_reports_whether_content_actually_wraps[ABCDEF-3-True]
+FAILED test/textual/document/test_wrapped_document.py::test_wrapped_property_reports_whether_content_actually_wraps[ABC-3-False]
+FAILED test/textual/document/test_wrapped_document.py::test_location_to_offset_clamps_a_line_index_past_the_end
+4 failed, 143 passed in 0.74s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

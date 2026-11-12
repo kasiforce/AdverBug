@@ -1,0 +1,73 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+test_generation_mixin.py::test_greedy_search_rejects_inputs_with_more_than_three_dimensions
+test_generation_mixin.py::test_greedy_search_generates_until_stopping_criteria
+test_generation_mixin.py::test_update_generation_kwargs_extends_encoder_decoder_mask
+test_generation_mixin.py::test_update_generation_kwargs_extends_masks_times_and_cache_position
+test_generation_mixin.py::test_update_generation_kwargs_infers_time_step_without_cached_step
+test_generation_mixin.py::test_update_generation_kwargs_carries_model_state
+test_modeling_mira.py::test_attention_rejects_hidden_size_not_divisible_by_heads
+test_modeling_mira.py::test_calc_ar_loss_uses_huber_loss_with_and_without_mask
+test_modeling_mira.py::test_mira_model_forward_shapes_for_dense_and_sparse_layers[False]
+test_modeling_mira.py::test_attention_requires_time_values_for_ct_rope
+test_modeling_mira.py::test_load_balancing_loss_minimum_for_balanced_expert_selection
+test_modeling_mira.py::test_prepare_inputs_for_generation_rejects_short_time_values
+test_modeling_mira.py::test_mira_model_supports_forward_without_kv_cache
+test_modeling_mira.py::test_mira_model_return_dict_false_returns_tuple
+test_modeling_mira.py::test_load_balancing_loss_ignores_masked_tokens
+test_modeling_mira.py::test_rms_norm_preserves_shape_and_normalizes_last_dimension
+test_modeling_mira.py::test_continuous_time_rotary_embedding_shapes_and_head_dimension_validation
+test_modeling_mira.py::test_load_balancing_loss_returns_zero_without_router_logits
+test_modeling_mira.py::test_mira_model_forward_shapes_for_dense_and_sparse_layers[True]
+test_modeling_mira.py::test_load_balancing_loss_penalizes_concentrated_routing
+test_modeling_mira.py::test_output_layer_returns_requested_horizon_shape
+test_modeling_mira.py::test_prediction_model_outputs_one_step_and_optional_scalar_loss
+test_modeling_mira.py::test_apply_rotary_pos_emb_uses_position_indices
+test_modeling_mira.py::test_prepare_inputs_for_generation_adds_position_and_next_target_time
+test_modeling_mira.py::test_rotate_half_and_repeat_kv_have_expected_tensor_semantics
+test_modeling_mira.py::test_mira_model_requires_exactly_one_input_representation
+test_configuration_mira.py::test_valid_dense_and_auxiliary_loss_combinations_are_accepted[True-False]
+test_configuration_mira.py::test_explicit_horizon_list_and_key_value_heads_are_preserved
+test_configuration_mira.py::test_dense_and_auxiliary_loss_flags_must_be_exclusive[True-True]
+test_configuration_mira.py::test_valid_dense_and_auxiliary_loss_combinations_are_accepted[False-True]
+test_configuration_mira.py::test_config_integrates_with_real_transformers_pretrained_config
+test_configuration_mira.py::test_dense_and_auxiliary_loss_flags_must_be_exclusive[False-False]
+test_configuration_mira.py::test_tie_word_embeddings_and_extra_kwargs_are_forwarded_to_base_class
+test_configuration_mira.py::test_default_config_has_expected_model_shape_and_flags
+test_configuration_mira.py::test_config_preserves_explicit_gradient_checkpointing_kwargs
+test_configuration_mira.py::test_custom_config_normalizes_horizon_and_key_value_head_defaults
+test_module_contract.py::test_normalize_and_denormalize_are_inverse_affine_transforms
+test_module_contract.py::test_time_normalization_helpers_are_exported_from_their_own_module[safe_nanmax]
+test_module_contract.py::test_normalize_preserves_input_and_supports_non_unit_standard_deviation
+test_module_contract.py::test_time_normalization_helpers_are_exported_from_their_own_module[safe_nanmin]
+test_module_contract.py::test_public_exports_are_declared_and_resolve_to_implementation_objects
+test_module_contract.py::test_denormalize_with_zero_mean_is_a_pure_scale
+test_time_normalization.py::test_safe_nanmin_and_nanmax_ignore_nan_without_mutating_input
+test_time_normalization.py::test_safe_nan_extrema_return_infinities_for_all_nan_rows
+test_time_normalization.py::test_snap_values_supports_integer_decimal_and_disabled_modes
+test_time_normalization.py::test_integer_snapping_is_followed_by_monotonic_repair
+test_time_normalization.py::test_alpha_controls_the_normalized_time_range
+test_time_normalization.py::test_enforce_unique_monotonic_repairs_ties_and_backwards_steps_per_row
+test_time_normalization.py::test_normalization_scales_valid_range_to_sequence_positions
+test_time_normalization.py::test_constant_series_produces_distinct_monotonic_positions
+test_time_normalization.py::test_normalization_converts_integer_input_to_float_without_mutating_source
+test_time_normalization.py::test_snap_values_rejects_unknown_mode
+test_time_normalization.py::test_attention_mask_limits_min_and_max_but_not_the_output_span
+test_mira_inference.py::test_evaluate_window_returns_predictions_ground_truth_and_metrics
+test_mira_inference.py::test_autoregressive_prediction_honors_mean_and_std
+test_mira_inference.py::test_autoregressive_prediction_feeds_back_predictions_and_future_times
+test_mira_inference.py::test_normalize_helper_matches_broadcast_affine_formula
+
+57 tests collected in 3.73s
+
+=== test.log ===
+.......F.................................................                [100%]
+=========================== short test summary info ============================
+FAILED tests/sktime/libs/mira/test_modeling_mira.py::test_mira_model_supports_forward_without_kv_cache
+1 failed, 56 passed, 1 warning in 5.94s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

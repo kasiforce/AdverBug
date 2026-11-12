@@ -1,0 +1,68 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/dowhy/causal_refuters/overrule/test_beam_search.py::test_pricing_instance_evaluates_every_singleton_solution
+tests/dowhy/causal_refuters/overrule/test_beam_search.py::test_beam_search_returns_cost_ranked_unique_rules_with_consistent_masks_and_costs
+tests/dowhy/causal_refuters/overrule/test_beam_search.py::test_beam_search_is_deterministic
+tests/dowhy/causal_refuters/overrule/test_beam_search.py::test_beam_search_respects_solution_limit_and_upper_bound
+tests/dowhy/causal_refuters/overrule/test_beam_search.py::test_beam_search_with_zero_max_degree_returns_empty_result
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_binary_and_constant_columns_are_mapped_to_zero_one
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_negations_add_complementary_binary_columns
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_categorical_columns_are_one_hot_encoded_and_unknown_categories_are_ignored
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_explicit_numeric_categorical_column_uses_one_hot_encoding
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_low_cardinality_ordinal_column_uses_each_nonmaximum_value_as_threshold
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_many_valued_ordinal_column_uses_quantile_thresholds
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_threshold_override_is_used_for_high_cardinality_ordinal_columns
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_nan_values_are_zeroed_and_receive_nan_indicator_columns
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_threshold_strings_are_used_as_column_labels_when_requested
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_unsupported_columns_are_skipped_without_preventing_other_columns
+tests/dowhy/causal_refuters/overrule/test_feature_binarizer.py::test_col_categ_series_is_converted_to_a_list
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_fit_learns_a_rule_set_and_predicts_positive_and_negative_regions
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_fit_accepts_overlap_or_background_samples_as_negative_examples[labels0]
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_fit_accepts_overlap_or_background_samples_as_negative_examples[labels1]
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_fit_rejects_label_sets_without_usable_positive_and_negative_examples[labels0-no negative samples]
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_fit_rejects_label_sets_without_usable_positive_and_negative_examples[labels1-either background or non-overlap]
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_fit_rejects_label_sets_without_usable_positive_and_negative_examples[labels2-no negative samples]
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_greedy_sweep_rounding_produces_binary_weights_and_predictions
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_rounded_objective_is_at_least_the_lp_relaxation_objective
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_objective_value_requires_background_samples
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_get_and_set_params_follow_estimator_interface
+tests/dowhy/causal_refuters/overrule/test_overlap_boolean_rule.py::test_pickle_round_trip_preserves_predictions_and_estimator_parameters
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_constructor_initializes_inner_estimators_and_defaults
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_constructor_forwards_rule_and_binarization_options
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_fit_without_reference_samples_learns_overlap_rules_and_predicts
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_fit_with_reference_samples_estimates_relative_volume_deterministically
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_fit_accepts_numpy_features_and_series_labels
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_estimator_uses_configured_categorical_columns_when_binarizing
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_rules_support_labels_transformations_and_string_rendering
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_pickle_round_trip_preserves_fitted_predictions_and_parameters
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_set_params_with_inner_estimator_parameter_reinitializes_collaborators
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_set_params_keeps_rule_estimator_and_binarizer_consistent_with_public_parameters
+tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_get_params_deep_includes_inner_estimator_parameters
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_unif_is_reproducible_and_bounded_by_column_extrema
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_unif_accepts_dataframes_and_supports_zero_rows
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_reference_preserves_columns_and_column_specific_domains
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_reference_defaults_to_input_size_and_is_reproducible
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_reference_uses_explicit_ranges_and_binary_override
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_reference_converts_arrays_to_integer_named_dataframe
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_sample_reference_rejects_non_dictionary_ref_range
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_fatom_formats_supported_literal_forms[age->=-3.14159-%.2f-[age >= 3.14]]
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_fatom_formats_supported_literal_forms[city-==-Paris-%.2f-[city == Paris]]
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_fatom_formats_supported_literal_forms[flag-not-None-%.3f-not flag]
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_fatom_formats_supported_literal_forms[flag--None-%.3f-flag]
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_rule_str_joins_literals_and_alternative_rules
+tests/dowhy/causal_refuters/overrule/test_utils.py::test_rule_str_handles_no_rules
+
+51 tests collected in 18.38s
+
+=== test.log ===
+....................................FF.............                      [100%]
+=========================== short test summary info ============================
+FAILED tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_set_params_keeps_rule_estimator_and_binarizer_consistent_with_public_parameters
+FAILED tests/dowhy/causal_refuters/overrule/test_ruleset.py::test_get_params_deep_includes_inner_estimator_parameters
+2 failed, 49 passed, 14 warnings in 4.20s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

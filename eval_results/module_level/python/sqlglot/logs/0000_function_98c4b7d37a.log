@@ -1,0 +1,94 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/sqlglot/executor/test_context.py::test_context_exposes_scope_readers_and_contains
+tests/sqlglot/executor/test_context.py::test_context_eval_and_eval_tuple_merge_custom_env
+tests/sqlglot/executor/test_context.py::test_context_set_index_and_table_iter_update_the_scope
+tests/sqlglot/executor/test_context.py::test_context_iteration_yields_rows_and_the_context
+tests/sqlglot/executor/test_context.py::test_context_filter_keeps_matching_rows
+tests/sqlglot/executor/test_context.py::test_context_sort_supports_nulls_first_and_descending
+tests/sqlglot/executor/test_context.py::test_context_set_range_sets_vector_scope
+tests/sqlglot/executor/test_context.py::test_context_add_columns_updates_every_table
+tests/sqlglot/executor/test_context.py::test_context_table_rejects_incompatible_tables[tables0-Columns are different.]
+tests/sqlglot/executor/test_context.py::test_context_table_rejects_incompatible_tables[tables1-Rows are different.]
+tests/sqlglot/executor/test_context.py::test_context_outer_readers_are_available_and_inner_aliases_shadow_them
+tests/sqlglot/executor/test_context.py::test_context_outer_reader_without_a_shadowing_table_is_preserved
+tests/sqlglot/executor/test_context.py::test_context_with_no_tables_has_no_columns_and_unknown_table_errors
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[True-True-True-True]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[True-False-False-True]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[True-None-None-True]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[False-True-False-True]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[False-False-False-False]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[False-None-False-None]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[None-True-None-True]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[None-False-False-None]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_use_three_valued_logic[None-None-None-None]
+tests/sqlglot/executor/test_env.py::test_sql_and_or_short_circuit
+tests/sqlglot/executor/test_env.py::test_sql_in_has_sql_null_semantics
+tests/sqlglot/executor/test_env.py::test_sql_not_uses_three_valued_logic
+tests/sqlglot/executor/test_env.py::test_null_if_any_requires_all_arguments_by_default
+tests/sqlglot/executor/test_env.py::test_null_if_any_can_require_only_named_arguments
+tests/sqlglot/executor/test_env.py::test_filter_nulls_removes_nulls_and_controls_empty_results
+tests/sqlglot/executor/test_env.py::test_str_position_and_substring_use_one_based_sql_positions
+tests/sqlglot/executor/test_env.py::test_cast_converts_dates_times_text_and_numbers
+tests/sqlglot/executor/test_env.py::test_reverse_key_and_ordered_sort_nullable_values
+tests/sqlglot/executor/test_env.py::test_like_and_ilike_apply_wildcards
+tests/sqlglot/executor/test_env.py::test_intdiv_truncates_toward_zero
+tests/sqlglot/executor/test_env.py::test_interval_builds_timedeltas_from_singular_units
+tests/sqlglot/executor/test_env.py::test_array_helpers_and_zip_not_null
+tests/sqlglot/executor/test_env.py::test_jsonextract_traverses_mappings_and_arrays
+tests/sqlglot/executor/test_env.py::test_env_aggregations_ignore_nulls
+tests/sqlglot/executor/test_env.py::test_env_scalar_functions_cover_common_sql_operations
+tests/sqlglot/executor/test_execute.py::test_execute_selects_filters_and_projects_into_a_table
+tests/sqlglot/executor/test_execute.py::test_execute_accepts_an_expression_and_uses_automatic_schema_inference
+tests/sqlglot/executor/test_execute.py::test_execute_handles_nested_table_mappings
+tests/sqlglot/executor/test_execute.py::test_execute_uses_the_requested_dialect_for_name_resolution
+tests/sqlglot/executor/test_execute.py::test_execute_aggregates_groups_filters_and_orders
+tests/sqlglot/executor/test_execute.py::test_execute_aggregates_over_no_matching_rows
+tests/sqlglot/executor/test_execute.py::test_execute_supports_empty_input_with_an_explicit_schema
+tests/sqlglot/executor/test_execute.py::test_execute_orders_nulls_and_applies_limit_and_offset
+tests/sqlglot/executor/test_execute.py::test_execute_join_types[INNER-expected0]
+tests/sqlglot/executor/test_execute.py::test_execute_join_types[LEFT-expected1]
+tests/sqlglot/executor/test_execute.py::test_execute_join_types[RIGHT-expected2]
+tests/sqlglot/executor/test_execute.py::test_execute_join_types[FULL-expected3]
+tests/sqlglot/executor/test_execute.py::test_execute_cross_join_produces_the_cartesian_product
+tests/sqlglot/executor/test_execute.py::test_execute_ctes_and_correlated_scalar_subqueries
+tests/sqlglot/executor/test_execute.py::test_execute_exists_and_in_subqueries
+tests/sqlglot/executor/test_execute.py::test_execute_quantified_subquery_comparisons
+tests/sqlglot/executor/test_execute.py::test_execute_set_operations[UNION-expected0]
+tests/sqlglot/executor/test_execute.py::test_execute_set_operations[UNION ALL-expected1]
+tests/sqlglot/executor/test_execute.py::test_execute_set_operations[INTERSECT-expected2]
+tests/sqlglot/executor/test_execute.py::test_execute_set_operations[EXCEPT-expected3]
+tests/sqlglot/executor/test_execute.py::test_execute_scalar_functions_and_casts
+tests/sqlglot/executor/test_execute.py::test_execute_rejects_tables_and_schema_with_different_table_depths
+tests/sqlglot/executor/test_execute.py::test_execute_reports_invalid_scalar_subqueries[SELECT (SELECT x FROM t) AS scalar-More than one row returned by a subquery used as an expression]
+tests/sqlglot/executor/test_execute.py::test_execute_reports_invalid_scalar_subqueries[SELECT (SELECT x, x FROM t) AS scalar-Subquery used as an expression returned 2 columns]
+tests/sqlglot/executor/test_python_executor.py::test_generate_compiles_sql_expressions_for_context_eval
+tests/sqlglot/executor/test_python_executor.py::test_generate_handles_missing_and_empty_expression_groups
+tests/sqlglot/executor/test_python_executor.py::test_custom_env_overrides_built_in_functions
+tests/sqlglot/executor/test_python_executor.py::test_context_and_table_helpers_build_execution_objects
+tests/sqlglot/executor/test_python_executor.py::test_execute_runs_a_complete_plan_and_returns_a_table
+tests/sqlglot/executor/test_python_executor.py::test_execute_wraps_plan_step_errors_in_execute_error
+tests/sqlglot/executor/test_table.py::test_table_exposes_columns_rows_and_python_rows
+tests/sqlglot/executor/test_table.py::test_table_add_columns_append_and_pop
+tests/sqlglot/executor/test_table.py::test_table_rejects_initial_rows_with_the_wrong_width
+tests/sqlglot/executor/test_table.py::test_table_column_range_limits_column_access_and_display
+tests/sqlglot/executor/test_table.py::test_add_columns_extends_an_existing_column_range
+tests/sqlglot/executor/test_table.py::test_row_reader_and_range_reader
+tests/sqlglot/executor/test_table.py::test_ensure_tables_normalizes_names_and_builds_tables
+tests/sqlglot/executor/test_table.py::test_ensure_tables_supports_nested_mappings
+tests/sqlglot/executor/test_table.py::test_ensure_tables_passes_table_instances_through
+tests/sqlglot/executor/test_table.py::test_ensure_tables_honors_dialect_name_normalization
+tests/sqlglot/executor/test_table.py::test_ensure_tables_handles_no_tables_and_empty_tables
+
+79 tests collected in 0.66s
+
+=== test.log ===
+........................................................................ [ 91%]
+.......                                                                  [100%]
+79 passed in 1.50s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

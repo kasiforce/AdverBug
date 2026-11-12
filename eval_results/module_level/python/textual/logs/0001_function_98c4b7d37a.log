@@ -1,0 +1,73 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (8.4.2)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: coverage in /usr/local/lib/python3.11/site-packages (7.16.2)
+Requirement already satisfied: pytest-asyncio in /usr/local/lib/python3.11/site-packages (1.4.0)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=20 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: pytest-timeout, pytest-mock, pytest-metadata, pytest-json-report
+
+Successfully installed pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+test/textual/layouts/test_layouts.py::test_layout_map_covers_all_named_layouts
+test/textual/layouts/test_layouts.py::test_get_layout_returns_fresh_named_layout_instances[horizontal-HorizontalLayout]
+test/textual/layouts/test_layouts.py::test_get_layout_returns_fresh_named_layout_instances[grid-GridLayout]
+test/textual/layouts/test_layouts.py::test_get_layout_returns_fresh_named_layout_instances[vertical-VerticalLayout]
+test/textual/layouts/test_layouts.py::test_get_layout_returns_fresh_named_layout_instances[stream-StreamLayout]
+test/textual/layouts/test_layouts.py::test_get_layout_unknown_name_raises_missing_layout
+test/textual/layouts/test_layouts.py::test_horizontal_empty_children_calls_pre_layout
+test/textual/layouts/test_layouts.py::test_horizontal_positions_children_with_collapsed_margins_and_offset
+test/textual/layouts/test_layouts.py::test_horizontal_uses_content_dimensions_for_auto_sized_children
+test/textual/layouts/test_layouts.py::test_horizontal_overlay_and_absolute_children_do_not_advance_flow
+test/textual/layouts/test_layouts.py::test_vertical_empty_children_calls_pre_layout
+test/textual/layouts/test_layouts.py::test_vertical_positions_children_with_collapsed_margins_and_offset
+test/textual/layouts/test_layouts.py::test_vertical_uses_content_dimensions_for_auto_sized_children
+test/textual/layouts/test_layouts.py::test_vertical_overlay_and_absolute_children_do_not_advance_flow
+test/textual/layouts/test_layouts.py::test_grid_layout_defaults
+test/textual/layouts/test_layouts.py::test_grid_empty_children_sets_minimal_grid_size_and_calls_pre_layout
+test/textual/layouts/test_layouts.py::test_grid_arranges_children_in_rows_and_columns
+test/textual/layouts/test_layouts.py::test_grid_honours_explicit_track_sizes
+test/textual/layouts/test_layouts.py::test_grid_honours_row_and_column_spans
+test/textual/layouts/test_layouts.py::test_grid_auto_tracks_size_to_widget_content
+test/textual/layouts/test_layouts.py::test_grid_auto_tracks_apply_min_and_max_limits
+test/textual/layouts/test_layouts.py::test_grid_min_column_width_and_regular_mode
+test/textual/layouts/test_layouts.py::test_grid_max_column_width_caps_available_width
+test/textual/layouts/test_layouts.py::test_grid_expand_and_shrink_expand_or_reduce_fixed_columns
+test/textual/layouts/test_layouts.py::test_grid_gutters_and_keyline_inset_cells
+test/textual/layouts/test_layouts.py::test_grid_stretch_height_requires_multiple_children
+test/textual/layouts/test_layouts.py::test_stream_empty_children_calls_pre_layout
+test/textual/layouts/test_layouts.py::test_stream_stacks_full_width_content_with_collapsed_margins
+test/textual/layouts/test_layouts.py::test_stream_applies_css_min_and_max_heights_and_ignores_inline_styles
+test/textual/layouts/test_layouts.py::test_stream_does_not_honour_absolute_or_overlay_styles
+test/textual/layouts/test_layouts.py::test_stream_reuses_unchanged_placements_and_invalidates_on_width_change
+test/textual/layouts/test_layouts.py::test_stream_get_content_width_returns_scrollable_content_width
+test/textual/layouts/test_layouts.py::test_stream_get_content_height_uses_arrangement_or_zero
+
+33 tests collected in 0.11s
+
+=== test.log ===
+.................................                                        [100%]
+33 passed in 1.72s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,88 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = -Invalid value (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = ?-Invalid value (at line 1, column 5)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = 1\nb = ?-Invalid value (at line 2, column 5)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = 1\nb = 2 junk-Expected newline or end of document after a statement (at line 2, column 7)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a 1-Expected '=' after a key in a key/value pair (at line 1, column 3)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[? = 1-Invalid statement (at line 1, column 1)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[[a-Expected ']' at the end of a table declaration (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[[[a]-Expected ']]' at the end of an array declaration (at line 1, column 4)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = [1 2]-Unclosed array (at line 1, column 8)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = {b = 1 c = 2}-Unclosed inline table (at line 1, column 12)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = "unterminated-Unterminated string (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = 'unterminated-Expected "'" (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = "\\q"-Unescaped '\\' in a string (at line 1, column 8)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = "\\u12G4"-Invalid hex value (at line 1, column 8)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = "\\uD800"-Escaped character is not a Unicode scalar value (at line 1, column 12)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = 1979-02-30-Invalid date or datetime (at line 1, column 5)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = 'line\nbreak'-Found invalid character '\\n' (at line 1, column 10)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = "line\nbreak"-Illegal character '\\n' (at line 1, column 10)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_documents_raise_decode_error_with_location[a = 1 # bad\x01-Found invalid character '\\x01' (at line 1, column 12)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[a = 1\na = 2-Cannot overwrite a value (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[[a]\n[a]-Cannot declare ('a',) twice (at line 2, column 3)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[a = 1\n[a]-Cannot overwrite a value (at line 2, column 3)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[[a]\nb.c = 1\n[a.b]-Cannot declare ('a', 'b') twice (at line 3, column 5)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[a = []\n[[a]]-Cannot mutate immutable namespace ('a',) (at line 2, column 4)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[a = {b = 1}\na.c = 2-Cannot mutate immutable namespace ('a',) (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[a = {b = 1, b = 2}-Duplicate inline table key 'b' (at line 1, column 18)]
+tests/jc/parsers/tomli/test_error_handling.py::test_invalid_table_and_key_redefinitions_are_rejected[[a.b]\nx = 1\n[a]\nb.c = 2-Cannot redefine namespace ('a', 'b') (at end of document)]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[leading_zero = 01]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[bad_underscore = 1__2]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[missing_leading_digit = .5]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[bare_word = nope]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[bad_boolean = TRUE]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[unclosed_array = [1, 2]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[unclosed_table = {a = 1]
+tests/jc/parsers/tomli/test_error_handling.py::test_more_ill_formed_values_are_rejected[trailing_inline_comma = {a = 1,}]
+tests/jc/parsers/tomli/test_error_handling.py::test_deeply_nested_invalid_input_still_reports_near_the_failure
+tests/jc/parsers/tomli/test_error_handling.py::test_error_after_crlf_uses_normalized_line_and_column
+tests/jc/parsers/tomli/test_public_api.py::test_public_names_and_version
+tests/jc/parsers/tomli/test_public_api.py::test_decode_error_is_a_value_error_with_public_module_name
+tests/jc/parsers/tomli/test_public_api.py::test_loads_returns_an_empty_plain_dict_for_an_empty_document
+tests/jc/parsers/tomli/test_public_api.py::test_load_reads_binary_file_and_parses_it
+tests/jc/parsers/tomli/test_public_api.py::test_load_supports_binary_file_like_objects
+tests/jc/parsers/tomli/test_public_api.py::test_load_forwards_parse_float_to_loads
+tests/jc/parsers/tomli/test_public_api.py::test_load_rejects_text_mode_files_with_actionable_type_error
+tests/jc/parsers/tomli/test_public_api.py::test_load_rejects_text_streams
+tests/jc/parsers/tomli/test_public_api.py::test_load_propagates_toml_decode_errors_from_file_contents
+tests/jc/parsers/tomli/test_public_api.py::test_parse_float_receives_only_float_tokens_and_their_original_text
+tests/jc/parsers/tomli/test_public_api.py::test_parse_float_cannot_return_containers[illegal_value0]
+tests/jc/parsers/tomli/test_public_api.py::test_parse_float_cannot_return_containers[illegal_value1]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_value_types
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_integer_bases_and_underscored_numbers
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_decimal_and_exponent_floats
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_special_floats_with_signs_and_case
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[text-text = "hello"-hello]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[escaped-escaped = "a\\tb\\nc"-a\tb\nc]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[controls-controls = "\\b\\t\\n\\f\\r"-\x08\t\n\x0c\r]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[quoted-quoted = "say \\"hello\\""-say "hello"]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[backslash-backslash = "C:\\\\temp"-C:\\temp]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[unicode4-unicode4 = "\\u03B1"-\u03b1]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_basic_string_escape_sequences[unicode8-unicode8 = "\\U0001F600"-\U0001f600]
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_literal_strings_without_processing_escapes
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_single_line_and_multiline_strings
+tests/jc/parsers/tomli/test_toml_values.py::test_multiline_strings_preserve_extra_quote_characters
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_temporal_values_to_standard_library_objects
+tests/jc/parsers/tomli/test_toml_values.py::test_temporal_fractional_seconds_are_truncated_to_microseconds
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_arrays_with_comments_newlines_and_trailing_comma
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_inline_tables_including_nested_dotted_keys
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_dotted_keys_and_nested_table_headers
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_quoted_keys_with_dots_spaces_and_escapes
+tests/jc/parsers/tomli/test_toml_values.py::test_parses_array_of_tables_with_nested_regular_tables
+tests/jc/parsers/tomli/test_toml_values.py::test_implicit_tables_can_be_declared_explicitly_later
+tests/jc/parsers/tomli/test_toml_values.py::test_empty_tables_arrays_and_documents_are_represented
+tests/jc/parsers/tomli/test_toml_values.py::test_crlf_line_endings_are_normalized_even_inside_strings
+
+73 tests collected in 0.33s
+
+=== test.log ===
+........................................................................ [ 98%]
+.                                                                        [100%]
+73 passed in 0.34s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

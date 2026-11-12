@@ -1,0 +1,74 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_method_enum_exposes_expected_members_and_values
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_darts_shap_explanation_preserves_values_and_time_index
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_adapter_is_abstract
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_background_sample_constants_are_public_boundaries
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_explanations_extracts_horizon_and_component_slices
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_explanations_repeats_one_dimensional_base_values
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_explanations_expands_single_output_explanation_shapes
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_explanations_uses_only_requested_dict_explainers
+tests/darts/explainability/shap_adapters/test_shap_adapter.py::test_shap_explanations_single_uses_last_sample_and_concatenates_horizons
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_initialization_builds_metadata_background_and_explainer
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_create_shap_input_returns_features_index_and_sampling
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_small_background_raises_but_same_size_foreground_is_allowed
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_background_num_samples_above_maximum_is_rejected
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_invalid_model_type_is_rejected_before_background_construction
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_autoregressive_multi_models_false_is_rejected
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_unknown_shap_method_name_is_rejected
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_default_shap_method_is_inferred_from_estimator_type[linear]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_default_shap_method_is_inferred_from_estimator_type[tree]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_default_shap_method_is_inferred_from_estimator_type[permutation]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_default_shap_method_is_inferred_from_estimator_type[kernel-fallback]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_covariate_counts_feature_names_and_input_width_are_consistent
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_native_multioutput_explanations_filter_components_and_horizons
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_single_explanations_match_last_row_of_regular_explanations
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_multioutput_wrapper_builds_explainer_per_horizon_and_component
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_quantile_model_explains_likelihood_components
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_build_explainer_sklearn_dispatches_methods_and_kwargs[SHAPMethod.PERMUTATION-PermutationExplainer-True]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_build_explainer_sklearn_dispatches_methods_and_kwargs[SHAPMethod.PARTITION-PartitionExplainer-True]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_build_explainer_sklearn_dispatches_methods_and_kwargs[SHAPMethod.KERNEL-KernelExplainer-True]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_build_explainer_sklearn_dispatches_methods_and_kwargs[SHAPMethod.LINEAR-LinearExplainer-False]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_build_explainer_sklearn_dispatches_methods_and_kwargs[SHAPMethod.ADDITIVE-AdditiveExplainer-False]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_tree_explainer_uses_background_only_for_interventional[interventional-True]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_tree_explainer_uses_background_only_for_interventional[None-False]
+tests/darts/explainability/shap_adapters/test_sklearn_shap_adapter.py::test_build_explainer_sklearn_rejects_unknown_method
+tests/darts/explainability/shap_adapters/test_torch_shap_adapter.py::test_torch_shap_adapter_requires_optional_torch_dependencies
+
+[32m[32m34 tests collected[0m[32m in 18.73s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                                       [100%][0m
+[33m[32m34 passed[0m, [33m[1m3 warnings[0m[33m in 22.10s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

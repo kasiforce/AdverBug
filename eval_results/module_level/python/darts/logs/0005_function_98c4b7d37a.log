@@ -1,0 +1,91 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/utils/likelihood_models/test_base.py::test_likelihood_type_members_and_values
+tests/darts/utils/likelihood_models/test_base.py::test_likelihood_metadata_fit_and_parameter_count
+tests/darts/utils/likelihood_models/test_base.py::test_component_names_from_components_and_series
+tests/darts/utils/likelihood_models/test_base.py::test_component_names_requires_exactly_one_source[None-None]
+tests/darts/utils/likelihood_models/test_base.py::test_component_names_requires_exactly_one_source[series-components1]
+tests/darts/utils/likelihood_models/test_base.py::test_likelihood_component_names_preserves_component_then_parameter_order
+tests/darts/utils/likelihood_models/test_base.py::test_quantile_names_for_scalar_list_and_component
+tests/darts/utils/likelihood_models/test_base.py::test_quantile_interval_names_for_single_and_multiple_intervals
+tests/darts/utils/likelihood_models/test_base.py::test_equality_uses_type_and_non_ignored_attributes
+tests/darts/utils/likelihood_models/test_base.py::test_repr_lists_only_non_ignored_attributes
+tests/darts/utils/likelihood_models/test_package_exports.py::test_public_exports_and_dir_are_lazy_torch_likelihoods
+tests/darts/utils/likelihood_models/test_package_exports.py::test_unknown_lazy_export_raises_attribute_error
+tests/darts/utils/likelihood_models/test_package_exports.py::test_all_exports_resolve_to_torch_classes_or_optional_dependency_sentinel
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_gaussian_and_poisson_metadata
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihood_metadata_and_quantile_ordering
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihoods_validate_quantiles[QuantileRegression-quantiles0-between 0 and 1]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihoods_validate_quantiles[QuantileRegression-quantiles1-median quantile]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihoods_validate_quantiles[QuantileRegression-quantiles2-same difference]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihoods_validate_quantiles[MultiQuantileRegression-quantiles0-between 0 and 1]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihoods_validate_quantiles[MultiQuantileRegression-quantiles1-median quantile]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_likelihoods_validate_quantiles[MultiQuantileRegression-quantiles2-same difference]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_multiquantile_rejects_single_quantile
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_gaussian_sample_uses_mu_and_sigma_and_restores_series_shape
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_gaussian_parameter_and_median_extraction
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_gaussian_estimator_predict_handles_flat_and_stacked_outputs
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_poisson_sample_and_shape_contracts
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_poisson_estimator_predict_reshapes_long_output
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_sample_interpolates_controlled_uniform_draw[0.0-10.0]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_sample_interpolates_controlled_uniform_draw[0.6-28.0]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_sample_interpolates_controlled_uniform_draw[0.9-40.0]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_parameter_flattening_and_median_selection
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_quantile_estimator_predict_stacks_quantile_models
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_multiquantile_estimator_predict_supports_native_shapes[output_shape0]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_multiquantile_estimator_predict_supports_native_shapes[output_shape1]
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_sklearn_likelihood_predict_dispatches_to_the_requested_mode
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_fit_builds_component_and_parameter_names
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_fit_requires_class_labels
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_component_names_require_fit_and_one_source
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_estimator_predict_and_median_prediction
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_predict_parameters_transposes_axes
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_sample_maps_sampled_indices_to_labels
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_class_probability_sample_rejects_probabilities_not_summing_to_one
+tests/darts/utils/likelihood_models/test_sklearn_likelihoods.py::test_get_likelihood_none_invalid_and_supported_types
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_quantile_prediction_defaults
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_quantile_prediction_sorts_custom_quantiles_and_computes_levels
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_quantile_prediction_rejects_invalid_quantiles[quantiles0-between 0 and 1]
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_quantile_prediction_rejects_invalid_quantiles[quantiles1-median quantile]
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_quantile_prediction_rejects_invalid_quantiles[quantiles2-same difference]
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_predict_returns_raw_output_for_single_or_no_samples
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_predict_delegates_multiple_samples_to_sampling
+tests/darts/utils/likelihood_models/test_statsforecast_likelihoods.py::test_sample_delegates_to_quantile_sampler_with_sorted_quantiles
+
+[32m[32m51 tests collected[0m[32m in 0.56s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                      [100%][0m
+[32m[32m[1m51 passed[0m, [33m1 skipped[0m[32m in 1.09s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

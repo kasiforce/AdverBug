@@ -1,0 +1,167 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_encoder_method_maps_stage_to_method_name[train-encode_train]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_encoder_method_maps_stage_to_method_name[inference-encode_inference]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_encoder_method_maps_stage_to_method_name[train_inference-encode_train_inference]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_encoder_method_rejects_unknown_stage
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_covariates_index_generator_is_abstract
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_index_generator_supports_model_agnostic_scenario
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_index_generator_requires_chunk_lengths
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_incomplete_chunk_lengths[kwargs0]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_incomplete_chunk_lengths[kwargs1]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_incomplete_chunk_lengths[kwargs2]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_accepts_valid_parameter_combinations[FutureCovariatesIndexGenerator-kwargs0]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_accepts_valid_parameter_combinations[PastCovariatesIndexGenerator-kwargs1]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_accepts_valid_parameter_combinations[FutureCovariatesIndexGenerator-kwargs2]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_accepts_valid_parameter_combinations[PastCovariatesIndexGenerator-kwargs3]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_shifts_are_derived_from_covariate_lags
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_index_generator_rejects_non_negative_lags
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_non_integer_lags[lags0]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_non_integer_lags[lags1]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_empty_lags[PastCovariatesIndexGenerator]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_rejects_empty_lags[FutureCovariatesIndexGenerator]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_base_component_name[PastCovariatesIndexGenerator-pc]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_index_generator_base_component_name[FutureCovariatesIndexGenerator-fc]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_train_index_ends_before_last_output_chunk
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_inference_index_starts_input_chunk_earlier
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_inference_index_never_ends_before_target_end[1]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_inference_index_never_ends_before_target_end[2]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_inference_index_never_ends_before_target_end[5]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_inference_index_never_ends_before_target_end[10]
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_generators_return_user_covariates_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_train_index_includes_steps_before_target_start_for_large_lags
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_inference_index_with_lags
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_train_index_model_agnostic_is_target_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_inference_index_model_agnostic_is_horizon
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_train_index_with_chunk_lengths_is_target_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_inference_index_with_chunk_lengths
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_inference_index_uses_output_chunk_length_as_minimum_horizon
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_generators_return_user_covariates_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_train_index_with_positive_lags_extends_past_target_end
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_inference_index_with_positive_lags
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_train_inference_index_is_contiguous_union
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_future_train_inference_index_is_contiguous_union
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_train_inference_index_works_with_range_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_past_index_generation_with_range_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_generate_train_idx_inside_target
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_generate_train_idx_extending_before_target
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_generate_train_idx_extending_after_target
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_generate_train_idx_extending_on_both_sides
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_generate_train_idx_preserves_index_type_for_range_index
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_base_encoders_are_abstract
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_transformer_fits_on_first_transform_only
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_transformer_fits_on_concatenation_of_multiple_series
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_transformer_leaves_unmasked_components_untouched
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_transformer_mask_is_extended_for_user_covariates
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_transformer_mask_is_unchanged_without_user_covariates
+tests/darts/dataprocessing/encoders/test_encoder_base.py::test_transformer_with_all_false_mask_keeps_values
+tests/darts/dataprocessing/encoders/test_encoders.py::test_package_exports_public_encoder_api
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encoder_components_and_fit_state_are_empty_before_encoding
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_train_marks_encoder_as_fitted
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_inference_does_not_mark_encoder_as_fitted
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_train_inference_marks_encoder_as_fitted
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_train_merges_user_covariates
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_train_can_skip_covariate_merge
+tests/darts/dataprocessing/encoders/test_encoders.py::test_reencoding_does_not_duplicate_encoded_components
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encoded_series_follows_target_index
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encoded_series_follows_target_dtype
+tests/darts/dataprocessing/encoders/test_encoders.py::test_cyclic_encoder_component_names_and_metadata
+tests/darts/dataprocessing/encoders/test_encoders.py::test_cyclic_month_encoding_values
+tests/darts/dataprocessing/encoders/test_encoders.py::test_cyclic_encoder_rejects_non_cyclic_attribute
+tests/darts/dataprocessing/encoders/test_encoders.py::test_cyclic_encoder_requires_datetime_index
+tests/darts/dataprocessing/encoders/test_encoders.py::test_datetime_attribute_encoder_component_names_and_metadata
+tests/darts/dataprocessing/encoders/test_encoders.py::test_datetime_attribute_encoder_encodes_calendar_values
+tests/darts/dataprocessing/encoders/test_encoders.py::test_datetime_attribute_encoder_applies_timezone_shift
+tests/darts/dataprocessing/encoders/test_encoders.py::test_datetime_attribute_encoder_requires_datetime_index
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_component_names_and_metadata
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_rejects_invalid_attribute[absolute]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_rejects_invalid_attribute[]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_rejects_invalid_attribute[None]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_rejects_invalid_attribute[1]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_rejects_invalid_attribute[attribute4]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_before_train_raises
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_relative_train_values
+tests/darts/dataprocessing/encoders/test_encoders.py::test_past_integer_index_train_values_stop_before_last_output_chunk
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_relative_inference_values
+tests/darts/dataprocessing/encoders/test_encoders.py::test_integer_index_encoder_with_range_index
+tests/darts/dataprocessing/encoders/test_encoders.py::test_callable_index_encoder_single_component
+tests/darts/dataprocessing/encoders/test_encoders.py::test_callable_index_encoder_multiple_components
+tests/darts/dataprocessing/encoders/test_encoders.py::test_callable_index_encoder_accepts_range_index
+tests/darts/dataprocessing/encoders/test_encoders.py::test_callable_index_encoder_rejects_non_callable_attribute
+tests/darts/dataprocessing/encoders/test_encoders.py::test_callable_index_encoder_rejects_unusable_output[<lambda>0]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_callable_index_encoder_rejects_unusable_output[<lambda>1]
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_inference_remembers_components_without_training
+tests/darts/dataprocessing/encoders/test_encoders.py::test_encode_inference_uses_user_covariates_index
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_no_encoders_disables_encoding[None]
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_no_encoders_disables_encoding[params1]
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_setup_creates_past_and_future_encoders_in_order
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encoder_map_contains_all_supported_encoders
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_string_attribute_is_accepted
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_named_callable_custom_encoder
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_timezone_is_propagated_to_encoders
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_past_encoders_are_dropped_without_past_covariate_support
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_future_encoders_are_dropped_without_future_covariate_support
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_past_encoders_require_chunk_lengths
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_invalid_encoder_key_raises
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_invalid_temporal_key_raises
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_invalid_attribute_type_raises[1]
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_invalid_attribute_type_raises[attributes1]
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_invalid_attribute_type_raises[None]
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_lambda_encoder_is_rejected
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_lambda_encoder_is_rejected_in_sequence_of_attributes
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_invalid_transformer_raises
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_transformer_without_encoders_does_not_enable_encoding
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encode_train_component_names_and_spans
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encode_inference_spans
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encode_inference_requires_fit_for_position_encoder
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_cyclic_only_encoder_does_not_require_fit
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encode_train_inference_spans
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encode_past_and_encode_future_flags
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_user_covariates_are_merged_with_encodings
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_reencoding_does_not_duplicate_encoded_components
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_multiple_series_are_encoded_independently
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_encoding_leaves_user_covariates_of_multiple_series_untouched
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_transformer_is_created_for_encoders_accepting_transformation
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_transformer_does_not_change_cyclic_encodings
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_non_series_target_logs_lazy_loading_warning
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_covariate_lags_extend_generated_spans
+tests/darts/dataprocessing/encoders/test_sequential_encoder.py::test_user_covariates_are_merged_and_untouched_at_inference
+
+[32m[32m126 tests collected[0m[32m in 8.07s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m [ 57%]
+[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                   [100%][0m
+[32m[32m[1m126 passed[0m[32m in 2.93s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

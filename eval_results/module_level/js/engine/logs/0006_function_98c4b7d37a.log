@@ -1,0 +1,151 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:53) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/particle-system/particle-emitter.test.js
+  ● Console
+
+    console.warn
+      WARNING: can't create more than 2 particles on this device.
+
+      119 |      */
+      120 |     static warn(...args) {
+    > 121 |         console.warn(...args);
+          |                 ^
+      122 |     }
+      123 |
+      124 |     /**
+
+      at Debug.warn (src/core/debug.js:121:17)
+      at new warn (src/scene/particle-system/particle-emitter.js:256:19)
+      at createTestEmitter (test/scene/particle-system/test-utils.js:40:12)
+      at Object.createTestEmitter (test/scene/particle-system/particle-emitter.test.js:176:29)
+
+    console.warn
+      DEPRECATED: ParticleEmitter option noFog is deprecated. Use useFog instead.
+
+      26 |         if (!Debug._loggedMessages.has(message)) {
+      27 |             Debug._loggedMessages.add(message);
+    > 28 |             console.warn(`DEPRECATED: ${message}`);
+         |                     ^
+      29 |         }
+      30 |     }
+      31 |
+
+      at Debug.warn [as deprecated] (src/core/debug.js:28:21)
+      at new deprecated (src/scene/particle-system/particle-emitter.js:295:19)
+      at createTestEmitter (test/scene/particle-system/test-utils.js:40:12)
+      at Object.createTestEmitter (test/scene/particle-system/particle-emitter.test.js:189:29)
+
+FAIL test/scene/particle-system/cpu-updater.test.js
+  ● ParticleCPUUpdater › #update() › applies the initial velocity along the emitter forward axis for box emitters
+
+    expect(received).not.toThrow()
+
+    Error name:    "TypeError"
+    Error message: "Cannot assign to read only property 'x' of object '[object Object]'"
+
+          510 |      */
+          511 |     mulScalar(scalar) {
+        > 512 |         this.x *= scalar;
+              |               ^
+          513 |         this.y *= scalar;
+          514 |         this.z *= scalar;
+          515 |
+
+      at Vec3.mulScalar (src/core/math/vec3.js:512:15)
+      at ParticleCPUUpdater.mulScalar [as update] (src/scene/particle-system/cpu-updater.js:260:59)
+      at update (test/scene/particle-system/cpu-updater.test.js:392:49)
+      at Object.<anonymous> (.adverbug_jest_runtime/node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (.adverbug_jest_runtime/node_modules/expect/build/index.js:2235:93)
+      at Object.toThrow (test/scene/particle-system/cpu-updater.test.js:396:20)
+      at Object.toThrow (test/scene/particle-system/cpu-updater.test.js:396:20)
+
+PASS test/scene/particle-system/gpu-updater.test.js
+PASS test/scene/particle-system/particle-material.test.js
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 65 passed, 66 total
+Snapshots:   0 total
+Time:        2.808 s
+Ran all test suites within paths "test/scene/particle-system/cpu-updater.test.js", "test/scene/particle-system/gpu-updater.test.js", "test/scene/particle-system/particle-emitter.test.js", "test/scene/particle-system/particle-material.test.js", "test/scene/particle-system/test-utils.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:67) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/scene/particle-system/cpu-updater.test.js
+  ● ParticleCPUUpdater › #update() › applies the initial velocity along the emitter forward axis for box emitters
+
+    expect(received).not.toThrow()
+
+    Error name:    "TypeError"
+    Error message: "Cannot assign to read only property 'x' of object '[object Object]'"
+
+          510 |      */
+          511 |     mulScalar(scalar) {
+        > 512 |         this.x *= scalar;
+              |               ^
+          513 |         this.y *= scalar;
+          514 |         this.z *= scalar;
+          515 |
+
+      at Vec3.mulScalar (src/core/math/vec3.js:512:15)
+      at ParticleCPUUpdater.mulScalar [as update] (src/scene/particle-system/cpu-updater.js:260:59)
+      at update (test/scene/particle-system/cpu-updater.test.js:392:49)
+      at Object.<anonymous> (.adverbug_jest_runtime/node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (.adverbug_jest_runtime/node_modules/expect/build/index.js:2235:93)
+      at Object.toThrow (test/scene/particle-system/cpu-updater.test.js:396:20)
+      at Object.toThrow (test/scene/particle-system/cpu-updater.test.js:396:20)
+
+PASS test/scene/particle-system/particle-emitter.test.js
+  ● Console
+
+    console.warn
+      WARNING: can't create more than 2 particles on this device.
+
+      119 |      */
+      120 |     static warn(...args) {
+    > 121 |         console.warn(...args);
+          |                 ^
+      122 |     }
+      123 |
+      124 |     /**
+
+      at Debug.warn (src/core/debug.js:121:17)
+      at new warn (src/scene/particle-system/particle-emitter.js:256:19)
+      at createTestEmitter (test/scene/particle-system/test-utils.js:40:12)
+      at Object.createTestEmitter (test/scene/particle-system/particle-emitter.test.js:176:29)
+
+    console.warn
+      DEPRECATED: ParticleEmitter option noFog is deprecated. Use useFog instead.
+
+      26 |         if (!Debug._loggedMessages.has(message)) {
+      27 |             Debug._loggedMessages.add(message);
+    > 28 |             console.warn(`DEPRECATED: ${message}`);
+         |                     ^
+      29 |         }
+      30 |     }
+      31 |
+
+      at Debug.warn [as deprecated] (src/core/debug.js:28:21)
+      at new deprecated (src/scene/particle-system/particle-emitter.js:295:19)
+      at createTestEmitter (test/scene/particle-system/test-utils.js:40:12)
+      at Object.createTestEmitter (test/scene/particle-system/particle-emitter.test.js:189:29)
+
+PASS test/scene/particle-system/gpu-updater.test.js
+PASS test/scene/particle-system/particle-material.test.js
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 65 passed, 66 total
+Snapshots:   0 total
+Time:        2.905 s, estimated 3 s
+Ran all test suites within paths "test/scene/particle-system/cpu-updater.test.js", "test/scene/particle-system/gpu-updater.test.js", "test/scene/particle-system/particle-emitter.test.js", "test/scene/particle-system/particle-material.test.js", "test/scene/particle-system/test-utils.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

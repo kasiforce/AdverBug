@@ -1,0 +1,123 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/metrics/test_classification.py::test_accuracy_and_confusion_matrix_for_deterministic_labels
+tests/darts/metrics/test_classification.py::test_macro_precision_recall_and_f1
+tests/darts/metrics/test_classification.py::test_label_specific_reduction_returns_one_value_per_label
+tests/darts/metrics/test_classification.py::test_other_label_reductions
+tests/darts/metrics/test_classification.py::test_label_filtering
+tests/darts/metrics/test_classification.py::test_invalid_label_reduction_raises
+tests/darts/metrics/test_classification.py::test_probability_components_are_argmaxed
+tests/darts/metrics/test_classification.py::test_sampled_class_labels_use_the_mode
+tests/darts/metrics/test_classification.py::test_multivariate_probabilities_and_component_reduction
+tests/darts/metrics/test_classification.py::test_probability_base_component_mismatch_raises
+tests/darts/metrics/test_classification.py::test_malformed_probability_label_raises
+tests/darts/metrics/test_intervals.py::test_interval_width_and_mean_width
+tests/darts/metrics/test_intervals.py::test_winkler_score_penalizes_both_outside_branches
+tests/darts/metrics/test_intervals.py::test_interval_coverage
+tests/darts/metrics/test_intervals.py::test_non_conformity_scores_symmetric_and_asymmetric
+tests/darts/metrics/test_intervals.py::test_multiple_intervals_return_one_dimension_per_interval
+tests/darts/metrics/test_intervals.py::test_component_reduction_preserves_interval_axis
+tests/darts/metrics/test_intervals.py::test_interval_metrics_support_stochastic_predictions
+tests/darts/metrics/test_intervals.py::test_interval_validation[kwargs0-`q` is not supported]
+tests/darts/metrics/test_intervals.py::test_interval_validation[kwargs1-require setting `q_interval`]
+tests/darts/metrics/test_intervals.py::test_interval_validation[kwargs2-must be a tuple]
+tests/darts/metrics/test_intervals.py::test_interval_validation[kwargs3-must be a tuple]
+tests/darts/metrics/test_intervals.py::test_interval_validation[kwargs4-all intervals]
+tests/darts/metrics/test_intervals.py::test_interval_with_deterministic_prediction_requires_quantile_components
+tests/darts/metrics/test_intervals.py::test_interval_metrics_handle_nan_actuals
+tests/darts/metrics/test_probabilistic.py::test_default_stochastic_metric_uses_median
+tests/darts/metrics/test_probabilistic.py::test_multiple_quantiles_return_one_score_per_quantile
+tests/darts/metrics/test_probabilistic.py::test_quantile_loss_matches_hand_computed_values
+tests/darts/metrics/test_probabilistic.py::test_single_quantile_float_returns_time_dependent_array
+tests/darts/metrics/test_probabilistic.py::test_deterministic_quantile_components_are_selected_by_q
+tests/darts/metrics/test_probabilistic.py::test_explicit_quantile_component_names_tuple
+tests/darts/metrics/test_probabilistic.py::test_invalid_quantiles_raise[q0-increasing order]
+tests/darts/metrics/test_probabilistic.py::test_invalid_quantiles_raise[q1-increasing order]
+tests/darts/metrics/test_probabilistic.py::test_invalid_quantiles_raise[q2-range]
+tests/darts/metrics/test_probabilistic.py::test_invalid_quantiles_raise[q3-range]
+tests/darts/metrics/test_probabilistic.py::test_quantiles_on_deterministic_prediction_without_components_raise
+tests/darts/metrics/test_probabilistic.py::test_crps_uses_all_samples_with_known_value
+tests/darts/metrics/test_probabilistic.py::test_crps_requires_stochastic_predictions
+tests/darts/metrics/test_probabilistic.py::test_quantile_risk_requires_stochastic_predictions
+tests/darts/metrics/test_probabilistic.py::test_quantile_risk_matches_hand_computed_values
+tests/darts/metrics/test_probabilistic.py::test_stochastic_multivariate_component_reduction
+tests/darts/metrics/test_public_api.py::test_all_exports_complete_metric_surface
+tests/darts/metrics/test_public_api.py::test_metric_attributes_are_callable_and_lazily_resolved
+tests/darts/metrics/test_public_api.py::test_derived_metric_sets_match_public_functions
+tests/darts/metrics/test_public_api.py::test_dir_only_reports_declared_public_names
+tests/darts/metrics/test_public_api.py::test_unknown_attribute_raises_attribute_error
+tests/darts/metrics/test_regression.py::test_error_and_mean_error_keep_direction
+tests/darts/metrics/test_regression.py::test_absolute_and_squared_errors
+tests/darts/metrics/test_regression.py::test_logarithmic_errors_use_log_one_plus_values
+tests/darts/metrics/test_regression.py::test_percentage_metrics_are_scale_correct
+tests/darts/metrics/test_regression.py::test_fit_and_variability_metrics
+tests/darts/metrics/test_regression.py::test_autc_uses_tolerance_curve_and_expected_validation
+tests/darts/metrics/test_regression.py::test_autc_rejects_constant_actual_series
+tests/darts/metrics/test_regression.py::test_intersect_uses_common_time_index
+tests/darts/metrics/test_regression.py::test_nan_handling_uses_nanmean_and_union_where_documented
+tests/darts/metrics/test_regression.py::test_multivariate_metric_shapes_and_reductions
+tests/darts/metrics/test_regression.py::test_sequence_inputs_return_pairwise_results_and_parallel_agree
+tests/darts/metrics/test_regression.py::test_sequence_length_mismatch_raises
+tests/darts/metrics/test_regression.py::test_reduction_validation_rejects_invalid_functions
+tests/darts/metrics/test_regression.py::test_dtw_metric_warps_series_and_applies_requested_metric
+tests/darts/metrics/test_scaled_metrics.py::test_scaled_metrics_use_naive_insample_scale
+tests/darts/metrics/test_scaled_metrics.py::test_seasonal_scaling_changes_scale
+tests/darts/metrics/test_scaled_metrics.py::test_invalid_seasonality_type_raises
+tests/darts/metrics/test_scaled_metrics.py::test_scaled_metric_zero_scale_warns_and_returns_nan
+tests/darts/metrics/test_scaled_metrics.py::test_zero_over_zero_scaled_errors_use_one
+tests/darts/metrics/test_scaled_metrics.py::test_scaled_zero_division_raise
+tests/darts/metrics/test_scaled_metrics.py::test_scaled_metric_invalid_zero_division
+tests/darts/metrics/test_scaled_metrics.py::test_insample_component_mismatch_raises
+tests/darts/metrics/test_scaled_metrics.py::test_insample_sequence_count_mismatch_raises
+tests/darts/metrics/test_utils.py::test_safe_divide_normal_and_zero_handling
+tests/darts/metrics/test_utils.py::test_safe_divide_respects_metric_specific_zero_fill
+tests/darts/metrics/test_utils.py::test_safe_divide_close_and_exact_zero_modes
+tests/darts/metrics/test_utils.py::test_safe_divide_raise_and_validation
+tests/darts/metrics/test_utils.py::test_tolerance_levels
+tests/darts/metrics/test_utils.py::test_quantile_interval_extraction
+tests/darts/metrics/test_utils.py::test_confusion_matrix_and_multilabel_output
+tests/darts/metrics/test_utils.py::test_confusion_matrix_label_filter_and_component_nan
+tests/darts/metrics/test_utils.py::test_label_reduction_enum_validation
+tests/darts/metrics/test_utils.py::test_get_wrapped_metric_validates_wrapper_count
+tests/darts/metrics/test_utils.py::test_get_values_or_raise_returns_three_dimensional_values
+tests/darts/metrics/test_utils.py::test_get_values_or_raise_rejects_insample_not_ending_before_forecast
+tests/darts/metrics/test_utils.py::test_metric_callbacks_receive_each_top_level_call
+
+[32m[32m82 tests collected[0m[32m in 0.22s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m [ 87%]
+[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                                                               [100%][0m
+[33m[32m82 passed[0m, [33m[1m6 warnings[0m[33m in 4.02s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

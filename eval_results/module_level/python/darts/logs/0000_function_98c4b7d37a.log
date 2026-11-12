@@ -1,0 +1,227 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestCostMatrixBase::test_cost_matrix_is_abstract
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestCostMatrixBase::test_dense_matrix_is_a_numpy_array_and_cost_matrix
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestCostMatrixBase::test_sparse_matrix_is_a_cost_matrix
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestFromWindow::test_window_covering_grid_produces_dense_matrix
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestFromWindow::test_sparse_window_produces_sparse_matrix
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestFromWindow::test_dense_cr_window_produces_dense_matrix
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestDenseCostMatrix::test_shape_and_dtype
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestDenseCostMatrix::test_fill_sets_every_cell
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestDenseCostMatrix::test_get_and_set_are_symmetric
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestDenseCostMatrix::test_to_dense_returns_inner_matrix
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestDenseCostMatrix::test_to_dense_reflects_fill
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_dimensions_and_backing_window
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_new_matrix_is_filled_with_infinity
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_iteration_matches_window
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_getitem_returns_inf_outside_window
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_set_and_get_roundtrip_inside_window
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_fill_sets_only_active_cells
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_fill_with_infinity_keeps_matrix_cleared
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_to_dense_shape_and_padding
+tests/darts/dataprocessing/dtw/test_cost_matrix.py::TestSparseCostMatrix::test_to_dense_agrees_with_getitem_after_updates
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_returns_alignment_with_series_metadata
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_cost_matrix_has_padded_shape
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_path_starts_and_ends_at_series_corners
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_path_is_cached_between_calls
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_distance_is_the_final_cost_cell
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_distance_equals_sum_of_distances_along_the_path
+tests/darts/dataprocessing/dtw/test_dtw.py::TestDtwResultStructure::test_mean_distance_averages_over_path_length
+tests/darts/dataprocessing/dtw/test_dtw.py::TestKnownAlignments::test_identical_series_have_zero_distance
+tests/darts/dataprocessing/dtw/test_dtw.py::TestKnownAlignments::test_constant_offset_costs_one_per_matched_pair
+tests/darts/dataprocessing/dtw/test_dtw.py::TestKnownAlignments::test_duplicated_value_is_matched_twice
+tests/darts/dataprocessing/dtw/test_dtw.py::TestKnownAlignments::test_reversed_series_cannot_be_aligned_for_free
+tests/darts/dataprocessing/dtw/test_dtw.py::TestKnownAlignments::test_single_element_series_is_aligned_with_every_element
+tests/darts/dataprocessing/dtw/test_dtw.py::TestKnownAlignments::test_time_axis_is_ignored
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWarpedSeries::test_warped_series_have_equal_length
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWarpedSeries::test_warped_values_follow_the_path
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWarpedSeries::test_warped_series_use_range_index
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWarpedSeries::test_warped_series_replace_datetime_axis_with_range_index
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWarpedSeries::test_warping_multivariate_series_keeps_components
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWarpedSeries::test_warping_does_not_modify_the_input_series
+tests/darts/dataprocessing/dtw/test_dtw.py::TestCustomDistance::test_squared_distance_is_accumulated
+tests/darts/dataprocessing/dtw/test_dtw.py::TestCustomDistance::test_custom_distance_allows_different_component_counts
+tests/darts/dataprocessing/dtw/test_dtw.py::TestCustomDistance::test_multivariate_default_distance_covers_all_components
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_explicit_no_window_matches_default
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_sakoe_chiba_limits_the_shift
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_itakura_window_produces_valid_path
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_window_is_not_mutated_by_dtw
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_windowed_cost_matrix_stays_within_the_window
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_sakoe_chiba_rejects_window_size_smaller_than_length_difference
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_itakura_rejects_slope_flatter_than_series_diagonal
+tests/darts/dataprocessing/dtw/test_dtw.py::TestWindowConstraints::test_window_supports_series_of_different_lengths
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_negative_one_matches_exact_evaluation
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_path_is_valid[0]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_path_is_valid[1]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_path_is_valid[2]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_never_undercuts_exact_distance[0]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_never_undercuts_exact_distance[1]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_never_undercuts_exact_distance[2]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_on_identical_series_is_exact
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_can_also_warp
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_multi_grid_rejects_windows
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_rejects_radius_below_minus_one[-2]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestMultiGrid::test_rejects_radius_below_minus_one[-10]
+tests/darts/dataprocessing/dtw/test_dtw.py::TestInputValidation::test_rejects_nan_in_first_series
+tests/darts/dataprocessing/dtw/test_dtw.py::TestInputValidation::test_rejects_nan_in_second_series
+tests/darts/dataprocessing/dtw/test_dtw.py::TestInputValidation::test_rejects_mismatched_components_without_distance
+tests/darts/dataprocessing/dtw/test_dtw.py::TestManualAlignmentConstruction::test_alignment_can_be_built_from_a_cost_matrix
+tests/darts/dataprocessing/dtw/test_dtw.py::TestPerformanceWarning::test_warns_for_large_unconstrained_dtw
+tests/darts/dataprocessing/dtw/test_dtw.py::TestPerformanceWarning::test_does_not_warn_for_small_series
+tests/darts/dataprocessing/dtw/test_dtw.py::TestPerformanceWarning::test_does_not_warn_when_a_window_restricts_the_search
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDefaultDistances::test_univariate_distance_is_absolute_difference[1.0-4.0-3.0]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDefaultDistances::test_univariate_distance_is_absolute_difference[2.0-2.0-0.0]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDefaultDistances::test_univariate_distance_is_absolute_difference[-1.5-1.0-2.5]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDefaultDistances::test_multivariate_distance_sums_component_distances
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDefaultDistances::test_multivariate_distance_identical_vectors
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_even_length_is_pairwise_mean
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_odd_length_duplicates_last_value_before_halving
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_output_length_is_half_rounded_up[1]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_output_length_is_half_rounded_up[2]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_output_length_is_half_rounded_up[3]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_output_length_is_half_rounded_up[7]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_output_length_is_half_rounded_up[8]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDownSample::test_output_is_one_dimensional
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwCostMatrix::test_borders_are_infinite
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwCostMatrix::test_values_match_dynamic_programming_recursion
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwCostMatrix::test_custom_distance_is_used
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwCostMatrix::test_only_window_cells_are_evaluated
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwCostMatrix::test_matrix_type_follows_window_density
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwPath::test_hand_computed_path
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwPath::test_path_may_move_along_a_single_axis
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwPath::test_identical_series_align_on_diagonal[1]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwPath::test_identical_series_align_on_diagonal[2]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwPath::test_identical_series_align_on_diagonal[5]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestDtwPath::test_path_is_monotonic_and_starts_and_ends_at_corners
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestExpandWindow::test_returns_window_of_requested_size
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestExpandWindow::test_all_cells_stay_inside_grid
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestExpandWindow::test_upsampled_low_resolution_path_is_covered
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestExpandWindow::test_single_cell_expands_to_a_block
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestExpandWindow::test_larger_radius_only_adds_cells
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestExpandWindow::test_large_radius_expands_columns_over_full_height
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_negative_radius_falls_back_to_exact_evaluation
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_terminal_cell_is_reachable[0]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_terminal_cell_is_reachable[1]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_terminal_cell_is_reachable[2]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_terminal_cell_is_reachable[4]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_approximation_never_beats_exact_solution[0]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_approximation_never_beats_exact_solution[1]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_approximation_never_beats_exact_solution[2]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_approximation_never_beats_exact_solution[4]
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_identical_series_have_zero_cost
+tests/darts/dataprocessing/dtw/test_dtw_core.py::TestFastDtw::test_small_series_use_full_grid
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_returns_none
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_draws_warp_path_centred_in_grid_cells
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_title_and_axis_limits
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_draws_cost_matrix_heatmap
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_cost_matrix_can_be_hidden
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_forwards_style_arguments
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_uses_current_figure_by_default
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_new_plot_creates_a_second_figure
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlot::test_show_series_adds_series_axes
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_returns_none
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_draws_three_lines
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_connecting_line_uses_nan_separated_pairs
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_series_are_plotted_uneshifted_by_default
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_y_offsets_are_applied
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_draws_on_the_current_axes
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_multivariate_components_can_be_selected
+tests/darts/dataprocessing/dtw/test_dtw_plot.py::TestPlotAlignment::test_style_arguments_are_forwarded
+tests/darts/dataprocessing/dtw/test_public_api.py::test_all_names_are_exported
+tests/darts/dataprocessing/dtw/test_public_api.py::test_every_exported_name_is_available
+tests/darts/dataprocessing/dtw/test_public_api.py::test_public_classes_come_from_the_implementation_modules
+tests/darts/dataprocessing/dtw/test_public_api.py::test_dtw_function_is_exported_from_the_dtw_module
+tests/darts/dataprocessing/dtw/test_public_api.py::test_windows_share_the_window_base_class
+tests/darts/dataprocessing/dtw/test_public_api.py::test_submodules_are_importable
+tests/darts/dataprocessing/dtw/test_window.py::TestGtz::test_negative_values_clamped_to_zero[5-5]
+tests/darts/dataprocessing/dtw/test_window.py::TestGtz::test_negative_values_clamped_to_zero[1-1]
+tests/darts/dataprocessing/dtw/test_window.py::TestGtz::test_negative_values_clamped_to_zero[0-0]
+tests/darts/dataprocessing/dtw/test_window.py::TestGtz::test_negative_values_clamped_to_zero[-1-0]
+tests/darts/dataprocessing/dtw/test_window.py::TestGtz::test_negative_values_clamped_to_zero[-100-0]
+tests/darts/dataprocessing/dtw/test_window.py::TestWindowBase::test_window_is_abstract
+tests/darts/dataprocessing/dtw/test_window.py::TestWindowBase::test_init_size_records_dimensions
+tests/darts/dataprocessing/dtw/test_window.py::TestWindowBase::test_declared_abstract_members
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_covers_whole_grid_plus_origin
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_column_index_counts_preceding_cells[elem0-0]
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_column_index_counts_preceding_cells[elem1-2]
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_column_index_counts_preceding_cells[elem2-3]
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_column_length_is_series2_length
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_column_lengths_vector
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_iteration_yields_all_inner_cells
+tests/darts/dataprocessing/dtw/test_window.py::TestNoWindow::test_contains_uses_column_index
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowConstruction::test_empty_window_only_holds_origin
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowConstruction::test_build_from_column_ranges
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowConstruction::test_rejects_wrongly_shaped_ranges[ranges0]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowConstruction::test_rejects_wrongly_shaped_ranges[ranges1]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowConstruction::test_rejects_negative_start
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowConstruction::test_rejects_end_beyond_height
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_marks_single_cell
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_extends_existing_range
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_ignores_smaller_range
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_can_fill_whole_column
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_length_always_counts_active_cells_plus_origin
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_rejects_invalid_start[1-0-2]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_rejects_invalid_start[1-5-6]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_rejects_invalid_start[5-1-2]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_rejects_invalid_end[1-0]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_rejects_invalid_end[1-6]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_rejects_invalid_end[2-6]
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_add_range_accepts_boundary_values
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_iteration_is_column_major
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_cells_in_same_column_merge_into_contiguous_range
+tests/darts/dataprocessing/dtw/test_window.py::TestCRWindowUpdates::test_column_lengths_match_iteration
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_stores_window_size
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_rejects_window_size_not_larger_than_length_difference[0]
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_rejects_window_size_not_larger_than_length_difference[1]
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_rejects_window_size_not_larger_than_length_difference[2]
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_produces_diagonal_band
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_band_is_symmetric_for_square_series
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_band_is_symmetric_around_offset_for_rectangular_series
+tests/darts/dataprocessing/dtw/test_window.py::TestSakoeChiba::test_larger_window_size_allows_more_cells
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_stores_max_slope
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_rejects_slope_not_steeper_than_diagonal[0.5]
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_rejects_slope_not_steeper_than_diagonal[1.0]
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_rejects_slope_not_steeper_than_rectangular_diagonal
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_builds_valid_parallelogram
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_columns_are_contiguous_and_shift_outwards
+tests/darts/dataprocessing/dtw/test_window.py::TestItakura::test_flatter_parallelogram_is_smaller
+
+[32m[32m185 tests collected[0m[32m in 0.66s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m [ 38%]
+[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m [ 77%]
+[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                                [100%][0m
+[32m[32m[1m185 passed[0m[32m in 2.18s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

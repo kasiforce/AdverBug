@@ -1,0 +1,108 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== pre_test_setup.log ===
+Running "clean:config" (clean) task
+>> 0 paths cleaned.
+
+Running "clean:nodeConfig" (clean) task
+>> 0 paths cleaned.
+
+Running "exec:generateConfig" (exec) task
+
+--- Regenerating config files. ---
+generateHTMLEntities: 1446 encode names, 2032 decode names, 586 aliases, 59 overrides applied.
+Written operation index.
+Written operation tests index.
+Written OperationConfig.json
+Written Ciphers module
+Written Default module
+Written Encodings module
+Written Image module
+Written Crypto module
+Written Serialise module
+Written Hashing module
+Written Bletchley module
+Written Compression module
+Written Code module
+Written Diff module
+Written Shellcode module
+Written Charts module
+Written Regex module
+Written PGP module
+Written PublicKey module
+Written Jq module
+Written OCR module
+Written URL module
+Written UserAgent module
+Written Protobuf module
+Written File module
+Written Handlebars module
+Written Yara module
+Written OpModules.mjs
+--- Config scripts finished. ---
+
+
+Running "exec:generateNodeIndex" (exec) task
+
+--- Regenerating node index ---
+--- Node index generated. ---
+
+
+Done.
+
+=== syntax.log ===
+
+=== test.log ===
+(node:123) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/web/utils/statusBar.test.mjs
+PASS test/web/utils/fileDetails.test.mjs
+PASS test/web/utils/editorUtils.test.mjs
+PASS test/web/utils/sidePanel.test.mjs
+PASS test/web/utils/htmlWidget.test.mjs
+PASS test/web/utils/copyOverride.test.mjs
+
+Test Suites: 6 passed, 6 total
+Tests:       112 passed, 112 total
+Snapshots:   0 total
+Time:        5.852 s
+Ran all test suites within paths "test/web/utils/copyOverride.test.mjs", "test/web/utils/editorUtils.test.mjs", "test/web/utils/fileDetails.test.mjs", "test/web/utils/htmlWidget.test.mjs", "test/web/utils/jestEnv.mjs", "test/web/utils/sidePanel.test.mjs", "test/web/utils/statusBar.test.mjs".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:136) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/web/utils/statusBar.test.mjs
+  ● status bar interactions › closes the drop-up when clicking outside of it
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      438 |         click(document.body);
+      439 |
+    > 440 |         expect(content.classList.contains("show")).toBe(false);
+          |                                                    ^
+      441 |     });
+      442 |
+      443 |     test("keeps the drop-up open when clicking inside it", () => {
+
+      at Object.<anonymous> (test/web/utils/statusBar.test.mjs:440:52)
+
+PASS test/web/utils/fileDetails.test.mjs
+PASS test/web/utils/sidePanel.test.mjs
+PASS test/web/utils/htmlWidget.test.mjs
+PASS test/web/utils/editorUtils.test.mjs
+PASS test/web/utils/copyOverride.test.mjs
+
+Test Suites: 1 failed, 5 passed, 6 total
+Tests:       1 failed, 111 passed, 112 total
+Snapshots:   0 total
+Time:        4.479 s, estimated 6 s
+Ran all test suites within paths "test/web/utils/copyOverride.test.mjs", "test/web/utils/editorUtils.test.mjs", "test/web/utils/fileDetails.test.mjs", "test/web/utils/htmlWidget.test.mjs", "test/web/utils/jestEnv.mjs", "test/web/utils/sidePanel.test.mjs", "test/web/utils/statusBar.test.mjs".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
