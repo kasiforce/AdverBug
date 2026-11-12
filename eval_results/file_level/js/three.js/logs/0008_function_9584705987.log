@@ -1,0 +1,125 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webgl/WebGLProgram.test.js
+  WebGLProgram
+    program construction and shader generation
+      ✓ generates built-in shaders, applies defines, links the program, and exposes metadata (8 ms)
+      ✓ omits fragment output compatibility declarations for GLSL3 shader material sources (1 ms)
+      ✓ supports raw shader materials without adding built-in precision or GLSL conversion prefixes (1 ms)
+      ✓ uses an explicit index-zero attribute in preference to the position attribute (1 ms)
+      ✓ does not bind attribute zero when no attribute is requested (1 ms)
+    precision, defines, and shader feature generation
+      ✓ emits the highp precision declaration and matching define (1 ms)
+      ✓ emits the mediump precision declaration and matching define
+      ✓ emits the lowp precision declaration and matching define (1 ms)
+      ✓ adds representative vertex and fragment feature defines and extension directives (2 ms)
+      ✓ does not emit fog defines when useFog is disabled
+    environment, shadow, tone mapping, and color management shader output
+      ✓ emits PMREM environment map, refraction, blending, and size defines (1 ms)
+      ✓ uses reflection and no blending as fallbacks for an active environment map (1 ms)
+      ✓ maps environment combine operation 0 to ENVMAP_BLENDING_MULTIPLY
+      ✓ maps environment combine operation 1 to ENVMAP_BLENDING_MIX (1 ms)
+      ✓ maps environment combine operation 2 to ENVMAP_BLENDING_ADD
+      ✓ does not emit environment map defines when no environment map is active (1 ms)
+      ✓ maps shadow map type 1 to SHADOWMAP_TYPE_PCF in both shader stages
+      ✓ maps shadow map type 3 to SHADOWMAP_TYPE_VSM in both shader stages (1 ms)
+      ✓ maps shadow map type 0 to SHADOWMAP_TYPE_BASIC in both shader stages
+      ✓ does not emit shadow defines when shadows are disabled (1 ms)
+      ✓ emits the selected 1 tone mapping implementation (1 ms)
+      ✓ emits the selected 4 tone mapping implementation
+      ✓ omits tone mapping code for NoToneMapping
+      ✓ warns and falls back to linear tone mapping for an unsupported mode
+      ✓ emits sRGB and linear transfer output functions with luminance weights (1 ms)
+    shader source preprocessing
+      ✓ recursively resolves ShaderChunk includes in vertex and fragment sources (1 ms)
+      ✓ throws a descriptive error for an unresolved include (24 ms)
+      ✓ replaces light and clipping placeholders in both shader stages (2 ms)
+      ✓ unrolls marked loops with concrete indices (1 ms)
+    uniform and attribute caching
+      ✓ lazily initializes real uniforms and attribute locations on first use and caches them (2 ms)
+      ✓ caches a uniform request first and defers the same initialization (1 ms)
+    readiness and lifecycle
+      ✓ is immediately ready when parallel shader compilation is explicitly disabled
+      ✓ polls completion status until parallel shader compilation finishes (1 ms)
+      ✓ destroys GL and binding state and clears the program handle (1 ms)
+      ✓ assigns monotonically increasing ids
+    shader diagnostics
+      ✓ warns and records diagnostics when a successful link produces a program log (2 ms)
+      ✓ reports default link and shader errors with source context (1 ms)
+      ✓ delegates link failures to a custom onShaderError callback
+      ✓ skips diagnostic collection when shader error checking is disabled
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        0.969 s
+Ran all test suites within paths "test/renderers/webgl/WebGLProgram.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webgl/WebGLProgram.test.js
+  WebGLProgram
+    program construction and shader generation
+      ✓ generates built-in shaders, applies defines, links the program, and exposes metadata (8 ms)
+      ✓ omits fragment output compatibility declarations for GLSL3 shader material sources (1 ms)
+      ✓ supports raw shader materials without adding built-in precision or GLSL conversion prefixes (1 ms)
+      ✓ uses an explicit index-zero attribute in preference to the position attribute
+      ✓ does not bind attribute zero when no attribute is requested (1 ms)
+    precision, defines, and shader feature generation
+      ✓ emits the highp precision declaration and matching define (1 ms)
+      ✓ emits the mediump precision declaration and matching define (1 ms)
+      ✓ emits the lowp precision declaration and matching define
+      ✓ adds representative vertex and fragment feature defines and extension directives (3 ms)
+      ✓ does not emit fog defines when useFog is disabled (1 ms)
+    environment, shadow, tone mapping, and color management shader output
+      ✓ emits PMREM environment map, refraction, blending, and size defines (1 ms)
+      ✓ uses reflection and no blending as fallbacks for an active environment map
+      ✓ maps environment combine operation 0 to ENVMAP_BLENDING_MULTIPLY
+      ✓ maps environment combine operation 1 to ENVMAP_BLENDING_MIX
+      ✓ maps environment combine operation 2 to ENVMAP_BLENDING_ADD (1 ms)
+      ✓ does not emit environment map defines when no environment map is active
+      ✓ maps shadow map type 1 to SHADOWMAP_TYPE_PCF in both shader stages
+      ✓ maps shadow map type 3 to SHADOWMAP_TYPE_VSM in both shader stages (1 ms)
+      ✓ maps shadow map type 0 to SHADOWMAP_TYPE_BASIC in both shader stages
+      ✓ does not emit shadow defines when shadows are disabled (1 ms)
+      ✓ emits the selected 1 tone mapping implementation
+      ✓ emits the selected 4 tone mapping implementation (1 ms)
+      ✓ omits tone mapping code for NoToneMapping
+      ✓ warns and falls back to linear tone mapping for an unsupported mode (1 ms)
+      ✓ emits sRGB and linear transfer output functions with luminance weights (7 ms)
+    shader source preprocessing
+      ✓ recursively resolves ShaderChunk includes in vertex and fragment sources (1 ms)
+      ✓ throws a descriptive error for an unresolved include (35 ms)
+      ✓ replaces light and clipping placeholders in both shader stages (2 ms)
+      ✓ unrolls marked loops with concrete indices (1 ms)
+    uniform and attribute caching
+      ✓ lazily initializes real uniforms and attribute locations on first use and caches them (2 ms)
+      ✓ caches a uniform request first and defers the same initialization (1 ms)
+    readiness and lifecycle
+      ✓ is immediately ready when parallel shader compilation is explicitly disabled (1 ms)
+      ✓ polls completion status until parallel shader compilation finishes
+      ✓ destroys GL and binding state and clears the program handle (1 ms)
+      ✓ assigns monotonically increasing ids (1 ms)
+    shader diagnostics
+      ✓ warns and records diagnostics when a successful link produces a program log (1 ms)
+      ✓ reports default link and shader errors with source context (2 ms)
+      ✓ delegates link failures to a custom onShaderError callback
+      ✓ skips diagnostic collection when shader error checking is disabled (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        1.123 s
+Ran all test suites within paths "test/renderers/webgl/WebGLProgram.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

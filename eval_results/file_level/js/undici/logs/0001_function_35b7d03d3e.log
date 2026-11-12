@@ -1,0 +1,235 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+FAIL test/lib/web/websocket/receiver.test.js
+  ByteParser
+    data frame parsing
+      ✓ parses a complete text frame and emits its opcode and body (4 ms)
+      ✓ parses a binary frame, including zero bytes in the payload (2 ms)
+      ✓ emits a zero-length text message (1 ms)
+      ✓ parses multiple consecutive frames from a single chunk (1 ms)
+      ✓ waits for a frame to arrive across several writes (1 ms)
+      ✓ parses the inline-length maximum payload boundary (1 ms)
+      ✓ parses the 16-bit-length minimum payload boundary
+      ✓ parses the 64-bit-length minimum payload boundary
+      ✓ waits for a split 16-bit extended length field (1 ms)
+      ✓ waits for a split 64-bit extended length field
+    fragmentation
+      ✓ assembles a fragmented text message into one message
+      ✓ assembles multiple continuation frames and preserves empty fragments (1 ms)
+      ✓ allows control frames between message fragments (1 ms)
+      ✓ rejects a continuation frame when no fragmented message is in progress (1 ms)
+      ✓ rejects a new data frame before a fragmented message is finished (1 ms)
+      ✓ rejects a fragmented control frame
+      ✓ enforces the maximum number of message fragments
+    payload limits
+      ✓ accepts a message exactly at maxPayloadSize (1 ms)
+      ✓ rejects a single frame larger than maxPayloadSize (1 ms)
+      ✓ enforces maxPayloadSize against the cumulative size of fragments
+      ✕ does not apply maxPayloadSize to control frames (2 ms)
+      ✓ enforces maxPayloadSize after parsing a 16-bit payload length (1 ms)
+      ✓ enforces maxPayloadSize after parsing a 64-bit payload length
+      ✕ applies maxPayloadSize to a data frame that follows a control frame (2 ms)
+      ✓ treats maxPayloadSize of zero as disabling the limit (4 ms)
+      ✓ rejects a 64-bit payload length when the upper 32 bits are non-zero (1 ms)
+      ✓ rejects a 64-bit payload length when the length is greater than 2^31 - 1 (1 ms)
+    control frames
+      ✓ responds to a ping with an identical pong and calls onPing (1 ms)
+      ✓ accepts a 125-byte ping payload (1 ms)
+      ✓ calls onPong for a pong without writing a response (1 ms)
+      ✓ does not answer or surface pings after a close frame was received
+      ✓ handles a close frame with no body and exposes closing information (1 ms)
+      ✓ echoes the close code and records the reason (1 ms)
+      ✓ stops parsing frames that follow a close frame (1 ms)
+      ✓ removes a UTF-8 BOM from the close reason
+      ✓ does not send another close response when a close frame was already sent (1 ms)
+      ✓ does not send another close response when a close frame was already received
+      ✓ rejects a one-byte close body (1 ms)
+      ✓ rejects a close frame with an invalid status code
+      ✓ rejects a close frame whose reason is not valid UTF-8
+      ✓ rejects a control frame with a payload greater than 125 bytes (1 ms)
+      ✓ pauses parsing while a control-frame response experiences backpressure (1 ms)
+    protocol validation
+      ✓ rejects an invalid opcode (1 ms)
+      ✓ rejects a masked server-to-client frame
+      ✓ rejects RSV1 without a negotiated extension
+      ✓ rejects RSV2 (1 ms)
+      ✓ rejects RSV3
+    permessage-deflate integration
+      ✓ replaces the negotiated extension entry with a decompressor
+      ✓ decompresses a message when RSV1 is set (16 ms)
+      ✓ decompresses a message split across continuation frames (2 ms)
+      ✓ fails the connection when a compressed payload cannot be inflated (2 ms)
+      ✓ enforces maxFragments after decompression (3 ms)
+      ✓ enforces maxPayloadSize against decompressed fragments (3 ms)
+      ✓ fails the connection when decompressed data exceeds maxPayloadSize (2 ms)
+    public parsing helpers
+      ✓ returns an empty buffer for consume(0) and throws for an over-consumption (3 ms)
+      ✓ consumes bytes spanning multiple buffered chunks
+      ✓ writes and combines fragments through the public fragment helpers (1 ms)
+      ✓ treats maxFragments of zero as disabling the fragment limit (1 ms)
+      ✓ parses close bodies directly (1 ms)
+      ✓ rejects a one-byte buffer through parseCloseBody (77 ms)
+
+  ● ByteParser › payload limits › does not apply maxPayloadSize to control frames
+
+    expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+    Expected number of calls: 1
+    Received number of calls: 0
+
+      501 |       }))
+      502 |
+    > 503 |       expect(handler.onPing).toHaveBeenCalledTimes(1)
+          |                              ^
+      504 |       expect(handler.onPing.mock.calls[0][0].toString()).toBe('ping payload')
+      505 |       expect(socket.writes).toHaveLength(1)
+      506 |       expect(decodeFrame(socket.writes[0]).body.toString()).toBe('ping payload')
+
+      at Object.toHaveBeenCalledTimes (test/lib/web/websocket/receiver.test.js:503:30)
+
+  ● ByteParser › payload limits › applies maxPayloadSize to a data frame that follows a control frame
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: 1, {"data": [49, 50, 51, 52, 53], "type": "Buffer"}
+
+      535 |       }))
+      536 |
+    > 537 |       expect(handler.onMessage).not.toHaveBeenCalled()
+          |                                     ^
+      538 |       expectConnectionFailure(handler, 1009)
+      539 |     })
+      540 |
+
+      at Object.toHaveBeenCalled (test/lib/web/websocket/receiver.test.js:537:37)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 58 passed, 60 total
+Snapshots:   0 total
+Time:        6.449 s
+Ran all test suites within paths "test/lib/web/websocket/receiver.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+FAIL test/lib/web/websocket/receiver.test.js
+  ByteParser
+    data frame parsing
+      ✓ parses a complete text frame and emits its opcode and body (6 ms)
+      ✓ parses a binary frame, including zero bytes in the payload (2 ms)
+      ✓ emits a zero-length text message
+      ✓ parses multiple consecutive frames from a single chunk (1 ms)
+      ✓ waits for a frame to arrive across several writes (2 ms)
+      ✓ parses the inline-length maximum payload boundary (1 ms)
+      ✓ parses the 16-bit-length minimum payload boundary (1 ms)
+      ✓ parses the 64-bit-length minimum payload boundary (1 ms)
+      ✓ waits for a split 16-bit extended length field
+      ✓ waits for a split 64-bit extended length field
+    fragmentation
+      ✓ assembles a fragmented text message into one message
+      ✓ assembles multiple continuation frames and preserves empty fragments
+      ✓ allows control frames between message fragments (1 ms)
+      ✓ rejects a continuation frame when no fragmented message is in progress (2 ms)
+      ✓ rejects a new data frame before a fragmented message is finished (1 ms)
+      ✓ rejects a fragmented control frame (1 ms)
+      ✓ enforces the maximum number of message fragments (16 ms)
+    payload limits
+      ✓ accepts a message exactly at maxPayloadSize (1 ms)
+      ✓ rejects a single frame larger than maxPayloadSize (1 ms)
+      ✓ enforces maxPayloadSize against the cumulative size of fragments (1 ms)
+      ✕ does not apply maxPayloadSize to control frames (2 ms)
+      ✓ enforces maxPayloadSize after parsing a 16-bit payload length
+      ✓ enforces maxPayloadSize after parsing a 64-bit payload length
+      ✕ applies maxPayloadSize to a data frame that follows a control frame (1 ms)
+      ✓ treats maxPayloadSize of zero as disabling the limit (5 ms)
+      ✓ rejects a 64-bit payload length when the upper 32 bits are non-zero (1 ms)
+      ✓ rejects a 64-bit payload length when the length is greater than 2^31 - 1 (1 ms)
+    control frames
+      ✓ responds to a ping with an identical pong and calls onPing (1 ms)
+      ✓ accepts a 125-byte ping payload (2 ms)
+      ✓ calls onPong for a pong without writing a response
+      ✓ does not answer or surface pings after a close frame was received (1 ms)
+      ✓ handles a close frame with no body and exposes closing information (1 ms)
+      ✓ echoes the close code and records the reason (1 ms)
+      ✓ stops parsing frames that follow a close frame (1 ms)
+      ✓ removes a UTF-8 BOM from the close reason (1 ms)
+      ✓ does not send another close response when a close frame was already sent (1 ms)
+      ✓ does not send another close response when a close frame was already received
+      ✓ rejects a one-byte close body (1 ms)
+      ✓ rejects a close frame with an invalid status code (1 ms)
+      ✓ rejects a close frame whose reason is not valid UTF-8 (1 ms)
+      ✓ rejects a control frame with a payload greater than 125 bytes (1 ms)
+      ✓ pauses parsing while a control-frame response experiences backpressure (1 ms)
+    protocol validation
+      ✓ rejects an invalid opcode (1 ms)
+      ✓ rejects a masked server-to-client frame (1 ms)
+      ✓ rejects RSV1 without a negotiated extension (1 ms)
+      ✓ rejects RSV2 (1 ms)
+      ✓ rejects RSV3 (1 ms)
+    permessage-deflate integration
+      ✓ replaces the negotiated extension entry with a decompressor (1 ms)
+      ✓ decompresses a message when RSV1 is set (4 ms)
+      ✓ decompresses a message split across continuation frames (2 ms)
+      ✓ fails the connection when a compressed payload cannot be inflated (2 ms)
+      ✓ enforces maxFragments after decompression (3 ms)
+      ✓ enforces maxPayloadSize against decompressed fragments (2 ms)
+      ✓ fails the connection when decompressed data exceeds maxPayloadSize (2 ms)
+    public parsing helpers
+      ✓ returns an empty buffer for consume(0) and throws for an over-consumption (7 ms)
+      ✓ consumes bytes spanning multiple buffered chunks
+      ✓ writes and combines fragments through the public fragment helpers
+      ✓ treats maxFragments of zero as disabling the fragment limit (1 ms)
+      ✓ parses close bodies directly (1 ms)
+      ✓ rejects a one-byte buffer through parseCloseBody (6 ms)
+
+  ● ByteParser › payload limits › does not apply maxPayloadSize to control frames
+
+    expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+    Expected number of calls: 1
+    Received number of calls: 0
+
+      501 |       }))
+      502 |
+    > 503 |       expect(handler.onPing).toHaveBeenCalledTimes(1)
+          |                              ^
+      504 |       expect(handler.onPing.mock.calls[0][0].toString()).toBe('ping payload')
+      505 |       expect(socket.writes).toHaveLength(1)
+      506 |       expect(decodeFrame(socket.writes[0]).body.toString()).toBe('ping payload')
+
+      at Object.toHaveBeenCalledTimes (test/lib/web/websocket/receiver.test.js:503:30)
+
+  ● ByteParser › payload limits › applies maxPayloadSize to a data frame that follows a control frame
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: 1, {"data": [49, 50, 51, 52, 53], "type": "Buffer"}
+
+      535 |       }))
+      536 |
+    > 537 |       expect(handler.onMessage).not.toHaveBeenCalled()
+          |                                     ^
+      538 |       expectConnectionFailure(handler, 1009)
+      539 |     })
+      540 |
+
+      at Object.toHaveBeenCalled (test/lib/web/websocket/receiver.test.js:537:37)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 58 passed, 60 total
+Snapshots:   0 total
+Time:        2.565 s, estimated 5 s
+Ran all test suites within paths "test/lib/web/websocket/receiver.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

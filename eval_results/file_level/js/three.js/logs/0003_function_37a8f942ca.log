@@ -1,0 +1,87 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/Material.test.js
+  Material construction
+    ✓ initializes identity and the documented base-material defaults (6 ms)
+    ✓ gives each material a unique, read-only id and a unique UUID (1 ms)
+  Material version tracking
+    ✓ increments version only when alphaTest crosses the zero boundary (1 ms)
+    ✓ increments version when needsUpdate is explicitly true (1 ms)
+  Material hooks
+    ✓ provides no-op render and compile hooks and derives the cache key from the compile hook (1 ms)
+  Material.setValues
+    ✓ does nothing when values are omitted
+    ✓ assigns ordinary properties and fills color instances in place (1 ms)
+    ✓ copies Vector2, Euler and Vector3 values without replacing their instances (2 ms)
+    ✓ warns and skips undefined values and properties unknown to the material (2 ms)
+    ✓ does not warn for null values and assigns them through (1 ms)
+  Material serialization
+    ✓ serializes metadata and standard material state (3 ms)
+    ✓ serializes optional color, scalar, vector and clipping-plane properties (1 ms)
+    ✓ collects texture metadata only for a root serialization and returns texture UUIDs (1 ms)
+  Material deserialization
+    ✓ restores standard state, material-specific values, textures and clipping planes (3 ms)
+    ✓ accepts array and legacy scalar normal scales and numeric vertex-color flags (1 ms)
+    ✓ leaves unspecified values untouched
+  Material copying
+    ✓ clone creates an independent material with copied state and deep-copied collaborators (1 ms)
+    ✓ copy writes into and returns the target material
+    ✓ clone preserves the concrete material constructor (1 ms)
+  Material disposal
+    ✓ dispose dispatches a dispose event with the material as its target (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        0.767 s
+Ran all test suites within paths "test/materials/Material.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/Material.test.js
+  Material construction
+    ✓ initializes identity and the documented base-material defaults (6 ms)
+    ✓ gives each material a unique, read-only id and a unique UUID (1 ms)
+  Material version tracking
+    ✓ increments version only when alphaTest crosses the zero boundary (1 ms)
+    ✓ increments version when needsUpdate is explicitly true (1 ms)
+  Material hooks
+    ✓ provides no-op render and compile hooks and derives the cache key from the compile hook
+  Material.setValues
+    ✓ does nothing when values are omitted
+    ✓ assigns ordinary properties and fills color instances in place (1 ms)
+    ✓ copies Vector2, Euler and Vector3 values without replacing their instances (2 ms)
+    ✓ warns and skips undefined values and properties unknown to the material (2 ms)
+    ✓ does not warn for null values and assigns them through (1 ms)
+  Material serialization
+    ✓ serializes metadata and standard material state (3 ms)
+    ✓ serializes optional color, scalar, vector and clipping-plane properties (1 ms)
+    ✓ collects texture metadata only for a root serialization and returns texture UUIDs (1 ms)
+  Material deserialization
+    ✓ restores standard state, material-specific values, textures and clipping planes (3 ms)
+    ✓ accepts array and legacy scalar normal scales and numeric vertex-color flags
+    ✓ leaves unspecified values untouched
+  Material copying
+    ✓ clone creates an independent material with copied state and deep-copied collaborators (2 ms)
+    ✓ copy writes into and returns the target material
+    ✓ clone preserves the concrete material constructor
+  Material disposal
+    ✓ dispose dispatches a dispose event with the material as its target (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        1.15 s
+Ran all test suites within paths "test/materials/Material.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

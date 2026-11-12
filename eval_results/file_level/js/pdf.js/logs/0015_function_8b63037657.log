@@ -1,0 +1,155 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/pattern_helper.test.js
+  pattern_helper public API
+    ✓ PathType exposes the three path kinds (3 ms)
+    ✓ getShadingPattern builds a radial/axial pattern
+    ✓ getShadingPattern builds a mesh pattern
+    ✓ getShadingPattern builds a dummy pattern (1 ms)
+    ✓ getShadingPattern rejects unknown IR types (39 ms)
+  RadialAxialShadingPattern predicates
+    ✓ isRadial distinguishes axial from radial (1 ms)
+    ✓ isOriginBased only requires p1 at origin for radial gradients
+    ✓ areConic is false for axial and for nested circles (1 ms)
+    ✓ areConic is true when neither circle contains the other
+  RadialAxialShadingPattern rendering
+    ✓ SHADING applies the bbox clip and returns a linear gradient (1 ms)
+    ✓ SHADING without a bbox does not clip (1 ms)
+    ✓ conic radial SHADING paints a reversed gradient before the normal one (1 ms)
+    ✓ SHADING with transfer maps rasterizes into the clip box (3 ms)
+    ✓ origin-based axial FILL uses a direct gradient with the base transform (1 ms)
+    ✓ origin-based radial FILL uses direct gradient only for a square transform (1 ms)
+    ✓ non-square radial FILL falls back to rasterization (1 ms)
+    ✓ non-origin FILL rasterizes using the clipped path bbox
+    ✓ FILL with transfer maps rasterizes and combines matrix with baseTransform (1 ms)
+  MeshShadingPattern rendering
+    ✓ SHADING rasterizes the mesh with a transparent border (2 ms)
+    ✓ FILL fills the background and applies owner and pattern transforms (1 ms)
+    ✓ zero-sized bounds still produce a valid one-pixel canvas (1 ms)
+    ✓ large meshes stay on the CPU fallback when the GPU is unavailable
+  TilingPattern construction
+    ✓ exposes IR values and composes patternBaseMatrix (1 ms)
+    ✓ needsIsolation defaults to true and matrix fallback keeps baseTransform (1 ms)
+  TilingPattern.getSizeAndScale
+    ✓ rounds up and recomputes scale below the size limit
+    ✓ caps size at MAX_PATTERN_SIZE without changing scale (1 ms)
+    ✓ uses a larger real output size as the cap
+  TilingPattern.canSkipPatternCanvas
+    ✓ returns tile indices for areas within a single tile
+    ✓ returns null when any dimension exceeds the step
+    ✓ returns null when the area spans multiple tiles
+    ✓ compares against the absolute step for negative steps
+  TilingPattern.updatePatternDims
+    ✓ maps an identity-aligned bbox directly
+    ✓ accounts for a translated pattern matrix
+    ✓ uses the full transformed bounding box for rotated matrices
+  TilingPattern.clipBbox
+    ✓ clips to the bbox and records the device-space minMax (5 ms)
+    ✓ transforms the bbox through the current transform
+  TilingPattern.setFillAndStrokeStyleToContext
+    ✓ COLORED always paints black and clears pattern flags
+    ✓ UNCOLORED keeps the supplied colour (1 ms)
+    ✓ mapped colours are used for the canvas but raw colours for state (1 ms)
+    ✓ rejects unsupported paint types
+  TilingPattern.getPattern
+    ✓ renders one tile and returns a repeating pattern (3 ms)
+    ✓ SHADING positions the pattern with the inverse transform
+    ✓ FILL combines the inverse with the pattern base matrix (1 ms)
+    ✓ uses bbox offsets for the pattern transform (1 ms)
+    ✓ redraws overlapping tiles horizontally and vertically (2 ms)
+    ✓ redraws only horizontally when the vertical tile is large enough (1 ms)
+  TilingPattern.drawPattern
+    ✓ isolates the tile via a temporary canvas by default (2 ms)
+    ✓ honours the even-odd fill rule
+    ✓ executes operators directly when isolation is unnecessary (1 ms)
+    ✓ falls back to isolated rendering for non-trivial global alpha (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       50 passed, 50 total
+Snapshots:   0 total
+Time:        0.657 s
+Ran all test suites within paths "test/display/pattern_helper.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/pattern_helper.test.js
+  pattern_helper public API
+    ✓ PathType exposes the three path kinds (3 ms)
+    ✓ getShadingPattern builds a radial/axial pattern
+    ✓ getShadingPattern builds a mesh pattern
+    ✓ getShadingPattern builds a dummy pattern (1 ms)
+    ✓ getShadingPattern rejects unknown IR types (47 ms)
+  RadialAxialShadingPattern predicates
+    ✓ isRadial distinguishes axial from radial (1 ms)
+    ✓ isOriginBased only requires p1 at origin for radial gradients
+    ✓ areConic is false for axial and for nested circles
+    ✓ areConic is true when neither circle contains the other (1 ms)
+  RadialAxialShadingPattern rendering
+    ✓ SHADING applies the bbox clip and returns a linear gradient (2 ms)
+    ✓ SHADING without a bbox does not clip (1 ms)
+    ✓ conic radial SHADING paints a reversed gradient before the normal one (2 ms)
+    ✓ SHADING with transfer maps rasterizes into the clip box (3 ms)
+    ✓ origin-based axial FILL uses a direct gradient with the base transform (1 ms)
+    ✓ origin-based radial FILL uses direct gradient only for a square transform (1 ms)
+    ✓ non-square radial FILL falls back to rasterization (1 ms)
+    ✓ non-origin FILL rasterizes using the clipped path bbox (1 ms)
+    ✓ FILL with transfer maps rasterizes and combines matrix with baseTransform (1 ms)
+  MeshShadingPattern rendering
+    ✓ SHADING rasterizes the mesh with a transparent border (2 ms)
+    ✓ FILL fills the background and applies owner and pattern transforms (22 ms)
+    ✓ zero-sized bounds still produce a valid one-pixel canvas (1 ms)
+    ✓ large meshes stay on the CPU fallback when the GPU is unavailable (1 ms)
+  TilingPattern construction
+    ✓ exposes IR values and composes patternBaseMatrix (1 ms)
+    ✓ needsIsolation defaults to true and matrix fallback keeps baseTransform
+  TilingPattern.getSizeAndScale
+    ✓ rounds up and recomputes scale below the size limit (1 ms)
+    ✓ caps size at MAX_PATTERN_SIZE without changing scale
+    ✓ uses a larger real output size as the cap (1 ms)
+  TilingPattern.canSkipPatternCanvas
+    ✓ returns tile indices for areas within a single tile (1 ms)
+    ✓ returns null when any dimension exceeds the step
+    ✓ returns null when the area spans multiple tiles
+    ✓ compares against the absolute step for negative steps
+  TilingPattern.updatePatternDims
+    ✓ maps an identity-aligned bbox directly (1 ms)
+    ✓ accounts for a translated pattern matrix
+    ✓ uses the full transformed bounding box for rotated matrices (1 ms)
+  TilingPattern.clipBbox
+    ✓ clips to the bbox and records the device-space minMax (1 ms)
+    ✓ transforms the bbox through the current transform
+  TilingPattern.setFillAndStrokeStyleToContext
+    ✓ COLORED always paints black and clears pattern flags (1 ms)
+    ✓ UNCOLORED keeps the supplied colour (1 ms)
+    ✓ mapped colours are used for the canvas but raw colours for state
+    ✓ rejects unsupported paint types
+  TilingPattern.getPattern
+    ✓ renders one tile and returns a repeating pattern (18 ms)
+    ✓ SHADING positions the pattern with the inverse transform (1 ms)
+    ✓ FILL combines the inverse with the pattern base matrix (1 ms)
+    ✓ uses bbox offsets for the pattern transform
+    ✓ redraws overlapping tiles horizontally and vertically (1 ms)
+    ✓ redraws only horizontally when the vertical tile is large enough (1 ms)
+  TilingPattern.drawPattern
+    ✓ isolates the tile via a temporary canvas by default (2 ms)
+    ✓ honours the even-odd fill rule
+    ✓ executes operators directly when isolation is unnecessary (1 ms)
+    ✓ falls back to isolated rendering for non-trivial global alpha (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       50 passed, 50 total
+Snapshots:   0 total
+Time:        0.956 s, estimated 1 s
+Ran all test suites within paths "test/display/pattern_helper.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

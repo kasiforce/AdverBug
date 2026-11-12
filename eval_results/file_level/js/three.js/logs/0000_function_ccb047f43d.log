@@ -1,0 +1,155 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/animation/PropertyBinding.test.js
+  PropertyBinding.parseTrackName
+    ✓ parses a simple node and property path (3 ms)
+    ✓ parses a property accessor as a string index
+    ✓ parses the supported object segment in node.material.opacity
+    ✓ parses the supported object segment in node.materials[2].opacity
+    ✓ parses the supported object segment in node.bones[hand].position
+    ✓ parses the supported object segment in node.map.offset
+    ✓ parses object indices and property indices together
+    ✓ keeps non-allowlisted dots as part of the node name
+    ✓ ignores directory prefixes and isolates the final node segment (1 ms)
+    ✓ parses root-level and bone-accessor paths
+    ✓ rejects an unparseable track name "" (23 ms)
+    ✓ rejects an unparseable track name "node." (1 ms)
+    ✓ rejects an unparseable track name "node[bad].position" (1 ms)
+    ✓ rejects an unparseable track name "node property"
+  PropertyBinding.sanitizeNodeName
+    ✓ replaces whitespace with underscores (1 ms)
+    ✓ removes all reserved binding characters
+    ✓ preserves non-reserved Unicode characters
+  PropertyBinding.findNode
+    ✓ returns the root for implicit or self identifiers (1 ms)
+    ✓ finds direct children by name or UUID (1 ms)
+    ✓ searches nested descendants recursively
+    ✓ searches skeleton bones by name before searching children (1 ms)
+    ✓ returns null when no node matches
+  PropertyBinding construction and binding state
+    ✓ records the track, parsed path, root, and initially resolved node (1 ms)
+    ✓ uses a supplied parsed path without parsing the track string (1 ms)
+    ✓ auto-binds on the first get or set and can be explicitly unbound and rebound
+    ✓ creates a plain PropertyBinding for a normal root (1 ms)
+    ✓ creates a Composite for an AnimationObjectGroup root
+  PropertyBinding value modes
+    ✓ reads and writes a direct scalar at the requested buffer offset (1 ms)
+    ✓ flags an Object3D for a matrix-world update when writing a direct property
+    ✓ copies an entire array from and to offset buffer positions
+    ✓ flags an Object3D when writing an entire array property
+    ✓ flags a material when writing an entire array property (1 ms)
+    ✓ reads and writes a single array element without touching siblings (1 ms)
+    ✓ flags an Object3D when writing an array element
+    ✓ resolves a named morph target before writing its influence (1 ms)
+    ✓ uses fromArray/toArray methods with offsets for vector-like values
+    ✓ writes quaternion components and flags the owning Object3D (1 ms)
+  PropertyBinding object and special-path resolution
+    ✓ binds to a material property and requests a material update
+    ✓ selects an indexed material from a materials array (1 ms)
+    ✓ resolves a named bone beneath a skeleton and animates its property
+    ✓ prefers a map directly present on the node (1 ms)
+    ✓ falls back to a map owned by the node material (1 ms)
+  PropertyBinding failure signaling
+    ✓ warns and becomes a no-op when the target node is missing
+    ✓ errors and becomes a no-op when the target property is missing
+    ✓ errors when a materials path targets a node without a material (1 ms)
+    ✓ errors when a material has no materials array
+    ✓ errors when a bones path targets a node without a skeleton
+    ✓ errors when a map path targets a node without a material (1 ms)
+    ✓ errors when a material map is absent
+    ✓ errors when an object index does not exist
+    ✓ errors for a supplied parsed path whose object name is absent (6 ms)
+    ✓ errors when a morph-target influence is bound without geometry (1 ms)
+    ✓ errors when morph-target influences are bound without morph attributes
+  PropertyBinding.Composite with AnimationObjectGroup
+    ✓ reads the first active object and writes to every active object as the group changes (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       54 passed, 54 total
+Snapshots:   0 total
+Time:        1.881 s
+Ran all test suites within paths "test/animation/PropertyBinding.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/animation/PropertyBinding.test.js
+  PropertyBinding.parseTrackName
+    ✓ parses a simple node and property path (4 ms)
+    ✓ parses a property accessor as a string index (1 ms)
+    ✓ parses the supported object segment in node.material.opacity (1 ms)
+    ✓ parses the supported object segment in node.materials[2].opacity
+    ✓ parses the supported object segment in node.bones[hand].position (1 ms)
+    ✓ parses the supported object segment in node.map.offset
+    ✓ parses object indices and property indices together (1 ms)
+    ✓ keeps non-allowlisted dots as part of the node name
+    ✓ ignores directory prefixes and isolates the final node segment (1 ms)
+    ✓ parses root-level and bone-accessor paths
+    ✓ rejects an unparseable track name "" (30 ms)
+    ✓ rejects an unparseable track name "node."
+    ✓ rejects an unparseable track name "node[bad].position" (1 ms)
+    ✓ rejects an unparseable track name "node property" (1 ms)
+  PropertyBinding.sanitizeNodeName
+    ✓ replaces whitespace with underscores
+    ✓ removes all reserved binding characters
+    ✓ preserves non-reserved Unicode characters
+  PropertyBinding.findNode
+    ✓ returns the root for implicit or self identifiers (1 ms)
+    ✓ finds direct children by name or UUID
+    ✓ searches nested descendants recursively (1 ms)
+    ✓ searches skeleton bones by name before searching children
+    ✓ returns null when no node matches
+  PropertyBinding construction and binding state
+    ✓ records the track, parsed path, root, and initially resolved node (1 ms)
+    ✓ uses a supplied parsed path without parsing the track string (1 ms)
+    ✓ auto-binds on the first get or set and can be explicitly unbound and rebound
+    ✓ creates a plain PropertyBinding for a normal root
+    ✓ creates a Composite for an AnimationObjectGroup root
+  PropertyBinding value modes
+    ✓ reads and writes a direct scalar at the requested buffer offset
+    ✓ flags an Object3D for a matrix-world update when writing a direct property
+    ✓ copies an entire array from and to offset buffer positions (6 ms)
+    ✓ flags an Object3D when writing an entire array property (1 ms)
+    ✓ flags a material when writing an entire array property (1 ms)
+    ✓ reads and writes a single array element without touching siblings (1 ms)
+    ✓ flags an Object3D when writing an array element
+    ✓ resolves a named morph target before writing its influence (1 ms)
+    ✓ uses fromArray/toArray methods with offsets for vector-like values (1 ms)
+    ✓ writes quaternion components and flags the owning Object3D (1 ms)
+  PropertyBinding object and special-path resolution
+    ✓ binds to a material property and requests a material update (1 ms)
+    ✓ selects an indexed material from a materials array
+    ✓ resolves a named bone beneath a skeleton and animates its property (1 ms)
+    ✓ prefers a map directly present on the node (1 ms)
+    ✓ falls back to a map owned by the node material
+  PropertyBinding failure signaling
+    ✓ warns and becomes a no-op when the target node is missing (1 ms)
+    ✓ errors and becomes a no-op when the target property is missing (1 ms)
+    ✓ errors when a materials path targets a node without a material
+    ✓ errors when a material has no materials array
+    ✓ errors when a bones path targets a node without a skeleton
+    ✓ errors when a map path targets a node without a material (1 ms)
+    ✓ errors when a material map is absent
+    ✓ errors when an object index does not exist (1 ms)
+    ✓ errors for a supplied parsed path whose object name is absent
+    ✓ errors when a morph-target influence is bound without geometry
+    ✓ errors when morph-target influences are bound without morph attributes (1 ms)
+  PropertyBinding.Composite with AnimationObjectGroup
+    ✓ reads the first active object and writes to every active object as the group changes (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       54 passed, 54 total
+Snapshots:   0 total
+Time:        1.294 s, estimated 2 s
+Ran all test suites within paths "test/animation/PropertyBinding.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

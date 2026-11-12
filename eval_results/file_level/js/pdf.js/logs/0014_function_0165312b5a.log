@@ -1,0 +1,107 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/editor/drawers/inkdraw.test.js
+  InkDrawOutliner
+    ✓ starts with one normalized point and exposes its default SVG contract (4 ms)
+    ✓ normalizes the starting point for every supported rotation (1 ms)
+    ✓ ignores input within two canvas pixels but still exposes the input tip (2 ms)
+    ✓ adds a point, renders a transient tip, and removes the tip when ending
+    ✓ ends a single-point drawing with a closed dot path (1 ms)
+    ✓ adds a final accepted point on end without retaining the transient tip
+    ✓ does not extend an existing path when end receives a rejected point (1 ms)
+    ✓ accepts batched points and maintains all generated curve segments (1 ms)
+    ✓ does not grow when a batched point duplicates the last accepted point (1 ms)
+    ✓ is cancellable up to ten stored coordinates and not beyond
+    ✓ starts a new subpath, snapshots the previous one, and uses new dimensions (2 ms)
+    ✓ appends a replacement element and switches drawing to it
+    ✓ removes subpaths and replays the remaining path
+    ✓ builds a completed outline with the selected stroke width and resets itself (1 ms)
+    ✓ delegates post-completion element changes to the built outline (1 ms)
+  InkDrawOutline
+    ✓ computes a bounding box, viewBox, and path for a segment (1 ms)
+    ✓ formats one-point and cubic-curve geometry (1 ms)
+    ✓ expands and clamps the bounding box by the stroke margin
+    ✓ swaps margin axes for rotated drawings (1 ms)
+    ✓ adds and removes the last element while keeping the path in sync
+    ✓ serializes page geometry correctly for every page rotation (2 ms)
+    ✓ maps line and point coordinates into page space (1 ms)
+    ✓ uses plain arrays when serializing for copying (1 ms)
+    ✓ round-trips serialized geometry through deserialize for all rotations (2 ms)
+    ✓ deserializes one- and two-point point streams (1 ms)
+    ✓ reconstructs Bézier geometry from a point stream with three or more points
+    ✓ updates stroke width and reports the adjusted box (1 ms)
+    ✓ recomputes margin when parent dimensions or scale change (1 ms)
+    ✓ updates rotation and exposes the corresponding SVG matrix (1 ms)
+    ✓ computes a non-centred resize transform from the stroke margin (1 ms)
+    ✓ centres a zero-sized drawing when computing resize properties
+    ✓ rescales stored geometry when a resize is committed
+    ✓ centres stored geometry when resizing a zero-sized drawing
+    ✓ translates geometry when moving within the same parent dimensions (1 ms)
+    ✓ rescales geometry when moving to differently sized parents
+    ✓ exposes the complete default SVG properties
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        0.556 s
+Ran all test suites within paths "test/display/editor/drawers/inkdraw.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/editor/drawers/inkdraw.test.js
+  InkDrawOutliner
+    ✓ starts with one normalized point and exposes its default SVG contract (5 ms)
+    ✓ normalizes the starting point for every supported rotation (2 ms)
+    ✓ ignores input within two canvas pixels but still exposes the input tip (2 ms)
+    ✓ adds a point, renders a transient tip, and removes the tip when ending (1 ms)
+    ✓ ends a single-point drawing with a closed dot path
+    ✓ adds a final accepted point on end without retaining the transient tip (1 ms)
+    ✓ does not extend an existing path when end receives a rejected point
+    ✓ accepts batched points and maintains all generated curve segments (1 ms)
+    ✓ does not grow when a batched point duplicates the last accepted point (1 ms)
+    ✓ is cancellable up to ten stored coordinates and not beyond (1 ms)
+    ✓ starts a new subpath, snapshots the previous one, and uses new dimensions (2 ms)
+    ✓ appends a replacement element and switches drawing to it
+    ✓ removes subpaths and replays the remaining path
+    ✓ builds a completed outline with the selected stroke width and resets itself (2 ms)
+    ✓ delegates post-completion element changes to the built outline
+  InkDrawOutline
+    ✓ computes a bounding box, viewBox, and path for a segment (1 ms)
+    ✓ formats one-point and cubic-curve geometry (1 ms)
+    ✓ expands and clamps the bounding box by the stroke margin (1 ms)
+    ✓ swaps margin axes for rotated drawings
+    ✓ adds and removes the last element while keeping the path in sync (1 ms)
+    ✓ serializes page geometry correctly for every page rotation (2 ms)
+    ✓ maps line and point coordinates into page space (1 ms)
+    ✓ uses plain arrays when serializing for copying
+    ✓ round-trips serialized geometry through deserialize for all rotations (3 ms)
+    ✓ deserializes one- and two-point point streams (1 ms)
+    ✓ reconstructs Bézier geometry from a point stream with three or more points (1 ms)
+    ✓ updates stroke width and reports the adjusted box (1 ms)
+    ✓ recomputes margin when parent dimensions or scale change (1 ms)
+    ✓ updates rotation and exposes the corresponding SVG matrix (1 ms)
+    ✓ computes a non-centred resize transform from the stroke margin (1 ms)
+    ✓ centres a zero-sized drawing when computing resize properties (1 ms)
+    ✓ rescales stored geometry when a resize is committed (1 ms)
+    ✓ centres stored geometry when resizing a zero-sized drawing (1 ms)
+    ✓ translates geometry when moving within the same parent dimensions (1 ms)
+    ✓ rescales geometry when moving to differently sized parents (1 ms)
+    ✓ exposes the complete default SVG properties (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        0.833 s, estimated 1 s
+Ran all test suites within paths "test/display/editor/drawers/inkdraw.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

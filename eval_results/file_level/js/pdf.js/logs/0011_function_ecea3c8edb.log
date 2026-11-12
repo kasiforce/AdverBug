@@ -1,0 +1,161 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/xml_parser.test.js
+  XMLParserErrorCode
+    ✓ exposes the documented error codes (12 ms)
+  XMLParserBase.parseXml
+    ✓ emits callbacks in document order for markup and text (2 ms)
+    ✓ distinguishes self-closing elements from open elements
+    ✓ handles complex DOCTYPE declarations with an internal subset (1 ms)
+    ✓ resolves predefined and numeric entities in text and attributes (1 ms)
+    ✓ keeps invalid or out-of-range character references unchanged
+    ✓ preserves unknown entities by default and allows custom resolution (1 ms)
+    ✓ reports unterminated CDATA with the expected error code (1 ms)
+    ✓ reports unterminated XML declaration with the expected error code
+    ✓ reports unterminated DOCTYPE with the expected error code
+    ✓ reports unterminated DOCTYPE internal subset with the expected error code
+    ✓ reports unterminated comment with the expected error code (1 ms)
+    ✓ reports unrecognized markup with the expected error code
+    ✓ reports unquoted attribute with the expected error code
+    ✓ reports attribute without a value with the expected error code (1 ms)
+    ✓ reports unterminated attribute value with the expected error code
+    ✓ reports unterminated element with the expected error code
+    ✓ reports unterminated end tag with the expected error code
+  SimpleXMLParser.parseFromString
+    ✓ builds a tree with attributes, children, and parent links (2 ms)
+    ✓ does not expose attributes unless hasAttributes is enabled
+    ✓ lower-cases element names when lowerCaseName is enabled (1 ms)
+    ✓ ignores whitespace-only text but preserves meaningful whitespace (1 ms)
+    ✓ keeps CDATA content verbatim without resolving entities
+    ✓ skips comments and processing instructions (1 ms)
+    ✓ accepts DOCTYPE declarations without adding them to the tree
+    ✓ resolves entities in element text and attribute values
+    ✓ preserves unknown and invalid entity references
+    ✓ returns the first root when multiple top-level elements are present (1 ms)
+    ✓ parses a self-closing root with attributes
+    ✓ returns undefined when no document element exists: ""
+    ✓ returns undefined when no document element exists: "   \n\t "
+    ✓ returns undefined when no document element exists: "<!-- only a comment -->"
+    ✓ returns undefined when no document element exists: "</root>"
+    ✓ returns undefined for malformed input: <root><![CDATA[x
+    ✓ returns undefined for malformed input: <root><!-- x
+    ✓ returns undefined for malformed input: <!DOCTYPE root
+    ✓ returns undefined for malformed input: <root a=1/> (1 ms)
+    ✓ returns undefined for malformed input: <root></root
+  SimpleDOMNode
+    ✓ provides textContent across nested children
+    ✓ exposes text nodes as children and reports their capabilities (1 ms)
+    ✓ finds the next sibling and returns undefined for the last child (1 ms)
+    ✓ returns undefined when the parent has no child list
+    ✓ uses defaults for a detached node (1 ms)
+    ✓ returns an empty string for a childless element without a value
+  SimpleDOMNode.searchNode
+    ✓ returns the node described by a fully indexed path (1 ms)
+    ✓ selects siblings by their index at each path component
+    ✓ falls back to the first matching node when an index is unavailable (1 ms)
+    ✓ skips class components whose names start with '#' (1 ms)
+    ✓ does not skip a final class component
+    ✓ returns null when no descendant matches
+    ✓ returns null when a childless node does not match the path
+    ✓ returns a non-zero-position match on the root node as null
+    ✓ returns the node itself once the path is exhausted
+    ✓ can search relative to an intermediate node
+  SimpleDOMNode.dump
+    ✓ serializes a parsed tree with escaped text and attributes
+    ✓ self-closes elements without children or a value
+    ✓ serializes a value-only element with escaped content
+    ✓ escapes attribute values
+    ✓ serializes non-ASCII text as character references (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       59 passed, 59 total
+Snapshots:   0 total
+Time:        0.633 s
+Ran all test suites within paths "test/core/xml_parser.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/xml_parser.test.js
+  XMLParserErrorCode
+    ✓ exposes the documented error codes (4 ms)
+  XMLParserBase.parseXml
+    ✓ emits callbacks in document order for markup and text (2 ms)
+    ✓ distinguishes self-closing elements from open elements (1 ms)
+    ✓ handles complex DOCTYPE declarations with an internal subset (1 ms)
+    ✓ resolves predefined and numeric entities in text and attributes (1 ms)
+    ✓ keeps invalid or out-of-range character references unchanged
+    ✓ preserves unknown entities by default and allows custom resolution (1 ms)
+    ✓ reports unterminated CDATA with the expected error code (1 ms)
+    ✓ reports unterminated XML declaration with the expected error code
+    ✓ reports unterminated DOCTYPE with the expected error code
+    ✓ reports unterminated DOCTYPE internal subset with the expected error code
+    ✓ reports unterminated comment with the expected error code (1 ms)
+    ✓ reports unrecognized markup with the expected error code
+    ✓ reports unquoted attribute with the expected error code
+    ✓ reports attribute without a value with the expected error code
+    ✓ reports unterminated attribute value with the expected error code
+    ✓ reports unterminated element with the expected error code
+    ✓ reports unterminated end tag with the expected error code
+  SimpleXMLParser.parseFromString
+    ✓ builds a tree with attributes, children, and parent links (2 ms)
+    ✓ does not expose attributes unless hasAttributes is enabled
+    ✓ lower-cases element names when lowerCaseName is enabled (1 ms)
+    ✓ ignores whitespace-only text but preserves meaningful whitespace
+    ✓ keeps CDATA content verbatim without resolving entities
+    ✓ skips comments and processing instructions (1 ms)
+    ✓ accepts DOCTYPE declarations without adding them to the tree
+    ✓ resolves entities in element text and attribute values (1 ms)
+    ✓ preserves unknown and invalid entity references
+    ✓ returns the first root when multiple top-level elements are present (1 ms)
+    ✓ parses a self-closing root with attributes
+    ✓ returns undefined when no document element exists: "" (1 ms)
+    ✓ returns undefined when no document element exists: "   \n\t "
+    ✓ returns undefined when no document element exists: "<!-- only a comment -->"
+    ✓ returns undefined when no document element exists: "</root>"
+    ✓ returns undefined for malformed input: <root><![CDATA[x
+    ✓ returns undefined for malformed input: <root><!-- x
+    ✓ returns undefined for malformed input: <!DOCTYPE root
+    ✓ returns undefined for malformed input: <root a=1/> (1 ms)
+    ✓ returns undefined for malformed input: <root></root
+  SimpleDOMNode
+    ✓ provides textContent across nested children
+    ✓ exposes text nodes as children and reports their capabilities (1 ms)
+    ✓ finds the next sibling and returns undefined for the last child (1 ms)
+    ✓ returns undefined when the parent has no child list
+    ✓ uses defaults for a detached node (1 ms)
+    ✓ returns an empty string for a childless element without a value
+  SimpleDOMNode.searchNode
+    ✓ returns the node described by a fully indexed path (1 ms)
+    ✓ selects siblings by their index at each path component
+    ✓ falls back to the first matching node when an index is unavailable
+    ✓ skips class components whose names start with '#'
+    ✓ does not skip a final class component
+    ✓ returns null when no descendant matches (1 ms)
+    ✓ returns null when a childless node does not match the path
+    ✓ returns a non-zero-position match on the root node as null
+    ✓ returns the node itself once the path is exhausted (1 ms)
+    ✓ can search relative to an intermediate node
+  SimpleDOMNode.dump
+    ✓ serializes a parsed tree with escaped text and attributes (1 ms)
+    ✓ self-closes elements without children or a value
+    ✓ serializes a value-only element with escaped content (1 ms)
+    ✓ escapes attribute values
+    ✓ serializes non-ASCII text as character references
+
+Test Suites: 1 passed, 1 total
+Tests:       59 passed, 59 total
+Snapshots:   0 total
+Time:        0.854 s, estimated 1 s
+Ran all test suites within paths "test/core/xml_parser.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,145 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/jpg.test.js
+  JPEG image decoding
+    JpegError
+      ✓ is an Error carrying the JpegError name (3 ms)
+    JpegImage.canUseImageDecoder
+      ✓ reports dimensions for grayscale, RGB, and progressive images (2 ms)
+      ✓ accepts a subarray with a non-zero byteOffset (1 ms)
+      ✓ returns null for four-component (CMYK) images (1 ms)
+      ✓ returns null for three-component images when ColorTransform is 0
+      ✓ throws when the SOI marker is missing (26 ms)
+      ✓ reports the position of the Exif APP1 payload (1 ms)
+      ✓ rejects duplicate Exif blocks
+      ✓ ignores APP1 segments that are not Exif (1 ms)
+    JpegImage.parse
+      ✓ parses a baseline grayscale JPEG and decodes its gradient (5 ms)
+      ✓ parses the JFIF metadata of a baseline image (1 ms)
+      ✓ samples the decoded component data to the requested size (1 ms)
+      ✓ parses an RGB JPEG and converts YCbCr to RGB (1 ms)
+      ✓ appends an opaque alpha channel when forceRGBA is used (5 ms)
+      ✓ disables the YCbCr conversion when ColorTransform is 0 (1 ms)
+      ✓ parses a progressive JPEG across multiple scans (1 ms)
+      ✓ parses a CMYK JPEG and its Adobe APP14 metadata (7 ms)
+      ✓ accepts a subarray with a non-zero byteOffset (2 ms)
+      ✓ decodes 16-bit quantization tables (1 ms)
+      ✓ rejects images without a needed quantization table (1 ms)
+      ✓ uses a DNL marker to re-parse with the supplied scan line count (1 ms)
+      ✓ skips restart interval markers in the scan data (14 ms)
+      ✓ rejects corrupt scan data with an invalid Huffman sequence
+      ✓ clips inverse DCT results for solid black and white blocks (1 ms)
+      ✓ decodes a high-detail block through the full inverse DCT path
+      ✓ rejects unsupported markers found in the scan data (1 ms)
+      ✓ uses quantization tables that are defined after the frame header (1 ms)
+      ✓ accepts an extended sequential (SOF1) frame
+      ✓ tolerates fill bytes before a marker (1 ms)
+      ✓ recovers from an overstated height by re-parsing the image (1 ms)
+      ✓ ignores remaining image data when a too-small height causes EOI (1 ms)
+      ✓ recovers when the scan ends with EOI before any MCU data (1 ms)
+      ✓ warns but keeps the image when the EOI marker is missing (1 ms)
+      ✓ ignores bytes after the EOI marker (1 ms)
+      ✓ recovers from unexpected padding bytes at the end of the scan
+      ✓ recovers from an incorrect APP0 segment length
+      ✓ recovers from unexpected bytes between segments (1 ms)
+      ✓ rejects data without an SOI marker
+      ✓ rejects data without a frame
+      ✓ rejects images containing more than one frame
+      ✓ rejects unsupported markers (1 ms)
+      ✓ rejects an invalid quantization table specification
+      ✓ resets its state when parsing another image (1 ms)
+    JpegImage.getData
+      ✓ throws for images with more than four components
+      ✓ expands grayscale samples for forceRGB and forceRGBA (1 ms)
+      ✓ converts YCbCr samples to RGB (1 ms)
+      ✓ converts neutral YCbCr samples to an opaque gray RGBA pixel
+      ✓ returns raw samples when the components are tagged R, G, and B
+      ✓ leaves four-component samples unchanged without color conversion
+      ✓ converts device CMYK samples to RGB and opaque RGBA
+      ✓ converts YCCK samples when ColorTransform explicitly enables it (1 ms)
+      ✓ converts YCCK samples to CMYK, RGB, and opaque RGBA
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        0.881 s
+Ran all test suites within paths "test/core/jpg.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/jpg.test.js
+  JPEG image decoding
+    JpegError
+      ✓ is an Error carrying the JpegError name (3 ms)
+    JpegImage.canUseImageDecoder
+      ✓ reports dimensions for grayscale, RGB, and progressive images (2 ms)
+      ✓ accepts a subarray with a non-zero byteOffset
+      ✓ returns null for four-component (CMYK) images
+      ✓ returns null for three-component images when ColorTransform is 0 (1 ms)
+      ✓ throws when the SOI marker is missing (28 ms)
+      ✓ reports the position of the Exif APP1 payload (1 ms)
+      ✓ rejects duplicate Exif blocks
+      ✓ ignores APP1 segments that are not Exif
+    JpegImage.parse
+      ✓ parses a baseline grayscale JPEG and decodes its gradient (6 ms)
+      ✓ parses the JFIF metadata of a baseline image (1 ms)
+      ✓ samples the decoded component data to the requested size (2 ms)
+      ✓ parses an RGB JPEG and converts YCbCr to RGB (1 ms)
+      ✓ appends an opaque alpha channel when forceRGBA is used (4 ms)
+      ✓ disables the YCbCr conversion when ColorTransform is 0 (1 ms)
+      ✓ parses a progressive JPEG across multiple scans (2 ms)
+      ✓ parses a CMYK JPEG and its Adobe APP14 metadata (5 ms)
+      ✓ accepts a subarray with a non-zero byteOffset (1 ms)
+      ✓ decodes 16-bit quantization tables (2 ms)
+      ✓ rejects images without a needed quantization table
+      ✓ uses a DNL marker to re-parse with the supplied scan line count (1 ms)
+      ✓ skips restart interval markers in the scan data (1 ms)
+      ✓ rejects corrupt scan data with an invalid Huffman sequence (1 ms)
+      ✓ clips inverse DCT results for solid black and white blocks (1 ms)
+      ✓ decodes a high-detail block through the full inverse DCT path (1 ms)
+      ✓ rejects unsupported markers found in the scan data (1 ms)
+      ✓ uses quantization tables that are defined after the frame header (1 ms)
+      ✓ accepts an extended sequential (SOF1) frame (1 ms)
+      ✓ tolerates fill bytes before a marker (1 ms)
+      ✓ recovers from an overstated height by re-parsing the image (2 ms)
+      ✓ ignores remaining image data when a too-small height causes EOI (1 ms)
+      ✓ recovers when the scan ends with EOI before any MCU data (1 ms)
+      ✓ warns but keeps the image when the EOI marker is missing (1 ms)
+      ✓ ignores bytes after the EOI marker (1 ms)
+      ✓ recovers from unexpected padding bytes at the end of the scan (1 ms)
+      ✓ recovers from an incorrect APP0 segment length (1 ms)
+      ✓ recovers from unexpected bytes between segments (1 ms)
+      ✓ rejects data without an SOI marker (1 ms)
+      ✓ rejects data without a frame
+      ✓ rejects images containing more than one frame
+      ✓ rejects unsupported markers
+      ✓ rejects an invalid quantization table specification
+      ✓ resets its state when parsing another image (1 ms)
+    JpegImage.getData
+      ✓ throws for images with more than four components
+      ✓ expands grayscale samples for forceRGB and forceRGBA (1 ms)
+      ✓ converts YCbCr samples to RGB (1 ms)
+      ✓ converts neutral YCbCr samples to an opaque gray RGBA pixel
+      ✓ returns raw samples when the components are tagged R, G, and B
+      ✓ leaves four-component samples unchanged without color conversion
+      ✓ converts device CMYK samples to RGB and opaque RGBA
+      ✓ converts YCCK samples when ColorTransform explicitly enables it (1 ms)
+      ✓ converts YCCK samples to CMYK, RGB, and opaque RGBA (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        1.213 s
+Ran all test suites within paths "test/core/jpg.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

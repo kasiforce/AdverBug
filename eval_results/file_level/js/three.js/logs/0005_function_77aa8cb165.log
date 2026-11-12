@@ -1,0 +1,161 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/common/Renderer.test.js
+  Renderer
+    construction and configuration
+      ✓ exposes the expected defaults and backend (8 ms)
+      ✓ honors constructor options and MSAA sample configuration (1 ms)
+      ✓ uses an explicit sample count over the antialias default (1 ms)
+      ✓ tracks the default output values when a custom render target is active
+      ✓ switches highPrecision through the public accessor
+      ✓ sets and returns MRT and render object callback state (1 ms)
+      ✓ returns the output buffer type through the deprecated color-buffer accessor (1 ms)
+      ✓ replaces the inspector and attaches it to the renderer (1 ms)
+      ✓ exposes the compileAsync method through the compile alias (1 ms)
+    initialization
+      ✓ initializes the backend once and reports its initialized state (2 ms)
+      ✓ uses a fallback backend when the primary backend cannot initialize (1 ms)
+      ✓ rejects initialization when primary and fallback fail (1 ms)
+      ✓ rejects initialization when no fallback is available
+      ✓ stores and reports the configured animation loop (1 ms)
+    backend delegation
+      ✓ delegates context, anisotropy, features, and timestamp resolution (1 ms)
+      ✓ guards the synchronous feature query before initialization (63 ms)
+      ✓ delegates resetState only after initialization (1 ms)
+      ✓ guards and delegates backend compatibility queries (1 ms)
+      ✓ reports backend errors through the public error callback (1 ms)
+      ✓ delegates array-buffer reads and validates offset/count alignment (1 ms)
+      ✓ delegates render-target pixel reads using the selected texture and face (1 ms)
+    canvas target and sizing
+      ✓ reports and updates logical size, drawing-buffer size, and pixel ratio (2 ms)
+      ✓ notifies the backend of canvas resize after initialization
+      ✓ stores viewport and scissor state and forwards scissor-test changes (2 ms)
+      ✓ replaces the canvas target and reconnects resize notifications (1 ms)
+      ✓ releases a canvas target when it dispatches a dispose event (1 ms)
+      ✓ does not resize while XR is presenting
+    render targets and clear state
+      ✓ sets and clears render target, output target, cube face, and mip level state (1 ms)
+      ✓ stores clear color, alpha, depth, and stencil values (2 ms)
+      ✓ inverts clear depth when reversed depth is enabled
+      ✓ determines whether an output framebuffer target is necessary (1 ms)
+      ✓ guards manual clear calls before initialization (1 ms)
+      ✓ forwards clear operations and their channel selection to the backend (2 ms)
+      ✓ supports all deprecated async clear variants
+      ✓ configures a render context and clear values for a custom render target (2 ms)
+      ✓ returns null from isOccluded when no render context is active (1 ms)
+      ✓ uses the active render context for occlusion queries (4 ms)
+    rendering and compute guards
+      ✓ throws from render before initialization (1 ms)
+      ✓ renders an empty scene after initialization (1 ms)
+      ✓ precompiles an empty scene without issuing a draw pass (1 ms)
+      ✓ normalizes the removed soft shadow map type during compilation (1 ms)
+      ✓ applies custom opaque and transparent sorting and a custom render object function (5 ms)
+      ✓ supports deprecated async render, feature, and texture helpers (2 ms)
+      ✓ does not render after the device is reported lost
+      ✓ validates compute node inputs (1 ms)
+      ✓ validates compileComputeAsync input after initialization (2 ms)
+      ✓ returns early from compile operations after device loss (1 ms)
+    texture and resource helpers
+      ✓ guards texture and render-target initialization before init (1 ms)
+      ✓ initializes a texture through the public helper (1 ms)
+      ✓ initializes a render target and exposes its configuration in the render context (1 ms)
+      ✓ copies texture data and notifies the inspector (1 ms)
+      ✓ copies a framebuffer region using a Vector2 rectangle (1 ms)
+      ✓ rejects invalid framebuffer copy rectangles without touching the backend (1 ms)
+      ✓ waits for GPU as a harmless deprecated no-op
+    disposal
+      ✓ disposes backend resources and resets the active render target (1 ms)
+      ✓ can be called safely before initialization (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        3.499 s
+Ran all test suites within paths "test/renderers/common/Renderer.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/common/Renderer.test.js
+  Renderer
+    construction and configuration
+      ✓ exposes the expected defaults and backend (8 ms)
+      ✓ honors constructor options and MSAA sample configuration (1 ms)
+      ✓ uses an explicit sample count over the antialias default (1 ms)
+      ✓ tracks the default output values when a custom render target is active (1 ms)
+      ✓ switches highPrecision through the public accessor (1 ms)
+      ✓ sets and returns MRT and render object callback state (1 ms)
+      ✓ returns the output buffer type through the deprecated color-buffer accessor (1 ms)
+      ✓ replaces the inspector and attaches it to the renderer (1 ms)
+      ✓ exposes the compileAsync method through the compile alias
+    initialization
+      ✓ initializes the backend once and reports its initialized state (2 ms)
+      ✓ uses a fallback backend when the primary backend cannot initialize (1 ms)
+      ✓ rejects initialization when primary and fallback fail (1 ms)
+      ✓ rejects initialization when no fallback is available
+      ✓ stores and reports the configured animation loop (1 ms)
+    backend delegation
+      ✓ delegates context, anisotropy, features, and timestamp resolution (1 ms)
+      ✓ guards the synchronous feature query before initialization (71 ms)
+      ✓ delegates resetState only after initialization (1 ms)
+      ✓ guards and delegates backend compatibility queries (1 ms)
+      ✓ reports backend errors through the public error callback (1 ms)
+      ✓ delegates array-buffer reads and validates offset/count alignment (1 ms)
+      ✓ delegates render-target pixel reads using the selected texture and face (1 ms)
+    canvas target and sizing
+      ✓ reports and updates logical size, drawing-buffer size, and pixel ratio (2 ms)
+      ✓ notifies the backend of canvas resize after initialization (1 ms)
+      ✓ stores viewport and scissor state and forwards scissor-test changes (1 ms)
+      ✓ replaces the canvas target and reconnects resize notifications (1 ms)
+      ✓ releases a canvas target when it dispatches a dispose event (1 ms)
+      ✓ does not resize while XR is presenting (1 ms)
+    render targets and clear state
+      ✓ sets and clears render target, output target, cube face, and mip level state (1 ms)
+      ✓ stores clear color, alpha, depth, and stencil values (1 ms)
+      ✓ inverts clear depth when reversed depth is enabled
+      ✓ determines whether an output framebuffer target is necessary (1 ms)
+      ✓ guards manual clear calls before initialization (2 ms)
+      ✓ forwards clear operations and their channel selection to the backend (1 ms)
+      ✓ supports all deprecated async clear variants (1 ms)
+      ✓ configures a render context and clear values for a custom render target (3 ms)
+      ✓ returns null from isOccluded when no render context is active (1 ms)
+      ✓ uses the active render context for occlusion queries (4 ms)
+    rendering and compute guards
+      ✓ throws from render before initialization (1 ms)
+      ✓ renders an empty scene after initialization (1 ms)
+      ✓ precompiles an empty scene without issuing a draw pass (2 ms)
+      ✓ normalizes the removed soft shadow map type during compilation (1 ms)
+      ✓ applies custom opaque and transparent sorting and a custom render object function (6 ms)
+      ✓ supports deprecated async render, feature, and texture helpers (1 ms)
+      ✓ does not render after the device is reported lost (1 ms)
+      ✓ validates compute node inputs (2 ms)
+      ✓ validates compileComputeAsync input after initialization (2 ms)
+      ✓ returns early from compile operations after device loss (1 ms)
+    texture and resource helpers
+      ✓ guards texture and render-target initialization before init (1 ms)
+      ✓ initializes a texture through the public helper (1 ms)
+      ✓ initializes a render target and exposes its configuration in the render context (1 ms)
+      ✓ copies texture data and notifies the inspector (1 ms)
+      ✓ copies a framebuffer region using a Vector2 rectangle (2 ms)
+      ✓ rejects invalid framebuffer copy rectangles without touching the backend
+      ✓ waits for GPU as a harmless deprecated no-op (1 ms)
+    disposal
+      ✓ disposes backend resources and resets the active render target (1 ms)
+      ✓ can be called safely before initialization
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        3.775 s, estimated 4 s
+Ran all test suites within paths "test/renderers/common/Renderer.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

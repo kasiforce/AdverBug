@@ -1,0 +1,201 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/parser.test.js
+  Lexer
+    ✓ parses the PDF number 42 (3 ms)
+    ✓ parses the PDF number -7 (1 ms)
+    ✓ parses the PDF number +7
+    ✓ parses the PDF number --7
+    ✓ parses the PDF number .5
+    ✓ parses the PDF number -.5 (1 ms)
+    ✓ parses the PDF number 3.14
+    ✓ parses the PDF number -12.5
+    ✓ stops a number at a second decimal point
+    ✓ ignores line breaks immediately after a number sign
+    ✓ ignores a minus sign in the middle of a number
+    ✓ treats the Adobe-compatible invalid number " " as zero
+    ✓ treats the Adobe-compatible invalid number "(" as zero
+    ✓ treats the Adobe-compatible invalid number "<" as zero
+    ✓ treats the Adobe-compatible invalid number "" as zero
+    ✓ throws a FormatError for a non-delimiter invalid number (21 ms)
+    ✓ decodes nested parentheses and escape sequences in strings
+    ✓ handles escaped line endings inside strings (1 ms)
+    ✓ warns and returns partial data for an unterminated string
+    ✓ decodes hexadecimal escapes in names (1 ms)
+    ✓ warns about malformed hexadecimal escapes in names
+    ✓ warns when a name exceeds the spec length limit (1 ms)
+    ✓ decodes hexadecimal strings and ignores white space
+    ✓ pads an odd number of hexadecimal digits with zero
+    ✓ ignores invalid hexadecimal string characters
+    ✓ warns and returns partial data for an unterminated hex string
+    ✓ skips comments and white space before objects
+    ✓ returns booleans, null, and commands (1 ms)
+    ✓ returns punctuation as command objects (1 ms)
+    ✓ throws for an illegal close parenthesis and consumes it
+    ✓ uses known commands to split glued tokens
+    ✓ keeps an unknown glued token as a single command
+    ✓ returns a one-character command for a non-visible byte followed by ASCII
+    ✓ throws when a command token is too long (1 ms)
+    ✓ records the inline-image dictionary start position for BI
+    ✓ skipToNextLine advances to the character after the line ending
+    ✓ skipToNextLine advances to the character after the line ending (1 ms)
+    ✓ skipToNextLine advances to the character after the line ending
+  Parser object parsing
+    ✓ reads primitive values and indirect references (7 ms)
+    ✓ builds nested arrays and dictionaries (1 ms)
+    ✓ returns a partially parsed array in recovery mode at EOF
+    ✓ returns a partially parsed dictionary in recovery mode at EOF (1 ms)
+    ✓ skips malformed dictionary keys
+    ✓ decrypts strings through the supplied cipher transform (1 ms)
+    ✓ maintains the two-token lookahead with shift and refill (1 ms)
+    ✓ leaves a stream token for a later getObj when streams are disabled
+    ✓ returns a stream object when streams are enabled (1 ms)
+    ✓ scans for endstream when the declared stream length is wrong (1 ms)
+    ✓ throws when an unterminated stream has no endstream command (1 ms)
+    ✓ applies a stream filter while making a stream
+    ✓ applies a Flate filter while making a stream (2 ms)
+    ✓ passes non-Crypt streams through the cipher transform before filtering
+    ✓ lets the Crypt filter create the cipher stream with its crypt name (1 ms)
+  Parser inline images
+    ✓ parses an inline image with the default EI scanning logic (1 ms)
+    ✓ decodes an inline image with an ASCIIHexDecode filter
+    ✓ returns a JPEG stream for a DCTDecode inline image (1 ms)
+    ✓ reuses the cached stream for an identical inline image (1 ms)
+    ✓ throws for an inline image dictionary with a non-name key
+    ✓ falls back to the last EI marker when no valid command follows (1 ms)
+  Parser stream filters
+    ✓ returns the original stream when there is no filter
+    ✓ decodes the ASCIIHexDecode filter
+    ✓ decodes the ASCII85Decode filter
+    ✓ decodes the RunLengthDecode filter
+    ✓ decodes a Flate stream
+    ✓ applies a filter chain with the intermediate length unset (1 ms)
+    ✓ applies a Predictor when DecodeParms is present (1 ms)
+    ✓ returns the stream unchanged for an unsupported filter
+    ✓ returns a NullStream for an empty stream (1 ms)
+    ✓ returns a NullStream when a filter cannot decode the data
+    ✓ throws a FormatError for a non-name entry in a filter array
+    ✓ returns the original stream for Crypt without a cipher transform (1 ms)
+    ✓ resolves filter references through the xref
+  Linearization
+    ✓ creates the linearization data for a valid dictionary (1 ms)
+    ✓ accepts four hints and a zero first-page offset (1 ms)
+    ✓ returns null for a document without a linearization dictionary
+    ✓ throws when the L value does not match the stream length (24 ms)
+    ✓ throws when a required positive integer parameter is invalid (1 ms)
+    ✓ throws for an invalid hint array shape (1 ms)
+    ✓ throws for a non-positive hint value
+    ✓ throws for a negative P value (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       80 passed, 80 total
+Snapshots:   0 total
+Time:        1.274 s
+Ran all test suites within paths "test/core/parser.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/parser.test.js
+  Lexer
+    ✓ parses the PDF number 42 (3 ms)
+    ✓ parses the PDF number -7
+    ✓ parses the PDF number +7
+    ✓ parses the PDF number --7
+    ✓ parses the PDF number .5
+    ✓ parses the PDF number -.5
+    ✓ parses the PDF number 3.14 (1 ms)
+    ✓ parses the PDF number -12.5
+    ✓ stops a number at a second decimal point (1 ms)
+    ✓ ignores line breaks immediately after a number sign
+    ✓ ignores a minus sign in the middle of a number (1 ms)
+    ✓ treats the Adobe-compatible invalid number " " as zero
+    ✓ treats the Adobe-compatible invalid number "(" as zero
+    ✓ treats the Adobe-compatible invalid number "<" as zero
+    ✓ treats the Adobe-compatible invalid number "" as zero (1 ms)
+    ✓ throws a FormatError for a non-delimiter invalid number (19 ms)
+    ✓ decodes nested parentheses and escape sequences in strings (1 ms)
+    ✓ handles escaped line endings inside strings
+    ✓ warns and returns partial data for an unterminated string (1 ms)
+    ✓ decodes hexadecimal escapes in names
+    ✓ warns about malformed hexadecimal escapes in names (1 ms)
+    ✓ warns when a name exceeds the spec length limit
+    ✓ decodes hexadecimal strings and ignores white space (1 ms)
+    ✓ pads an odd number of hexadecimal digits with zero
+    ✓ ignores invalid hexadecimal string characters (1 ms)
+    ✓ warns and returns partial data for an unterminated hex string
+    ✓ skips comments and white space before objects
+    ✓ returns booleans, null, and commands (1 ms)
+    ✓ returns punctuation as command objects (1 ms)
+    ✓ throws for an illegal close parenthesis and consumes it
+    ✓ uses known commands to split glued tokens (1 ms)
+    ✓ keeps an unknown glued token as a single command
+    ✓ returns a one-character command for a non-visible byte followed by ASCII
+    ✓ throws when a command token is too long (1 ms)
+    ✓ records the inline-image dictionary start position for BI
+    ✓ skipToNextLine advances to the character after the line ending (1 ms)
+    ✓ skipToNextLine advances to the character after the line ending
+    ✓ skipToNextLine advances to the character after the line ending
+  Parser object parsing
+    ✓ reads primitive values and indirect references (2 ms)
+    ✓ builds nested arrays and dictionaries (1 ms)
+    ✓ returns a partially parsed array in recovery mode at EOF
+    ✓ returns a partially parsed dictionary in recovery mode at EOF (1 ms)
+    ✓ skips malformed dictionary keys (1 ms)
+    ✓ decrypts strings through the supplied cipher transform
+    ✓ maintains the two-token lookahead with shift and refill
+    ✓ leaves a stream token for a later getObj when streams are disabled (1 ms)
+    ✓ returns a stream object when streams are enabled (19 ms)
+    ✓ scans for endstream when the declared stream length is wrong (1 ms)
+    ✓ throws when an unterminated stream has no endstream command (1 ms)
+    ✓ applies a stream filter while making a stream (1 ms)
+    ✓ applies a Flate filter while making a stream (2 ms)
+    ✓ passes non-Crypt streams through the cipher transform before filtering (1 ms)
+    ✓ lets the Crypt filter create the cipher stream with its crypt name
+  Parser inline images
+    ✓ parses an inline image with the default EI scanning logic (1 ms)
+    ✓ decodes an inline image with an ASCIIHexDecode filter
+    ✓ returns a JPEG stream for a DCTDecode inline image (1 ms)
+    ✓ reuses the cached stream for an identical inline image (1 ms)
+    ✓ throws for an inline image dictionary with a non-name key (1 ms)
+    ✓ falls back to the last EI marker when no valid command follows
+  Parser stream filters
+    ✓ returns the original stream when there is no filter (1 ms)
+    ✓ decodes the ASCIIHexDecode filter
+    ✓ decodes the ASCII85Decode filter (1 ms)
+    ✓ decodes the RunLengthDecode filter
+    ✓ decodes a Flate stream (1 ms)
+    ✓ applies a filter chain with the intermediate length unset (1 ms)
+    ✓ applies a Predictor when DecodeParms is present (1 ms)
+    ✓ returns the stream unchanged for an unsupported filter
+    ✓ returns a NullStream for an empty stream (1 ms)
+    ✓ returns a NullStream when a filter cannot decode the data
+    ✓ throws a FormatError for a non-name entry in a filter array
+    ✓ returns the original stream for Crypt without a cipher transform (1 ms)
+    ✓ resolves filter references through the xref
+  Linearization
+    ✓ creates the linearization data for a valid dictionary (1 ms)
+    ✓ accepts four hints and a zero first-page offset
+    ✓ returns null for a document without a linearization dictionary
+    ✓ throws when the L value does not match the stream length (39 ms)
+    ✓ throws when a required positive integer parameter is invalid (1 ms)
+    ✓ throws for an invalid hint array shape (1 ms)
+    ✓ throws for a non-positive hint value (1 ms)
+    ✓ throws for a negative P value (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       80 passed, 80 total
+Snapshots:   0 total
+Time:        1.531 s, estimated 2 s
+Ran all test suites within paths "test/core/parser.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

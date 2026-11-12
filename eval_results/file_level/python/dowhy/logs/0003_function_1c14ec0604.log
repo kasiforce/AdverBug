@@ -1,0 +1,88 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/dowhy/gcm/test_falsify.py::TestFalsifyConstants::test_enum_members_have_unique_values
+tests/dowhy/gcm/test_falsify.py::TestFalsifyConstants::test_falsify_methods_maps_validation_methods_to_readable_names
+tests/dowhy/gcm/test_falsify.py::TestPValuesMemory::test_stores_and_retrieves_p_values_symmetrically
+tests/dowhy/gcm/test_falsify.py::TestPValuesMemory::test_conditioning_set_is_part_of_the_key_but_none_and_empty_set_are_equal
+tests/dowhy/gcm/test_falsify.py::TestPValuesMemory::test_contains_accepts_pairs_and_triples
+tests/dowhy/gcm/test_falsify.py::TestPValuesMemory::test_placeholder_values_are_stored_but_read_back_as_none
+tests/dowhy/gcm/test_falsify.py::TestPValuesMemory::test_rejects_values_that_cannot_be_converted_to_a_frozenset
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_chain_graph_only_tests_the_sink_node_conditionally
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_root_nodes_are_only_tested_if_include_unconditional_is_true
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_counts_violations_per_tested_triple
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_all_violations_are_counted_when_tests_reject_independence
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_significance_level_boundary_is_inclusive
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_p_value_memory_is_used_to_avoid_repeated_tests
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_tests_requiring_missing_data_are_skipped_with_a_warning
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_tests_with_missing_conditioning_variables_are_skipped
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_default_number_of_jobs_is_taken_from_the_config
+tests/dowhy/gcm/test_falsify.py::TestValidateLmc::test_uses_kernel_based_tests_by_default
+tests/dowhy/gcm/test_falsify.py::TestValidateTpa::test_graph_against_itself_has_no_violations
+tests/dowhy/gcm/test_falsify.py::TestValidateTpa::test_detects_d_separations_that_do_not_hold_in_the_reference_graph
+tests/dowhy/gcm/test_falsify.py::TestValidateTpa::test_include_unconditional_false_skips_root_node_triples
+tests/dowhy/gcm/test_falsify.py::TestValidateTpa::test_chain_and_collider_entail_different_conditional_independencies
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_tests_all_ancestor_descendant_pairs
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_violations_are_pairs_that_are_not_statistically_dependent
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_adjacent_only_restricts_tests_to_direct_edges
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_n_pairs_limits_the_number_of_performed_tests
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_n_pairs_larger_than_available_pairs_raises
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_graph_without_edges_requires_no_tests
+tests/dowhy/gcm/test_falsify.py::TestValidatePd::test_p_value_memory_avoids_repeated_tests
+tests/dowhy/gcm/test_falsify.py::TestValidateCm::test_each_parent_is_tested_given_the_remaining_parents
+tests/dowhy/gcm/test_falsify.py::TestValidateCm::test_single_parent_nodes_are_tested_unconditionally
+tests/dowhy/gcm/test_falsify.py::TestValidateCm::test_below_significance_level_is_not_a_minimality_violation
+tests/dowhy/gcm/test_falsify.py::TestRunValidations::test_single_method_result_is_keyed_by_its_readable_name
+tests/dowhy/gcm/test_falsify.py::TestRunValidations::test_several_methods_are_run_and_data_is_injected
+tests/dowhy/gcm/test_falsify.py::TestRunValidations::test_methods_without_data_argument_are_called_with_the_graph_only
+tests/dowhy/gcm/test_falsify.py::TestRunValidations::test_validate_tpa_can_be_used_with_a_reference_graph
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_decisions_follow_the_two_p_values[0.9-0.01-0.05-True-True]
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_decisions_follow_the_two_p_values[0.9-0.5-0.05-False-False]
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_decisions_follow_the_two_p_values[0.01-0.01-0.05-False-True]
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_decisions_follow_the_two_p_values[0.9-0.05-0.05-False-True]
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_update_significance_level_recomputes_the_decisions
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_graph_without_testable_implications_cannot_be_evaluated
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_missing_tpa_summary_cannot_be_evaluated
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_repr_of_a_falsified_graph_reports_the_decision
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_repr_of_a_graph_in_the_same_mec_is_not_informative
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_repr_of_an_unevaluable_result
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_repr_lists_suggestions_for_violated_minimality
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_repr_lists_suggestion_methods_without_violations
+tests/dowhy/gcm/test_falsify.py::TestEvaluationResult::test_repr_without_suggestions_has_no_suggestion_section
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_falsifies_a_graph_of_a_chain_with_independent_data
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_does_not_falsify_a_graph_that_is_not_informative
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_summary_is_internally_consistent
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_mec_contains_the_permuted_graphs_that_entail_the_same_d_separations
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_n_permutations_defaults_to_inverse_significance_level
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_missing_data_for_a_node_raises_if_data_subset_is_not_allowed
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_missing_data_for_a_node_yields_an_unevaluable_result_if_allowed
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_suggestions_are_reported_and_can_be_applied
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_suggestions_are_empty_when_not_requested
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_progress_bar_setting_defaults_to_the_config
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_plot_histogram_saves_the_figure
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_too_many_permutations_for_a_large_graph_raise
+tests/dowhy/gcm/test_falsify.py::TestFalsifyGraph::test_uses_kernel_based_tests_by_default
+tests/dowhy/gcm/test_falsify.py::TestApplySuggestions::test_edges_with_violated_minimality_are_removed
+tests/dowhy/gcm/test_falsify.py::TestApplySuggestions::test_edges_to_keep_are_not_removed
+tests/dowhy/gcm/test_falsify.py::TestApplySuggestions::test_missing_suggestions_attribute_raises
+tests/dowhy/gcm/test_falsify.py::TestPlotEvaluationResults::test_histogram_is_written_to_disk
+tests/dowhy/gcm/test_falsify.py::TestPlotEvaluationResults::test_display_false_closes_the_figure
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_lmc_violations_highlight_the_conditional_node
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_pd_and_cm_violations_highlight_the_offending_edge
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_uses_local_insights_of_an_evaluation_result
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_uses_suggestions_of_an_evaluation_result
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_unknown_method_in_dict_raises
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_dict_without_p_values_raises
+tests/dowhy/gcm/test_falsify.py::TestPlotLocalInsights::test_evaluation_result_without_the_method_raises
+
+73 tests collected in 2.83s
+
+=== test.log ===
+........................................................................ [ 98%]
+.                                                                        [100%]
+73 passed, 14 warnings in 4.64s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,203 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/nodes/manager/NodeMaterialObserver.test.js
+  NodeMaterialObserver
+    constructor
+      ✓ initializes bookkeeping state for a plain builder (5 ms)
+      ✓ flags animated objects when the builder object is a skinned mesh
+      ✓ flags node usage when a material property is a node (1 ms)
+    containsNode
+      ✓ returns false for a plain material, context and scene (1 ms)
+      ✓ detects nodes assigned to material properties and ignores empty ones (1 ms)
+      ✓ detects node usage from the builder context (1 ms)
+      ✓ detects fog and environment nodes from the scene (1 ms)
+    firstInitialization
+      ✓ returns true only for the first render object verification (1 ms)
+      ✓ tracks every render object independently (1 ms)
+    getRenderObjectData
+      ✓ captures geometry, material, world matrix, buffer and scene state (3 ms)
+      ✓ snapshots optional object data only when present (2 ms)
+      ✓ captures instanced and batched buffer versions and bundle version (2 ms)
+    getOutputTarget
+      ✓ prefers the active render target
+      ✓ falls back to the output render target and then the canvas target
+    hasDynamicInstancing
+      ✓ returns false for non instanced objects
+      ✓ returns false for statically drawn instance buffers (1 ms)
+      ✓ detects dynamic instance matrices
+      ✓ detects dynamic instance colors (1 ms)
+    needsVelocity
+      ✓ is false without motion vector MRT
+      ✓ is true when the MRT contains a velocity channel
+      ✓ is false when the MRT has no velocity channel
+    getAttributesData
+      ✓ records the id and version of every attribute
+      ✓ uses the shared buffer id and version for interleaved attributes
+      ✓ returns an empty record for geometries without attributes
+    getGeometryData
+      ✓ caches monitoring data per geometry (1 ms)
+      ✓ records a missing index as null (1 ms)
+      ✓ bumps the version when the geometry is disposed
+    getTextureData
+      ✓ caches monitoring data per texture and bumps it on dispose (1 ms)
+      ✓ listens to the render target of render target textures (1 ms)
+    getMaterialData
+      ✓ snapshots the refreshable material uniforms (1 ms)
+      ✓ returns a cached snapshot that is not affected by later material changes (1 ms)
+      ✓ tracks texture references by id, version and cache version
+      ✓ only tracks the configured refresh uniforms (1 ms)
+    getLightsData
+      ✓ ignores lights without maps or shadows (1 ms)
+      ✓ records the shadow map size of shadow casting lights (1 ms)
+      ✓ records spot light maps together with their texture cache version
+      ✓ reuses the given target array (1 ms)
+    getLights
+      ✓ caches the collected lights per lights node and render id (1 ms)
+      ✓ collects the builtin lights of the node
+    equals
+      ✓ returns true for an unchanged render object (1 ms)
+      ✓ detects world matrix changes and syncs the cache (1 ms)
+      ✓ detects material changes only once per render id
+      ✓ reports a shared material change for all render objects of a render
+      ✓ detects texture uniform changes (1 ms)
+      ✓ detects render buffer size changes
+      ✓ detects geometry replacement, attribute, index and draw range changes (1 ms)
+      ✓ detects geometry disposal
+      ✓ detects morph target influence changes
+      ✓ detects instanced buffer changes (1 ms)
+      ✓ detects batched buffer texture changes (1 ms)
+      ✓ detects shadow map and spot light map changes (1 ms)
+      ✓ detects scene environment changes when the material does not use an env map (1 ms)
+      ✓ ignores scene environment changes without a scene environment or with an env map
+      ✓ detects sprite center changes
+      ✓ detects material uniforms that were added or removed (1 ms)
+      ✓ checks state shared by multiple render objects once per render id (1 ms)
+      ✓ syncs the bundle version and reports no change
+    needsRefresh
+      ✓ returns FULL on first initialization and SHARED once per render id (1 ms)
+      ✓ returns FULL when the object transformation changes (1 ms)
+      ✓ returns FULL when the material of an observed render object changes
+      ✓ returns FULL when the lights change (1 ms)
+      ✓ always returns FULL for node based materials (1 ms)
+      ✓ always returns FULL for animated objects
+      ✓ always returns FULL for dynamically instanced objects
+      ✓ always returns FULL when the renderer outputs motion vectors
+      ✓ returns FULL when the output target changes (1 ms)
+      ✓ skips state comparison for static objects but still tracks render ids and targets
+      ✓ skips state comparison for static bundles with a matching version (1 ms)
+      ✓ re-enables the state comparison when the static bundle version changes
+      ✓ compares state for bundles that are not static
+
+Test Suites: 1 passed, 1 total
+Tests:       70 passed, 70 total
+Snapshots:   0 total
+Time:        1.376 s
+Ran all test suites within paths "test/materials/nodes/manager/NodeMaterialObserver.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/materials/nodes/manager/NodeMaterialObserver.test.js
+  NodeMaterialObserver
+    constructor
+      ✓ initializes bookkeeping state for a plain builder (4 ms)
+      ✓ flags animated objects when the builder object is a skinned mesh
+      ✓ flags node usage when a material property is a node
+    containsNode
+      ✓ returns false for a plain material, context and scene (1 ms)
+      ✓ detects nodes assigned to material properties and ignores empty ones (1 ms)
+      ✓ detects node usage from the builder context (1 ms)
+      ✓ detects fog and environment nodes from the scene (1 ms)
+    firstInitialization
+      ✓ returns true only for the first render object verification (2 ms)
+      ✓ tracks every render object independently (1 ms)
+    getRenderObjectData
+      ✓ captures geometry, material, world matrix, buffer and scene state (3 ms)
+      ✓ snapshots optional object data only when present (1 ms)
+      ✓ captures instanced and batched buffer versions and bundle version (2 ms)
+    getOutputTarget
+      ✓ prefers the active render target
+      ✓ falls back to the output render target and then the canvas target
+    hasDynamicInstancing
+      ✓ returns false for non instanced objects
+      ✓ returns false for statically drawn instance buffers (1 ms)
+      ✓ detects dynamic instance matrices
+      ✓ detects dynamic instance colors (1 ms)
+    needsVelocity
+      ✓ is false without motion vector MRT
+      ✓ is true when the MRT contains a velocity channel
+      ✓ is false when the MRT has no velocity channel
+    getAttributesData
+      ✓ records the id and version of every attribute
+      ✓ uses the shared buffer id and version for interleaved attributes
+      ✓ returns an empty record for geometries without attributes
+    getGeometryData
+      ✓ caches monitoring data per geometry
+      ✓ records a missing index as null (1 ms)
+      ✓ bumps the version when the geometry is disposed
+    getTextureData
+      ✓ caches monitoring data per texture and bumps it on dispose (1 ms)
+      ✓ listens to the render target of render target textures (1 ms)
+    getMaterialData
+      ✓ snapshots the refreshable material uniforms (1 ms)
+      ✓ returns a cached snapshot that is not affected by later material changes (1 ms)
+      ✓ tracks texture references by id, version and cache version
+      ✓ only tracks the configured refresh uniforms
+    getLightsData
+      ✓ ignores lights without maps or shadows (1 ms)
+      ✓ records the shadow map size of shadow casting lights
+      ✓ records spot light maps together with their texture cache version
+      ✓ reuses the given target array
+    getLights
+      ✓ caches the collected lights per lights node and render id (1 ms)
+      ✓ collects the builtin lights of the node
+    equals
+      ✓ returns true for an unchanged render object (2 ms)
+      ✓ detects world matrix changes and syncs the cache (1 ms)
+      ✓ detects material changes only once per render id (1 ms)
+      ✓ reports a shared material change for all render objects of a render
+      ✓ detects texture uniform changes (1 ms)
+      ✓ detects render buffer size changes (1 ms)
+      ✓ detects geometry replacement, attribute, index and draw range changes (1 ms)
+      ✓ detects geometry disposal (1 ms)
+      ✓ detects morph target influence changes
+      ✓ detects instanced buffer changes (2 ms)
+      ✓ detects batched buffer texture changes (1 ms)
+      ✓ detects shadow map and spot light map changes (1 ms)
+      ✓ detects scene environment changes when the material does not use an env map (1 ms)
+      ✓ ignores scene environment changes without a scene environment or with an env map (1 ms)
+      ✓ detects sprite center changes (1 ms)
+      ✓ detects material uniforms that were added or removed
+      ✓ checks state shared by multiple render objects once per render id
+      ✓ syncs the bundle version and reports no change (1 ms)
+    needsRefresh
+      ✓ returns FULL on first initialization and SHARED once per render id (1 ms)
+      ✓ returns FULL when the object transformation changes (1 ms)
+      ✓ returns FULL when the material of an observed render object changes (1 ms)
+      ✓ returns FULL when the lights change (1 ms)
+      ✓ always returns FULL for node based materials (1 ms)
+      ✓ always returns FULL for animated objects
+      ✓ always returns FULL for dynamically instanced objects (1 ms)
+      ✓ always returns FULL when the renderer outputs motion vectors
+      ✓ returns FULL when the output target changes (1 ms)
+      ✓ skips state comparison for static objects but still tracks render ids and targets (1 ms)
+      ✓ skips state comparison for static bundles with a matching version
+      ✓ re-enables the state comparison when the static bundle version changes
+      ✓ compares state for bundles that are not static (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       70 passed, 70 total
+Snapshots:   0 total
+Time:        1.564 s, estimated 2 s
+Ran all test suites within paths "test/materials/nodes/manager/NodeMaterialObserver.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

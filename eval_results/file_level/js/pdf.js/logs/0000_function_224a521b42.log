@@ -1,0 +1,369 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    Warning: AnnotationBorderStyle.setWidth - ignoring width: 12
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at AnnotationBorderStyle.warn [as setWidth] (src/core/annotation.js:1613:11)
+      at Object.setWidth (test/core/annotation.test.js:112:11)
+
+  console.warn
+    Warning: Ignoring invalid lineEnding: [object Object]
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Annotation.warn [as setLineEndings] (src/core/annotation.js:1104:9)
+      at Object.setLineEndings (test/core/annotation.test.js:277:16)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:591:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:599:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:606:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:620:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:664:20)
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/annotation.test.js
+  AnnotationBorderStyle
+    ✓ starts with the documented defaults (3 ms)
+    ✓ accepts numeric widths but caps widths that overflow the rectangle (57 ms)
+    ✓ maps PDF border style names and ignores unknown non-name values (1 ms)
+    ✓ validates dash arrays and can force a dashed border (1 ms)
+    ✓ only accepts integer corner radii
+  getQuadPoints
+    ✓ normalizes one or more valid quadrilaterals (1 ms)
+    ✓ rejects malformed, empty, and out-of-rectangle data (1 ms)
+    ✓ permits points outside the rectangle when no rectangle is supplied
+  Annotation
+    ✓ builds its public data from the annotation dictionary (2 ms)
+    ✓ detects right-to-left text and ignores non-string text fields (1 ms)
+    ✓ normalizes rectangles and reports dimensions and canvas validity (1 ms)
+    ✓ applies colors, including transparency and sensible fallbacks
+    ✓ tracks flags and removes INVISIBLE only for known subclasses
+    ✓ implements view and print policy with storage overrides (1 ms)
+    ✓ validates and normalizes rotation values
+    ✓ accepts only known line ending names (2 ms)
+    ✓ reads border and background colors from the MK dictionary
+    ✓ parses both BS and Border style entries (1 ms)
+    ✓ uses a direct normal appearance stream or the selected AS stream
+    ✓ constructs fully qualified field names and returns field objects (1 ms)
+    ✓ registers its structure parent with the structure tree (2 ms)
+    ✓ honours orphan field parent mappings
+    ✓ returns an empty operator list when there is no appearance (1 ms)
+    ✓ renders an appearance stream with the computed annotation transform (1 ms)
+    ✓ extracts text from an appearance and records its content and position (1 ms)
+  MarkupAnnotation
+    ✓ records reply metadata, creation date, popup reference, and color
+    ✓ inherits group attributes from the parent annotation
+  PopupAnnotation
+    ✓ inherits the parent's visible metadata and open state (1 ms)
+    ✓ drops a zero-sized rectangle and falls back to the parent's flags
+    ✓ creates a popup dictionary without overwriting existing fields
+  WidgetAnnotation
+    ✓ decodes form values and exposes field metadata and flags (3 ms)
+    ✓ decodes arrays, names, strings, and invalid values recursively (2 ms)
+    ✓ implements widget-specific view policy (2 ms)
+    ✓ computes rotation matrices and border/background appearance fragments (2 ms)
+    ✓ produces an MK dictionary only when values are present (2 ms)
+    ✓ updates values directly or through a parent dictionary (1 ms)
+    ✓ defers widget rendering to the form layer when forms are enabled (2 ms)
+  AnnotationFactory
+    ✓ creates factory globals from the document manager (1 ms)
+    ✓ returns null when gathering globals fails (1 ms)
+    ✓ dispatches every supported annotation subtype to the right class (6 ms)
+    ✓ dispatches widget field types, including the base fallback (2 ms)
+    ✓ falls back to the base annotation for missing or unknown subtypes (1 ms)
+    ✓ filters by collected type and ignores non-dictionaries
+    ✓ uses reference-based and generated ids as appropriate (1 ms)
+    ✓ resolves collectFields page indices before delegating to _create (1 ms)
+    ✓ returns print data for editor free-text annotations
+    ✓ does not generate images without OffscreenCanvas support (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       47 passed, 47 total
+Snapshots:   0 total
+Time:        5.453 s
+Ran all test suites within paths "test/core/annotation.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+  console.warn
+    Warning: AnnotationBorderStyle.setWidth - ignoring width: 12
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at AnnotationBorderStyle.warn [as setWidth] (src/core/annotation.js:1613:11)
+      at Object.setWidth (test/core/annotation.test.js:112:11)
+
+  console.warn
+    Warning: Ignoring invalid lineEnding: [object Object]
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Annotation.warn [as setLineEndings] (src/core/annotation.js:1104:9)
+      at Object.setLineEndings (test/core/annotation.test.js:277:16)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:591:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:599:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:606:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:620:20)
+
+  console.warn
+    Warning: Unknown field name, falling back to empty field name.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at WidgetAnnotation.warn [as _constructFieldName] (src/core/annotation.js:1482:7)
+      at new _constructFieldName (src/core/annotation.js:1965:29)
+      at createWidget (test/core/annotation.test.js:90:10)
+      at Object.createWidget (test/core/annotation.test.js:664:20)
+
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/annotation.test.js
+  AnnotationBorderStyle
+    ✓ starts with the documented defaults (3 ms)
+    ✓ accepts numeric widths but caps widths that overflow the rectangle (110 ms)
+    ✓ maps PDF border style names and ignores unknown non-name values (1 ms)
+    ✓ validates dash arrays and can force a dashed border (1 ms)
+    ✓ only accepts integer corner radii (1 ms)
+  getQuadPoints
+    ✓ normalizes one or more valid quadrilaterals (1 ms)
+    ✓ rejects malformed, empty, and out-of-rectangle data (1 ms)
+    ✓ permits points outside the rectangle when no rectangle is supplied
+  Annotation
+    ✓ builds its public data from the annotation dictionary (3 ms)
+    ✓ detects right-to-left text and ignores non-string text fields (1 ms)
+    ✓ normalizes rectangles and reports dimensions and canvas validity
+    ✓ applies colors, including transparency and sensible fallbacks
+    ✓ tracks flags and removes INVISIBLE only for known subclasses (1 ms)
+    ✓ implements view and print policy with storage overrides (1 ms)
+    ✓ validates and normalizes rotation values (1 ms)
+    ✓ accepts only known line ending names (3 ms)
+    ✓ reads border and background colors from the MK dictionary (1 ms)
+    ✓ parses both BS and Border style entries
+    ✓ uses a direct normal appearance stream or the selected AS stream (1 ms)
+    ✓ constructs fully qualified field names and returns field objects (2 ms)
+    ✓ registers its structure parent with the structure tree (1 ms)
+    ✓ honours orphan field parent mappings (1 ms)
+    ✓ returns an empty operator list when there is no appearance (1 ms)
+    ✓ renders an appearance stream with the computed annotation transform (1 ms)
+    ✓ extracts text from an appearance and records its content and position
+  MarkupAnnotation
+    ✓ records reply metadata, creation date, popup reference, and color
+    ✓ inherits group attributes from the parent annotation (1 ms)
+  PopupAnnotation
+    ✓ inherits the parent's visible metadata and open state (1 ms)
+    ✓ drops a zero-sized rectangle and falls back to the parent's flags
+    ✓ creates a popup dictionary without overwriting existing fields (1 ms)
+  WidgetAnnotation
+    ✓ decodes form values and exposes field metadata and flags (3 ms)
+    ✓ decodes arrays, names, strings, and invalid values recursively (2 ms)
+    ✓ implements widget-specific view policy (2 ms)
+    ✓ computes rotation matrices and border/background appearance fragments (2 ms)
+    ✓ produces an MK dictionary only when values are present (2 ms)
+    ✓ updates values directly or through a parent dictionary (1 ms)
+    ✓ defers widget rendering to the form layer when forms are enabled (2 ms)
+  AnnotationFactory
+    ✓ creates factory globals from the document manager (1 ms)
+    ✓ returns null when gathering globals fails (1 ms)
+    ✓ dispatches every supported annotation subtype to the right class (8 ms)
+    ✓ dispatches widget field types, including the base fallback (3 ms)
+    ✓ falls back to the base annotation for missing or unknown subtypes (1 ms)
+    ✓ filters by collected type and ignores non-dictionaries
+    ✓ uses reference-based and generated ids as appropriate (1 ms)
+    ✓ resolves collectFields page indices before delegating to _create (1 ms)
+    ✓ returns print data for editor free-text annotations (1 ms)
+    ✓ does not generate images without OffscreenCanvas support
+
+Test Suites: 1 passed, 1 total
+Tests:       47 passed, 47 total
+Snapshots:   0 total
+Time:        4.373 s, estimated 5 s
+Ran all test suites within paths "test/core/annotation.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

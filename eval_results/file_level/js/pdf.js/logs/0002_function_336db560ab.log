@@ -1,0 +1,303 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/cff_parser.test.js
+  CFFStandardStrings
+    ✓ exposes the 391 standard CFF string SIDs (4 ms)
+  CFFStrings
+    ✓ resolves standard SIDs and falls back for unavailable custom SIDs
+    ✓ stores custom strings and maps names back to SIDs (1 ms)
+  CFFIndex, CFFHeader, CFFCharset and CFFFDSelect
+    ✓ CFFIndex tracks total length across add and set (2 ms)
+    ✓ CFFHeader stores all header fields (1 ms)
+    ✓ CFFCharset stores its flags and data (1 ms)
+    ✓ CFFFDSelect returns -1 for out-of-range glyph ids (1 ms)
+  CFFDict through CFFTopDict and CFFPrivateDict
+    ✓ returns layout defaults and reports absent names (2 ms)
+    ✓ sets simple values by key and by name (1 ms)
+    ✓ keeps array and delta typed values intact
+    ✓ ignores unknown keys, empty values and NaN operands (1 ms)
+    ✓ throws on unknown dictionary names (21 ms)
+    ✓ removeByName restores the default value
+    ✓ static tables expose keys, types, defaults and opcodes (2 ms)
+  CFFParser.parseHeader
+    ✓ parses a valid header
+    ✓ skips leading bytes when the CFF data is shifted
+    ✓ throws when no header marker exists (1 ms)
+  CFFParser.parseIndex
+    ✓ parses an empty INDEX (1 ms)
+    ✓ parses a single-object INDEX and reports its end position
+    ✓ parses a multi-object INDEX (1 ms)
+    ✓ rejects an invalid offset size of 0
+    ✓ rejects an invalid offset size of 5 (1 ms)
+  CFFParser name and string indices
+    ✓ decodes names and collects custom strings (1 ms)
+  CFFParser.parseDict
+    ✓ decodes all integer operand encodings (1 ms)
+    ✓ decodes real-number operands
+    ✓ decodes escaped two-byte commands (1 ms)
+    ✓ reports reserved operand commands as NaN
+    ✓ groups operands by following command
+  CFFParser.parseCharsets
+    ✓ returns the predefined charsets for offsets 0, 1 and 2 (1 ms)
+    ✓ parses format 0 charset SIDs
+    ✓ keeps numeric CIDs for CID fonts in format 0 (1 ms)
+    ✓ parses format 1 and format 2 range charsets (1 ms)
+    ✓ throws on an unknown charset format
+  CFFParser.parseEncoding
+    ✓ maps a charset through StandardEncoding (1 ms)
+    ✓ maps a charset through ExpertEncoding (1 ms)
+    ✓ parses custom format 0 encodings
+    ✓ parses custom format 1 range encodings
+    ✓ reads supplements and clears the supplement flag bit (1 ms)
+    ✓ throws on an unknown encoding format
+  CFFParser.parseFDSelect
+    ✓ parses format 0 FDSelect data
+    ✓ parses format 3 range data (1 ms)
+    ✓ recovers when the first format 3 range does not start at glyph 0
+    ✓ rejects ranges that expand past the glyph count (1 ms)
+    ✓ rejects unknown formats and length mismatches
+  CFFParser.parsePrivateDict
+    ✓ creates an empty private dictionary when none is present (1 ms)
+    ✓ parses private metrics and applies defaults (1 ms)
+    ✓ repairs omitted Ghostscript blue-zone values (1 ms)
+    ✓ clamps BlueScale using the largest blue-zone height (1 ms)
+    ✓ parses a relative Subrs INDEX
+    ✓ empties the private dictionary for zero sizes or invalid offsets
+    ✓ removes malformed Private entries (1 ms)
+    ✓ throws when a private DICT extends past the font data
+  CFFParser.parseCharString
+    ✓ rejects missing data and excessive subroutine nesting (1 ms)
+    ✓ decodes charstring number encodings (1 ms)
+    ✓ applies arithmetic operator stack functions
+    ✓ extracts the first-stack-clearing width (1 ms)
+    ✓ records seac components when seac analysis is enabled
+    ✓ fails when required subroutines are missing (1 ms)
+    ✓ fails on out-of-bounds subroutine indexes (1 ms)
+    ✓ executes local and global subroutines (1 ms)
+    ✓ repairs or rejects malformed charstring operators (1 ms)
+    ✓ repairs empty-stack arity errors but rejects non-empty ones
+  CFFParser.parseCharStrings
+    ✓ computes widths and replaces invalid glyphs (1 ms)
+    ✓ extracts seacs and replaces their glyphs (1 ms)
+    ✓ selects the private dict and local subrs via FDSelect (1 ms)
+    ✓ rejects glyphs without a valid FD index (1 ms)
+  CFF
+    ✓ duplicateFirstGlyph appends a copy for simple fonts (1 ms)
+    ✓ duplicateFirstGlyph also duplicates the FDSelect entry for CID fonts
+    ✓ duplicateFirstGlyph refuses when the glyph limit is reached (1 ms)
+    ✓ hasGlyphId checks bounds and empty outlines (1 ms)
+  CFFCompiler primitive encoders
+    ✓ encodeInteger(-107) uses the expected CFF encoding
+    ✓ encodeInteger(107) uses the expected CFF encoding (1 ms)
+    ✓ encodeInteger(108) uses the expected CFF encoding
+    ✓ encodeInteger(1131) uses the expected CFF encoding
+    ✓ encodeInteger(-108) uses the expected CFF encoding (1 ms)
+    ✓ encodeInteger(-1131) uses the expected CFF encoding
+    ✓ encodeInteger(-32768) uses the expected CFF encoding
+    ✓ encodeInteger(32767) uses the expected CFF encoding
+    ✓ encodeInteger(32768) uses the expected CFF encoding (1 ms)
+    ✓ encodeInteger(-32769) uses the expected CFF encoding
+    ✓ encodeNumber dispatches to integer and float encoders (1 ms)
+    ✓ encodeFloat round-trips 1.5
+    ✓ encodeFloat round-trips -1.5
+    ✓ encodeFloat round-trips 0.1
+    ✓ encodeFloat round-trips 3.14159 (1 ms)
+    ✓ encodeFloat round-trips -2.71828
+    ✓ encodeFloat round-trips 1e-7
+    ✓ encodeFloat round-trips 1e+21
+    ✓ encodeFloat rounds floating-point representation noise
+    ✓ compileHeader always writes a header size of 4
+  CFFCompiler index, charset and FDSelect encoders
+    ✓ compileNameIndex sanitizes, truncates and substitutes names (1 ms)
+    ✓ compileIndex emits an empty index and preserves object boundaries (1 ms)
+    ✓ compileIndex chooses offset size 300 -> 2
+    ✓ compileIndex chooses offset size 65536 -> 3 (1 ms)
+    ✓ compileStringIndex round-trips custom strings
+    ✓ compileCharStrings replaces empty glyphs with .notdef (1 ms)
+    ✓ compileCharset maps names to SIDs and substitutes unknown names (1 ms)
+    ✓ compileCharset emits an identity CID mapping
+    ✓ compileEncoding returns the stored raw encoding (1 ms)
+    ✓ compileFDSelect round-trips format 0 and format 3 (1 ms)
+  CFFCompiler compile validation and XUID handling
+    ✓ throws when CharStrings has not been tracked (1 ms)
+    ✓ throws when no private dictionary exists (1 ms)
+    ✓ keeps XUID arrays of at most 16 entries (1 ms)
+    ✓ removes XUID arrays longer than 16 entries (1 ms)
+  CFFParser.parse integration
+    ✓ parses a compiled simple font end-to-end (2 ms)
+    ✓ parses a compiled custom encoding (1 ms)
+    ✓ parses private and global subroutine indexes (2 ms)
+    ✓ extracts seac data during a full parse (1 ms)
+    ✓ falls back to the descriptor bbox when FontBBox is empty (1 ms)
+    ✓ recovers unsigned 16-bit negative lower-left coordinates
+    ✓ uses a corroborating descriptor to repair all bbox coordinates
+    ✓ preserves unsigned upper-right bbox coordinates without corroboration
+    ✓ throws for a font without a CFF header (1 ms)
+    ✓ parses a CID font with format 3 FDSelect (1 ms)
+    ✓ parses a CID font with format 0 FDSelect
+    ✓ moves a top-level CID FontMatrix into each FDArray entry (1 ms)
+    ✓ limits CID FDArray parsing to 256 entries (9 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       117 passed, 117 total
+Snapshots:   0 total
+Time:        0.77 s
+Ran all test suites within paths "test/core/cff_parser.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/cff_parser.test.js
+  CFFStandardStrings
+    ✓ exposes the 391 standard CFF string SIDs (3 ms)
+  CFFStrings
+    ✓ resolves standard SIDs and falls back for unavailable custom SIDs (1 ms)
+    ✓ stores custom strings and maps names back to SIDs (1 ms)
+  CFFIndex, CFFHeader, CFFCharset and CFFFDSelect
+    ✓ CFFIndex tracks total length across add and set (1 ms)
+    ✓ CFFHeader stores all header fields (1 ms)
+    ✓ CFFCharset stores its flags and data
+    ✓ CFFFDSelect returns -1 for out-of-range glyph ids
+  CFFDict through CFFTopDict and CFFPrivateDict
+    ✓ returns layout defaults and reports absent names (1 ms)
+    ✓ sets simple values by key and by name (1 ms)
+    ✓ keeps array and delta typed values intact (1 ms)
+    ✓ ignores unknown keys, empty values and NaN operands (1 ms)
+    ✓ throws on unknown dictionary names (26 ms)
+    ✓ removeByName restores the default value (1 ms)
+    ✓ static tables expose keys, types, defaults and opcodes (1 ms)
+  CFFParser.parseHeader
+    ✓ parses a valid header (1 ms)
+    ✓ skips leading bytes when the CFF data is shifted (1 ms)
+    ✓ throws when no header marker exists
+  CFFParser.parseIndex
+    ✓ parses an empty INDEX (1 ms)
+    ✓ parses a single-object INDEX and reports its end position
+    ✓ parses a multi-object INDEX (1 ms)
+    ✓ rejects an invalid offset size of 0
+    ✓ rejects an invalid offset size of 5 (1 ms)
+  CFFParser name and string indices
+    ✓ decodes names and collects custom strings (1 ms)
+  CFFParser.parseDict
+    ✓ decodes all integer operand encodings (1 ms)
+    ✓ decodes real-number operands
+    ✓ decodes escaped two-byte commands
+    ✓ reports reserved operand commands as NaN
+    ✓ groups operands by following command (1 ms)
+  CFFParser.parseCharsets
+    ✓ returns the predefined charsets for offsets 0, 1 and 2 (1 ms)
+    ✓ parses format 0 charset SIDs
+    ✓ keeps numeric CIDs for CID fonts in format 0 (1 ms)
+    ✓ parses format 1 and format 2 range charsets
+    ✓ throws on an unknown charset format
+  CFFParser.parseEncoding
+    ✓ maps a charset through StandardEncoding (1 ms)
+    ✓ maps a charset through ExpertEncoding
+    ✓ parses custom format 0 encodings
+    ✓ parses custom format 1 range encodings (1 ms)
+    ✓ reads supplements and clears the supplement flag bit
+    ✓ throws on an unknown encoding format (1 ms)
+  CFFParser.parseFDSelect
+    ✓ parses format 0 FDSelect data
+    ✓ parses format 3 range data
+    ✓ recovers when the first format 3 range does not start at glyph 0
+    ✓ rejects ranges that expand past the glyph count (1 ms)
+    ✓ rejects unknown formats and length mismatches (1 ms)
+  CFFParser.parsePrivateDict
+    ✓ creates an empty private dictionary when none is present (1 ms)
+    ✓ parses private metrics and applies defaults (1 ms)
+    ✓ repairs omitted Ghostscript blue-zone values (1 ms)
+    ✓ clamps BlueScale using the largest blue-zone height (1 ms)
+    ✓ parses a relative Subrs INDEX
+    ✓ empties the private dictionary for zero sizes or invalid offsets (1 ms)
+    ✓ removes malformed Private entries
+    ✓ throws when a private DICT extends past the font data (1 ms)
+  CFFParser.parseCharString
+    ✓ rejects missing data and excessive subroutine nesting (1 ms)
+    ✓ decodes charstring number encodings (1 ms)
+    ✓ applies arithmetic operator stack functions
+    ✓ extracts the first-stack-clearing width (1 ms)
+    ✓ records seac components when seac analysis is enabled (1 ms)
+    ✓ fails when required subroutines are missing
+    ✓ fails on out-of-bounds subroutine indexes
+    ✓ executes local and global subroutines
+    ✓ repairs or rejects malformed charstring operators (1 ms)
+    ✓ repairs empty-stack arity errors but rejects non-empty ones (1 ms)
+  CFFParser.parseCharStrings
+    ✓ computes widths and replaces invalid glyphs (1 ms)
+    ✓ extracts seacs and replaces their glyphs (1 ms)
+    ✓ selects the private dict and local subrs via FDSelect
+    ✓ rejects glyphs without a valid FD index
+  CFF
+    ✓ duplicateFirstGlyph appends a copy for simple fonts
+    ✓ duplicateFirstGlyph also duplicates the FDSelect entry for CID fonts (1 ms)
+    ✓ duplicateFirstGlyph refuses when the glyph limit is reached (1 ms)
+    ✓ hasGlyphId checks bounds and empty outlines
+  CFFCompiler primitive encoders
+    ✓ encodeInteger(-107) uses the expected CFF encoding (1 ms)
+    ✓ encodeInteger(107) uses the expected CFF encoding
+    ✓ encodeInteger(108) uses the expected CFF encoding
+    ✓ encodeInteger(1131) uses the expected CFF encoding
+    ✓ encodeInteger(-108) uses the expected CFF encoding (1 ms)
+    ✓ encodeInteger(-1131) uses the expected CFF encoding
+    ✓ encodeInteger(-32768) uses the expected CFF encoding
+    ✓ encodeInteger(32767) uses the expected CFF encoding
+    ✓ encodeInteger(32768) uses the expected CFF encoding (1 ms)
+    ✓ encodeInteger(-32769) uses the expected CFF encoding
+    ✓ encodeNumber dispatches to integer and float encoders (1 ms)
+    ✓ encodeFloat round-trips 1.5
+    ✓ encodeFloat round-trips -1.5 (1 ms)
+    ✓ encodeFloat round-trips 0.1
+    ✓ encodeFloat round-trips 3.14159
+    ✓ encodeFloat round-trips -2.71828 (1 ms)
+    ✓ encodeFloat round-trips 1e-7
+    ✓ encodeFloat round-trips 1e+21
+    ✓ encodeFloat rounds floating-point representation noise
+    ✓ compileHeader always writes a header size of 4 (1 ms)
+  CFFCompiler index, charset and FDSelect encoders
+    ✓ compileNameIndex sanitizes, truncates and substitutes names (1 ms)
+    ✓ compileIndex emits an empty index and preserves object boundaries
+    ✓ compileIndex chooses offset size 300 -> 2
+    ✓ compileIndex chooses offset size 65536 -> 3
+    ✓ compileStringIndex round-trips custom strings (1 ms)
+    ✓ compileCharStrings replaces empty glyphs with .notdef
+    ✓ compileCharset maps names to SIDs and substitutes unknown names (1 ms)
+    ✓ compileCharset emits an identity CID mapping
+    ✓ compileEncoding returns the stored raw encoding (1 ms)
+    ✓ compileFDSelect round-trips format 0 and format 3
+  CFFCompiler compile validation and XUID handling
+    ✓ throws when CharStrings has not been tracked (1 ms)
+    ✓ throws when no private dictionary exists
+    ✓ keeps XUID arrays of at most 16 entries (2 ms)
+    ✓ removes XUID arrays longer than 16 entries (1 ms)
+  CFFParser.parse integration
+    ✓ parses a compiled simple font end-to-end (2 ms)
+    ✓ parses a compiled custom encoding (1 ms)
+    ✓ parses private and global subroutine indexes (1 ms)
+    ✓ extracts seac data during a full parse (1 ms)
+    ✓ falls back to the descriptor bbox when FontBBox is empty (1 ms)
+    ✓ recovers unsigned 16-bit negative lower-left coordinates (1 ms)
+    ✓ uses a corroborating descriptor to repair all bbox coordinates (1 ms)
+    ✓ preserves unsigned upper-right bbox coordinates without corroboration (1 ms)
+    ✓ throws for a font without a CFF header
+    ✓ parses a CID font with format 3 FDSelect (2 ms)
+    ✓ parses a CID font with format 0 FDSelect (1 ms)
+    ✓ moves a top-level CID FontMatrix into each FDArray entry (2 ms)
+    ✓ limits CID FDArray parsing to 256 entries (16 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       117 passed, 117 total
+Snapshots:   0 total
+Time:        1.292 s
+Ran all test suites within paths "test/core/cff_parser.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

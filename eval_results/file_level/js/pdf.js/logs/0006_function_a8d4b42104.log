@@ -1,0 +1,101 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/glyf.test.js
+  GlyfTable parsing
+    ✓ parses a simple glyph header, contours, coordinates and boundary flags (5 ms)
+    ✓ honours the instruction length while locating the point data (1 ms)
+    ✓ expands repeated point flags into one flag per point (1 ms)
+    ✓ parses empty glyph entries as header-less glyphs (1 ms)
+    ✓ parses a composite glyph with signed short arguments and instructions (1 ms)
+    ✓ parses all composite transform variants and includes them in the size (1 ms)
+    ✓ reads long loca offsets beyond the 16 bit range (1 ms)
+  Glyph sizing and writing
+    ✓ reports the exact and table-rounded sizes for a simple glyph (1 ms)
+    ✓ writes a simple glyph back into a compact glyf/loca pair (1 ms)
+    ✓ writes a repeated-flag glyph without losing points (1 ms)
+    ✓ preserves empty glyph entries when writing a mixed table (2 ms)
+    ✓ writes a plain composite glyph and round-trips its arguments (1 ms)
+    ✓ chooses the right argument width for signed bytes that fit
+    ✓ chooses the right argument width for unsigned bytes that fit (1 ms)
+    ✓ chooses the right argument width for word arguments read as signed
+    ✓ chooses the right argument width for word arguments read as unsigned
+    ✓ uses word-sized coordinate deltas when a delta exceeds one byte (1 ms)
+    ✓ writes short loca entries for a large but still short glyph (115 ms)
+    ✓ switches to long loca entries when the glyf table is larger than 0x1fffe (249 ms)
+  Glyph scaling
+    ✓ scales simple glyph x coordinates and horizontal bounds around the x middle (1 ms)
+    ✓ rounds scaled coordinates and applies one factor per glyph (1 ms)
+    ✓ scales a composite header without changing component records (1 ms)
+  pruneCompositeGlyphCycles
+    ✓ drops a glyph whose only component is itself (1 ms)
+    ✓ reports the closing glyph of a multi-glyph cycle
+    ✓ leaves an acyclic composite graph untouched (1 ms)
+    ✓ removes a cyclic component, compacts the rest and clears trailing bytes (1 ms)
+    ✓ clears MORE_COMPONENTS when the removed edge was the last component (1 ms)
+    ✓ accounts for transform records while scanning components
+    ✓ accounts for x/y and two-by-two transform records while scanning (1 ms)
+    ✓ drops several independent self-referencing glyphs and skips non-composites
+    ✓ ignores component glyph ids outside the numGlyphs range (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       31 passed, 31 total
+Snapshots:   0 total
+Time:        0.912 s
+Ran all test suites within paths "test/core/glyf.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/glyf.test.js
+  GlyfTable parsing
+    ✓ parses a simple glyph header, contours, coordinates and boundary flags (5 ms)
+    ✓ honours the instruction length while locating the point data (1 ms)
+    ✓ expands repeated point flags into one flag per point (1 ms)
+    ✓ parses empty glyph entries as header-less glyphs (1 ms)
+    ✓ parses a composite glyph with signed short arguments and instructions (1 ms)
+    ✓ parses all composite transform variants and includes them in the size (7 ms)
+    ✓ reads long loca offsets beyond the 16 bit range (1 ms)
+  Glyph sizing and writing
+    ✓ reports the exact and table-rounded sizes for a simple glyph (1 ms)
+    ✓ writes a simple glyph back into a compact glyf/loca pair (2 ms)
+    ✓ writes a repeated-flag glyph without losing points (1 ms)
+    ✓ preserves empty glyph entries when writing a mixed table (2 ms)
+    ✓ writes a plain composite glyph and round-trips its arguments (1 ms)
+    ✓ chooses the right argument width for signed bytes that fit (1 ms)
+    ✓ chooses the right argument width for unsigned bytes that fit
+    ✓ chooses the right argument width for word arguments read as signed
+    ✓ chooses the right argument width for word arguments read as unsigned (1 ms)
+    ✓ uses word-sized coordinate deltas when a delta exceeds one byte (1 ms)
+    ✓ writes short loca entries for a large but still short glyph (141 ms)
+    ✓ switches to long loca entries when the glyf table is larger than 0x1fffe (238 ms)
+  Glyph scaling
+    ✓ scales simple glyph x coordinates and horizontal bounds around the x middle (1 ms)
+    ✓ rounds scaled coordinates and applies one factor per glyph (1 ms)
+    ✓ scales a composite header without changing component records (1 ms)
+  pruneCompositeGlyphCycles
+    ✓ drops a glyph whose only component is itself (1 ms)
+    ✓ reports the closing glyph of a multi-glyph cycle (1 ms)
+    ✓ leaves an acyclic composite graph untouched (1 ms)
+    ✓ removes a cyclic component, compacts the rest and clears trailing bytes (1 ms)
+    ✓ clears MORE_COMPONENTS when the removed edge was the last component (1 ms)
+    ✓ accounts for transform records while scanning components
+    ✓ accounts for x/y and two-by-two transform records while scanning
+    ✓ drops several independent self-referencing glyphs and skips non-composites (1 ms)
+    ✓ ignores component glyph ids outside the numGlyphs range
+
+Test Suites: 1 passed, 1 total
+Tests:       31 passed, 31 total
+Snapshots:   0 total
+Time:        1.102 s
+Ran all test suites within paths "test/core/glyf.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

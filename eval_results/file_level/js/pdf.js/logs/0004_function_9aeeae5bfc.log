@@ -1,0 +1,175 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/evaluator.test.js
+  core/evaluator
+    EvaluatorPreprocessor command reading
+      ✓ reads numeric operands and the command id, then reports EOF (5 ms)
+      ✓ leaves args null for a zero-argument command when no array is supplied (1 ms)
+      ✓ reuses a caller-provided arguments array (1 ms)
+      ✓ warns about an unknown command and continues with the next command (3 ms)
+      ✓ warns about and skips a command with too few arguments (1 ms)
+      ✓ allows ten invalid path operators but throws on the eleventh (17 ms)
+      ✓ throws when more than 33 operands have accumulated (1 ms)
+      ✓ accepts extra operands for variable-argument commands and logs an info message (1 ms)
+      ✓ tracks nested save/restore state depth without going negative
+      ✓ accumulates transformation matrices from the cm operator
+      ✓ restores the transformation matrix when a saved state is restored (1 ms)
+      ✓ exposes command specifications for the operators it understands
+    PartialEvaluator configuration
+      ✓ uses the documented default options (1 ms)
+      ✓ uses supplied options as-is until cloned
+      ✓ clones with an independent merged options object (1 ms)
+      ✓ reports whether it is parsing a Type3 font (1 ms)
+    PartialEvaluator.hasBlendModes
+      ✓ returns false for non-dictionary resources
+      ✓ returns false when every blend mode is Normal (1 ms)
+      ✓ detects a non-Normal blend mode
+      ✓ detects a supported blend mode inside an array
+      ✓ finds blend modes in nested XObject resources (1 ms)
+      ✓ resolves referenced ExtGStates through the xref
+      ✓ ignores an ExtGState that cannot be fetched (1 ms)
+      ✓ remembers resources that contain no blend modes
+    PartialEvaluator.buildPath
+      ✓ builds a complete rectangle and updates its bounding box (1 ms)
+      ✓ degenerates a rectangle with a zero dimension into a line
+      ✓ handles a rectangle with negative width and height (1 ms)
+      ✓ tracks line segments and the current point
+      ✓ converts a curveTo into a cubic curve and bounds it (1 ms)
+      ✓ converts curveTo2 using the current point as the first control point (1 ms)
+      ✓ converts curveTo3 duplicating the endpoint as the final control point
+      ✓ appends a closePath operation without changing the current point (1 ms)
+      ✓ ignores non-path operators
+    PartialEvaluator text handling
+      ✓ returns the glyphs produced by the current font (1 ms)
+      ✓ builds font paths when font faces are disabled (1 ms)
+      ✓ does nothing from ensureStateFont when a font is already selected
+      ✓ throws a FormatError when no font has been selected (1 ms)
+      ✓ only warns about a missing font when errors are ignored
+    PartialEvaluator font metrics helpers
+      ✓ identifies serif fonts by name and fallback convention (1 ms)
+      ✓ returns monospaced metrics for Courier (1 ms)
+      ✓ returns glyph widths for a proportional standard font
+      ✓ falls back to Times-Roman for unknown serif fonts and Helvetica otherwise (1 ms)
+      ✓ prefers differences over the default encoding when building widths (1 ms)
+      ✓ reads a CID-to-GID map while skipping unmapped zero glyphs
+    PartialEvaluator.preEvaluateFont
+      ✓ applies defaults for a simple font (1 ms)
+      ✓ rejects a missing or non-Name font subtype (1 ms)
+      ✓ rejects a composite font without a valid descendant font
+      ✓ resolves a Type0 descendant font through the xref (1 ms)
+      ✓ produces stable hashes for equivalent fonts and a different hash for changed metrics (1 ms)
+    PartialEvaluator external data fetching
+      ✓ returns a cached built-in CMap without sending a request (1 ms)
+      ✓ fetches a built-in CMap with cMapPacked=true and caches it
+      ✓ fetches a built-in CMap with cMapPacked=false and caches it (1 ms)
+      ✓ returns cached standard font data as a stream
+      ✓ does not fetch standard data for non-symbol system fonts (1 ms)
+      ✓ fetches and caches standard font data for symbol fonts (1 ms)
+      ✓ returns null and warns when standard font data cannot be fetched
+    PartialEvaluator.getOperatorList
+      ✓ rejects when the operator list is missing (50 ms)
+      ✓ processes paths and fill colors into operator-list entries (2 ms)
+      ✓ emits an empty constructPath entry for a pathless paint operator (1 ms)
+      ✓ closes the subpath for the close-stroke operator (1 ms)
+      ✓ closes open graphics states and drops an unfinished path at EOF
+      ✓ rejects invalid XObject references unless errors are ignored (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       62 passed, 62 total
+Snapshots:   0 total
+Time:        2.278 s
+Ran all test suites within paths "test/core/evaluator.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/evaluator.test.js
+  core/evaluator
+    EvaluatorPreprocessor command reading
+      ✓ reads numeric operands and the command id, then reports EOF (5 ms)
+      ✓ leaves args null for a zero-argument command when no array is supplied (1 ms)
+      ✓ reuses a caller-provided arguments array (1 ms)
+      ✓ warns about an unknown command and continues with the next command (2 ms)
+      ✓ warns about and skips a command with too few arguments (1 ms)
+      ✓ allows ten invalid path operators but throws on the eleventh (16 ms)
+      ✓ throws when more than 33 operands have accumulated
+      ✓ accepts extra operands for variable-argument commands and logs an info message
+      ✓ tracks nested save/restore state depth without going negative (1 ms)
+      ✓ accumulates transformation matrices from the cm operator
+      ✓ restores the transformation matrix when a saved state is restored
+      ✓ exposes command specifications for the operators it understands
+    PartialEvaluator configuration
+      ✓ uses the documented default options (1 ms)
+      ✓ uses supplied options as-is until cloned (1 ms)
+      ✓ clones with an independent merged options object
+      ✓ reports whether it is parsing a Type3 font
+    PartialEvaluator.hasBlendModes
+      ✓ returns false for non-dictionary resources (1 ms)
+      ✓ returns false when every blend mode is Normal
+      ✓ detects a non-Normal blend mode (1 ms)
+      ✓ detects a supported blend mode inside an array
+      ✓ finds blend modes in nested XObject resources
+      ✓ resolves referenced ExtGStates through the xref (1 ms)
+      ✓ ignores an ExtGState that cannot be fetched
+      ✓ remembers resources that contain no blend modes (1 ms)
+    PartialEvaluator.buildPath
+      ✓ builds a complete rectangle and updates its bounding box (1 ms)
+      ✓ degenerates a rectangle with a zero dimension into a line
+      ✓ handles a rectangle with negative width and height (1 ms)
+      ✓ tracks line segments and the current point
+      ✓ converts a curveTo into a cubic curve and bounds it (1 ms)
+      ✓ converts curveTo2 using the current point as the first control point
+      ✓ converts curveTo3 duplicating the endpoint as the final control point (1 ms)
+      ✓ appends a closePath operation without changing the current point
+      ✓ ignores non-path operators (1 ms)
+    PartialEvaluator text handling
+      ✓ returns the glyphs produced by the current font
+      ✓ builds font paths when font faces are disabled
+      ✓ does nothing from ensureStateFont when a font is already selected (1 ms)
+      ✓ throws a FormatError when no font has been selected
+      ✓ only warns about a missing font when errors are ignored (1 ms)
+    PartialEvaluator font metrics helpers
+      ✓ identifies serif fonts by name and fallback convention (1 ms)
+      ✓ returns monospaced metrics for Courier
+      ✓ returns glyph widths for a proportional standard font (1 ms)
+      ✓ falls back to Times-Roman for unknown serif fonts and Helvetica otherwise (1 ms)
+      ✓ prefers differences over the default encoding when building widths
+      ✓ reads a CID-to-GID map while skipping unmapped zero glyphs
+    PartialEvaluator.preEvaluateFont
+      ✓ applies defaults for a simple font (1 ms)
+      ✓ rejects a missing or non-Name font subtype
+      ✓ rejects a composite font without a valid descendant font
+      ✓ resolves a Type0 descendant font through the xref (1 ms)
+      ✓ produces stable hashes for equivalent fonts and a different hash for changed metrics (1 ms)
+    PartialEvaluator external data fetching
+      ✓ returns a cached built-in CMap without sending a request (1 ms)
+      ✓ fetches a built-in CMap with cMapPacked=true and caches it (1 ms)
+      ✓ fetches a built-in CMap with cMapPacked=false and caches it
+      ✓ returns cached standard font data as a stream (1 ms)
+      ✓ does not fetch standard data for non-symbol system fonts
+      ✓ fetches and caches standard font data for symbol fonts (1 ms)
+      ✓ returns null and warns when standard font data cannot be fetched (1 ms)
+    PartialEvaluator.getOperatorList
+      ✓ rejects when the operator list is missing (100 ms)
+      ✓ processes paths and fill colors into operator-list entries (3 ms)
+      ✓ emits an empty constructPath entry for a pathless paint operator (1 ms)
+      ✓ closes the subpath for the close-stroke operator
+      ✓ closes open graphics states and drops an unfinished path at EOF
+      ✓ rejects invalid XObject references unless errors are ignored (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       62 passed, 62 total
+Snapshots:   0 total
+Time:        3.39 s
+Ran all test suites within paths "test/core/evaluator.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

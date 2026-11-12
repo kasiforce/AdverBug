@@ -1,0 +1,96 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_auc_roc_perfect_ranking_returns_float
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_auc_roc_default_metric_is_reported_for_reversed_ranking
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_auc_roc_with_tied_scores
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_auc_pr_known_value
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_auc_pr_perfect_ranking
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_multivariate_scores_return_one_value_per_component
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_sequence_of_univariate_series_returns_one_value_per_series
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_single_element_sequence_is_not_unwrapped
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_single_anomalies_series_is_broadcast_over_all_scores
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_sequence_of_multivariate_series_returns_nested_scores
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_only_overlapping_time_index_is_used
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_window_pools_anomalies_into_the_prediction_horizon
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_window_sequence_of_one_value_is_broadcast_to_all_series
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_invalid_metric_raises
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_number_of_series_must_match
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_window_list_length_must_match_number_of_series
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_non_binary_anomalies_raise[2.0]
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_non_binary_anomalies_raise[-1.0]
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_non_binary_anomalies_raise[0.5]
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_scores_without_any_anomaly_raise
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_scores_with_only_anomalies_raise
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_only_anomalies_after_pooling_hints_at_the_window_size
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_width_mismatch_raises
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_non_overlapping_time_index_raises
+tests/darts/ad/test_utils.py::TestEvalMetricFromScores::test_non_timeseries_prediction_raises
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_known_binary_metrics[recall-0.6666666666666666]
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_known_binary_metrics[precision-1.0]
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_known_binary_metrics[f1-0.8]
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_known_binary_metrics[accuracy-0.8333333333333334]
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_default_metric_is_recall
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_multivariate_prediction_returns_value_per_component
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_window_pools_the_ground_truth_anomalies
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_identical_inputs_give_perfect_metrics
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_all_zero_predictions_are_allowed_for_accuracy
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_score_metric_name_is_rejected
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_non_binary_prediction_raises
+tests/darts/ad/test_utils.py::TestEvalMetricFromBinaryPrediction::test_sequences_of_predictions_are_supported
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_returns_none_and_plots_series_and_anomalies
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_pred_series_is_plotted_alongside_the_series
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_stochastic_pred_series_plots_confidence_interval
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_default_title_and_metric_in_score_label
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_score_label_has_no_metric_value_when_metric_is_none
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_custom_names_and_title_are_used
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_single_string_scorer_name_is_accepted
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_component_wise_plot_for_multivariate_series
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_metric_without_anomalies_raises
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_mismatching_number_of_scorer_names_raises
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_non_positive_window_raises[0]
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_non_positive_window_raises[-1]
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_non_positive_window_raises[-5]
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_window_sequence_length_must_match_scores
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_window_larger_than_the_series_raises
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_pred_series_width_must_match_the_series
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_series_must_be_a_single_timeseries
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_component_wise_requires_multivariate_series
+tests/darts/ad/test_utils.py::TestShowAnomaliesFromScores::test_series_only_plot_should_be_supported
+
+[32m[32m56 tests collected[0m[32m in 27.31s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mx[0m[32m                 [100%][0m
+[32m[32m[1m55 passed[0m, [33m1 xfailed[0m[32m in 7.10s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,41 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestNoise::test_noise_adds_centered_scaled_noise_and_is_reproducible
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestNoise::test_noise_with_zero_scale_leaves_values_unchanged
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPermute::test_full_permutation_preserves_values_and_is_reproducible
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPermute::test_partial_permutation_preserves_the_value_multiset
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPermute::test_fraction_greater_than_one_raises
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestProcessData::test_zero_transformation_zeros_validation_outcome
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestProcessData::test_custom_callable_is_trained_on_training_data_and_applied_to_validation
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestProcessData::test_builtin_linear_regression_generates_predictions
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_more_than_one_treatment_is_rejected
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_boolean_treatment_is_grouped_by_its_values
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_categorical_treatment_is_grouped_by_its_values
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_continuous_treatment_is_partitioned_into_multiple_groups
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_unsupported_treatment_dtype_is_rejected
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_false_required_variables_is_rejected
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_unknown_required_variable_is_rejected
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_required_variables_defaults_to_all_adjustment_variables
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_simple_path_reports_known_effect_and_does_not_mutate_inputs
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_unobserved_confounder_values_are_available_to_the_generated_model
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_seeded_noise_makes_refutation_results_reproducible
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_estimator_path_reports_one_refutation_per_treatment_group
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_small_training_groups_fall_back_to_default_transformation
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestDummyOutcomeRefuter::test_required_variables_false_is_rejected_by_constructor
+tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestDummyOutcomeRefuter::test_refute_estimate_forwards_configuration_and_attaches_refuter
+
+23 tests collected in 40.61s
+
+=== test.log ===
+..........FF...F.......                                                  [100%]
+=========================== short test summary info ============================
+FAILED tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_categorical_treatment_is_grouped_by_its_values
+FAILED tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestPreprocessDataByTreatment::test_continuous_treatment_is_partitioned_into_multiple_groups
+FAILED tests/dowhy/causal_refuters/test_dummy_outcome_refuter.py::TestRefuteDummyOutcome::test_required_variables_defaults_to_all_adjustment_variables
+3 failed, 20 passed, 15 warnings in 4.14s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

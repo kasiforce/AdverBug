@@ -1,0 +1,92 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/utils/test_timeseries_generation.py::test_constant_timeseries_default_datetime_index_values_and_column
+tests/darts/utils/test_timeseries_generation.py::test_constant_timeseries_integer_index_custom_column_frequency_and_dtype
+tests/darts/utils/test_timeseries_generation.py::test_constant_timeseries_start_end_generates_inclusive_index
+tests/darts/utils/test_timeseries_generation.py::test_linear_timeseries_spans_requested_endpoints[kwargs0-expected0]
+tests/darts/utils/test_timeseries_generation.py::test_linear_timeseries_spans_requested_endpoints[kwargs1-expected1]
+tests/darts/utils/test_timeseries_generation.py::test_linear_timeseries_spans_requested_endpoints[kwargs2-expected2]
+tests/darts/utils/test_timeseries_generation.py::test_linear_timeseries_custom_column_dtype_and_datetime_index
+tests/darts/utils/test_timeseries_generation.py::test_sine_timeseries_applies_amplitude_frequency_phase_and_offset
+tests/darts/utils/test_timeseries_generation.py::test_gaussian_timeseries_samples_with_requested_parameters
+tests/darts/utils/test_timeseries_generation.py::test_gaussian_timeseries_accepts_and_forwards_vector_mean
+tests/darts/utils/test_timeseries_generation.py::test_gaussian_timeseries_rejects_wrong_vector_mean_length
+tests/darts/utils/test_timeseries_generation.py::test_gaussian_timeseries_rejects_wrong_covariance_dimensions
+tests/darts/utils/test_timeseries_generation.py::test_random_walk_timeseries_accumulates_drawn_steps
+tests/darts/utils/test_timeseries_generation.py::test_autoregressive_timeseries_uses_documented_recurrence
+tests/darts/utils/test_timeseries_generation.py::test_autoregressive_timeseries_defaults_start_values_to_ones
+tests/darts/utils/test_timeseries_generation.py::test_autoregressive_timeseries_rejects_mismatched_start_values
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_marks_holidays_and_accepts_dtype_and_column_name
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_uses_timeseries_time_axis
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_extends_time_index[extension0]
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_extends_time_index[extension1]
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_applies_timezone_before_computing_holidays
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_rejects_non_datetime_index
+tests/darts/utils/test_timeseries_generation.py::test_holidays_timeseries_rejects_timezone_aware_index
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_zero_indexed_attributes[month-index0-expected0]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_zero_indexed_attributes[day-index1-expected1]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_zero_indexed_attributes[weekday-index2-expected2]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_zero_indexed_attributes[quarter-index3-expected3]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_zero_indexed_attributes[dayofyear-index4-expected4]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_accepts_series_custom_column_and_dtype
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_one_hot_month_fills_missing_categories
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_one_hot_with_custom_columns
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_cyclic_month_uses_trigonometric_transform
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_cyclic_day_uses_month_length_and_custom_names
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_extends_index_and_computes_new_values[kwargs0]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_extends_index_and_computes_new_values[kwargs1]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_dayofyear_one_hot_handles_leap_years[2020-366]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_dayofyear_one_hot_handles_leap_years[2021-365]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_week_one_hot_handles_53_week_years[2020-53]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_week_one_hot_handles_53_week_years[2021-52]
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_tz_affects_attributes_but_not_output_index
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_unknown_attribute
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_one_hot_and_cyclic_together
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_unsupported_one_hot_attribute
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_non_string_plain_column_name
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_wrong_cyclic_column_count
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_wrong_one_hot_column_count
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_non_datetime_index
+tests/darts/utils/test_timeseries_generation.py::test_datetime_attribute_timeseries_rejects_timezone_aware_index
+tests/darts/utils/test_timeseries_generation.py::test_time_index_extension_rejects_both_add_length_and_until[datetime_attribute_timeseries-extra_kwargs0]
+tests/darts/utils/test_timeseries_generation.py::test_time_index_extension_rejects_both_add_length_and_until[holidays_timeseries-extra_kwargs1]
+tests/darts/utils/test_timeseries_generation.py::test_time_index_extension_rejects_until_before_index_end[datetime_attribute_timeseries-extra_kwargs0]
+tests/darts/utils/test_timeseries_generation.py::test_time_index_extension_rejects_until_before_index_end[holidays_timeseries-extra_kwargs1]
+
+[32m[32m52 tests collected[0m[32m in 0.57s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                     [100%][0m
+[33m[32m52 passed[0m, [33m[1m4 warnings[0m[33m in 1.34s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

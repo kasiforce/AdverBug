@@ -1,0 +1,171 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/type1_parser.test.js
+  Type1Parser tokenizer
+    ✓ skips whitespace and comments, and splits special characters (5 ms)
+    ✓ reads numbers with readNumber, readInt and readBoolean (1 ms)
+    ✓ stops a number array at a closing bracket
+    ✓ reads number arrays delimited by braces as well (1 ms)
+    ✓ returns an empty array when the stream ends early (1 ms)
+    ✓ supports prevChar rewinding to the previous terminator
+    ✓ readCharStrings returns the input untouched when lenIV is -1 (1 ms)
+    ✓ readCharStrings discards lenIV bytes when decrypting
+  Type1Parser.extractFontHeader
+    ✓ reads FontMatrix and FontBBox, scaling ascent and descent (1 ms)
+    ✓ reads an array based Encoding built from dup/put entries
+    ✓ stops reading an array based Encoding at a def token (1 ms)
+    ✓ resolves a named Encoding through the encodings table (1 ms)
+    ✓ ignores unknown keys and yields null for unknown encoding names (1 ms)
+    ✓ returns early on an unterminated array based Encoding
+  Type1Parser.extractFontProgram: charstring conversion
+    ✓ starts with an empty program shape (1 ms)
+    ✓ converts hsbw into an hmoveto carrying width and lsb (1 ms)
+    ✓ encodes large and negative numbers in two byte form (1 ms)
+    ✓ moves .notdef to the first position
+    ✓ drops hinting commands since hinting is disabled
+    ✓ replaces a broken charstring with a lone endchar
+    ✓ handles zero length charstrings (1 ms)
+    ✓ inlines called subroutines
+    ✓ reports an error when calling a missing subroutine (1 ms)
+    ✓ ignores a second CharStrings and Subrs block
+  Type1Parser.extractFontProgram: private dictionary
+    ✓ collects the supported private data entries (1 ms)
+    ✓ skips *Blue* values while hinting is disabled
+    ✓ resets a null ExpansionFactor to its default value
+    ✓ keeps a non null ExpansionFactor
+    ✓ honours a lenIV of -1 by treating charstrings as plain text (1 ms)
+    ✓ decrypts charstrings with the default lenIV of 4
+  Type1Parser: header and program interaction
+    ✓ uses the header encoding to recover widths from a font program
+  Type1Parser.extractFontProgram: widths recovery
+    ✓ only replaces undefined widths inside the char index range
+  Type1Parser.extractFontProgram: seac handling
+    ✓ rewrites seac into an endchar with adjusted adx when enabled
+    ✓ keeps the four seac operands when analysis is disabled (1 ms)
+    ✓ treats the seacAnalysisEnabled flag as a boolean
+  Type1Parser.extractFontProgram: flex handling
+    ✓ expands callothersubr 0 3 into a flex command (1 ms)
+    ✓ turns moveto commands into stack pushes while flexing (1 ms)
+    ✓ ignores dotsection and closepath without failing
+  Type1Parser eexec decryption
+    ✓ decrypts a binary eexec block
+    ✓ decrypts a hex encoded eexec block
+    ✓ yields an empty program when the eexec block is too short
+  Type1Parser.extractCidKeyedFontProgram
+    ✓ extracts charstrings, subrs and font properties (3 ms)
+    ✓ extracts a hex encoded CID data section (1 ms)
+    ✓ caps an oversized binary length to the remaining bytes (1 ms)
+    ✓ reuses the .notdef charstring for empty CID intervals (1 ms)
+    ✓ inlines subroutines called from CID charstrings (1 ms)
+    ✓ emits empty subroutines for out of range subr offsets
+    ✓ returns null without a StartData marker
+    ✓ returns null when StartData has no valid marker arguments
+    ✓ returns null for a zero StartData length (1 ms)
+    ✓ returns null without a CIDCount
+    ✓ returns null for an invalid GDBytes value (1 ms)
+    ✓ returns null when the CIDMap does not fit in the data section
+    ✓ returns null when a Subrs map is declared but missing (1 ms)
+    ✓ returns null for fonts selecting multiple font dictionaries
+    ✓ returns null when the hex data section is incomplete (1 ms)
+  Type1Parser.extractFontProgram: robustness
+    ✓ recovers when the ND token is missing before the next glyph (1 ms)
+    ✓ warns about but ignores unknown charstring commands
+    ✓ resolves subroutines in place instead of exposing them separately
+
+Test Suites: 1 passed, 1 total
+Tests:       59 passed, 59 total
+Snapshots:   0 total
+Time:        0.748 s
+Ran all test suites within paths "test/core/type1_parser.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/type1_parser.test.js
+  Type1Parser tokenizer
+    ✓ skips whitespace and comments, and splits special characters (5 ms)
+    ✓ reads numbers with readNumber, readInt and readBoolean (1 ms)
+    ✓ stops a number array at a closing bracket
+    ✓ reads number arrays delimited by braces as well (1 ms)
+    ✓ returns an empty array when the stream ends early (1 ms)
+    ✓ supports prevChar rewinding to the previous terminator
+    ✓ readCharStrings returns the input untouched when lenIV is -1 (1 ms)
+    ✓ readCharStrings discards lenIV bytes when decrypting
+  Type1Parser.extractFontHeader
+    ✓ reads FontMatrix and FontBBox, scaling ascent and descent (1 ms)
+    ✓ reads an array based Encoding built from dup/put entries
+    ✓ stops reading an array based Encoding at a def token (1 ms)
+    ✓ resolves a named Encoding through the encodings table (1 ms)
+    ✓ ignores unknown keys and yields null for unknown encoding names (1 ms)
+    ✓ returns early on an unterminated array based Encoding (1 ms)
+  Type1Parser.extractFontProgram: charstring conversion
+    ✓ starts with an empty program shape (1 ms)
+    ✓ converts hsbw into an hmoveto carrying width and lsb (2 ms)
+    ✓ encodes large and negative numbers in two byte form (1 ms)
+    ✓ moves .notdef to the first position (1 ms)
+    ✓ drops hinting commands since hinting is disabled (1 ms)
+    ✓ replaces a broken charstring with a lone endchar
+    ✓ handles zero length charstrings (1 ms)
+    ✓ inlines called subroutines (1 ms)
+    ✓ reports an error when calling a missing subroutine (1 ms)
+    ✓ ignores a second CharStrings and Subrs block
+  Type1Parser.extractFontProgram: private dictionary
+    ✓ collects the supported private data entries (1 ms)
+    ✓ skips *Blue* values while hinting is disabled (1 ms)
+    ✓ resets a null ExpansionFactor to its default value
+    ✓ keeps a non null ExpansionFactor
+    ✓ honours a lenIV of -1 by treating charstrings as plain text
+    ✓ decrypts charstrings with the default lenIV of 4
+  Type1Parser: header and program interaction
+    ✓ uses the header encoding to recover widths from a font program
+  Type1Parser.extractFontProgram: widths recovery
+    ✓ only replaces undefined widths inside the char index range
+  Type1Parser.extractFontProgram: seac handling
+    ✓ rewrites seac into an endchar with adjusted adx when enabled (1 ms)
+    ✓ keeps the four seac operands when analysis is disabled (1 ms)
+    ✓ treats the seacAnalysisEnabled flag as a boolean
+  Type1Parser.extractFontProgram: flex handling
+    ✓ expands callothersubr 0 3 into a flex command (1 ms)
+    ✓ turns moveto commands into stack pushes while flexing
+    ✓ ignores dotsection and closepath without failing (1 ms)
+  Type1Parser eexec decryption
+    ✓ decrypts a binary eexec block
+    ✓ decrypts a hex encoded eexec block (1 ms)
+    ✓ yields an empty program when the eexec block is too short
+  Type1Parser.extractCidKeyedFontProgram
+    ✓ extracts charstrings, subrs and font properties (4 ms)
+    ✓ extracts a hex encoded CID data section (1 ms)
+    ✓ caps an oversized binary length to the remaining bytes (1 ms)
+    ✓ reuses the .notdef charstring for empty CID intervals (1 ms)
+    ✓ inlines subroutines called from CID charstrings (1 ms)
+    ✓ emits empty subroutines for out of range subr offsets (1 ms)
+    ✓ returns null without a StartData marker
+    ✓ returns null when StartData has no valid marker arguments (1 ms)
+    ✓ returns null for a zero StartData length
+    ✓ returns null without a CIDCount (1 ms)
+    ✓ returns null for an invalid GDBytes value (1 ms)
+    ✓ returns null when the CIDMap does not fit in the data section (1 ms)
+    ✓ returns null when a Subrs map is declared but missing (1 ms)
+    ✓ returns null for fonts selecting multiple font dictionaries (1 ms)
+    ✓ returns null when the hex data section is incomplete (1 ms)
+  Type1Parser.extractFontProgram: robustness
+    ✓ recovers when the ND token is missing before the next glyph (1 ms)
+    ✓ warns about but ignores unknown charstring commands (1 ms)
+    ✓ resolves subroutines in place instead of exposing them separately (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       59 passed, 59 total
+Snapshots:   0 total
+Time:        1.101 s
+Ran all test suites within paths "test/core/type1_parser.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

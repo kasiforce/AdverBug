@@ -1,0 +1,231 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tsl/js/managers/PlaygroundManager.test.js
+  PlaygroundManager constructor
+    ✓ stores guide and initializes playground state (4 ms)
+  PlaygroundManager.togglePlayground
+    ✓ returns early when requested state equals current state (1 ms)
+    ✓ activates desktop layout and wires preview, editor and debug panels (4 ms)
+    ✓ keeps the renderer canvas in place when it already lives in the preview container (1 ms)
+    ✓ activates desktop layout with a collapsed editor (1 ms)
+    ✓ activates the mobile workspace editor layout below the breakpoint (1 ms)
+    ✓ deactivates desktop layout and restores the reader layout (2 ms)
+    ✓ renders the current page when deactivating before content was rendered (1 ms)
+    ✓ restores the collapsed desktop layout on deactivation (1 ms)
+    ✓ restores the mobile reader layout on deactivation (1 ms)
+  PlaygroundManager.renderPlaygroundTabs
+    ✓ hides the tab bar without building tabs when the playground is inactive (1 ms)
+    ✓ creates a default main tab and the toolbar actions (2 ms)
+    ✓ marks read-only tabs with a lock icon and still offers a close button (2 ms)
+    ✓ add button appends a new script tab (34 ms)
+    ✓ close button delegates to closePlaygroundTab (24 ms)
+    ✓ toolbar buttons forward to their managers (45 ms)
+    ✓ tabs can be reordered by dragging one onto another (25 ms)
+  PlaygroundManager.activatePlaygroundTab
+    ✓ persists the current editor content and loads the requested tab (24 ms)
+    ✓ does nothing when the requested tab is already active (24 ms)
+    ✓ keeps editor content when the target tab already matches it (2 ms)
+  PlaygroundManager.addNewPlaygroundTab
+    ✓ adds a uniquely named script tab, runs it and pushes history (25 ms)
+    ✓ skips existing script names when picking the new tab name (23 ms)
+  PlaygroundManager.closePlaygroundTab
+    ✓ ignores unknown tab names (23 ms)
+    ✓ activates the previous tab when the active tab is closed (26 ms)
+    ✓ keeps the active tab when another tab is closed (26 ms)
+  PlaygroundManager.startRenameTab
+    ✓ never renames the main tab (2 ms)
+    ✓ never renames a read-only tab
+    ✓ applies a trimmed, lowercased rename on Enter (26 ms)
+    ✓ rejects names that are not valid identifiers and restores the label (3 ms)
+    ✓ rejects duplicate tab names (1 ms)
+    ✓ cancels the rename on Escape (1 ms)
+  PlaygroundManager.runPlayground
+    ✓ does nothing before any tabs exist
+    ✓ drops virtual scripts whose tab was removed but keeps real and main scripts (1 ms)
+    ✓ registers editable script tabs as virtual scripts (1 ms)
+    ✓ falls back to the first tab when no main tab exists (1 ms)
+  PlaygroundManager.getDebugTarget
+    ✓ prefers the debug export of the main script
+    ✓ falls back to scripts reported as active (1 ms)
+    ✓ returns null when no script exposes debug() (1 ms)
+  PlaygroundManager.updateDebugWGSL
+    ✓ does nothing when the playground is inactive (1 ms)
+    ✓ explains that no debug target is available and collapses the preview (1 ms)
+    ✓ shows the fragment shader returned for an explicit debug target (23 ms)
+    ✓ shows the vertex shader when the vertex debug stage is selected (24 ms)
+    ✓ uses the WebGL renderer when GLSL is selected (23 ms)
+    ✓ reports invalid debug data when no scene or camera can be resolved (2 ms)
+    ✓ reports when the renderer cannot provide shaders (1 ms)
+    ✓ reports shader retrieval errors (23 ms)
+    ✓ restores the previous preview height once debug data is valid (24 ms)
+  PlaygroundManager.getImportedCustomScripts
+    ✓ returns an empty list when no playground state exists (1 ms)
+    ✓ resolves relative custom imports from their importing tab and skips standard modules (5 ms)
+    ✓ ignores read-only tabs and tabs without code (1 ms)
+    ✓ adds url-backed runner scripts but not virtual, main or standard ones (1 ms)
+  PlaygroundManager.showImportedFiles
+    ✓ logs a message when the playground code has no custom imports (1 ms)
+    ✓ activates an already open tab for the imported module (25 ms)
+    ✓ opens read-only tabs from runner script sources (24 ms)
+    ✓ fetches missing imported files as read-only tabs (25 ms)
+    ✓ warns instead of adding a tab when the fetched file is an HTML page (2 ms)
+    ✓ warns when the fetched body looks like markup (1 ms)
+    ✓ warns when the request fails (1 ms)
+    ✓ warns when fetching throws (1 ms)
+  PlaygroundManager.hasUnsavedChanges
+    ✓ returns false when a saved project is active (1 ms)
+    ✓ returns false without tabs or without a snapshot
+    ✓ compares editable tabs against the initial snapshot
+    ✓ hasActiveCustomProject mirrors hasUnsavedChanges (1 ms)
+  PlaygroundManager.updatePlaygroundHash
+    ✓ does nothing before tabs exist
+    ✓ encodes editable tabs, records the release and replaces the url hash (4 ms)
+    ✓ pushes the hash into the history when requested (1 ms)
+  PlaygroundManager.cleanAndFormatActiveTab
+    ✓ does nothing without an editor (1 ms)
+    ✓ does nothing for read-only tabs
+    ✓ keeps the tab untouched when formatting changes nothing
+    ✓ applies formatted code to the editor, tab, runner and history (22 ms)
+  PlaygroundManager history helpers
+    ✓ delegates undo, redo and button refresh to the history manager (1 ms)
+  PlaygroundManager.openExistingPlayground
+    ✓ seeds the main tab from the current page code and enables the playground (24 ms)
+    ✓ falls back to the playground template when the page has no code (23 ms)
+    ✓ reopens existing tabs without replacing their content (23 ms)
+  PlaygroundManager.loadExampleIntoPlayground
+    ✓ replaces the tabs with the example code and pushes history (25 ms)
+    ✓ uses the playground template when no code is provided (1 ms)
+  PlaygroundManager.loadPlaygroundFromHash
+    ✓ reports decode failures and leaves the playground untouched (2 ms)
+    ✓ restores tabs from an encoded payload including the release suffix (24 ms)
+    ✓ treats a non-JSON payload as a single main tab (25 ms)
+    ✓ keeps the current active tab and snapshot when the payload did not change (25 ms)
+    ✓ activates the first changed tab when the payload differs (24 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       81 passed, 81 total
+Snapshots:   0 total
+Time:        3.507 s
+Ran all test suites within paths "test/tsl/js/managers/PlaygroundManager.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tsl/js/managers/PlaygroundManager.test.js
+  PlaygroundManager constructor
+    ✓ stores guide and initializes playground state (3 ms)
+  PlaygroundManager.togglePlayground
+    ✓ returns early when requested state equals current state (1 ms)
+    ✓ activates desktop layout and wires preview, editor and debug panels (4 ms)
+    ✓ keeps the renderer canvas in place when it already lives in the preview container (1 ms)
+    ✓ activates desktop layout with a collapsed editor (1 ms)
+    ✓ activates the mobile workspace editor layout below the breakpoint (2 ms)
+    ✓ deactivates desktop layout and restores the reader layout (1 ms)
+    ✓ renders the current page when deactivating before content was rendered (1 ms)
+    ✓ restores the collapsed desktop layout on deactivation (1 ms)
+    ✓ restores the mobile reader layout on deactivation (1 ms)
+  PlaygroundManager.renderPlaygroundTabs
+    ✓ hides the tab bar without building tabs when the playground is inactive (1 ms)
+    ✓ creates a default main tab and the toolbar actions (2 ms)
+    ✓ marks read-only tabs with a lock icon and still offers a close button (1 ms)
+    ✓ add button appends a new script tab (80 ms)
+    ✓ close button delegates to closePlaygroundTab (23 ms)
+    ✓ toolbar buttons forward to their managers (44 ms)
+    ✓ tabs can be reordered by dragging one onto another (23 ms)
+  PlaygroundManager.activatePlaygroundTab
+    ✓ persists the current editor content and loads the requested tab (25 ms)
+    ✓ does nothing when the requested tab is already active (22 ms)
+    ✓ keeps editor content when the target tab already matches it (2 ms)
+  PlaygroundManager.addNewPlaygroundTab
+    ✓ adds a uniquely named script tab, runs it and pushes history (24 ms)
+    ✓ skips existing script names when picking the new tab name (25 ms)
+  PlaygroundManager.closePlaygroundTab
+    ✓ ignores unknown tab names (24 ms)
+    ✓ activates the previous tab when the active tab is closed (24 ms)
+    ✓ keeps the active tab when another tab is closed (24 ms)
+  PlaygroundManager.startRenameTab
+    ✓ never renames the main tab (2 ms)
+    ✓ never renames a read-only tab (1 ms)
+    ✓ applies a trimmed, lowercased rename on Enter (24 ms)
+    ✓ rejects names that are not valid identifiers and restores the label (2 ms)
+    ✓ rejects duplicate tab names (1 ms)
+    ✓ cancels the rename on Escape (1 ms)
+  PlaygroundManager.runPlayground
+    ✓ does nothing before any tabs exist (1 ms)
+    ✓ drops virtual scripts whose tab was removed but keeps real and main scripts (1 ms)
+    ✓ registers editable script tabs as virtual scripts (1 ms)
+    ✓ falls back to the first tab when no main tab exists (1 ms)
+  PlaygroundManager.getDebugTarget
+    ✓ prefers the debug export of the main script (1 ms)
+    ✓ falls back to scripts reported as active
+    ✓ returns null when no script exposes debug() (1 ms)
+  PlaygroundManager.updateDebugWGSL
+    ✓ does nothing when the playground is inactive
+    ✓ explains that no debug target is available and collapses the preview (1 ms)
+    ✓ shows the fragment shader returned for an explicit debug target (23 ms)
+    ✓ shows the vertex shader when the vertex debug stage is selected (23 ms)
+    ✓ uses the WebGL renderer when GLSL is selected (23 ms)
+    ✓ reports invalid debug data when no scene or camera can be resolved (2 ms)
+    ✓ reports when the renderer cannot provide shaders (1 ms)
+    ✓ reports shader retrieval errors (22 ms)
+    ✓ restores the previous preview height once debug data is valid (23 ms)
+  PlaygroundManager.getImportedCustomScripts
+    ✓ returns an empty list when no playground state exists (2 ms)
+    ✓ resolves relative custom imports from their importing tab and skips standard modules (4 ms)
+    ✓ ignores read-only tabs and tabs without code (1 ms)
+    ✓ adds url-backed runner scripts but not virtual, main or standard ones
+  PlaygroundManager.showImportedFiles
+    ✓ logs a message when the playground code has no custom imports (1 ms)
+    ✓ activates an already open tab for the imported module (24 ms)
+    ✓ opens read-only tabs from runner script sources (25 ms)
+    ✓ fetches missing imported files as read-only tabs (24 ms)
+    ✓ warns instead of adding a tab when the fetched file is an HTML page (2 ms)
+    ✓ warns when the fetched body looks like markup (1 ms)
+    ✓ warns when the request fails (2 ms)
+    ✓ warns when fetching throws (1 ms)
+  PlaygroundManager.hasUnsavedChanges
+    ✓ returns false when a saved project is active
+    ✓ returns false without tabs or without a snapshot (1 ms)
+    ✓ compares editable tabs against the initial snapshot
+    ✓ hasActiveCustomProject mirrors hasUnsavedChanges (1 ms)
+  PlaygroundManager.updatePlaygroundHash
+    ✓ does nothing before tabs exist
+    ✓ encodes editable tabs, records the release and replaces the url hash (2 ms)
+    ✓ pushes the hash into the history when requested (2 ms)
+  PlaygroundManager.cleanAndFormatActiveTab
+    ✓ does nothing without an editor
+    ✓ does nothing for read-only tabs (1 ms)
+    ✓ keeps the tab untouched when formatting changes nothing
+    ✓ applies formatted code to the editor, tab, runner and history (22 ms)
+  PlaygroundManager history helpers
+    ✓ delegates undo, redo and button refresh to the history manager (1 ms)
+  PlaygroundManager.openExistingPlayground
+    ✓ seeds the main tab from the current page code and enables the playground (25 ms)
+    ✓ falls back to the playground template when the page has no code (24 ms)
+    ✓ reopens existing tabs without replacing their content (25 ms)
+  PlaygroundManager.loadExampleIntoPlayground
+    ✓ replaces the tabs with the example code and pushes history (26 ms)
+    ✓ uses the playground template when no code is provided (2 ms)
+  PlaygroundManager.loadPlaygroundFromHash
+    ✓ reports decode failures and leaves the playground untouched (1 ms)
+    ✓ restores tabs from an encoded payload including the release suffix (24 ms)
+    ✓ treats a non-JSON payload as a single main tab (25 ms)
+    ✓ keeps the current active tab and snapshot when the payload did not change (25 ms)
+    ✓ activates the first changed tab when the payload differs (24 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       81 passed, 81 total
+Snapshots:   0 total
+Time:        3.117 s, estimated 4 s
+Ran all test suites within paths "test/tsl/js/managers/PlaygroundManager.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

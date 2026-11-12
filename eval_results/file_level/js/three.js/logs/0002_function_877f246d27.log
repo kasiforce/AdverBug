@@ -1,0 +1,123 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/loaders/ObjectLoader.test.js
+  ObjectLoader construction
+    ✓ uses the supplied loading manager (2 ms)
+  ObjectLoader.parse and parseAsync
+    ✓ parse returns the parsed object and reports it synchronously when no images are loaded (5 ms)
+    ✓ parse reports the finished object when only embedded image data exists (2 ms)
+    ✓ parseAsync resolves with the parsed object (2 ms)
+    ✓ parse resolves animations and attaches them to objects (2 ms)
+  ObjectLoader response loading
+    ✓ load fetches, parses, and resolves the resource path from the URL (10 ms)
+    ✓ loadAsync fetches and parses a URL (2 ms)
+    ✓ load reports malformed JSON through its error callback (3 ms)
+    ✓ load rejects geometry metadata through its error callback (3 ms)
+    ✓ loadAsync rejects malformed JSON with a descriptive error (46 ms)
+    ✓ loadAsync rejects missing metadata (2 ms)
+    ✓ loadAsync rejects missing metadata type (2 ms)
+    ✓ loadAsync rejects geometry metadata (1 ms)
+  ObjectLoader geometry, shape, and material parsing
+    ✓ parses built-in geometry parameters and applies identity fields
+    ✓ parses BufferGeometry JSON and typed buffer attributes (1 ms)
+    ✓ supports geometries registered with registerGeometry (1 ms)
+    ✓ parses shapes and preserves their contour (1 ms)
+    ✓ parses materials, binds textures, and caches repeated material UUIDs (1 ms)
+    ✓ parses animation clips and keyframe tracks (1 ms)
+  ObjectLoader image and texture parsing
+    ✓ parses embedded single-image data into a texture source (1 ms)
+    ✓ parseImagesAsync resolves embedded single-image data
+    ✓ parses texture properties and texture constants (2 ms)
+    ✓ parses an embedded cube image array as a CubeTexture (1 ms)
+    ✓ loads relative image URLs through ImageLoader using resourcePath (6 ms)
+    ✓ loads relative image URLs in parseAsync through ImageLoader.loadAsync (1 ms)
+  ObjectLoader object deserialization
+    ✓ parses scene background, environment, fog, and scene-specific settings (2 ms)
+    ✓ parses perspective and orthographic camera settings (2 ms)
+    ✓ parses all supported light types and their parameters (3 ms)
+    ✓ parses renderable object types with geometry and material references (3 ms)
+    ✓ supports array material references and parent-child relationships (1 ms)
+    ✓ deserializes instance matrices and colors for InstancedMesh (2 ms)
+    ✓ deserializes LOD children, levels, and autoUpdate (1 ms)
+    ✓ uses a matrix when supplied and applies pivot-aware decomposition (2 ms)
+    ✓ preserves a matrix without decomposing it when matrixAutoUpdate is false
+    ✓ parses transforms, shadow settings, layers, morph data, and flags (2 ms)
+    ✓ deserializes BatchedMesh bookkeeping and bounds (3 ms)
+  ObjectLoader skeleton and light-target binding
+    ✓ creates skeletons from bones and binds SkinnedMesh instances (2 ms)
+    ✓ warns when a SkinnedMesh refers to an unknown skeleton
+    ✓ resolves light targets to objects in the scene and creates a fallback otherwise
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        1.856 s
+Ran all test suites within paths "test/loaders/ObjectLoader.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/loaders/ObjectLoader.test.js
+  ObjectLoader construction
+    ✓ uses the supplied loading manager (2 ms)
+  ObjectLoader.parse and parseAsync
+    ✓ parse returns the parsed object and reports it synchronously when no images are loaded (4 ms)
+    ✓ parse reports the finished object when only embedded image data exists (1 ms)
+    ✓ parseAsync resolves with the parsed object (3 ms)
+    ✓ parse resolves animations and attaches them to objects (1 ms)
+  ObjectLoader response loading
+    ✓ load fetches, parses, and resolves the resource path from the URL (8 ms)
+    ✓ loadAsync fetches and parses a URL (2 ms)
+    ✓ load reports malformed JSON through its error callback (2 ms)
+    ✓ load rejects geometry metadata through its error callback (2 ms)
+    ✓ loadAsync rejects malformed JSON with a descriptive error (38 ms)
+    ✓ loadAsync rejects missing metadata (1 ms)
+    ✓ loadAsync rejects missing metadata type
+    ✓ loadAsync rejects geometry metadata
+  ObjectLoader geometry, shape, and material parsing
+    ✓ parses built-in geometry parameters and applies identity fields (1 ms)
+    ✓ parses BufferGeometry JSON and typed buffer attributes (1 ms)
+    ✓ supports geometries registered with registerGeometry (1 ms)
+    ✓ parses shapes and preserves their contour (1 ms)
+    ✓ parses materials, binds textures, and caches repeated material UUIDs (1 ms)
+    ✓ parses animation clips and keyframe tracks (1 ms)
+  ObjectLoader image and texture parsing
+    ✓ parses embedded single-image data into a texture source
+    ✓ parseImagesAsync resolves embedded single-image data (1 ms)
+    ✓ parses texture properties and texture constants (1 ms)
+    ✓ parses an embedded cube image array as a CubeTexture (1 ms)
+    ✓ loads relative image URLs through ImageLoader using resourcePath (4 ms)
+    ✓ loads relative image URLs in parseAsync through ImageLoader.loadAsync
+  ObjectLoader object deserialization
+    ✓ parses scene background, environment, fog, and scene-specific settings (1 ms)
+    ✓ parses perspective and orthographic camera settings (1 ms)
+    ✓ parses all supported light types and their parameters (3 ms)
+    ✓ parses renderable object types with geometry and material references (2 ms)
+    ✓ supports array material references and parent-child relationships (1 ms)
+    ✓ deserializes instance matrices and colors for InstancedMesh (1 ms)
+    ✓ deserializes LOD children, levels, and autoUpdate (1 ms)
+    ✓ uses a matrix when supplied and applies pivot-aware decomposition (2 ms)
+    ✓ preserves a matrix without decomposing it when matrixAutoUpdate is false
+    ✓ parses transforms, shadow settings, layers, morph data, and flags (2 ms)
+    ✓ deserializes BatchedMesh bookkeeping and bounds (2 ms)
+  ObjectLoader skeleton and light-target binding
+    ✓ creates skeletons from bones and binds SkinnedMesh instances (1 ms)
+    ✓ warns when a SkinnedMesh refers to an unknown skeleton (1 ms)
+    ✓ resolves light targets to objects in the scene and creates a fallback otherwise
+
+Test Suites: 1 passed, 1 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        2.105 s
+Ran all test suites within paths "test/loaders/ObjectLoader.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

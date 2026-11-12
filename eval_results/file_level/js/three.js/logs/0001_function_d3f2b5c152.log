@@ -1,0 +1,115 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/Object3D.test.js
+  Object3D construction and defaults
+    ✓ initializes the documented default state (8 ms)
+    ✓ assigns unique, read-only ids and unique UUIDs (24 ms)
+    ✓ uses and clones the configurable static defaults (1 ms)
+    ✓ keeps Euler rotation and quaternion representations synchronized (2 ms)
+  Object3D transformations
+    ✓ applyMatrix4 premultiplies the object transform and decomposes it (3 ms)
+    ✓ applyQuaternion returns the object and premultiplies the rotation (1 ms)
+    ✓ sets rotation from an axis/angle, Euler, matrix, and quaternion (1 ms)
+    ✓ rotates around local X, Y, and Z axes and returns the object (1 ms)
+    ✓ distinguishes rotation in local and world space
+    ✓ translates along local axes taking the current rotation into account (1 ms)
+    ✓ converts vectors between local and world space through the parent chain (1 ms)
+    ✓ lookAt orients ordinary objects +Z toward the target (1 ms)
+    ✓ lookAt compensates for camera orientation and parent rotation (1 ms)
+  Object3D hierarchy and events
+    ✓ adds one or several objects and dispatches the hierarchy events (1 ms)
+    ✓ reparents an object by removing it from its previous parent first
+    ✓ rejects self and non-Object3D children without changing the hierarchy (2 ms)
+    ✓ removes one or several children and dispatches removal events (1 ms)
+    ✓ removeFromParent and clear detach objects and return this (1 ms)
+    ✓ attach preserves world transforms while reparenting (2 ms)
+  Object3D hierarchy queries and traversal
+    ✓ finds itself or the first matching descendant by id, name, or property (1 ms)
+    ✓ collects every matching object depth-first into the supplied result array
+    ✓ traverse visits the root and descendants depth-first (1 ms)
+    ✓ traverseVisible skips invisible objects and their descendants
+    ✓ traverseAncestors visits parent, grandparent, and stops at the root (1 ms)
+  Object3D world matrices and world-space queries
+    ✓ updateMatrix composes position, quaternion, and scale and flags the world matrix (3 ms)
+    ✓ applies the pivot around the pivot point
+    ✓ updateMatrixWorld propagates parent transforms to descendants
+    ✓ respects matrixAutoUpdate and matrixWorldAutoUpdate flags (1 ms)
+    ✓ updateWorldMatrix updates ancestors and descendants on request
+    ✓ returns world position, quaternion, scale, and direction in the supplied targets (2 ms)
+    ✓ abstract rendering and intersection methods are no-ops (1 ms)
+  Object3D serialization and copying
+    ✓ toJSON serializes standard properties, children, animations, and metadata (3 ms)
+    ✓ toJSON omits optional userData and pivot and supports a shared meta object (1 ms)
+    ✓ clone creates a distinct, configurable deep copy (6 ms)
+    ✓ copy supports a non-recursive mode and returns this (1 ms)
+    ✓ dispose dispatches a dispose event (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        1.509 s
+Ran all test suites within paths "test/core/Object3D.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/Object3D.test.js
+  Object3D construction and defaults
+    ✓ initializes the documented default state (11 ms)
+    ✓ assigns unique, read-only ids and unique UUIDs (25 ms)
+    ✓ uses and clones the configurable static defaults (1 ms)
+    ✓ keeps Euler rotation and quaternion representations synchronized (1 ms)
+  Object3D transformations
+    ✓ applyMatrix4 premultiplies the object transform and decomposes it (3 ms)
+    ✓ applyQuaternion returns the object and premultiplies the rotation (1 ms)
+    ✓ sets rotation from an axis/angle, Euler, matrix, and quaternion (1 ms)
+    ✓ rotates around local X, Y, and Z axes and returns the object (1 ms)
+    ✓ distinguishes rotation in local and world space
+    ✓ translates along local axes taking the current rotation into account (1 ms)
+    ✓ converts vectors between local and world space through the parent chain (1 ms)
+    ✓ lookAt orients ordinary objects +Z toward the target (1 ms)
+    ✓ lookAt compensates for camera orientation and parent rotation (1 ms)
+  Object3D hierarchy and events
+    ✓ adds one or several objects and dispatches the hierarchy events (1 ms)
+    ✓ reparents an object by removing it from its previous parent first (1 ms)
+    ✓ rejects self and non-Object3D children without changing the hierarchy (2 ms)
+    ✓ removes one or several children and dispatches removal events (2 ms)
+    ✓ removeFromParent and clear detach objects and return this (1 ms)
+    ✓ attach preserves world transforms while reparenting (1 ms)
+  Object3D hierarchy queries and traversal
+    ✓ finds itself or the first matching descendant by id, name, or property (1 ms)
+    ✓ collects every matching object depth-first into the supplied result array (1 ms)
+    ✓ traverse visits the root and descendants depth-first
+    ✓ traverseVisible skips invisible objects and their descendants (1 ms)
+    ✓ traverseAncestors visits parent, grandparent, and stops at the root
+  Object3D world matrices and world-space queries
+    ✓ updateMatrix composes position, quaternion, and scale and flags the world matrix (3 ms)
+    ✓ applies the pivot around the pivot point (1 ms)
+    ✓ updateMatrixWorld propagates parent transforms to descendants (1 ms)
+    ✓ respects matrixAutoUpdate and matrixWorldAutoUpdate flags
+    ✓ updateWorldMatrix updates ancestors and descendants on request (1 ms)
+    ✓ returns world position, quaternion, scale, and direction in the supplied targets (2 ms)
+    ✓ abstract rendering and intersection methods are no-ops
+  Object3D serialization and copying
+    ✓ toJSON serializes standard properties, children, animations, and metadata (3 ms)
+    ✓ toJSON omits optional userData and pivot and supports a shared meta object (1 ms)
+    ✓ clone creates a distinct, configurable deep copy (5 ms)
+    ✓ copy supports a non-recursive mode and returns this (12 ms)
+    ✓ dispose dispatches a dispose event (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        1.232 s, estimated 2 s
+Ran all test suites within paths "test/core/Object3D.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

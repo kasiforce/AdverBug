@@ -1,0 +1,417 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    Warning: Font file is empty in "Helvetica" (g_font_1)
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1142:9)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:372:18)
+
+  console.warn
+    Warning: FormatError: Required "loca" table is not found
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1197:7)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:380:18)
+
+  console.warn
+    Warning: Invalid "Length1" property in Type1 font -- trying to recover.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at warn (src/core/type1_font.js:94:3)
+      at Type1Font.getHeaderBlock (src/core/type1_font.js:213:25)
+      at new Type1Font (src/core/type1_font.js:175:30)
+      at new Font (src/core/fonts.js:1171:17)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:389:18)
+
+  console.warn
+    Warning: Unable to recover "Length1" property in Type1 font -- using as is.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at warn (src/core/type1_font.js:121:3)
+      at Type1Font.getHeaderBlock (src/core/type1_font.js:213:25)
+      at new Type1Font (src/core/type1_font.js:175:30)
+      at new Font (src/core/fonts.js:1171:17)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:389:18)
+
+  console.warn
+    Warning: FormatError: getEexecBlock - no font program found.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1197:7)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:389:18)
+
+  console.warn
+    Warning: getFontFileType: Unable to detect correct font file Type/Subtype.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at warn (src/core/fonts.js:371:5)
+      at new getFontFileType (src/core/fonts.js:1151:23)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:397:18)
+
+  console.warn
+    Warning: FormatError: Font Foo is not supported
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1197:7)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:397:18)
+
+  console.warn
+    Warning: charToGlyph - invalid fontCharCode: 1114112
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Font.warn [as _charToGlyph] (src/core/fonts.js:3619:9)
+      at Object._charToGlyph (test/core/fonts.test.js:571:24)
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/fonts.test.js
+  ErrorFont
+    ✓ reports the failure and behaves like an empty font (3 ms)
+  Font with a Type 3 font
+    ✓ builds toFontChar for every char code from Differences/Encoding (2 ms)
+    ✓ does not attempt to load or repair a font file (1 ms)
+    ✓ uses the glyph name as the operator list id (1 ms)
+  Font with a non-embedded font file
+    ✓ scales the vertical metrics and computes the line height (6 ms)
+    ✓ derives name, metrics and flags for a standard font (1 ms)
+    ✓ detects bold/italic/black variants through the standard font name (1 ms)
+    ✓ infers a serif fallback from the font name
+    ✓ maps the font flags onto the fallback name (1 ms)
+    ✓ recognizes invalid PDF.js font names
+    ✓ appends the guessed fallback to a system font info
+    ✓ remeasures non-standard and narrow fonts with widths
+    ✓ builds toFontChar from the standard encoding and /Differences (1 ms)
+    ✓ builds toFontChar from the Symbol encoding
+    ✓ builds toFontChar from the ZapfDingbats encoding (1 ms)
+    ✓ builds toFontChar from the ToUnicode data of unknown fonts
+    ✓ maps standard glyph ids for CIDFontType2 fonts with Identity encoding (2 ms)
+  Font with embedded font data
+    ✓ falls back to a system font for an empty font file (48 ms)
+    ✓ falls back to a system font for a broken TrueType font (3 ms)
+    ✓ falls back to a system font for a broken Type1 font (26 ms)
+    ✓ falls back to a system font for an unsupported font type (3 ms)
+  Font._charToGlyph
+    ✓ looks up the width by char code and falls back to defaultWidth
+    ✓ looks up the width through the CMap for composite fonts (1 ms)
+    ✓ retrieves the unicode value from the ToUnicode map
+    ✓ defaults the unicode value to the char code (1 ms)
+    ✓ flags char codes that are available in the font
+    ✓ caches glyphs, taking the isSpace flag into account
+    ✓ computes vertical metrics (1 ms)
+    ✓ uses vertical presentation forms for missing vertical fonts
+    ✓ exposes accent data from the seac map (1 ms)
+    ✓ replaces .notdef/empty glyphs of missing Type1 fonts with spaces
+    ✓ estimates the space width from the font widths (1 ms)
+    ✓ ignores invalid font char codes (2 ms)
+    ✓ exposes the unicode category of the glyph
+    ✓ exposes the cached glyphs through glyphCacheValues (1 ms)
+  Font.charsToGlyphs
+    ✓ converts every char of a single-byte string (1 ms)
+    ✓ returns the cached array for an already converted string
+    ✓ returns an empty array for an empty string
+    ✓ reads multi-byte char codes through the CMap (1 ms)
+  Font.getCharPositions
+    ✓ splits a single-byte string into one range per char
+    ✓ splits a multi-byte string according to the CMap (1 ms)
+  Font.encodeString
+    ✓ encodes characters found in the ToUnicode map
+    ✓ keeps encoded and non-encoded parts in separate buffers (1 ms)
+    ✓ uses the CMap char code length for the encoded bytes
+    ✓ encodes unicode values through an IdentityToUnicodeMap
+    ✓ does not encode anything without a ToUnicode map
+  Font.exportData
+    ✓ returns a buffer, the char proc operator list and no extra data (1 ms)
+    ✓ serializes the boolean font properties (1 ms)
+    ✓ omits properties that were never set
+    ✓ includes the extra properties when requested (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       50 passed, 50 total
+Snapshots:   0 total
+Time:        2.016 s
+Ran all test suites within paths "test/core/fonts.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+  console.warn
+    Warning: Font file is empty in "Helvetica" (g_font_1)
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1142:9)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:372:18)
+
+  console.warn
+    Warning: FormatError: Required "loca" table is not found
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1197:7)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:380:18)
+
+  console.warn
+    Warning: Invalid "Length1" property in Type1 font -- trying to recover.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at warn (src/core/type1_font.js:94:3)
+      at Type1Font.getHeaderBlock (src/core/type1_font.js:213:25)
+      at new Type1Font (src/core/type1_font.js:175:30)
+      at new Font (src/core/fonts.js:1171:17)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:389:18)
+
+  console.warn
+    Warning: Unable to recover "Length1" property in Type1 font -- using as is.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at warn (src/core/type1_font.js:121:3)
+      at Type1Font.getHeaderBlock (src/core/type1_font.js:213:25)
+      at new Type1Font (src/core/type1_font.js:175:30)
+      at new Font (src/core/fonts.js:1171:17)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:389:18)
+
+  console.warn
+    Warning: FormatError: getEexecBlock - no font program found.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1197:7)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:389:18)
+
+  console.warn
+    Warning: getFontFileType: Unable to detect correct font file Type/Subtype.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at warn (src/core/fonts.js:371:5)
+      at new getFontFileType (src/core/fonts.js:1151:23)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:397:18)
+
+  console.warn
+    Warning: FormatError: Font Foo is not supported
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/fonts.js:1197:7)
+      at createFont (test/core/fonts.test.js:76:10)
+      at Object.createFont (test/core/fonts.test.js:397:18)
+
+  console.warn
+    Warning: charToGlyph - invalid fontCharCode: 1114112
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Font.warn [as _charToGlyph] (src/core/fonts.js:3619:9)
+      at Object._charToGlyph (test/core/fonts.test.js:571:24)
+
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/fonts.test.js
+  ErrorFont
+    ✓ reports the failure and behaves like an empty font (3 ms)
+  Font with a Type 3 font
+    ✓ builds toFontChar for every char code from Differences/Encoding (2 ms)
+    ✓ does not attempt to load or repair a font file (1 ms)
+    ✓ uses the glyph name as the operator list id (1 ms)
+  Font with a non-embedded font file
+    ✓ scales the vertical metrics and computes the line height (6 ms)
+    ✓ derives name, metrics and flags for a standard font (1 ms)
+    ✓ detects bold/italic/black variants through the standard font name (1 ms)
+    ✓ infers a serif fallback from the font name (1 ms)
+    ✓ maps the font flags onto the fallback name
+    ✓ recognizes invalid PDF.js font names (1 ms)
+    ✓ appends the guessed fallback to a system font info
+    ✓ remeasures non-standard and narrow fonts with widths (1 ms)
+    ✓ builds toFontChar from the standard encoding and /Differences
+    ✓ builds toFontChar from the Symbol encoding
+    ✓ builds toFontChar from the ZapfDingbats encoding (1 ms)
+    ✓ builds toFontChar from the ToUnicode data of unknown fonts
+    ✓ maps standard glyph ids for CIDFontType2 fonts with Identity encoding (2 ms)
+  Font with embedded font data
+    ✓ falls back to a system font for an empty font file (66 ms)
+    ✓ falls back to a system font for a broken TrueType font (4 ms)
+    ✓ falls back to a system font for a broken Type1 font (9 ms)
+    ✓ falls back to a system font for an unsupported font type (3 ms)
+  Font._charToGlyph
+    ✓ looks up the width by char code and falls back to defaultWidth (1 ms)
+    ✓ looks up the width through the CMap for composite fonts (1 ms)
+    ✓ retrieves the unicode value from the ToUnicode map
+    ✓ defaults the unicode value to the char code (1 ms)
+    ✓ flags char codes that are available in the font (1 ms)
+    ✓ caches glyphs, taking the isSpace flag into account
+    ✓ computes vertical metrics
+    ✓ uses vertical presentation forms for missing vertical fonts (1 ms)
+    ✓ exposes accent data from the seac map (1 ms)
+    ✓ replaces .notdef/empty glyphs of missing Type1 fonts with spaces
+    ✓ estimates the space width from the font widths (1 ms)
+    ✓ ignores invalid font char codes (2 ms)
+    ✓ exposes the unicode category of the glyph (1 ms)
+    ✓ exposes the cached glyphs through glyphCacheValues
+  Font.charsToGlyphs
+    ✓ converts every char of a single-byte string (1 ms)
+    ✓ returns the cached array for an already converted string
+    ✓ returns an empty array for an empty string
+    ✓ reads multi-byte char codes through the CMap (1 ms)
+  Font.getCharPositions
+    ✓ splits a single-byte string into one range per char (1 ms)
+    ✓ splits a multi-byte string according to the CMap
+  Font.encodeString
+    ✓ encodes characters found in the ToUnicode map (1 ms)
+    ✓ keeps encoded and non-encoded parts in separate buffers
+    ✓ uses the CMap char code length for the encoded bytes (1 ms)
+    ✓ encodes unicode values through an IdentityToUnicodeMap
+    ✓ does not encode anything without a ToUnicode map (1 ms)
+  Font.exportData
+    ✓ returns a buffer, the char proc operator list and no extra data (1 ms)
+    ✓ serializes the boolean font properties (1 ms)
+    ✓ omits properties that were never set
+    ✓ includes the extra properties when requested (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       50 passed, 50 total
+Snapshots:   0 total
+Time:        2.588 s
+Ran all test suites within paths "test/core/fonts.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

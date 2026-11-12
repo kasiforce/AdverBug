@@ -1,0 +1,111 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/common/XRManager.test.js
+  XRManager
+    construction and settings
+      ✓ initializes defaults and exposes the XR camera pair (7 ms)
+      ✓ captures WebXR binding feature support at construction time (2 ms)
+      ✓ stores foveation and forwards it to existing XR layers (2 ms)
+      ✓ stores framebuffer scale and warns if changed while presenting (2 ms)
+      ✓ stores reference space type and warns if changed while presenting (13 ms)
+      ✓ prefers a custom reference space and falls back to the session space (1 ms)
+      ✓ reports environment blend mode and prioritizes a projection layer
+    controllers and bindings
+      ✓ creates and reuses target-ray, grip, and hand spaces per controller (1 ms)
+      ✓ creates each binding lazily and caches it (1 ms)
+      ✓ does not create a WebGL binding when the API is unavailable
+      ✓ creates a WebGPU binding with the backend device and caches it (1 ms)
+      ✓ does not create a WebGPU binding when the API is unavailable (1 ms)
+    post-processing foveation
+      ✓ skips foveation unless all required state is present (1 ms)
+      ✓ binds and foveates a post-processing texture only when its GPU texture changes (2 ms)
+      ✓ does not bind a texture that backend has not uploaded (1 ms)
+      ✓ warns and unbinds if browser-side foveation throws (1 ms)
+    XR layers
+      ✓ creates a quad layer with a flipped render-target material outside a session (5 ms)
+      ✓ creates a cylinder layer with the requested geometry and back-face material (10 ms)
+      ✓ creates a native quad layer and installs it into the session render state (3 ms)
+      ✓ creates a native cylinder layer and installs it into the session render state (7 ms)
+      ✓ renders every layer and restores renderer state outside a session (7 ms)
+      ✓ uses native sub-images and a tone-mapped context for session layers (2 ms)
+    session lifecycle
+      ✓ initializes and starts a fallback XRWebGLLayer session (3 ms)
+      ✓ starts a projection-layer session and enables multiview when requested (1 ms)
+      ✓ initializes a WebGPU projection layer and disables unsupported multiview (2 ms)
+      ✓ rejects a WebGPU backend session without the webgpu feature (40 ms)
+      ✓ accepts a null session as the idle boundary (1 ms)
+      ✓ cleans up listeners, controllers, renderer state, and camera settings on session end (3 ms)
+    input and camera updates
+      ✓ assigns input sources, reports connections, and reuses freed controller slots (1 ms)
+      ✓ updates a mapped controller and forwards session input events (2 ms)
+      ✓ synchronizes camera depth, layers, matrices, and user-camera settings (2 ms)
+      ✓ updates eye cameras from XR views and invokes the application animation loop (3 ms)
+      ✓ ignores animation callbacks without a frame and skips poses that are not available (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       33 passed, 33 total
+Snapshots:   0 total
+Time:        1.397 s
+Ran all test suites within paths "test/renderers/common/XRManager.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/common/XRManager.test.js
+  XRManager
+    construction and settings
+      ✓ initializes defaults and exposes the XR camera pair (7 ms)
+      ✓ captures WebXR binding feature support at construction time (2 ms)
+      ✓ stores foveation and forwards it to existing XR layers (2 ms)
+      ✓ stores framebuffer scale and warns if changed while presenting (2 ms)
+      ✓ stores reference space type and warns if changed while presenting (1 ms)
+      ✓ prefers a custom reference space and falls back to the session space (1 ms)
+      ✓ reports environment blend mode and prioritizes a projection layer (1 ms)
+    controllers and bindings
+      ✓ creates and reuses target-ray, grip, and hand spaces per controller (2 ms)
+      ✓ creates each binding lazily and caches it (1 ms)
+      ✓ does not create a WebGL binding when the API is unavailable (1 ms)
+      ✓ creates a WebGPU binding with the backend device and caches it (1 ms)
+      ✓ does not create a WebGPU binding when the API is unavailable (1 ms)
+    post-processing foveation
+      ✓ skips foveation unless all required state is present (1 ms)
+      ✓ binds and foveates a post-processing texture only when its GPU texture changes (1 ms)
+      ✓ does not bind a texture that backend has not uploaded
+      ✓ warns and unbinds if browser-side foveation throws (2 ms)
+    XR layers
+      ✓ creates a quad layer with a flipped render-target material outside a session (5 ms)
+      ✓ creates a cylinder layer with the requested geometry and back-face material (10 ms)
+      ✓ creates a native quad layer and installs it into the session render state (2 ms)
+      ✓ creates a native cylinder layer and installs it into the session render state (8 ms)
+      ✓ renders every layer and restores renderer state outside a session (9 ms)
+      ✓ uses native sub-images and a tone-mapped context for session layers (2 ms)
+    session lifecycle
+      ✓ initializes and starts a fallback XRWebGLLayer session (4 ms)
+      ✓ starts a projection-layer session and enables multiview when requested (2 ms)
+      ✓ initializes a WebGPU projection layer and disables unsupported multiview (2 ms)
+      ✓ rejects a WebGPU backend session without the webgpu feature (57 ms)
+      ✓ accepts a null session as the idle boundary (1 ms)
+      ✓ cleans up listeners, controllers, renderer state, and camera settings on session end (3 ms)
+    input and camera updates
+      ✓ assigns input sources, reports connections, and reuses freed controller slots (2 ms)
+      ✓ updates a mapped controller and forwards session input events (3 ms)
+      ✓ synchronizes camera depth, layers, matrices, and user-camera settings (13 ms)
+      ✓ updates eye cameras from XR views and invokes the application animation loop (4 ms)
+      ✓ ignores animation callbacks without a frame and skips poses that are not available (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       33 passed, 33 total
+Snapshots:   0 total
+Time:        1.666 s, estimated 2 s
+Ran all test suites within paths "test/renderers/common/XRManager.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,285 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/util/cache.test.js
+  getRequestOrigin
+    ✓ returns a string origin as-is (3 ms)
+    ✓ returns a URL origin unchanged (1 ms)
+    ✓ returns null when origin is missing
+    ✓ returns null when origin is not a string or URL
+    ✓ prefers the internal request origin symbol over opts.origin
+    ✓ falls back to opts.origin when the symbol is undefined
+  getInterceptorOrigin
+    ✓ returns the request origin when no interceptor origin is configured
+    ✓ returns null when the interceptor is explicitly restricted to null (1 ms)
+    ✓ returns the interceptor origin when the request has no usable origin
+    ✓ returns the interceptor origin when request and interceptor origins match (1 ms)
+    ✓ returns null when request and interceptor origins differ
+    ✓ returns the interceptor origin when the request origin cannot be parsed as a URL
+    ✓ compares against the resolved internal request origin
+  makeCacheKey
+    ✓ builds a key with a default path of / (1 ms)
+    ✓ stringifies URL origins and keeps headers
+    ✓ appends serialized query parameters when the path has none (1 ms)
+    ✓ serializes repeated query parameter values
+    ✓ leaves the path untouched when query is empty
+    ✓ leaves paths that already contain a query string untouched
+    ✓ leaves paths that already contain a fragment untouched
+    ✓ throws when no origin can be determined (9 ms)
+    ✓ uses an explicitly provided origin
+  normalizeHeaders
+    ✓ returns an empty object when headers are missing
+    ✓ lowercases header names from a plain object
+    ✓ copies array header values so the input is not aliased (1 ms)
+    ✓ combines duplicate names that differ only by case
+    ✓ accepts a Map of headers and merges duplicates
+    ✓ accepts an array of [name, value] pairs
+    ✓ accepts a flat alternating array and merges duplicates (1 ms)
+    ✓ expands array values in a flat alternating array
+    ✓ converts Buffer values in a flat alternating array using latin1
+    ✓ rejects non-object headers (1 ms)
+    ✓ rejects a flat alternating array with an odd number of entries
+    ✓ rejects non-string names and values in an array of pairs (1 ms)
+    ✓ rejects mixed entry shapes in an array of pairs
+    ✓ does not pollute the prototype through a __proto__ header name
+  assertCacheKey
+    ✓ accepts a well formed cache key (1 ms)
+    ✓ rejects non-object values (1 ms)
+    ✓ rejects objects missing required string properties (2 ms)
+    ✓ rejects non-object headers (1 ms)
+  assertCacheValue
+    ✓ accepts a minimally valid cache value
+    ✓ accepts optional headers, vary, and etag fields
+    ✓ rejects non-object values (1 ms)
+    ✓ rejects non-numeric timestamps and status codes (2 ms)
+    ✓ rejects a non-string status message (1 ms)
+    ✓ rejects non-object headers and vary fields (1 ms)
+    ✓ rejects a non-string etag (1 ms)
+  parseCacheControlHeader
+    ✓ parses a single numeric directive (1 ms)
+    ✓ parses every supported numeric directive (1 ms)
+    ✓ parses boolean directives (1 ms)
+    ✓ parses multiple directives and is case insensitive
+    ✓ accepts an array of header lines (1 ms)
+    ✓ keeps the most restrictive max-age
+    ✓ keeps the largest min-fresh (1 ms)
+    ✓ accepts quoted numeric values
+    ✓ clamps delta seconds to the maximum 32 bit integer
+    ✓ marks invalid numeric directives as invalid and drops them (1 ms)
+    ✓ rejects non-integer numeric values
+    ✓ drops numeric directives without a value (1 ms)
+    ✓ a malformed later directive invalidates the previously parsed value
+    ✓ keeps valid directives when an unrelated directive is invalid (1 ms)
+    ✓ parses a qualified no-cache field list from a quoted list
+    ✓ parses a qualified no-cache with unquoted and quoted single fields (1 ms)
+    ✓ accumulates repeated qualified no-cache directives (8 ms)
+    ✓ degrades qualified directives with invalid field names to true (1 ms)
+    ✓ treats an empty no-cache value as unqualified
+    ✓ parses qualified private directives like no-cache
+    ✓ handles a qualified directive combined with other directives (1 ms)
+    ✓ degrades an unterminated quoted field list to true
+    ✓ ignores numeric directives hidden inside a malformed quoted value
+    ✓ ignores unknown directives (1 ms)
+    ✓ returns an empty set for empty headers
+    ✓ drops no-argument directives that are given a value for every occurrence
+    ✓ keeps no-store even when other directives are malformed (1 ms)
+    ✓ recognises restrictive directives with malformed token characters
+    ✓ tolerates whitespace around directive names and values (1 ms)
+    ✓ treats quoted field names containing escapes or quotes as invalid
+  hasInvalidCacheControlDirective
+    ✓ returns false for a directive set that had no invalid entries
+    ✓ returns false for a plain object that was never parsed
+    ✓ returns true only for the directive that was invalid
+  hasVaryStar
+    ✓ detects a wildcard vary header
+    ✓ detects a wildcard inside any value of an array header (1 ms)
+    ✓ returns false when no wildcard is present
+  parseVaryHeader
+    ✓ maps varying header names to request header values
+    ✓ uses null for headers that are absent from the request
+    ✓ copies array header values
+    ✓ returns the original headers object for a wildcard vary header
+    ✓ accepts an array of vary header lines (1 ms)
+    ✓ ignores empty entries
+    ✓ returns undefined for invalid header names
+  isInvalidOrWildcardVaryHeader
+    ✓ returns true for wildcard headers (1 ms)
+    ✓ returns true for invalid header names
+    ✓ returns false for valid header names without a wildcard
+  isEtagUsable
+    ✓ accepts strong and weak quoted etags
+    ✓ rejects unquoted etags
+    ✓ rejects empty etags
+    ✓ rejects doubly quoted and nested weak etags
+  assertCacheStore
+    ✓ accepts an object implementing the store interface (1 ms)
+    ✓ rejects non-object stores (1 ms)
+    ✓ requires each of the store methods (2 ms)
+    ✓ uses the provided name in error messages
+  assertCacheMethods
+    ✓ accepts any non-empty list of safe HTTP methods (1 ms)
+    ✓ rejects values that are not arrays (1 ms)
+    ✓ rejects an empty method list (1 ms)
+    ✓ rejects unsafe or unknown methods (1 ms)
+    ✓ uses the provided name in error messages (1 ms)
+  makeDeduplicationKey
+    ✓ produces a JSON encoded array of origin, method, path, and headers
+    ✓ produces the same key regardless of header insertion order
+    ✓ distinguishes different origins, methods, paths, and header values (1 ms)
+    ✓ does not collide on header values containing delimiters
+    ✓ preserves array header values
+    ✓ omits excluded headers case-insensitively (1 ms)
+    ✓ does not alter the key when the exclusion set does not match
+    ✓ handles a __proto__ header name without polluting the key object
+
+Test Suites: 1 passed, 1 total
+Tests:       114 passed, 114 total
+Snapshots:   0 total
+Time:        5.797 s
+Ran all test suites within paths "test/lib/util/cache.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/lib/util/cache.test.js
+  getRequestOrigin
+    ✓ returns a string origin as-is (3 ms)
+    ✓ returns a URL origin unchanged (1 ms)
+    ✓ returns null when origin is missing
+    ✓ returns null when origin is not a string or URL
+    ✓ prefers the internal request origin symbol over opts.origin (1 ms)
+    ✓ falls back to opts.origin when the symbol is undefined
+  getInterceptorOrigin
+    ✓ returns the request origin when no interceptor origin is configured (1 ms)
+    ✓ returns null when the interceptor is explicitly restricted to null
+    ✓ returns the interceptor origin when the request has no usable origin (1 ms)
+    ✓ returns the interceptor origin when request and interceptor origins match
+    ✓ returns null when request and interceptor origins differ (1 ms)
+    ✓ returns the interceptor origin when the request origin cannot be parsed as a URL
+    ✓ compares against the resolved internal request origin
+  makeCacheKey
+    ✓ builds a key with a default path of / (1 ms)
+    ✓ stringifies URL origins and keeps headers
+    ✓ appends serialized query parameters when the path has none (1 ms)
+    ✓ serializes repeated query parameter values
+    ✓ leaves the path untouched when query is empty
+    ✓ leaves paths that already contain a query string untouched
+    ✓ leaves paths that already contain a fragment untouched
+    ✓ throws when no origin can be determined (9 ms)
+    ✓ uses an explicitly provided origin
+  normalizeHeaders
+    ✓ returns an empty object when headers are missing
+    ✓ lowercases header names from a plain object
+    ✓ copies array header values so the input is not aliased (1 ms)
+    ✓ combines duplicate names that differ only by case
+    ✓ accepts a Map of headers and merges duplicates (1 ms)
+    ✓ accepts an array of [name, value] pairs
+    ✓ accepts a flat alternating array and merges duplicates (1 ms)
+    ✓ expands array values in a flat alternating array
+    ✓ converts Buffer values in a flat alternating array using latin1 (1 ms)
+    ✓ rejects non-object headers (1 ms)
+    ✓ rejects a flat alternating array with an odd number of entries (1 ms)
+    ✓ rejects non-string names and values in an array of pairs (1 ms)
+    ✓ rejects mixed entry shapes in an array of pairs (1 ms)
+    ✓ does not pollute the prototype through a __proto__ header name (1 ms)
+  assertCacheKey
+    ✓ accepts a well formed cache key (1 ms)
+    ✓ rejects non-object values (1 ms)
+    ✓ rejects objects missing required string properties (2 ms)
+    ✓ rejects non-object headers (1 ms)
+  assertCacheValue
+    ✓ accepts a minimally valid cache value
+    ✓ accepts optional headers, vary, and etag fields
+    ✓ rejects non-object values (1 ms)
+    ✓ rejects non-numeric timestamps and status codes (2 ms)
+    ✓ rejects a non-string status message (1 ms)
+    ✓ rejects non-object headers and vary fields (1 ms)
+    ✓ rejects a non-string etag (1 ms)
+  parseCacheControlHeader
+    ✓ parses a single numeric directive (2 ms)
+    ✓ parses every supported numeric directive (1 ms)
+    ✓ parses boolean directives (2 ms)
+    ✓ parses multiple directives and is case insensitive
+    ✓ accepts an array of header lines (1 ms)
+    ✓ keeps the most restrictive max-age
+    ✓ keeps the largest min-fresh (1 ms)
+    ✓ accepts quoted numeric values
+    ✓ clamps delta seconds to the maximum 32 bit integer
+    ✓ marks invalid numeric directives as invalid and drops them
+    ✓ rejects non-integer numeric values
+    ✓ drops numeric directives without a value
+    ✓ a malformed later directive invalidates the previously parsed value
+    ✓ keeps valid directives when an unrelated directive is invalid (1 ms)
+    ✓ parses a qualified no-cache field list from a quoted list (1 ms)
+    ✓ parses a qualified no-cache with unquoted and quoted single fields
+    ✓ accumulates repeated qualified no-cache directives (1 ms)
+    ✓ degrades qualified directives with invalid field names to true
+    ✓ treats an empty no-cache value as unqualified (1 ms)
+    ✓ parses qualified private directives like no-cache
+    ✓ handles a qualified directive combined with other directives (1 ms)
+    ✓ degrades an unterminated quoted field list to true
+    ✓ ignores numeric directives hidden inside a malformed quoted value (1 ms)
+    ✓ ignores unknown directives
+    ✓ returns an empty set for empty headers
+    ✓ drops no-argument directives that are given a value for every occurrence
+    ✓ keeps no-store even when other directives are malformed (1 ms)
+    ✓ recognises restrictive directives with malformed token characters
+    ✓ tolerates whitespace around directive names and values (1 ms)
+    ✓ treats quoted field names containing escapes or quotes as invalid
+  hasInvalidCacheControlDirective
+    ✓ returns false for a directive set that had no invalid entries (1 ms)
+    ✓ returns false for a plain object that was never parsed
+    ✓ returns true only for the directive that was invalid (1 ms)
+  hasVaryStar
+    ✓ detects a wildcard vary header
+    ✓ detects a wildcard inside any value of an array header (1 ms)
+    ✓ returns false when no wildcard is present
+  parseVaryHeader
+    ✓ maps varying header names to request header values (1 ms)
+    ✓ uses null for headers that are absent from the request
+    ✓ copies array header values (1 ms)
+    ✓ returns the original headers object for a wildcard vary header
+    ✓ accepts an array of vary header lines
+    ✓ ignores empty entries
+    ✓ returns undefined for invalid header names
+  isInvalidOrWildcardVaryHeader
+    ✓ returns true for wildcard headers (1 ms)
+    ✓ returns true for invalid header names
+    ✓ returns false for valid header names without a wildcard
+  isEtagUsable
+    ✓ accepts strong and weak quoted etags
+    ✓ rejects unquoted etags
+    ✓ rejects empty etags (1 ms)
+    ✓ rejects doubly quoted and nested weak etags
+  assertCacheStore
+    ✓ accepts an object implementing the store interface (1 ms)
+    ✓ rejects non-object stores (1 ms)
+    ✓ requires each of the store methods (2 ms)
+    ✓ uses the provided name in error messages (2 ms)
+  assertCacheMethods
+    ✓ accepts any non-empty list of safe HTTP methods
+    ✓ rejects values that are not arrays (2 ms)
+    ✓ rejects an empty method list (1 ms)
+    ✓ rejects unsafe or unknown methods (1 ms)
+    ✓ uses the provided name in error messages (1 ms)
+  makeDeduplicationKey
+    ✓ produces a JSON encoded array of origin, method, path, and headers
+    ✓ produces the same key regardless of header insertion order (1 ms)
+    ✓ distinguishes different origins, methods, paths, and header values
+    ✓ does not collide on header values containing delimiters
+    ✓ preserves array header values
+    ✓ omits excluded headers case-insensitively
+    ✓ does not alter the key when the exclusion set does not match (1 ms)
+    ✓ handles a __proto__ header name without polluting the key object
+
+Test Suites: 1 passed, 1 total
+Tests:       114 passed, 114 total
+Snapshots:   0 total
+Time:        2.332 s, estimated 4 s
+Ran all test suites within paths "test/lib/util/cache.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

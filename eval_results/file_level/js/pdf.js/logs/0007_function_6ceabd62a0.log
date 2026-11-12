@@ -1,0 +1,331 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    Warning: PDFImage - using the Width/Height of the image data, rather than the image dictionary.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:210:7)
+      at makePDFImage (test/core/image.test.js:50:10)
+      at Object.makePDFImage (test/core/image.test.js:170:21)
+
+  console.warn
+    Warning: PDFImage - using the Width/Height of the parent image, for SMask/Mask data.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:226:9)
+      at makePDFImage (test/core/image.test.js:50:10)
+      at Object.makePDFImage (test/core/image.test.js:201:21)
+
+  console.warn
+    Warning: PDFImage - using the Width/Height of the image data, rather than the image dictionary.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:210:7)
+      at makePDFImage (test/core/image.test.js:50:10)
+      at Object.makePDFImage (test/core/image.test.js:326:23)
+
+  console.warn
+    Warning: Unsupported /SMask format.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at PDFImage.warn [as buildImage] (src/core/image.js:421:9)
+      at Object.buildImage (test/core/image.test.js:407:36)
+
+  console.warn
+    Warning: Ignoring /Mask in image without /ImageMask.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:373:11)
+      at PDFImage.buildImage (src/core/image.js:431:12)
+      at Object.buildImage (test/core/image.test.js:469:36)
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/image.test.js
+  PDFImage
+    PDFImage construction and metadata
+      ✓ infers the color space and exposes the dictionary metadata (6 ms)
+      ✓ prefers valid dimensions from decoded image data over the dictionary (49 ms)
+      ✓ throws for non-positive and missing dimensions without fallback dimensions (21 ms)
+      ✓ uses fallback dimensions for mask-like images with corrupt dimensions (3 ms)
+      ✓ throws when a non-mask image has no bits-per-component (1 ms)
+      ✓ uses one bit and one component for an image mask (1 ms)
+      ✓ rejects unsupported component counts when no color space is provided (58 ms)
+      ✓ honors the JBIG2Decode filter by forcing one-bit grayscale data (1 ms)
+      ✓ derives draw dimensions from a larger alpha mask (1 ms)
+      ✓ takes dimensions and decoder options from JPX image properties (4 ms)
+    PDFImage.buildImage
+      ✓ attaches a stream SMask to the built image (1 ms)
+      ✓ attaches an array color-key mask
+      ✓ ignores an unsupported SMask value and does not create an alpha image (1 ms)
+      ✓ prefers SMask over Mask when both are present
+      ✓ ignores a stream Mask that is not an image mask (2 ms)
+    PDFImage.createMask
+      ✓ recognizes a single opaque pixel (1 ms)
+      ✓ copies non-inverted mask bytes from a non-DecodeStream (1 ms)
+      ✓ pads and inverts an incomplete inverse-decoded mask
+      ✓ transfers decoded bytes from a DecodeStream without a Uint8Array copy (1 ms)
+      ✓ converts an offscreen mask into an ImageBitmap result (1 ms)
+    PDFImage component decoding
+      ✓ returns 8-bit input unchanged from getComponents (1 ms)
+      ✓ unpacks 1-bit components row by row
+      ✓ unpacks 2-bit components (1 ms)
+      ✓ unpacks 16-bit components and clamps to the component maximum
+      ✓ inverts every byte when decoding a 1-bit buffer
+      ✓ applies and clamps a reverse 4-bit decode map (1 ms)
+    PDFImage opacity helpers
+      ✓ fills every alpha channel when there is no mask (1 ms)
+      ✓ uses a color-key mask to make out-of-range pixels opaque
+      ✓ derives alpha from a soft mask (1 ms)
+      ✓ derives alpha from an explicit image mask
+      ✓ turns fully transparent preblended pixels white
+      ✓ undoes matte preblending for nontrivial alpha values
+      ✓ rejects non-Uint8ClampedArray buffers in fillOpacity
+      ✓ rejects non-Uint8ClampedArray buffers in undoPreblend
+    PDFImage.fillGrayBuffer
+      ✓ rejects color images (1 ms)
+      ✓ copies 8-bit grayscale samples without resampling
+      ✓ honors maxRows, offset, stride, and invertOutput (1 ms)
+      ✓ scales 1-bit samples to black and white
+      ✓ inverts 1-bit samples when a reverse decode map is present
+      ✓ uses nearest-neighbour resampling to the requested dimensions (1 ms)
+      ✓ scales 16-bit grayscale samples across the full output range
+      ✓ rejects buffers that are not Uint8ClampedArray instances (1 ms)
+    PDFImage.createImageData
+      ✓ returns compact RGB data for an uncomplicated 8-bit RGB image (1 ms)
+      ✓ returns compact grayscale data for an uncomplicated 1-bit image
+      ✓ inverts compact grayscale data when decoding is required
+      ✓ expands grayscale to RGB when forceRGBA is false and compact output is unavailable
+      ✓ forceRGBA expands grayscale and fills opaque alpha channels (1 ms)
+      ✓ applies a color-key mask before producing RGBA data
+      ✓ combines RGB data with a soft mask alpha channel (1 ms)
+      ✓ passes through DeviceRGBA data without expansion
+      ✓ produces an ImageBitmap when offscreen canvas support is available (1 ms)
+    PDFImage.createBitmap
+      ✓ wraps RGBA bytes in an ImageBitmap (1 ms)
+      ✓ converts RGB bytes to RGBA in an ImageBitmap
+      ✓ converts 1-bit grayscale bytes to RGBA in an ImageBitmap
+    PDFImage.getImageBytes
+      ✓ resets and configures the source stream before reading (1 ms)
+      ✓ returns a fresh Uint8Array for externally visible stream data
+      ✓ returns the source view directly for internal callers (1 ms)
+    PDFImage._fillDownscaledRgba
+      ✓ averages opaque grayscale blocks (1 ms)
+      ✓ averages opaque RGB blocks
+      ✓ weights downscaled color by soft-mask opacity
+
+Test Suites: 1 passed, 1 total
+Tests:       60 passed, 60 total
+Snapshots:   0 total
+Time:        1.075 s
+Ran all test suites within paths "test/core/image.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+  console.warn
+    Warning: PDFImage - using the Width/Height of the image data, rather than the image dictionary.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:210:7)
+      at makePDFImage (test/core/image.test.js:50:10)
+      at Object.makePDFImage (test/core/image.test.js:170:21)
+
+  console.warn
+    Warning: PDFImage - using the Width/Height of the parent image, for SMask/Mask data.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:226:9)
+      at makePDFImage (test/core/image.test.js:50:10)
+      at Object.makePDFImage (test/core/image.test.js:201:21)
+
+  console.warn
+    Warning: PDFImage - using the Width/Height of the image data, rather than the image dictionary.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:210:7)
+      at makePDFImage (test/core/image.test.js:50:10)
+      at Object.makePDFImage (test/core/image.test.js:326:23)
+
+  console.warn
+    Warning: Unsupported /SMask format.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at PDFImage.warn [as buildImage] (src/core/image.js:421:9)
+      at Object.buildImage (test/core/image.test.js:407:36)
+
+  console.warn
+    Warning: Ignoring /Mask in image without /ImageMask.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/image.js:373:11)
+      at PDFImage.buildImage (src/core/image.js:431:12)
+      at Object.buildImage (test/core/image.test.js:469:36)
+
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/image.test.js
+  PDFImage
+    PDFImage construction and metadata
+      ✓ infers the color space and exposes the dictionary metadata (4 ms)
+      ✓ prefers valid dimensions from decoded image data over the dictionary (42 ms)
+      ✓ throws for non-positive and missing dimensions without fallback dimensions (19 ms)
+      ✓ uses fallback dimensions for mask-like images with corrupt dimensions (3 ms)
+      ✓ throws when a non-mask image has no bits-per-component
+      ✓ uses one bit and one component for an image mask
+      ✓ rejects unsupported component counts when no color space is provided (32 ms)
+      ✓ honors the JBIG2Decode filter by forcing one-bit grayscale data (1 ms)
+      ✓ derives draw dimensions from a larger alpha mask (1 ms)
+      ✓ takes dimensions and decoder options from JPX image properties (3 ms)
+    PDFImage.buildImage
+      ✓ attaches a stream SMask to the built image (1 ms)
+      ✓ attaches an array color-key mask (1 ms)
+      ✓ ignores an unsupported SMask value and does not create an alpha image (2 ms)
+      ✓ prefers SMask over Mask when both are present
+      ✓ ignores a stream Mask that is not an image mask (11 ms)
+    PDFImage.createMask
+      ✓ recognizes a single opaque pixel (1 ms)
+      ✓ copies non-inverted mask bytes from a non-DecodeStream
+      ✓ pads and inverts an incomplete inverse-decoded mask (1 ms)
+      ✓ transfers decoded bytes from a DecodeStream without a Uint8Array copy
+      ✓ converts an offscreen mask into an ImageBitmap result (1 ms)
+    PDFImage component decoding
+      ✓ returns 8-bit input unchanged from getComponents (1 ms)
+      ✓ unpacks 1-bit components row by row
+      ✓ unpacks 2-bit components (1 ms)
+      ✓ unpacks 16-bit components and clamps to the component maximum
+      ✓ inverts every byte when decoding a 1-bit buffer
+      ✓ applies and clamps a reverse 4-bit decode map
+    PDFImage opacity helpers
+      ✓ fills every alpha channel when there is no mask (1 ms)
+      ✓ uses a color-key mask to make out-of-range pixels opaque
+      ✓ derives alpha from a soft mask (1 ms)
+      ✓ derives alpha from an explicit image mask (1 ms)
+      ✓ turns fully transparent preblended pixels white
+      ✓ undoes matte preblending for nontrivial alpha values (1 ms)
+      ✓ rejects non-Uint8ClampedArray buffers in fillOpacity
+      ✓ rejects non-Uint8ClampedArray buffers in undoPreblend
+    PDFImage.fillGrayBuffer
+      ✓ rejects color images
+      ✓ copies 8-bit grayscale samples without resampling
+      ✓ honors maxRows, offset, stride, and invertOutput
+      ✓ scales 1-bit samples to black and white (1 ms)
+      ✓ inverts 1-bit samples when a reverse decode map is present
+      ✓ uses nearest-neighbour resampling to the requested dimensions
+      ✓ scales 16-bit grayscale samples across the full output range (1 ms)
+      ✓ rejects buffers that are not Uint8ClampedArray instances
+    PDFImage.createImageData
+      ✓ returns compact RGB data for an uncomplicated 8-bit RGB image (1 ms)
+      ✓ returns compact grayscale data for an uncomplicated 1-bit image (1 ms)
+      ✓ inverts compact grayscale data when decoding is required
+      ✓ expands grayscale to RGB when forceRGBA is false and compact output is unavailable (1 ms)
+      ✓ forceRGBA expands grayscale and fills opaque alpha channels
+      ✓ applies a color-key mask before producing RGBA data (1 ms)
+      ✓ combines RGB data with a soft mask alpha channel
+      ✓ passes through DeviceRGBA data without expansion (1 ms)
+      ✓ produces an ImageBitmap when offscreen canvas support is available
+    PDFImage.createBitmap
+      ✓ wraps RGBA bytes in an ImageBitmap (1 ms)
+      ✓ converts RGB bytes to RGBA in an ImageBitmap
+      ✓ converts 1-bit grayscale bytes to RGBA in an ImageBitmap
+    PDFImage.getImageBytes
+      ✓ resets and configures the source stream before reading (1 ms)
+      ✓ returns a fresh Uint8Array for externally visible stream data
+      ✓ returns the source view directly for internal callers (1 ms)
+    PDFImage._fillDownscaledRgba
+      ✓ averages opaque grayscale blocks (1 ms)
+      ✓ averages opaque RGB blocks
+      ✓ weights downscaled color by soft-mask opacity (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       60 passed, 60 total
+Snapshots:   0 total
+Time:        1.225 s, estimated 2 s
+Ran all test suites within paths "test/core/image.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

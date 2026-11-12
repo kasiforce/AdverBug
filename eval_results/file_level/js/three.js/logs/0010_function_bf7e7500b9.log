@@ -1,0 +1,187 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webgpu/utils/WebGPUTextureUtils.test.js
+  getFormat
+    ✓ maps uncompressed texture 0 (3 ms)
+    ✓ maps uncompressed texture 1
+    ✓ maps uncompressed texture 2 (1 ms)
+    ✓ maps uncompressed texture 3
+    ✓ maps uncompressed texture 4 (1 ms)
+    ✓ maps uncompressed texture 5
+    ✓ maps uncompressed texture 6 (1 ms)
+    ✓ maps uncompressed texture 7
+    ✓ maps uncompressed texture 8
+    ✓ maps uncompressed texture 9
+    ✓ maps uncompressed texture 10
+    ✓ maps uncompressed texture 11 (1 ms)
+    ✓ maps uncompressed texture 12
+    ✓ maps uncompressed texture 13
+    ✓ maps uncompressed texture 14
+    ✓ maps uncompressed texture 15
+    ✓ maps uncompressed texture 16
+    ✓ maps uncompressed texture 17
+    ✓ maps uncompressed texture 18
+    ✓ maps uncompressed texture 19 (1 ms)
+    ✓ maps uncompressed texture 20
+    ✓ maps uncompressed texture 21
+    ✓ maps compressed format 0
+    ✓ maps compressed format 1
+    ✓ maps compressed format 2
+    ✓ maps compressed format 3 (1 ms)
+    ✓ maps compressed format 4
+    ✓ maps compressed format 5
+    ✓ maps compressed format 6
+    ✓ maps compressed format 7 (1 ms)
+    ✓ maps compressed format 8
+    ✓ maps compressed format 9
+    ✓ maps compressed format 10 (1 ms)
+    ✓ maps compressed format 11
+    ✓ maps compressed format 12
+    ✓ maps compressed format 13
+    ✓ maps compressed format 14 (1 ms)
+    ✓ maps compressed format 15
+    ✓ maps compressed format 16
+    ✓ maps compressed format 17
+    ✓ uses tier-one formats for normalized integer textures and warns without the feature (1 ms)
+    ✓ reports unsupported formats and returns undefined
+    ✓ reports the missing float depth-stencil feature but still returns the format (14 ms)
+  WebGPUTextureUtils samplers
+    ✓ creates and reuses a sampler using texture state and anisotropy (2 ms)
+    ✓ uses comparison sampling for depth textures when supported (1 ms)
+    ✓ forces nearest filtering for depth textures without comparison (1 ms)
+  WebGPUTextureUtils texture creation
+    ✓ initializes documented state and disposes its sampler cache (1 ms)
+    ✓ creates a 2D texture with dimensions, format and usage flags (2 ms)
+    ✓ adds storage usage and creates 3D textures
+    ✓ creates cube textures with a cube binding view (1 ms)
+    ✓ adopts external textures without creating GPU resources
+    ✓ skips initialized external XR textures and rejects other already initialized textures (47 ms)
+    ✓ resolves framebuffer texture formats through backend utils (1 ms)
+    ✓ creates default textures for unsupported formats (1 ms)
+    ✓ falls back to a default texture if device texture creation fails (1 ms)
+    ✓ creates separate single-layer MSAA textures for layered 2D render targets (1 ms)
+    ✓ uses transient attachments for discarded multisampled color buffers
+    ✓ destroys owned textures, MSAA attachments and cached backend data (1 ms)
+    ✓ does not destroy external or default-owned primary textures
+    ✓ delegates mipmap generation through the lazily-created pass utils
+  WebGPUTextureUtils updateTexture
+    ✓ uploads each mip level of a data texture (1 ms)
+    ✓ uploads only marked layers of an array texture and clears the update set (1 ms)
+    ✓ uploads all layers when no array layer updates are pending
+    ✓ uploads cube faces using the configured image/texture dispatch (1 ms)
+    ✓ uploads regular image mip levels and records the texture version
+    ✓ skips render target textures and textures without a GPU descriptor (1 ms)
+    ✓ waits one paint before uploading HTML textures and supports both copy APIs (2 ms)
+    ✓ writes compressed blocks with block padding and layer offsets (1 ms)
+  WebGPUTextureUtils copyTextureToBuffer
+    ✓ copies to a padded read buffer and returns tightly packed typed data (2 ms)
+  WebGPUTextureUtils framebuffer helpers
+    ✓ returns a cached color buffer until drawing-buffer metadata changes (2 ms)
+    ✓ creates and reuses a depth buffer for unchanged framebuffer state (1 ms)
+    ✓ recreates depth-stencil buffers when the requested attachment changes (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       72 passed, 72 total
+Snapshots:   0 total
+Time:        1.022 s
+Ran all test suites within paths "test/renderers/webgpu/utils/WebGPUTextureUtils.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webgpu/utils/WebGPUTextureUtils.test.js
+  getFormat
+    ✓ maps uncompressed texture 0 (3 ms)
+    ✓ maps uncompressed texture 1 (1 ms)
+    ✓ maps uncompressed texture 2
+    ✓ maps uncompressed texture 3
+    ✓ maps uncompressed texture 4 (1 ms)
+    ✓ maps uncompressed texture 5
+    ✓ maps uncompressed texture 6
+    ✓ maps uncompressed texture 7 (1 ms)
+    ✓ maps uncompressed texture 8
+    ✓ maps uncompressed texture 9
+    ✓ maps uncompressed texture 10
+    ✓ maps uncompressed texture 11
+    ✓ maps uncompressed texture 12
+    ✓ maps uncompressed texture 13
+    ✓ maps uncompressed texture 14
+    ✓ maps uncompressed texture 15
+    ✓ maps uncompressed texture 16 (1 ms)
+    ✓ maps uncompressed texture 17
+    ✓ maps uncompressed texture 18
+    ✓ maps uncompressed texture 19
+    ✓ maps uncompressed texture 20
+    ✓ maps uncompressed texture 21 (1 ms)
+    ✓ maps compressed format 0
+    ✓ maps compressed format 1
+    ✓ maps compressed format 2
+    ✓ maps compressed format 3
+    ✓ maps compressed format 4
+    ✓ maps compressed format 5
+    ✓ maps compressed format 6
+    ✓ maps compressed format 7
+    ✓ maps compressed format 8
+    ✓ maps compressed format 9
+    ✓ maps compressed format 10
+    ✓ maps compressed format 11 (1 ms)
+    ✓ maps compressed format 12
+    ✓ maps compressed format 13
+    ✓ maps compressed format 14
+    ✓ maps compressed format 15
+    ✓ maps compressed format 16
+    ✓ maps compressed format 17 (1 ms)
+    ✓ uses tier-one formats for normalized integer textures and warns without the feature
+    ✓ reports unsupported formats and returns undefined (1 ms)
+    ✓ reports the missing float depth-stencil feature but still returns the format
+  WebGPUTextureUtils samplers
+    ✓ creates and reuses a sampler using texture state and anisotropy (2 ms)
+    ✓ uses comparison sampling for depth textures when supported
+    ✓ forces nearest filtering for depth textures without comparison (1 ms)
+  WebGPUTextureUtils texture creation
+    ✓ initializes documented state and disposes its sampler cache (1 ms)
+    ✓ creates a 2D texture with dimensions, format and usage flags (1 ms)
+    ✓ adds storage usage and creates 3D textures (1 ms)
+    ✓ creates cube textures with a cube binding view
+    ✓ adopts external textures without creating GPU resources (1 ms)
+    ✓ skips initialized external XR textures and rejects other already initialized textures (61 ms)
+    ✓ resolves framebuffer texture formats through backend utils (1 ms)
+    ✓ creates default textures for unsupported formats (1 ms)
+    ✓ falls back to a default texture if device texture creation fails
+    ✓ creates separate single-layer MSAA textures for layered 2D render targets (1 ms)
+    ✓ uses transient attachments for discarded multisampled color buffers (1 ms)
+    ✓ destroys owned textures, MSAA attachments and cached backend data
+    ✓ does not destroy external or default-owned primary textures
+    ✓ delegates mipmap generation through the lazily-created pass utils
+  WebGPUTextureUtils updateTexture
+    ✓ uploads each mip level of a data texture (1 ms)
+    ✓ uploads only marked layers of an array texture and clears the update set (1 ms)
+    ✓ uploads all layers when no array layer updates are pending
+    ✓ uploads cube faces using the configured image/texture dispatch (1 ms)
+    ✓ uploads regular image mip levels and records the texture version
+    ✓ skips render target textures and textures without a GPU descriptor (1 ms)
+    ✓ waits one paint before uploading HTML textures and supports both copy APIs (1 ms)
+    ✓ writes compressed blocks with block padding and layer offsets (1 ms)
+  WebGPUTextureUtils copyTextureToBuffer
+    ✓ copies to a padded read buffer and returns tightly packed typed data (2 ms)
+  WebGPUTextureUtils framebuffer helpers
+    ✓ returns a cached color buffer until drawing-buffer metadata changes (1 ms)
+    ✓ creates and reuses a depth buffer for unchanged framebuffer state
+    ✓ recreates depth-stencil buffers when the requested attachment changes
+
+Test Suites: 1 passed, 1 total
+Tests:       72 passed, 72 total
+Snapshots:   0 total
+Time:        1.381 s
+Ran all test suites within paths "test/renderers/webgpu/utils/WebGPUTextureUtils.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

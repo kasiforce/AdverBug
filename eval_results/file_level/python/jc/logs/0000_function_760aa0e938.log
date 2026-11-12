@@ -1,0 +1,86 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x01\x01\x00-Boolean-False-\x01\x01\x00]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x02\x01\x7f-Integer-127-\x02\x01\x7f]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x03\x02\x05\xa0-BitString-expected_native2-\x03\x02\x05\xa0]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x04\x03abc-OctetString-abc-\x04\x03abc]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x05\x00-Null-None-\x05\x00]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x06\x02*\x03-ObjectIdentifier-1.2.3-\x06\x02*\x03]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x0c\x02HI-UTF8String-HI-\x0c\x02HI]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x13\x03abc-PrintableString-abc-\x13\x03abc]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[0\x03\x02\x01\x07-Sequence-expected_native8-0\x03\x02\x01\x07]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x17\r240102030405Z-UTCTime-expected_native9-\x17\r240102030405Z]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_dispatches_universal_types[\x18\x0f20240102030405Z-GeneralizedTime-expected_native10-\x18\x0f20240102030405Z]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_strict_rejects_trailing_data_but_default_ignores_it
+tests/jc/parsers/asn1crypto/test_core.py::test_load_invalid_inputs_raise_clear_errors[\x02-ValueError-Insufficient data]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_invalid_inputs_raise_clear_errors[\x02\x02\x01-ValueError-Insufficient data]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_invalid_inputs_raise_clear_errors[\x1f\x1f\x00-ValueError-Unknown element]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_invalid_inputs_raise_clear_errors[\x1f\x00-ValueError-Non-minimal tag encoding]
+tests/jc/parsers/asn1crypto/test_core.py::test_load_invalid_inputs_raise_clear_errors[not bytes-TypeError-encoded_data must be a byte string]
+tests/jc/parsers/asn1crypto/test_core.py::test_specific_class_load_enforces_tag_and_strictness
+tests/jc/parsers/asn1crypto/test_core.py::test_explicit_and_implicit_tagging_roundtrip[kwargs0-\x80\x01\x05]
+tests/jc/parsers/asn1crypto/test_core.py::test_explicit_and_implicit_tagging_roundtrip[kwargs1-\xa0\x03\x02\x01\x05]
+tests/jc/parsers/asn1crypto/test_core.py::test_explicit_and_implicit_tagging_roundtrip[kwargs2-C\x01\x05]
+tests/jc/parsers/asn1crypto/test_core.py::test_explicit_and_implicit_tagging_roundtrip[kwargs3-c\x03\x02\x01\x05]
+tests/jc/parsers/asn1crypto/test_core.py::test_multiple_explicit_tags_and_retag_untag_copy
+tests/jc/parsers/asn1crypto/test_core.py::test_boolean_encodes_der_true_false_and_truthiness[True-\x01\x01\xff]
+tests/jc/parsers/asn1crypto/test_core.py::test_boolean_encodes_der_true_false_and_truthiness[False-\x01\x01\x00]
+tests/jc/parsers/asn1crypto/test_core.py::test_boolean_load_accepts_noncanonical_true
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[-129]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[-128]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[-1]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[0]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[1]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[127]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[128]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_roundtrip_positive_and_negative[1208925819614629174706176]
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_rejects_non_integer_and_unmapped_name
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_noncanonical_content_preserves_loaded_value_and_reencodes
+tests/jc/parsers/asn1crypto/test_core.py::test_enumerated_names_and_invalid_values
+tests/jc/parsers/asn1crypto/test_core.py::test_object_identifier_encoding_mapping_and_validation
+tests/jc/parsers/asn1crypto/test_core.py::test_object_identifier_map_requires_a_map
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[UTF8String-h\xe9llo]
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[BMPString-\u65e5\u672c]
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[UniversalString-\U0001d11e]
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[TeletexString-abc]
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[PrintableString-abcXYZ0123]
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[IA5String-mail@example.test]
+tests/jc/parsers/asn1crypto/test_core.py::test_string_types_roundtrip_unicode_payloads[VisibleString-visible]
+tests/jc/parsers/asn1crypto/test_core.py::test_primitive_setters_reject_wrong_native_types[UTF8String]
+tests/jc/parsers/asn1crypto/test_core.py::test_primitive_setters_reject_wrong_native_types[OctetString]
+tests/jc/parsers/asn1crypto/test_core.py::test_primitive_setters_reject_wrong_native_types[ObjectIdentifier]
+tests/jc/parsers/asn1crypto/test_core.py::test_basic_bit_string_tuple_and_named_bit_list
+tests/jc/parsers/asn1crypto/test_core.py::test_bit_string_invalid_setters_and_malformed_unused_bits
+tests/jc/parsers/asn1crypto/test_core.py::test_octet_bit_string_bytes_and_unused_bit_masking
+tests/jc/parsers/asn1crypto/test_core.py::test_integer_bit_string_and_integer_octet_string
+tests/jc/parsers/asn1crypto/test_core.py::test_octet_string_roundtrip_cast_and_copy
+tests/jc/parsers/asn1crypto/test_core.py::test_parsable_octet_string_and_bit_string
+tests/jc/parsers/asn1crypto/test_core.py::test_any_value_parse_native_and_roundtrip
+tests/jc/parsers/asn1crypto/test_core.py::test_choice_named_construction_parsing_and_validation
+tests/jc/parsers/asn1crypto/test_core.py::test_choice_explicit_tagging
+tests/jc/parsers/asn1crypto/test_core.py::test_sequence_fields_defaults_mutation_and_native_output
+tests/jc/parsers/asn1crypto/test_core.py::test_sequence_field_errors_and_required_field_deletion
+tests/jc/parsers/asn1crypto/test_core.py::test_sequence_implicit_and_explicit_tagged_fields
+tests/jc/parsers/asn1crypto/test_core.py::test_sequence_dynamic_oid_spec_parsing
+tests/jc/parsers/asn1crypto/test_core.py::test_sequence_of_list_interface_and_mutation
+tests/jc/parsers/asn1crypto/test_core.py::test_set_encodes_in_tag_order_and_omits_defaults
+tests/jc/parsers/asn1crypto/test_core.py::test_set_of_sorts_der_children
+tests/jc/parsers/asn1crypto/test_core.py::test_utc_time_string_datetime_and_timezone_handling
+tests/jc/parsers/asn1crypto/test_core.py::test_generalized_time_fractions_offsets_and_invalid_values
+tests/jc/parsers/asn1crypto/test_core.py::test_void_singleton_contract
+tests/jc/parsers/asn1crypto/test_core.py::test_concat_children_load_strictness_and_validation
+tests/jc/parsers/asn1crypto/test_core.py::test_copying_structured_values_is_independent
+tests/jc/parsers/asn1crypto/test_core.py::test_asn1_value_base_construction_tag_options_validation
+tests/jc/parsers/asn1crypto/test_core.py::test_unused_public_type_specs_expose_expected_tags
+
+72 tests collected in 0.45s
+
+=== test.log ===
+........................................................................ [100%]
+72 passed in 0.70s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

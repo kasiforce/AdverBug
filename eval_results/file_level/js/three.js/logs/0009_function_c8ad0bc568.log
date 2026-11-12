@@ -1,0 +1,111 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webgpu/WebGPUBackend.test.js
+  WebGPUBackend construction and capabilities
+    ✓ sets type, defaults, and collaborator modules without changing the caller parameters object (5 ms)
+    ✓ disables texture comparison compatibility on Android user agents (1 ms)
+    ✓ preserves explicit alpha/requiredLimits values and maps feature aliases (3 ms)
+  WebGPUBackend initialization
+    ✓ uses a supplied device, detects compatibility mode, and keeps timestamps only when supported (2 ms)
+    ✓ requests an adapter/device when no device is supplied (1 ms)
+    ✓ rejects when no suitable adapter is available (44 ms)
+    ✓ normalizes device-loss and uncaptured-error events through renderer hooks (1 ms)
+  WebGPUBackend canvas context and XR textures
+    ✓ lazily configures and caches the default canvas context (1 ms)
+    ✓ honors opaque alpha and extended half-float output settings (1 ms)
+    ✓ creates a context through a non-default canvas target and configures it once (1 ms)
+    ✓ updates external XR texture data without replacing cached MSAA resources (1 ms)
+  WebGPUBackend render-pass lifecycle
+    ✓ begins and finishes a default-canvas render pass with cached attachments (3 ms)
+    ✓ builds and reuses a custom render-target descriptor (2 ms)
+    ✓ clears an external fullscreen XR texture without loading previous contents (1 ms)
+    ✓ updates viewport, scissor, and clears with renderer clear values (2 ms)
+  WebGPUBackend occlusion and compute operations
+    ✓ tracks occlusion membership and resolves query results into a WeakSet (1 ms)
+    ✓ begins, dispatches, caches the workgroup size, and finishes compute (1 ms)
+  WebGPUBackend public utility and delegation methods
+    ✓ delegates readback with all arguments and returns its result (1 ms)
+    ✓ invalidates canvas targets and destroys their textures (1 ms)
+    ✓ creates, caches, and destroys uniform buffers
+    ✓ forwards binding operations to the binding utility
+    ✓ selects correct attribute usages and forwards updates/destruction (1 ms)
+    ✓ forwards texture, sampler, and pipeline operations (2 ms)
+    ✓ reports clear color with premultiplied alpha only when the renderer alpha is enabled (1 ms)
+  WebGPUBackend buffer and texture copying
+    ✓ copies a texture region with destination coordinates and submits the command (1 ms)
+    ✓ copies the framebuffer rectangle and generates mipmaps on the same encoder (2 ms)
+  WebGPUBackend programs, cache keys, bundles, and disposal
+    ✓ creates shader modules and deletes program data
+    ✓ detects render-state changes and stable cache keys (1 ms)
+    ✓ switches bundle encoding state and restores the previous pass (1 ms)
+    ✓ initializes timestamp writes only when tracking is enabled (1 ms)
+    ✓ destroys a device created by the backend during disposal
+    ✓ disposes cached query buffers and utility caches (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        2.962 s
+Ran all test suites within paths "test/renderers/webgpu/WebGPUBackend.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/renderers/webgpu/WebGPUBackend.test.js
+  WebGPUBackend construction and capabilities
+    ✓ sets type, defaults, and collaborator modules without changing the caller parameters object (7 ms)
+    ✓ disables texture comparison compatibility on Android user agents
+    ✓ preserves explicit alpha/requiredLimits values and maps feature aliases (2 ms)
+  WebGPUBackend initialization
+    ✓ uses a supplied device, detects compatibility mode, and keeps timestamps only when supported (2 ms)
+    ✓ requests an adapter/device when no device is supplied (1 ms)
+    ✓ rejects when no suitable adapter is available (70 ms)
+    ✓ normalizes device-loss and uncaptured-error events through renderer hooks (2 ms)
+  WebGPUBackend canvas context and XR textures
+    ✓ lazily configures and caches the default canvas context (1 ms)
+    ✓ honors opaque alpha and extended half-float output settings (1 ms)
+    ✓ creates a context through a non-default canvas target and configures it once (1 ms)
+    ✓ updates external XR texture data without replacing cached MSAA resources
+  WebGPUBackend render-pass lifecycle
+    ✓ begins and finishes a default-canvas render pass with cached attachments (3 ms)
+    ✓ builds and reuses a custom render-target descriptor (2 ms)
+    ✓ clears an external fullscreen XR texture without loading previous contents (2 ms)
+    ✓ updates viewport, scissor, and clears with renderer clear values (2 ms)
+  WebGPUBackend occlusion and compute operations
+    ✓ tracks occlusion membership and resolves query results into a WeakSet (1 ms)
+    ✓ begins, dispatches, caches the workgroup size, and finishes compute (1 ms)
+  WebGPUBackend public utility and delegation methods
+    ✓ delegates readback with all arguments and returns its result (1 ms)
+    ✓ invalidates canvas targets and destroys their textures (1 ms)
+    ✓ creates, caches, and destroys uniform buffers (1 ms)
+    ✓ forwards binding operations to the binding utility (1 ms)
+    ✓ selects correct attribute usages and forwards updates/destruction (1 ms)
+    ✓ forwards texture, sampler, and pipeline operations (1 ms)
+    ✓ reports clear color with premultiplied alpha only when the renderer alpha is enabled (1 ms)
+  WebGPUBackend buffer and texture copying
+    ✓ copies a texture region with destination coordinates and submits the command (1 ms)
+    ✓ copies the framebuffer rectangle and generates mipmaps on the same encoder (2 ms)
+  WebGPUBackend programs, cache keys, bundles, and disposal
+    ✓ creates shader modules and deletes program data (1 ms)
+    ✓ detects render-state changes and stable cache keys (1 ms)
+    ✓ switches bundle encoding state and restores the previous pass (1 ms)
+    ✓ initializes timestamp writes only when tracking is enabled (1 ms)
+    ✓ destroys a device created by the backend during disposal (1 ms)
+    ✓ disposes cached query buffers and utility caches
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        3.723 s
+Ran all test suites within paths "test/renderers/webgpu/WebGPUBackend.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

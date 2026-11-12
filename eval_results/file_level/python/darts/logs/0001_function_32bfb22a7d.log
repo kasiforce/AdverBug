@@ -1,0 +1,127 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/models/forecasting/test_forecasting_model.py::test_model_meta_captures_defaults_and_explicit_parameters
+tests/darts/models/forecasting/test_forecasting_model.py::test_model_params_exposes_creation_parameters
+tests/darts/models/forecasting/test_forecasting_model.py::test_nested_model_creation_keeps_parameter_contexts
+tests/darts/models/forecasting/test_forecasting_model.py::test_missing_add_encoders_argument_is_rejected
+tests/darts/models/forecasting/test_forecasting_model.py::test_local_model_public_properties_and_extreme_lags
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_model_public_properties
+tests/darts/models/forecasting/test_forecasting_model.py::test_default_encoder_initialization_is_inactive
+tests/darts/models/forecasting/test_forecasting_model.py::test_fit_rejects_non_timeseries_input
+tests/darts/models/forecasting/test_forecasting_model.py::test_fit_rejects_too_short_series
+tests/darts/models/forecasting/test_forecasting_model.py::test_min_train_length_override_controls_minimum
+tests/darts/models/forecasting/test_forecasting_model.py::test_invalid_min_train_length_is_rejected[0]
+tests/darts/models/forecasting/test_forecasting_model.py::test_invalid_min_train_length_is_rejected[-1]
+tests/darts/models/forecasting/test_forecasting_model.py::test_invalid_min_train_length_is_rejected[1.5]
+tests/darts/models/forecasting/test_forecasting_model.py::test_invalid_min_train_length_is_rejected[2]
+tests/darts/models/forecasting/test_forecasting_model.py::test_fit_stores_training_series_and_fit_state
+tests/darts/models/forecasting/test_forecasting_model.py::test_fit_rejects_probabilistic_training_series
+tests/darts/models/forecasting/test_forecasting_model.py::test_predict_builds_forecast_after_training_series
+tests/darts/models/forecasting/test_forecasting_model.py::test_predict_preserves_static_covariates
+tests/darts/models/forecasting/test_forecasting_model.py::test_repr_str_and_untrained_model
+tests/darts/models/forecasting/test_forecasting_model.py::test_backtest_mae_for_constant_forecast
+tests/darts/models/forecasting/test_forecasting_model.py::test_backtest_without_reduction_returns_per_point_errors
+tests/darts/models/forecasting/test_forecasting_model.py::test_backtest_multiple_metrics
+tests/darts/models/forecasting/test_forecasting_model.py::test_backtest_metric_kwargs_length_mismatch
+tests/darts/models/forecasting/test_forecasting_model.py::test_backtest_accepts_precomputed_historical_forecasts
+tests/darts/models/forecasting/test_forecasting_model.py::test_backtest_multiple_series_returns_list
+tests/darts/models/forecasting/test_forecasting_model.py::test_residuals_default_returns_per_point_residuals
+tests/darts/models/forecasting/test_forecasting_model.py::test_residuals_values_only
+tests/darts/models/forecasting/test_forecasting_model.py::test_residuals_last_points_only_false
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_default_returns_last_points
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_full_forecasts
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_horizon_and_stride
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_overlap_end
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_start_end
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_multiple_series_preserves_sequence
+tests/darts/models/forecasting/test_forecasting_model.py::test_local_historical_forecasts_rejects_retrain_false
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_setup[kwargs0-forecast_horizon]
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_setup[kwargs1-stride]
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_setup[kwargs2-num_samples > 1]
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_setup[kwargs3-train_length]
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_start[kwargs0-ValueError-must be 'end']
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_start[kwargs1-ValueError-must be an integer]
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_start[kwargs2-ValueError-out of bounds]
+tests/darts/models/forecasting/test_forecasting_model.py::test_historical_forecasts_rejects_invalid_start[kwargs3-ValueError-DatetimeIndex]
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_historical_forecasts_without_retraining
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_historical_forecasts_requires_fit_when_not_retraining
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_expanding_selects_best_model
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_split_mode_selects_best_model
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_fitted_values_mode_selects_best_model
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_requires_exactly_one_evaluation_mode
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_validates_parameters[parameters0-should be a dictionary]
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_validates_parameters[parameters1-list or a np.ndarray]
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_rejects_sequence_input
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_rejects_validation_component_mismatch
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_fitted_mode_requires_fitted_values
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_validates_random_sample_count[0]
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_validates_random_sample_count[3]
+tests/darts/models/forecasting/test_forecasting_model.py::test_gridsearch_validates_random_sample_count[0.0]
+tests/darts/models/forecasting/test_forecasting_model.py::test_generate_encodings_require_encoder_configuration[generate_fit_encodings]
+tests/darts/models/forecasting/test_forecasting_model.py::test_generate_encodings_require_encoder_configuration[generate_predict_encodings]
+tests/darts/models/forecasting/test_forecasting_model.py::test_generate_encodings_require_encoder_configuration[generate_fit_predict_encodings]
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_encoders_generate_train_and_predict_series
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_fit_trims_for_model_and_stores_original
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_fit_requires_matching_length
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_predict_rejects_untrained_covariates
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_predict_rejects_wrong_component_count
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_predict_uses_stored_covariates
+tests/darts/models/forecasting/test_forecasting_model.py::test_future_covariate_predict_requires_enough_future_values
+tests/darts/models/forecasting/test_forecasting_model.py::test_transferable_model_predicts_on_new_series_and_restores_state
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_fit_stores_single_series_covariates_and_static
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_fit_sequence_sets_covariate_expectations
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_predict_requires_used_covariates
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_predict_requires_matching_static_covariates
+tests/darts/models/forecasting/test_forecasting_model.py::test_global_clean_returns_independent_cleaned_copy
+tests/darts/models/forecasting/test_forecasting_model.py::test_predict_requires_fit
+tests/darts/models/forecasting/test_forecasting_model.py::test_deterministic_model_rejects_multiple_samples
+tests/darts/models/forecasting/test_forecasting_model.py::test_predict_rejects_autoregression_with_output_shift
+tests/darts/models/forecasting/test_forecasting_model.py::test_likelihood_parameter_prediction_sanity_checks[kwargs0-num_samples=1]
+tests/darts/models/forecasting/test_forecasting_model.py::test_likelihood_parameter_prediction_sanity_checks[kwargs1-smaller than or equal to]
+tests/darts/models/forecasting/test_forecasting_model.py::test_likelihood_parameter_prediction_requires_likelihood
+tests/darts/models/forecasting/test_forecasting_model.py::test_save_load_builtin_model_roundtrip
+tests/darts/models/forecasting/test_forecasting_model.py::test_save_load_with_file_handles
+tests/darts/models/forecasting/test_forecasting_model.py::test_save_without_path_uses_default_name
+tests/darts/models/forecasting/test_forecasting_model.py::test_save_rejects_invalid_path_object
+tests/darts/models/forecasting/test_forecasting_model.py::test_load_rejects_missing_file_and_invalid_handle
+tests/darts/models/forecasting/test_forecasting_model.py::test_safe_loading_rejects_custom_class_but_trusted_loading_works
+tests/darts/models/forecasting/test_forecasting_model.py::test_save_clean_global_model_removes_training_data
+
+[32m[32m86 tests collected[0m[32m in 14.06s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m [ 83%]
+[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                                                           [100%][0m
+[32m[32m[1m86 passed[0m[32m in 12.86s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,231 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/canvas.test.js
+  annotation canvas names
+    ✓ stores the name on the canvas and mirrors it to an attribute (4 ms)
+    ✓ returns null for an unnamed canvas (1 ms)
+    ✓ does not require a DOM setAttribute (1 ms)
+  CanvasGraphics construction and object lookup
+    ✓ initializes PDF graphics state from the canvas dimensions (3 ms)
+    ✓ exposes each OPS name as a numeric prototype method
+    ✓ routes g_ objects to commonObjs and other names to objs (2 ms)
+    ✓ returns the fallback for non-string object references
+  executeOperatorList
+    ✓ returns the start index for an empty operator list
+    ✓ dispatches numeric operators and returns the final index (2 ms)
+    ✓ starts at the requested execution index (1 ms)
+    ✓ defers execution when a dependency is not resolved (1 ms)
+    ✓ continues after resolved dependencies, including common objs
+    ✓ honors an operations filter (1 ms)
+    ✓ honors stepper break points (1 ms)
+    ✓ skips operators requested by the stepper (1 ms)
+  graphics state stack
+    ✓ save snapshots state and restore returns to it (1 ms)
+    ✓ restore clears pending clip and invalidates the stroke scale cache (1 ms)
+    ✓ restore without a matching save is a no-op
+    ✓ transform updates the context and invalidates cached stroking scale
+  graphics parameter setters
+    ✓ updates line width and only invalidates the cache when it changes (1 ms)
+    ✓ maps line cap and line join styles
+    ✓ sets dash pattern and phase
+    ✓ sets RGB and transparent colors while clearing pattern flags (1 ms)
+    ✓ applies a combined graphics-state dictionary (1 ms)
+    ✓ applies transfer-map fallbacks to solid colors (1 ms)
+    ✓ ignores rendering intent and flatness operators
+  text state
+    ✓ updates spacing, leading, rendering mode and text rise (1 ms)
+    ✓ moves the text position and resets it at beginText
+    ✓ setLeadingMoveText sets leading and moves the text origin (1 ms)
+    ✓ setTextMatrix stores the matrix and derived scale
+    ✓ nextLine advances by the leading (1 ms)
+    ✓ setFont configures font metrics and the canvas font (1 ms)
+    ✓ setFont handles bold, italic, negative and large sizes
+    ✓ setFont returns early for Type3 fonts
+    ✓ setFont throws for an unknown font reference (79 ms)
+  text painting
+    ✓ draws ordinary glyphs with fillText and advances the text position (2 ms)
+    ✓ accounts for word and character spacing (1 ms)
+    ✓ does not draw when the font size is zero
+    ✓ uses strokeText in stroke rendering mode (1 ms)
+    ✓ skips painting glyphs that are not in the font
+    ✓ endText clips pending text paths and clears them (1 ms)
+  path painting and clipping
+    ✓ fill paints a visible path and resets the path bounding box (1 ms)
+    ✓ eoFill uses the even-odd fill rule
+    ✓ fill skips the context when the path is outside the clip box
+    ✓ fill does not paint hidden content (1 ms)
+    ✓ stroke paints with the current line width (1 ms)
+    ✓ stroke does not paint hidden content
+    ✓ fillStroke fills and strokes once, then consumes the path (1 ms)
+    ✓ clip intersects the path box with the current clip box (1 ms)
+    ✓ eoClip uses the even-odd clip rule
+    ✓ an empty clip path is not applied to the context (1 ms)
+    ✓ closePath and endPath reach the context and reset the path box
+    ✓ rawFillPath always fills the supplied path (1 ms)
+    ✓ setCharWidthAndBounds clips the glyph box (1 ms)
+    ✓ beginInlineImage and beginImageData are unsupported (28 ms)
+  stroke scaling
+    ✓ getSinglePixelWidth fast path with axis-aligned transforms
+    ✓ getSinglePixelWidth handles sheared transforms
+    ✓ getScaleForStroking handles uniform transforms
+    ✓ getScaleForStroking handles non-uniform transforms
+    ✓ getScaleForStroking handles sheared transforms (1 ms)
+    ✓ caches the stroking scale until a state change invalidates it
+    ✓ rescaleAndStroke uses a simple line width for uniform scaling
+    ✓ rescaleAndStroke rescales non-uniform paths and dashes (1 ms)
+    ✓ rescaleAndStroke restores state when saveRestore is requested (1 ms)
+  marked content visibility
+    ✓ OC marked content hides nested content until it is ended (1 ms)
+    ✓ non-OC marked content stays visible (1 ms)
+    ✓ isContentVisible requires every stack entry to be visible
+  beginDrawing and endDrawing
+    ✓ clears the canvas, resets state and composes page transforms (2 ms)
+    ✓ uses a requested background color while clearing
+    ✓ transparency renders into a separate canvas and composites on end (2 ms)
+    ✓ endDrawing is safe when drawing never started
+  annotations and form XObjects
+    ✓ beginAnnotation creates a named annotation canvas and restores on end (1 ms)
+    ✓ a same-named annotation canvas is replaced rather than appended (1 ms)
+    ✓ annotations without a canvas name are stored directly in the map (1 ms)
+    ✓ annotations without their own canvas are clipped to their rect
+    ✓ paintFormXObjectBegin applies the matrix and paintFormXObjectEnd restores it (1 ms)
+    ✓ form XObject painting is skipped for hidden content
+  image rendering
+    ✓ paintSolidColorImageMask fills a one-pixel rectangle (1 ms)
+    ✓ paintSolidColorImageMask is skipped for hidden content
+    ✓ paintImageXObject warns and returns when the image is unavailable (1 ms)
+    ✓ paintInlineImageXObject uploads image data in vertical chunks (18 ms)
+    ✓ paintInlineImageXObject rejects unknown image kinds (1 ms)
+    ✓ applyTransferMapsToCanvas uses the current filter when present (1 ms)
+    ✓ applyTransferMapsToCanvas is a pass-through without a filter
+    ✓ applyTransferMapsToBitmap returns the bitmap unchanged without filters (1 ms)
+    ✓ applyTransferMapsToBitmap renders filtered bitmaps to a temp canvas
+    ✓ paintImageMaskXObject draws the generated mask canvas (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       87 passed, 87 total
+Snapshots:   0 total
+Time:        1.019 s
+Ran all test suites within paths "test/display/canvas.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/canvas.test.js
+  annotation canvas names
+    ✓ stores the name on the canvas and mirrors it to an attribute (3 ms)
+    ✓ returns null for an unnamed canvas (1 ms)
+    ✓ does not require a DOM setAttribute
+  CanvasGraphics construction and object lookup
+    ✓ initializes PDF graphics state from the canvas dimensions (2 ms)
+    ✓ exposes each OPS name as a numeric prototype method
+    ✓ routes g_ objects to commonObjs and other names to objs (1 ms)
+    ✓ returns the fallback for non-string object references
+  executeOperatorList
+    ✓ returns the start index for an empty operator list (1 ms)
+    ✓ dispatches numeric operators and returns the final index (1 ms)
+    ✓ starts at the requested execution index (1 ms)
+    ✓ defers execution when a dependency is not resolved
+    ✓ continues after resolved dependencies, including common objs (1 ms)
+    ✓ honors an operations filter (1 ms)
+    ✓ honors stepper break points (1 ms)
+    ✓ skips operators requested by the stepper
+  graphics state stack
+    ✓ save snapshots state and restore returns to it (2 ms)
+    ✓ restore clears pending clip and invalidates the stroke scale cache
+    ✓ restore without a matching save is a no-op (1 ms)
+    ✓ transform updates the context and invalidates cached stroking scale
+  graphics parameter setters
+    ✓ updates line width and only invalidates the cache when it changes (1 ms)
+    ✓ maps line cap and line join styles
+    ✓ sets dash pattern and phase (1 ms)
+    ✓ sets RGB and transparent colors while clearing pattern flags
+    ✓ applies a combined graphics-state dictionary (1 ms)
+    ✓ applies transfer-map fallbacks to solid colors (1 ms)
+    ✓ ignores rendering intent and flatness operators
+  text state
+    ✓ updates spacing, leading, rendering mode and text rise
+    ✓ moves the text position and resets it at beginText
+    ✓ setLeadingMoveText sets leading and moves the text origin (1 ms)
+    ✓ setTextMatrix stores the matrix and derived scale
+    ✓ nextLine advances by the leading
+    ✓ setFont configures font metrics and the canvas font
+    ✓ setFont handles bold, italic, negative and large sizes (1 ms)
+    ✓ setFont returns early for Type3 fonts
+    ✓ setFont throws for an unknown font reference (99 ms)
+  text painting
+    ✓ draws ordinary glyphs with fillText and advances the text position (2 ms)
+    ✓ accounts for word and character spacing
+    ✓ does not draw when the font size is zero
+    ✓ uses strokeText in stroke rendering mode
+    ✓ skips painting glyphs that are not in the font (1 ms)
+    ✓ endText clips pending text paths and clears them (1 ms)
+  path painting and clipping
+    ✓ fill paints a visible path and resets the path bounding box (1 ms)
+    ✓ eoFill uses the even-odd fill rule (1 ms)
+    ✓ fill skips the context when the path is outside the clip box
+    ✓ fill does not paint hidden content (1 ms)
+    ✓ stroke paints with the current line width (1 ms)
+    ✓ stroke does not paint hidden content
+    ✓ fillStroke fills and strokes once, then consumes the path
+    ✓ clip intersects the path box with the current clip box (1 ms)
+    ✓ eoClip uses the even-odd clip rule
+    ✓ an empty clip path is not applied to the context (1 ms)
+    ✓ closePath and endPath reach the context and reset the path box
+    ✓ rawFillPath always fills the supplied path (1 ms)
+    ✓ setCharWidthAndBounds clips the glyph box
+    ✓ beginInlineImage and beginImageData are unsupported (11 ms)
+  stroke scaling
+    ✓ getSinglePixelWidth fast path with axis-aligned transforms (1 ms)
+    ✓ getSinglePixelWidth handles sheared transforms
+    ✓ getScaleForStroking handles uniform transforms
+    ✓ getScaleForStroking handles non-uniform transforms (1 ms)
+    ✓ getScaleForStroking handles sheared transforms
+    ✓ caches the stroking scale until a state change invalidates it (1 ms)
+    ✓ rescaleAndStroke uses a simple line width for uniform scaling
+    ✓ rescaleAndStroke rescales non-uniform paths and dashes (13 ms)
+    ✓ rescaleAndStroke restores state when saveRestore is requested (1 ms)
+  marked content visibility
+    ✓ OC marked content hides nested content until it is ended
+    ✓ non-OC marked content stays visible (1 ms)
+    ✓ isContentVisible requires every stack entry to be visible
+  beginDrawing and endDrawing
+    ✓ clears the canvas, resets state and composes page transforms (1 ms)
+    ✓ uses a requested background color while clearing (1 ms)
+    ✓ transparency renders into a separate canvas and composites on end (1 ms)
+    ✓ endDrawing is safe when drawing never started (1 ms)
+  annotations and form XObjects
+    ✓ beginAnnotation creates a named annotation canvas and restores on end (1 ms)
+    ✓ a same-named annotation canvas is replaced rather than appended (1 ms)
+    ✓ annotations without a canvas name are stored directly in the map
+    ✓ annotations without their own canvas are clipped to their rect (1 ms)
+    ✓ paintFormXObjectBegin applies the matrix and paintFormXObjectEnd restores it (1 ms)
+    ✓ form XObject painting is skipped for hidden content
+  image rendering
+    ✓ paintSolidColorImageMask fills a one-pixel rectangle (1 ms)
+    ✓ paintSolidColorImageMask is skipped for hidden content
+    ✓ paintImageXObject warns and returns when the image is unavailable (1 ms)
+    ✓ paintInlineImageXObject uploads image data in vertical chunks (1 ms)
+    ✓ paintInlineImageXObject rejects unknown image kinds
+    ✓ applyTransferMapsToCanvas uses the current filter when present
+    ✓ applyTransferMapsToCanvas is a pass-through without a filter
+    ✓ applyTransferMapsToBitmap returns the bitmap unchanged without filters (1 ms)
+    ✓ applyTransferMapsToBitmap renders filtered bitmaps to a temp canvas
+    ✓ paintImageMaskXObject draws the generated mask canvas (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       87 passed, 87 total
+Snapshots:   0 total
+Time:        1.723 s
+Ran all test suites within paths "test/display/canvas.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

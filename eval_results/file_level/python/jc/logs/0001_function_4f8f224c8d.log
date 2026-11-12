@@ -1,0 +1,63 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+tests/jc/parsers/asn1crypto/test_x509.py::TestDNSName::test_set_and_equality_are_dns_case_insensitive
+tests/jc/parsers/asn1crypto/test_x509.py::TestDNSName::test_idna_encoding_and_leading_dot
+tests/jc/parsers/asn1crypto/test_x509.py::TestDNSName::test_rejects_non_string_values
+tests/jc/parsers/asn1crypto/test_x509.py::TestURI::test_iri_is_encoded_to_uri_but_native_remains_iri
+tests/jc/parsers/asn1crypto/test_x509.py::TestURI::test_spaces_are_percent_encoded
+tests/jc/parsers/asn1crypto/test_x509.py::TestURI::test_rejects_non_string_values
+tests/jc/parsers/asn1crypto/test_x509.py::TestEmailAddress::test_idna_hostname_and_host_case_insensitive_equality
+tests/jc/parsers/asn1crypto/test_x509.py::TestEmailAddress::test_invalid_idn_falls_back_to_escaped_ascii_with_warning
+tests/jc/parsers/asn1crypto/test_x509.py::TestEmailAddress::test_rejects_non_string_values
+tests/jc/parsers/asn1crypto/test_x509.py::TestIPAddress::test_ipv4_ipv6_and_cidr_round_trip
+tests/jc/parsers/asn1crypto/test_x509.py::TestIPAddress::test_parse_is_not_supported
+tests/jc/parsers/asn1crypto/test_x509.py::TestIPAddress::test_invalid_cidr_ranges[192.0.2.0/-1-less than 0]
+tests/jc/parsers/asn1crypto/test_x509.py::TestIPAddress::test_invalid_cidr_ranges[192.0.2.0/33-bigger than 32]
+tests/jc/parsers/asn1crypto/test_x509.py::TestIPAddress::test_invalid_cidr_ranges[2001:db8::/129-bigger than 128]
+tests/jc/parsers/asn1crypto/test_x509.py::TestIPAddress::test_rejects_non_string_values
+tests/jc/parsers/asn1crypto/test_x509.py::TestTeletexString::test_cp1252_and_strict_teletex_context
+tests/jc/parsers/asn1crypto/test_x509.py::TestTeletexString::test_context_restores_default_after_exception
+tests/jc/parsers/asn1crypto/test_x509.py::TestNameTypes::test_name_type_ordering_and_human_friendly_labels
+tests/jc/parsers/asn1crypto/test_x509.py::TestNameTypes::test_prepped_value_normalizes_case_spaces_and_unicode
+tests/jc/parsers/asn1crypto/test_x509.py::TestNameTypes::test_prohibited_name_values[replacement \ufffd-replacement character]
+tests/jc/parsers/asn1crypto/test_x509.py::TestNameTypes::test_prohibited_name_values[private \ue000-private use characters]
+tests/jc/parsers/asn1crypto/test_x509.py::TestNameTypes::test_prohibited_name_values[mixed abc\u05d0-malformed bidirectional sequence]
+tests/jc/parsers/asn1crypto/test_x509.py::TestNames::test_build_native_human_friendly_and_hashes
+tests/jc/parsers/asn1crypto/test_x509.py::TestNames::test_equality_uses_prepared_values_and_order_is_significant
+tests/jc/parsers/asn1crypto/test_x509.py::TestNames::test_printable_string_build_and_round_trip
+tests/jc/parsers/asn1crypto/test_x509.py::TestNames::test_duplicate_name_values_become_a_list_and_are_humanized
+tests/jc/parsers/asn1crypto/test_x509.py::TestNames::test_human_friendly_uses_semicolons_when_a_value_contains_a_comma
+tests/jc/parsers/asn1crypto/test_x509.py::TestRelativeDistinguishedNames::test_multivalued_rdn_equality_is_order_independent
+tests/jc/parsers/asn1crypto/test_x509.py::TestGeneralNames::test_sequence_and_general_name_equality
+tests/jc/parsers/asn1crypto/test_x509.py::TestGeneralNames::test_comparison_of_unsupported_choices_raises
+tests/jc/parsers/asn1crypto/test_x509.py::TestDistributionPoint::test_url_returns_first_supported_uri
+tests/jc/parsers/asn1crypto/test_x509.py::TestDistributionPoint::test_url_returns_none_for_unsupported_scheme
+tests/jc/parsers/asn1crypto/test_x509.py::TestDistributionPoint::test_relative_distribution_point_is_rejected
+tests/jc/parsers/asn1crypto/test_x509.py::TestAttributes::test_attribute_sequence_native_representation
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateCoreProperties::test_public_properties_and_der_round_trip
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateCoreProperties::test_hashes_and_fingerprints_are_derived_from_der
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateExtensions::test_extension_values_and_critical_set
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateExtensions::test_missing_extensions_return_none_or_empty_values
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificatePolicyExtension::test_ca_and_max_path_length
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificatePolicyExtension::test_self_issued_and_self_signed_states
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateNames::test_valid_domains_and_ips_come_from_subject_alt_name
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateNames::test_valid_domains_falls_back_to_common_name_without_san
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateNames::test_san_presence_disables_common_name_fallback
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateNames::test_domain_and_ip_matching
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateNames::test_no_matching_names_returns_false
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateDistributionPoints::test_complete_and_delta_crl_distribution_points
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateDistributionPoints::test_ocsp_urls_filters_methods_locations_and_schemes
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateAuxiliaryStructures::test_certificate_aux_round_trip
+tests/jc/parsers/asn1crypto/test_x509.py::TestCertificateAuxiliaryStructures::test_trusted_certificate_concatenates_certificate_and_aux
+
+49 tests collected in 0.47s
+
+=== test.log ===
+.................................................                        [100%]
+49 passed in 0.91s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

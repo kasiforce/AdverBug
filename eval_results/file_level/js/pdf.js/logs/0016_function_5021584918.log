@@ -1,0 +1,179 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/web/pdf_viewer.test.js (6 s)
+  web/pdf_viewer.js
+    PagesCountLimit
+      ✓ exposes the documented page-count performance limits (3 ms)
+    constructor
+      ✓ initializes the default observable viewer state (3 ms)
+      ✓ rejects an invalid container or viewer element (53 ms)
+      ✓ registers the find controller visibility callback (1 ms)
+    setDocument
+      ✓ initializes page views and resolves the public page promises (3 ms)
+      ✓ supports single-page documents (1 ms)
+      ✓ only eagerly fetches the first page when auto-fetch is disabled (1 ms)
+      ✓ applies document permissions to printing and page-view options (1 ms)
+      ✓ disables restricted form editing when no annotation permissions exist (1 ms)
+      ✓ closes the previous document and resets the viewer (1 ms)
+    page state and labels
+      ✓ changes the current page and dispatches details about the transition (2 ms)
+      ✓ validates current page numbers and ignores out-of-range values (2 ms)
+      ✓ maps page labels to pages and updates the page views (1 ms)
+      ✓ rejects labels whose length does not match the document (1 ms)
+      ✓ uses numeric label text as a fallback page number
+      ✓ navigates forward and backward within the document bounds (1 ms)
+    scroll and spread modes
+      ✓ validates scroll modes and dispatches only real changes (2 ms)
+      ✓ validates spread modes and rebuilds the page layout (2 ms)
+      ✓ shows only the current spread when using PAGE scrolling (2 ms)
+      ✓ distinguishes enabled scrollbars from presentation mode
+    scale and rotation
+      ✓ validates numeric scale input before checking for a document (1 ms)
+      ✓ updates the scale, page views, and scale-changing event (2 ms)
+      ✓ supports named scale presets and rejects unknown preset names (1 ms)
+      ✓ validates updateScale options and clamps calculated scales (1 ms)
+      ✓ normalizes and validates page rotations (2 ms)
+      ✓ does not change scale or rotation without an open document (1 ms)
+    text extraction and content configuration
+      ✓ extracts all page text, preserving end-of-line markers (1 ms)
+      ✓ stops text extraction when the interrupt signal is already aborted (1 ms)
+      ✓ returns and updates the optional-content configuration promise (2 ms)
+      ✓ returns a null optional-content promise without a document
+    page overviews
+      ✓ reports page dimensions from the underlying PDF pages (1 ms)
+      ✓ rotates landscape pages to match the first page when printing
+    rendering and caching
+      ✓ renders the highest-priority page and reports whether work was queued (1 ms)
+      ✓ tracks page views added to the render buffer (1 ms)
+      ✓ cleans up thumbnail pages that are not in the render buffer (1 ms)
+      ✓ resets unfinished pages during cleanup (1 ms)
+    interaction helpers
+      ✓ pans the container while preserving sub-pixel carry-over (1 ms)
+      ✓ clears a selection intersecting the viewer (1 ms)
+      ✓ does not clear a collapsed or unrelated selection (1 ms)
+      ✓ exposes focus, containment, and cached container coordinates
+    annotation editor mode
+      ✓ initializes the editor UI manager for a requested editing mode (1 ms)
+      ✓ switches modes and emits the new mode after the UI update (2 ms)
+      ✓ validates editor modes and requires an editor UI manager (2 ms)
+    page editing
+      ✓ copies and pastes a page using cloned page views (3 ms)
+      ✓ restores page views after cancelling a deletion (2 ms)
+    scrollPageIntoView
+      ✓ selects a page when no destination is supplied (1 ms)
+      ✓ supports fit destinations and updates the preset scale
+      ✓ ignores destination zoom when requested (1 ms)
+      ✓ rejects invalid page numbers and destination types (1 ms)
+    viewer metadata and refresh
+      ✓ exposes lazy layer properties from configured collaborators (1 ms)
+      ✓ refreshes every page view with the supplied update arguments
+      ✓ emits an updateviewarea event with the current location (1 ms)
+      ✓ does nothing when refreshing without a document
+    PDFPageViewBuffer
+      ✓ evicts the least-recently-used page view (1 ms)
+      ✓ moves a repeated view to the most-recently-used position
+      ✓ shrinks the buffer and destroys all evicted views (1 ms)
+      ✓ keeps requested ids when resizing
+      ✓ allows idsToKeep to exceed the new size while preserving as many as possible (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       58 passed, 58 total
+Snapshots:   0 total
+Time:        6.06 s
+Ran all test suites within paths "test/web/pdf_viewer.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/web/pdf_viewer.test.js
+  web/pdf_viewer.js
+    PagesCountLimit
+      ✓ exposes the documented page-count performance limits (3 ms)
+    constructor
+      ✓ initializes the default observable viewer state (4 ms)
+      ✓ rejects an invalid container or viewer element (74 ms)
+      ✓ registers the find controller visibility callback (1 ms)
+    setDocument
+      ✓ initializes page views and resolves the public page promises (5 ms)
+      ✓ supports single-page documents (1 ms)
+      ✓ only eagerly fetches the first page when auto-fetch is disabled (2 ms)
+      ✓ applies document permissions to printing and page-view options (1 ms)
+      ✓ disables restricted form editing when no annotation permissions exist (1 ms)
+      ✓ closes the previous document and resets the viewer (2 ms)
+    page state and labels
+      ✓ changes the current page and dispatches details about the transition (3 ms)
+      ✓ validates current page numbers and ignores out-of-range values (3 ms)
+      ✓ maps page labels to pages and updates the page views (2 ms)
+      ✓ rejects labels whose length does not match the document (1 ms)
+      ✓ uses numeric label text as a fallback page number (2 ms)
+      ✓ navigates forward and backward within the document bounds (2 ms)
+    scroll and spread modes
+      ✓ validates scroll modes and dispatches only real changes (2 ms)
+      ✓ validates spread modes and rebuilds the page layout (4 ms)
+      ✓ shows only the current spread when using PAGE scrolling (2 ms)
+      ✓ distinguishes enabled scrollbars from presentation mode (1 ms)
+    scale and rotation
+      ✓ validates numeric scale input before checking for a document (1 ms)
+      ✓ updates the scale, page views, and scale-changing event (3 ms)
+      ✓ supports named scale presets and rejects unknown preset names (2 ms)
+      ✓ validates updateScale options and clamps calculated scales (2 ms)
+      ✓ normalizes and validates page rotations (3 ms)
+      ✓ does not change scale or rotation without an open document (1 ms)
+    text extraction and content configuration
+      ✓ extracts all page text, preserving end-of-line markers (1 ms)
+      ✓ stops text extraction when the interrupt signal is already aborted (1 ms)
+      ✓ returns and updates the optional-content configuration promise (3 ms)
+      ✓ returns a null optional-content promise without a document
+    page overviews
+      ✓ reports page dimensions from the underlying PDF pages (1 ms)
+      ✓ rotates landscape pages to match the first page when printing (1 ms)
+    rendering and caching
+      ✓ renders the highest-priority page and reports whether work was queued (2 ms)
+      ✓ tracks page views added to the render buffer (1 ms)
+      ✓ cleans up thumbnail pages that are not in the render buffer (1 ms)
+      ✓ resets unfinished pages during cleanup (1 ms)
+    interaction helpers
+      ✓ pans the container while preserving sub-pixel carry-over (1 ms)
+      ✓ clears a selection intersecting the viewer (1 ms)
+      ✓ does not clear a collapsed or unrelated selection (1 ms)
+      ✓ exposes focus, containment, and cached container coordinates (1 ms)
+    annotation editor mode
+      ✓ initializes the editor UI manager for a requested editing mode (2 ms)
+      ✓ switches modes and emits the new mode after the UI update (2 ms)
+      ✓ validates editor modes and requires an editor UI manager (2 ms)
+    page editing
+      ✓ copies and pastes a page using cloned page views (5 ms)
+      ✓ restores page views after cancelling a deletion (2 ms)
+    scrollPageIntoView
+      ✓ selects a page when no destination is supplied (1 ms)
+      ✓ supports fit destinations and updates the preset scale (1 ms)
+      ✓ ignores destination zoom when requested (1 ms)
+      ✓ rejects invalid page numbers and destination types (1 ms)
+    viewer metadata and refresh
+      ✓ exposes lazy layer properties from configured collaborators (1 ms)
+      ✓ refreshes every page view with the supplied update arguments (1 ms)
+      ✓ emits an updateviewarea event with the current location (1 ms)
+      ✓ does nothing when refreshing without a document (1 ms)
+    PDFPageViewBuffer
+      ✓ evicts the least-recently-used page view (1 ms)
+      ✓ moves a repeated view to the most-recently-used position
+      ✓ shrinks the buffer and destroys all evicted views (1 ms)
+      ✓ keeps requested ids when resizing (1 ms)
+      ✓ allows idsToKeep to exceed the new size while preserving as many as possible
+
+Test Suites: 1 passed, 1 total
+Tests:       58 passed, 58 total
+Snapshots:   0 total
+Time:        1.758 s, estimated 6 s
+Ran all test suites within paths "test/web/pdf_viewer.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

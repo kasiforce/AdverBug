@@ -1,0 +1,357 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    Warning: Invalid PDF catalog version: not-a-version
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as version] (src/core/catalog.js:211:7)
+      at Object.<anonymous> (test/core/catalog.test.js:228:81)
+
+  console.warn
+    Warning: Unable to read page labels.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as pageLabels] (src/core/catalog.js:833:7)
+      at Object.pageLabels (test/core/catalog.test.js:673:22)
+
+  console.warn
+    Warning: Bad value, for key "FitWindow", in ViewerPreferences: true.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as viewerPreferences] (src/core/catalog.js:1086:9)
+      at Object.viewerPreferences (test/core/catalog.test.js:698:22)
+
+  console.warn
+    Warning: Ignoring non-standard key in ViewerPreferences: CustomSetting.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as viewerPreferences] (src/core/catalog.js:1081:11)
+      at Object.viewerPreferences (test/core/catalog.test.js:698:22)
+
+  console.warn
+    Warning: Bad value, for key "PrintPageRange", in ViewerPreferences: 1,3,2,4.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as viewerPreferences] (src/core/catalog.js:1086:9)
+      at Object.viewerPreferences (test/core/catalog.test.js:719:22)
+
+  console.warn
+    Warning: parseDestDictionary: `destDict` must be a dictionary.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as parseDestDictionary] (src/core/catalog.js:1813:7)
+      at Object.parseDestDictionary (test/core/catalog.test.js:1268:15)
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/catalog.test.js
+  Catalog
+    construction and basic entries
+      ✓ rejects a non-dictionary catalog object (22 ms)
+      ✓ rejects a missing or invalid top-level pages dictionary (1 ms)
+      ✓ cloneDict returns an independent copy (1 ms)
+      ✓ exposes and caches valid catalog versions (1 ms)
+      ✓ returns null for missing or malformed catalog versions (50 ms)
+      ✓ decodes the language and rejects non-string values (27 ms)
+      ✓ only reports needsRendering for the boolean true
+      ✓ returns non-empty collection and AcroForm dictionaries
+      ✓ normalizes empty/missing collection and AcroForm entries to null
+      ✓ rethrows MissingDataException while reading collection
+      ✓ reports the raw AcroForm reference when present (1 ms)
+    metadata and structure information
+      ✓ parses XMP metadata from a valid XML metadata stream (2 ms)
+      ✓ ignores non-reference and invalid metadata entries
+      ✓ rethrows MissingDataException from metadata loading
+      ✓ reads MarkInfo flags into a map with false defaults (1 ms)
+      ✓ detects a structure tree root and builds it from its raw reference (1 ms)
+    document outline
+      ✓ returns null when no usable outline exists (1 ms)
+      ✓ walks outline siblings and children and parses destinations (3 ms)
+      ✓ can retain the raw outline dictionaries for the editor
+    permissions and optional content
+      ✓ maps encryption permission bits to a permission set
+      ✓ returns null when permissions cannot be determined
+      ✓ parses optional-content groups, state, order, and usage (1 ms)
+      ✓ returns null for incomplete optional-content configuration (1 ms)
+    page count and labels
+      ✓ reads the page count and honors an explicit actual count
+      ✓ throws when the top-level page count is not an integer
+      ✓ expands decimal, roman, and alphabetic page-label styles (2 ms)
+      ✓ returns null when page-label data is absent or invalid (2 ms)
+    viewer settings
+      ✓ parses supported viewer preferences and ignores bad values (12 ms)
+      ✓ rejects invalid print page ranges and returns null without preferences (2 ms)
+      ✓ validates page layout and page mode names
+      ✓ parses an explicit destination open action (1 ms)
+      ✓ parses named open actions and omits unsupported open actions
+    destinations
+      ✓ combines NameTree and simple destination dictionaries (1 ms)
+      ✓ supports direct lookup and falls back when NameTree lookup misses (1 ms)
+      ✓ uses the cached destinations map after it has been materialized
+    attachments and JavaScript actions
+      ✓ describes named embedded files (1 ms)
+      ✓ returns raw embedded-file entries when requested (1 ms)
+      ✓ reads named attachment content and returns null for unknown ids
+      ✓ registers annotation attachment ids, including collisions
+      ✓ fetches annotation-local attachment content lazily (1 ms)
+      ✓ wraps sound annotation content in a WAV container (1 ms)
+      ✓ reads stream-backed XFA images and skips non-stream values
+      ✓ merges NameTree and OpenAction JavaScript into document actions (1 ms)
+      ✓ cleans caches and cached font dictionaries (1 ms)
+    page tree navigation
+      ✓ finds nested pages and records page-tree caches (1 ms)
+      ✓ supports inline page dictionaries and reports missing indices (35 ms)
+      ✓ detects circular references and invalid kid types
+      ✓ enumerates every page dictionary including nested pages (1 ms)
+      ✓ can continue past broken kids in recovery mode (1 ms)
+      ✓ computes a page index from preceding siblings and caches it (1 ms)
+      ✓ validates page references while computing page indexes
+      ✓ detects parent cycles while computing page indexes
+    base URL and destination parsing
+      ✓ uses a valid catalog URI base and otherwise falls back to the manager (1 ms)
+      ✓ warns and leaves the result unchanged for a non-dictionary (2 ms)
+      ✓ parses URI actions into safe and original URLs
+      ✓ parses ResetForm actions with fields, references, and inclusion (1 ms)
+      ✓ parses Named and SetOCGState actions
+      ✓ uses GoTo destinations and simple Dest values (1 ms)
+      ✓ builds remote file URLs with destinations and NewWindow
+      ✓ parses GoToE attachment targets and remote destinations (1 ms)
+      ✓ recovers URLs from JavaScript actions
+      ✓ derives an XYZ destination from a structure element (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       62 passed, 62 total
+Snapshots:   0 total
+Time:        3.326 s
+Ran all test suites within paths "test/core/catalog.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+  console.warn
+    Warning: Invalid PDF catalog version: not-a-version
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as version] (src/core/catalog.js:211:7)
+      at Object.<anonymous> (test/core/catalog.test.js:228:81)
+
+  console.warn
+    Warning: Unable to read page labels.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as pageLabels] (src/core/catalog.js:833:7)
+      at Object.pageLabels (test/core/catalog.test.js:673:22)
+
+  console.warn
+    Warning: Bad value, for key "FitWindow", in ViewerPreferences: true.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as viewerPreferences] (src/core/catalog.js:1086:9)
+      at Object.viewerPreferences (test/core/catalog.test.js:698:22)
+
+  console.warn
+    Warning: Ignoring non-standard key in ViewerPreferences: CustomSetting.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as viewerPreferences] (src/core/catalog.js:1081:11)
+      at Object.viewerPreferences (test/core/catalog.test.js:698:22)
+
+  console.warn
+    Warning: Bad value, for key "PrintPageRange", in ViewerPreferences: 1,3,2,4.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as viewerPreferences] (src/core/catalog.js:1086:9)
+      at Object.viewerPreferences (test/core/catalog.test.js:719:22)
+
+  console.warn
+    Warning: parseDestDictionary: `destDict` must be a dictionary.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Catalog.warn [as parseDestDictionary] (src/core/catalog.js:1813:7)
+      at Object.parseDestDictionary (test/core/catalog.test.js:1268:15)
+
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/catalog.test.js
+  Catalog
+    construction and basic entries
+      ✓ rejects a non-dictionary catalog object (27 ms)
+      ✓ rejects a missing or invalid top-level pages dictionary (1 ms)
+      ✓ cloneDict returns an independent copy (1 ms)
+      ✓ exposes and caches valid catalog versions (1 ms)
+      ✓ returns null for missing or malformed catalog versions (94 ms)
+      ✓ decodes the language and rejects non-string values (1 ms)
+      ✓ only reports needsRendering for the boolean true (1 ms)
+      ✓ returns non-empty collection and AcroForm dictionaries (1 ms)
+      ✓ normalizes empty/missing collection and AcroForm entries to null
+      ✓ rethrows MissingDataException while reading collection (1 ms)
+      ✓ reports the raw AcroForm reference when present
+    metadata and structure information
+      ✓ parses XMP metadata from a valid XML metadata stream (2 ms)
+      ✓ ignores non-reference and invalid metadata entries
+      ✓ rethrows MissingDataException from metadata loading (1 ms)
+      ✓ reads MarkInfo flags into a map with false defaults (1 ms)
+      ✓ detects a structure tree root and builds it from its raw reference (1 ms)
+    document outline
+      ✓ returns null when no usable outline exists (1 ms)
+      ✓ walks outline siblings and children and parses destinations (4 ms)
+      ✓ can retain the raw outline dictionaries for the editor
+    permissions and optional content
+      ✓ maps encryption permission bits to a permission set
+      ✓ returns null when permissions cannot be determined (1 ms)
+      ✓ parses optional-content groups, state, order, and usage (2 ms)
+      ✓ returns null for incomplete optional-content configuration
+    page count and labels
+      ✓ reads the page count and honors an explicit actual count (1 ms)
+      ✓ throws when the top-level page count is not an integer
+      ✓ expands decimal, roman, and alphabetic page-label styles (2 ms)
+      ✓ returns null when page-label data is absent or invalid (2 ms)
+    viewer settings
+      ✓ parses supported viewer preferences and ignores bad values (7 ms)
+      ✓ rejects invalid print page ranges and returns null without preferences (2 ms)
+      ✓ validates page layout and page mode names (1 ms)
+      ✓ parses an explicit destination open action
+      ✓ parses named open actions and omits unsupported open actions (1 ms)
+    destinations
+      ✓ combines NameTree and simple destination dictionaries (1 ms)
+      ✓ supports direct lookup and falls back when NameTree lookup misses (1 ms)
+      ✓ uses the cached destinations map after it has been materialized
+    attachments and JavaScript actions
+      ✓ describes named embedded files (1 ms)
+      ✓ returns raw embedded-file entries when requested (1 ms)
+      ✓ reads named attachment content and returns null for unknown ids (1 ms)
+      ✓ registers annotation attachment ids, including collisions
+      ✓ fetches annotation-local attachment content lazily (1 ms)
+      ✓ wraps sound annotation content in a WAV container (1 ms)
+      ✓ reads stream-backed XFA images and skips non-stream values (1 ms)
+      ✓ merges NameTree and OpenAction JavaScript into document actions (1 ms)
+      ✓ cleans caches and cached font dictionaries (1 ms)
+    page tree navigation
+      ✓ finds nested pages and records page-tree caches (2 ms)
+      ✓ supports inline page dictionaries and reports missing indices (53 ms)
+      ✓ detects circular references and invalid kid types
+      ✓ enumerates every page dictionary including nested pages (1 ms)
+      ✓ can continue past broken kids in recovery mode (1 ms)
+      ✓ computes a page index from preceding siblings and caches it (1 ms)
+      ✓ validates page references while computing page indexes (1 ms)
+      ✓ detects parent cycles while computing page indexes
+    base URL and destination parsing
+      ✓ uses a valid catalog URI base and otherwise falls back to the manager (1 ms)
+      ✓ warns and leaves the result unchanged for a non-dictionary (2 ms)
+      ✓ parses URI actions into safe and original URLs
+      ✓ parses ResetForm actions with fields, references, and inclusion (1 ms)
+      ✓ parses Named and SetOCGState actions
+      ✓ uses GoTo destinations and simple Dest values
+      ✓ builds remote file URLs with destinations and NewWindow (1 ms)
+      ✓ parses GoToE attachment targets and remote destinations
+      ✓ recovers URLs from JavaScript actions (1 ms)
+      ✓ derives an XYZ destination from a structure element (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       62 passed, 62 total
+Snapshots:   0 total
+Time:        3.124 s
+Ran all test suites within paths "test/core/catalog.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

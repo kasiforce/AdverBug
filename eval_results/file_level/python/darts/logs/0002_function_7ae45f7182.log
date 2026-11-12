@@ -1,0 +1,101 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (9.1.1)
+Requirement already satisfied: pytest-json-report in /usr/local/lib/python3.11/site-packages (1.5.0)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Collecting coverage
+  Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.1 kB)
+Collecting pytest-asyncio
+  Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl.metadata (4.4 kB)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1.0.1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=22 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Requirement already satisfied: pytest-metadata in /usr/local/lib/python3.11/site-packages (from pytest-json-report) (3.1.1)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading coverage-7.17.2-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (262 kB)
+Downloading pytest_asyncio-1.4.1.post1-py3-none-any.whl (17 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Installing collected packages: coverage, pytest-timeout, pytest-mock, pytest-asyncio
+
+Successfully installed coverage-7.17.2 pytest-asyncio-1.4.1.post1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+tests/darts/models/forecasting/test_sklearn_model.py::test_constructor_defaults_and_public_properties
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_constructor_inputs[kwargs0-At least one of `lags`]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_constructor_inputs[kwargs1-output_chunk_length]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_constructor_inputs[kwargs2-output_chunk_length]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_constructor_inputs[kwargs3-must have a fit]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_constructor_inputs[kwargs4-must have a predict]
+tests/darts/models/forecasting/test_sklearn_model.py::test_only_covariate_lags_are_sufficient
+tests/darts/models/forecasting/test_sklearn_model.py::test_lag_normalization_for_int_list_and_future_tuple
+tests/darts/models/forecasting/test_sklearn_model.py::test_output_chunk_shift_moves_future_lags_and_extreme_lags
+tests/darts/models/forecasting/test_sklearn_model.py::test_component_specific_lags_and_default_lags
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs0-strictly positive]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs1-strictly positive]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs2-strictly negative]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs3-strictly negative]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs4-strictly negative]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs5-must contain at least one key]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs6-strictly negative]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs7-strictly positive]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs8-cannot be \\(0, 0\\)]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs9-positive integers]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs10-length 2]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs11-not bool]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs12-length 2]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs13-tuple or a list]
+tests/darts/models/forecasting/test_sklearn_model.py::test_invalid_lag_specifications[kwargs14-only integers]
+tests/darts/models/forecasting/test_sklearn_model.py::test_multi_models_normalization[False-1-True-1]
+tests/darts/models/forecasting/test_sklearn_model.py::test_multi_models_normalization[True-3-True-3]
+tests/darts/models/forecasting/test_sklearn_model.py::test_multi_models_normalization[False-3-False-1]
+tests/darts/models/forecasting/test_sklearn_model.py::test_multi_models_normalization[None-3-False-1]
+tests/darts/models/forecasting/test_sklearn_model.py::test_fit_and_autoregressive_predict_on_linear_series
+tests/darts/models/forecasting/test_sklearn_model.py::test_multistep_output_chunk_and_autoregression[True]
+tests/darts/models/forecasting/test_sklearn_model.py::test_multistep_output_chunk_and_autoregression[False]
+tests/darts/models/forecasting/test_sklearn_model.py::test_fit_and_predict_with_past_and_future_covariates
+tests/darts/models/forecasting/test_sklearn_model.py::test_fit_covariate_contract_errors
+tests/darts/models/forecasting/test_sklearn_model.py::test_predict_input_validation_errors
+tests/darts/models/forecasting/test_sklearn_model.py::test_prediction_with_multiple_training_series_requires_explicit_series
+tests/darts/models/forecasting/test_sklearn_model.py::test_component_specific_lags_are_reordered_and_validated_on_fit
+tests/darts/models/forecasting/test_sklearn_model.py::test_static_covariates_are_used_as_features_and_preserved
+tests/darts/models/forecasting/test_sklearn_model.py::test_static_covariates_can_be_disabled_and_are_required_at_predict
+tests/darts/models/forecasting/test_sklearn_model.py::test_output_chunk_shift_prediction_and_autoregression_guard
+tests/darts/models/forecasting/test_sklearn_model.py::test_native_multivariate_model_stays_unwrapped
+tests/darts/models/forecasting/test_sklearn_model.py::test_non_native_multivariate_model_is_wrapped_and_get_estimator_maps_indices
+tests/darts/models/forecasting/test_sklearn_model.py::test_get_estimator_for_single_estimator_and_rejects_quantile
+tests/darts/models/forecasting/test_sklearn_model.py::test_lagged_training_data_respects_stride_and_max_samples
+tests/darts/models/forecasting/test_sklearn_model.py::test_sample_weight_is_forwarded_for_supported_models
+tests/darts/models/forecasting/test_sklearn_model.py::test_sample_weight_is_ignored_with_warning_when_unsupported
+tests/darts/models/forecasting/test_sklearn_model.py::test_sample_weight_with_multivariate_target_forces_multioutput_wrapper
+tests/darts/models/forecasting/test_sklearn_model.py::test_predict_kwargs_are_forwarded_to_underlying_model
+tests/darts/models/forecasting/test_sklearn_model.py::test_deterministic_model_rejects_multiple_prediction_samples
+tests/darts/models/forecasting/test_sklearn_model.py::test_optimized_historical_forecasts_are_available_without_retraining
+tests/darts/models/forecasting/test_sklearn_model.py::test_deprecated_regression_model_still_builds_and_logs_warning
+tests/darts/models/forecasting/test_sklearn_model.py::test_classifier_constructor_defaults_and_likelihood_options
+tests/darts/models/forecasting/test_sklearn_model.py::test_classifier_fit_predict_class_labels_and_probability_parameters
+tests/darts/models/forecasting/test_sklearn_model.py::test_classifier_multi_models_false_uses_one_classifier_for_output_chunk
+tests/darts/models/forecasting/test_sklearn_model.py::test_classifier_without_predict_proba_disables_probabilistic_support
+tests/darts/models/forecasting/test_sklearn_model.py::test_classifier_rejects_inconsistent_classes_across_output_chunk
+tests/darts/models/forecasting/test_sklearn_model.py::test_classifier_warns_that_target_lags_are_numeric
+tests/darts/models/forecasting/test_sklearn_model.py::test_categorical_feature_mixin_constructor_validation
+tests/darts/models/forecasting/test_sklearn_model.py::test_categorical_past_covariates_are_detected_and_forwarded_to_fit
+tests/darts/models/forecasting/test_sklearn_model.py::test_categorical_components_must_be_integral_and_present
+tests/darts/models/forecasting/test_sklearn_model.py::test_categorical_future_and_static_covariate_indices
+
+[32m[32m61 tests collected[0m[32m in 1.85s[0m[0m
+
+=== test.log ===
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m            [100%][0m
+[33m[32m61 passed[0m, [33m[1m3 warnings[0m[33m in 3.32s[0m[0m
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

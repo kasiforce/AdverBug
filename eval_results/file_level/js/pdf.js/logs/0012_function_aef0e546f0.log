@@ -1,0 +1,131 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/api.test.js
+  api module contract
+    ✓ exports the public constructors and build identifiers (3 ms)
+  PDFDataRangeTransport
+    ✓ stores constructor data and applies documented defaults
+    ✓ forwards range, progressive-read, and progressive-done events (1 ms)
+    ✓ queues progressive events until the transport is ready (1 ms)
+    ✓ requires subclasses to implement requestDataRange (60 ms)
+  PDFDocumentLoadingTask
+    ✓ has unique ids and documented initial state (1 ms)
+    ✓ getData delegates to the active transport (1 ms)
+    ✓ destroy marks the worker synchronously, then tears everything down (1 ms)
+    ✓ destroy restores the pending-destroy marker when transport cleanup fails (1 ms)
+  PDFDocumentProxy
+    ✓ exposes document metadata and shared factories (1 ms)
+    ✓ reports pure-XFA documents consistently (1 ms)
+    ✓ delegates document and testing-only accessors to the transport (6 ms)
+    ✓ maps an optional-content intent before requesting the configuration (1 ms)
+    ✓ returns download info and forwards cleanup options (1 ms)
+    ✓ always keeps fonts for pure-XFA cleanup
+  PDFPageProxy
+    ✓ exposes page geometry and builds a viewport using page defaults (1 ms)
+    ✓ changing pageNumber updates the proxy and notifies the transport
+    ✓ clone preserves source metadata while assigning a new page index (1 ms)
+    ✓ forwards annotation and JavaScript-action requests with the page index (1 ms)
+    ✓ exposes the XFA child corresponding to the page index
+    ✓ streamTextContent maps page numbers and passes stream options (1 ms)
+    ✓ getTextContent combines chunks, styles, and the first language
+    ✓ cleanup reports completion and releases page resources (1 ms)
+    ✓ _destroy marks the page destroyed and cleans it up (1 ms)
+    ✓ getOperatorList resolves with collected worker chunks (20 ms)
+    ✓ getOperatorList rejects when the worker stream fails (3 ms)
+    ✓ render rejects when optional-content intent differs from render intent (2 ms)
+    ✓ render cancellation rejects with a RenderingCancelledException (3 ms)
+  RenderTask
+    ✓ exposes the internal completion promise and operator list (1 ms)
+    ✓ delegates cancellation and preserves the optional delay
+    ✓ derives separateAnnots from form and canvas annotation state (1 ms)
+    ✓ normalizes optional image coordinates
+  PDFWorker
+    ✓ initializes from a supplied port and configures the worker (2 ms)
+    ✓ caches one worker per port and rejects port reuse
+    ✓ rejects creation from a port whose worker is being destroyed
+    ✓ destroy releases the port and allows a replacement worker (1 ms)
+    ✓ workerSrc requires and returns the global worker source (1 ms)
+  getDocument
+    ✓ rejects invalid binary data before creating a worker (3 ms)
+    ✓ rejects invalid URL values with a useful message (1 ms)
+    ✓ rejects factory URLs without a trailing slash
+    ✓ normalizes options and sends one worker document request (3 ms)
+    ✓ rejects when none of data, range, or url is provided (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       42 passed, 42 total
+Snapshots:   0 total
+Time:        1.419 s
+Ran all test suites within paths "test/display/api.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/display/api.test.js
+  api module contract
+    ✓ exports the public constructors and build identifiers (3 ms)
+  PDFDataRangeTransport
+    ✓ stores constructor data and applies documented defaults (1 ms)
+    ✓ forwards range, progressive-read, and progressive-done events (1 ms)
+    ✓ queues progressive events until the transport is ready (1 ms)
+    ✓ requires subclasses to implement requestDataRange (80 ms)
+  PDFDocumentLoadingTask
+    ✓ has unique ids and documented initial state (1 ms)
+    ✓ getData delegates to the active transport (1 ms)
+    ✓ destroy marks the worker synchronously, then tears everything down
+    ✓ destroy restores the pending-destroy marker when transport cleanup fails (1 ms)
+  PDFDocumentProxy
+    ✓ exposes document metadata and shared factories (1 ms)
+    ✓ reports pure-XFA documents consistently (1 ms)
+    ✓ delegates document and testing-only accessors to the transport (4 ms)
+    ✓ maps an optional-content intent before requesting the configuration (1 ms)
+    ✓ returns download info and forwards cleanup options (1 ms)
+    ✓ always keeps fonts for pure-XFA cleanup
+  PDFPageProxy
+    ✓ exposes page geometry and builds a viewport using page defaults (2 ms)
+    ✓ changing pageNumber updates the proxy and notifies the transport
+    ✓ clone preserves source metadata while assigning a new page index
+    ✓ forwards annotation and JavaScript-action requests with the page index (1 ms)
+    ✓ exposes the XFA child corresponding to the page index
+    ✓ streamTextContent maps page numbers and passes stream options (1 ms)
+    ✓ getTextContent combines chunks, styles, and the first language (1 ms)
+    ✓ cleanup reports completion and releases page resources (1 ms)
+    ✓ _destroy marks the page destroyed and cleans it up
+    ✓ getOperatorList resolves with collected worker chunks (2 ms)
+    ✓ getOperatorList rejects when the worker stream fails (2 ms)
+    ✓ render rejects when optional-content intent differs from render intent (2 ms)
+    ✓ render cancellation rejects with a RenderingCancelledException (2 ms)
+  RenderTask
+    ✓ exposes the internal completion promise and operator list
+    ✓ delegates cancellation and preserves the optional delay
+    ✓ derives separateAnnots from form and canvas annotation state (1 ms)
+    ✓ normalizes optional image coordinates
+  PDFWorker
+    ✓ initializes from a supplied port and configures the worker (1 ms)
+    ✓ caches one worker per port and rejects port reuse
+    ✓ rejects creation from a port whose worker is being destroyed (1 ms)
+    ✓ destroy releases the port and allows a replacement worker
+    ✓ workerSrc requires and returns the global worker source (1 ms)
+  getDocument
+    ✓ rejects invalid binary data before creating a worker (3 ms)
+    ✓ rejects invalid URL values with a useful message
+    ✓ rejects factory URLs without a trailing slash (1 ms)
+    ✓ normalizes options and sends one worker document request (2 ms)
+    ✓ rejects when none of data, range, or url is provided
+
+Test Suites: 1 passed, 1 total
+Tests:       42 passed, 42 total
+Snapshots:   0 total
+Time:        2.121 s
+Ran all test suites within paths "test/display/api.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

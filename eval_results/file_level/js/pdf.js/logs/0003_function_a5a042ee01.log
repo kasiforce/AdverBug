@@ -1,0 +1,471 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    Warning: checkLastPage - invalid /Pages tree /Count: 2.5.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at PDFDocument.warn [as checkLastPage] (src/core/document.js:1787:7)
+      at Object.<anonymous> (test/core/document.test.js:1553:7)
+
+  console.warn
+    Warning: Unknown namespace prefix: xdp.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Builder.warn [as _getNamespaceToUse] (src/core/xfa/builder.js:184:5)
+      at Builder._getNamespaceToUse [as build] (src/core/xfa/builder.js:119:33)
+      at XFAParser.build [as onBeginElement] (src/core/xfa/parser.js:131:32)
+      at XFAParser.onBeginElement [as parseXml] (src/core/xml_parser.js:267:18)
+      at XFAParser.parseXml [as parse] (src/core/xfa/parser.js:49:10)
+      at new parse (src/core/xfa/factory.js:35:35)
+      at PDFDocument.get xfaFactory [as xfaFactory] (src/core/document.js:1315:46)
+      at Object.xfaFactory (test/core/document.test.js:1735:34)
+
+  console.warn
+    Warning: XFA - an error occurred during parsing and binding: TypeError: Cannot read properties of undefined (reading 'Symbol()')
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/xfa/factory.js:41:7)
+      at PDFDocument.get xfaFactory [as xfaFactory] (src/core/document.js:1315:46)
+      at Object.xfaFactory (test/core/document.test.js:1735:34)
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/document.test.js
+  Page
+    box getters
+      ✓ falls back to the letter media box when /MediaBox is missing (4 ms)
+      ✓ normalizes a valid /MediaBox (1 ms)
+      ✓ ignores a non-positive /MediaBox and warns (1 ms)
+      ✓ cropBox defaults to mediaBox (1 ms)
+      ✓ view intersects cropBox and mediaBox (1 ms)
+      ✓ view falls back to mediaBox when the boxes do not intersect (1 ms)
+      ✓ view uses mediaBox when cropBox has equal values in another array
+      ✓ getBoundingBox returns normalized inherited boxes and null otherwise (1 ms)
+      ✓ getBoundingBox prefers the XFA bounding box (1 ms)
+      ✓ xfaData is null without an XFA factory
+    userUnit
+      ✓ defaults to 1 and accepts only positive numbers (1 ms)
+    rotate
+      ✓ defaults to 0
+      ✓ normalizes 90 to 90 (1 ms)
+      ✓ normalizes 360 to 0
+      ✓ normalizes 450 to 90
+      ✓ normalizes -90 to 270
+      ✓ normalizes -450 to 270 (1 ms)
+      ✓ normalizes 45 to 0
+      ✓ is inherited from the page tree
+    content, resources and annotations
+      ✓ content returns the raw /Contents array (1 ms)
+      ✓ resources defaults to an empty dictionary
+      ✓ resources is inherited and merged through the page tree
+      ✓ resources falls back to an empty dictionary for a non-dictionary value
+      ✓ annotations defaults to an empty array
+      ✓ annotations returns inherited entries and rejects non-arrays (1 ms)
+      ✓ jsActions collects JavaScript actions from the page dictionary (1 ms)
+      ✓ jsActions is null when no actions are present
+    getContentStream
+      ✓ returns a single content stream as-is (1 ms)
+      ✓ combines an array of content streams (1 ms)
+      ✓ returns a NullStream when no content exists
+      ✓ returns a NullStream for an invalid /Contents value (1 ms)
+      ✓ does not return image streams directly
+      ✓ resolves an async content stream into a regular Stream (1 ms)
+    loadResources
+      ✓ loads resources only once (1 ms)
+    _createPartialEvaluator
+      ✓ uses page-local ids and the configured evaluator options
+      ✓ can override the page index and proxy id
+    extractTextContent
+      ✓ uses the content stream, merged resources, view box and language (1 ms)
+    getOperatorList
+      ✓ renders page content and closes the operator list with no annotations (3 ms)
+      ✓ includes annotations selected for the requested intent (1 ms)
+      ✓ skips annotations when annotation rendering is disabled (1 ms)
+    getAnnotationsData
+      ✓ returns the data matching the render intent (1 ms)
+      ✓ extracts text content for visible annotations with text (1 ms)
+      ✓ returns an empty array when there are no annotations
+    collectAnnotationsByType
+      ✓ uses cached parsed annotations and filters by type (1 ms)
+      ✓ returns every annotation when no type filter is given (1 ms)
+      ✓ reads annotations when no parsed annotation cache exists
+    save
+      ✓ saves every parsed annotation and ignores failures (1 ms)
+    saveNewAnnotations
+      ✓ rejects when the page belongs to an XFA document (67 ms)
+    getStructTree
+      ✓ returns null when there is no structure tree root
+  PDFDocument
+    constructor
+      ✓ rejects an empty stream (11 ms)
+      ✓ requires a BaseStream instance (2 ms)
+      ✓ stores the manager and creates an XRef
+    parse
+      ✓ parses the XRef and creates the catalog (1 ms)
+    checkHeader and version
+      ✓ reads the version from the PDF header (1 ms)
+      ✓ ignores a malformed header version and warns
+      ✓ does not throw when no PDF header exists (1 ms)
+      ✓ the catalog version takes precedence over the header
+    startXRef and parseStartXRef
+      ✓ finds the last startxref offset (1 ms)
+      ✓ searches backwards in a long file
+      ✓ returns 0 when startxref is missing
+      ✓ returns 0 for a non-numeric startxref value
+      ✓ uses the first object end for linearized documents (1 ms)
+      ✓ passes the computed offset to the XRef
+    numPages
+      ✓ uses the catalog page count (1 ms)
+      ✓ prefers an explicitly actual page count
+      ✓ uses the XFA factory page count when available (1 ms)
+      ✓ uses the linearization page count
+      ✓ is cached on the instance
+    formInfo
+      ✓ returns defaults without an AcroForm (1 ms)
+      ✓ detects fields and an AcroForm
+      ✓ detects XFA data in arrays and non-empty streams (1 ms)
+      ✓ detects signatures via /SigFlags (1 ms)
+      ✓ treats a fields list of only invisible signatures as document signatures
+      ✓ keeps an AcroForm when a visible signature field is present (1 ms)
+      ✓ checks nested Kids for document signatures
+      ✓ stops walking too deeply nested Kids (1 ms)
+      ✓ rethrows MissingDataException
+    documentInfo
+      ✓ reports the basic document metadata (1 ms)
+      ✓ copies whitelisted and custom Info entries (1 ms)
+      ✓ ignores a non-dictionary Info entry (1 ms)
+      ✓ rethrows MissingDataException from the trailer
+    fingerprints
+      ✓ uses valid /ID values and reports a modified fingerprint (1 ms)
+      ✓ omits the modified fingerprint when both IDs match
+      ✓ omits an invalid modified ID (1 ms)
+      ✓ computes an MD5 fingerprint when /ID is missing or invalid (1 ms)
+    getPage
+      ✓ returns a cached Page for the page index (1 ms)
+      ✓ returns an empty page for XFA documents (1 ms)
+      ✓ uses the linearization dictionary for the first page (1 ms)
+      ✓ falls back to the catalog when the linearized object is invalid
+    checkFirstPage
+      ✓ does nothing in recovery mode
+      ✓ loads the first page
+      ✓ cleans up and throws XRefParseException on an XRefEntryException
+    checkLastPage
+      ✓ does not load a page when there is only one page (1 ms)
+      ✓ loads the last page
+      ✓ does not load a page for XFA documents
+      ✓ throws XRefParseException on an XRefEntryException (1 ms)
+      ✓ repairs the page tree when the page count is invalid (1 ms)
+      ✓ throws XRefParseException when the page tree cannot be recovered (54 ms)
+      ✓ falls back to one page when the page tree recovery fails (1 ms)
+    fontFallback and cleanup
+      ✓ calls fallback on the matching cached font (1 ms)
+      ✓ does nothing when no cached font matches
+      ✓ delegates cleanup to the catalog (1 ms)
+      ✓ clears global caches when there is no catalog
+    XFA getters
+      ✓ _xfaStreams returns null without an AcroForm (1 ms)
+      ✓ _xfaStreams exposes a stream-based XFA payload
+      ✓ _xfaStreams and xfaData expose array-based XFA payloads (1 ms)
+      ✓ xfaData returns null for invalid UTF-8 (1 ms)
+      ✓ xfaDatasets parses a datasets payload (2 ms)
+      ✓ xfaDatasets is null without XFA streams
+      ✓ xfaFactory requires XFA rendering to be enabled (13 ms)
+      ✓ isPureXfa and htmlForXfa are false/null without a factory
+      ✓ serializeXfaData delegates to the XFA factory (1 ms)
+    hasJSActions
+      ✓ is true when the catalog has JavaScript actions (1 ms)
+      ✓ is true when a field has actions
+      ✓ is false when fields have no actions
+      ✓ is false when there are no field objects (1 ms)
+    calculationOrderIds
+      ✓ returns null without a calculation order
+      ✓ returns the referenced calculation order ids (1 ms)
+      ✓ returns null when no calculation order entry is a reference
+    annotationGlobals and fieldObjects
+      ✓ builds annotation globals from the catalog (1 ms)
+      ✓ fieldObjects is null when the form has no fields (1 ms)
+      ✓ fieldObjects is null when annotation globals are unavailable
+    signatures and getSignatureData
+      ✓ returns null when the document has no signatures (1 ms)
+      ✓ collects the signature metadata (2 ms)
+      ✓ exposes the signed bytes through getSignatureData (1 ms)
+      ✓ detects modifications after the signed range (1 ms)
+      ✓ detects trailing non-whitespace after the signed range (1 ms)
+      ✓ ignores structurally invalid byte ranges
+      ✓ groups signatures by byte-range containment (1 ms)
+    toJSObject
+      ✓ returns primitives unchanged (20 ms)
+      ✓ converts dictionaries and arrays (1 ms)
+      ✓ uses the trailer for a first-call null value (1 ms)
+      ✓ resolves references on the first call and describes them otherwise (1 ms)
+      ✓ converts streams to their bytes
+
+Test Suites: 1 passed, 1 total
+Tests:       134 passed, 134 total
+Snapshots:   0 total
+Time:        3.509 s
+Ran all test suites within paths "test/core/document.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+  console.warn
+    Warning: checkLastPage - invalid /Pages tree /Count: 2.5.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at PDFDocument.warn [as checkLastPage] (src/core/document.js:1787:7)
+      at Object.<anonymous> (test/core/document.test.js:1553:7)
+
+  console.warn
+    Warning: Unknown namespace prefix: xdp.
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at Builder.warn [as _getNamespaceToUse] (src/core/xfa/builder.js:184:5)
+      at Builder._getNamespaceToUse [as build] (src/core/xfa/builder.js:119:33)
+      at XFAParser.build [as onBeginElement] (src/core/xfa/parser.js:131:32)
+      at XFAParser.onBeginElement [as parseXml] (src/core/xml_parser.js:267:18)
+      at XFAParser.parseXml [as parse] (src/core/xfa/parser.js:49:10)
+      at new parse (src/core/xfa/factory.js:35:35)
+      at PDFDocument.get xfaFactory [as xfaFactory] (src/core/document.js:1315:46)
+      at Object.xfaFactory (test/core/document.test.js:1735:34)
+
+  console.warn
+    Warning: XFA - an error occurred during parsing and binding: TypeError: Cannot read properties of undefined (reading 'Symbol()')
+
+      408 |   if (verbosity >= VerbosityLevel.WARNINGS) {
+      409 |     // eslint-disable-next-line no-console
+    > 410 |     console.warn(`Warning: ${msg}`);
+          |             ^
+      411 |   }
+      412 | }
+      413 |
+
+      at warn (src/shared/util.js:410:13)
+      at new warn (src/core/xfa/factory.js:41:7)
+      at PDFDocument.get xfaFactory [as xfaFactory] (src/core/document.js:1315:46)
+      at Object.xfaFactory (test/core/document.test.js:1735:34)
+
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/document.test.js
+  Page
+    box getters
+      ✓ falls back to the letter media box when /MediaBox is missing (5 ms)
+      ✓ normalizes a valid /MediaBox (1 ms)
+      ✓ ignores a non-positive /MediaBox and warns (2 ms)
+      ✓ cropBox defaults to mediaBox (1 ms)
+      ✓ view intersects cropBox and mediaBox (1 ms)
+      ✓ view falls back to mediaBox when the boxes do not intersect (1 ms)
+      ✓ view uses mediaBox when cropBox has equal values in another array (1 ms)
+      ✓ getBoundingBox returns normalized inherited boxes and null otherwise
+      ✓ getBoundingBox prefers the XFA bounding box
+      ✓ xfaData is null without an XFA factory
+    userUnit
+      ✓ defaults to 1 and accepts only positive numbers (1 ms)
+    rotate
+      ✓ defaults to 0
+      ✓ normalizes 90 to 90
+      ✓ normalizes 360 to 0 (1 ms)
+      ✓ normalizes 450 to 90
+      ✓ normalizes -90 to 270
+      ✓ normalizes -450 to 270 (1 ms)
+      ✓ normalizes 45 to 0
+      ✓ is inherited from the page tree
+    content, resources and annotations
+      ✓ content returns the raw /Contents array (1 ms)
+      ✓ resources defaults to an empty dictionary
+      ✓ resources is inherited and merged through the page tree
+      ✓ resources falls back to an empty dictionary for a non-dictionary value (1 ms)
+      ✓ annotations defaults to an empty array
+      ✓ annotations returns inherited entries and rejects non-arrays (1 ms)
+      ✓ jsActions collects JavaScript actions from the page dictionary (1 ms)
+      ✓ jsActions is null when no actions are present
+    getContentStream
+      ✓ returns a single content stream as-is (1 ms)
+      ✓ combines an array of content streams (1 ms)
+      ✓ returns a NullStream when no content exists (1 ms)
+      ✓ returns a NullStream for an invalid /Contents value (11 ms)
+      ✓ does not return image streams directly (1 ms)
+      ✓ resolves an async content stream into a regular Stream
+    loadResources
+      ✓ loads resources only once (1 ms)
+    _createPartialEvaluator
+      ✓ uses page-local ids and the configured evaluator options (1 ms)
+      ✓ can override the page index and proxy id (1 ms)
+    extractTextContent
+      ✓ uses the content stream, merged resources, view box and language (1 ms)
+    getOperatorList
+      ✓ renders page content and closes the operator list with no annotations (3 ms)
+      ✓ includes annotations selected for the requested intent (2 ms)
+      ✓ skips annotations when annotation rendering is disabled (1 ms)
+    getAnnotationsData
+      ✓ returns the data matching the render intent (1 ms)
+      ✓ extracts text content for visible annotations with text
+      ✓ returns an empty array when there are no annotations
+    collectAnnotationsByType
+      ✓ uses cached parsed annotations and filters by type (1 ms)
+      ✓ returns every annotation when no type filter is given
+      ✓ reads annotations when no parsed annotation cache exists
+    save
+      ✓ saves every parsed annotation and ignores failures (1 ms)
+    saveNewAnnotations
+      ✓ rejects when the page belongs to an XFA document (73 ms)
+    getStructTree
+      ✓ returns null when there is no structure tree root
+  PDFDocument
+    constructor
+      ✓ rejects an empty stream (9 ms)
+      ✓ requires a BaseStream instance (1 ms)
+      ✓ stores the manager and creates an XRef (1 ms)
+    parse
+      ✓ parses the XRef and creates the catalog (1 ms)
+    checkHeader and version
+      ✓ reads the version from the PDF header (1 ms)
+      ✓ ignores a malformed header version and warns
+      ✓ does not throw when no PDF header exists
+      ✓ the catalog version takes precedence over the header (1 ms)
+    startXRef and parseStartXRef
+      ✓ finds the last startxref offset
+      ✓ searches backwards in a long file (1 ms)
+      ✓ returns 0 when startxref is missing
+      ✓ returns 0 for a non-numeric startxref value
+      ✓ uses the first object end for linearized documents
+      ✓ passes the computed offset to the XRef
+    numPages
+      ✓ uses the catalog page count
+      ✓ prefers an explicitly actual page count
+      ✓ uses the XFA factory page count when available (1 ms)
+      ✓ uses the linearization page count
+      ✓ is cached on the instance
+    formInfo
+      ✓ returns defaults without an AcroForm
+      ✓ detects fields and an AcroForm
+      ✓ detects XFA data in arrays and non-empty streams
+      ✓ detects signatures via /SigFlags (1 ms)
+      ✓ treats a fields list of only invisible signatures as document signatures
+      ✓ keeps an AcroForm when a visible signature field is present (1 ms)
+      ✓ checks nested Kids for document signatures
+      ✓ stops walking too deeply nested Kids (1 ms)
+      ✓ rethrows MissingDataException
+    documentInfo
+      ✓ reports the basic document metadata (1 ms)
+      ✓ copies whitelisted and custom Info entries (1 ms)
+      ✓ ignores a non-dictionary Info entry (1 ms)
+      ✓ rethrows MissingDataException from the trailer
+    fingerprints
+      ✓ uses valid /ID values and reports a modified fingerprint (1 ms)
+      ✓ omits the modified fingerprint when both IDs match
+      ✓ omits an invalid modified ID (1 ms)
+      ✓ computes an MD5 fingerprint when /ID is missing or invalid
+    getPage
+      ✓ returns a cached Page for the page index
+      ✓ returns an empty page for XFA documents
+      ✓ uses the linearization dictionary for the first page (1 ms)
+      ✓ falls back to the catalog when the linearized object is invalid (1 ms)
+    checkFirstPage
+      ✓ does nothing in recovery mode
+      ✓ loads the first page (1 ms)
+      ✓ cleans up and throws XRefParseException on an XRefEntryException
+    checkLastPage
+      ✓ does not load a page when there is only one page (1 ms)
+      ✓ loads the last page
+      ✓ does not load a page for XFA documents
+      ✓ throws XRefParseException on an XRefEntryException (1 ms)
+      ✓ repairs the page tree when the page count is invalid (1 ms)
+      ✓ throws XRefParseException when the page tree cannot be recovered (56 ms)
+      ✓ falls back to one page when the page tree recovery fails (1 ms)
+    fontFallback and cleanup
+      ✓ calls fallback on the matching cached font
+      ✓ does nothing when no cached font matches (1 ms)
+      ✓ delegates cleanup to the catalog
+      ✓ clears global caches when there is no catalog (1 ms)
+    XFA getters
+      ✓ _xfaStreams returns null without an AcroForm
+      ✓ _xfaStreams exposes a stream-based XFA payload (1 ms)
+      ✓ _xfaStreams and xfaData expose array-based XFA payloads (1 ms)
+      ✓ xfaData returns null for invalid UTF-8
+      ✓ xfaDatasets parses a datasets payload (2 ms)
+      ✓ xfaDatasets is null without XFA streams
+      ✓ xfaFactory requires XFA rendering to be enabled (14 ms)
+      ✓ isPureXfa and htmlForXfa are false/null without a factory
+      ✓ serializeXfaData delegates to the XFA factory (1 ms)
+    hasJSActions
+      ✓ is true when the catalog has JavaScript actions
+      ✓ is true when a field has actions (1 ms)
+      ✓ is false when fields have no actions
+      ✓ is false when there are no field objects
+    calculationOrderIds
+      ✓ returns null without a calculation order
+      ✓ returns the referenced calculation order ids
+      ✓ returns null when no calculation order entry is a reference (1 ms)
+    annotationGlobals and fieldObjects
+      ✓ builds annotation globals from the catalog
+      ✓ fieldObjects is null when the form has no fields
+      ✓ fieldObjects is null when annotation globals are unavailable
+    signatures and getSignatureData
+      ✓ returns null when the document has no signatures
+      ✓ collects the signature metadata (3 ms)
+      ✓ exposes the signed bytes through getSignatureData
+      ✓ detects modifications after the signed range
+      ✓ detects trailing non-whitespace after the signed range (1 ms)
+      ✓ ignores structurally invalid byte ranges
+      ✓ groups signatures by byte-range containment (1 ms)
+    toJSObject
+      ✓ returns primitives unchanged (35 ms)
+      ✓ converts dictionaries and arrays (1 ms)
+      ✓ uses the trailer for a first-call null value
+      ✓ resolves references on the first call and describes them otherwise (1 ms)
+      ✓ converts streams to their bytes (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       134 passed, 134 total
+Snapshots:   0 total
+Time:        4.484 s
+Ran all test suites within paths "test/core/document.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
