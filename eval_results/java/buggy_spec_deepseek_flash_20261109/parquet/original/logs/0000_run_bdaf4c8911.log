@@ -1,0 +1,193 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.parquet:parquet-generator >----------------
+[INFO] Building Apache Parquet Generator 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ parquet-generator ---
+[INFO] Deleting /testbed/parquet-generator/target
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-generator ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794402050952
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-generator ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-generator ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] The encoding used to copy filtered properties files has not been set. This means that the same encoding will be used to copy filtered properties files as when copying other filtered resources. This might not be what you want! Run your build with --debug to see which files might be affected. Read more at https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-generator ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-generator ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-generator/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-generator ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug release 17] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.312 s
+[INFO] Finished at: 2026-11-11T13:00:54Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.parquet:parquet-generator >----------------
+[INFO] Building Apache Parquet Generator 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ parquet-generator ---
+[INFO] surefire.argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:MaxJavaStackTraceDepth=8
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-generator ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794402060617
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-generator ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-generator ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] The encoding used to copy filtered properties files has not been set. This means that the same encoding will be used to copy filtered properties files as when copying other filtered resources. This might not be what you want! Run your build with --debug to see which files might be affected. Read more at https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-generator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-generator ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-generator ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-generator/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-generator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ parquet-generator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests
+[ERROR] Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.187 s <<< FAILURE! -- in org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests
+[ERROR] org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests.runGeneratesEqualityAndInequalityComparisonsForEverySupportedPrimitiveType -- Time elapsed: 0.013 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  "public<TextendsComparable<T>>IncrementallyUpdatedFilterPredicatevisit(Eq<T>pred){ColumnPathcolumnPath=pred.getColumn().getColumnPath();Class<T>clazz=pred.getColumn().getColumnType();ValueInspectorvalueInspector=null;if(clazz.equals(Integer.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(intvalue){setResult(false);}};}else{finalinttarget=(Integer)(Object)pred.getValue();finalPrimitiveComparator<Integer>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(intvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Long.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(longvalue){setResult(false);}};}else{finallongtarget=(Long)(Object)pred.getValue();finalPrimitiveComparator<Long>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(longvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Boolean.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(booleanvalue){setResult(false);}};}else{finalbooleantarget=(Boolean)(Object)pred.getValue();finalPrimitiveComparator<Boolean>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(booleanvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Float.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(floatvalue){setResult(false);}};}else{finalfloattarget=(Float)(Object)pred.getValue();finalPrimitiveComparator<Float>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(floatvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Double.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(doublevalue){setResult(false);}};}else{finaldoubletarget=(Double)(Object)pred.getValue();finalPrimitiveComparator<Double>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(doublevalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Binary.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(Binaryvalue){setResult(false);}};}else{finalBinarytarget=(Binary)(Object)pred.getValue();finalPrimitiveComparator<Binary>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(Binaryvalue){setResult(comparator.compare(value,target)==0);}};}}if(valueInspector==null){thrownewIllegalArgumentException("Encounteredunknowntype"+clazz);}addValueInspector(columnPath,valueInspector);returnvalueInspector;"
+to contain:
+  "if(!isKnown()&&comparator.compare(value,target)==0){setResult(true);}" 
+	at org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests.runGeneratesEqualityAndInequalityComparisonsForEverySupportedPrimitiveType(IncrementallyUpdatedFilterPredicateGeneratorRunTests.java:96)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   IncrementallyUpdatedFilterPredicateGeneratorRunTests.runGeneratesEqualityAndInequalityComparisonsForEverySupportedPrimitiveType:96 
+Expecting actual:
+  "public<TextendsComparable<T>>IncrementallyUpdatedFilterPredicatevisit(Eq<T>pred){ColumnPathcolumnPath=pred.getColumn().getColumnPath();Class<T>clazz=pred.getColumn().getColumnType();ValueInspectorvalueInspector=null;if(clazz.equals(Integer.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(intvalue){setResult(false);}};}else{finalinttarget=(Integer)(Object)pred.getValue();finalPrimitiveComparator<Integer>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(intvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Long.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(longvalue){setResult(false);}};}else{finallongtarget=(Long)(Object)pred.getValue();finalPrimitiveComparator<Long>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(longvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Boolean.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(booleanvalue){setResult(false);}};}else{finalbooleantarget=(Boolean)(Object)pred.getValue();finalPrimitiveComparator<Boolean>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(booleanvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Float.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(floatvalue){setResult(false);}};}else{finalfloattarget=(Float)(Object)pred.getValue();finalPrimitiveComparator<Float>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(floatvalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Double.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(doublevalue){setResult(false);}};}else{finaldoubletarget=(Double)(Object)pred.getValue();finalPrimitiveComparator<Double>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(doublevalue){setResult(comparator.compare(value,target)==0);}};}}if(clazz.equals(Binary.class)){if(pred.getValue()==null){valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(true);}@Overridepublicvoidupdate(Binaryvalue){setResult(false);}};}else{finalBinarytarget=(Binary)(Object)pred.getValue();finalPrimitiveComparator<Binary>comparator=getComparator(columnPath);valueInspector=newValueInspector(){@OverridepublicvoidupdateNull(){setResult(false);}@Overridepublicvoidupdate(Binaryvalue){setResult(comparator.compare(value,target)==0);}};}}if(valueInspector==null){thrownewIllegalArgumentException("Encounteredunknowntype"+clazz);}addValueInspector(columnPath,valueInspector);returnvalueInspector;"
+to contain:
+  "if(!isKnown()&&comparator.compare(value,target)==0){setResult(true);}" 
+[INFO] 
+[ERROR] Tests run: 6, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.620 s
+[INFO] Finished at: 2026-11-11T13:01:03Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.6.0:test (default-test) on project parquet-generator: There are test failures.
+[ERROR] 
+[ERROR] See /testbed/parquet-generator/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.parquet:parquet-generator >----------------
+[INFO] Building Apache Parquet Generator 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ parquet-generator ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Apache Parquet Generator' with 9 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.758 s
+[INFO] Finished at: 2026-11-11T13:01:06Z
+[INFO] ------------------------------------------------------------------------

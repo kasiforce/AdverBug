@@ -1,0 +1,234 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< org.thymeleaf:thymeleaf >-----------------------
+[INFO] Building thymeleaf 3.1.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ thymeleaf ---
+[INFO] Deleting /testbed/lib/thymeleaf/target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ thymeleaf ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ thymeleaf ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 491 source files with javac [debug parameters release 8] to target/classes
+[INFO] /testbed/lib/thymeleaf/src/main/java/org/thymeleaf/standard/StandardDialect.java: /testbed/lib/thymeleaf/src/main/java/org/thymeleaf/standard/StandardDialect.java uses or overrides a deprecated API.
+[INFO] /testbed/lib/thymeleaf/src/main/java/org/thymeleaf/standard/StandardDialect.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/lib/thymeleaf/src/main/java/org/thymeleaf/engine/ElementTagStructureHandler.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/lib/thymeleaf/src/main/java/org/thymeleaf/engine/ElementTagStructureHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ thymeleaf ---
+[INFO] skip non existing resourceDirectory /testbed/lib/thymeleaf/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ thymeleaf ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 8] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.893 s
+[INFO] Finished at: 2026-11-09T06:15:44Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< org.thymeleaf:thymeleaf >-----------------------
+[INFO] Building thymeleaf 3.1.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ thymeleaf ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ thymeleaf ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ thymeleaf ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ thymeleaf ---
+[INFO] skip non existing resourceDirectory /testbed/lib/thymeleaf/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ thymeleaf ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ thymeleaf ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests
+[ERROR] Tests run: 17, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 0.136 s <<< FAILURE! -- in org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.reportsLineAndColumnAfterNewline -- Time elapsed: 0.008 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <20> but was: <22>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.reportsLineAndColumnAfterNewline(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:215)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedAndUnquotedValuesInOneSequence -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedAndUnquotedValuesInOneSequence(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:71)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesWhitespaceAfterEqualsAsPartOfOperatorBeforeValue -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <4>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesWhitespaceAfterEqualsAsPartOfOperatorBeforeValue(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:164)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedValueEndingAtEndOfSequence -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedValueEndingAtEndOfSequence(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:119)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesSeveralEqualsSignsAsOperator -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <4>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesSeveralEqualsSignsAsOperator(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:179)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedValueContainingWhitespaceAndFollowingAttribute -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedValueContainingWhitespaceAndFollowingAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:98)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.respectsOffsetAndLengthWithinLargerBuffer -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <8> but was: <10>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.respectsOffsetAndLengthWithinLargerBuffer(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:238)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.rejectsLaterAttributeNameStartingWithEqualsSignAfterPreviousAttributeWasHandled -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.assertAttribute(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:349)
+	at org.thymeleaf.templateparser.text.TextParsingAttributeSequenceUtilParseAttributeSequenceTests.rejectsLaterAttributeNameStartingWithEqualsSignAfterPreviousAttributeWasHandled(TextParsingAttributeSequenceUtilParseAttributeSequenceTests.java:268)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedAndUnquotedValuesInOneSequence:71->assertAttribute:349 expected: <1> but was: <3>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedValueContainingWhitespaceAndFollowingAttribute:98->assertAttribute:349 expected: <1> but was: <3>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesQuotedValueEndingAtEndOfSequence:119->assertAttribute:349 expected: <1> but was: <3>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesSeveralEqualsSignsAsOperator:179->assertAttribute:349 expected: <1> but was: <4>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.parsesWhitespaceAfterEqualsAsPartOfOperatorBeforeValue:164->assertAttribute:349 expected: <1> but was: <4>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.rejectsLaterAttributeNameStartingWithEqualsSignAfterPreviousAttributeWasHandled:268->assertAttribute:349 expected: <1> but was: <3>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.reportsLineAndColumnAfterNewline:215->assertAttribute:349 expected: <20> but was: <22>
+[ERROR]   TextParsingAttributeSequenceUtilParseAttributeSequenceTests.respectsOffsetAndLengthWithinLargerBuffer:238->assertAttribute:349 expected: <8> but was: <10>
+[INFO] 
+[ERROR] Tests run: 17, Failures: 8, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.145 s
+[INFO] Finished at: 2026-11-09T06:16:06Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.5:test (default-test) on project thymeleaf: There are test failures.
+[ERROR] 
+[ERROR] See /testbed/lib/thymeleaf/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< org.thymeleaf:thymeleaf >-----------------------
+[INFO] Building thymeleaf 3.1.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ thymeleaf ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'thymeleaf' with 471 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.399 s
+[INFO] Finished at: 2026-11-09T06:16:09Z
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,152 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (8.4.2)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: coverage in /usr/local/lib/python3.11/site-packages (7.16.2)
+Requirement already satisfied: pytest-asyncio in /usr/local/lib/python3.11/site-packages (1.4.0)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=20 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: pytest-timeout, pytest-mock, pytest-metadata, pytest-json-report
+
+Successfully installed pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+test/textual/test_app.py::test_title_and_subtitle_defaults
+test/textual/test_app.py::test_title_and_subtitle_from_class_variables
+test/textual/test_app.py::test_title_and_subtitle_are_coerced_to_strings
+test/textual/test_app.py::test_format_title
+test/textual/test_app.py::test_initial_state_before_running
+test/textual/test_app.py::test_running_app_basic_state
+test/textual/test_app.py::test_screen_stack_is_a_snapshot
+test/textual/test_app.py::test_custom_default_screen
+test/textual/test_app.py::test_mount_and_lookup_helpers
+test/textual/test_app.py::test_render_returns_blank_with_background
+test/textual/test_app.py::test_get_loading_widget
+test/textual/test_app.py::test_get_key_display
+test/textual/test_app.py::test_get_driver_class_is_a_driver
+test/textual/test_app.py::test_run_test_exit_sets_result_and_return_code
+test/textual/test_app.py::test_exit_records_result_and_code_without_running
+test/textual/test_app.py::test_run_async_returns_result
+test/textual/test_app.py::test_run_returns_result_and_nonzero_code
+test/textual/test_app.py::test_run_test_reraises_unhandled_exception
+test/textual/test_app.py::test_run_test_configures_notifications_and_tooltips
+test/textual/test_app.py::test_run_test_disables_notifications_and_tooltips_by_default
+test/textual/test_app.py::test_message_hook_sees_key_events
+test/textual/test_app.py::test_get_theme_lookup_and_fallback
+test/textual/test_app.py::test_register_and_unregister_theme
+test/textual/test_app.py::test_setting_unknown_theme_raises
+test/textual/test_app.py::test_registering_theme_with_builtin_name_overrides_lookup
+test/textual/test_app.py::test_current_theme_and_ansi_color
+test/textual/test_app.py::test_theme_change_while_running_publishes_signal_and_classes
+test/textual/test_app.py::test_get_theme_variable_defaults_default_is_empty
+test/textual/test_app.py::test_get_css_variables_includes_theme_and_custom_defaults
+test/textual/test_app.py::test_line_filters_follow_ansi_color_setting
+test/textual/test_app.py::test_screens_class_variable_rejects_screen_instance
+test/textual/test_app.py::test_modes_class_variable_rejects_non_callable
+test/textual/test_app.py::test_screens_class_variable_is_instantiated_lazily
+test/textual/test_app.py::test_install_screen_and_is_screen_installed
+test/textual/test_app.py::test_install_screen_duplicate_name_and_object_raise
+test/textual/test_app.py::test_get_screen_unknown_name_raises_key_error
+test/textual/test_app.py::test_get_screen_type_check
+test/textual/test_app.py::test_uninstall_screen
+test/textual/test_app.py::test_uninstall_screen_by_object
+test/textual/test_app.py::test_uninstall_screen_in_stack_raises
+test/textual/test_app.py::test_push_and_pop_screen
+test/textual/test_app.py::test_pop_screen_at_base_raises
+test/textual/test_app.py::test_push_screen_by_installed_name
+test/textual/test_app.py::test_push_screen_callback_receives_dismiss_result
+test/textual/test_app.py::test_push_screen_rejects_invalid_type
+test/textual/test_app.py::test_push_screen_unknown_mode_raises
+test/textual/test_app.py::test_push_screen_wait_for_dismiss_requires_worker
+test/textual/test_app.py::test_push_screen_wait_returns_dismiss_result_from_worker
+test/textual/test_app.py::test_switch_screen_from_pushed_screen
+test/textual/test_app.py::test_switch_screen_from_default_screen
+test/textual/test_app.py::test_switch_screen_same_screen_is_noop
+test/textual/test_app.py::test_switch_screen_rejects_invalid_type
+test/textual/test_app.py::test_screen_change_signal
+test/textual/test_app.py::test_screen_stack_copy_for_mode
+test/textual/test_app.py::test_switch_mode_and_mode_stack_preservation
+test/textual/test_app.py::test_switch_mode_unknown_raises
+test/textual/test_app.py::test_switch_mode_publishes_signal
+test/textual/test_app.py::test_add_mode_validation
+test/textual/test_app.py::test_added_mode_can_be_switched_to
+test/textual/test_app.py::test_remove_mode_validation
+test/textual/test_app.py::test_remove_active_mode_raises
+test/textual/test_app.py::test_remove_inactive_mode_prunes_its_screens
+test/textual/test_app.py::test_remove_mode_without_screen_stack
+test/textual/test_app.py::test_run_action_dispatches_action_with_parameters
+test/textual/test_app.py::test_run_action_unknown_action_returns_false
+test/textual/test_app.py::test_run_action_unknown_namespace_raises
+test/textual/test_app.py::test_press_and_simulate_key_trigger_binding
+test/textual/test_app.py::test_action_simulate_key_action
+test/textual/test_app.py::test_set_and_update_keymap
+test/textual/test_app.py::test_bind_adds_dynamic_binding
+test/textual/test_app.py::test_active_bindings_include_app_defaults
+test/textual/test_app.py::test_command_palette_binding_can_be_disabled
+test/textual/test_app.py::test_action_focus_and_focus_navigation
+test/textual/test_app.py::test_auto_focus_can_be_disabled
+test/textual/test_app.py::test_action_class_manipulation
+test/textual/test_app.py::test_action_toggle_dark
+test/textual/test_app.py::test_action_show_and_hide_help_panel
+test/textual/test_app.py::test_action_bell_calls_bell
+test/textual/test_app.py::test_action_command_palette_pushes_palette
+test/textual/test_app.py::test_action_command_palette_respects_flag
+test/textual/test_app.py::test_screen_navigation_actions
+test/textual/test_app.py::test_action_back_at_base_screen_is_safe
+test/textual/test_app.py::test_action_switch_mode
+test/textual/test_app.py::test_action_quit_exits_app
+test/textual/test_app.py::test_notify_posts_notification_message
+test/textual/test_app.py::test_notify_custom_timeout_and_markup
+test/textual/test_app.py::test_notify_shows_and_clears_toasts
+test/textual/test_app.py::test_notifications_disabled_means_no_toast_rack
+test/textual/test_app.py::test_copy_to_clipboard_without_running
+test/textual/test_app.py::test_copy_to_clipboard_while_running
+test/textual/test_app.py::test_open_url_without_driver_is_noop
+test/textual/test_app.py::test_open_url_while_running
+test/textual/test_app.py::test_suspend_is_not_supported_in_headless_mode
+test/textual/test_app.py::test_call_from_thread_requires_running_app
+test/textual/test_app.py::test_call_from_thread_requires_another_thread
+test/textual/test_app.py::test_call_from_thread_executes_callback
+test/textual/test_app.py::test_begin_and_end_capture_print
+test/textual/test_app.py::test_capture_print_can_capture_only_one_stream
+test/textual/test_app.py::test_export_screenshot_returns_svg
+test/textual/test_app.py::test_save_screenshot_writes_file
+test/textual/test_app.py::test_deliver_text_writes_file_and_posts_complete_event
+test/textual/test_app.py::test_deliver_binary_delegates_to_driver
+test/textual/test_app.py::test_deliver_text_without_driver_returns_none
+test/textual/test_app.py::test_deliver_screenshot_notifies_when_complete
+test/textual/test_app.py::test_get_system_commands_includes_core_commands
+test/textual/test_app.py::test_get_system_commands_can_be_extended
+test/textual/test_app.py::test_workers_property
+test/textual/test_app.py::test_rich_repr_contains_title
+test/textual/test_app.py::test_batch_update_restores_state_on_exception
+
+109 tests collected in 0.29s
+
+=== test.log ===
+.................................................F...................... [ 66%]
+.....................................                                    [100%]
+=========================== short test summary info ============================
+FAILED test/textual/test_app.py::test_switch_screen_from_default_screen - Ind...
+1 failed, 108 passed in 9.06s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

@@ -1,0 +1,87 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== dependencies.log ===
+Requirement already satisfied: pytest in /usr/local/lib/python3.11/site-packages (8.4.2)
+Collecting pytest-json-report
+  Downloading pytest_json_report-1.5.0-py3-none-any.whl.metadata (15 kB)
+Collecting pytest-timeout
+  Downloading pytest_timeout-2.4.0-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: coverage in /usr/local/lib/python3.11/site-packages (7.16.2)
+Requirement already satisfied: pytest-asyncio in /usr/local/lib/python3.11/site-packages (1.4.0)
+Collecting pytest-mock
+  Downloading pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: iniconfig>=1 in /usr/local/lib/python3.11/site-packages (from pytest) (2.3.1)
+Requirement already satisfied: packaging>=20 in /usr/local/lib/python3.11/site-packages (from pytest) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.11/site-packages (from pytest) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in /usr/local/lib/python3.11/site-packages (from pytest) (2.21.0)
+Collecting pytest-metadata (from pytest-json-report)
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: typing-extensions>=4.12 in /usr/local/lib/python3.11/site-packages (from pytest-asyncio) (4.16.0)
+Downloading pytest_json_report-1.5.0-py3-none-any.whl (13 kB)
+Downloading pytest_timeout-2.4.0-py3-none-any.whl (14 kB)
+Downloading pytest_mock-3.17.0-py3-none-any.whl (11 kB)
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Installing collected packages: pytest-timeout, pytest-mock, pytest-metadata, pytest-json-report
+
+Successfully installed pytest-json-report-1.5.0 pytest-metadata-3.1.1 pytest-mock-3.17.0 pytest-timeout-2.4.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+=== compile.log ===
+test/textual/widgets/test__data_table.py::test_string_key_behaves_like_its_string_value
+test/textual/widgets/test__data_table.py::test_anonymous_string_keys_are_unique
+test/textual/widgets/test__data_table.py::test_row_and_column_keys_are_string_keys
+test/textual/widgets/test__data_table.py::test_cell_key_exposes_row_and_column_keys
+test/textual/widgets/test__data_table.py::test_default_cell_formatter_strings_support_markup_and_wrapping
+test/textual/widgets/test__data_table.py::test_default_cell_formatter_formats_numbers_and_objects
+test/textual/widgets/test__data_table.py::test_default_cell_formatter_passes_through_renderables
+test/textual/widgets/test__data_table.py::test_default_cell_formatter_height_trims_lines_which_cannot_be_visible
+test/textual/widgets/test__data_table.py::test_column_render_width_includes_padding
+test/textual/widgets/test__data_table.py::test_add_column_returns_key_and_applies_defaults
+test/textual/widgets/test__data_table.py::test_add_columns_supports_labels_and_explicit_keys
+test/textual/widgets/test__data_table.py::test_add_row_and_add_rows_populate_the_table
+test/textual/widgets/test__data_table.py::test_add_row_rejects_duplicate_keys_and_too_many_values
+test/textual/widgets/test__data_table.py::test_cell_and_column_accessors_use_keys_and_coordinates
+test/textual/widgets/test__data_table.py::test_invalid_lookups_raise_domain_specific_exceptions
+test/textual/widgets/test__data_table.py::test_is_valid_and_coordinate_checks
+test/textual/widgets/test__data_table.py::test_update_cell_and_update_cell_at_replace_values
+test/textual/widgets/test__data_table.py::test_update_cell_rejects_unknown_cells
+test/textual/widgets/test__data_table.py::test_update_cell_with_update_width_resizes_automatic_column
+test/textual/widgets/test__data_table.py::test_row_heights_include_fixed_and_automatic_values
+test/textual/widgets/test__data_table.py::test_remove_row_updates_remaining_row_locations
+test/textual/widgets/test__data_table.py::test_remove_column_updates_remaining_column_locations
+test/textual/widgets/test__data_table.py::test_clear_can_keep_or_remove_columns
+test/textual/widgets/test__data_table.py::test_cursor_coordinate_is_clamped_to_table_bounds
+test/textual/widgets/test__data_table.py::test_move_cursor_updates_only_requested_axis
+test/textual/widgets/test__data_table.py::test_hover_coordinate_properties
+test/textual/widgets/test__data_table.py::test_moving_cell_cursor_posts_cell_highlighted_message
+test/textual/widgets/test__data_table.py::test_select_cursor_posts_cell_selected_message
+test/textual/widgets/test__data_table.py::test_row_cursor_highlights_and_selects_rows
+test/textual/widgets/test__data_table.py::test_column_cursor_highlights_and_selects_columns
+test/textual/widgets/test__data_table.py::test_selection_is_suppressed_when_cursor_is_hidden_or_disabled
+test/textual/widgets/test__data_table.py::test_cursor_action_methods_move_and_clamp
+test/textual/widgets/test__data_table.py::test_home_and_end_actions_move_to_first_and_last_column
+test/textual/widgets/test__data_table.py::test_page_down_and_page_up_move_the_cursor_by_a_page
+test/textual/widgets/test__data_table.py::test_hovering_over_cells_updates_hover_coordinate
+test/textual/widgets/test__data_table.py::test_re_enabling_the_cursor_re_posts_cell_highlighted
+test/textual/widgets/test__data_table.py::test_page_actions_scroll_without_moving_a_disabled_cursor
+test/textual/widgets/test__data_table.py::test_keyboard_bindings_move_and_select_the_cursor
+test/textual/widgets/test__data_table.py::test_sort_orders_rows_by_a_column_key
+test/textual/widgets/test__data_table.py::test_sort_supports_reverse_and_key_functions
+test/textual/widgets/test__data_table.py::test_sort_without_columns_uses_row_values
+test/textual/widgets/test__data_table.py::test_clicking_a_header_posts_header_selected
+test/textual/widgets/test__data_table.py::test_clicking_a_row_label_posts_row_label_selected
+test/textual/widgets/test__data_table.py::test_clicking_a_cell_moves_cursor_and_selects_it
+test/textual/widgets/test__data_table.py::test_render_line_renders_header_and_data_rows
+test/textual/widgets/test__data_table.py::test_cell_padding_is_never_negative
+test/textual/widgets/test__data_table.py::test_toggling_header_and_row_labels_updates_virtual_size
+
+47 tests collected in 0.19s
+
+=== test.log ===
+...............................................                          [100%]
+47 passed in 5.47s
+
+=== coverage.log ===
+Wrote JSON report to /results/coverage.json

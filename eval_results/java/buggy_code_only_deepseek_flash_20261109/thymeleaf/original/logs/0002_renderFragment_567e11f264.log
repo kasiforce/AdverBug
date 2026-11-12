@@ -1,0 +1,130 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.thymeleaf:thymeleaf-spring6 >-------------------
+[INFO] Building thymeleaf-spring6 3.1.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ thymeleaf-spring6 ---
+[INFO] Deleting /testbed/lib/thymeleaf-spring6/target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ thymeleaf-spring6 ---
+[INFO] Copying 2 resources from ../.. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ thymeleaf-spring6 ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 84 source files with javac [debug parameters release 17] to target/classes
+[INFO] /testbed/lib/thymeleaf-spring6/src/main/java/org/thymeleaf/spring6/context/webflux/ReactiveContextVariableUtils.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/lib/thymeleaf-spring6/src/main/java/org/thymeleaf/spring6/context/webflux/ReactiveContextVariableUtils.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ thymeleaf-spring6 ---
+[INFO] skip non existing resourceDirectory /testbed/lib/thymeleaf-spring6/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ thymeleaf-spring6 ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target/test-classes
+[INFO] /testbed/lib/thymeleaf-spring6/src/test/java/org/thymeleaf/spring6/view/ThymeleafViewRenderFragmentTests.java: /testbed/lib/thymeleaf-spring6/src/test/java/org/thymeleaf/spring6/view/ThymeleafViewRenderFragmentTests.java uses unchecked or unsafe operations.
+[INFO] /testbed/lib/thymeleaf-spring6/src/test/java/org/thymeleaf/spring6/view/ThymeleafViewRenderFragmentTests.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.977 s
+[INFO] Finished at: 2026-11-09T06:13:20Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.thymeleaf:thymeleaf-spring6 >-------------------
+[INFO] Building thymeleaf-spring6 3.1.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ thymeleaf-spring6 ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ thymeleaf-spring6 ---
+[INFO] Copying 2 resources from ../.. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ thymeleaf-spring6 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ thymeleaf-spring6 ---
+[INFO] skip non existing resourceDirectory /testbed/lib/thymeleaf-spring6/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ thymeleaf-spring6 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ thymeleaf-spring6 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.thymeleaf.spring6.view.ThymeleafViewRenderFragmentTests
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+[ERROR] Tests run: 20, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.174 s <<< FAILURE! -- in org.thymeleaf.spring6.view.ThymeleafViewRenderFragmentTests
+[ERROR] org.thymeleaf.spring6.view.ThymeleafViewRenderFragmentTests.renderFragmentMergesModelInExpectedOrderAndExposesSpringContexts -- Time elapsed: 0.014 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <fromPath> but was: <fromModel>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at org.thymeleaf.spring6.view.ThymeleafViewRenderFragmentTests.renderFragmentMergesModelInExpectedOrderAndExposesSpringContexts(ThymeleafViewRenderFragmentTests.java:187)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ThymeleafViewRenderFragmentTests.renderFragmentMergesModelInExpectedOrderAndExposesSpringContexts:187 expected: <fromPath> but was: <fromModel>
+[INFO] 
+[ERROR] Tests run: 20, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.815 s
+[INFO] Finished at: 2026-11-09T06:13:50Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.5:test (default-test) on project thymeleaf-spring6: There are test failures.
+[ERROR] 
+[ERROR] See /testbed/lib/thymeleaf-spring6/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.thymeleaf:thymeleaf-spring6 >-------------------
+[INFO] Building thymeleaf-spring6 3.1.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ thymeleaf-spring6 ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'thymeleaf-spring6' with 88 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.747 s
+[INFO] Finished at: 2026-11-09T06:13:52Z
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,194 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ---------------------< org.ofdrw:ofdrw-converter >----------------------
+[INFO] Building OFDRW Converter 2.4.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ ofdrw-converter ---
+[INFO] Deleting /testbed/ofdrw-converter/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ofdrw-converter ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /testbed/ofdrw-converter/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.12.1:compile (default-compile) @ ofdrw-converter ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 56 source files with javac [debug target 1.8] to target/classes
+[INFO] /testbed/ofdrw-converter/src/main/java/org/ofdrw/converter/ConvertHelper.java: /testbed/ofdrw-converter/src/main/java/org/ofdrw/converter/ConvertHelper.java uses or overrides a deprecated API.
+[INFO] /testbed/ofdrw-converter/src/main/java/org/ofdrw/converter/ConvertHelper.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ofdrw-converter ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 30 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.12.1:testCompile (default-testCompile) @ ofdrw-converter ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.690 s
+[INFO] Finished at: 2026-11-09T06:12:09Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ---------------------< org.ofdrw:ofdrw-converter >----------------------
+[INFO] Building OFDRW Converter 2.4.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.14:prepare-agent (default-cli) @ ofdrw-converter ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ofdrw-converter ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /testbed/ofdrw-converter/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.12.1:compile (default-compile) @ ofdrw-converter ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ofdrw-converter ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 30 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.12.1:testCompile (default-testCompile) @ ofdrw-converter ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ ofdrw-converter ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.ofdrw.converter.font.TrueTypeFontParseTests
+[ERROR] Tests run: 18, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.794 s <<< FAILURE! -- in org.ofdrw.converter.font.TrueTypeFontParseTests
+[ERROR] org.ofdrw.converter.font.TrueTypeFontParseTests.ignoresNameTableWhenCmapTableMissing -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <Ignored Family>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertNull.failNotNull(AssertNull.java:48)
+	at org.junit.jupiter.api.AssertNull.assertNull(AssertNull.java:37)
+	at org.junit.jupiter.api.AssertNull.assertNull(AssertNull.java:32)
+	at org.junit.jupiter.api.Assertions.assertNull(Assertions.java:258)
+	at org.ofdrw.converter.font.TrueTypeFontParseTests.ignoresNameTableWhenCmapTableMissing(TrueTypeFontParseTests.java:362)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   TrueTypeFontParseTests.ignoresNameTableWhenCmapTableMissing:362 expected: <null> but was: <Ignored Family>
+[INFO] 
+[ERROR] Tests run: 18, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.216 s
+[INFO] Finished at: 2026-11-09T06:12:27Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project ofdrw-converter: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /testbed/ofdrw-converter/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ---------------------< org.ofdrw:ofdrw-converter >----------------------
+[INFO] Building OFDRW Converter 2.4.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.14:report (default-cli) @ ofdrw-converter ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'OFDRW Converter' with 59 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.863 s
+[INFO] Finished at: 2026-11-09T06:12:29Z
+[INFO] ------------------------------------------------------------------------
