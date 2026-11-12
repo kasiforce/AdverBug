@@ -1,0 +1,418 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.flink:flink-table-planner_2.12:jar:2.4-SNAPSHOT
+[WARNING] 'artifactId' contains an expression but should be a constant. @ org.apache.flink:flink-table-planner_${scala.binary.version}:2.4-SNAPSHOT, /testbed/flink-table/flink-table-planner/pom.xml, line 29, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -------------< org.apache.flink:flink-table-planner_2.12 >--------------
+[INFO] Building Flink : Table : Planner 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ flink-table-planner_2.12 ---
+[INFO] Deleting /testbed/flink-table/flink-table-planner/target
+[INFO] Deleting /testbed/flink-table/flink-table-planner (includes = [dependency-reduced-pom.xml], excludes = [])
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-table-planner_2.12 ---
+[INFO] Spotless check skipped
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-table-planner_2.12 ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-table-planner_2.12 ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-table-planner_2.12 ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- scala:3.2.2:add-source (scala-compile-first) @ flink-table-planner_2.12 ---
+[INFO] Artifact org.apache.commons:commons-parent:pom:17 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases), sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, snapshots)]
+[INFO] Artifact org.apache.commons:commons-parent:pom:17 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases), sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, snapshots)]
+[INFO] Add Source directory: /testbed/flink-table/flink-table-planner/src/main/scala
+[INFO] Add Test Source directory: /testbed/flink-table/flink-table-planner/src/test/scala
+[INFO] 
+[INFO] --- scala:3.2.2:compile (scala-compile-first) @ flink-table-planner_2.12 ---
+[INFO] /testbed/flink-table/flink-table-planner/src/main/java:-1: info: compiling
+[INFO] /testbed/flink-table/flink-table-planner/src/main/scala:-1: info: compiling
+[INFO] Compiling 1346 source files to /testbed/flink-table/flink-table-planner/target/classes at 1794219726054
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/calcite/Sink.scala:61: warning: Usage of named or default arguments transformed this annotation
+[WARNING] constructor call into a block. The corresponding AnnotationInfo
+[WARNING] will contain references to local values and default getters instead
+[WARNING] of the actual argument trees
+[WARNING]     @deprecated(since = "2.2")
+[WARNING]      ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/rules/common/CommonTemporalTableJoinRule.scala:91: warning: non-variable type argument Any in type pattern org.apache.flink.table.planner.plan.schema.LegacyTableSourceTable[Any] is unchecked since it is eliminated by erasure
+[WARNING]           case _: LegacyTableSourceTable[Any] | _: TableSourceTable => true
+[WARNING]                   ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/rules/logical/LogicalCorrelateToJoinFromTemporalTableRule.scala:122: warning: non-variable type argument Any in type pattern org.apache.flink.table.planner.plan.schema.LegacyTableSourceTable[Any] is unchecked since it is eliminated by erasure
+[WARNING]           case _: LegacyTableSourceTable[Any] | _: TableSourceTable => true
+[WARNING]                   ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/utils/FlinkRexUtil.scala:486: warning: A try without a catch or finally is equivalent to putting its body in a block; no exceptions are handled.
+[WARNING]   def isDeterministic(rexProgram: RexProgram): Boolean = try {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/sinks/TableSinkUtils.scala:235: warning: non-variable type argument org.apache.flink.types.Row in type pattern org.apache.flink.api.java.typeutils.GenericTypeInfo[org.apache.flink.types.Row] is unchecked since it is eliminated by erasure
+[WARNING]       case gt: GenericTypeInfo[Row] if gt.getTypeClass == classOf[Row] =>
+[WARNING]                ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/sinks/TableSinkUtils.scala:237: warning: non-variable type argument org.apache.flink.table.data.RowData in type pattern org.apache.flink.api.java.typeutils.GenericTypeInfo[org.apache.flink.table.data.RowData] is unchecked since it is eliminated by erasure
+[WARNING]       case gt: GenericTypeInfo[RowData] if gt.getTypeClass == classOf[RowData] =>
+[WARNING]                ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/sinks/TableSinkUtils.scala:239: warning: non-variable type argument org.apache.flink.table.data.RowData in type pattern org.apache.flink.table.runtime.typeutils.InternalTypeInfo[org.apache.flink.table.data.RowData] is unchecked since it is eliminated by erasure
+[WARNING]       case bt: InternalTypeInfo[RowData] =>
+[WARNING]                ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/typeutils/LegacyDataViewUtils.scala:98: warning: non-variable type argument org.apache.flink.table.data.RowData in type pattern org.apache.flink.table.runtime.typeutils.InternalTypeInfo[org.apache.flink.table.data.RowData] is unchecked since it is eliminated by erasure
+[WARNING]           case t: InternalTypeInfo[RowData] if acc.isInstanceOf[GenericRowData] =>
+[WARNING]                   ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/CodeGenUtils.scala:326: warning: match may not be exhaustive.
+[WARNING] It would fail on the following input: DESCRIPTOR
+[WARNING]     t.getTypeRoot match {
+[WARNING]       ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/CodeGenUtils.scala:507: warning: match may not be exhaustive.
+[WARNING] It would fail on the following input: DESCRIPTOR
+[WARNING]     t.getTypeRoot match {
+[WARNING]       ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/CodeGenUtils.scala:795: warning: match may not be exhaustive.
+[WARNING] It would fail on the following input: DESCRIPTOR
+[WARNING]       t: LogicalType): String = t.getTypeRoot match {
+[WARNING]                                   ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/GenerateUtils.scala:305: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: DESCRIPTOR, RAW, TIMESTAMP_WITH_TIME_ZONE, VARIANT
+[WARNING]     literalType.getTypeRoot match {
+[WARNING]                 ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/GenerateUtils.scala:626: warning: match may not be exhaustive.
+[WARNING] It would fail on the following input: DESCRIPTOR
+[WARNING]       rightTerm: String): String = t.getTypeRoot match {
+[WARNING]                                      ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/JsonGenerateUtils.scala:90: warning: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.
+[WARNING] (Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)
+[WARNING]         valueType.getTypeRoot match {
+[WARNING]                   ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/JsonGenerateUtils.scala:90: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: BIGINT, BINARY, BITMAP, BOOLEAN, CHAR, DATE, DISTINCT_TYPE, DOUBLE, FLOAT, INTEGER, INTERVAL_DAY_TIME, INTERVAL_YEAR_MONTH, MULTISET, NULL, RAW, ROW, SMALLINT, SYMBOL, TIME_WITHOUT_TIME_ZONE, UUID
+[WARNING]         valueType.getTypeRoot match {
+[WARNING]                   ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/LongHashJoinGenerator.scala:258: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: BUILD_LEFT_ANTI, BUILD_LEFT_SEMI, BUILD_OUTER, FULL_OUTER
+[WARNING]     val joinCode = hashJoinType match {
+[WARNING]                    ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/ScalarOperatorGens.scala:168: warning: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.
+[WARNING] (Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)
+[WARNING]         resultType.getTypeRoot match {
+[WARNING]                    ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/ScalarOperatorGens.scala:168: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ARRAY, BIGINT, BITMAP, BOOLEAN, CHAR, DESCRIPTOR, DISTINCT_TYPE, DOUBLE, INTEGER, MAP, MULTISET, RAW, SYMBOL, TIMESTAMP_WITH_LOCAL_TIME_ZONE, TIMESTAMP_WITH_TIME_ZONE, TIME_WITHOUT_TIME_ZONE, TINYINT, UUID, VARBINARY, VARCHAR
+[WARNING]         resultType.getTypeRoot match {
+[WARNING]                    ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/ScalarOperatorGens.scala:261: warning: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.
+[WARNING] (Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)
+[WARNING]                 (left.resultType.getTypeRoot, right.resultType.getTypeRoot) match {
+[WARNING]                 ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/ScalarOperatorGens.scala:261: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: (VARIANT, ARRAY), (VARIANT, BINARY), (VARIANT, BITMAP), (VARIANT, BOOLEAN), (VARIANT, DATE), (VARIANT, DECIMAL), (VARIANT, DESCRIPTOR), (VARIANT, DISTINCT_TYPE), (VARIANT, FLOAT), (VARIANT, INTEGER), (VARIANT, INTERVAL_DAY_TIME), (VARIANT, INTERVAL_YEAR_MONTH), (VARIANT, MAP), (VARIANT, SMALLINT), (VARIANT, TIMESTAMP_WITHOUT_TIME_ZONE), (VARIANT, TINYINT), (VARIANT, UNRESOLVED), (VARIANT, VARBINARY), (VARIANT, VARCHAR), (VARIANT, VARIANT)
+[WARNING]                 (left.resultType.getTypeRoot, right.resultType.getTypeRoot) match {
+[WARNING]                 ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/ScalarOperatorGens.scala:230: warning: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.
+[WARNING] (Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)
+[WARNING]         resultType.getTypeRoot match {
+[WARNING]                    ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/ScalarOperatorGens.scala:230: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ARRAY, BIGINT, BINARY, BOOLEAN, CHAR, DATE, DESCRIPTOR, DISTINCT_TYPE, FLOAT, MAP, MULTISET, NULL, RAW, ROW, STRUCTURED_TYPE, SYMBOL, TIMESTAMP_WITHOUT_TIME_ZONE, TIMESTAMP_WITH_LOCAL_TIME_ZONE, UUID, VARIANT
+[WARNING]         resultType.getTypeRoot match {
+[WARNING]                    ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/TimestampDiffCallGen.scala:80: warning: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.
+[WARNING] (Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)
+[WARNING]         (operands(1).resultType.getTypeRoot, operands(2).resultType.getTypeRoot) match {
+[WARNING]         ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/codegen/calls/TimestampDiffCallGen.scala:80: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: (TINYINT, ARRAY), (TINYINT, BIGINT), (TINYINT, BITMAP), (TINYINT, CHAR), (TINYINT, DATE), (TINYINT, DECIMAL), (TINYINT, DISTINCT_TYPE), (TINYINT, DOUBLE), (TINYINT, FLOAT), (TINYINT, INTERVAL_DAY_TIME), (TINYINT, INTERVAL_YEAR_MONTH), (TINYINT, MULTISET), (TINYINT, NULL), (TINYINT, RAW), (TINYINT, ROW), (TINYINT, SMALLINT), (TINYINT, SYMBOL), (TINYINT, TIMESTAMP_WITHOUT_TIME_ZONE), (TINYINT, TINYINT), (TINYINT, UUID)
+[WARNING]         (operands(1).resultType.getTypeRoot, operands(2).resultType.getTypeRoot) match {
+[WARNING]         ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/metadata/AggCallSelectivityEstimator.scala:138: warning: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.
+[WARNING] (Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)
+[WARNING]           aggCall.getAggregation.getKind match {
+[WARNING]                                  ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/metadata/AggCallSelectivityEstimator.scala:138: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ARRAYS_ZIP, ARRAY_QUERY_CONSTRUCTOR, ARRAY_REVERSE, BIT_AND, COLLECTION_TABLE, CREATE_TABLE, CURSOR, GROUP_CONCAT, HOP, HOP_START, IS_FALSE, JSON_VALUE_EXPRESSION, LESS_THAN_OR_EQUAL, OTHER_FUNCTION, REVERSE, ROLLBACK, SAFE_CAST, SET_SEMANTICS_TABLE, SIMILAR, UPDATE
+[WARNING]           aggCall.getAggregation.getKind match {
+[WARNING]                                  ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/metadata/FlinkRelMdColumnNullCount.scala:255: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANTI, ASOF, FULL, INNER, LEFT_ASOF, SEMI
+[WARNING]     rel.getJoinType match {
+[WARNING]         ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/metadata/FlinkRelMdRowCount.scala:269: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANTI, ASOF, LEFT_ASOF, SEMI
+[WARNING]       join.getJoinType match {
+[WARNING]            ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalHashAggregate.scala:124: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, RANGE_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalJoinBase.scala:204: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED, SINGLETON
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalLocalHashAggregate.scala:119: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED, SINGLETON
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalLocalSortAggregate.scala:116: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED, SINGLETON
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalPythonGroupAggregate.scala:104: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, RANGE_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalRank.scala:143: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, RANGE_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalSortAggregate.scala:124: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, BROADCAST_DISTRIBUTED, RANDOM_DISTRIBUTED, RANGE_DISTRIBUTED, ROUND_ROBIN_DISTRIBUTED
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/nodes/physical/batch/BatchPhysicalUnion.scala:81: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ANY, RANGE_DISTRIBUTED, SINGLETON
+[WARNING]     val inputRequiredDistribution = requiredDistribution.getType match {
+[WARNING]                                                          ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/rules/physical/batch/BatchPhysicalJoinRuleBase.scala:182: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ASOF, LEFT_ASOF
+[WARNING]       join.getJoinType match {
+[WARNING]            ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/rules/physical/batch/BatchPhysicalJoinRuleBase.scala:218: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ASOF, LEFT_ASOF
+[WARNING]       join.getJoinType match {
+[WARNING]            ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/rules/physical/batch/BatchPhysicalJoinRuleBase.scala:283: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: ASOF, LEFT_ASOF
+[WARNING]       join.getJoinType match {
+[WARNING]            ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/utils/ColumnIntervalUtil.scala:103: warning: match may not be exhaustive.
+[WARNING] It would fail on the following inputs: (None, None), (None, Some(_)), (Some(_), None)
+[WARNING]         (convertNumberToString(l.upper), convertNumberToString(r.upper)) match {
+[WARNING]         ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/utils/FlinkRelOptUtil.scala:405: warning: match may not be exhaustive.
+[WARNING] It would fail on the following input: (None, None)
+[WARNING]         partition(expr, rexBuilder, predicate) match {
+[WARNING]                  ^
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/scala/org/apache/flink/table/planner/plan/utils/RexNodeExtractor.scala:563: warning: match may not be exhaustive.
+[WARNING] It would fail on the following input: None
+[WARNING]     relDataType match {
+[WARNING]     ^
+[WARNING] warning: 437 deprecations
+[WARNING] warning: two deprecations (since 2.11.0)
+[WARNING] warning: 965 deprecations (since 2.12.0)
+[WARNING] warning: 1404 deprecations in total; re-run with -deprecation for details
+[WARNING] warning: 26 feature warnings; re-run with -feature for details
+[WARNING] 47 warnings found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 29 s
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-table-planner_2.12 ---
+[INFO] Compiling 883 source files with javac [debug target 17] to target/classes
+[WARNING] system modules path not set in conjunction with -source 11
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/plan/rules/physical/stream/StreamPhysicalIntervalJoinRule.java:[206,12] (immutables:subtype) Should not inherit org.apache.flink.table.planner.plan.rules.physical.stream.StreamPhysicalJoinRuleBase.StreamPhysicalJoinRuleBaseRuleConfig which is a value type itself. Avoid extending from another abstract value type. Better to share common abstract class or interface which are not carrying @Immutable annotation. If still extending from immutable abstract type be ready to face some incoherences in generated types.
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/plan/rules/physical/stream/StreamPhysicalJoinRule.java:[109,12] (immutables:subtype) Should not inherit org.apache.flink.table.planner.plan.rules.physical.stream.StreamPhysicalJoinRuleBase.StreamPhysicalJoinRuleBaseRuleConfig which is a value type itself. Avoid extending from another abstract value type. Better to share common abstract class or interface which are not carrying @Immutable annotation. If still extending from immutable abstract type be ready to face some incoherences in generated types.
+[WARNING] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/plan/rules/physical/stream/StreamPhysicalTemporalJoinRule.java:[90,12] (immutables:subtype) Should not inherit org.apache.flink.table.planner.plan.rules.physical.stream.StreamPhysicalJoinRuleBase.StreamPhysicalJoinRuleBaseRuleConfig which is a value type itself. Avoid extending from another abstract value type. Better to share common abstract class or interface which are not carrying @Immutable annotation. If still extending from immutable abstract type be ready to face some incoherences in generated types.
+[INFO] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/expressions/converter/ExpressionConverter.java: Some input files use or override a deprecated API.
+[INFO] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/expressions/converter/ExpressionConverter.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/calcite/FlinkTypeFactory.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/flink-table/flink-table-planner/src/main/java/org/apache/flink/table/planner/calcite/FlinkTypeFactory.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-table-planner_2.12 ---
+[INFO] Copying 1041 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- scala:3.2.2:testCompile (scala-test-compile) @ flink-table-planner_2.12 ---
+[WARNING] Plugin is modifying testCompileSourceRoots through add(), which will not work in Maven 4.0.0. Use MavenProject.addTestCompileSourceRoot()/removeTestCompileSourceRoot() methods instead. If using a plugin, please upgrade to the latest version or report the issue to the plugin maintainer. To disable these warnings, set -Dmaven.project.sourceRoots.warningsDisabled=true on the command line, in the .mvn/maven.config file, or in project POM properties.
+[INFO] /testbed/flink-table/flink-table-planner/src/test/java:-1: info: compiling
+[INFO] /testbed/flink-table/flink-table-planner/src/test/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /testbed/flink-table/flink-table-planner/target/test-classes at 1794219767410
+[INFO] prepare-compile in 0 s
+[INFO] compile in 1 s
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-table-planner_2.12 ---
+[INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /testbed/flink-table/flink-table-planner/src/test/java/org/apache/flink/table/planner/plan/rules/logical/FlinkAggregateExpandDistinctAggregatesRuleTests.java: /testbed/flink-table/flink-table-planner/src/test/java/org/apache/flink/table/planner/plan/rules/logical/FlinkAggregateExpandDistinctAggregatesRuleTests.java uses or overrides a deprecated API.
+[INFO] /testbed/flink-table/flink-table-planner/src/test/java/org/apache/flink/table/planner/plan/rules/logical/FlinkAggregateExpandDistinctAggregatesRuleTests.java: Recompile with -Xlint:deprecation for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:53 min
+[INFO] Finished at: 2026-11-09T10:22:49Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.flink:flink-table-planner_2.12:jar:2.4-SNAPSHOT
+[WARNING] 'artifactId' contains an expression but should be a constant. @ org.apache.flink:flink-table-planner_${scala.binary.version}:2.4-SNAPSHOT, /testbed/flink-table/flink-table-planner/pom.xml, line 29, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -------------< org.apache.flink:flink-table-planner_2.12 >--------------
+[INFO] Building Flink : Table : Planner 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ flink-table-planner_2.12 ---
+[INFO] flink.surefire.baseArgLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:+UseG1GC -Xms256m -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.base/java.math=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED -Djunit.platform.reflection.search.useLegacySemantics=true
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (validate) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- spotless:2.46.1:check (spotless-check) @ flink-table-planner_2.12 ---
+[INFO] Spotless check skipped
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven-version) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-java-version) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (enforce-maven) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-snakeyaml) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (ban-unsafe-jackson) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-log4j-1) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-akka-rpc-dependencies) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- enforcer:3.1.0:enforce (forbid-direct-table-planner-dependencies) @ flink-table-planner_2.12 ---
+[INFO] 
+[INFO] --- directory:1.0:directory-of (directories) @ flink-table-planner_2.12 ---
+[INFO] Directory of org.apache.flink:flink-parent set to: /testbed
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ flink-table-planner_2.12 ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ flink-table-planner_2.12 ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- scala:3.2.2:add-source (scala-compile-first) @ flink-table-planner_2.12 ---
+[INFO] Add Source directory: /testbed/flink-table/flink-table-planner/src/main/scala
+[INFO] Add Test Source directory: /testbed/flink-table/flink-table-planner/src/test/scala
+[INFO] 
+[INFO] --- scala:3.2.2:compile (scala-compile-first) @ flink-table-planner_2.12 ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ flink-table-planner_2.12 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ flink-table-planner_2.12 ---
+[INFO] Copying 1041 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- scala:3.2.2:testCompile (scala-test-compile) @ flink-table-planner_2.12 ---
+[WARNING] Plugin is modifying testCompileSourceRoots through add(), which will not work in Maven 4.0.0. Use MavenProject.addTestCompileSourceRoot()/removeTestCompileSourceRoot() methods instead. If using a plugin, please upgrade to the latest version or report the issue to the plugin maintainer. To disable these warnings, set -Dmaven.project.sourceRoots.warningsDisabled=true on the command line, in the .mvn/maven.config file, or in project POM properties.
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ flink-table-planner_2.12 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.2:test (default-test) @ flink-table-planner_2.12 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.flink.table.planner.plan.rules.logical.FlinkAggregateExpandDistinctAggregatesRuleTests
+[ERROR] Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.692 s <<< FAILURE! -- in org.apache.flink.table.planner.plan.rules.logical.FlinkAggregateExpandDistinctAggregatesRuleTests
+[ERROR] org.apache.flink.table.planner.plan.rules.logical.FlinkAggregateExpandDistinctAggregatesRuleTests.testAggregateWithGroupingSetsIsLeftUnchanged -- Time elapsed: 0.005 s <<< FAILURE!
+java.lang.AssertionError
+	at org.apache.calcite.rel.core.Aggregate.<init>(Aggregate.java:172)
+	at org.apache.calcite.rel.logical.LogicalAggregate.<init>(LogicalAggregate.java:72)
+	at org.apache.calcite.rel.logical.LogicalAggregate.create_(LogicalAggregate.java:144)
+	at org.apache.calcite.rel.logical.LogicalAggregate.create(LogicalAggregate.java:124)
+	at org.apache.flink.table.planner.plan.rules.logical.FlinkAggregateExpandDistinctAggregatesRuleTests.testAggregateWithGroupingSetsIsLeftUnchanged(FlinkAggregateExpandDistinctAggregatesRuleTests.java:173)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   FlinkAggregateExpandDistinctAggregatesRuleTests.testAggregateWithGroupingSetsIsLeftUnchanged:173
+[INFO] 
+[ERROR] Tests run: 16, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.178 s
+[INFO] Finished at: 2026-11-09T10:23:04Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.2:test (default-test) on project flink-table-planner_2.12: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /testbed/flink-table/flink-table-planner/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.flink:flink-table-planner_2.12:jar:2.4-SNAPSHOT
+[WARNING] 'artifactId' contains an expression but should be a constant. @ org.apache.flink:flink-table-planner_${scala.binary.version}:2.4-SNAPSHOT, /testbed/flink-table/flink-table-planner/pom.xml, line 29, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -------------< org.apache.flink:flink-table-planner_2.12 >--------------
+[INFO] Building Flink : Table : Planner 2.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ flink-table-planner_2.12 ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Flink : Table : Planner' with 2437 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.936 s
+[INFO] Finished at: 2026-11-09T10:23:09Z
+[INFO] ------------------------------------------------------------------------
