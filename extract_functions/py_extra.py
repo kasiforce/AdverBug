@@ -86,13 +86,18 @@ class EnhancedPythonFocalExtractor:
 
     def __init__(self, project_root, file_list, output_file=None,
                  min_loc_threshold=50, min_complexity_threshold=10,
-                 min_outgoing_degree_threshold=3, random_seed=42):
+                 min_outgoing_degree_threshold=3, random_seed=42,
+                 selection_mode='all', any_loc_threshold=None):
         self.project_root = str(Path(project_root).resolve())
         self.files = file_list
         self.output_file = output_file
         self.min_loc_threshold = min_loc_threshold
         self.min_complexity_threshold = min_complexity_threshold
         self.min_outgoing_degree_threshold = min_outgoing_degree_threshold
+        if selection_mode not in {'all', 'loc-and-any'}:
+            raise ValueError("selection_mode must be 'all' or 'loc-and-any'")
+        self.selection_mode = selection_mode
+        self.any_loc_threshold = min_loc_threshold if any_loc_threshold is None else any_loc_threshold
         self.random_seed = random_seed
         self.repository_index = None
 
@@ -151,16 +156,36 @@ class EnhancedPythonFocalExtractor:
         return all_selected_methods
 
     def _should_filter_method(self, method_info):
+        loc = method_info.get('loc', 0)
+        complexity = method_info.get('complexity', 0)
+        loose_degree = method_info.get('loose_project_outgoing_degree', 0)
+        if self.selection_mode == 'loc-and-any':
+            if loc < self.min_loc_threshold:
+                return True, f'loc<{self.min_loc_threshold}'
+            if (loc >= self.any_loc_threshold
+                    or complexity >= self.min_complexity_threshold
+                    or loose_degree >= self.min_outgoing_degree_threshold):
+                return False, ''
+            return (True, f'loc<{self.any_loc_threshold},'
+                    f'complexity<{self.min_complexity_threshold},'
+                    f'loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}')
+
         reasons = []
-        if method_info.get('loc', 0) < self.min_loc_threshold:
+        if loc < self.min_loc_threshold:
             reasons.append(f"loc<{self.min_loc_threshold}")
-        if method_info.get('complexity', 0) < self.min_complexity_threshold:
+        if complexity < self.min_complexity_threshold:
             reasons.append(f"complexity<{self.min_complexity_threshold}")
-        if method_info.get('loose_project_outgoing_degree', 0) < self.min_outgoing_degree_threshold:
+        if loose_degree < self.min_outgoing_degree_threshold:
             reasons.append(
                 f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}"
             )
         return bool(reasons), ','.join(reasons)
+
+    def _needs_call_metrics(self, method_info):
+        if self.selection_mode == 'loc-and-any':
+            return method_info.get('loc', 0) >= self.min_loc_threshold
+        return (method_info.get('loc', 0) >= self.min_loc_threshold
+                and method_info.get('complexity', 0) >= self.min_complexity_threshold)
 
     @staticmethod
     def _has_private_enclosing_class(current_classes):
@@ -305,8 +330,7 @@ class EnhancedPythonFocalExtractor:
                         else:
                             method_info['type'] = 'function'
 
-                        if (loc < self.min_loc_threshold
-                                or complexity < self.min_complexity_threshold):
+                        if not self._needs_call_metrics(method_info):
                             method_info['project_outgoing_degree'] = 0
                             method_info['loose_project_outgoing_degree'] = 0
                             method_info['unresolved_project_candidate_call_sites'] = 0
@@ -599,7 +623,7 @@ class EnhancedPythonFocalExtractor:
         print(f"  处理文件数: {total_files}")
         print(f"  提取方法总数: {total_methods}")
         print(f"  公有方法数: {total_public}")
-        print(f"  通过全部阈值的方法数: {total_candidates}")
+        print(f"  通过筛选规则的方法数: {total_candidates}")
         print(f"  过滤方法数: {total_filtered}")
         print(f"  最终输出方法数: {total_selected}")
 
@@ -609,12 +633,17 @@ class EnhancedPythonFocalExtractor:
             print(f"  过滤率: {filter_rate:.1f}%")
             print(f"  选择率: {selection_rate:.1f}%")
 
-        print(
-            "  筛选条件："
-            f"LOC >= {self.min_loc_threshold}, "
-            f"CC >= {self.min_complexity_threshold}, "
-            f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}"
-        )
+        if self.selection_mode == 'loc-and-any':
+            print("  筛选条件："
+                  f"LOC >= {self.min_loc_threshold}，且 "
+                  f"(LOC >= {self.any_loc_threshold} 或 "
+                  f"CC >= {self.min_complexity_threshold} 或 "
+                  f"loose project outgoing degree >= {self.min_outgoing_degree_threshold})")
+        else:
+            print("  筛选条件："
+                  f"LOC >= {self.min_loc_threshold}, "
+                  f"CC >= {self.min_complexity_threshold}, "
+                  f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}")
 
 
 def main():
@@ -630,6 +659,10 @@ def main():
         help=('最小宽松项目内调用出度（严格解析的项目函数数 + '
               '未消歧的项目候选调用点数；不含内置、标准库和第三方调用），默认 3'),
     )
+    parser.add_argument('--selection-mode', choices=('all', 'loc-and-any'), default='all',
+                        help='all：三个阈值同时满足（默认）；loc-and-any：达到基础 LOC 且后三项至少满足一项')
+    parser.add_argument('--any-loc', type=int,
+                        help='loc-and-any 模式中用于 LOC 突出的阈值；未指定时等于 --min-loc')
     args = parser.parse_args()
 
     project_root = str(Path(args.project_root).resolve())
@@ -644,6 +677,8 @@ def main():
         min_loc_threshold=args.min_loc,
         min_complexity_threshold=args.min_complexity,
         min_outgoing_degree_threshold=args.min_outgoing_degree,
+        selection_mode=args.selection_mode,
+        any_loc_threshold=args.any_loc,
     )
     selected = extractor.extract_and_select_functions()
     print(f'\n总共保留 {len(selected)} 个函数。')

@@ -4,6 +4,7 @@ import pytest
 
 from minisweagent.run.benchmarks.testgen import (
     DEFAULT_CONFIG_FILE,
+    INPUT_SCENARIOS,
     LANGUAGE_AGNOSTIC_TASK_TEMPLATE,
     TARGET_SCOPE_INSTRUCTIONS,
     TARGET_SCOPE_PROMPT_VERSION,
@@ -17,6 +18,7 @@ from minisweagent.run.benchmarks.testgen import (
     is_completed_result,
     make_instance_id,
     parse_modified_files,
+    replace_unique_code,
     resolve_test_framework,
     resolve_test_output,
     resolve_target_type,
@@ -106,6 +108,79 @@ def test_build_task_enforces_target(java_entry):
     assert "<target_code>" in task and "</target_code>" in task
 
 
+def test_build_task_includes_specification_when_present(java_entry):
+    java_entry["specification"] = "Returns the rendered value and propagates dependency failures."
+    task = build_task(java_entry, "java", input_scenario="source-code-plus-specification")
+    assert (
+        "Behavioral specification:\n<specification>\n"
+        "Returns the rendered value and propagates dependency failures.\n</specification>"
+    ) in task
+    assert task.index("Behavioral specification:") < task.index("Testing focus:")
+
+
+def test_build_task_rejects_missing_required_specification(java_entry):
+    java_entry["specification"] = "  "
+    with pytest.raises(ValueError, match="requires a non-empty 'specification'"):
+        build_task(java_entry, "java", input_scenario="source-code-plus-specification")
+
+
+@pytest.mark.parametrize(
+    ("scenario", "has_source", "has_buggy", "has_specification"),
+    [
+        ("source-code-only", True, False, False),
+        ("source-code-plus-specification", True, False, True),
+        ("buggy-code-only", False, True, False),
+        ("buggy-code-plus-specification", False, True, True),
+        ("specification-only", False, False, True),
+    ],
+)
+def test_build_task_supports_five_input_scenarios(
+    java_entry, scenario, has_source, has_buggy, has_specification
+):
+    java_entry.update(
+        {
+            "specification": "The renderer returns the dependency value.",
+            "buggy_code": ['String render() { return "wrong"; }'],
+        }
+    )
+    task = build_task(java_entry, "java", input_scenario=scenario)
+    assert ('return "ok"' in task) is has_source
+    assert ('return "wrong"' in task) is has_buggy
+    assert ("Behavioral specification:" in task) is has_specification
+    assert "Input evidence boundary:" in task
+    assert "Do not read the target function from its production file" in task
+    assert ("<target_code>" in task) is (has_source or has_buggy)
+    assert set(INPUT_SCENARIOS) == {
+        "source-code-only",
+        "source-code-plus-specification",
+        "buggy-code-only",
+        "buggy-code-plus-specification",
+        "specification-only",
+    }
+
+
+def test_build_task_selects_requested_buggy_code(java_entry):
+    java_entry["buggy_code"] = ["first buggy version", "second buggy version"]
+    task = build_task(java_entry, "java", input_scenario="buggy-code-only", buggy_code_index=1)
+    assert "second buggy version" in task
+    assert "first buggy version" not in task
+    with pytest.raises(ValueError, match="out of range"):
+        build_task(java_entry, "java", input_scenario="buggy-code-only", buggy_code_index=2)
+
+
+def test_replace_unique_code_requires_one_distinct_match():
+    source = "class Demo { int target() { return 1; } }"
+    original = "int target() { return 1; }"
+    buggy = "int target() { return 2; }"
+    assert replace_unique_code(source, original, buggy) == (
+        "class Demo { int target() { return 2; } }"
+    )
+    with pytest.raises(ValueError, match="occurs 0 times"):
+        replace_unique_code(source, "missing", buggy)
+    with pytest.raises(ValueError, match="must differ"):
+        replace_unique_code(source, original, original)
+
+
 def test_build_task_selects_only_source_file_scope():
     entry = {
         "project_root": "/projects/demo",
@@ -183,7 +258,7 @@ def test_target_code_can_contain_markdown_fences(java_entry):
     assert task.count("<target_code>") == task.count("</target_code>") == 1
 
 
-def test_build_task_omits_exploration_context(java_entry):
+def test_build_task_omits_unneeded_exploration_context(java_entry):
     java_entry.update(
         {
             "full_class_name": "demo.Renderer",
@@ -194,16 +269,16 @@ def test_build_task_omits_exploration_context(java_entry):
             "specification": "Generated specification",
         }
     )
-    task = build_task(java_entry, "java")
+    task = build_task(java_entry, "java", input_scenario="source-code-plus-specification")
     assert "Target class:\ndemo.Renderer" in task
+    assert "Behavioral specification:" in task
+    assert "Generated specification" in task
     for omitted in (
         "Context:",
         "target_lines",
         "function_type",
         "class_context",
         "relevant_imports",
-        "specification",
-        "Generated specification",
         "demo.Dependency",
     ):
         assert omitted not in task
@@ -244,7 +319,7 @@ def test_testgen_config_contains_generation_policy():
     assert "The output of your last command was too long" in config
     assert 'finish_reason == "length"' in config
     assert DEFAULT_CONFIG_FILE.name == "testgen_target_scoped.yaml"
-    assert TARGET_SCOPE_PROMPT_VERSION == "1"
+    assert TARGET_SCOPE_PROMPT_VERSION == "4"
 
 
 def test_target_scopes_receive_separate_resource_budgets():
@@ -332,6 +407,23 @@ def test_completed_result_requires_successful_policy_compliant_submission():
     ):
         failed = {**result, "mini_swe_agent": {**result["mini_swe_agent"], key: value}}
         assert not is_completed_result(failed)
+
+
+def test_completed_result_is_scoped_to_input_scenario():
+    result = {
+        "generated_tests": ["test code"],
+        "mini_swe_agent": {
+            "exit_status": "Submitted",
+            "test_file_created": True,
+            "policy_violations": [],
+            "input_scenario": "buggy-code-only",
+            "buggy_code_index": 1,
+        },
+    }
+    assert is_completed_result(result, "buggy-code-only", 1)
+    assert not is_completed_result(result, "buggy-code-only", 0)
+    assert not is_completed_result(result, "source-code-only")
+    assert not is_completed_result({"generated_tests": ["legacy result"]}, "source-code-only")
 
 
 def test_framework_can_come_from_entry_or_cli_override(java_entry):

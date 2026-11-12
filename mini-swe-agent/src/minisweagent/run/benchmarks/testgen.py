@@ -29,7 +29,15 @@ DEFAULT_CONFIG_FILE = builtin_config_dir / "benchmarks" / "testgen_target_scoped
 app = typer.Typer(rich_markup_mode="rich", add_completion=False)
 _RESULTS_LOCK = threading.Lock()
 _RUN_ARTIFACTS_LOCK = threading.Lock()
-TARGET_SCOPE_PROMPT_VERSION = "1"
+TARGET_SCOPE_PROMPT_VERSION = "4"
+
+INPUT_SCENARIOS = {
+    "source-code-only": ("code", False),
+    "source-code-plus-specification": ("code", True),
+    "buggy-code-only": ("buggy_code", False),
+    "buggy-code-plus-specification": ("buggy_code", True),
+    "specification-only": (None, True),
+}
 
 TEST_FRAMEWORKS = {
     "java": "JUnit 5",
@@ -43,6 +51,8 @@ LANGUAGE_AGNOSTIC_TASK_TEMPLATE = """Testing framework:
 Test target:
 {target}
 
+{specification}
+{input_contract}
 Testing focus:
 {scope_contract}
 
@@ -293,13 +303,87 @@ def resolve_target_type(entry: dict) -> str:
         raise ValueError(f"Unsupported target type: {raw_type!r}") from error
 
 
-def format_target(entry: dict, target_type: str) -> str:
+def select_code(entry: dict, field: str, buggy_code_index: int) -> str:
+    value = entry.get(field)
+    if field == "buggy_code" and isinstance(value, list):
+        try:
+            value = value[buggy_code_index]
+        except IndexError as error:
+            raise ValueError(
+                f"buggy_code index {buggy_code_index} is out of range for {len(value)} variants"
+            ) from error
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"Input scenario requires a non-empty {field!r} field")
+    return value
+
+
+def replace_unique_code(source: str, original_code: str, replacement_code: str) -> str:
+    occurrences = source.count(original_code)
+    if occurrences != 1:
+        raise ValueError(f"Original target code occurs {occurrences} times in production file; expected 1")
+    if original_code == replacement_code:
+        raise ValueError("Original and replacement target code must differ")
+    return source.replace(original_code, replacement_code, 1)
+
+
+def inject_buggy_code(env, entry: dict, buggy_code_index: int, temporary: Path) -> None:
+    container_id = getattr(env, "container_id", None)
+    executable = getattr(getattr(env, "config", None), "executable", None)
+    cwd = getattr(getattr(env, "config", None), "cwd", None)
+    if not container_id or not executable or not cwd:
+        raise RuntimeError("Docker container information is unavailable for buggy-code injection")
+    source_path = PurePosixPath(cwd) / validate_test_path(str(entry.get("src_file") or ""))
+    temporary.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(
+            [executable, "cp", f"{container_id}:{source_path}", str(temporary)],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        temporary.write_text(
+            replace_unique_code(
+                temporary.read_text(encoding="utf-8"),
+                select_code(entry, "code", 0),
+                select_code(entry, "buggy_code", buggy_code_index),
+            ),
+            encoding="utf-8",
+        )
+        subprocess.run(
+            [executable, "cp", str(temporary), f"{container_id}:{source_path}"],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def resolve_function_inputs(
+    entry: dict, input_scenario: str, buggy_code_index: int
+) -> tuple[str | None, str | None]:
+    try:
+        code_field, include_specification = INPUT_SCENARIOS[input_scenario]
+    except KeyError as error:
+        raise ValueError(f"Unsupported input scenario: {input_scenario!r}") from error
+    code = select_code(entry, code_field, buggy_code_index) if code_field else None
+    specification = str(entry.get("specification") or "").strip() if include_specification else None
+    if include_specification and not specification:
+        raise ValueError("Input scenario requires a non-empty 'specification' field")
+    return code, specification
+
+
+def format_target(entry: dict, target_type: str, code: str | None = None) -> str:
     if target_type == "function":
         target_class = entry.get("full_class_name") or entry.get("class_name")
         class_description = f"\n\nTarget class:\n{target_class}" if target_class else ""
+        target_code = (
+            f"Target function or method:\n<target_code>\n{code}\n</target_code>\n\n"
+            if code is not None
+            else f"Target function or method:\n{entry.get('name', '')}\n\n"
+        )
         return (
-            f"Target function or method:\n<target_code>\n{entry.get('code', '')}\n</target_code>\n\n"
-            f"Production file:\n{entry.get('src_file', '')}{class_description}"
+            f"{target_code}Production file:\n{entry.get('src_file', '')}{class_description}"
         )
     if target_type == "source_file":
         return f"Production source file:\n{entry.get('src_file', '')}"
@@ -321,17 +405,44 @@ def format_target(entry: dict, target_type: str) -> str:
     )
 
 
+def format_specification(specification: str | None) -> str:
+    if not specification:
+        return ""
+    return f"Behavioral specification:\n<specification>\n{specification}\n</specification>\n\n"
+
+
+def format_input_contract(target_type: str) -> str:
+    if target_type != "function":
+        return ""
+    return (
+        "Input evidence boundary:\n"
+        "Treat only the target code and/or specification supplied above as evidence about the target "
+        "function. Do not read the target function from its production file or use version-control history "
+        "to recover omitted or replaced target evidence. You may inspect repository configuration, declarations, "
+        "and direct collaborators when needed to make the tests executable.\n\n"
+    )
+
+
 def build_task(
     entry: dict,
     language: str,
     test_framework: str | None = None,
+    input_scenario: str = "source-code-only",
+    buggy_code_index: int = 0,
 ) -> str:
     resolved_framework = resolve_test_framework(entry, language, test_framework)
     target_type = resolve_target_type(entry)
     test_output, is_module = resolve_test_output(entry, target_type)
+    code, specification = (
+        resolve_function_inputs(entry, input_scenario, buggy_code_index)
+        if target_type == "function"
+        else (None, None)
+    )
     return LANGUAGE_AGNOSTIC_TASK_TEMPLATE.format(
         test_framework=resolved_framework,
-        target=format_target(entry, target_type),
+        target=format_target(entry, target_type, code),
+        specification=format_specification(specification),
+        input_contract=format_input_contract(target_type),
         scope_contract=TARGET_SCOPE_INSTRUCTIONS[target_type],
         test_output_contract=format_test_output_contract(test_output, is_module),
     )
@@ -377,16 +488,24 @@ def is_allowed_modified_path(
     return output_matches or is_build_or_test_config_path(path)
 
 
-def is_completed_result(result: dict) -> bool:
+def is_completed_result(
+    result: dict, input_scenario: str | None = None, buggy_code_index: int = 0
+) -> bool:
     if not result.get("generated_tests"):
         return False
     metadata = result.get("mini_swe_agent")
     if not isinstance(metadata, dict):
-        return True
-    return (
+        return input_scenario is None
+    completed = (
         metadata.get("exit_status") == "Submitted"
         and metadata.get("test_file_created") is True
         and not metadata.get("policy_violations")
+    )
+    if not completed or input_scenario is None:
+        return completed
+    return metadata.get("input_scenario") == input_scenario and (
+        not input_scenario.startswith("buggy-code")
+        or metadata.get("buggy_code_index") == buggy_code_index
     )
 
 
@@ -443,6 +562,8 @@ def process_instance(
     image: str,
     language: str,
     test_framework: str | None,
+    input_scenario: str,
+    buggy_code_index: int,
     remove_tests: bool,
     progress_manager: RunBatchProgressManager,
 ) -> None:
@@ -462,12 +583,21 @@ def process_instance(
     generated_config_files: list[dict] = []
     modified_files: list[str] = []
     removed_test_files: list[str] = []
+    bug_injected = False
     started = time.monotonic()
     try:
         environment_config = instance_config.setdefault("environment", {})
         environment_config["image"] = image
         environment_config.setdefault("cwd", "/testbed")
         env = get_environment(environment_config, default_type="docker")
+        if input_scenario.startswith("buggy-code"):
+            inject_buggy_code(
+                env,
+                instance,
+                buggy_code_index,
+                output_dir / f".{instance_id}.bug_patch.tmp",
+            )
+            bug_injected = True
         if remove_tests:
             removed_test_files = remove_existing_tests(env, language)
             # All instances of a project run against the same clean checkout.
@@ -500,7 +630,10 @@ def process_instance(
             instance_id=instance_id,
             **agent_config,
         )
-        info = agent.run(build_task(instance, language, test_framework), instance=instance)
+        info = agent.run(
+            build_task(instance, language, test_framework, input_scenario, buggy_code_index),
+            instance=instance,
+        )
         exit_status = info.get("exit_status", "")
 
         status = env.execute({"command": "git status --porcelain --untracked-files=all"})
@@ -574,6 +707,10 @@ def process_instance(
             "language": language,
             "target_type": target_type,
             "target_scope_prompt_version": TARGET_SCOPE_PROMPT_VERSION,
+            "input_scenario": input_scenario,
+            "buggy_code_index": buggy_code_index if input_scenario.startswith("buggy-code") else None,
+            "repository_code_variant": "buggy" if bug_injected else "original",
+            "bug_injected": bug_injected,
             "test_framework": resolve_test_framework(instance, language, test_framework),
             "resource_limits": {
                 "step_limit": instance_config.get("agent", {}).get("step_limit", 0),
@@ -622,6 +759,20 @@ def main(
         "--test-framework",
         help="Override framework description; otherwise use entry.test_framework or language default",
     ),
+    input_scenario: str = typer.Option(
+        ...,
+        "--input-scenario",
+        help=(
+            "Prompt evidence: source-code-only, source-code-plus-specification, buggy-code-only, "
+            "buggy-code-plus-specification, or specification-only"
+        ),
+    ),
+    buggy_code_index: int = typer.Option(
+        0,
+        "--buggy-code-index",
+        min=0,
+        help="Index into entry.buggy_code when a buggy-code scenario is selected",
+    ),
     slice_spec: str = typer.Option("", "--slice", help="Python slice, for example 0:5"),
     filter_spec: str = typer.Option("", "--filter", help="Instance ID regular expression"),
     shuffle: bool = typer.Option(False, "--shuffle", help="Shuffle deterministically"),
@@ -636,6 +787,15 @@ def main(
     ),
     config_spec: list[str] = typer.Option([str(DEFAULT_CONFIG_FILE)], "-c", "--config"),
 ) -> None:
+    if input_scenario not in INPUT_SCENARIOS:
+        raise typer.BadParameter(
+            f"Must be one of: {', '.join(INPUT_SCENARIOS)}", param_hint="--input-scenario"
+        )
+    if input_scenario.startswith("buggy-code") and not remove_tests:
+        raise typer.BadParameter(
+            "Buggy-code scenarios require --remove-existing-tests so Git history cannot reveal original code",
+            param_hint="--keep-existing-tests",
+        )
     raw = json.loads(dataset.read_text(encoding="utf-8"))
     if not isinstance(raw, list):
         raise typer.BadParameter("Dataset must be a JSON array")
@@ -657,7 +817,11 @@ def main(
         instances.append(instance)
     instances = filter_instances(instances, filter_spec=filter_spec, slice_spec=slice_spec, shuffle=shuffle)
     if not redo_existing:
-        instances = [instance for instance in instances if not is_completed_result(results[instance["_index"]])]
+        instances = [
+            instance
+            for instance in instances
+            if not is_completed_result(results[instance["_index"]], input_scenario, buggy_code_index)
+        ]
 
     configs = [get_config_from_spec(spec) for spec in config_spec]
     configs.append({"model": {"model_name": model or UNSET, "model_class": model_class or UNSET}})
@@ -686,6 +850,8 @@ def main(
                     image,
                     infer_language(instance, language),
                     test_framework,
+                    input_scenario,
+                    buggy_code_index,
                     remove_tests,
                     progress_manager,
                 ): instance["instance_id"]

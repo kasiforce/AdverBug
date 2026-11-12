@@ -31,6 +31,21 @@ EVAL_DIR = Path(__file__).resolve().parent
 INSTANCE_SCRIPT = EVAL_DIR / "js_eval_container.sh"
 MERGE_SCRIPT = EVAL_DIR / "js_merge_coverage.js"
 
+# Commands required to materialize ignored, generated project files before
+# generated tests are executed.  Keys are matched against the evaluator image
+# name so the dataset format stays project-agnostic.
+PROJECT_PRE_TEST_SETUP = {
+    "cyberchef": "cyberchef",
+}
+
+
+def _pre_test_setup_for_image(image: str) -> str:
+    image_name = image.lower()
+    for marker, setup_name in PROJECT_PRE_TEST_SETUP.items():
+        if marker in image_name:
+            return setup_name
+    return ""
+
 
 def _safe_relative_path(value: str, field: str) -> PurePosixPath:
     path = PurePosixPath(value)
@@ -201,9 +216,8 @@ def _target_function_metrics(
 
 def parse_instance_coverage(path: Path, item: dict[str, Any]) -> dict[str, Any]:
     is_file_target = str(item.get("target_type") or "").lower() == "source_file"
-    empty = {"report_found": False, "target_file": None}
-    if not is_file_target:
-        empty["target_function"] = None
+    empty = {"report_found": False}
+    empty["target_file" if is_file_target else "target_function"] = None
     if not path.is_file():
         return empty
     try:
@@ -213,16 +227,18 @@ def parse_instance_coverage(path: Path, item: dict[str, Any]) -> dict[str, Any]:
     file_key, entry = _find_file_entry(coverage, item)
     if entry is None:
         return {**empty, "report_found": True}
-    result = {
+    if is_file_target:
+        return {
+            "report_found": True,
+            "target_file": {
+                "file_key": _normalize_path(file_key or _source_key(item)),
+                **_file_metrics(entry),
+            },
+        }
+    return {
         "report_found": True,
-        "target_file": {
-            "file_key": _normalize_path(file_key or _source_key(item)),
-            **_file_metrics(entry),
-        },
+        "target_function": _target_function_metrics(entry, item),
     }
-    if not is_file_target:
-        result["target_function"] = _target_function_metrics(entry, item)
-    return result
 
 
 def parse_jest_report(path: Path) -> dict[str, Any]:
@@ -268,16 +284,41 @@ def parse_jest_report(path: Path) -> dict[str, Any]:
 
 
 def _stage_item(item: dict[str, Any], stage_dir: Path) -> None:
-    test_path = _safe_relative_path(str(item.get("test_file", "")), "test_file")
-    src_path = _safe_relative_path(_source_key(item), "src_file")
-    generated = item.get("generated_tests") or []
-    if isinstance(generated, str):
-        generated = [generated]
-    code = "\n\n".join(str(part) for part in generated if str(part).strip()).strip()
-    if not code:
-        raise ValueError("generated_tests is empty")
-    _write_text(stage_dir / "files" / Path(*test_path.parts), code + "\n")
-    _write_text(stage_dir / "test_file.txt", test_path.as_posix() + "\n")
+    is_module = str(item.get("target_type") or "").lower() == "module"
+    generated_files = item.get("generated_test_files") or []
+    test_paths: list[PurePosixPath] = []
+    if is_module:
+        if not isinstance(generated_files, list):
+            raise ValueError("generated_test_files must be an array for a module target")
+        for position, generated in enumerate(generated_files):
+            if not isinstance(generated, dict):
+                raise ValueError(f"generated_test_files[{position}] must be an object")
+            test_path = _safe_relative_path(
+                str(generated.get("path", "")), f"generated_test_files[{position}].path"
+            )
+            code = str(generated.get("code", "")).strip()
+            if not code:
+                raise ValueError(f"generated_test_files[{position}].code is empty")
+            _write_text(stage_dir / "files" / Path(*test_path.parts), code + "\n")
+            test_paths.append(test_path)
+        if not test_paths:
+            raise ValueError("generated_test_files is empty")
+    else:
+        test_path = _safe_relative_path(str(item.get("test_file", "")), "test_file")
+        generated = item.get("generated_tests") or []
+        if isinstance(generated, str):
+            generated = [generated]
+        code = "\n\n".join(str(part) for part in generated if str(part).strip()).strip()
+        if not code:
+            raise ValueError("generated_tests is empty")
+        _write_text(stage_dir / "files" / Path(*test_path.parts), code + "\n")
+        test_paths.append(test_path)
+
+    source_paths = item.get("files") if is_module else None
+    source = str(source_paths[0]) if isinstance(source_paths, list) and source_paths else _source_key(item)
+    src_path = _safe_relative_path(source, "src_file")
+    _write_text(stage_dir / "test_file.txt", test_paths[0].as_posix() + "\n")
+    _write_text(stage_dir / "test_files.txt", "\n".join(path.as_posix() for path in test_paths) + "\n")
     _write_text(stage_dir / "src_file.txt", src_path.as_posix() + "\n")
     for config in item.get("generated_config_files") or []:
         if not isinstance(config, dict) or not config.get("path"):
@@ -344,6 +385,7 @@ def evaluate_instance(
             "-e", f"INSTALL_EVAL_DEPS={1 if install_eval_deps else 0}",
             "-e", f"JEST_TEST_TIMEOUT_MS={test_timeout * 1000}",
             "-e", f"JEST_COVERAGE_PROVIDER={coverage_provider}",
+            "-e", f"PROJECT_PRE_TEST_SETUP={_pre_test_setup_for_image(image)}",
             image, "bash", "/eval/js_eval_container.sh",
         ]
         completed: subprocess.CompletedProcess[str] | None
@@ -423,7 +465,7 @@ def evaluate_instance(
                     "=== docker stdout ===\n" + completed.stdout,
                     "=== docker stderr ===\n" + completed.stderr,
                 ])
-            for name in ("dependencies.log", "syntax.log", "test.log", "coverage.log"):
+            for name in ("pre_test_setup.log", "dependencies.log", "syntax.log", "test.log", "coverage.log"):
                 path = run_dir / name
                 if path.is_file():
                     parts.append(
@@ -596,7 +638,8 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
 
     merge_summaries: dict[str, Any] = {}
     file_coverage: dict[str, Any] = {}
-    if not args.no_merge:
+    merge_file_coverage = bool(args.merge_file_coverage and not args.no_merge)
+    if merge_file_coverage:
         status, coverage = merge_coverage(args.image, output_dir, results, "all_executed")
         merge_summaries["all_executed"] = status
         file_coverage["all_executed"] = coverage
@@ -641,6 +684,8 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
         "compile_pass_count": sum(entry.get("compile_pass") is True for entry in evaluated),
         "test_pass_count": sum(entry.get("test_pass") is True for entry in evaluated),
         "exec_count": sum(bool(entry.get("coverage_data")) for entry in evaluated),
+        "coverage_scope": "function",
+        "file_coverage_enabled": merge_file_coverage,
         "syntax": {
             "parser": "node-check",
             "parser_available": bool(syntax_known),
@@ -652,14 +697,15 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
         "merge": merge_summaries,
     }
     _atomic_json_dump(evaluated_path, results)
-    _atomic_json_dump(output_dir / "file_coverage.json", file_coverage)
+    if merge_file_coverage:
+        _atomic_json_dump(output_dir / "file_coverage.json", file_coverage)
     _atomic_json_dump(output_dir / "summary.json", summary)
     return summary
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Evaluate each generated Jest test in a fresh container and merge target-only coverage."
+        description="Evaluate generated Jest tests and report target-function coverage."
     )
     parser.add_argument("--data-file", type=Path, required=True, help="Generated-test JSON")
     parser.add_argument("--image", help="Prebuilt project image")
@@ -680,6 +726,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--redo-existing", action="store_true")
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--no-merge", action="store_true")
+    parser.add_argument(
+        "--merge-file-coverage",
+        action="store_true",
+        help="Optionally compute legacy merged target-file coverage (disabled by default)",
+    )
     parser.add_argument("--keep-logs", action="store_true")
     parser.add_argument(
         "--no-install-eval-deps",

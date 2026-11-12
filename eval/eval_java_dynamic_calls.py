@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Prototype dynamic direct-call coverage for Java function-level targets.
+"""Static-plus-dynamic direct-call coverage for Java function-level targets.
 
-This is intentionally separate from ``eval_java.py``.  It reuses the existing
-isolated Java evaluation container, adds a small Java agent through Maven's
-agent argument, and records runtime caller-to-callee edges.  JaCoCo's
-method counters are then attached to the directly called production methods.
+This is intentionally separate from ``eval_java.py``.  A small JVM agent
+extracts every direct project-method invocation in the target method's bytecode
+(the static candidate set ``S``), and records the direct edges actually entered
+while that target executes (the dynamic set ``D``).  JaCoCo method counters are
+aggregated only over ``S ∪ D``.
 
-The result is deliberately limited to direct calls observed at runtime.  Calls
-through reflection or code paths not exercised by the generated tests are not
-reported as observed edges.
+Reflection and other calls absent from bytecode cannot be part of ``S``; when
+they enter an instrumented project method during the target context, they are
+included through ``D``.
 """
 
 from __future__ import annotations
@@ -84,8 +85,13 @@ public final class TraceAgent {
 
     private static final class Transformer implements ClassFileTransformer {
         private final String prefix;
+        private final String targetClass;
+        private final String targetMethod;
+
         Transformer(String prefix, String targetClass, String targetMethod) {
             this.prefix = prefix;
+            this.targetClass = targetClass;
+            this.targetMethod = targetMethod;
         }
 
         @Override
@@ -110,6 +116,62 @@ public final class TraceAgent {
                             String signature, String[] exceptions) {
                         MethodVisitor delegate = super.visitMethod(
                                 access, name, descriptor, signature, exceptions);
+                        boolean isTarget = className.equals(targetClass)
+                                && name.equals(targetMethod);
+
+                        // This runs while the target class is being transformed, rather
+                        // than when a call instruction is executed.  It is therefore the
+                        // complete bytecode-level direct-call set S for the target method,
+                        // including branches that the generated test does not take.
+                        // Constructors are intentionally not instrumented at entry, but
+                        // their invocation instructions can still be inspected here.
+                        if (isTarget) {
+                            return new MethodVisitor(Opcodes.ASM9, delegate) {
+                                @Override
+                                public void visitMethodInsn(
+                                        int opcode, String owner, String calledName,
+                                        String calledDescriptor, boolean isInterface) {
+                                    if (owner.startsWith(prefix)
+                                            && !"<init>".equals(calledName)
+                                            && !"<clinit>".equals(calledName)
+                                            && !"$jacocoInit".equals(calledName)
+                                            && !calledName.startsWith("access$")) {
+                                        Trace.recordStatic(
+                                                className, name, owner, calledName, calledDescriptor);
+                                    }
+                                    super.visitMethodInsn(
+                                            opcode, owner, calledName,
+                                            calledDescriptor, isInterface);
+                                }
+
+                                @Override
+                                public void visitCode() {
+                                    super.visitCode();
+                                    visitMethodInsn(
+                                            Opcodes.INVOKESTATIC,
+                                            "TraceAgent$Trace",
+                                            "enterTarget",
+                                            "()V",
+                                            false);
+                                }
+
+                                @Override
+                                public void visitInsn(int opcode) {
+                                    if (opcode == Opcodes.IRETURN || opcode == Opcodes.LRETURN
+                                            || opcode == Opcodes.FRETURN || opcode == Opcodes.DRETURN
+                                            || opcode == Opcodes.ARETURN || opcode == Opcodes.RETURN
+                                            || opcode == Opcodes.ATHROW) {
+                                        visitMethodInsn(
+                                                Opcodes.INVOKESTATIC,
+                                                "TraceAgent$Trace",
+                                                "exitTarget",
+                                                "()V",
+                                                false);
+                                    }
+                                    super.visitInsn(opcode);
+                                }
+                            };
+                        }
                         // Injecting before invokespecial in a constructor can
                         // violate the JVM's uninitialized-this rules.
                         if ("<init>".equals(name) || "<clinit>".equals(name)
@@ -121,14 +183,6 @@ public final class TraceAgent {
                             public void visitMethodInsn(
                                     int opcode, String owner, String calledName,
                                     String calledDescriptor, boolean isInterface) {
-                                if (owner.startsWith(prefix)
-                                        && !"<init>".equals(calledName)
-                                        && !"<clinit>".equals(calledName)
-                                        && !"$jacocoInit".equals(calledName)
-                                        && !calledName.startsWith("access$")) {
-                                    Trace.recordStatic(
-                                            className, name, owner, calledName, calledDescriptor);
-                                }
                                 super.visitMethodInsn(
                                         opcode, owner, calledName, calledDescriptor, isInterface);
                             }
@@ -160,6 +214,9 @@ public final class TraceAgent {
 
     public static final class Trace {
         private static BufferedWriter writer;
+        private static final ThreadLocal<Integer> targetDepth = new ThreadLocal<Integer>() {
+            @Override protected Integer initialValue() { return Integer.valueOf(0); }
+        };
 
         static synchronized void initialize(String output) {
             try {
@@ -169,9 +226,22 @@ public final class TraceAgent {
             }
         }
 
+        public static void enterTarget() {
+            targetDepth.set(Integer.valueOf(targetDepth.get().intValue() + 1));
+        }
+
+        public static void exitTarget() {
+            int depth = targetDepth.get().intValue();
+            targetDepth.set(Integer.valueOf(depth > 0 ? depth - 1 : 0));
+        }
+
         public static synchronized void record(
                 String calleeClass, String calleeMethod, String descriptor) {
-            if (writer == null) {
+            // Every project method has a tiny entry probe, but only calls made
+            // while the requested target is active are materialised.  This
+            // gives D (actually executed direct callees) without a project-wide
+            // trace file or cross-test contamination.
+            if (writer == null || targetDepth.get().intValue() == 0) {
                 return;
             }
             StackTraceElement[] stack = Thread.currentThread().getStackTrace();
@@ -490,7 +560,7 @@ def _evaluate_one(
     candidate_keys = static_keys | dynamic_keys
     candidate_coverage = _aggregate_candidate_coverage(methods, candidate_keys)
     called_function_coverage = {
-        "candidate_scope": "instrumented_project_methods",
+        "candidate_scope": "static_union_dynamic_project_methods",
         "static_called_function_count": len(static_keys),
         "executed_called_function_count": len(dynamic_keys),
         "candidate_called_function_count": len(candidate_keys),

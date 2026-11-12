@@ -19,11 +19,9 @@ from summarize_java import (
 )
 
 
-def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any], dict[str, int]]:
+def collect_project(project_dir: Path) -> tuple[dict[str, Any], dict[str, int]]:
     items = json.loads((project_dir / "evaluated_results.json").read_text(encoding="utf-8"))
-    coverage_sets = json.loads((project_dir / "file_coverage.json").read_text(encoding="utf-8"))
-    files = coverage_sets.get(coverage_set, {})
-    if not isinstance(items, list) or not isinstance(files, dict):
+    if not isinstance(items, list):
         raise ValueError(f"Invalid evaluation data in {project_dir}")
 
     totals = _empty_totals()
@@ -52,31 +50,13 @@ def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any
                 totals["function_branch_total"] += int(branch.get("total", 0))
                 totals["function_branch_covered"] += int(branch.get("covered", 0))
 
-    totals["files"] = len(files)
-    for entry in files.values():
-        if entry.get("report_found") is not True:
-            continue
-        totals["file_reports"] += 1
-        line = entry.get("line") or {}
-        branch = entry.get("branch") or {}
-        totals["file_line_total"] += int(line.get("total", 0))
-        totals["file_line_covered"] += int(line.get("covered", 0))
-        totals["file_branch_total"] += int(branch.get("total", 0))
-        totals["file_branch_covered"] += int(branch.get("covered", 0))
-
-    return render_metrics(totals), totals
+    return render_metrics(totals, include_file_coverage=False), totals
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results-root", type=Path, default=Path("eval_results/js"))
     parser.add_argument("--output", type=Path)
-    parser.add_argument(
-        "--coverage-set",
-        choices=("passing", "all_executed"),
-        default="all_executed",
-        help="Merged Istanbul coverage set used for file-level coverage",
-    )
     args = parser.parse_args()
 
     root = args.results_root.resolve()
@@ -84,9 +64,7 @@ def main() -> int:
     project_dirs = sorted(
         path
         for path in root.iterdir()
-        if path.is_dir()
-        and (path / "evaluated_results.json").is_file()
-        and (path / "file_coverage.json").is_file()
+        if path.is_dir() and (path / "evaluated_results.json").is_file()
     )
     if not project_dirs:
         parser.error(f"No JavaScript project evaluation results found under {root}")
@@ -94,7 +72,7 @@ def main() -> int:
     aggregate = _empty_totals()
     projects: dict[str, Any] = {}
     for project_dir in project_dirs:
-        metrics, totals = collect_project(project_dir, args.coverage_set)
+        metrics, totals = collect_project(project_dir)
         projects[project_dir.name] = metrics
         _add_totals(aggregate, totals)
 
@@ -105,10 +83,6 @@ def main() -> int:
         ),
         "test_pass": "The generated test suite completed with zero failures and zero errors.",
         "coverage_rate": "Micro-average: sum(covered) / sum(total).",
-        "file_coverage": (
-            f"Coverage of unique target production files after merging the {args.coverage_set} "
-            "Istanbul execution data within each project."
-        ),
     }
     if aggregate["function_targets"]:
         definitions["function_coverage"] = (
@@ -119,9 +93,8 @@ def main() -> int:
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "language": "JavaScript",
-        "coverage_set": args.coverage_set,
         "definitions": definitions,
-        "overall": render_metrics(aggregate),
+        "overall": render_metrics(aggregate, include_file_coverage=False),
         "projects": projects,
     }
     atomic_dump(output, report)

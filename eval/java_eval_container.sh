@@ -11,9 +11,10 @@ if [[ ! -f /eval-input/test_file.txt || ! -d /eval-input/files ]]; then
     exit 90
 fi
 
-# Remove original Java test sources, while never deleting src/main production
-# code.  The generated test and any allowed test configuration are copied in
-# only after this cleanup.
+# Remove original JVM test sources, while never deleting src/main production
+# code. This mirrors testgen.py, where Java, Scala, Kotlin, and Groovy tests are
+# removed before generation. The generated test and any allowed test
+# configuration are copied in only after this cleanup.
 while IFS= read -r -d '' source_file; do
     relative="${source_file#./}"
     lower="$(printf '%s' "/${relative}/" | tr '[:upper:]' '[:lower:]')"
@@ -23,7 +24,11 @@ while IFS= read -r -d '' source_file; do
             rm -f -- "$source_file"
             ;;
     esac
-done < <(find . -type f -name '*.java' -print0)
+done < <(
+    find . -type f \
+        \( -name '*.java' -o -name '*.scala' -o -name '*.kt' -o -name '*.groovy' \) \
+        -print0
+)
 
 cp -a /eval-input/files/. /testbed/
 
@@ -47,6 +52,13 @@ fi
 
 TEST_FILE="$(tr -d '\r\n' < /eval-input/test_file.txt)"
 TEST_CLASS="$(basename "$TEST_FILE" .java)"
+MODULE_TESTS=0
+if [[ -f /eval-input/test_files.txt ]]; then
+    test_file_count="$(sed '/^$/d' /eval-input/test_files.txt | wc -l | tr -d ' ')"
+    if [[ "$test_file_count" -gt 1 ]]; then
+        MODULE_TESTS=1
+    fi
+fi
 TEST_DIR="$(dirname "$TEST_FILE")"
 MODULE_DIR="$TEST_DIR"
 while [[ "$MODULE_DIR" != "." && "$MODULE_DIR" != "/" && ! -f "$MODULE_DIR/pom.xml" ]]; do
@@ -71,7 +83,16 @@ else
     exit 92
 fi
 
-COMMON=(-B -ntp -DskipTests=false -Dmaven.test.skip=false -DfailIfNoTests=false -Drat.skip=true)
+COMMON=(
+    -B
+    -ntp
+    -DskipTests=false
+    -Dmaven.test.skip=false
+    -DfailIfNoTests=false
+    -Drat.skip=true
+    -Dcheckstyle.skip=true
+    -Dspotless.check.skip=true
+)
 cd "/testbed/$MODULE_DIR"
 
 "${MVN[@]}" "${COMMON[@]}" clean test-compile > /results/compile.log 2>&1
@@ -111,22 +132,27 @@ done
 AGENT_JAR="/root/.m2/repository/org/jacoco/org.jacoco.agent/${JACOCO_VERSION}/org.jacoco.agent-${JACOCO_VERSION}-runtime.jar"
 AGENT_ARGUMENT="-javaagent:${AGENT_JAR}=destfile=/results/jacoco.exec"
 
+TEST_ARGS=()
+if [[ "$MODULE_TESTS" -eq 0 ]]; then
+    TEST_ARGS=("-Dtest=${TEST_CLASS}" -Dsurefire.failIfNoSpecifiedTests=false)
+fi
 "${MVN[@]}" "${COMMON[@]}" \
     "org.jacoco:jacoco-maven-plugin:${JACOCO_VERSION}:prepare-agent" \
     test \
     "-Djacoco.destFile=/results/jacoco.exec" \
     "-Djacoco.propertyName=${PROPERTY_NAME}" \
     "-D${PROPERTY_NAME}=${AGENT_ARGUMENT}" \
-    "-Dtest=${TEST_CLASS}" \
-    -Dsurefire.failIfNoSpecifiedTests=false \
+    "${TEST_ARGS[@]}" \
     > /results/test.log 2>&1
 TEST_EXIT=$?
 printf '%s\n' "$TEST_EXIT" > /results/test_exit_code.txt
 
 mkdir -p /results/reports /results/jacoco-report
-if [[ -d target/surefire-reports ]]; then
-    find target/surefire-reports -maxdepth 1 -type f -name 'TEST-*.xml' -exec cp {} /results/reports/ \;
-fi
+# Maven projects may override project.build.directory (for example,
+# ResForge uses build-maven instead of target).  Collect Surefire reports from
+# the effective module tree rather than assuming Maven's default directory.
+find . -type f -path '*/surefire-reports/TEST-*.xml' \
+    -exec cp {} /results/reports/ \; 2>/dev/null || true
 
 if [[ -s /results/jacoco.exec ]]; then
     "${MVN[@]}" -B -ntp \
@@ -139,7 +165,7 @@ if [[ -s /results/jacoco.exec ]]; then
     if [[ -f /results/jacoco-report/jacoco.xml ]]; then
         cp /results/jacoco-report/jacoco.xml /results/jacoco.xml
     else
-        fallback="$(find target -type f -path '*/site/jacoco/jacoco.xml' -print -quit 2>/dev/null || true)"
+        fallback="$(find . -type f -path '*/site/jacoco/jacoco.xml' -print -quit 2>/dev/null || true)"
         [[ -n "$fallback" ]] && cp "$fallback" /results/jacoco.xml
     fi
 fi

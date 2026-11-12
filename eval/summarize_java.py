@@ -78,12 +78,16 @@ def _execution_passed(evaluation: dict[str, Any]) -> bool:
     )
 
 
-def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any], dict[str, int]]:
+def collect_project(
+    project_dir: Path, coverage_set: str | None = None
+) -> tuple[dict[str, Any], dict[str, int]]:
     evaluated_path = project_dir / "evaluated_results.json"
-    file_coverage_path = project_dir / "file_coverage.json"
     items = json.loads(evaluated_path.read_text(encoding="utf-8"))
-    file_coverage_sets = json.loads(file_coverage_path.read_text(encoding="utf-8"))
-    files = file_coverage_sets.get(coverage_set, {})
+    files: dict[str, Any] = {}
+    if coverage_set is not None:
+        file_coverage_path = project_dir / "file_coverage.json"
+        file_coverage_sets = json.loads(file_coverage_path.read_text(encoding="utf-8"))
+        files = file_coverage_sets.get(coverage_set, {})
     if not isinstance(items, list) or not isinstance(files, dict):
         raise ValueError(f"Invalid evaluation data in {project_dir}")
 
@@ -125,10 +129,12 @@ def collect_project(project_dir: Path, coverage_set: str) -> tuple[dict[str, Any
         totals["file_branch_total"] += int(branch.get("total", 0))
         totals["file_branch_covered"] += int(branch.get("covered", 0))
 
-    return render_metrics(totals), totals
+    return render_metrics(totals, include_file_coverage=coverage_set is not None), totals
 
 
-def render_metrics(totals: dict[str, int]) -> dict[str, Any]:
+def render_metrics(
+    totals: dict[str, int], *, include_file_coverage: bool = True
+) -> dict[str, Any]:
     targets = totals["targets"]
     metrics = {
         "target_count": targets,
@@ -136,13 +142,14 @@ def render_metrics(totals: dict[str, int]) -> dict[str, Any]:
         "compilation": _metric(totals["compile_passed"], targets),
         "execution": _metric(totals["execution_passed"], targets),
         "tests": _metric(totals["test_passed"], targets),
-        "file_coverage": {
+    }
+    if include_file_coverage:
+        metrics["file_coverage"] = {
             "files_total": totals["files"],
             "files_with_report": totals["file_reports"],
             "line": _coverage(totals["file_line_covered"], totals["file_line_total"]),
             "branch": _coverage(totals["file_branch_covered"], totals["file_branch_total"]),
-        },
-    }
+        }
     if totals["function_targets"]:
         metrics["function_coverage"] = {
             "targets_total": totals["function_targets"],
@@ -172,12 +179,6 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results-root", type=Path, default=Path("eval_results/java"))
     parser.add_argument("--output", type=Path)
-    parser.add_argument(
-        "--coverage-set",
-        choices=("passing", "all_executed"),
-        default="passing",
-        help="Merged JaCoCo set used for file-level coverage",
-    )
     args = parser.parse_args()
 
     root = args.results_root.resolve()
@@ -185,9 +186,7 @@ def main() -> int:
     project_dirs = sorted(
         path
         for path in root.iterdir()
-        if path.is_dir()
-        and (path / "evaluated_results.json").is_file()
-        and (path / "file_coverage.json").is_file()
+        if path.is_dir() and (path / "evaluated_results.json").is_file()
     )
     if not project_dirs:
         parser.error(f"No Java project evaluation results found under {root}")
@@ -195,7 +194,7 @@ def main() -> int:
     aggregate = _empty_totals()
     projects: dict[str, Any] = {}
     for project_dir in project_dirs:
-        metrics, totals = collect_project(project_dir, args.coverage_set)
+        metrics, totals = collect_project(project_dir)
         projects[project_dir.name] = metrics
         _add_totals(aggregate, totals)
 
@@ -206,10 +205,6 @@ def main() -> int:
         ),
         "test_pass": "The generated test suite completed with zero failures and zero errors.",
         "coverage_rate": "Micro-average: sum(covered) / sum(total).",
-        "file_coverage": (
-            f"Coverage of unique target production files after merging the {args.coverage_set} "
-            "JaCoCo execution data within each project."
-        ),
     }
     if aggregate["function_targets"]:
         definitions["function_coverage"] = (
@@ -220,9 +215,8 @@ def main() -> int:
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "language": "Java",
-        "coverage_set": args.coverage_set,
         "definitions": definitions,
-        "overall": render_metrics(aggregate),
+        "overall": render_metrics(aggregate, include_file_coverage=False),
         "projects": projects,
     }
     atomic_dump(output, report)

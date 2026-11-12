@@ -105,13 +105,18 @@ class JSProjectTestScopeExtractor:
     def __init__(self, project_root, file_list, output_file=None,
                  min_loc_threshold=50, min_complexity_threshold=10,
                  min_outgoing_degree_threshold=3, random_seed=42,
-                 only_exported=True, min_project_functions=1):
+                 only_exported=True, min_project_functions=1,
+                 selection_mode='all', any_loc_threshold=None):
         self.project_root = str(Path(project_root).resolve())
         self.files = file_list
         self.output_file = output_file
         self.min_loc_threshold = min_loc_threshold
         self.min_complexity_threshold = min_complexity_threshold
         self.min_outgoing_degree_threshold = min_outgoing_degree_threshold
+        if selection_mode not in {'all', 'loc-and-any'}:
+            raise ValueError("selection_mode must be 'all' or 'loc-and-any'")
+        self.selection_mode = selection_mode
+        self.any_loc_threshold = min_loc_threshold if any_loc_threshold is None else any_loc_threshold
         self.random_seed = random_seed
         self.only_exported = only_exported
         self.min_project_functions = min_project_functions
@@ -2251,16 +2256,36 @@ module.exports = { normalize };
         }
 
     def _should_filter_method(self, method_info: Dict[str, Any]) -> Tuple[bool, str]:
+        loc = method_info.get('loc', 0)
+        complexity = method_info.get('complexity', 0)
+        loose_degree = method_info.get('loose_project_outgoing_degree', 0)
+        if self.selection_mode == 'loc-and-any':
+            if loc < self.min_loc_threshold:
+                return True, f'loc<{self.min_loc_threshold}'
+            if (loc >= self.any_loc_threshold
+                    or complexity >= self.min_complexity_threshold
+                    or loose_degree >= self.min_outgoing_degree_threshold):
+                return False, ''
+            return (True, f'loc<{self.any_loc_threshold},'
+                    f'complexity<{self.min_complexity_threshold},'
+                    f'loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}')
+
         reasons = []
-        if method_info.get('loc', 0) < self.min_loc_threshold:
+        if loc < self.min_loc_threshold:
             reasons.append(f"loc<{self.min_loc_threshold}")
-        if method_info.get('complexity', 0) < self.min_complexity_threshold:
+        if complexity < self.min_complexity_threshold:
             reasons.append(f"complexity<{self.min_complexity_threshold}")
-        if method_info.get('loose_project_outgoing_degree', 0) < self.min_outgoing_degree_threshold:
+        if loose_degree < self.min_outgoing_degree_threshold:
             reasons.append(
                 f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}"
             )
         return bool(reasons), ','.join(reasons)
+
+    def _needs_call_metrics(self, method_info: Dict[str, Any]) -> bool:
+        if self.selection_mode == 'loc-and-any':
+            return method_info.get('loc', 0) >= self.min_loc_threshold
+        return (method_info.get('loc', 0) >= self.min_loc_threshold
+                and method_info.get('complexity', 0) >= self.min_complexity_threshold)
 
     # ------------------------------------------------------------------
     # 主流程
@@ -2280,8 +2305,7 @@ module.exports = { normalize };
         for method in all_functions:
             file_name = os.path.basename(method.get('src_file', ''))
             self.stats[file_name]['total'] += 1
-            if (method.get('loc', 0) < self.min_loc_threshold
-                    or method.get('complexity', 0) < self.min_complexity_threshold):
+            if not self._needs_call_metrics(method):
                 method['project_outgoing_degree'] = 0
                 method['loose_project_outgoing_degree'] = 0
                 method['unresolved_project_candidate_call_sites'] = 0
@@ -2304,7 +2328,7 @@ module.exports = { normalize };
                 all_selected_methods.append(self._output_method(method))
 
         print(f"提取函数数: {len(all_functions)}")
-        print(f"通过全部阈值: {len(all_selected_methods)}")
+        print(f"通过筛选规则: {len(all_selected_methods)}")
 
         if len(all_selected_methods) < self.min_project_functions:
             print(
@@ -2380,12 +2404,17 @@ module.exports = { normalize };
             "项目调用解析: "
             f"目标无法匹配={self.metric_stats['project_call_target_unmatched']}"
         )
-        print(
-            "筛选条件："
-            f"LOC >= {self.min_loc_threshold}, "
-            f"CC >= {self.min_complexity_threshold}, "
-            f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}"
-        )
+        if self.selection_mode == 'loc-and-any':
+            print("筛选条件："
+                  f"LOC >= {self.min_loc_threshold}，且 "
+                  f"(LOC >= {self.any_loc_threshold} 或 "
+                  f"CC >= {self.min_complexity_threshold} 或 "
+                  f"loose project outgoing degree >= {self.min_outgoing_degree_threshold})")
+        else:
+            print("筛选条件："
+                  f"LOC >= {self.min_loc_threshold}, "
+                  f"CC >= {self.min_complexity_threshold}, "
+                  f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}")
         print(f"导出限制: {'仅导出函数' if self.only_exported else '包含未导出函数'}")
 
         for file, stats in self.stats.items():
@@ -2428,6 +2457,10 @@ def main():
         help=('最小宽松项目内调用出度（严格解析的项目函数数 + '
               '未消歧的项目候选调用点数；不含内置、运行时和第三方调用），默认 3'),
     )
+    parser.add_argument('--selection-mode', choices=('all', 'loc-and-any'), default='all',
+                        help='all：三个阈值同时满足（默认）；loc-and-any：达到基础 LOC 且后三项至少满足一项')
+    parser.add_argument('--any-loc', type=int,
+                        help='loc-and-any 模式中用于 LOC 突出的阈值；未指定时等于 --min-loc')
     parser.add_argument(
         '--min-project-functions', type=int, default=5,
         help='项目至少需要保留的合格函数数，默认 5；不足时输出空数据集'
@@ -2456,6 +2489,8 @@ def main():
         min_loc_threshold=args.min_loc,
         min_complexity_threshold=args.min_complexity,
         min_outgoing_degree_threshold=args.min_outgoing_degree,
+        selection_mode=args.selection_mode,
+        any_loc_threshold=args.any_loc,
         only_exported=args.only_exported,
         min_project_functions=args.min_project_functions,
     )

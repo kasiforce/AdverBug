@@ -237,6 +237,8 @@ class JavaProjectTestScopeExtractor:
         min_loc_threshold: int = 50,
         min_complexity_threshold: int = 10,
         min_outgoing_degree_threshold: int = 3,
+        selection_mode: str = "all",
+        any_loc_threshold: Optional[int] = None,
     ):
         self.project_root = str(Path(project_root).resolve())
         self.files = file_list
@@ -244,6 +246,10 @@ class JavaProjectTestScopeExtractor:
         self.min_loc_threshold = min_loc_threshold
         self.min_complexity_threshold = min_complexity_threshold
         self.min_outgoing_degree_threshold = min_outgoing_degree_threshold
+        if selection_mode not in {"all", "loc-and-any"}:
+            raise ValueError("selection_mode must be 'all' or 'loc-and-any'")
+        self.selection_mode = selection_mode
+        self.any_loc_threshold = min_loc_threshold if any_loc_threshold is None else any_loc_threshold
         self.parser = create_java_parser()
         self.repository_index = None
         # Keyed by simple class name to keep compatibility with the original inheritance code.
@@ -468,18 +474,37 @@ class JavaProjectTestScopeExtractor:
         }
 
     def _should_filter_method(self, method_info: Dict[str, Any]) -> Tuple[bool, str]:
-        """Reject a method if it fails any one of the three thresholds."""
+        """Return whether a method fails the configured selection rule."""
+        loc = method_info.get("loc", 0)
+        complexity = method_info.get("complexity", 0)
+        loose_degree = method_info.get("loose_project_outgoing_degree", 0)
+        if self.selection_mode == "loc-and-any":
+            if loc < self.min_loc_threshold:
+                return True, f"loc<{self.min_loc_threshold}"
+            if (loc >= self.any_loc_threshold
+                    or complexity >= self.min_complexity_threshold
+                    or loose_degree >= self.min_outgoing_degree_threshold):
+                return False, ""
+            return (True, f"loc<{self.any_loc_threshold},"
+                    f"complexity<{self.min_complexity_threshold},"
+                    f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}")
+
         reasons = []
-        if method_info.get("loc", 0) < self.min_loc_threshold:
+        if loc < self.min_loc_threshold:
             reasons.append(f"loc<{self.min_loc_threshold}")
-        if method_info.get("complexity", 0) < self.min_complexity_threshold:
+        if complexity < self.min_complexity_threshold:
             reasons.append(f"complexity<{self.min_complexity_threshold}")
-        loose_project_outgoing_degree = method_info.get("loose_project_outgoing_degree", 0)
-        if loose_project_outgoing_degree < self.min_outgoing_degree_threshold:
+        if loose_degree < self.min_outgoing_degree_threshold:
             reasons.append(
                 f"loose_project_outgoing_degree<{self.min_outgoing_degree_threshold}"
             )
         return bool(reasons), ",".join(reasons)
+
+    def _needs_call_metrics(self, method: Dict[str, Any]) -> bool:
+        if self.selection_mode == "loc-and-any":
+            return method.get("loc", 0) >= self.min_loc_threshold
+        return (method.get("loc", 0) >= self.min_loc_threshold
+                and method.get("complexity", 0) >= self.min_complexity_threshold)
 
     # def _compute_test_scope_for_class(self, class_key: str) -> List[Dict[str, Any]]:
     #     cls = self.classes.get(class_key)
@@ -557,8 +582,7 @@ class JavaProjectTestScopeExtractor:
                 # Resolve the repository-wide call graph only after the cheap
                 # thresholds pass. This is equivalent for selection and avoids
                 # spending most extraction time on obviously ineligible methods.
-                if (method.get("loc", 0) < self.min_loc_threshold
-                        or method.get("complexity", 0) < self.min_complexity_threshold):
+                if not self._needs_call_metrics(method):
                     method["project_outgoing_degree"] = 0
                     method["loose_project_outgoing_degree"] = 0
                     method["unresolved_project_candidate_call_sites"] = 0
@@ -649,16 +673,21 @@ class JavaProjectTestScopeExtractor:
         print("统计报告（未使用外部函数选择器）")
         print("=" * 60)
         print(f"解析到的候选方法总数: {total_methods}")
-        print(f"通过全部阈值的方法数: {total_candidates}")
+        print(f"通过筛选规则的方法数: {total_candidates}")
         print(f"过滤方法数: {total_filtered}")
         print(f"最终输出方法数: {selected_count}")
         print(f"涉及文件数: {len(self.stats)}")
-        print(
-            "筛选条件："
-            f"LOC >= {self.min_loc_threshold}, "
-            f"CC >= {self.min_complexity_threshold}, "
-            f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}"
-        )
+        if self.selection_mode == "loc-and-any":
+            print("筛选条件："
+                  f"LOC >= {self.min_loc_threshold}，且 "
+                  f"(LOC >= {self.any_loc_threshold} 或 "
+                  f"CC >= {self.min_complexity_threshold} 或 "
+                  f"loose project outgoing degree >= {self.min_outgoing_degree_threshold})")
+        else:
+            print("筛选条件："
+                  f"LOC >= {self.min_loc_threshold}, "
+                  f"CC >= {self.min_complexity_threshold}, "
+                  f"loose project outgoing degree >= {self.min_outgoing_degree_threshold}")
 
     def _save_to_json(self, data: List[Dict[str, Any]]) -> None:
         if not self.output_file:
@@ -689,6 +718,10 @@ def main() -> None:
         help=("最小宽松项目内调用出度（严格解析的项目方法数 + "
               "未消歧的项目候选调用点数；不含 JDK 和第三方调用），默认 3"),
     )
+    parser.add_argument("--selection-mode", choices=("all", "loc-and-any"), default="all",
+                        help="all：三个阈值同时满足（默认）；loc-and-any：达到基础 LOC 且后三项至少满足一项")
+    parser.add_argument("--any-loc", type=int,
+                        help="loc-and-any 模式中用于 LOC 突出的阈值；未指定时等于 --min-loc")
     args = parser.parse_args()
 
     project_root = str(Path(args.project_root).resolve())
@@ -703,6 +736,8 @@ def main() -> None:
         min_loc_threshold=args.min_loc,
         min_complexity_threshold=args.min_complexity,
         min_outgoing_degree_threshold=args.min_outgoing_degree,
+        selection_mode=args.selection_mode,
+        any_loc_threshold=args.any_loc,
     )
     selected = extractor.extract_and_select_functions()
     print(f"\n总共保留 {len(selected)} 个方法。")

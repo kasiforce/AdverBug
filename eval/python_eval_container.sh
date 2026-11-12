@@ -24,8 +24,16 @@ fi
 cp -a /eval-input/files/. /testbed/
 TEST_FILE="$(tr -d '\r\n' < /eval-input/test_file.txt)"
 SRC_FILE="$(tr -d '\r\n' < /eval-input/src_file.txt)"
+TEST_FILES=("$TEST_FILE")
+if [[ -f /eval-input/test_files.txt ]]; then
+    mapfile -t TEST_FILES < <(tr -d '\r' < /eval-input/test_files.txt | sed '/^$/d')
+fi
+if [[ ${#TEST_FILES[@]} -eq 0 ]]; then
+    echo "No staged test files" >&2
+    exit 90
+fi
 
-ADVER_TRACE_DISABLED=1 python -m pytest "$TEST_FILE" \
+ADVER_TRACE_DISABLED=1 python -m pytest "${TEST_FILES[@]}" \
     --collect-only \
     --import-mode=importlib \
     -q --disable-warnings --tb=no \
@@ -39,7 +47,7 @@ fi
 coverage run \
     --rcfile=/eval/python_coveragerc \
     --data-file=/results/.coverage \
-    -m pytest "$TEST_FILE" \
+    -m pytest "${TEST_FILES[@]}" \
     --import-mode=importlib \
     --timeout="${PYTEST_TIMEOUT:-60}" \
     -q --disable-warnings --tb=no \

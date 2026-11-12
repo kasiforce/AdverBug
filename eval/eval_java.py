@@ -82,6 +82,31 @@ def _jacoco_file_key(src_file: str) -> str:
     return normalized
 
 
+def _target_source_files(item: dict[str, Any]) -> list[str]:
+    """Return source files covered by a file or recursive module target.
+
+    File-level Java inputs use ``src_file``.  Module-level inputs instead carry
+    the module directory and its recursive ``files`` list.  Keeping this
+    conversion in one place prevents the coverage merge path from silently
+    dropping module targets.
+    """
+    src_file = str(item.get("src_file") or "")
+    if src_file:
+        return [src_file]
+    files = item.get("files")
+    if str(item.get("target_type") or "").lower() == "module" and isinstance(files, list):
+        return [str(path) for path in files if str(path)]
+    return []
+
+
+def _target_module(item: dict[str, Any], src_file: str) -> str:
+    """Resolve the Maven module root for a target source file or module."""
+    if src_file:
+        return _module_dir(src_file)
+    module = str(item.get("module") or "")
+    return _module_dir(module) if module else "."
+
+
 def _write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -129,14 +154,10 @@ def _sourcefile_elements(root: ET.Element) -> Iterable[tuple[str, ET.Element]]:
 
 
 def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, Any]:
-    """Read target source-file coverage and, for function targets, method coverage."""
+    """Read method coverage for function targets (or file coverage for file targets)."""
     is_file_target = str(item.get("target_type") or "").lower() == "source_file"
-    empty = {
-        "report_found": False,
-        "target_file": None,
-    }
-    if not is_file_target:
-        empty["target_function"] = None
+    empty = {"report_found": False}
+    empty["target_file" if is_file_target else "target_function"] = None
     if not xml_path.is_file():
         return empty
 
@@ -146,13 +167,12 @@ def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, A
         return {**empty, "parse_error": str(error)}
 
     file_key = _jacoco_file_key(str(item.get("src_file", "")))
-    target_file = None
-    for key, source in _sourcefile_elements(root):
-        if key == file_key:
-            target_file = {"file_key": key, **_coverage_pair(source)}
-            break
-
     if is_file_target:
+        target_file = None
+        for key, source in _sourcefile_elements(root):
+            if key == file_key:
+                target_file = {"file_key": key, **_coverage_pair(source)}
+                break
         return {
             "report_found": True,
             "target_file": target_file,
@@ -164,6 +184,7 @@ def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, A
         requested_name = "<init>"
 
     full_class = str(item.get("full_class_name") or "").replace(".", "/")
+    source_top_class = file_key[:-5] if file_key.endswith(".java") else ""
     start_line = int(item.get("start_line") or 0)
     end_line = int(item.get("end_line") or 0)
     candidates: list[dict[str, Any]] = []
@@ -179,11 +200,23 @@ def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, A
                 # leaf name within the same package as a fallback.
                 requested_package, _, requested_simple = full_class.rpartition("/")
                 internal_package, _, internal_simple = internal_name.rpartition("/")
-                if not (
-                    class_name
-                    and requested_package == internal_package
-                    and requested_simple == class_name
+                same_source_nested_class = bool(
+                    source_top_class
+                    and class_name
+                    and (
+                        internal_name == source_top_class
+                        or internal_name.startswith(source_top_class + "$")
+                    )
                     and internal_simple.split("$")[-1] == class_name
+                )
+                if not (
+                    same_source_nested_class
+                    or (
+                        class_name
+                        and requested_package == internal_package
+                        and requested_simple == class_name
+                        and internal_simple.split("$")[-1] == class_name
+                    )
                 ):
                     continue
             if not full_class and class_name and internal_name.rsplit("/", 1)[-1].split("$", 1)[0] != class_name:
@@ -223,7 +256,6 @@ def parse_instance_coverage(xml_path: Path, item: dict[str, Any]) -> dict[str, A
 
     return {
         "report_found": True,
-        "target_file": target_file,
         "target_function": function_coverage,
     }
 
@@ -268,13 +300,35 @@ def _read_int(path: Path, default: int | None = None) -> int | None:
 
 
 def _stage_item(item: dict[str, Any], stage_dir: Path) -> None:
-    test_path = _safe_relative_path(str(item.get("test_file", "")), "test_file")
-    generated_tests = item.get("generated_tests") or []
-    code = "\n\n".join(str(part) for part in generated_tests if str(part).strip()).strip()
-    if not code:
-        raise ValueError("generated_tests is empty")
-    _write_text(stage_dir / "files" / Path(*test_path.parts), code + "\n")
-    _write_text(stage_dir / "test_file.txt", test_path.as_posix() + "\n")
+    is_module = str(item.get("target_type") or "").lower() == "module"
+    generated_files = item.get("generated_test_files") or []
+    test_paths: list[PurePosixPath] = []
+    if is_module:
+        if not isinstance(generated_files, list):
+            raise ValueError("generated_test_files must be an array for a module target")
+        for position, generated in enumerate(generated_files):
+            if not isinstance(generated, dict):
+                raise ValueError(f"generated_test_files[{position}] must be an object")
+            test_path = _safe_relative_path(
+                str(generated.get("path", "")), f"generated_test_files[{position}].path"
+            )
+            code = str(generated.get("code", "")).strip()
+            if not code:
+                raise ValueError(f"generated_test_files[{position}].code is empty")
+            _write_text(stage_dir / "files" / Path(*test_path.parts), code + "\n")
+            test_paths.append(test_path)
+        if not test_paths:
+            raise ValueError("generated_test_files is empty")
+    else:
+        test_path = _safe_relative_path(str(item.get("test_file", "")), "test_file")
+        generated_tests = item.get("generated_tests") or []
+        code = "\n\n".join(str(part) for part in generated_tests if str(part).strip()).strip()
+        if not code:
+            raise ValueError("generated_tests is empty")
+        _write_text(stage_dir / "files" / Path(*test_path.parts), code + "\n")
+        test_paths.append(test_path)
+    _write_text(stage_dir / "test_file.txt", test_paths[0].as_posix() + "\n")
+    _write_text(stage_dir / "test_files.txt", "\n".join(path.as_posix() for path in test_paths) + "\n")
 
     for config in item.get("generated_config_files") or []:
         if not isinstance(config, dict) or not config.get("path"):
@@ -628,16 +682,16 @@ def _write_merge_manifests(
         if include:
             exec_path = str(evaluation["jacoco_exec"])
             exec_paths.append(exec_path)
-            src_file = str(item.get("src_file", ""))
-            if src_file:
+            target_files = _target_source_files(item)
+            for src_file in target_files:
                 file_group_lines.append(
                     "\t".join(
-                        (_file_slug(src_file), _module_dir(src_file), src_file, exec_path)
+                        (_file_slug(src_file), _target_module(item, src_file), src_file, exec_path)
                     )
                 )
-        src_file = str(item.get("src_file", ""))
-        if evaluation and src_file:
-            module = _module_dir(src_file)
+        target_files = _target_source_files(item)
+        if evaluation and target_files:
+            module = _target_module(item, target_files[0])
             modules[module] = _module_slug(module)
 
     _write_text(output_dir / f"{kind}_exec_manifest.txt", "\n".join(exec_paths) + ("\n" if exec_paths else ""))
@@ -667,10 +721,10 @@ def merge_coverage(
         "modules": modules,
         "file_group_count": len(
             {
-                str(item.get("src_file"))
+                src_file
                 for item in results
-                if item.get("src_file")
-                and (item.get("evaluation") or {}).get("jacoco_exec")
+                for src_file in _target_source_files(item)
+                if (item.get("evaluation") or {}).get("jacoco_exec")
                 and (
                     kind == "all_executed"
                     or (item.get("evaluation") or {}).get("test_pass") is True
@@ -723,9 +777,8 @@ def collect_merged_file_coverage(
     for item in results:
         if not item.get("evaluation"):
             continue
-        src_file = str(item.get("src_file", ""))
-        if src_file:
-            wanted_files[src_file] = _module_dir(src_file)
+        for src_file in _target_source_files(item):
+            wanted_files[src_file] = _target_module(item, src_file)
 
     collected: dict[str, Any] = {}
     for src_file, module in wanted_files.items():
@@ -888,14 +941,15 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
 
     merge_summaries: dict[str, Any] = {}
     file_coverage: dict[str, Any] = {}
-    merge_disabled_for_buggy_code = bool(args.bug_data_file and not args.no_merge)
+    merge_file_coverage = bool(args.merge_file_coverage and not args.no_merge)
+    merge_disabled_for_buggy_code = bool(args.bug_data_file and merge_file_coverage)
     if merge_disabled_for_buggy_code:
         print(
             "Buggy-code mode: skipping merged coverage because the fresh merge container "
             "contains original class files. Per-instance coverage remains available.",
             flush=True,
         )
-    if not args.no_merge and not args.bug_data_file:
+    if merge_file_coverage and not args.bug_data_file:
         for kind in ("all_executed", "passing"):
             status = merge_coverage(
                 image=args.image,
@@ -926,6 +980,8 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
         "compile_pass_count": sum(entry.get("compile_pass") is True for entry in evaluated),
         "test_pass_count": sum(entry.get("test_pass") is True for entry in evaluated),
         "exec_count": sum(bool(entry.get("jacoco_exec")) for entry in evaluated),
+        "coverage_scope": "function",
+        "file_coverage_enabled": merge_file_coverage,
         "bug_matching": {
             "matched_count": bug_matched_count,
             "unmatched_count": len(unmatched_bug_targets),
@@ -953,14 +1009,15 @@ def evaluate_dataset(args: argparse.Namespace) -> dict[str, Any]:
         "merge_disabled_for_buggy_code": merge_disabled_for_buggy_code,
     }
     _atomic_json_dump(evaluated_path, results)
-    _atomic_json_dump(output_dir / "file_coverage.json", file_coverage)
+    if merge_file_coverage:
+        _atomic_json_dump(output_dir / "file_coverage.json", file_coverage)
     _atomic_json_dump(output_dir / "summary.json", summary)
     return summary
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Evaluate each generated Java test in a fresh container and merge JaCoCo exec data."
+        description="Evaluate generated Java tests and report target-function JaCoCo coverage."
     )
     parser.add_argument("--data-file", type=Path, required=True, help="Generated-test JSON")
     parser.add_argument(
@@ -998,6 +1055,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Number of independently isolated function containers to evaluate concurrently",
     )
     parser.add_argument("--no-merge", action="store_true")
+    parser.add_argument(
+        "--merge-file-coverage",
+        action="store_true",
+        help="Optionally compute legacy merged target-file coverage (disabled by default)",
+    )
     parser.add_argument("--keep-logs", action="store_true")
     parser.add_argument("--keep-individual-xml", action="store_true")
     return parser

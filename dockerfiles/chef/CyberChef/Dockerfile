@@ -25,13 +25,14 @@ RUN git clone https://github.com/gchq/CyberChef.git /testbed \
 RUN npm ci --ignore-scripts --no-audit --no-fund \
     && npm run postinstall
 
-# Jest is deliberately isolated from the project's native test framework.
-RUN mkdir -p /testbed/.adverbug_jest_runtime \
-    && printf '%s\n' '{"name":"adverbug-jest-runtime","private":true}' > /testbed/.adverbug_jest_runtime/package.json \
-    && cd /testbed/.adverbug_jest_runtime \
-    && npm install --no-save --ignore-scripts --no-audit --no-fund jest@30.0.5
+# Install the exact local Jest toolchain used by the generated CyberChef tests.
+# --no-save keeps the benchmark checkout's package manifest unchanged.
+RUN npm install --no-save --ignore-scripts --no-audit --no-fund \
+        jest@30.5.2 \
+        babel-jest@30.5.2 \
+        jest-environment-jsdom@30.5.2
 
-ENV PATH=/testbed/node_modules/.bin:/testbed/.adverbug_jest_runtime/node_modules/.bin:${PATH}
+ENV PATH=/testbed/node_modules/.bin:${PATH}
 
 WORKDIR /testbed
 CMD ["bash"]

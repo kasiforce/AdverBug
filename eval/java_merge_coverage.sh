@@ -18,12 +18,15 @@ else
     MVN=(mvn)
 fi
 
-"${MVN[@]}" -B -ntp \
-    org.apache.maven.plugins:maven-dependency-plugin:3.8.1:get \
-    "-Dartifact=org.jacoco:org.jacoco.cli:${JACOCO_VERSION}:jar:nodeps" \
-    > "$OUTPUT_DIR/get-jacoco-cli.log" 2>&1
-
 CLI_JAR="/root/.m2/repository/org/jacoco/org.jacoco.cli/${JACOCO_VERSION}/org.jacoco.cli-${JACOCO_VERSION}-nodeps.jar"
+if [[ ! -f "$CLI_JAR" ]]; then
+    "${MVN[@]}" -B -ntp \
+        org.apache.maven.plugins:maven-dependency-plugin:3.8.1:get \
+        "-Dartifact=org.jacoco:org.jacoco.cli:${JACOCO_VERSION}:jar:nodeps" \
+        > "$OUTPUT_DIR/get-jacoco-cli.log" 2>&1
+else
+    printf 'Using cached JaCoCo CLI: %s\n' "$CLI_JAR" > "$OUTPUT_DIR/get-jacoco-cli.log"
+fi
 [[ -f "$CLI_JAR" ]]
 
 exec_files=()
@@ -32,6 +35,25 @@ while IFS= read -r relative; do
     [[ -s "/results/$relative" ]] && exec_files+=("/results/$relative")
 done < "$EXEC_MANIFEST"
 [[ ${#exec_files[@]} -gt 0 ]]
+
+resolve_class_dir() {
+    local module_root="$1"
+    local candidate
+    for candidate in "$module_root/target/classes" "$module_root/build-maven/classes"; do
+        if [[ -d "$candidate" ]] && find "$candidate" -type f -name '*.class' -print -quit | grep -q .; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+    while IFS= read -r candidate; do
+        if find "$candidate" -type f -name '*.class' -print -quit | grep -q .; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done < <(find "$module_root" -type d -name classes \
+        ! -path '*/test-classes' ! -path '*/.git/*' 2>/dev/null)
+    return 1
+}
 
 if [[ ${#exec_files[@]} -eq 1 ]]; then
     cp "${exec_files[0]}" "$OUTPUT_DIR/merged.exec"
@@ -46,7 +68,7 @@ while IFS=$'\t' read -r slug module; do
     else
         module_root="/testbed/$module"
     fi
-    class_dir="$module_root/target/classes"
+    class_dir="$(resolve_class_dir "$module_root" || true)"
     source_dir="$module_root/src/main/java"
     if [[ ! -d "$class_dir" || ! -d "$source_dir" ]]; then
         printf 'Missing class/source directory for module %s\n' "$module" >&2
@@ -83,7 +105,7 @@ cut -f1 "$FILE_GROUPS" | sort -u | while IFS= read -r file_slug; do
     else
         module_root="/testbed/$module"
     fi
-    class_dir="$module_root/target/classes"
+    class_dir="$(resolve_class_dir "$module_root" || true)"
     source_dir="$module_root/src/main/java"
     relative_source="${src_file#*src/main/java/}"
     relative_class="${relative_source%.java}"

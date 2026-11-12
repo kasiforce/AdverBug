@@ -14,12 +14,18 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 import tempfile
 import time
 from collections import Counter
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "extract_functions"))
+
+from extract_func import build_repository_index, resolve_project_callees
 
 try:
     from eval_js import _safe_relative_path, _stage_item
@@ -40,6 +46,31 @@ const projectRoot = process.env.ADVER_TRACE_PROJECT_ROOT || process.cwd();
 const candidateNames = new Set(
   (process.env.ADVER_TRACE_CANDIDATES || "").split(",").filter(Boolean)
 );
+let targetDepth = 0;
+let babel = null;
+try {
+  const { createRequire } = require("module");
+  const roots = ["/testbed/node_modules", "/testbed/.adverbug_jest_runtime/node_modules"];
+  const load = (name) => {
+    for (const root of roots) {
+      try { return require(root + "/" + name); } catch (_) {}
+    }
+    throw new Error("Babel package not found: " + name);
+  };
+  const parser = load("@babel/parser");
+  const traverseModule = load("@babel/traverse");
+  const generatorModule = load("@babel/generator");
+  const types = load("@babel/types");
+  babel = {
+    parser,
+    traverse: traverseModule.default || traverseModule,
+    generate: generatorModule.default || generatorModule,
+    types,
+  };
+} catch (_) {
+  // Some project images do not ship Babel.  The conservative regex fallback
+  // below remains available for those images.
+}
 
 function write(parts) {
   if (!output) return;
@@ -48,16 +79,127 @@ function write(parts) {
 
 function record(name, file, line) {
   if (process.env.ADVER_TRACE_DISABLED === "1") return;
-  const frames = String(new Error().stack || "").split("\n").slice(2);
-  const caller = frames[1] || "";
-  if (caller.includes(targetName) && (!targetFile || caller.includes(targetFile))) {
+  if (targetDepth > 0) {
     write(["D", file, name, String(line)]);
+  }
+}
+
+function enterTarget() {
+  targetDepth += 1;
+}
+
+function exitTarget() {
+  targetDepth = Math.max(0, targetDepth - 1);
+}
+
+// Find the closing brace for a function body without relying on the VM's
+// Error().stack format.  This deliberately handles strings, templates, line
+// comments, and block comments; the source is only modified in a disposable
+// trace checkout.
+function matchingBrace(source, open) {
+  let depth = 1;
+  let quote = null;
+  let escaped = false;
+  let lineComment = false;
+  let blockComment = false;
+  for (let i = open; i < source.length; i += 1) {
+    const ch = source[i];
+    const next = source[i + 1];
+    if (lineComment) {
+      if (ch === "\n") lineComment = false;
+      continue;
+    }
+    if (blockComment) {
+      if (ch === "*" && next === "/") { blockComment = false; i += 1; }
+      continue;
+    }
+    if (quote) {
+      if (escaped) { escaped = false; continue; }
+      if (ch === "\\") { escaped = true; continue; }
+      if (ch === quote) quote = null;
+      continue;
+    }
+    if (ch === "/" && next === "/") { lineComment = true; i += 1; continue; }
+    if (ch === "/" && next === "*") { blockComment = true; i += 1; continue; }
+    if (ch === "\"" || ch === "'" || ch === "`") { quote = ch; continue; }
+    if (ch === "{") depth += 1;
+    else if (ch === "}" && --depth === 0) return i;
+  }
+  return -1;
+}
+
+function astInject(source, file) {
+  if (!babel) return null;
+  try {
+    const ast = babel.parser.parse(source, {
+      sourceType: "unambiguous",
+      plugins: ["jsx", "typescript", "classProperties", "topLevelAwait", "decorators-legacy"],
+    });
+    const { types: t } = babel;
+    const call = (name, args) => t.expressionStatement(
+      t.callExpression(t.memberExpression(t.identifier("process"), t.identifier(name)), args)
+    );
+    const trace = (name, line) => call("__adverTrace", [
+      t.stringLiteral(name), t.stringLiteral(file), t.numericLiteral(line),
+    ]);
+    const isTarget = file === targetFile;
+    babel.traverse(ast, {
+      FunctionDeclaration(path) {
+        if (path.node.id) instrument(path, path.node.id.name);
+      },
+      FunctionExpression(path) {
+        const parent = path.parentPath;
+        const id = path.node.id || (parent.isVariableDeclarator() && parent.node.id);
+        if (id && id.name) instrument(path, id.name);
+      },
+      ClassMethod(path) {
+        const key = path.node.computed ? null : path.node.key;
+        if (key && key.name) instrument(path, key.name);
+      },
+      ObjectMethod(path) {
+        const key = path.node.computed ? null : path.node.key;
+        if (key && key.name) instrument(path, key.name);
+      },
+      ArrowFunctionExpression(path) {
+        const parent = path.parentPath;
+        let name = parent.isVariableDeclarator() && parent.node.id;
+        if (!name && parent.node.type === "ClassProperty" && !parent.node.computed) name = parent.node.key;
+        if (!name && parent.node.type === "ObjectProperty" && !parent.node.computed) name = parent.node.key;
+        if (name && name.name) instrument(path, name.name);
+      },
+    });
+    function instrument(path, name) {
+      if (!name || (candidateNames.size && !candidateNames.has(name))) return;
+      const line = path.node.loc && path.node.loc.start.line || 1;
+      const target = isTarget && name === targetName;
+      let body = path.node.body;
+      if (!t.isBlockStatement(body)) {
+        body = t.blockStatement([t.returnStatement(body)]);
+        path.node.body = body;
+      }
+      const statements = body.body;
+      if (target) {
+        body.body = [t.tryStatement(
+          t.blockStatement(statements),
+          null,
+          t.blockStatement([call("__adverExitTarget", [])])
+        )];
+        body.body[0].block.body.unshift(call("__adverEnterTarget", []));
+      } else {
+        body.body.unshift(trace(name, line));
+      }
+    }
+    return "/*__adver_trace__*/\n" + babel.generate(ast, { comments: true, retainLines: true }).code + "\n";
+  } catch (_) {
+    return null;
   }
 }
 
 function inject(source, file) {
   if (file.includes("node_modules") || file === __filename ||
       source.includes("/*__adver_trace__*/")) return source;
+  const transformed = astInject(source, file);
+  if (transformed) return transformed;
   let result = source;
   const patterns = [
     /(function\s+([A-Za-z_$][\w$]*)\s*\([^)]*\)\s*\{)/g,
@@ -73,7 +215,15 @@ function inject(source, file) {
       if (excluded.has(name) || (candidateNames.size && !candidateNames.has(name))) continue;
       const brace = match.index + match[1].lastIndexOf("{") + 1;
       const line = source.slice(0, match.index).split("\n").length;
-      edits.push([brace, `\n/* istanbul ignore next */\n/*__adver_trace__*/;process.__adverTrace(${JSON.stringify(name)}, ${JSON.stringify(file)}, ${line});\n`]);
+      const isTarget = name === targetName && file === targetFile;
+      if (isTarget) {
+        const close = matchingBrace(source, brace);
+        if (close < 0) continue;
+        edits.push([brace, `\n/*__adver_trace__*/;process.__adverEnterTarget();try {\n`]);
+        edits.push([close, `\n} finally { process.__adverExitTarget(); }\n`]);
+      } else {
+        edits.push([brace, `\n/* istanbul ignore next */\n/*__adver_trace__*/;process.__adverTrace(${JSON.stringify(name)}, ${JSON.stringify(file)}, ${line});\n`]);
+      }
     }
   }
   const unique = new Map(edits.map(edit => [edit[0], edit]));
@@ -86,6 +236,8 @@ function inject(source, file) {
 
 global.__adverTrace = { record };
 process.__adverTrace = record;
+process.__adverEnterTarget = enterTarget;
+process.__adverExitTarget = exitTarget;
 
 function patchProject(directory) {
   let entries;
@@ -111,11 +263,14 @@ function patchProject(directory) {
 // Jest commonly executes transformed modules in a VM and bypasses
 // Module._compile. Patch only candidate production functions in the disposable
 // container checkout before Jest reads them; the marker makes this idempotent.
-if (candidateNames.size) patchProject(projectRoot);
+if (candidateNames.size && process.env.ADVER_TRACE_SKIP_INSTRUMENT !== "1") {
+  patchProject(projectRoot);
+}
 
 const originalCompile = Module.prototype._compile;
 Module.prototype._compile = function (content, filename) {
-  if (filename.startsWith(projectRoot) && !filename.includes("node_modules")) {
+  if (process.env.ADVER_TRACE_SKIP_INSTRUMENT !== "1" &&
+      filename.startsWith(projectRoot) && !filename.includes("node_modules")) {
     content = inject(content, filename);
   }
   return originalCompile.call(this, content, filename);
@@ -166,6 +321,33 @@ def _project_function_locations(root: Path) -> dict[str, tuple[tuple[str, int], 
 
 def _project_function_names(root: Path) -> set[str]:
     return set(_project_function_locations(root))
+
+
+@lru_cache(maxsize=None)
+def _repository_index(root: Path) -> dict[str, Any]:
+    return build_repository_index(root)
+
+
+def _resolved_project_callees(item: dict[str, Any]) -> list[Any]:
+    root = Path(str(item.get("project_root") or ".")).resolve()
+    index = _repository_index(root)
+    try:
+        return resolve_project_callees(item, index)
+    except ValueError:
+        path = str(item.get("src_file") or "")
+        start = int(item.get("start_line") or 0)
+        end = int(item.get("end_line") or 0)
+        matches = [
+            function for function in index["functions"]
+            if function.path == path and function.start_line == start
+            and (not end or function.end_line == end)
+        ]
+        if len(matches) != 1:
+            raise
+        fallback = dict(item)
+        fallback["name"] = matches[0].name
+        fallback["class_name"] = matches[0].class_name
+        return resolve_project_callees(fallback, index)
 
 
 def _static_candidates(item: dict[str, Any]) -> set[str]:
@@ -420,58 +602,109 @@ def _called_function_coverage(
     return executed, static_only, aggregate
 
 
-def _evaluate_one(item: dict[str, Any], index: int, image: str, output_dir: Path, timeout: int) -> dict[str, Any]:
+def _evaluate_one(
+    item: dict[str, Any], index: int, image: str, output_dir: Path,
+    timeout: int, static_only: bool = False,
+) -> dict[str, Any]:
     instance_id = _instance_id(index, item)
     run_dir = output_dir / "runs" / instance_id
     run_dir.mkdir(parents=True, exist_ok=True)
-    static = _static_candidates(item)
+    resolved_callees = _resolved_project_callees(item)
+    static = {callee.name for callee in resolved_callees}
+    trace_candidates = static | _static_candidates(item)
+    if (item.get("name")):
+        trace_candidates.add(str(item["name"]))
     project_root = Path(str(item.get("project_root") or ".")).resolve()
     project_locations = _project_function_locations(project_root)
-    with tempfile.TemporaryDirectory(prefix="js-trace-input-") as stage_name, tempfile.TemporaryDirectory(prefix="js-trace-modules-") as trace_name:
+    trace_dir = run_dir / "trace"
+    clean_dir = run_dir / "clean"
+    trace_dir.mkdir(parents=True, exist_ok=True)
+    clean_dir.mkdir(parents=True, exist_ok=True)
+    (trace_dir / "calls.tsv").unlink(missing_ok=True)
+    started = time.monotonic()
+    trace_status: dict[str, Any] = {"skipped": static_only}
+
+    if not static_only:
+        with tempfile.TemporaryDirectory(prefix="js-trace-input-") as stage_name, tempfile.TemporaryDirectory(prefix="js-trace-modules-") as trace_name:
+            stage = Path(stage_name)
+            trace = Path(trace_name)
+            _stage_item(item, stage)
+            (trace / "js_trace.js").write_text(TRACE_SOURCE, encoding="utf-8")
+            trace_name_value = "adverbug-js-trace-" + instance_id
+            command = [
+                "docker", "run", "--rm", "--name", trace_name_value,
+                "-v", f"{stage}:/eval-input:ro", "-v", f"{trace_dir}:/results",
+                "-v", f"{trace}:/trace:ro",
+                "-v", f"{INSTANCE_SCRIPT}:/eval/js_eval_container.sh:ro",
+                "-e", "NODE_OPTIONS=--require=/trace/js_trace.js --experimental-vm-modules",
+                "-e", "ADVER_TRACE_TARGET_FILE=/testbed/" + str(item["src_file"]).replace("\\", "/"),
+                "-e", f"ADVER_TRACE_TARGET_NAME={item.get('name', '')}",
+                "-e", "ADVER_TRACE_PROJECT_ROOT=/testbed",
+                "-e", "ADVER_TRACE_CANDIDATES=" + ",".join(sorted(trace_candidates)),
+                "-e", "ADVER_TRACE_COLLECT_LOADED=1",
+                "-e", "ADVER_TRACE_OUTPUT=/results/calls.tsv",
+                image, "bash", "/eval/js_eval_container.sh",
+            ]
+            try:
+                completed = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
+                trace_status = {"container_exit_code": completed.returncode}
+                (trace_dir / "docker.stdout.log").write_text(completed.stdout, encoding="utf-8")
+                (trace_dir / "docker.stderr.log").write_text(completed.stderr, encoding="utf-8")
+            except subprocess.TimeoutExpired as error:
+                subprocess.run(["docker", "rm", "-f", trace_name_value], capture_output=True)
+                trace_status = {"container_exit_code": None, "timeout": True, "error": str(error)}
+
+    dynamic_counts = _dynamic_candidates(trace_dir / "calls.tsv")
+    coverage_files = {str(item.get("src_file") or "")}
+    coverage_files.update(callee.path for callee in resolved_callees)
+    for file_name, _, _ in dynamic_counts:
+        normalized = _normalize_path(file_name)
+        if normalized.startswith("/testbed/"):
+            coverage_files.add(normalized.removeprefix("/testbed/"))
+
+    with tempfile.TemporaryDirectory(prefix="js-clean-input-") as stage_name:
         stage = Path(stage_name)
-        trace = Path(trace_name)
         _stage_item(item, stage)
-        (trace / "js_trace.js").write_text(TRACE_SOURCE, encoding="utf-8")
+        (stage / "coverage_files.txt").write_text(
+            "\n".join(sorted(path for path in coverage_files if path)) + "\n",
+            encoding="utf-8",
+        )
+        clean_name = "adverbug-js-clean-" + instance_id
         command = [
-            "docker", "run", "--rm", "--name", "adverbug-js-trace-" + instance_id,
-            "-v", f"{stage}:/eval-input:ro", "-v", f"{run_dir}:/results",
-            "-v", f"{trace}:/trace:ro", "-v", f"{INSTANCE_SCRIPT}:/eval/js_eval_container.sh:ro",
-            "-e", "NODE_OPTIONS=--require=/trace/js_trace.js --experimental-vm-modules",
-            "-e", "ADVER_TRACE_TARGET_FILE=/testbed/" + str(item["src_file"]).replace("\\", "/"),
-            "-e", f"ADVER_TRACE_TARGET_NAME={item.get('name', '')}",
-            "-e", "ADVER_TRACE_PROJECT_ROOT=/testbed",
-            "-e", "ADVER_TRACE_CANDIDATES=" + ",".join(sorted(static)),
-            "-e", "ADVER_TRACE_COLLECT_LOADED=1",
-            "-e", "ADVER_TRACE_OUTPUT=/results/calls.tsv",
+            "docker", "run", "--rm", "--name", clean_name,
+            "-v", f"{stage}:/eval-input:ro", "-v", f"{clean_dir}:/results",
+            "-v", f"{INSTANCE_SCRIPT}:/eval/js_eval_container.sh:ro",
+            "-e", "NODE_OPTIONS=--experimental-vm-modules",
             image, "bash", "/eval/js_eval_container.sh",
         ]
-        started = time.monotonic()
         try:
             completed = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
             status = {"container_exit_code": completed.returncode}
-            (run_dir / "docker.stdout.log").write_text(completed.stdout, encoding="utf-8")
-            (run_dir / "docker.stderr.log").write_text(completed.stderr, encoding="utf-8")
+            (clean_dir / "docker.stdout.log").write_text(completed.stdout, encoding="utf-8")
+            (clean_dir / "docker.stderr.log").write_text(completed.stderr, encoding="utf-8")
         except subprocess.TimeoutExpired as error:
-            subprocess.run(["docker", "rm", "-f", "adverbug-js-trace-" + instance_id], capture_output=True)
+            subprocess.run(["docker", "rm", "-f", clean_name], capture_output=True)
             status = {"container_exit_code": None, "timeout": True, "error": str(error)}
-    dynamic_counts = _dynamic_candidates(run_dir / "calls.tsv")
+
     dynamic = set(dynamic_counts)
     dynamic_names = {name for _, name, _ in dynamic}
     static_only_names = static - dynamic_names
     candidate_count = len(dynamic) + len(static_only_names)
-    executed, static_only, coverage = _called_function_coverage(
-        run_dir / "coverage" / "coverage-final.json", dynamic_counts, static,
+    executed, static_only_functions, coverage = _called_function_coverage(
+        clean_dir / "coverage" / "coverage-final.json", dynamic_counts, static,
         project_locations,
     )
     return {
         "instance_id": instance_id,
         "src_file": item.get("src_file"),
         "target_function": item.get("name"),
-        "compile_pass": (run_dir / "syntax_exit_code.txt").read_text().strip() == "0" if (run_dir / "syntax_exit_code.txt").is_file() else False,
-        "test_pass": (run_dir / "test_exit_code.txt").read_text().strip() == "0" if (run_dir / "test_exit_code.txt").is_file() else False,
+        "compile_pass": (clean_dir / "syntax_exit_code.txt").read_text().strip() == "0" if (clean_dir / "syntax_exit_code.txt").is_file() else False,
+        "test_pass": (clean_dir / "test_exit_code.txt").read_text().strip() == "0" if (clean_dir / "test_exit_code.txt").is_file() else False,
+        "evaluation_mode": "static_only" if static_only else "two_pass_static_union_dynamic",
+        "trace": trace_status,
         "static_called_functions": sorted(static),
         "executed_called_functions": executed,
-        "static_only_called_functions": static_only,
+        "static_only_called_functions": static_only_functions,
         "called_function_coverage": {
             "candidate_scope": "static_union_dynamic_project_functions",
             "static_called_function_count": len(static),
@@ -500,6 +733,10 @@ def main() -> int:
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--timeout", type=int, default=1200)
+    parser.add_argument(
+        "--static-only", action="store_true",
+        help="Do not inject runtime tracing; collect clean coverage for statically resolved callees",
+    )
     args = parser.parse_args()
     args.data_file = args.data_file.resolve()
     args.output_dir = args.output_dir.resolve()
@@ -509,7 +746,9 @@ def main() -> int:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     results = []
     for index, item in enumerate(selected, start=args.start):
-        results.append(_evaluate_one(item, index, args.image, args.output_dir, args.timeout))
+        results.append(_evaluate_one(
+            item, index, args.image, args.output_dir, args.timeout, args.static_only
+        ))
         print(f"[{len(results)}/{len(selected)}] {item.get('name')}", flush=True)
     output = args.output_dir / "dynamic_call_results.json"
     output.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

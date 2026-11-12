@@ -40,7 +40,8 @@ agent:
 
     ## Repository Boundaries
 
-    - READ: The target, minimum relevant production context, direct collaborators, and test configuration.
+    - READ: The supplied target evidence, minimum relevant production context allowed by the task's input
+      evidence boundary, direct collaborators, and test configuration.
     - DO NOT READ existing test source files; infer behavior from the supplied target and production context.
     - CREATE/MODIFY: The exact required test file, or for a module target, files under the exact required
       test module. If essential, minimally modify a relevant build, dependency, lock, or test-runner configuration.
