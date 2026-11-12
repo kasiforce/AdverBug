@@ -1,0 +1,225 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.parquet:parquet-thrift >------------------
+[INFO] Building Apache Parquet Thrift 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots.https (prefixes-apache.snapshots.https.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] 2 problems were encountered while building the effective model for org.apache.yetus:audience-annotations:jar:0.5.0 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ parquet-thrift ---
+[INFO] Deleting /testbed/parquet-thrift/target
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-thrift ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794226072935
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- exec:3.6.4:exec (check-thrift-version) @ parquet-thrift ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Thrift version 0.25.0
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-thrift ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to central.maven.org (https://central.maven.org/maven2): central.maven.org: Name or service not known
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-snapshots (https://maven.java.net/content/repositories/snapshots): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-thrift ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-thrift/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-thrift ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 45 source files with javac [debug release 17] to target/classes
+[INFO] /testbed/parquet-thrift/src/main/java/org/apache/parquet/hadoop/thrift/AbstractThriftWriteSupport.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-thrift/src/main/java/org/apache/parquet/hadoop/thrift/AbstractThriftWriteSupport.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/parquet-thrift/src/main/java/org/apache/parquet/hadoop/thrift/AbstractThriftWriteSupport.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/parquet-thrift/src/main/java/org/apache/parquet/hadoop/thrift/AbstractThriftWriteSupport.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- thrift:0.10.0:testCompile (thrift-sources) @ parquet-thrift ---
+[INFO] 
+[INFO] --- build-helper:3.6.2:add-test-source (add-test-sources) @ parquet-thrift ---
+[INFO] Test Source directory: /testbed/parquet-thrift/target/generated-test-sources/thrift added.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-thrift ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] Copying 4 resources from src/test/thrift to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-thrift ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 84 source files with javac [debug release 17] to target/test-classes
+[INFO] /testbed/parquet-thrift/src/test/java/org/apache/parquet/thrift/projection/amend/DefaultEventsVisitorTest.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-thrift/src/test/java/org/apache/parquet/thrift/projection/amend/DefaultEventsVisitorTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.438 s
+[INFO] Finished at: 2026-11-09T12:08:02Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.parquet:parquet-thrift >------------------
+[INFO] Building Apache Parquet Thrift 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots.https (prefixes-apache.snapshots.https.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] 2 problems were encountered while building the effective model for org.apache.yetus:audience-annotations:jar:0.5.0 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ parquet-thrift ---
+[INFO] surefire.argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:MaxJavaStackTraceDepth=8
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-thrift ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794226088927
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- exec:3.6.4:exec (check-thrift-version) @ parquet-thrift ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Thrift version 0.25.0
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-thrift ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to central.maven.org (https://central.maven.org/maven2): central.maven.org: Name or service not known
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-snapshots (https://maven.java.net/content/repositories/snapshots): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-thrift ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-thrift/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-thrift ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- thrift:0.10.0:testCompile (thrift-sources) @ parquet-thrift ---
+[INFO] 
+[INFO] --- build-helper:3.6.2:add-test-source (add-test-sources) @ parquet-thrift ---
+[INFO] Test Source directory: /testbed/parquet-thrift/target/generated-test-sources/thrift added.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-thrift ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-thrift ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] Copying 4 resources from src/test/thrift to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-thrift ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ parquet-thrift ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.parquet.thrift.projection.StrictFieldProjectionFilterTest
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.258 s -- in org.apache.parquet.thrift.projection.StrictFieldProjectionFilterTest
+[INFO] Running org.apache.parquet.thrift.projection.FieldProjectionFilterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.parquet.thrift.projection.FieldProjectionFilterTest
+[INFO] Running org.apache.parquet.thrift.projection.amend.DefaultEventsVisitorTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.542 s -- in org.apache.parquet.thrift.projection.amend.DefaultEventsVisitorTest
+[INFO] Running org.apache.parquet.thrift.projection.amend.ReadFieldBeginProtocolTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.parquet.thrift.projection.amend.ReadFieldBeginProtocolTest
+[INFO] Running org.apache.parquet.thrift.projection.amend.DefaultProtocolEventsGeneratorTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in org.apache.parquet.thrift.projection.amend.DefaultProtocolEventsGeneratorTest
+[INFO] Running org.apache.parquet.thrift.projection.amend.ProtocolEventsAmenderTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in org.apache.parquet.thrift.projection.amend.ProtocolEventsAmenderTest
+[INFO] Running org.apache.parquet.thrift.projection.ThriftProjectionExceptionTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.parquet.thrift.projection.ThriftProjectionExceptionTest
+[INFO] Running org.apache.parquet.thrift.projection.FieldsPathTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.parquet.thrift.projection.FieldsPathTest
+[INFO] Running org.apache.parquet.thrift.projection.deprecated.DeprecatedFieldProjectionFilterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in org.apache.parquet.thrift.projection.deprecated.DeprecatedFieldProjectionFilterTest
+[INFO] Running org.apache.parquet.thrift.projection.deprecated.PathGlobPatternTest
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s -- in org.apache.parquet.thrift.projection.deprecated.PathGlobPatternTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 88, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- apache-rat:0.18:check (default) @ parquet-thrift ---
+[WARNING]  Parameter 'excludes' is deprecated: Deprecated for removal since 0.17: Use <inputExclude> instead.
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.835 s
+[INFO] Finished at: 2026-11-09T12:08:15Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.apache.parquet:parquet-thrift >------------------
+[INFO] Building Apache Parquet Thrift 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ parquet-thrift ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Apache Parquet Thrift' with 165 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.013 s
+[INFO] Finished at: 2026-11-09T12:08:21Z
+[INFO] ------------------------------------------------------------------------

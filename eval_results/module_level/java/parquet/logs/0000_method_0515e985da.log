@@ -1,0 +1,192 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.parquet:parquet-arrow >------------------
+[INFO] Building Apache Parquet Arrow 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ parquet-arrow ---
+[INFO] Deleting /testbed/parquet-arrow/target
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-arrow ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794225861884
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-arrow ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-snapshots (https://maven.java.net/content/repositories/snapshots): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to central.maven.org (https://central.maven.org/maven2): central.maven.org: Name or service not known
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-arrow ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-arrow/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-arrow ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 4 source files with javac [debug release 17] to target/classes
+[INFO] /testbed/parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/SchemaConverter.java: /testbed/parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/SchemaConverter.java uses or overrides a deprecated API.
+[INFO] /testbed/parquet-arrow/src/main/java/org/apache/parquet/arrow/schema/SchemaConverter.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-arrow ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-arrow/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-arrow ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug release 17] to target/test-classes
+[INFO] /testbed/parquet-arrow/src/test/java/org/apache/parquet/arrow/schema/List3LevelsTest.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-arrow/src/test/java/org/apache/parquet/arrow/schema/List3LevelsTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.700 s
+[INFO] Finished at: 2026-11-09T12:04:34Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.parquet:parquet-arrow >------------------
+[INFO] Building Apache Parquet Arrow 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ parquet-arrow ---
+[INFO] surefire.argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:MaxJavaStackTraceDepth=8
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-arrow ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794225880626
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-arrow ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-snapshots (https://maven.java.net/content/repositories/snapshots): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to central.maven.org (https://central.maven.org/maven2): central.maven.org: Name or service not known
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-arrow ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-arrow/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-arrow ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-arrow ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-arrow ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-arrow/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-arrow ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ parquet-arrow ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.parquet.arrow.schema.SchemaConverterFromParquetTest
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+SLF4J(W): Class path contains SLF4J bindings targeting slf4j-api versions 1.7.x or earlier.
+SLF4J(W): Ignoring binding found at [jar:file:/root/.m2/repository/org/slf4j/slf4j-simple/1.7.33/slf4j-simple-1.7.33.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J(W): See https://www.slf4j.org/codes.html#ignoredBindings for an explanation.
+[INFO] Tests run: 45, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.215 s -- in org.apache.parquet.arrow.schema.SchemaConverterFromParquetTest
+[INFO] Running org.apache.parquet.arrow.schema.List3LevelsTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.apache.parquet.arrow.schema.List3LevelsTest
+[INFO] Running org.apache.parquet.arrow.schema.SchemaConverterFromArrowTest
+[INFO] Tests run: 57, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s -- in org.apache.parquet.arrow.schema.SchemaConverterFromArrowTest
+[INFO] Running org.apache.parquet.arrow.schema.SchemaConverterMapTest
+[INFO] Tests run: 39, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s -- in org.apache.parquet.arrow.schema.SchemaConverterMapTest
+[INFO] Running org.apache.parquet.arrow.schema.SchemaMappingTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in org.apache.parquet.arrow.schema.SchemaMappingTest
+[INFO] Running org.apache.parquet.arrow.schema.Map3LevelsTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.apache.parquet.arrow.schema.Map3LevelsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 171, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- apache-rat:0.18:check (default) @ parquet-arrow ---
+[WARNING]  Parameter 'excludes' is deprecated: Deprecated for removal since 0.17: Use <inputExclude> instead.
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.852 s
+[INFO] Finished at: 2026-11-09T12:04:49Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.parquet:parquet-arrow >------------------
+[INFO] Building Apache Parquet Arrow 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ parquet-arrow ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Apache Parquet Arrow' with 19 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.189 s
+[INFO] Finished at: 2026-11-09T12:04:53Z
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,202 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.parquet:parquet-encoding >-----------------
+[INFO] Building Apache Parquet Encodings 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ parquet-encoding ---
+[INFO] Deleting /testbed/parquet-encoding/target
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-encoding ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794225990028
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- build-helper:3.6.2:add-source (add-source) @ parquet-encoding ---
+[INFO] Source directory: /testbed/parquet-encoding/target/generated-src added.
+[INFO] 
+[INFO] --- exec:3.6.4:java (default) @ parquet-encoding ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[INFO] Registering compile source root /testbed/parquet-encoding/target/generated-src
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-encoding ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-snapshots (https://maven.java.net/content/repositories/snapshots): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-encoding ---
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-encoding ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 15 source files with javac [debug release 17] to target/classes
+[INFO] /testbed/parquet-encoding/target/generated-src/org/apache/parquet/column/values/bitpacking/ByteBitPackingBE.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-encoding/target/generated-src/org/apache/parquet/column/values/bitpacking/ByteBitPackingBE.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-encoding ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-encoding/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-encoding ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 17] to target/test-classes
+[INFO] /testbed/parquet-encoding/src/test/java/org/apache/parquet/column/values/bitpacking/ByteBasedBitPackingEncoderTest.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-encoding/src/test/java/org/apache/parquet/column/values/bitpacking/ByteBasedBitPackingEncoderTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.788 s
+[INFO] Finished at: 2026-11-09T12:06:38Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.parquet:parquet-encoding >-----------------
+[INFO] Building Apache Parquet Encodings 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ parquet-encoding ---
+[INFO] surefire.argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -XX:MaxJavaStackTraceDepth=8
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-dependencies) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.3.1:create (default) @ parquet-encoding ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
+Exception while executing SCM command.
+[INFO] Storing buildNumber: unknown at timestamp: 1794226004817
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /testbed
+
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+Exception while executing SCM command.
+[INFO] Storing scmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- build-helper:3.6.2:add-source (add-source) @ parquet-encoding ---
+[INFO] Source directory: /testbed/parquet-encoding/target/generated-src added.
+[INFO] 
+[INFO] --- exec:3.6.4:java (default) @ parquet-encoding ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[INFO] Registering compile source root /testbed/parquet-encoding/target/generated-src
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ parquet-encoding ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to jvnet-nexus-snapshots (https://maven.java.net/content/repositories/snapshots): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ parquet-encoding ---
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ parquet-encoding ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 15 source files with javac [debug release 17] to target/classes
+[INFO] /testbed/parquet-encoding/target/generated-src/org/apache/parquet/column/values/bitpacking/ByteBitPackingBE.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-encoding/target/generated-src/org/apache/parquet/column/values/bitpacking/ByteBitPackingBE.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-banned-junit4-imports) @ parquet-encoding ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ parquet-encoding ---
+[INFO] skip non existing resourceDirectory /testbed/parquet-encoding/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ parquet-encoding ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 17] to target/test-classes
+[INFO] /testbed/parquet-encoding/src/test/java/org/apache/parquet/column/values/bitpacking/ByteBasedBitPackingEncoderTest.java: Some input files use or override a deprecated API.
+[INFO] /testbed/parquet-encoding/src/test/java/org/apache/parquet/column/values/bitpacking/ByteBasedBitPackingEncoderTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ parquet-encoding ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.parquet.column.values.bitpacking.ByteBasedBitPackingEncoderTest
+[INFO] Tests run: 68, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.641 s -- in org.apache.parquet.column.values.bitpacking.ByteBasedBitPackingEncoderTest
+[INFO] Running org.apache.parquet.column.values.bitpacking.BitPackingTest
+[INFO] Tests run: 146, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.151 s -- in org.apache.parquet.column.values.bitpacking.BitPackingTest
+[INFO] Running org.apache.parquet.column.values.bitpacking.BytePackerTest
+[INFO] Tests run: 201, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.140 s -- in org.apache.parquet.column.values.bitpacking.BytePackerTest
+[INFO] Running org.apache.parquet.column.values.bitpacking.IntPackerTest
+[INFO] Tests run: 64, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in org.apache.parquet.column.values.bitpacking.IntPackerTest
+[INFO] Running org.apache.parquet.column.values.bitpacking.BytePackerForLongTest
+[INFO] Tests run: 391, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.171 s -- in org.apache.parquet.column.values.bitpacking.BytePackerForLongTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 870, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- apache-rat:0.18:check (default) @ parquet-encoding ---
+[WARNING]  Parameter 'excludes' is deprecated: Deprecated for removal since 0.17: Use <inputExclude> instead.
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.954 s
+[INFO] Finished at: 2026-11-09T12:06:57Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.parquet:parquet-encoding >-----------------
+[INFO] Building Apache Parquet Encodings 1.19.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ parquet-encoding ---
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Apache Parquet Encodings' with 302 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.015 s
+[INFO] Finished at: 2026-11-09T12:07:02Z
+[INFO] ------------------------------------------------------------------------

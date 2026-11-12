@@ -1,0 +1,70 @@
+{
+  "input": "/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/java/parquet.json",
+  "code_variant": "original",
+  "bug_input": null,
+  "image": "adver-parquet:test",
+  "source_target_count": 12,
+  "skipped_generation_count": 0,
+  "target_count": 12,
+  "evaluated_count": 12,
+  "compile_pass_count": 12,
+  "test_pass_count": 10,
+  "exec_count": 11,
+  "bug_matching": {
+    "matched_count": 0,
+    "unmatched_count": 0,
+    "unmatched_targets": []
+  },
+  "mutation_outcomes": {
+    "killed": 0,
+    "survived": 0,
+    "compile_failed": 0,
+    "patch_failed": 0,
+    "inconclusive": 0
+  },
+  "syntax": {
+    "parser": "tree-sitter-java",
+    "parser_available": true,
+    "total": 12,
+    "correct": 12,
+    "incorrect": 0,
+    "correct_rate": 1.0
+  },
+  "merge": {
+    "all_executed": {
+      "kind": "all_executed",
+      "exec_count": 11,
+      "success": true,
+      "modules": {
+        "parquet-arrow": "parquet-arrow_a59c5722",
+        "parquet-cli": "parquet-cli_4e7636b3",
+        "parquet-column": "parquet-column_ef84ab8a",
+        "parquet-common": "parquet-common_2e88fce4",
+        "parquet-encoding": "parquet-encoding_925b06c5",
+        "parquet-hadoop": "parquet-hadoop_88160265",
+        "parquet-plugins/parquet-encoding-vector": "parquet-plugins_parquet-encoding-vector_3cd424d6",
+        "parquet-thrift": "parquet-thrift_25f61daf"
+      },
+      "file_group_count": 71,
+      "container_exit_code": 0
+    },
+    "passing": {
+      "kind": "passing",
+      "exec_count": 9,
+      "success": true,
+      "modules": {
+        "parquet-arrow": "parquet-arrow_a59c5722",
+        "parquet-cli": "parquet-cli_4e7636b3",
+        "parquet-column": "parquet-column_ef84ab8a",
+        "parquet-common": "parquet-common_2e88fce4",
+        "parquet-encoding": "parquet-encoding_925b06c5",
+        "parquet-hadoop": "parquet-hadoop_88160265",
+        "parquet-plugins/parquet-encoding-vector": "parquet-plugins_parquet-encoding-vector_3cd424d6",
+        "parquet-thrift": "parquet-thrift_25f61daf"
+      },
+      "file_group_count": 54,
+      "container_exit_code": 0
+    }
+  },
+  "merge_disabled_for_buggy_code": false
+}
