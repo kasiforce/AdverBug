@@ -1,0 +1,26 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/js/CyberChef.json --image adverbug-js-cyberchef:check --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/CyberChef.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/CyberChef_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/CyberChef_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-a48f9f7c -w /testbed --rm adverbug-js-cyberchef:check sleep 
+1h                                                                              
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-9056f90b -w /testbed --rm adverbug-js-cyberchef:check sleep 
+1h                                                                              
+minisweagent.environment: INFO: Started container minisweagent-a48f9f7c with ID 
+9d6311b26e243e88cb2f7dee6bd3920224365d3f851ddb6b3ad0f6d237f9ef25                
+minisweagent.environment: INFO: Started container minisweagent-9056f90b with ID 
+0fc06cea6b45e199c0098e856b2c981851bdbdc296d829598feefcbe8bb64a5f                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+  Overall Progress ($0.16) ━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:06:46 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     2 │ CyberChef__src-web-utils__1__1,                        │
+│             │       │ CyberChef__src-node_...                                │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/CyberChef.
+json                                                                            

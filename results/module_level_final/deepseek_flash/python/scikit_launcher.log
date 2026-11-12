@@ -1,0 +1,67 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/python/scikit.json --image adverbug-python-scikit:loc100 --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/scikit.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/scikit_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/scikit_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-29e16b66 -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-d7c0611d -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-29e16b66 with ID 
+1ac828cf1209bfd67efeed63a8983bdac1b9470e6a1ef6056e6c2086c4e517f5                
+minisweagent.environment: INFO: Started container minisweagent-d7c0611d with ID 
+a872eff60b474b56463c699a2a4ae384811000e2af1791b6136ebf6f20ee86b2                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-bca9bbe9 -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-bca9bbe9 with ID 
+343811a2e6da0cfe50bcd9e4150bd7e64b26ef69126a0db88f5c38dcafc7c58b                
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-a349bdd3 -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-a349bdd3 with ID 
+8154d4719c90d9466b14d35724ca2c0e02ea883d56f7e0ff6c47361a61ff89cb                
+Retrying <unknown> in 4.0 seconds as it raised InternalServerError: litellm.InternalServerError: InternalServerError: DeepseekException - Server disconnected without sending a response..
+Retrying <unknown> in 4.0 seconds as it raised InternalServerError: litellm.InternalServerError: InternalServerError: DeepseekException - Server disconnected without sending a response..
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+
+[1;31mProvider List: https://docs.litellm.ai/docs/providers[0m
+
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+
+[1;31mProvider List: https://docs.litellm.ai/docs/providers[0m
+
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-2e1aebfb -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-2e1aebfb with ID 
+72876482156a81e245ef49fc71f62bab2ca0d0be06e25176266f318d863996ce                
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-895d49b9 -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-895d49b9 with ID 
+b7de5866447d4f9f7ba78123b9f637f321e5f2da946f4f8da245ba5145cea5d1                
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-c158a05a -w /testbed --rm adverbug-python-scikit:loc100     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-c158a05a with ID 
+b5fdbac0336cd44b9d1999a3bb78d81891432ec5faf48fb25cdb2a88777e3aa6                
+  Overall Progress ($0.58) ━━━━━━━━━━━━━━━━━━━━━━━ 7/7 100% 0:19:18 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     7 │ scikit-learn__sklearn-preprocessing__6__6,             │
+│             │       │ scikit-le...                                           │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/scikit
+.json                                                                           

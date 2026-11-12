@@ -1,0 +1,31 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/python/plotly.json --image adverbug-plotly-check:latest --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/plotly.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/plotly_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/plotly_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-e5a47613 -w /testbed --rm adverbug-plotly-check:latest sleep
+1h                                                                              
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-c6702594 -w /testbed --rm adverbug-plotly-check:latest sleep
+1h                                                                              
+minisweagent.environment: INFO: Started container minisweagent-e5a47613 with ID 
+59afff535ede7c27eb48445fd633da6367efc0799b15856f7716a6cd284fa03c                
+minisweagent.environment: INFO: Started container minisweagent-c6702594 with ID 
+aa97d41b8f1a34d4b7a7dae767cbdf4ce8f5a1538b06763e1a18506354ed0ec4                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-b2c79653 -w /testbed --rm adverbug-plotly-check:latest sleep
+1h                                                                              
+minisweagent.environment: INFO: Started container minisweagent-b2c79653 with ID 
+cef961491ca827c0b20e87f3f37d8cb1d0476505ddb607a749ee059e0d374414                
+  Overall Progress ($0.32) ━━━━━━━━━━━━━━━━━━━━━━━ 3/3 100% 0:12:08 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     3 │ plotly.py__plotly-figure_factory__2__2,                │
+│             │       │ plotly.py__p...                                        │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/plotly
+.json                                                                           

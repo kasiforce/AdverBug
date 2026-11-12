@@ -1,0 +1,32 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/js/three.js.json --image adverbug-js-three:loc100 --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/three.js.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/three.js_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/three.js_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-d6f60fb1 -w /testbed --rm adverbug-js-three:loc100 sleep 1h 
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-1bed6ffe -w /testbed --rm adverbug-js-three:loc100 sleep 1h 
+minisweagent.environment: INFO: Started container minisweagent-d6f60fb1 with ID 
+0684f39c7b651d9a5eafff8642a21f924bcd90b0aa4474619f58545a3932e718                
+minisweagent.environment: INFO: Started container minisweagent-1bed6ffe with ID 
+5d1a2c131e56251391ba03fde5dfef3c38cc35d65651952b6a3a9c6d0b9db81b                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-f90909f3 -w /testbed --rm adverbug-js-three:loc100 sleep 1h 
+minisweagent.environment: INFO: Started container minisweagent-f90909f3 with ID 
+92ec72d29a071fb69bc0e888f1b284867377c3301f6b84104eb60bc16ea22f7a                
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-d86ab550 -w /testbed --rm adverbug-js-three:loc100 sleep 1h 
+minisweagent.environment: INFO: Started container minisweagent-d86ab550 with ID 
+bea5f0a1464ac56ad54557fc0e3ce6033afbb13e96437500221043e8a561b310                
+  Overall Progress ($0.53) ━━━━━━━━━━━━━━━━━━━━━━━ 4/4 100% 0:16:35 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     4 │ three.js__tsl-js-managers__3__3,                       │
+│             │       │ three.js__src-rende...                                 │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/js/three.js.j
+son                                                                             

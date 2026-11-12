@@ -1,0 +1,20 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/python/sqlglot.json --image adverbug-sqlglot-check:latest --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/sqlglot.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/sqlglot_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/sqlglot_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-9d234628 -w /testbed --rm adverbug-sqlglot-check:latest     
+sleep 1h                                                                        
+minisweagent.environment: INFO: Started container minisweagent-9d234628 with ID 
+82dbbf57141adc1f8cd8e2eb6b26d661dba21265778636d9698c8d74aa8606f7                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+  Overall Progress ($0.06) ━━━━━━━━━━━━━━━━━━━━━━━ 1/1 100% 0:04:10 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     1 │ sqlglot__sqlglot-executor__0__0                        │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/sqlglo
+t.json                                                                          

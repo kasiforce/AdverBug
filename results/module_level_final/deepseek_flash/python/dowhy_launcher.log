@@ -1,0 +1,26 @@
+COMMAND python mini-swe-agent/src/minisweagent/run/benchmarks/testgen.py --dataset /data/home/cjy/Adver_bug/dataset/loc_ge_100_out_3_loose_module_level_recursive_files3_10_nloc500_public_nonempty_totalcc100_deepest/python/dowhy.json --image adverbug-python-dowhy:loc100 --model deepseek/deepseek-flash --workers 2 --output-dataset /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/dowhy.json --output /data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/dowhy_run
+This is mini-swe-agent version 2.4.6.
+Check the v2 migration guide at https://klieret.short.gy/mini-v2-migration
+Loading global config from '/data/home/cjy/.config/mini-swe-agent/.env'
+Logging to '/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/dowhy_run/minisweagent.log'
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-d47ada31 -w /testbed --rm adverbug-python-dowhy:loc100 sleep
+1h                                                                              
+minisweagent.environment: DEBUG: Starting container with command: docker run -d 
+--name minisweagent-5a8b252d -w /testbed --rm adverbug-python-dowhy:loc100 sleep
+1h                                                                              
+minisweagent.environment: INFO: Started container minisweagent-5a8b252d with ID 
+d6be8a7392442198ec8c232d468dad917351c7c073e738e3391b74959640370b                
+minisweagent.environment: INFO: Started container minisweagent-d47ada31 with ID 
+94963ade47ea1a7316f3b369dd03222249757948cb6f9f3be54d82fda538ebd6                
+/data/home/cjy/miniconda3/envs/software-testing/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.3) or chardet (7.4.3)/charset_normalizer (3.4.0) doesn't match a supported version!
+  warnings.warn(
+  Overall Progress ($0.16) ━━━━━━━━━━━━━━━━━━━━━━━ 2/2 100% 0:08:19 eta: 0:00:00
+┏━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Exit Status ┃ Count ┃ Most recent instances                                  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Submitted   │     2 │ dowhy__dowhy-causal_identifier__0__0,                  │
+│             │       │ dowhy__dowhy-c...                                      │
+└─────────────┴───────┴────────────────────────────────────────────────────────┘minisweagent: INFO: Generated tests written to                                  
+/data/home/cjy/Adver_bug/results/module_level_final/deepseek_flash/python/dowhy.
+json                                                                            
