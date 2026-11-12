@@ -1,0 +1,207 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[INFO] Loaded 24451 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-psd >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PSD plugin 3.15.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ imageio-psd ---
+[INFO] Deleting /testbed/imageio/imageio-psd/target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ imageio-psd ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ imageio-psd ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 37 source files with javac [debug:source,lines target 8] to target/classes
+[INFO] 
+[INFO] --- bundle:5.1.9:manifest (manifest) @ imageio-psd ---
+[INFO] No MANIFEST.MF file found, generating manifest.
+[INFO] Writing manifest: /testbed/imageio/imageio-psd/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ imageio-psd ---
+[INFO] Copying 36 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ imageio-psd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug:source,lines target 8] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.970 s
+[INFO] Finished at: 2026-11-11T13:03:07Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[INFO] Loaded 24451 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-psd >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PSD plugin 3.15.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ imageio-psd ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ imageio-psd ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ imageio-psd ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- bundle:5.1.9:manifest (manifest) @ imageio-psd ---
+[INFO] Skipping manifest generation, everything is up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ imageio-psd ---
+[INFO] Copying 36 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ imageio-psd ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ imageio-psd ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests
+[ERROR] Tests run: 9, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.496 s <<< FAILURE! -- in com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests
+[ERROR] com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.readsThumbnailsAndLayersWhenRequestedWithLongOptions -- Time elapsed: 0.349 s <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.runMainCapturingShowIt(PSDImageReaderMainTests.java:246)
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.readsThumbnailsAndLayersWhenRequestedWithLongOptions(PSDImageReaderMainTests.java:219)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+
+[ERROR] com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.appliesSourceRegionAndSubsamplingToPrimaryImageRead -- Time elapsed: 0.004 s <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.runMainCapturingShowIt(PSDImageReaderMainTests.java:246)
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.appliesSourceRegionAndSubsamplingToPrimaryImageRead(PSDImageReaderMainTests.java:196)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+
+[ERROR] com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.processesEachFileArgumentAndDisplaysThePrimaryImage -- Time elapsed: 0.003 s <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.runMainCapturingShowIt(PSDImageReaderMainTests.java:246)
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.processesEachFileArgumentAndDisplaysThePrimaryImage(PSDImageReaderMainTests.java:154)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+
+[ERROR] com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.appliesSubsamplingWithoutSourceRegion -- Time elapsed: 0.003 s <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.runMainCapturingShowIt(PSDImageReaderMainTests.java:246)
+	at com.twelvemonkeys.imageio.plugins.psd.PSDImageReaderMainTests.appliesSubsamplingWithoutSourceRegion(PSDImageReaderMainTests.java:176)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   PSDImageReaderMainTests.appliesSourceRegionAndSubsamplingToPrimaryImageRead:196->runMainCapturingShowIt:246 Mockito 
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+[ERROR]   PSDImageReaderMainTests.appliesSubsamplingWithoutSourceRegion:176->runMainCapturingShowIt:246 Mockito 
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+[ERROR]   PSDImageReaderMainTests.processesEachFileArgumentAndDisplaysThePrimaryImage:154->runMainCapturingShowIt:246 Mockito 
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+[ERROR]   PSDImageReaderMainTests.readsThumbnailsAndLayersWhenRequestedWithLongOptions:219->runMainCapturingShowIt:246 Mockito 
+The used MockMaker SubclassByteBuddyMockMaker does not support the creation of static mocks
+
+Mockito's inline mock maker supports static mocks based on the Instrumentation API.
+You can simply enable this mock mode, by placing the 'mockito-inline' artifact where you are currently using 'mockito-core'.
+Note that Mockito's inline mock maker is not supported on Android.
+[INFO] 
+[ERROR] Tests run: 9, Failures: 0, Errors: 4, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.479 s
+[INFO] Finished at: 2026-11-11T13:03:19Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.6.0:test (default-test) on project imageio-psd: 
+[ERROR] 
+[ERROR] See /testbed/imageio/imageio-psd/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[INFO] Loaded 24451 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ---------------< com.twelvemonkeys.imageio:imageio-psd >----------------
+[INFO] Building TwelveMonkeys » ImageIO » PSD plugin 3.15.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ imageio-psd ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'TwelveMonkeys » ImageIO » PSD plugin' with 42 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.738 s
+[INFO] Finished at: 2026-11-11T13:03:25Z
+[INFO] ------------------------------------------------------------------------

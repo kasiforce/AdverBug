@@ -1,0 +1,520 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== compile.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.github.nbplugins:netbeans-plugin-claude-code-gui:nbm:1.3.69-SNAPSHOT
+[WARNING] The expression ${name} is deprecated. Please use ${project.name} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] --------< io.github.nbplugins:netbeans-plugin-claude-code-gui >---------
+[INFO] Building Netbeans Plugin Claude Code GUI 1.3.69-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ nbm ]---------------------------------
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-3: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-3 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-6 is not met by current version 3.9.16
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-install-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-install-plugin
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-2: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-2 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-2 is not met by current version 3.9.16
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.16
+[INFO] Selected plugin org.apache.maven.plugins:maven-install-plugin:3.2.0
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-3: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-3 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-6 is not met by current version 3.9.16
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-deploy-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-deploy-plugin
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-2: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-2 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-2 is not met by current version 3.9.16
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.16
+[INFO] Selected plugin org.apache.maven.plugins:maven-deploy-plugin:3.2.0
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ netbeans-plugin-claude-code-gui ---
+[INFO] Deleting /testbed/target
+[INFO] 
+[INFO] --- jsonschema2pojo:1.2.1:generate (default) @ netbeans-plugin-claude-code-gui ---
+[INFO] 
+[INFO] --- groovy:2.1.1:execute (generate-icons) @ netbeans-plugin-claude-code-gui ---
+[INFO] Generated Netbeans Plugin Claude Code GUI (16px)
+[INFO] Generated Netbeans Plugin Claude Code GUI (32px)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ netbeans-plugin-claude-code-gui ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Copying 28 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ netbeans-plugin-claude-code-gui ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 138 source files with javac [debug parameters release 17] to target/classes
+[WARNING] /testbed/src/main/java/io/github/nbplugins/claudecodegui/actions/OpenWithClaudeAction.java:[32,1] iconBase unused on eager registrations
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/ui/ClaudeSessionTab.java: Some input files use or override a deprecated API.
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/ui/ClaudeSessionTab.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/mcp/NetBeansMCPHandler.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/mcp/NetBeansMCPHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- nbm:14.3:manifest (default-manifest) @ netbeans-plugin-claude-code-gui ---
+[INFO] NBM Plugin generates manifest
+[INFO] Adding on module's Class-Path:
+[INFO]     org.eclipse.jetty:jetty-server:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-http:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-util:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-io:jar:11.0.20
+[INFO]     org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:jar:5.0.2
+[INFO]     org.eclipse.jetty:jetty-servlet:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-security:jar:11.0.20
+[INFO]     com.fasterxml.jackson.core:jackson-databind:jar:2.16.2
+[INFO]     com.fasterxml.jackson.core:jackson-annotations:jar:2.16.2
+[INFO]     com.fasterxml.jackson.core:jackson-core:jar:2.16.2
+[INFO]     com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.16.2
+[INFO]     org.jetbrains.jediterm:jediterm-core:jar:3.63
+[INFO]     org.jetbrains.kotlin:kotlin-stdlib:jar:2.1.21
+[INFO]     org.jetbrains:annotations:jar:24.0.1
+[INFO]     org.jetbrains.jediterm:jediterm-ui:jar:3.63
+[INFO]     org.jetbrains.pty4j:pty4j:jar:0.12.4
+[INFO]     net.java.dev.jna:jna:jar:5.9.0
+[INFO]     net.java.dev.jna:jna-platform:jar:5.9.0
+[INFO]     com.google.guava:guava:jar:33.0.0-jre
+[INFO]     com.google.guava:failureaccess:jar:1.0.2
+[INFO]     com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava
+[INFO]     com.google.code.findbugs:jsr305:jar:3.0.2
+[INFO]     org.checkerframework:checker-qual:jar:3.41.0
+[INFO]     com.google.errorprone:error_prone_annotations:jar:2.23.0
+[INFO]     com.google.j2objc:j2objc-annotations:jar:2.8
+[INFO]     org.slf4j:slf4j-api:jar:2.0.12
+[INFO]     org.slf4j:slf4j-simple:jar:2.0.12
+[INFO]     log4j:log4j:jar:1.2.17
+[INFO]     org.jetbrains.pty4j:purejavacomm:jar:0.0.11.1
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ netbeans-plugin-claude-code-gui ---
+[INFO] Copying 199 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ netbeans-plugin-claude-code-gui ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.626 s
+[INFO] Finished at: 2026-11-12T06:08:33Z
+[INFO] ------------------------------------------------------------------------
+
+=== test.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.github.nbplugins:netbeans-plugin-claude-code-gui:nbm:1.3.69-SNAPSHOT
+[WARNING] The expression ${name} is deprecated. Please use ${project.name} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-3: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-3 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-6 is not met by current version 3.9.16
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-install-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-install-plugin
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-2: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-2 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-2 is not met by current version 3.9.16
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.16
+[INFO] Selected plugin org.apache.maven.plugins:maven-install-plugin:3.2.0
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-3: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-3 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-6 is not met by current version 3.9.16
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-deploy-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-deploy-plugin
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-2: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-2 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-2 is not met by current version 3.9.16
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.16
+[INFO] Selected plugin org.apache.maven.plugins:maven-deploy-plugin:3.2.0
+[INFO] 
+[INFO] --------< io.github.nbplugins:netbeans-plugin-claude-code-gui >---------
+[INFO] Building Netbeans Plugin Claude Code GUI 1.3.69-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ nbm ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default-cli) @ netbeans-plugin-claude-code-gui ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec
+[INFO] 
+[INFO] --- jsonschema2pojo:1.2.1:generate (default) @ netbeans-plugin-claude-code-gui ---
+[INFO] 
+[INFO] --- groovy:2.1.1:execute (generate-icons) @ netbeans-plugin-claude-code-gui ---
+[INFO] Generated Netbeans Plugin Claude Code GUI (16px)
+[INFO] Generated Netbeans Plugin Claude Code GUI (32px)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ netbeans-plugin-claude-code-gui ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Copying 28 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ netbeans-plugin-claude-code-gui ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 138 source files with javac [debug parameters release 17] to target/classes
+[WARNING] /testbed/src/main/java/io/github/nbplugins/claudecodegui/actions/OpenWithClaudeAction.java:[32,1] iconBase unused on eager registrations
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/ui/ClaudeSessionTab.java: Some input files use or override a deprecated API.
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/ui/ClaudeSessionTab.java: Recompile with -Xlint:deprecation for details.
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/mcp/NetBeansMCPHandler.java: Some input files use unchecked or unsafe operations.
+[INFO] /testbed/src/main/java/io/github/nbplugins/claudecodegui/mcp/NetBeansMCPHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- nbm:14.3:manifest (default-manifest) @ netbeans-plugin-claude-code-gui ---
+[INFO] NBM Plugin generates manifest
+[INFO] Adding on module's Class-Path:
+[INFO]     org.eclipse.jetty:jetty-server:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-http:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-util:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-io:jar:11.0.20
+[INFO]     org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:jar:5.0.2
+[INFO]     org.eclipse.jetty:jetty-servlet:jar:11.0.20
+[INFO]     org.eclipse.jetty:jetty-security:jar:11.0.20
+[INFO]     com.fasterxml.jackson.core:jackson-databind:jar:2.16.2
+[INFO]     com.fasterxml.jackson.core:jackson-annotations:jar:2.16.2
+[INFO]     com.fasterxml.jackson.core:jackson-core:jar:2.16.2
+[INFO]     com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.16.2
+[INFO]     org.jetbrains.jediterm:jediterm-core:jar:3.63
+[INFO]     org.jetbrains.kotlin:kotlin-stdlib:jar:2.1.21
+[INFO]     org.jetbrains:annotations:jar:24.0.1
+[INFO]     org.jetbrains.jediterm:jediterm-ui:jar:3.63
+[INFO]     org.jetbrains.pty4j:pty4j:jar:0.12.4
+[INFO]     net.java.dev.jna:jna:jar:5.9.0
+[INFO]     net.java.dev.jna:jna-platform:jar:5.9.0
+[INFO]     com.google.guava:guava:jar:33.0.0-jre
+[INFO]     com.google.guava:failureaccess:jar:1.0.2
+[INFO]     com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava
+[INFO]     com.google.code.findbugs:jsr305:jar:3.0.2
+[INFO]     org.checkerframework:checker-qual:jar:3.41.0
+[INFO]     com.google.errorprone:error_prone_annotations:jar:2.23.0
+[INFO]     com.google.j2objc:j2objc-annotations:jar:2.8
+[INFO]     org.slf4j:slf4j-api:jar:2.0.12
+[INFO]     org.slf4j:slf4j-simple:jar:2.0.12
+[INFO]     log4j:log4j:jar:1.2.17
+[INFO]     org.jetbrains.pty4j:purejavacomm:jar:0.0.11.1
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ netbeans-plugin-claude-code-gui ---
+[INFO] Copying 199 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ netbeans-plugin-claude-code-gui ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ netbeans-plugin-claude-code-gui ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests
+Nov 12, 2026 6:08:51 AM org.netbeans.ProxyURLStreamHandlerFactory register
+SEVERE: No way to find original stream handler for jar protocol
+java.lang.reflect.InaccessibleObjectException: Unable to make field transient java.net.URLStreamHandler java.net.URL.handler accessible: module java.base does not "opens java.net" to unnamed module @6d60fe40
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:178)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:172)
+	at org.netbeans.ProxyURLStreamHandlerFactory.register(ProxyURLStreamHandlerFactory.java:59)
+	at org.netbeans.core.startup.Main.initializeURLFactory(Main.java:80)
+	at org.netbeans.core.startup.NbRepository.<clinit>(NbRepository.java:47)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:347)
+	at java.base/java.lang.Class.newInstance(Class.java:647)
+	at org.openide.util.lookup.implspi.SharedClassObjectBridge.newInstance(SharedClassObjectBridge.java:41)
+	at org.openide.util.lookup.MetaInfServicesLookup$Item.getInstance(MetaInfServicesLookup.java:490)
+	at org.openide.util.lookup.AbstractLookup.lookup(AbstractLookup.java:397)
+	at org.openide.util.lookup.ProxyLookup.lookup(ProxyLookup.java:280)
+	at org.openide.filesystems.Repository$3.call(Repository.java:359)
+	at org.openide.filesystems.Repository$3.call(Repository.java:357)
+	at org.openide.filesystems.Repository.delayFileSystemAttachImpl(Repository.java:1007)
+	at org.openide.filesystems.Repository.getDefault(Repository.java:357)
+	at org.openide.filesystems.Repository$4.getRepository(Repository.java:454)
+	at org.openide.filesystems.Repository.getLocalRepository(Repository.java:435)
+	at org.openide.filesystems.FileUtil.getConfigFile(FileUtil.java:2220)
+	at org.openide.filesystems.FileUtil.getConfigRoot(FileUtil.java:2304)
+	at org.netbeans.core.startup.preferences.NbPreferences$UserPreferences.getFileStorage(NbPreferences.java:365)
+	at org.netbeans.core.startup.preferences.NbPreferences.<init>(NbPreferences.java:90)
+	at org.netbeans.core.startup.preferences.NbPreferences.<init>(NbPreferences.java:42)
+	at org.netbeans.core.startup.preferences.NbPreferences$UserPreferences.<init>(NbPreferences.java:349)
+	at org.netbeans.core.startup.preferences.NbPreferences.userRootImpl(NbPreferences.java:74)
+	at org.netbeans.core.startup.preferences.PreferencesProviderImpl.preferencesRoot(PreferencesProviderImpl.java:49)
+	at org.netbeans.core.startup.preferences.PreferencesProviderImpl.preferencesForModule(PreferencesProviderImpl.java:45)
+	at org.openide.util.NbPreferences.forModule(NbPreferences.java:51)
+	at io.github.nbplugins.claudecodegui.settings.ClaudeCodePreferences.setClaudeExecutablePath(ClaudeCodePreferences.java:64)
+	at io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests.setUp(ClaudeProcessStartTests.java:84)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptLifecycleMethod(TimeoutExtension.java:128)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptBeforeEachMethod(TimeoutExtension.java:78)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:521)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$synthesizeBeforeEachMethodAdapter$23(ClassBasedTestDescriptor.java:506)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachMethods$3(TestMethodTestDescriptor.java:175)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeMethodsOrCallbacksUntilExceptionOccurs$6(TestMethodTestDescriptor.java:203)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:203)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachMethods(TestMethodTestDescriptor.java:172)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:120)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+Nov 12, 2026 6:08:51 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:51 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess appendSessionFlags
+INFO: Extra CLI args appended: [--verbose, --dangerously-skip-permissions]
+Nov 12, 2026 6:08:51 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit260973138245403600/fake-claude --verbose --dangerously-skip-permissions (dir: /tmp/junit260973138245403600/work)
+log4j:WARN No appenders could be found for logger (com.pty4j.util.ExtractedNative).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Unable to find full path for "/tmp/junit13806431817485943415/missing-claude-executable"
+Nov 12, 2026 6:08:52 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:52 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit13806431817485943415/missing-claude-executable (dir: /tmp/junit13806431817485943415/work)
+Nov 12, 2026 6:08:52 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:52 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-1814775722921525821.json
+Nov 12, 2026 6:08:52 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit6997603766423232754/work/.claude/settings.local.json
+Nov 12, 2026 6:08:52 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit6997603766423232754/fake-claude --mcp-config /tmp/claude-mcp-config-1814775722921525821.json (dir: /tmp/junit6997603766423232754/work)
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json cleaned (user content preserved): /tmp/junit6997603766423232754/work/.claude/settings.local.json
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=ContinueProfile (CLAUDE_MANAGED), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit17345517039083520752/continue-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=CONTINUE_LAST
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit17345517039083520752/fake-claude (dir: /tmp/junit17345517039083520752/work)
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-275081178132940381.json
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit305264622732979494/work/.claude/settings.local.json
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit305264622732979494/fake-claude --mcp-config /tmp/claude-mcp-config-275081178132940381.json (dir: /tmp/junit305264622732979494/work)
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit305264622732979494/work/.claude/settings.local.json
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: MCP integration disabled by user preference; skipping --mcp-config
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit17372207961532523351/work/.claude/settings.local.json
+Nov 12, 2026 6:08:55 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit17372207961532523351/fake-claude (dir: /tmp/junit17372207961532523351/work)
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit17372207961532523351/work/.claude/settings.local.json
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-11591029034648838737.json
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit8657360892785063458/work/.claude/settings.local.json
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit8657360892785063458/fake-claude --mcp-config /tmp/claude-mcp-config-11591029034648838737.json (dir: /tmp/junit8657360892785063458/work)
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit8657360892785063458/work/.claude/settings.local.json
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:56 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit8657360892785063458/fake-claude (dir: /tmp/junit8657360892785063458/work-2)
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: ChatGPT subscription proxy registered: uuid=152a38d0-76f4-4b15-9b04-4cf69225ecc0, profile=ChatGPTProfile
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=ChatGPTProfile (OPENAI_SUBSCRIPTION), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=SET, ANTHROPIC_BASE_URL=http://127.0.0.1:46006/openai-proxy/152a38d0-76f4-4b15-9b04-4cf69225ecc0, CLAUDE_CONFIG_DIR=/tmp/junit8961735146110155124/chatgpt-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-1417207568955608005.json
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit8961735146110155124/work/.claude/settings.local.json
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit8961735146110155124/fake-claude --mcp-config /tmp/claude-mcp-config-1417207568955608005.json (dir: /tmp/junit8961735146110155124/work)
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit8961735146110155124/work/.claude/settings.local.json
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=RESUME_SPECIFIC, resumeId=session-123
+Nov 12, 2026 6:08:59 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit9899180779448487462/fake-claude --resume session-123 (dir: /tmp/junit9899180779448487462/work)
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=RESUME_SPECIFIC, resumeId=   
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit3038700128248680592/fake-claude (dir: /tmp/junit3038700128248680592/work)
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: OpenAI proxy registered: uuid=27b8a15e-43ec-49a1-9af5-955741780c05, profile=OpenAIProxy, target=https://api.example.test/v1
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=OpenAIProxy (OPENAI_PROXY), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=SET, ANTHROPIC_BASE_URL=http://127.0.0.1:46004/openai-proxy/27b8a15e-43ec-49a1-9af5-955741780c05, CLAUDE_CONFIG_DIR=/tmp/junit13434632532519037931/openai-fallback-profile-id, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-4645460096427419334.json
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit13434632532519037931/work/.claude/settings.local.json
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit13434632532519037931/fake-claude --mcp-config /tmp/claude-mcp-config-4645460096427419334.json (dir: /tmp/junit13434632532519037931/work)
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit13434632532519037931/work/.claude/settings.local.json
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=ContinueProfile (CLAUDE_MANAGED), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit5443894832469337574/continue-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=CONTINUE_LAST
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit5443894832469337574/fake-claude --continue (dir: /tmp/junit5443894832469337574/work)
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=EnvProfile (CLAUDE_MANAGED), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit504188988985719031/env-profile-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:09:00 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit504188988985719031/fake-claude (dir: /tmp/junit504188988985719031/work)
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+WARNING: OpenAI proxy: MCP server not running — proxy cannot be started
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=OpenAIProxy (OPENAI_PROXY), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit10946087321664728776/openai-no-server-profile, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit10946087321664728776/fake-claude (dir: /tmp/junit10946087321664728776/work)
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: OpenAI proxy registered: uuid=64d3222f-1ef1-4421-a3ef-f7589b23303f, profile=OpenAIProxy, target=https://api.example.test/v1
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=OpenAIProxy (OPENAI_PROXY), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=SET, ANTHROPIC_BASE_URL=http://127.0.0.1:46005/openai-proxy/64d3222f-1ef1-4421-a3ef-f7589b23303f, CLAUDE_CONFIG_DIR=/tmp/junit5205537950736953951/openai-installer-profile-id, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-16728851442519491557.json
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit5205537950736953951/work/.claude/settings.local.json
+Nov 12, 2026 6:09:01 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit5205537950736953951/fake-claude --mcp-config /tmp/claude-mcp-config-16728851442519491557.json (dir: /tmp/junit5205537950736953951/work)
+Nov 12, 2026 6:09:04 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit5205537950736953951/work/.claude/settings.local.json
+Nov 12, 2026 6:09:04 AM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+WARNING: ChatGPT subscription auth failed at session start: Not signed in to ChatGPT — sign in in Profile settings.
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.55 s -- in io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.372 s
+[INFO] Finished at: 2026-11-12T06:09:04Z
+[INFO] ------------------------------------------------------------------------
+
+=== coverage.log ===
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.github.nbplugins:netbeans-plugin-claude-code-gui:nbm:1.3.69-SNAPSHOT
+[WARNING] The expression ${name} is deprecated. Please use ${project.name} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-3: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-3 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-6 is not met by current version 3.9.16
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-install-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-install-plugin
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-2: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-2 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-2 is not met by current version 3.9.16
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-install-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.16
+[INFO] Selected plugin org.apache.maven.plugins:maven-install-plugin:3.2.0
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-3: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-3 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-6 is not met by current version 3.9.16
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-deploy-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-deploy-plugin
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-2: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-2 has unmet prerequisites: 
+	Required Maven version 4.0.0-rc-2 is not met by current version 3.9.16
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-deploy-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.16
+[INFO] Selected plugin org.apache.maven.plugins:maven-deploy-plugin:3.2.0
+[INFO] 
+[INFO] --------< io.github.nbplugins:netbeans-plugin-claude-code-gui >---------
+[INFO] Building Netbeans Plugin Claude Code GUI 1.3.69-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ nbm ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (default-cli) @ netbeans-plugin-claude-code-gui ---
+[INFO] Loading execution data file /results/jacoco.exec
+[INFO] Analyzed bundle 'Netbeans Plugin Claude Code GUI' with 278 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.637 s
+[INFO] Finished at: 2026-11-12T06:09:07Z
+[INFO] ------------------------------------------------------------------------

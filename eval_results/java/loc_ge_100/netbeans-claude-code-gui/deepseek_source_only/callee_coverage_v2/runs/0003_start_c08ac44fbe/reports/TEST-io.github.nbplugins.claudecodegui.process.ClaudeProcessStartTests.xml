@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="15.842" tests="20" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/testbed/target/test-classes:/testbed/target/classes:/root/.m2/repository/org/netbeans/api/org-openide-util/RELEASE230/org-openide-util-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-util-lookup/RELEASE230/org-openide-util-lookup-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-options-api/RELEASE230/org-netbeans-modules-options-api-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-progress/RELEASE230/org-netbeans-api-progress-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-progress-nb/RELEASE230/org-netbeans-api-progress-nb-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-core/RELEASE230/org-netbeans-core-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-bootstrap/RELEASE230/org-netbeans-bootstrap-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-keyring/RELEASE230/org-netbeans-modules-keyring-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-sampler/RELEASE230/org-netbeans-modules-sampler-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-swing-plaf/RELEASE230/org-netbeans-swing-plaf-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-core-startup/RELEASE230/org-netbeans-core-startup-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-libs-asm/RELEASE230/org-netbeans-libs-asm-RELEASE230.jar:/root/.m2/repository/org/ow2/asm/asm/9.7/asm-9.7.jar:/root/.m2/repository/org/ow2/asm/asm-tree/9.7/asm-tree-9.7.jar:/root/.m2/repository/org/ow2/asm/asm-commons/9.7/asm-commons-9.7.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-core-startup-base/RELEASE230/org-netbeans-core-startup-base-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-spi-quicksearch/RELEASE230/org-netbeans-spi-quicksearch-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-swing-outline/RELEASE230/org-netbeans-swing-outline-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-explorer/RELEASE230/org-openide-explorer-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-swing-tabcontrol/RELEASE230/org-netbeans-swing-tabcontrol-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-filesystems-nb/RELEASE230/org-openide-filesystems-nb-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-util-ui/RELEASE230/org-openide-util-ui-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-windows/RELEASE230/org-openide-windows-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-awt/RELEASE230/org-openide-awt-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-nodes/RELEASE230/org-openide-nodes-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-actions/RELEASE230/org-openide-actions-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-loaders/RELEASE230/org-openide-loaders-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-scripting/RELEASE230/org-netbeans-api-scripting-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-templates/RELEASE230/org-netbeans-api-templates-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-mimelookup/RELEASE230/org-netbeans-modules-editor-mimelookup-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-queries/RELEASE230/org-netbeans-modules-queries-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-filesystems/RELEASE230/org-openide-filesystems-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-projectapi/RELEASE230/org-netbeans-modules-projectapi-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-projectuiapi/RELEASE230/org-netbeans-modules-projectuiapi-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-projectuiapi-base/RELEASE230/org-netbeans-modules-projectuiapi-base-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-dialogs/RELEASE230/org-openide-dialogs-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-spi-editor-hints/RELEASE230/org-netbeans-spi-editor-hints-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-lsp/RELEASE230/org-netbeans-api-lsp-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-document/RELEASE230/org-netbeans-modules-editor-document-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-settings/RELEASE230/org-netbeans-modules-editor-settings-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-util/RELEASE230/org-netbeans-modules-editor-util-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-modules/RELEASE230/org-openide-modules-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-annotations-common/RELEASE230/org-netbeans-api-annotations-common-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-lib2/RELEASE230/org-netbeans-modules-editor-lib2-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-lexer/RELEASE230/org-netbeans-modules-lexer-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-text/RELEASE230/org-openide-text-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor/RELEASE230/org-netbeans-modules-editor-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-fold/RELEASE230/org-netbeans-modules-editor-fold-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-settings-lib/RELEASE230/org-netbeans-modules-editor-settings-lib-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-editor-fold-nbui/RELEASE230/org-netbeans-modules-editor-fold-nbui-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-editor-settings-storage/RELEASE230/org-netbeans-modules-editor-settings-storage-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-guards/RELEASE230/org-netbeans-modules-editor-guards-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-indent/RELEASE230/org-netbeans-modules-editor-indent-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-diff/RELEASE230/org-netbeans-modules-diff-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-editor-errorstripe/RELEASE230/org-netbeans-modules-editor-errorstripe-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-errorstripe-api/RELEASE230/org-netbeans-modules-editor-errorstripe-api-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-options-editor/RELEASE230/org-netbeans-modules-options-editor-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-options-keymap/RELEASE230/org-netbeans-modules-options-keymap-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-io/RELEASE230/org-openide-io-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-intent/RELEASE230/org-netbeans-api-intent-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-io/RELEASE230/org-netbeans-api-io-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-lib/RELEASE230/org-netbeans-modules-editor-lib-RELEASE230.jar:/root/.m2/repository/org/eclipse/jetty/jetty-server/11.0.20/jetty-server-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-http/11.0.20/jetty-http-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-util/11.0.20/jetty-util-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-io/11.0.20/jetty-io-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/root/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.20/jetty-servlet-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-security/11.0.20/jetty-security-11.0.20.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.2/jackson-databind-2.16.2.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.2/jackson-annotations-2.16.2.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.2/jackson-core-2.16.2.jar:/root/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.16.2/jackson-datatype-jsr310-2.16.2.jar:/root/.m2/repository/org/jetbrains/jediterm/jediterm-core/3.63/jediterm-core-3.63.jar:/root/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/2.1.21/kotlin-stdlib-2.1.21.jar:/root/.m2/repository/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar:/root/.m2/repository/org/jetbrains/jediterm/jediterm-ui/3.63/jediterm-ui-3.63.jar:/root/.m2/repository/org/jetbrains/pty4j/pty4j/0.12.4/pty4j-0.12.4.jar:/root/.m2/repository/net/java/dev/jna/jna/5.9.0/jna-5.9.0.jar:/root/.m2/repository/net/java/dev/jna/jna-platform/5.9.0/jna-platform-5.9.0.jar:/root/.m2/repository/com/google/guava/guava/33.0.0-jre/guava-33.0.0-jre.jar:/root/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/root/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/root/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/root/.m2/repository/org/checkerframework/checker-qual/3.41.0/checker-qual-3.41.0.jar:/root/.m2/repository/com/google/errorprone/error_prone_annotations/2.23.0/error_prone_annotations-2.23.0.jar:/root/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/root/.m2/repository/org/slf4j/slf4j-api/2.0.12/slf4j-api-2.0.12.jar:/root/.m2/repository/org/slf4j/slf4j-simple/2.0.12/slf4j-simple-2.0.12.jar:/root/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/root/.m2/repository/org/jetbrains/pty4j/purejavacomm/0.0.11.1/purejavacomm-0.0.11.1.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-nbjunit/RELEASE230/org-netbeans-modules-nbjunit-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-insane/RELEASE230/org-netbeans-insane-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-libs-junit4/RELEASE230/org-netbeans-libs-junit4-RELEASE230.jar:/root/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/root/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/root/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/root/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/root/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/root/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:"/>
+    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
+    <property name="jacoco.destFile" value="/results/jacoco.exec"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="spotless.check.skip" value="true"/>
+    <property name="sun.font.fontmanager" value="sun.awt.X11FontManager"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Etc/UTC"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="rat.skip" value="true"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/opt/java/openjdk/lib"/>
+    <property name="sun.java.command" value="/testbed/target/surefire/surefirebooter-20261112141014965_3.jar /testbed/target/surefire 2026-11-12T14-10-14_767-jvmRun1 surefire-20261112141014965_1tmp surefire_0-20261112141014965_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="ClaudeProcessStartTests"/>
+    <property name="surefire.test.class.path" value="/testbed/target/test-classes:/testbed/target/classes:/root/.m2/repository/org/netbeans/api/org-openide-util/RELEASE230/org-openide-util-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-util-lookup/RELEASE230/org-openide-util-lookup-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-options-api/RELEASE230/org-netbeans-modules-options-api-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-progress/RELEASE230/org-netbeans-api-progress-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-progress-nb/RELEASE230/org-netbeans-api-progress-nb-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-core/RELEASE230/org-netbeans-core-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-bootstrap/RELEASE230/org-netbeans-bootstrap-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-keyring/RELEASE230/org-netbeans-modules-keyring-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-sampler/RELEASE230/org-netbeans-modules-sampler-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-swing-plaf/RELEASE230/org-netbeans-swing-plaf-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-core-startup/RELEASE230/org-netbeans-core-startup-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-libs-asm/RELEASE230/org-netbeans-libs-asm-RELEASE230.jar:/root/.m2/repository/org/ow2/asm/asm/9.7/asm-9.7.jar:/root/.m2/repository/org/ow2/asm/asm-tree/9.7/asm-tree-9.7.jar:/root/.m2/repository/org/ow2/asm/asm-commons/9.7/asm-commons-9.7.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-core-startup-base/RELEASE230/org-netbeans-core-startup-base-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-spi-quicksearch/RELEASE230/org-netbeans-spi-quicksearch-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-swing-outline/RELEASE230/org-netbeans-swing-outline-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-explorer/RELEASE230/org-openide-explorer-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-swing-tabcontrol/RELEASE230/org-netbeans-swing-tabcontrol-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-filesystems-nb/RELEASE230/org-openide-filesystems-nb-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-util-ui/RELEASE230/org-openide-util-ui-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-windows/RELEASE230/org-openide-windows-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-awt/RELEASE230/org-openide-awt-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-nodes/RELEASE230/org-openide-nodes-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-actions/RELEASE230/org-openide-actions-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-loaders/RELEASE230/org-openide-loaders-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-scripting/RELEASE230/org-netbeans-api-scripting-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-templates/RELEASE230/org-netbeans-api-templates-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-mimelookup/RELEASE230/org-netbeans-modules-editor-mimelookup-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-queries/RELEASE230/org-netbeans-modules-queries-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-filesystems/RELEASE230/org-openide-filesystems-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-projectapi/RELEASE230/org-netbeans-modules-projectapi-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-projectuiapi/RELEASE230/org-netbeans-modules-projectuiapi-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-projectuiapi-base/RELEASE230/org-netbeans-modules-projectuiapi-base-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-dialogs/RELEASE230/org-openide-dialogs-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-spi-editor-hints/RELEASE230/org-netbeans-spi-editor-hints-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-lsp/RELEASE230/org-netbeans-api-lsp-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-document/RELEASE230/org-netbeans-modules-editor-document-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-settings/RELEASE230/org-netbeans-modules-editor-settings-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-util/RELEASE230/org-netbeans-modules-editor-util-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-modules/RELEASE230/org-openide-modules-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-annotations-common/RELEASE230/org-netbeans-api-annotations-common-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-lib2/RELEASE230/org-netbeans-modules-editor-lib2-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-lexer/RELEASE230/org-netbeans-modules-lexer-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-text/RELEASE230/org-openide-text-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor/RELEASE230/org-netbeans-modules-editor-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-fold/RELEASE230/org-netbeans-modules-editor-fold-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-settings-lib/RELEASE230/org-netbeans-modules-editor-settings-lib-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-editor-fold-nbui/RELEASE230/org-netbeans-modules-editor-fold-nbui-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-editor-settings-storage/RELEASE230/org-netbeans-modules-editor-settings-storage-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-guards/RELEASE230/org-netbeans-modules-editor-guards-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-indent/RELEASE230/org-netbeans-modules-editor-indent-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-diff/RELEASE230/org-netbeans-modules-diff-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-editor-errorstripe/RELEASE230/org-netbeans-modules-editor-errorstripe-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-errorstripe-api/RELEASE230/org-netbeans-modules-editor-errorstripe-api-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-options-editor/RELEASE230/org-netbeans-modules-options-editor-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-modules-options-keymap/RELEASE230/org-netbeans-modules-options-keymap-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-openide-io/RELEASE230/org-openide-io-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-intent/RELEASE230/org-netbeans-api-intent-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-api-io/RELEASE230/org-netbeans-api-io-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-editor-lib/RELEASE230/org-netbeans-modules-editor-lib-RELEASE230.jar:/root/.m2/repository/org/eclipse/jetty/jetty-server/11.0.20/jetty-server-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-http/11.0.20/jetty-http-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-util/11.0.20/jetty-util-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-io/11.0.20/jetty-io-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/root/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.20/jetty-servlet-11.0.20.jar:/root/.m2/repository/org/eclipse/jetty/jetty-security/11.0.20/jetty-security-11.0.20.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.2/jackson-databind-2.16.2.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.2/jackson-annotations-2.16.2.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.2/jackson-core-2.16.2.jar:/root/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.16.2/jackson-datatype-jsr310-2.16.2.jar:/root/.m2/repository/org/jetbrains/jediterm/jediterm-core/3.63/jediterm-core-3.63.jar:/root/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/2.1.21/kotlin-stdlib-2.1.21.jar:/root/.m2/repository/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar:/root/.m2/repository/org/jetbrains/jediterm/jediterm-ui/3.63/jediterm-ui-3.63.jar:/root/.m2/repository/org/jetbrains/pty4j/pty4j/0.12.4/pty4j-0.12.4.jar:/root/.m2/repository/net/java/dev/jna/jna/5.9.0/jna-5.9.0.jar:/root/.m2/repository/net/java/dev/jna/jna-platform/5.9.0/jna-platform-5.9.0.jar:/root/.m2/repository/com/google/guava/guava/33.0.0-jre/guava-33.0.0-jre.jar:/root/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/root/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/root/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/root/.m2/repository/org/checkerframework/checker-qual/3.41.0/checker-qual-3.41.0.jar:/root/.m2/repository/com/google/errorprone/error_prone_annotations/2.23.0/error_prone_annotations-2.23.0.jar:/root/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/root/.m2/repository/org/slf4j/slf4j-api/2.0.12/slf4j-api-2.0.12.jar:/root/.m2/repository/org/slf4j/slf4j-simple/2.0.12/slf4j-simple-2.0.12.jar:/root/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/root/.m2/repository/org/jetbrains/pty4j/purejavacomm/0.0.11.1/purejavacomm-0.0.11.1.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-modules-nbjunit/RELEASE230/org-netbeans-modules-nbjunit-RELEASE230.jar:/root/.m2/repository/org/netbeans/modules/org-netbeans-insane/RELEASE230/org-netbeans-insane-RELEASE230.jar:/root/.m2/repository/org/netbeans/api/org-netbeans-libs-junit4/RELEASE230/org-netbeans-libs-junit4-RELEASE230.jar:/root/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/root/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/root/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/root/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/root/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/root/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/root/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/root"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.util.prefs.PreferencesFactory" value="org.netbeans.junit.internal.MemoryPreferencesFactory"/>
+    <property name="java.version.date" value="2026-08-18"/>
+    <property name="java.home" value="/opt/java/openjdk"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/testbed"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="checkstyle.skip" value="true"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="jacoco.propertyName" value="argLine"/>
+    <property name="surefire.real.class.path" value="/testbed/target/surefire/surefirebooter-20261112141014965_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.20.1+1"/>
+    <property name="user.name" value="root"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.8.0-136-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="jnidispatch.path" value="/root/.cache/JNA/temp/jna10751313193729383274.tmp"/>
+    <property name="surefire.failIfNoSpecifiedTests" value="false"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="jna.platform.library.path" value="/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/lib64:/lib64:/usr/lib:/lib:/opt/java/openjdk/lib:/opt/java/openjdk/lib/server"/>
+    <property name="skipTests" value="false"/>
+    <property name="java.vendor.version" value="Temurin-17.0.20.1+1"/>
+    <property name="localRepository" value="/root/.m2/repository"/>
+    <property name="jna.loaded" value="true"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.20.1"/>
+    <property name="maven.test.skip" value="false"/>
+    <property name="user.dir" value="/testbed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="failIfNoTests" value="false"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.20.1+1"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="argLine" value="-javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=/results/jacoco.exec -javaagent:/trace/trace-agent.jar=output=/results/calls.tsv,prefix=io/github/nbplugins,targetClass=io/github/nbplugins/claudecodegui/process/ClaudeProcess,targetMethod=start"/>
+  </properties>
+  <testcase name="launchesConfiguredExecutableWithExtraArgsInWorkingDirectory" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="2.049">
+    <system-err><![CDATA[Nov 12, 2026 2:10:16 PM org.netbeans.ProxyURLStreamHandlerFactory register
+SEVERE: No way to find original stream handler for jar protocol
+java.lang.reflect.InaccessibleObjectException: Unable to make field transient java.net.URLStreamHandler java.net.URL.handler accessible: module java.base does not "opens java.net" to unnamed module @387a8303
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:178)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:172)
+	at org.netbeans.ProxyURLStreamHandlerFactory.register(ProxyURLStreamHandlerFactory.java:59)
+	at org.netbeans.core.startup.Main.initializeURLFactory(Main.java:80)
+	at org.netbeans.core.startup.NbRepository.<clinit>(NbRepository.java:47)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:347)
+	at java.base/java.lang.Class.newInstance(Class.java:647)
+	at org.openide.util.lookup.implspi.SharedClassObjectBridge.newInstance(SharedClassObjectBridge.java:41)
+	at org.openide.util.lookup.MetaInfServicesLookup$Item.getInstance(MetaInfServicesLookup.java:490)
+	at org.openide.util.lookup.AbstractLookup.lookup(AbstractLookup.java:397)
+	at org.openide.util.lookup.ProxyLookup.lookup(ProxyLookup.java:280)
+	at org.openide.filesystems.Repository$3.call(Repository.java:359)
+	at org.openide.filesystems.Repository$3.call(Repository.java:357)
+	at org.openide.filesystems.Repository.delayFileSystemAttachImpl(Repository.java:1007)
+	at org.openide.filesystems.Repository.getDefault(Repository.java:357)
+	at org.openide.filesystems.Repository$4.getRepository(Repository.java:454)
+	at org.openide.filesystems.Repository.getLocalRepository(Repository.java:435)
+	at org.openide.filesystems.FileUtil.getConfigFile(FileUtil.java:2220)
+	at org.openide.filesystems.FileUtil.getConfigRoot(FileUtil.java:2304)
+	at org.netbeans.core.startup.preferences.NbPreferences$UserPreferences.getFileStorage(NbPreferences.java:365)
+	at org.netbeans.core.startup.preferences.NbPreferences.<init>(NbPreferences.java:90)
+	at org.netbeans.core.startup.preferences.NbPreferences.<init>(NbPreferences.java:42)
+	at org.netbeans.core.startup.preferences.NbPreferences$UserPreferences.<init>(NbPreferences.java:349)
+	at org.netbeans.core.startup.preferences.NbPreferences.userRootImpl(NbPreferences.java:74)
+	at org.netbeans.core.startup.preferences.PreferencesProviderImpl.preferencesRoot(PreferencesProviderImpl.java:49)
+	at org.netbeans.core.startup.preferences.PreferencesProviderImpl.preferencesForModule(PreferencesProviderImpl.java:45)
+	at org.openide.util.NbPreferences.forModule(NbPreferences.java:51)
+	at io.github.nbplugins.claudecodegui.settings.ClaudeCodePreferences.setClaudeExecutablePath(ClaudeCodePreferences.java:64)
+	at io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests.setUp(ClaudeProcessStartTests.java:84)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptLifecycleMethod(TimeoutExtension.java:128)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptBeforeEachMethod(TimeoutExtension.java:78)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:521)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$synthesizeBeforeEachMethodAdapter$23(ClassBasedTestDescriptor.java:506)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachMethods$3(TestMethodTestDescriptor.java:175)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeMethodsOrCallbacksUntilExceptionOccurs$6(TestMethodTestDescriptor.java:203)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:203)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachMethods(TestMethodTestDescriptor.java:172)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:120)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+Nov 12, 2026 2:10:17 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:17 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess appendSessionFlags
+INFO: Extra CLI args appended: [--verbose, --dangerously-skip-permissions]
+Nov 12, 2026 2:10:17 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit8429657770234847486/fake-claude --verbose --dangerously-skip-permissions (dir: /tmp/junit8429657770234847486/work)
+log4j:WARN No appenders could be found for logger (com.pty4j.util.ExtractedNative).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+]]></system-err>
+  </testcase>
+  <testcase name="missingExecutableIsReportedAsIoException" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.016">
+    <system-err><![CDATA[Nov 12, 2026 2:10:18 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:18 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit7206770348927352687/missing-claude-executable (dir: /tmp/junit7206770348927352687/work)
+]]></system-err>
+  </testcase>
+  <testcase name="stopPreservesUserSettingsWhenMergingPluginEntries" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="3.235">
+    <system-err><![CDATA[Nov 12, 2026 2:10:18 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:18 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-16930375364978027501.json
+Nov 12, 2026 2:10:18 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit11481764585116062286/work/.claude/settings.local.json
+Nov 12, 2026 2:10:18 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit11481764585116062286/fake-claude --mcp-config /tmp/claude-mcp-config-16930375364978027501.json (dir: /tmp/junit11481764585116062286/work)
+Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json cleaned (user content preserved): /tmp/junit11481764585116062286/work/.claude/settings.local.json
+]]></system-err>
+  </testcase>
+  <testcase name="continueLastDoesNotAppendFlagWhenNoSessionExists" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.158">
+    <system-err><![CDATA[Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=ContinueProfile (CLAUDE_MANAGED), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit7234629864582232177/continue-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=CONTINUE_LAST
+Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit7234629864582232177/fake-claude (dir: /tmp/junit7234629864582232177/work)
+]]></system-err>
+  </testcase>
+  <testcase name="rejectsNullAndBlankWorkingDirectories(String)[1]" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.017"/>
+  <testcase name="rejectsNullAndBlankWorkingDirectories(String)[2]" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.005"/>
+  <testcase name="rejectsNullAndBlankWorkingDirectories(String)[3]" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.004"/>
+  <testcase name="rejectsNullAndBlankWorkingDirectories(String)[4]" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.005"/>
+  <testcase name="runningMcpWritesConfigAndSettingsAndStopRemovesThem" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.285">
+    <system-err><![CDATA[Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-9575256446388930726.json
+Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit10415594143554614707/work/.claude/settings.local.json
+Nov 12, 2026 2:10:21 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit10415594143554614707/fake-claude --mcp-config /tmp/claude-mcp-config-9575256446388930726.json (dir: /tmp/junit10415594143554614707/work)
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit10415594143554614707/work/.claude/settings.local.json
+]]></system-err>
+  </testcase>
+  <testcase name="disablingMcpSkipsConfigArgButStillMergesSettingsWhenServerRuns" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.265">
+    <system-err><![CDATA[Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: MCP integration disabled by user preference; skipping --mcp-config
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit9643224613856351030/work/.claude/settings.local.json
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit9643224613856351030/fake-claude (dir: /tmp/junit9643224613856351030/work)
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit9643224613856351030/work/.claude/settings.local.json
+]]></system-err>
+  </testcase>
+  <testcase name="startingAgainStopsPreviousSessionAndCleansItsFiles" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="3.42">
+    <system-err><![CDATA[Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-5998758420687710518.json
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit17198324517540896738/work/.claude/settings.local.json
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit17198324517540896738/fake-claude --mcp-config /tmp/claude-mcp-config-5998758420687710518.json (dir: /tmp/junit17198324517540896738/work)
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit17198324517540896738/work/.claude/settings.local.json
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:22 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit17198324517540896738/fake-claude (dir: /tmp/junit17198324517540896738/work-2)
+]]></system-err>
+  </testcase>
+  <testcase name="chatGptSubscriptionRegistersValidTokenAndInjectsProxyEnvironment" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="1.214">
+    <system-err><![CDATA[Nov 12, 2026 2:10:26 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: ChatGPT subscription proxy registered: uuid=6767026f-e3fb-43e4-adf3-d37d1979cbca, profile=ChatGPTProfile
+Nov 12, 2026 2:10:26 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=ChatGPTProfile (OPENAI_SUBSCRIPTION), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=SET, ANTHROPIC_BASE_URL=http://127.0.0.1:46006/openai-proxy/6767026f-e3fb-43e4-adf3-d37d1979cbca, CLAUDE_CONFIG_DIR=/tmp/junit7723134336096059581/chatgpt-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:26 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-14946112029373246203.json
+Nov 12, 2026 2:10:26 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit7723134336096059581/work/.claude/settings.local.json
+Nov 12, 2026 2:10:26 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit7723134336096059581/fake-claude --mcp-config /tmp/claude-mcp-config-14946112029373246203.json (dir: /tmp/junit7723134336096059581/work)
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit7723134336096059581/work/.claude/settings.local.json
+]]></system-err>
+  </testcase>
+  <testcase name="resumeSpecificAppendsResumeFlagAndSessionId" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.266">
+    <system-err><![CDATA[Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=RESUME_SPECIFIC, resumeId=session-123
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit17951556362294326415/fake-claude --resume session-123 (dir: /tmp/junit17951556362294326415/work)
+]]></system-err>
+  </testcase>
+  <testcase name="resumeSpecificWithBlankSessionIdDoesNotAppendResumeFlag" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.243">
+    <system-err><![CDATA[Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=Default, apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=(inherited), HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=RESUME_SPECIFIC, resumeId=   
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit484625379745262247/fake-claude (dir: /tmp/junit484625379745262247/work)
+]]></system-err>
+  </testcase>
+  <testcase name="openAiProxyRegistersSessionAndInjectsProxyEnvironment" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.275">
+    <system-err><![CDATA[Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: OpenAI proxy registered: uuid=e1e55580-78b7-4b2c-8689-9b4d19d69575, profile=OpenAIProxy, target=https://api.example.test/v1
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=OpenAIProxy (OPENAI_PROXY), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=SET, ANTHROPIC_BASE_URL=http://127.0.0.1:46004/openai-proxy/e1e55580-78b7-4b2c-8689-9b4d19d69575, CLAUDE_CONFIG_DIR=/tmp/junit2981639275088090537/openai-fallback-profile-id, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-11392646245229603839.json
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit2981639275088090537/work/.claude/settings.local.json
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit2981639275088090537/fake-claude --mcp-config /tmp/claude-mcp-config-11392646245229603839.json (dir: /tmp/junit2981639275088090537/work)
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit2981639275088090537/work/.claude/settings.local.json
+]]></system-err>
+  </testcase>
+  <testcase name="continueLastAppendsFlagWhenSessionJsonlExists" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.247">
+    <system-err><![CDATA[Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=ContinueProfile (CLAUDE_MANAGED), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit7201368739657398178/continue-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=CONTINUE_LAST
+Nov 12, 2026 2:10:27 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit7201368739657398178/fake-claude --continue (dir: /tmp/junit7201368739657398178/work)
+]]></system-err>
+  </testcase>
+  <testcase name="appliesProfileExtraEnvironmentVariables" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.266">
+    <system-err><![CDATA[Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=EnvProfile (CLAUDE_MANAGED), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit11056168527949345070/env-profile-config, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit11056168527949345070/fake-claude (dir: /tmp/junit11056168527949345070/work)
+]]></system-err>
+  </testcase>
+  <testcase name="openAiProxyDoesNotInjectEnvironmentWhenServerIsNotRunning" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.348">
+    <system-err><![CDATA[Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+WARNING: OpenAI proxy: MCP server not running — proxy cannot be started
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=OpenAIProxy (OPENAI_PROXY), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=NOT SET, ANTHROPIC_BASE_URL=(not set), CLAUDE_CONFIG_DIR=/tmp/junit10996299934822241116/openai-no-server-profile, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit10996299934822241116/fake-claude (dir: /tmp/junit10996299934822241116/work)
+]]></system-err>
+  </testcase>
+  <testcase name="installerAwareServiceReceivesProfileIdWithOpenAiProxyRegistration" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="3.037">
+    <system-err><![CDATA[Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: OpenAI proxy registered: uuid=7b78e791-04bb-42dd-b336-8bfa71585f68, profile=OpenAIProxy, target=https://api.example.test/v1
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Starting Claude: profile=OpenAIProxy (OPENAI_PROXY), apiKeyHelper=NOT SET, ANTHROPIC_AUTH_TOKEN=SET, ANTHROPIC_BASE_URL=http://127.0.0.1:46005/openai-proxy/7b78e791-04bb-42dd-b336-8bfa71585f68, CLAUDE_CONFIG_DIR=/tmp/junit6528575103909499852/openai-installer-profile-id, HTTP_PROXY=(not set), HTTPS_PROXY=(not set), NO_PROXY=(not set), sessionMode=NEW
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Passing --mcp-config via temp file: /tmp/claude-mcp-config-16214465245629193525.json
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess writeSettingsLocalJson
+INFO: settings.local.json written (merged): /tmp/junit6528575103909499852/work/.claude/settings.local.json
+Nov 12, 2026 2:10:28 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+INFO: Claude command: /tmp/junit6528575103909499852/fake-claude --mcp-config /tmp/claude-mcp-config-16214465245629193525.json (dir: /tmp/junit6528575103909499852/work)
+Nov 12, 2026 2:10:31 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess cleanupSettingsLocalJson
+INFO: settings.local.json deleted (was plugin-only): /tmp/junit6528575103909499852/work/.claude/settings.local.json
+]]></system-err>
+  </testcase>
+  <testcase name="chatGptSubscriptionAuthFailureIsReportedAsIoException" classname="io.github.nbplugins.claudecodegui.process.ClaudeProcessStartTests" time="0.01">
+    <system-err><![CDATA[Nov 12, 2026 2:10:31 PM io.github.nbplugins.claudecodegui.process.ClaudeProcess start
+WARNING: ChatGPT subscription auth failed at session start: Not signed in to ChatGPT — sign in in Profile settings.
+]]></system-err>
+  </testcase>
+</testsuite>
