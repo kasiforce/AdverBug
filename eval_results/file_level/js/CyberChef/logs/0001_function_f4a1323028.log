@@ -1,0 +1,129 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:29) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/web/HTMLIngredient.test.js
+  HTMLIngredient constructor
+    ✓ derives id and tab index from the App ingredient counter (5 ms)
+    ✓ applies documented defaults when optional config is omitted (2 ms)
+    ✓ preserves explicit config values, including numeric boundaries (2 ms)
+    ✓ only accepts numbers for min and max (1 ms)
+    ✓ treats falsey optional values as absent (1 ms)
+  HTMLIngredient.toHtml text-like ingredients
+    ✓ renders a wide text input for type string (19 ms)
+    ✓ renders a wide text input for type binaryString (3 ms)
+    ✓ renders a wide text input for type byteArray (2 ms)
+    ✓ renders a short text input for type shortString (2 ms)
+    ✓ renders a short text input for type binaryShortString (2 ms)
+    ✓ renders hint, disabled and maxlength attributes when configured (2 ms)
+    ✓ omits hint markup when no hint is supplied (2 ms)
+  HTMLIngredient.toHtml toggleString
+    ✓ renders the text input and every toggle value as a dropdown item (6 ms)
+  HTMLIngredient.toHtml number
+    ✓ renders numeric bounds, step and value (12 ms)
+    ✓ renders empty min and max when they are not numeric (2 ms)
+  HTMLIngredient.toHtml boolean
+    ✓ renders a checked checkbox when the value is truthy (2 ms)
+    ✓ renders an unchecked, disabled checkbox when value is falsey and disabled is set (2 ms)
+  HTMLIngredient.toHtml option
+    ✓ renders options, optgroups and the selected default index (5 ms)
+  HTMLIngredient.toHtml populateOption and populateMultiOption
+    ✓ renders escaped populate values and registers the single-value change handler (4 ms)
+    ✓ serialises array populate values for populateMultiOption and registers its handler (2 ms)
+  HTMLIngredient.toHtml editableOption variants
+    ✓ renders editableOption with the default value and clickable choices (4 ms)
+    ✓ renders editableOptionShort with the default value and clickable choices (2 ms)
+    ✓ defaults to the first editable option when no default index is supplied (2 ms)
+  HTMLIngredient.toHtml text
+    ✓ renders a textarea with the default number of rows (3 ms)
+    ✓ honours a custom row count and disabled state (1 ms)
+  HTMLIngredient.toHtml argSelector
+    ✓ renders selector options with turnon/turnoff data and registers the change handler (2 ms)
+    ✓ defaults missing on/off lists to empty arrays (2 ms)
+  HTMLIngredient.toHtml label and unknown types
+    ✓ renders a label with a hidden argument input (1 ms)
+    ✓ returns an empty string for an unsupported type (1 ms)
+  HTMLIngredient.populateOptionChange
+    ✓ writes the populate value into the targeted argument and notifies the recipe (5 ms)
+    ✓ still dispatches a change event and notifies the recipe when the populate value is empty (2 ms)
+  HTMLIngredient.populateMultiOptionChange
+    ✓ assigns each value to its target argument, then fires change for each target (3 ms)
+  HTMLIngredient.editableOptionClick
+    ✓ copies the clicked option's value into the input and notifies the recipe (2 ms)
+  HTMLIngredient.argSelectorChange
+    ✓ shows and hides argument groups according to the selected option (4 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       34 passed, 34 total
+Snapshots:   0 total
+Time:        1.144 s
+Ran all test suites within paths "test/web/HTMLIngredient.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:42) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/web/HTMLIngredient.test.js
+  HTMLIngredient constructor
+    ✓ derives id and tab index from the App ingredient counter (4 ms)
+    ✓ applies documented defaults when optional config is omitted (2 ms)
+    ✓ preserves explicit config values, including numeric boundaries (2 ms)
+    ✓ only accepts numbers for min and max
+    ✓ treats falsey optional values as absent
+  HTMLIngredient.toHtml text-like ingredients
+    ✓ renders a wide text input for type string (21 ms)
+    ✓ renders a wide text input for type binaryString (4 ms)
+    ✓ renders a wide text input for type byteArray (3 ms)
+    ✓ renders a short text input for type shortString (2 ms)
+    ✓ renders a short text input for type binaryShortString (1 ms)
+    ✓ renders hint, disabled and maxlength attributes when configured (2 ms)
+    ✓ omits hint markup when no hint is supplied (1 ms)
+  HTMLIngredient.toHtml toggleString
+    ✓ renders the text input and every toggle value as a dropdown item (5 ms)
+  HTMLIngredient.toHtml number
+    ✓ renders numeric bounds, step and value (3 ms)
+    ✓ renders empty min and max when they are not numeric (1 ms)
+  HTMLIngredient.toHtml boolean
+    ✓ renders a checked checkbox when the value is truthy (2 ms)
+    ✓ renders an unchecked, disabled checkbox when value is falsey and disabled is set (1 ms)
+  HTMLIngredient.toHtml option
+    ✓ renders options, optgroups and the selected default index (6 ms)
+  HTMLIngredient.toHtml populateOption and populateMultiOption
+    ✓ renders escaped populate values and registers the single-value change handler (4 ms)
+    ✓ serialises array populate values for populateMultiOption and registers its handler (2 ms)
+  HTMLIngredient.toHtml editableOption variants
+    ✓ renders editableOption with the default value and clickable choices (4 ms)
+    ✓ renders editableOptionShort with the default value and clickable choices (2 ms)
+    ✓ defaults to the first editable option when no default index is supplied (2 ms)
+  HTMLIngredient.toHtml text
+    ✓ renders a textarea with the default number of rows (3 ms)
+    ✓ honours a custom row count and disabled state (1 ms)
+  HTMLIngredient.toHtml argSelector
+    ✓ renders selector options with turnon/turnoff data and registers the change handler (2 ms)
+    ✓ defaults missing on/off lists to empty arrays (1 ms)
+  HTMLIngredient.toHtml label and unknown types
+    ✓ renders a label with a hidden argument input (2 ms)
+    ✓ returns an empty string for an unsupported type
+  HTMLIngredient.populateOptionChange
+    ✓ writes the populate value into the targeted argument and notifies the recipe (5 ms)
+    ✓ still dispatches a change event and notifies the recipe when the populate value is empty (2 ms)
+  HTMLIngredient.populateMultiOptionChange
+    ✓ assigns each value to its target argument, then fires change for each target (3 ms)
+  HTMLIngredient.editableOptionClick
+    ✓ copies the clicked option's value into the input and notifies the recipe (2 ms)
+  HTMLIngredient.argSelectorChange
+    ✓ shows and hides argument groups according to the selected option (4 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       34 passed, 34 total
+Snapshots:   0 total
+Time:        1.42 s
+Ran all test suites within paths "test/web/HTMLIngredient.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,159 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/esm/transaction.test.js
+  Transaction construction and mutators
+    ✓ starts with documented defaults and exposes protocol constants (4 ms)
+    ✓ addInput stores input data, defaults optional fields, and returns its index (2 ms)
+    ✓ addInput rejects malformed hashes and out-of-range or non-integer indexes (37 ms)
+    ✓ addOutput stores satoshi values as bigint and returns its index (1 ms)
+    ✓ addOutput rejects invalid scripts and out-of-range satoshi values (7 ms)
+    ✓ setInputScript and setWitness replace data and validate argument types (6 ms)
+    ✓ isCoinbaseHash only accepts a 32-byte all-zero array (2 ms)
+    ✓ isCoinbase requires exactly one input spending the null outpoint (1 ms)
+    ✓ hasWitnesses tracks any non-empty input witness and stripWitnesses clears all of them (1 ms)
+  Transaction sizing and cloning
+    ✓ computes byte length, weight, and virtual size for an empty transaction (1 ms)
+    ✓ accounts for witness data and varint script length boundaries (2 ms)
+    ✓ clone copies transaction state into independent containers (4 ms)
+  Transaction serialization and parsing
+    ✓ serializes a witness transaction to its exact byte representation (1 ms)
+    ✓ round-trips all transaction fields including witness stacks (2 ms)
+    ✓ supports writing at an initial offset without overwriting surrounding bytes
+    ✓ returns the whole supplied buffer when no initial offset is given (1 ms)
+    ✓ strict parsing rejects trailing data while _NO_STRICT accepts it (1 ms)
+    ✓ rejects a witness-marked transaction containing only empty witnesses (1 ms)
+    ✓ preserves the canonical genesis coinbase transaction byte-for-byte (1 ms)
+  Transaction hashes and IDs
+    ✓ computes the known genesis txid in display byte order (3 ms)
+    ✓ witness data changes the wtxid but not the txid (2 ms)
+  Legacy signature hashing
+    ✓ matches canonical legacy sighash vectors and ignores OP_CODESEPARATOR (2 ms)
+    ✓ returns the one-hash sentinel for out-of-range indexes (2 ms)
+    ✓ blanks outputs before the signed input for SIGHASH_SINGLE (1 ms)
+    ✓ applies SIGHASH_NONE and ANYONECANPAY without mutating the transaction (2 ms)
+    ✓ validates the input index, previous output script, and hash type (2 ms)
+  BIP143 signature hashing
+    ✓ matches the canonical native P2WPKH signature hash (1 ms)
+    ✓ binds the amount, outputs, and other inputs according to hash type (3 ms)
+    ✓ rejects invalid argument types (2 ms)
+  BIP341 signature hashing
+    ✓ matches canonical BIP341 vector for input 0 and hash type 0x3 (1 ms)
+    ✓ matches canonical BIP341 vector for input 1 and hash type 0x131 (1 ms)
+    ✓ matches canonical BIP341 vector for input 3 and hash type 0x1 (1 ms)
+    ✓ matches canonical BIP341 vector for input 4 and hash type 0x0 (1 ms)
+    ✓ matches canonical BIP341 vector for input 6 and hash type 0x2
+    ✓ matches canonical BIP341 vector for input 7 and hash type 0x130
+    ✓ matches canonical BIP341 vector for input 8 and hash type 0x129 (1 ms)
+    ✓ incorporates optional annex and tapleaf data deterministically (1 ms)
+    ✓ requires a previous output script and value for every input (1 ms)
+    ✓ requires outputs for output-committing hash types but permits SIGHASH_NONE (2 ms)
+    ✕ uses a zero output commitment for SIGHASH_SINGLE without a matching output
+    ✓ validates hash arguments (2 ms)
+
+  ● BIP341 signature hashing › uses a zero output commitment for SIGHASH_SINGLE without a matching output
+
+    buffer size 174, offset 142
+
+      93 |       return this.buffer;
+      94 |     }
+    > 95 |     throw new Error(`buffer size ${this.buffer.length}, offset ${this.offset}`);
+         |           ^
+      96 |   }
+      97 | }
+      98 | /**
+
+      at BufferWriter.end (src/esm/bufferutils.js:95:11)
+      at Transaction.end [as hashForWitnessV1] (src/esm/transaction.js:408:59)
+      at Object.hashForWitnessV1 (test/esm/transaction.test.js:723:21)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 40 passed, 41 total
+Snapshots:   0 total
+Time:        1.264 s
+Ran all test suites within paths "test/esm/transaction.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/esm/transaction.test.js
+  Transaction construction and mutators
+    ✓ starts with documented defaults and exposes protocol constants (4 ms)
+    ✓ addInput stores input data, defaults optional fields, and returns its index (2 ms)
+    ✓ addInput rejects malformed hashes and out-of-range or non-integer indexes (38 ms)
+    ✓ addOutput stores satoshi values as bigint and returns its index (1 ms)
+    ✓ addOutput rejects invalid scripts and out-of-range satoshi values (3 ms)
+    ✓ setInputScript and setWitness replace data and validate argument types (2 ms)
+    ✓ isCoinbaseHash only accepts a 32-byte all-zero array (1 ms)
+    ✓ isCoinbase requires exactly one input spending the null outpoint (1 ms)
+    ✓ hasWitnesses tracks any non-empty input witness and stripWitnesses clears all of them (1 ms)
+  Transaction sizing and cloning
+    ✓ computes byte length, weight, and virtual size for an empty transaction (1 ms)
+    ✓ accounts for witness data and varint script length boundaries (1 ms)
+    ✓ clone copies transaction state into independent containers (3 ms)
+  Transaction serialization and parsing
+    ✓ serializes a witness transaction to its exact byte representation (1 ms)
+    ✓ round-trips all transaction fields including witness stacks (2 ms)
+    ✓ supports writing at an initial offset without overwriting surrounding bytes (1 ms)
+    ✓ returns the whole supplied buffer when no initial offset is given
+    ✓ strict parsing rejects trailing data while _NO_STRICT accepts it (2 ms)
+    ✓ rejects a witness-marked transaction containing only empty witnesses
+    ✓ preserves the canonical genesis coinbase transaction byte-for-byte
+  Transaction hashes and IDs
+    ✓ computes the known genesis txid in display byte order (2 ms)
+    ✓ witness data changes the wtxid but not the txid (2 ms)
+  Legacy signature hashing
+    ✓ matches canonical legacy sighash vectors and ignores OP_CODESEPARATOR (3 ms)
+    ✓ returns the one-hash sentinel for out-of-range indexes (1 ms)
+    ✓ blanks outputs before the signed input for SIGHASH_SINGLE (1 ms)
+    ✓ applies SIGHASH_NONE and ANYONECANPAY without mutating the transaction (2 ms)
+    ✓ validates the input index, previous output script, and hash type (2 ms)
+  BIP143 signature hashing
+    ✓ matches the canonical native P2WPKH signature hash (1 ms)
+    ✓ binds the amount, outputs, and other inputs according to hash type (2 ms)
+    ✓ rejects invalid argument types (2 ms)
+  BIP341 signature hashing
+    ✓ matches canonical BIP341 vector for input 0 and hash type 0x3 (1 ms)
+    ✓ matches canonical BIP341 vector for input 1 and hash type 0x131 (1 ms)
+    ✓ matches canonical BIP341 vector for input 3 and hash type 0x1 (1 ms)
+    ✓ matches canonical BIP341 vector for input 4 and hash type 0x0 (1 ms)
+    ✓ matches canonical BIP341 vector for input 6 and hash type 0x2 (1 ms)
+    ✓ matches canonical BIP341 vector for input 7 and hash type 0x130
+    ✓ matches canonical BIP341 vector for input 8 and hash type 0x129 (1 ms)
+    ✓ incorporates optional annex and tapleaf data deterministically (2 ms)
+    ✓ requires a previous output script and value for every input (1 ms)
+    ✓ requires outputs for output-committing hash types but permits SIGHASH_NONE (1 ms)
+    ✕ uses a zero output commitment for SIGHASH_SINGLE without a matching output (1 ms)
+    ✓ validates hash arguments (2 ms)
+
+  ● BIP341 signature hashing › uses a zero output commitment for SIGHASH_SINGLE without a matching output
+
+    buffer size 174, offset 142
+
+      93 |       return this.buffer;
+      94 |     }
+    > 95 |     throw new Error(`buffer size ${this.buffer.length}, offset ${this.offset}`);
+         |           ^
+      96 |   }
+      97 | }
+      98 | /**
+
+      at BufferWriter.end (src/esm/bufferutils.js:95:11)
+      at Transaction.end [as hashForWitnessV1] (src/esm/transaction.js:408:59)
+      at Object.hashForWitnessV1 (test/esm/transaction.test.js:723:21)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 40 passed, 41 total
+Snapshots:   0 total
+Time:        2.012 s
+Ran all test suites within paths "test/esm/transaction.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

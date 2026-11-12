@@ -1,0 +1,117 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/cjs/payments/p2tr.test.js
+  p2tr input requirements and schema validation
+    ✓ throws when no usable identifying data is supplied (21 ms)
+    ✓ rejects wrongly sized buffers and non-buffer witness elements (6 ms)
+    ✓ rejects malformed script trees before deriving any keys (2 ms)
+    ✓ validate:false skips consistency checks but not the input schema (2 ms)
+  derivation from a public key, output, address, and network
+    ✓ derives the mainnet address and P2TR output from a pubkey (3 ms)
+    ✓ derives the pubkey and output from a mainnet address (1 ms)
+    ✓ derives the address and pubkey from a P2TR output script (1 ms)
+    ✓ uses a supplied testnet or regtest network in the encoded address (2 ms)
+    ✓ preserves an explicitly supplied (empty) input field (1 ms)
+    ✓ tweaks a BIP86 internal key when no merkle root is supplied (4 ms)
+    ✓ derives the merkle root and tweaked key from a single-leaf script tree (2 ms)
+  key-path witnesses
+    ✓ constructs a key-path witness from a signature (1 ms)
+    ✓ extracts a signature from a supplied key-path witness
+    ✓ accepts a 65-byte signature with a sighash byte
+    ✓ ignores a trailing annex for derivation but keeps it in witness
+    ✓ rejects a signature that disagrees with a key-path witness (1 ms)
+  script trees and constructed script-path witnesses
+    ✓ constructs the witness for the first leaf, including its control block (4 ms)
+    ✓ constructs the witness for a non-default leaf version (2 ms)
+    ✓ constructs a path-less witness from a hash and matching redeem script (2 ms)
+    ✓ uses the top-level redeemVersion before the redeem and default values (2 ms)
+    ✓ omits a constructed witness when the redeem script is not in the tree
+    ✓ rejects a merkle root that does not match the script tree (1 ms)
+    ✓ rejects a redeem script that is not present in the tree (2 ms)
+  derivation from script-path witnesses
+    ✓ derives the output key, address, and merkle root from a witness (2 ms)
+    ✓ reconstructs the redeem script, stack, and leaf version (2 ms)
+    ✓ removes an annex from script-path derivation while preserving it in witness (2 ms)
+  extended validation
+    ✓ rejects a pubkey with no valid x-only point (1 ms)
+    ✓ rejects an internal pubkey that is not a valid curve point (1 ms)
+    ✓ rejects an output script without OP_1 and a 32-byte push (1 ms)
+    ✓ rejects mismatched pubkey, output, and address combinations (2 ms)
+    ✓ rejects a supplied pubkey that differs from the tweaked internal key (2 ms)
+    ✓ rejects addresses for another network, version, or payload length (7 ms)
+    ✓ validates control-block length and merkle-path shape (2 ms)
+    ✓ rejects an invalid or inconsistent internal key in the control block (2 ms)
+    ✓ rejects a witness whose output key or parity disagrees with metadata (3 ms)
+    ✓ rejects inconsistent redeem version, output, witness, or empty output (3 ms)
+    ✓ fails only when validation requires an ECC library (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       37 passed, 37 total
+Snapshots:   0 total
+Time:        6.157 s
+Ran all test suites within paths "test/cjs/payments/p2tr.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/cjs/payments/p2tr.test.js
+  p2tr input requirements and schema validation
+    ✓ throws when no usable identifying data is supplied (50 ms)
+    ✓ rejects wrongly sized buffers and non-buffer witness elements (6 ms)
+    ✓ rejects malformed script trees before deriving any keys (2 ms)
+    ✓ validate:false skips consistency checks but not the input schema (25 ms)
+  derivation from a public key, output, address, and network
+    ✓ derives the mainnet address and P2TR output from a pubkey (3 ms)
+    ✓ derives the pubkey and output from a mainnet address (1 ms)
+    ✓ derives the address and pubkey from a P2TR output script (1 ms)
+    ✓ uses a supplied testnet or regtest network in the encoded address (1 ms)
+    ✓ preserves an explicitly supplied (empty) input field (1 ms)
+    ✓ tweaks a BIP86 internal key when no merkle root is supplied (3 ms)
+    ✓ derives the merkle root and tweaked key from a single-leaf script tree (3 ms)
+  key-path witnesses
+    ✓ constructs a key-path witness from a signature (1 ms)
+    ✓ extracts a signature from a supplied key-path witness (1 ms)
+    ✓ accepts a 65-byte signature with a sighash byte (1 ms)
+    ✓ ignores a trailing annex for derivation but keeps it in witness (1 ms)
+    ✓ rejects a signature that disagrees with a key-path witness (1 ms)
+  script trees and constructed script-path witnesses
+    ✓ constructs the witness for the first leaf, including its control block (4 ms)
+    ✓ constructs the witness for a non-default leaf version (2 ms)
+    ✓ constructs a path-less witness from a hash and matching redeem script (2 ms)
+    ✓ uses the top-level redeemVersion before the redeem and default values (2 ms)
+    ✓ omits a constructed witness when the redeem script is not in the tree
+    ✓ rejects a merkle root that does not match the script tree (1 ms)
+    ✓ rejects a redeem script that is not present in the tree (2 ms)
+  derivation from script-path witnesses
+    ✓ derives the output key, address, and merkle root from a witness (2 ms)
+    ✓ reconstructs the redeem script, stack, and leaf version (2 ms)
+    ✓ removes an annex from script-path derivation while preserving it in witness (2 ms)
+  extended validation
+    ✓ rejects a pubkey with no valid x-only point (1 ms)
+    ✓ rejects an internal pubkey that is not a valid curve point (1 ms)
+    ✓ rejects an output script without OP_1 and a 32-byte push (2 ms)
+    ✓ rejects mismatched pubkey, output, and address combinations (3 ms)
+    ✓ rejects a supplied pubkey that differs from the tweaked internal key (1 ms)
+    ✓ rejects addresses for another network, version, or payload length (2 ms)
+    ✓ validates control-block length and merkle-path shape (3 ms)
+    ✓ rejects an invalid or inconsistent internal key in the control block (2 ms)
+    ✓ rejects a witness whose output key or parity disagrees with metadata (3 ms)
+    ✓ rejects inconsistent redeem version, output, witness, or empty output (4 ms)
+    ✓ fails only when validation requires an ECC library (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       37 passed, 37 total
+Snapshots:   0 total
+Time:        1.675 s, estimated 5 s
+Ran all test suites within paths "test/cjs/payments/p2tr.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

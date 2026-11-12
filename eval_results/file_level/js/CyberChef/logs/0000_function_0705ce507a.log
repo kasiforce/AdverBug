@@ -1,0 +1,199 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/lib/ConvertCoordinates.test.js (7.045 s)
+  public exports
+    ✓ exposes the supported coordinate formats in display order (2 ms)
+    ✓ exposes the conversion and parsing helpers (2 ms)
+  realDelim
+    ✓ maps the Auto delimiter name to "Auto" (1 ms)
+    ✓ maps the Space delimiter name to " " (1 ms)
+    ✓ maps the \n delimiter name to "
+"
+    ✓ maps the Comma delimiter name to ","
+    ✓ maps the Semi-colon delimiter name to ";" (1 ms)
+    ✓ maps the Colon delimiter name to ":"
+    ✓ returns undefined for an unknown delimiter name
+  findDelim
+    ✓ detects the delimiter used in "51.5074, -0.1278"
+    ✓ detects the delimiter used in "51.5074; -0.1278"
+    ✓ detects the delimiter used in "51:30:26" (1 ms)
+    ✓ detects the delimiter used in "  51.5074, -0.1278  "
+    ✓ detects a compass direction before each coordinate
+    ✓ detects a compass direction after each coordinate
+    ✓ returns null when no supported delimiter can be found
+    ✓ does not accept more than two coordinate fields
+  findDirs
+    ✓ uses explicit compass directions and normalizes their case (1 ms)
+    ✓ infers latitude and longitude directions from signed values
+    ✓ returns an empty longitude direction when only one coordinate is present
+    ✓ supports direction-aware input delimiters (1 ms)
+  findFormat
+    ✓ detects "51.5074, -0.1278" with delimiter "," as Decimal Degrees
+    ✓ detects "51.5074" with delimiter "," as Decimal Degrees
+    ✓ detects "51 30.444 N, 0 7.668 W" with delimiter "," as Degrees Decimal Minutes
+    ✓ detects "51° 30' 26.64\" N, 0° 7' 40.08\" W" with delimiter "," as Degrees Minutes Seconds
+    ✓ detects "gcpvj0duq0" with delimiter "," as Geohash (1 ms)
+    ✓ detects "30 N 699319.6208 5708878.3041" with delimiter "," as Universal Transverse Mercator
+    ✓ detects "30U XC 99319 08878" with delimiter "," as Military Grid Reference System
+    ✓ detects "TQ 31979 79606" with delimiter "," as Ordnance Survey National Grid
+    ✓ detects DMS input when the delimiter is a compass direction
+    ✓ returns null for unrecognized input
+  convertCoordinates output formatting
+    ✓ converts decimal degrees to decimal degrees using the requested output delimiter (1 ms)
+    ✓ converts decimal degrees to degrees minutes seconds
+    ✓ places compass directions after degree-based output (1 ms)
+    ✓ places compass directions before degree-based output
+    ✓ converts decimal degrees to degrees decimal minutes
+    ✓ converts decimal degrees to a geohash at the requested precision (1 ms)
+    ✓ converts decimal degrees to Universal Transverse Mercator
+    ✓ converts decimal degrees to Military Grid Reference System with adjusted precision (1 ms)
+    ✓ caps MGRS precision at ten digits
+    ✓ caps Ordnance Survey National Grid precision at ten digits (1 ms)
+    ✓ converts decimal degrees to Ordnance Survey National Grid (1 ms)
+    ✓ translates the newline output delimiter to a real newline
+  convertCoordinates input formats
+    ✓ converts DMS input to decimal degrees and applies the western direction (1 ms)
+    ✓ converts DMS input split by following compass directions
+    ✓ converts DMS input split by preceding compass directions
+    ✓ converts a single DMS value
+    ✓ converts a single DDM value (1 ms)
+    ✓ applies southern and western hemispheres when the degree values are unsigned
+    ✓ honors negative degree values in DMS input
+    ✓ honors negative degree values in DDM input (1 ms)
+    ✓ converts DDM input to decimal degrees
+    ✓ converts a geohash to decimal degrees
+    ✓ converts Universal Transverse Mercator input to decimal degrees
+    ✓ converts Military Grid Reference System input to decimal degrees (1 ms)
+    ✓ converts Ordnance Survey National Grid input to decimal degrees (1 ms)
+    ✓ preserves a geohash when converting between non-degree formats
+    ✓ preserves UTM input through the no-change conversion path (1 ms)
+  convertCoordinates automatic detection and boundaries
+    ✓ automatically detects a comma delimiter and Decimal Degrees input
+    ✓ automatically detects compass directions and their position
+    ✓ automatically detects a semicolon input and translates a colon output (1 ms)
+    ✓ clamps negative precision to zero
+    ✓ handles a single coordinate without creating a longitude value
+    ✓ throws when an automatic input delimiter cannot be detected (1 ms)
+    ✓ throws when an automatic input format cannot be detected
+  convertCoordinates errors
+    ✓ throws for an unknown input format
+    ✓ throws when the output format produces no converted value
+    ✓ rejects malformed Degrees Minutes Seconds input
+    ✓ rejects malformed Degrees Decimal Minutes input (1 ms)
+    ✓ rejects malformed Decimal Degrees input
+    ✓ rejects a malformed single Degrees Minutes Seconds value
+    ✓ rejects a malformed single Degrees Decimal Minutes value (1 ms)
+    ✓ rejects a malformed single Decimal Degrees value
+    ✓ throws when coordinates fall outside the Ordnance Survey grid
+
+Test Suites: 1 passed, 1 total
+Tests:       74 passed, 74 total
+Snapshots:   0 total
+Time:        7.838 s
+Ran all test suites within paths "test/core/lib/ConvertCoordinates.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/core/lib/ConvertCoordinates.test.js
+  public exports
+    ✓ exposes the supported coordinate formats in display order (3 ms)
+    ✓ exposes the conversion and parsing helpers
+  realDelim
+    ✓ maps the Auto delimiter name to "Auto"
+    ✓ maps the Space delimiter name to " "
+    ✓ maps the \n delimiter name to "
+"
+    ✓ maps the Comma delimiter name to ","
+    ✓ maps the Semi-colon delimiter name to ";"
+    ✓ maps the Colon delimiter name to ":" (1 ms)
+    ✓ returns undefined for an unknown delimiter name
+  findDelim
+    ✓ detects the delimiter used in "51.5074, -0.1278" (1 ms)
+    ✓ detects the delimiter used in "51.5074; -0.1278"
+    ✓ detects the delimiter used in "51:30:26"
+    ✓ detects the delimiter used in "  51.5074, -0.1278  " (1 ms)
+    ✓ detects a compass direction before each coordinate
+    ✓ detects a compass direction after each coordinate
+    ✓ returns null when no supported delimiter can be found
+    ✓ does not accept more than two coordinate fields (1 ms)
+  findDirs
+    ✓ uses explicit compass directions and normalizes their case
+    ✓ infers latitude and longitude directions from signed values (1 ms)
+    ✓ returns an empty longitude direction when only one coordinate is present
+    ✓ supports direction-aware input delimiters
+  findFormat
+    ✓ detects "51.5074, -0.1278" with delimiter "," as Decimal Degrees (1 ms)
+    ✓ detects "51.5074" with delimiter "," as Decimal Degrees
+    ✓ detects "51 30.444 N, 0 7.668 W" with delimiter "," as Degrees Decimal Minutes (1 ms)
+    ✓ detects "51° 30' 26.64\" N, 0° 7' 40.08\" W" with delimiter "," as Degrees Minutes Seconds
+    ✓ detects "gcpvj0duq0" with delimiter "," as Geohash
+    ✓ detects "30 N 699319.6208 5708878.3041" with delimiter "," as Universal Transverse Mercator
+    ✓ detects "30U XC 99319 08878" with delimiter "," as Military Grid Reference System (1 ms)
+    ✓ detects "TQ 31979 79606" with delimiter "," as Ordnance Survey National Grid
+    ✓ detects DMS input when the delimiter is a compass direction
+    ✓ returns null for unrecognized input
+  convertCoordinates output formatting
+    ✓ converts decimal degrees to decimal degrees using the requested output delimiter (1 ms)
+    ✓ converts decimal degrees to degrees minutes seconds
+    ✓ places compass directions after degree-based output
+    ✓ places compass directions before degree-based output (1 ms)
+    ✓ converts decimal degrees to degrees decimal minutes
+    ✓ converts decimal degrees to a geohash at the requested precision
+    ✓ converts decimal degrees to Universal Transverse Mercator
+    ✓ converts decimal degrees to Military Grid Reference System with adjusted precision (1 ms)
+    ✓ caps MGRS precision at ten digits (1 ms)
+    ✓ caps Ordnance Survey National Grid precision at ten digits (1 ms)
+    ✓ converts decimal degrees to Ordnance Survey National Grid
+    ✓ translates the newline output delimiter to a real newline
+  convertCoordinates input formats
+    ✓ converts DMS input to decimal degrees and applies the western direction
+    ✓ converts DMS input split by following compass directions
+    ✓ converts DMS input split by preceding compass directions (1 ms)
+    ✓ converts a single DMS value
+    ✓ converts a single DDM value
+    ✓ applies southern and western hemispheres when the degree values are unsigned (1 ms)
+    ✓ honors negative degree values in DMS input
+    ✓ honors negative degree values in DDM input
+    ✓ converts DDM input to decimal degrees
+    ✓ converts a geohash to decimal degrees (1 ms)
+    ✓ converts Universal Transverse Mercator input to decimal degrees
+    ✓ converts Military Grid Reference System input to decimal degrees
+    ✓ converts Ordnance Survey National Grid input to decimal degrees (1 ms)
+    ✓ preserves a geohash when converting between non-degree formats
+    ✓ preserves UTM input through the no-change conversion path (1 ms)
+  convertCoordinates automatic detection and boundaries
+    ✓ automatically detects a comma delimiter and Decimal Degrees input
+    ✓ automatically detects compass directions and their position
+    ✓ automatically detects a semicolon input and translates a colon output (1 ms)
+    ✓ clamps negative precision to zero
+    ✓ handles a single coordinate without creating a longitude value
+    ✓ throws when an automatic input delimiter cannot be detected (1 ms)
+    ✓ throws when an automatic input format cannot be detected
+  convertCoordinates errors
+    ✓ throws for an unknown input format (1 ms)
+    ✓ throws when the output format produces no converted value
+    ✓ rejects malformed Degrees Minutes Seconds input (1 ms)
+    ✓ rejects malformed Degrees Decimal Minutes input
+    ✓ rejects malformed Decimal Degrees input
+    ✓ rejects a malformed single Degrees Minutes Seconds value (1 ms)
+    ✓ rejects a malformed single Degrees Decimal Minutes value
+    ✓ rejects a malformed single Decimal Degrees value (1 ms)
+    ✓ throws when coordinates fall outside the Ordnance Survey grid
+
+Test Suites: 1 passed, 1 total
+Tests:       74 passed, 74 total
+Snapshots:   0 total
+Time:        1.212 s, estimated 8 s
+Ran all test suites within paths "test/core/lib/ConvertCoordinates.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

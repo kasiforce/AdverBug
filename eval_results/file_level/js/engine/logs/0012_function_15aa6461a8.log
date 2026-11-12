@@ -1,0 +1,159 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/shader-lib/programs/lit-shader.test.js
+  LitShader
+    #constructor
+      ✓ defaults to GLSL and initializes observable state (7 ms)
+      ✓ selects WGSL on a WebGPU device when allowed
+      ✓ forces GLSL when allowWGSL is false
+      ✓ uses GLSL on WebGPU when custom chunks only override GLSL (1 ms)
+      ✓ uses WGSL on WebGPU when custom chunks include WGSL overrides (1 ms)
+      ✓ maps userAttributes from semantic keys to attribute names (1 ms)
+      ✓ registers builtin attributes referenced by custom chunks and merges the chunks (7 ms)
+      ✓ copies engine chunks and does not observe later engine changes (1 ms)
+      ✓ lets user chunks override engine chunks
+      ✓ resolves shader pass info for forward, prepass and pick (2 ms)
+      ✓ detects a custom shadow pass
+      ✓ derives lighting, reflection and normal requirements from options (1 ms)
+      ✓ suppresses normals on a shadow pass (1 ms)
+    #fDefineSet / #sharedDefineSet
+      ✓ adds fragment defines only when the condition is true (1 ms)
+      ✓ adds shared defines to both shader stages only when the condition is true
+    #generateVertexShader
+      ✓ generates the base varying and exposes varyings as includes (1 ms)
+      ✓ formats WGSL varyings with WGSL primitive types (1 ms)
+      ✓ sets nine-slicing and linear depth defines and varyings
+      ✓ emits dynamic-refraction model scale only for forward passes (1 ms)
+      ✓ adds normal attributes and varyings when normals are needed
+      ✓ adds tangent/binormal varyings when tangents are available (1 ms)
+      ✓ uses GGX_SPECULAR with object space up when tangents are unavailable
+      ✓ adds default instancing attributes when the default instancing chunk is used (1 ms)
+      ✓ does not add default instancing attributes when a custom instancing chunk is used (1 ms)
+      ✓ generates UV set defines, attributes and unmodified-UV varyings
+      ✓ deduplicates texture transforms by transform id and UV set
+      ✓ handles vertex colors with optional gamma conversion (1 ms)
+      ✓ adds MSDF attributes when MSDF text attributes are enabled (1 ms)
+      ✓ adds shared morphing defines and the morph vertex id attribute
+      ✓ ignores morph texture mode when no morph target is enabled
+      ✓ adds skin/bone attributes and shared SKIN define (1 ms)
+      ✓ adds shared BATCH define and omits bone weights when batching
+      ✓ adds shared screen-space define and vertex-only pixel snap define (1 ms)
+    #generateFragmentShader
+      ✓ exposes frontend code as includes and writes the fragment shader (1 ms)
+      ✓ defaults missing frontend code to empty includes
+      ✓ adds clip-plane defines for forward passes (1 ms)
+      ✓ prepares pick passes without render feature defines
+      ✓ prepares prepass with alpha test and opacity dither (1 ms)
+      ✓ always sets the opacity dither define on prepass even without alpha test
+      ✓ prepares a shadow pass with the alpha test define only (1 ms)
+      ✓ prepares default forward defines and option name mappings (1 ms)
+      ✓ adds the specular feature group and reflections
+      ✓ adds LIT_SPECULAR_OR_REFLECTION for reflections without specular (1 ms)
+      ✓ maps material feature flags to fragment defines (1 ms)
+      ✓ adds ambient when the lightmap has no ambient or is disabled (without tangents)
+      ✓ uses scene environment uniform names and encoding decode functions (1 ms)
+      ✓ maps enum option values to their shader define names
+    lighting defines
+      ✓ reports LIGHT_COUNT and only uses clustered defines when clustered lighting is on
+      ✓ adds clustered lighting feature defines for all enabled options (1 ms)
+      ✓ suppresses clustered shadows when noShadow is set (1 ms)
+      ✓ emits per-light defines only for directional lights under clustered lighting
+      ✓ emits directional light shadow defines including cascades (1 ms)
+      ✓ suppresses per-light shadow defines when noShadow is set (1 ms)
+      ✓ emits omni cookie and VSM point-shadow defines (1 ms)
+      ✓ emits spot cookie transform/falloff and PCSS z-buffer defines (1 ms)
+      ✓ does not emit cookie defines for incompatible light/cookie combinations
+      ✓ enables area lights from light shapes and maps their shape names (1 ms)
+      ✓ adds z-buffer shadow sampling define on WebGPU
+
+Test Suites: 1 passed, 1 total
+Tests:       58 passed, 58 total
+Snapshots:   0 total
+Time:        1.104 s
+Ran all test suites within paths "test/scene/shader-lib/programs/lit-shader.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/shader-lib/programs/lit-shader.test.js
+  LitShader
+    #constructor
+      ✓ defaults to GLSL and initializes observable state (10 ms)
+      ✓ selects WGSL on a WebGPU device when allowed (1 ms)
+      ✓ forces GLSL when allowWGSL is false
+      ✓ uses GLSL on WebGPU when custom chunks only override GLSL (1 ms)
+      ✓ uses WGSL on WebGPU when custom chunks include WGSL overrides (1 ms)
+      ✓ maps userAttributes from semantic keys to attribute names (1 ms)
+      ✓ registers builtin attributes referenced by custom chunks and merges the chunks (1 ms)
+      ✓ copies engine chunks and does not observe later engine changes
+      ✓ lets user chunks override engine chunks
+      ✓ resolves shader pass info for forward, prepass and pick (2 ms)
+      ✓ detects a custom shadow pass (1 ms)
+      ✓ derives lighting, reflection and normal requirements from options (1 ms)
+      ✓ suppresses normals on a shadow pass (1 ms)
+    #fDefineSet / #sharedDefineSet
+      ✓ adds fragment defines only when the condition is true
+      ✓ adds shared defines to both shader stages only when the condition is true
+    #generateVertexShader
+      ✓ generates the base varying and exposes varyings as includes (2 ms)
+      ✓ formats WGSL varyings with WGSL primitive types
+      ✓ sets nine-slicing and linear depth defines and varyings (1 ms)
+      ✓ emits dynamic-refraction model scale only for forward passes (1 ms)
+      ✓ adds normal attributes and varyings when normals are needed (1 ms)
+      ✓ adds tangent/binormal varyings when tangents are available
+      ✓ uses GGX_SPECULAR with object space up when tangents are unavailable (1 ms)
+      ✓ adds default instancing attributes when the default instancing chunk is used (1 ms)
+      ✓ does not add default instancing attributes when a custom instancing chunk is used (1 ms)
+      ✓ generates UV set defines, attributes and unmodified-UV varyings (1 ms)
+      ✓ deduplicates texture transforms by transform id and UV set (1 ms)
+      ✓ handles vertex colors with optional gamma conversion (1 ms)
+      ✓ adds MSDF attributes when MSDF text attributes are enabled (1 ms)
+      ✓ adds shared morphing defines and the morph vertex id attribute (1 ms)
+      ✓ ignores morph texture mode when no morph target is enabled
+      ✓ adds skin/bone attributes and shared SKIN define (1 ms)
+      ✓ adds shared BATCH define and omits bone weights when batching (1 ms)
+      ✓ adds shared screen-space define and vertex-only pixel snap define
+    #generateFragmentShader
+      ✓ exposes frontend code as includes and writes the fragment shader (1 ms)
+      ✓ defaults missing frontend code to empty includes (1 ms)
+      ✓ adds clip-plane defines for forward passes
+      ✓ prepares pick passes without render feature defines (1 ms)
+      ✓ prepares prepass with alpha test and opacity dither (1 ms)
+      ✓ always sets the opacity dither define on prepass even without alpha test
+      ✓ prepares a shadow pass with the alpha test define only (1 ms)
+      ✓ prepares default forward defines and option name mappings (1 ms)
+      ✓ adds the specular feature group and reflections (1 ms)
+      ✓ adds LIT_SPECULAR_OR_REFLECTION for reflections without specular (1 ms)
+      ✓ maps material feature flags to fragment defines (2 ms)
+      ✓ adds ambient when the lightmap has no ambient or is disabled (without tangents) (1 ms)
+      ✓ uses scene environment uniform names and encoding decode functions
+      ✓ maps enum option values to their shader define names (1 ms)
+    lighting defines
+      ✓ reports LIGHT_COUNT and only uses clustered defines when clustered lighting is on (1 ms)
+      ✓ adds clustered lighting feature defines for all enabled options (1 ms)
+      ✓ suppresses clustered shadows when noShadow is set (1 ms)
+      ✓ emits per-light defines only for directional lights under clustered lighting
+      ✓ emits directional light shadow defines including cascades (2 ms)
+      ✓ suppresses per-light shadow defines when noShadow is set
+      ✓ emits omni cookie and VSM point-shadow defines (1 ms)
+      ✓ emits spot cookie transform/falloff and PCSS z-buffer defines (1 ms)
+      ✓ does not emit cookie defines for incompatible light/cookie combinations
+      ✓ enables area lights from light shapes and maps their shape names (1 ms)
+      ✓ adds z-buffer shadow sampling define on WebGPU (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       58 passed, 58 total
+Snapshots:   0 total
+Time:        1.463 s, estimated 2 s
+Ran all test suites within paths "test/scene/shader-lib/programs/lit-shader.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

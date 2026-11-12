@@ -1,0 +1,85 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:22) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/cmap.test.js
+  cmap.parse
+    ✓ exposes parse and make on the default export (2 ms)
+    ✓ parses a format 4 subtable using idDelta (3 ms)
+    ✓ parses a format 4 subtable that uses idRangeOffset and does not adjust zero glyphs
+    ✓ parses a format 12 subtable and increments glyph ids within a group (1 ms)
+    ✓ parses a format 13 subtable using the same glyph id for every code (1 ms)
+    ✓ parses a Macintosh format 0 subtable and remaps high bytes through the Mac encoding (1 ms)
+    ✓ accepts platform 0 Unicode subtable records (1 ms)
+    ✓ prefers the last supported subtable record when several are present
+    ✓ parses format 14 variation selectors as a supplement to format 4 (2 ms)
+    ✓ ignores a platform 0/encoding 5 record that is not actually format 14
+    ✓ throws when only an unsupported/format-14-only subtable is available (17 ms)
+    ✓ throws for a non-zero cmap version (1 ms)
+    ✓ throws a descriptive error for an unsupported subtable format
+  parseCmapTableFormat0 (exported helper)
+    ✓ decodes the index map when given a parser positioned after the format field
+  parseCmapTableFormat14 (exported helper)
+    ✓ reads default and non-default UVS tables (1 ms)
+  makeCmapTable
+    ✓ emits a terminator-only format 4 table for an empty glyph set (1 ms)
+    ✓ creates format 4 segments and merges runs with the same delta (2 ms)
+    ✓ adds a format 12 subtable when a glyph uses a supplementary-plane codepoint (1 ms)
+    ✓ does not merge non-adjacent codepoints (1 ms)
+    ✓ encodes a table whose size matches sizeOf and can be parsed back (format 4) (1 ms)
+    ✓ encodes a supplementary table so that it round-trips through format 12 (1 ms)
+    ✓ keeps a BMP table within the maximum format 4 segment budget (20 ms)
+    ✓ falls back to a terminator-only format 4 when the BMP segment budget overflows (11 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       23 passed, 23 total
+Snapshots:   0 total
+Time:        0.482 s
+Ran all test suites within paths "test/tables/cmap.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:36) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/cmap.test.js
+  cmap.parse
+    ✓ exposes parse and make on the default export (2 ms)
+    ✓ parses a format 4 subtable using idDelta (2 ms)
+    ✓ parses a format 4 subtable that uses idRangeOffset and does not adjust zero glyphs (1 ms)
+    ✓ parses a format 12 subtable and increments glyph ids within a group (1 ms)
+    ✓ parses a format 13 subtable using the same glyph id for every code (1 ms)
+    ✓ parses a Macintosh format 0 subtable and remaps high bytes through the Mac encoding (1 ms)
+    ✓ accepts platform 0 Unicode subtable records
+    ✓ prefers the last supported subtable record when several are present (1 ms)
+    ✓ parses format 14 variation selectors as a supplement to format 4 (1 ms)
+    ✓ ignores a platform 0/encoding 5 record that is not actually format 14 (1 ms)
+    ✓ throws when only an unsupported/format-14-only subtable is available (23 ms)
+    ✓ throws for a non-zero cmap version (1 ms)
+    ✓ throws a descriptive error for an unsupported subtable format (1 ms)
+  parseCmapTableFormat0 (exported helper)
+    ✓ decodes the index map when given a parser positioned after the format field
+  parseCmapTableFormat14 (exported helper)
+    ✓ reads default and non-default UVS tables
+  makeCmapTable
+    ✓ emits a terminator-only format 4 table for an empty glyph set (1 ms)
+    ✓ creates format 4 segments and merges runs with the same delta (1 ms)
+    ✓ adds a format 12 subtable when a glyph uses a supplementary-plane codepoint
+    ✓ does not merge non-adjacent codepoints
+    ✓ encodes a table whose size matches sizeOf and can be parsed back (format 4) (1 ms)
+    ✓ encodes a supplementary table so that it round-trips through format 12
+    ✓ keeps a BMP table within the maximum format 4 segment budget (26 ms)
+    ✓ falls back to a terminator-only format 4 when the BMP segment budget overflows (21 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       23 passed, 23 total
+Snapshots:   0 total
+Time:        0.675 s, estimated 1 s
+Ran all test suites within paths "test/tables/cmap.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

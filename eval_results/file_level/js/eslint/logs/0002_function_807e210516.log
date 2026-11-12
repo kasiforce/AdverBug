@@ -1,0 +1,779 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/rules/utils/ast-utils.test.js
+  ast-utils exported constants
+    ✓ LINEBREAKS contains all ECMAScript line terminators (3 ms)
+    ✓ LINEBREAK_MATCHER matches every line terminator sequence (1 ms)
+    ✓ SHEBANG_MATCHER captures the interpreter line
+    ✓ STATEMENT_LIST_PARENTS contains the statement-list node types (1 ms)
+    ✓ COMMENTS_IGNORE_PATTERN recognizes directive-like comments (1 ms)
+    ✓ ECMASCRIPT_GLOBALS contains standard ECMAScript globals only (2 ms)
+    ✓ createGlobalLinebreakMatcher returns a fresh global matcher
+  punctuation token predicates
+    ✓ isArrowToken matches only its punctuator (1 ms)
+    ✓ isClosingBraceToken matches only its punctuator
+    ✓ isClosingBracketToken matches only its punctuator
+    ✓ isClosingParenToken matches only its punctuator
+    ✓ isColonToken matches only its punctuator (1 ms)
+    ✓ isCommaToken matches only its punctuator
+    ✓ isDotToken matches only its punctuator
+    ✓ isQuestionDotToken matches only its punctuator
+    ✓ isSemicolonToken matches only its punctuator (1 ms)
+    ✓ isOpeningBraceToken matches only its punctuator
+    ✓ isOpeningBracketToken matches only its punctuator
+    ✓ isOpeningParenToken matches only its punctuator (1 ms)
+    ✓ isEqToken matches only its punctuator
+    ✓ isNotClosingBraceToken negates the matching predicate
+    ✓ isNotClosingBracketToken negates the matching predicate
+    ✓ isNotClosingParenToken negates the matching predicate (1 ms)
+    ✓ isNotColonToken negates the matching predicate
+    ✓ isNotCommaToken negates the matching predicate
+    ✓ isNotDotToken negates the matching predicate
+    ✓ isNotQuestionDotToken negates the matching predicate
+    ✓ isNotOpeningBraceToken negates the matching predicate (1 ms)
+    ✓ isNotOpeningBracketToken negates the matching predicate
+    ✓ isNotOpeningParenToken negates the matching predicate
+    ✓ isNotSemicolonToken negates the matching predicate
+    ✓ isCommentToken recognizes line, block and shebang comments (1 ms)
+    ✓ isKeywordToken recognizes keyword tokens only
+    ✓ isTokenOnSameLine compares token line locations
+  node classification helpers
+    ✓ isStringLiteral recognizes string literals and template literals (10 ms)
+    ✓ isBreakableStatement recognizes breakable statement types (7 ms)
+    ✓ isNullLiteral only accepts actual null literals (3 ms)
+    ✓ isNullOrUndefined recognizes null, undefined and void expressions (2 ms)
+    ✓ isFunction recognizes all function node types (3 ms)
+    ✓ isLoop recognizes loop statements only (1 ms)
+    ✓ isInLoop walks up to the nearest function boundary (2 ms)
+    ✓ isCallee checks whether a node is the callee of a call (1 ms)
+    ✓ getUpperFunction returns the nearest enclosing function (2 ms)
+    ✓ isES5Constructor treats capitalized names as constructors
+    ✓ isSurroundedBy checks the first and last characters (1 ms)
+  comment and scope helpers
+    ✓ isDirectiveComment identifies ESLint directive comments
+    ✓ getModifyingReferences keeps only first writes per identifier (1 ms)
+    ✓ getVariableByName searches the scope chain (1 ms)
+    ✓ isReferenceToGlobalVariable recognizes free global references (2 ms)
+    ✓ isReferenceToGlobalVariable sees globals from inner scopes (1 ms)
+    ✓ isConstant determines constant truthiness and constant values (14 ms)
+    ✓ isConstant rejects shadowed undefined and Boolean (2 ms)
+    ✓ isPropertyDescriptor handles Object and Reflect defineProperty calls (2 ms)
+    ✓ isPropertyDescriptor handles descriptor maps for create and defineProperties (1 ms)
+    ✓ isPropertyDescriptor rejects objects outside descriptor positions (1 ms)
+    ✓ isPropertyDescriptor rejects shadowed Object globals (1 ms)
+  isDefaultThisBinding
+    ✓ evaluates this binding for function foo() {} (2 ms)
+    ✓ evaluates this binding for function Foo() {} (1 ms)
+    ✓ evaluates this binding for ({ foo() {} }) (1 ms)
+    ✓ evaluates this binding for ({ foo: function () {} }) (1 ms)
+    ✓ evaluates this binding for ({ foo: function bar() {} }) (1 ms)
+    ✓ evaluates this binding for class A { foo = function () {}; } (1 ms)
+    ✓ evaluates this binding for foo = function () {} (1 ms)
+    ✓ evaluates this binding for Foo = function () {} (1 ms)
+    ✓ evaluates this binding for var foo = function () {} (1 ms)
+    ✓ evaluates this binding for var Foo = function () {} (1 ms)
+    ✓ evaluates this binding for var Foo = function bar() {} (1 ms)
+    ✓ evaluates this binding for (function foo() {}).bind(obj) (1 ms)
+    ✓ evaluates this binding for (function foo() {}).bind(null) (1 ms)
+    ✓ evaluates this binding for [].forEach(function () {}, obj) (1 ms)
+    ✓ evaluates this binding for [].forEach(function () {})
+    ✓ evaluates this binding for Reflect.apply(function () {}, obj, []) (1 ms)
+    ✓ evaluates this binding for Array.from([], function () {}, obj) (1 ms)
+    ✓ evaluates this binding for foo(function bar() {}) (1 ms)
+    ✓ evaluates this binding for cond ? function () {} : null (1 ms)
+    ✓ evaluates this binding for Object.assign({}, { m() {} })
+    ✓ class static blocks never have default this binding
+    ✓ JSDoc @this tags disable default this binding (1 ms)
+    ✓ non-JSDoc block comments do not affect this binding (1 ms)
+  getPrecedence
+    ✓ returns the precedence of a, b
+    ✓ returns the precedence of a = b
+    ✓ returns the precedence of () => {} (1 ms)
+    ✓ returns the precedence of a ? b : c
+    ✓ returns the precedence of a || b
+    ✓ returns the precedence of a ?? b (1 ms)
+    ✓ returns the precedence of a && b
+    ✓ returns the precedence of a | b (1 ms)
+    ✓ returns the precedence of a ^ b
+    ✓ returns the precedence of a & b (1 ms)
+    ✓ returns the precedence of a == b
+    ✓ returns the precedence of a < b (1 ms)
+    ✓ returns the precedence of a << b
+    ✓ returns the precedence of a + b (1 ms)
+    ✓ returns the precedence of a * b
+    ✓ returns the precedence of a ** b (1 ms)
+    ✓ returns the precedence of -a
+    ✓ returns the precedence of a++ (1 ms)
+    ✓ returns the precedence of a()
+    ✓ returns the precedence of a?.b (1 ms)
+    ✓ returns the precedence of new A()
+    ✓ returns the precedence of a (1 ms)
+    ✓ returns precedence for await, yield, import and unknown nodes (1 ms)
+    ✓ returns default precedence for known non-operator nodes (1 ms)
+  block and directive helpers
+    ✓ isEmptyBlock recognizes only empty BlockStatements (1 ms)
+    ✓ isEmptyFunction recognizes functions with empty block bodies (2 ms)
+    ✓ getDirectivePrologue collects leading directives from a Program
+    ✓ getDirectivePrologue collects directives from function bodies (1 ms)
+    ✓ getDirectivePrologue ignores non-block arrows and non-functions (1 ms)
+    ✓ isDirective checks for directive property on expression statements (1 ms)
+  numeric literal helpers
+    ✓ isDecimalInteger recognizes decimal integer literals (2 ms)
+    ✓ isDecimalInteger handles raw literal 0 (0) (1 ms)
+    ✓ isDecimalInteger handles raw literal 8 (08)
+    ✓ isDecimalInteger handles raw literal 192 (0192)
+    ✓ isDecimalInteger handles raw literal 5000 (5_000)
+    ✓ isDecimalInteger handles raw literal 5 (05)
+    ✓ isDecimalInteger handles raw literal 5 (5.0) (1 ms)
+    ✓ isDecimalInteger handles raw literal 5 (0x5)
+    ✓ isDecimalInteger handles raw literal 5 (5e0)
+    ✓ isDecimalInteger handles raw literal 5n (5n)
+    ✓ isDecimalIntegerNumericToken handles token 5_000
+    ✓ isDecimalIntegerNumericToken handles token 0x5
+    ✓ isDecimalIntegerNumericToken handles token 05 (1 ms)
+    ✓ isDecimalIntegerNumericToken handles token 5.0
+    ✓ isDecimalIntegerNumericToken handles token 5e0
+    ✓ isDecimalIntegerNumericToken requires a Numeric token
+    ✓ isNumericLiteral recognizes numbers and BigInts only (2 ms)
+  function description helpers
+    ✓ getFunctionNameWithKind describes function foo() {} (1 ms)
+    ✓ getFunctionNameWithKind describes function* foo() {}
+    ✓ getFunctionNameWithKind describes async function foo() {} (1 ms)
+    ✓ getFunctionNameWithKind describes (function () {})
+    ✓ getFunctionNameWithKind describes (function* () {}) (1 ms)
+    ✓ getFunctionNameWithKind describes () => {}
+    ✓ getFunctionNameWithKind describes async () => {} (1 ms)
+    ✓ getFunctionNameWithKind describes ({ foo: function () {} })
+    ✓ getFunctionNameWithKind describes ({ foo: function bar() {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ foo() {} })
+    ✓ getFunctionNameWithKind describes ({ get foo() {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ set foo(value) {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ *foo() {} })
+    ✓ getFunctionNameWithKind describes ({ async foo() {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ ['foo']: function () {} })
+    ✓ getFunctionNameWithKind describes ({ [foo]: function () {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes class A { constructor() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { foo() {} }
+    ✓ getFunctionNameWithKind describes class A { static foo() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { static *foo() {} }
+    ✓ getFunctionNameWithKind describes class A { static async foo() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { get foo() {} }
+    ✓ getFunctionNameWithKind describes class A { set foo(value) {} }
+    ✓ getFunctionNameWithKind describes class A { #foo() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { static #foo() {} }
+    ✓ getFunctionNameWithKind describes class A { foo = () => {}; }
+    ✓ getFunctionNameWithKind describes class A { ['foo']() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { [foo]() {} }
+    ✓ getFunctionNameWithKind describes const value = function bar() {}; (1 ms)
+    ✓ getFunctionHeadLoc locates function foo() {} (1 ms)
+    ✓ getFunctionHeadLoc locates function* foo() {}
+    ✓ getFunctionHeadLoc locates () => {}
+    ✓ getFunctionHeadLoc locates ({ foo() {} }) (1 ms)
+    ✓ getFunctionHeadLoc locates (function foo() {})
+    ✓ getFunctionHeadLoc locates class A { constructor() {} } (1 ms)
+    ✓ getFunctionHeadLoc returns copies of location objects (1 ms)
+  getNextLocation
+    ✓ returns the location after foo at line 1 column 0
+    ✓ returns the location after foo at line 1 column 2 (1 ms)
+    ✓ returns the location after foo at line 1 column 3
+    ✓ returns the location after foo
+ at line 1 column 3 (1 ms)
+    ✓ returns the location after foo
+ at line 2 column 0
+    ✓ returns the location after foo
+bar at line 1 column 3 (1 ms)
+    ✓ returns the location after foo
+bar at line 2 column 2
+    ✓ returns the location after foo
+bar at line 2 column 3
+    ✓ returns the location after a
+b at line 1 column 1 (1 ms)
+    ✓ returns the location after a
+b at line 2 column 1
+    ✓ returns the location after  at line 1 column 0 (1 ms)
+    ✓ returns the location after 
+ at line 1 column 0
+    ✓ returns the location after 
+ at line 2 column 0
+  getParenthesisedText
+    ✓ returns the surrounding parentheses of ((foo)) (1 ms)
+    ✓ returns the surrounding parentheses of (foo) (1 ms)
+    ✓ returns the surrounding parentheses of foo
+    ✓ returns the surrounding parentheses of ((a + b)) (1 ms)
+    ✓ returns the surrounding parentheses of ((a) + b)
+    ✓ returns the surrounding parentheses of ((a)) + ((b)) (1 ms)
+  getNameLocationInGlobalDirectiveComment
+    ✓ locates names in a single-line globals comment (1 ms)
+    ✓ falls back to the start of the comment value for unknown names (1 ms)
+    ✓ locates names across multiple comment lines
+    ✓ locates names terminated by a colon
+  expression helpers
+    ✓ getStaticStringValue converts statically known values (3 ms)
+    ✓ getStaticPropertyName returns the name for a.b
+    ✓ getStaticPropertyName returns the name for a["b"]
+    ✓ getStaticPropertyName returns the name for a[100]
+    ✓ getStaticPropertyName returns the name for a[`b`] (1 ms)
+    ✓ getStaticPropertyName returns the name for a[b]
+    ✓ getStaticPropertyName returns the name for a["a" + "b"] (1 ms)
+    ✓ getStaticPropertyName returns the name for a?.b
+    ✓ getStaticPropertyName returns the name for ({ b: 1 }) (1 ms)
+    ✓ getStaticPropertyName returns the name for ({ ["b"]: 1 })
+    ✓ getStaticPropertyName returns the name for ({ [`b`]: 1 }) (1 ms)
+    ✓ getStaticPropertyName returns the name for ({ [100]: 1 })
+    ✓ getStaticPropertyName returns the name for ({ [b]: 1 }) (1 ms)
+    ✓ getStaticPropertyName returns the name for ({ b() {} })
+    ✓ getStaticPropertyName returns the name for class A { get b() {} } (1 ms)
+    ✓ getStaticPropertyName returns the name for class A { b = 1; }
+    ✓ skipChainExpression unwraps ChainExpression nodes only (1 ms)
+    ✓ isSpecificId checks names and patterns
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo["bar"] (1 ms)
+    ✓ isSpecificMemberAccess handles foo?.bar
+    ✓ isSpecificMemberAccess handles foo[bar]
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo.bar (1 ms)
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo()
+    ✓ isArrayFromMethod recognizes Array and typed array from methods (1 ms)
+    ✓ isArrayFromAsyncMethod recognizes only Array.fromAsync (1 ms)
+    ✓ equalLiteralValue compares literal values (3 ms)
+    ✓ isSameReference compares a and a (1 ms)
+    ✓ isSameReference compares a and b (1 ms)
+    ✓ isSameReference compares a.b and a["b"]
+    ✓ isSameReference compares a.b and a["c"] (1 ms)
+    ✓ isSameReference compares a[b] and a[b]
+    ✓ isSameReference compares a[b] and a[c] (1 ms)
+    ✓ isSameReference compares a?.b and a.b (1 ms)
+    ✓ isSameReference compares this and this (1 ms)
+    ✓ isSameReference compares 1 and 1 (1 ms)
+    ✓ isSameReference compares 1 and 2
+    ✓ isSameReference compares /a/g and /a/g (1 ms)
+    ✓ isSameReference compares 'a' and "a" (1 ms)
+  logical expression helpers
+    ✓ isLogicalExpression recognizes && and || only (1 ms)
+    ✓ isCoalesceExpression recognizes ?? only (1 ms)
+    ✓ isMixedLogicalAndCoalesceExpressions detects mixed pairs (1 ms)
+    ✓ isLogicalAssignmentOperator recognizes logical assignments (1 ms)
+    ✓ getSwitchCaseColonToken returns the colon of each case (1 ms)
+    ✓ getModuleExportName handles identifiers and string literals
+  couldBeError
+    ✓ returns foo for true
+    ✓ returns foo() for true (1 ms)
+    ✓ returns new Foo() for true
+    ✓ returns foo.bar for true
+    ✓ returns tag`x` for true
+    ✓ returns a?.b for true
+    ✓ returns 1 for false
+    ✓ returns "text" for false
+    ✓ returns ({}) for false (1 ms)
+    ✓ returns [] for false
+    ✓ returns x = foo() for true (1 ms)
+    ✓ returns x = 1 for false
+    ✓ returns x += foo() for false (1 ms)
+    ✓ returns x -= foo() for false
+    ✓ returns x &&= foo() for true
+    ✓ returns x &&= 1 for false (1 ms)
+    ✓ returns x ||= 1 for true
+    ✓ returns x ??= foo() for true (1 ms)
+    ✓ returns (foo(), 1) for false
+    ✓ returns (1, foo()) for true (1 ms)
+    ✓ returns foo && bar for true
+    ✓ returns foo && 1 for false (1 ms)
+    ✓ returns 1 || foo for true
+    ✓ returns 1 || 2 for false (1 ms)
+    ✓ returns a ? foo() : 1 for true
+    ✓ returns a ? 1 : 2 for false (1 ms)
+    ✓ recognizes await and yield expressions
+    ✓ returns false for empty sequence expressions
+  canTokensBeAdjacent
+    ✓ canTokensBeAdjacent("+", "+") is false (1 ms)
+    ✓ canTokensBeAdjacent("+", "++") is false
+    ✓ canTokensBeAdjacent("-", "--") is false
+    ✓ canTokensBeAdjacent("-", "+") is true (1 ms)
+    ✓ canTokensBeAdjacent("/", "/* block */") is false
+    ✓ canTokensBeAdjacent("/", "// line\n") is false
+    ✓ canTokensBeAdjacent("a", "b") is false
+    ✓ canTokensBeAdjacent("a", "/* block */") is true
+    ✓ canTokensBeAdjacent("a", "// line\n") is true
+    ✓ canTokensBeAdjacent("\"a\"", "\"b\"") is true
+    ✓ canTokensBeAdjacent("`a`", "b") is true (1 ms)
+    ✓ canTokensBeAdjacent("a", "#b") is true
+    ✓ canTokensBeAdjacent("1", ".5") is false
+    ✓ canTokensBeAdjacent("a", ".5") is true
+    ✓ canTokensBeAdjacent("#!/usr/bin/env node", "foo") is false (1 ms)
+    ✓ canTokensBeAdjacent("a", "1") is false
+    ✓ canTokensBeAdjacent("\"", "a") is false
+    ✓ canTokensBeAdjacent("a", "\"") is false
+    ✓ accepts token objects and rejects shebang tokens (1 ms)
+  hasOctalOrNonOctalDecimalEscapeSequence
+    ✓ checks raw string "\\1"
+    ✓ checks raw string "\\0"
+    ✓ checks raw string "\\00"
+    ✓ checks raw string "\\01" (1 ms)
+    ✓ checks raw string "\\08"
+    ✓ checks raw string "\\8"
+    ✓ checks raw string "\\9"
+    ✓ checks raw string "\\x41"
+    ✓ checks raw string "abc"
+    ✓ checks raw string "\\0abc" (1 ms)
+    ✓ checks raw string "\\1abc"
+    ✓ checks raw string "abc\\1"
+    ✓ checks raw string "\\a\\1"
+    ✓ checks raw string "\\\\1"
+  isStaticTemplateLiteral
+    ✓ recognizes templates without expressions (2 ms)
+  areBracesNecessary
+    ✓ reports brace necessity for if (a) { let x; } (1 ms)
+    ✓ reports brace necessity for if (a) { const x = 1; }
+    ✓ reports brace necessity for if (a) { function f() {} } (1 ms)
+    ✓ reports brace necessity for if (a) { class B {} }
+    ✓ reports brace necessity for if (a) { var x; } (1 ms)
+    ✓ reports brace necessity for if (a) { if (b) foo(); } else bar(); (1 ms)
+    ✓ reports brace necessity for if (a) { if (b) foo(); }
+    ✓ reports brace necessity for if (a) { if (b) foo(); else baz(); } else bar(); (1 ms)
+    ✓ reports brace necessity for if (a) { while (b) if (c) foo(); } else bar();
+    ✓ reports brace necessity for if (a) { foo(); } else bar(); (1 ms)
+    ✓ reports brace necessity for if (a) { function f() {} } else bar();
+    ✓ reports brace necessity for if (a) { class B {} } else bar();
+    ✓ reports brace necessity for if (a) { { if (b) foo(); } } else bar(); (1 ms)
+    ✓ reports brace necessity for if (a) { if (b) foo(); else if (c) bar(); } else baz();
+  top-level expression and statement helpers
+    ✓ isTopLevelExpressionStatement for foo(); (1 ms)
+    ✓ isTopLevelExpressionStatement for function f() { foo(); } (1 ms)
+    ✓ isTopLevelExpressionStatement for () => { foo(); }
+    ✓ isTopLevelExpressionStatement for if (a) { foo(); } (1 ms)
+    ✓ isTopLevelExpressionStatement for function f() { if (a) { foo(); } } (1 ms)
+    ✓ isTopLevelExpressionStatement for class A { m() { foo(); } }
+    ✓ isTopLevelExpressionStatement rejects non-expression statements (1 ms)
+    ✓ isStartOfExpressionStatement checks the start of ancestor statements (1 ms)
+    ✓ canContinueExpressionInClassBody recognizes continuation tokens (1 ms)
+    ✓ getTrailingStatement returns the trailing statement of block statements (1 ms)
+  needsPrecedingSemicolon
+    ✓ returns the right answer for "foo;\nbar();" (1 ms)
+    ✓ returns the right answer for "foo\nbar();" (1 ms)
+    ✓ returns the right answer for "var x\nfoo();" (1 ms)
+    ✓ returns the right answer for "var x = 1\nfoo();" (1 ms)
+    ✓ returns the right answer for "(function () {})\nfoo();"
+    ✓ returns the right answer for "const f = function () {}\nfoo();" (1 ms)
+    ✓ returns the right answer for "class C {}\nfoo();" (1 ms)
+    ✓ returns the right answer for "if (a) {}\nfoo();"
+    ✓ returns the right answer for "do foo(); while (a)\nbar();" (1 ms)
+    ✓ returns the right answer for "import x from \"x\"\nfoo();" (1 ms)
+    ✓ returns the right answer for "const o = {}\nfoo();" (1 ms)
+    ✓ returns the right answer for "const C = class {}\nfoo();"
+    ✓ handles class members after initializers (2 ms)
+  isImportAttributeKey
+    ✓ recognizes static import attribute keys
+    ✓ recognizes dynamic import attribute keys
+    ✓ recognizes nested dynamic import attribute keys (1 ms)
+    ✓ rejects keys outside of import attributes
+  getOpeningParenOfParams
+    ✓ finds the opening parenthesis for function declarations and methods (1 ms)
+    ✓ finds the opening parenthesis for parenthesized arrows
+    ✓ returns the parameter token for an unparenthesized arrow
+  isParenthesised and equalTokens
+    ✓ isParenthesised checks for immediate surrounding parentheses (1 ms)
+    ✓ isParenthesised rejects parentheses around a larger expression
+    ✓ equalTokens compares token types and values (1 ms)
+    ✓ equalTokens rejects nodes with different token counts
+
+Test Suites: 1 passed, 1 total
+Tests:       343 passed, 343 total
+Snapshots:   0 total
+Time:        1.204 s
+Ran all test suites within paths "test/lib/rules/utils/ast-utils.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/lib/rules/utils/ast-utils.test.js
+  ast-utils exported constants
+    ✓ LINEBREAKS contains all ECMAScript line terminators (4 ms)
+    ✓ LINEBREAK_MATCHER matches every line terminator sequence (1 ms)
+    ✓ SHEBANG_MATCHER captures the interpreter line (1 ms)
+    ✓ STATEMENT_LIST_PARENTS contains the statement-list node types (1 ms)
+    ✓ COMMENTS_IGNORE_PATTERN recognizes directive-like comments (1 ms)
+    ✓ ECMASCRIPT_GLOBALS contains standard ECMAScript globals only (1 ms)
+    ✓ createGlobalLinebreakMatcher returns a fresh global matcher (1 ms)
+  punctuation token predicates
+    ✓ isArrowToken matches only its punctuator
+    ✓ isClosingBraceToken matches only its punctuator (1 ms)
+    ✓ isClosingBracketToken matches only its punctuator
+    ✓ isClosingParenToken matches only its punctuator (1 ms)
+    ✓ isColonToken matches only its punctuator
+    ✓ isCommaToken matches only its punctuator
+    ✓ isDotToken matches only its punctuator (1 ms)
+    ✓ isQuestionDotToken matches only its punctuator
+    ✓ isSemicolonToken matches only its punctuator
+    ✓ isOpeningBraceToken matches only its punctuator
+    ✓ isOpeningBracketToken matches only its punctuator
+    ✓ isOpeningParenToken matches only its punctuator
+    ✓ isEqToken matches only its punctuator
+    ✓ isNotClosingBraceToken negates the matching predicate (1 ms)
+    ✓ isNotClosingBracketToken negates the matching predicate
+    ✓ isNotClosingParenToken negates the matching predicate
+    ✓ isNotColonToken negates the matching predicate
+    ✓ isNotCommaToken negates the matching predicate (1 ms)
+    ✓ isNotDotToken negates the matching predicate
+    ✓ isNotQuestionDotToken negates the matching predicate
+    ✓ isNotOpeningBraceToken negates the matching predicate
+    ✓ isNotOpeningBracketToken negates the matching predicate (1 ms)
+    ✓ isNotOpeningParenToken negates the matching predicate
+    ✓ isNotSemicolonToken negates the matching predicate
+    ✓ isCommentToken recognizes line, block and shebang comments
+    ✓ isKeywordToken recognizes keyword tokens only
+    ✓ isTokenOnSameLine compares token line locations
+  node classification helpers
+    ✓ isStringLiteral recognizes string literals and template literals (11 ms)
+    ✓ isBreakableStatement recognizes breakable statement types (6 ms)
+    ✓ isNullLiteral only accepts actual null literals (3 ms)
+    ✓ isNullOrUndefined recognizes null, undefined and void expressions (1 ms)
+    ✓ isFunction recognizes all function node types (3 ms)
+    ✓ isLoop recognizes loop statements only
+    ✓ isInLoop walks up to the nearest function boundary (3 ms)
+    ✓ isCallee checks whether a node is the callee of a call (1 ms)
+    ✓ getUpperFunction returns the nearest enclosing function (1 ms)
+    ✓ isES5Constructor treats capitalized names as constructors (1 ms)
+    ✓ isSurroundedBy checks the first and last characters
+  comment and scope helpers
+    ✓ isDirectiveComment identifies ESLint directive comments (1 ms)
+    ✓ getModifyingReferences keeps only first writes per identifier
+    ✓ getVariableByName searches the scope chain (1 ms)
+    ✓ isReferenceToGlobalVariable recognizes free global references (2 ms)
+    ✓ isReferenceToGlobalVariable sees globals from inner scopes (1 ms)
+    ✓ isConstant determines constant truthiness and constant values (12 ms)
+    ✓ isConstant rejects shadowed undefined and Boolean (2 ms)
+    ✓ isPropertyDescriptor handles Object and Reflect defineProperty calls (2 ms)
+    ✓ isPropertyDescriptor handles descriptor maps for create and defineProperties (1 ms)
+    ✓ isPropertyDescriptor rejects objects outside descriptor positions (2 ms)
+    ✓ isPropertyDescriptor rejects shadowed Object globals (1 ms)
+  isDefaultThisBinding
+    ✓ evaluates this binding for function foo() {} (1 ms)
+    ✓ evaluates this binding for function Foo() {} (1 ms)
+    ✓ evaluates this binding for ({ foo() {} }) (1 ms)
+    ✓ evaluates this binding for ({ foo: function () {} }) (1 ms)
+    ✓ evaluates this binding for ({ foo: function bar() {} })
+    ✓ evaluates this binding for class A { foo = function () {}; } (1 ms)
+    ✓ evaluates this binding for foo = function () {} (1 ms)
+    ✓ evaluates this binding for Foo = function () {}
+    ✓ evaluates this binding for var foo = function () {} (1 ms)
+    ✓ evaluates this binding for var Foo = function () {} (1 ms)
+    ✓ evaluates this binding for var Foo = function bar() {} (1 ms)
+    ✓ evaluates this binding for (function foo() {}).bind(obj) (1 ms)
+    ✓ evaluates this binding for (function foo() {}).bind(null)
+    ✓ evaluates this binding for [].forEach(function () {}, obj)
+    ✓ evaluates this binding for [].forEach(function () {}) (1 ms)
+    ✓ evaluates this binding for Reflect.apply(function () {}, obj, []) (1 ms)
+    ✓ evaluates this binding for Array.from([], function () {}, obj) (1 ms)
+    ✓ evaluates this binding for foo(function bar() {})
+    ✓ evaluates this binding for cond ? function () {} : null (1 ms)
+    ✓ evaluates this binding for Object.assign({}, { m() {} }) (1 ms)
+    ✓ class static blocks never have default this binding (1 ms)
+    ✓ JSDoc @this tags disable default this binding (1 ms)
+    ✓ non-JSDoc block comments do not affect this binding (1 ms)
+  getPrecedence
+    ✓ returns the precedence of a, b
+    ✓ returns the precedence of a = b (1 ms)
+    ✓ returns the precedence of () => {}
+    ✓ returns the precedence of a ? b : c (1 ms)
+    ✓ returns the precedence of a || b
+    ✓ returns the precedence of a ?? b
+    ✓ returns the precedence of a && b (1 ms)
+    ✓ returns the precedence of a | b
+    ✓ returns the precedence of a ^ b (1 ms)
+    ✓ returns the precedence of a & b
+    ✓ returns the precedence of a == b
+    ✓ returns the precedence of a < b (1 ms)
+    ✓ returns the precedence of a << b
+    ✓ returns the precedence of a + b
+    ✓ returns the precedence of a * b (1 ms)
+    ✓ returns the precedence of a ** b
+    ✓ returns the precedence of -a (1 ms)
+    ✓ returns the precedence of a++
+    ✓ returns the precedence of a() (1 ms)
+    ✓ returns the precedence of a?.b
+    ✓ returns the precedence of new A() (1 ms)
+    ✓ returns the precedence of a
+    ✓ returns precedence for await, yield, import and unknown nodes (1 ms)
+    ✓ returns default precedence for known non-operator nodes (1 ms)
+  block and directive helpers
+    ✓ isEmptyBlock recognizes only empty BlockStatements
+    ✓ isEmptyFunction recognizes functions with empty block bodies (1 ms)
+    ✓ getDirectivePrologue collects leading directives from a Program (1 ms)
+    ✓ getDirectivePrologue collects directives from function bodies (1 ms)
+    ✓ getDirectivePrologue ignores non-block arrows and non-functions (5 ms)
+    ✓ isDirective checks for directive property on expression statements (2 ms)
+  numeric literal helpers
+    ✓ isDecimalInteger recognizes decimal integer literals (1 ms)
+    ✓ isDecimalInteger handles raw literal 0 (0) (1 ms)
+    ✓ isDecimalInteger handles raw literal 8 (08)
+    ✓ isDecimalInteger handles raw literal 192 (0192)
+    ✓ isDecimalInteger handles raw literal 5000 (5_000)
+    ✓ isDecimalInteger handles raw literal 5 (05)
+    ✓ isDecimalInteger handles raw literal 5 (5.0)
+    ✓ isDecimalInteger handles raw literal 5 (0x5) (1 ms)
+    ✓ isDecimalInteger handles raw literal 5 (5e0)
+    ✓ isDecimalInteger handles raw literal 5n (5n)
+    ✓ isDecimalIntegerNumericToken handles token 5_000
+    ✓ isDecimalIntegerNumericToken handles token 0x5
+    ✓ isDecimalIntegerNumericToken handles token 05
+    ✓ isDecimalIntegerNumericToken handles token 5.0 (1 ms)
+    ✓ isDecimalIntegerNumericToken handles token 5e0
+    ✓ isDecimalIntegerNumericToken requires a Numeric token
+    ✓ isNumericLiteral recognizes numbers and BigInts only (1 ms)
+  function description helpers
+    ✓ getFunctionNameWithKind describes function foo() {} (1 ms)
+    ✓ getFunctionNameWithKind describes function* foo() {} (1 ms)
+    ✓ getFunctionNameWithKind describes async function foo() {}
+    ✓ getFunctionNameWithKind describes (function () {})
+    ✓ getFunctionNameWithKind describes (function* () {}) (1 ms)
+    ✓ getFunctionNameWithKind describes () => {}
+    ✓ getFunctionNameWithKind describes async () => {} (1 ms)
+    ✓ getFunctionNameWithKind describes ({ foo: function () {} })
+    ✓ getFunctionNameWithKind describes ({ foo: function bar() {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ foo() {} })
+    ✓ getFunctionNameWithKind describes ({ get foo() {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ set foo(value) {} })
+    ✓ getFunctionNameWithKind describes ({ *foo() {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ async foo() {} })
+    ✓ getFunctionNameWithKind describes ({ ['foo']: function () {} }) (1 ms)
+    ✓ getFunctionNameWithKind describes ({ [foo]: function () {} })
+    ✓ getFunctionNameWithKind describes class A { constructor() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { foo() {} }
+    ✓ getFunctionNameWithKind describes class A { static foo() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { static *foo() {} }
+    ✓ getFunctionNameWithKind describes class A { static async foo() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { get foo() {} }
+    ✓ getFunctionNameWithKind describes class A { set foo(value) {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { #foo() {} } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { static #foo() {} }
+    ✓ getFunctionNameWithKind describes class A { foo = () => {}; } (1 ms)
+    ✓ getFunctionNameWithKind describes class A { ['foo']() {} }
+    ✓ getFunctionNameWithKind describes class A { [foo]() {} }
+    ✓ getFunctionNameWithKind describes const value = function bar() {}; (1 ms)
+    ✓ getFunctionHeadLoc locates function foo() {} (1 ms)
+    ✓ getFunctionHeadLoc locates function* foo() {}
+    ✓ getFunctionHeadLoc locates () => {}
+    ✓ getFunctionHeadLoc locates ({ foo() {} }) (1 ms)
+    ✓ getFunctionHeadLoc locates (function foo() {})
+    ✓ getFunctionHeadLoc locates class A { constructor() {} } (1 ms)
+    ✓ getFunctionHeadLoc returns copies of location objects
+  getNextLocation
+    ✓ returns the location after foo at line 1 column 0 (1 ms)
+    ✓ returns the location after foo at line 1 column 2
+    ✓ returns the location after foo at line 1 column 3 (1 ms)
+    ✓ returns the location after foo
+ at line 1 column 3
+    ✓ returns the location after foo
+ at line 2 column 0
+    ✓ returns the location after foo
+bar at line 1 column 3 (1 ms)
+    ✓ returns the location after foo
+bar at line 2 column 2
+    ✓ returns the location after foo
+bar at line 2 column 3
+    ✓ returns the location after a
+b at line 1 column 1 (1 ms)
+    ✓ returns the location after a
+b at line 2 column 1
+    ✓ returns the location after  at line 1 column 0
+    ✓ returns the location after 
+ at line 1 column 0
+    ✓ returns the location after 
+ at line 2 column 0
+  getParenthesisedText
+    ✓ returns the surrounding parentheses of ((foo)) (1 ms)
+    ✓ returns the surrounding parentheses of (foo)
+    ✓ returns the surrounding parentheses of foo (1 ms)
+    ✓ returns the surrounding parentheses of ((a + b))
+    ✓ returns the surrounding parentheses of ((a) + b) (1 ms)
+    ✓ returns the surrounding parentheses of ((a)) + ((b))
+  getNameLocationInGlobalDirectiveComment
+    ✓ locates names in a single-line globals comment (1 ms)
+    ✓ falls back to the start of the comment value for unknown names (1 ms)
+    ✓ locates names across multiple comment lines
+    ✓ locates names terminated by a colon (1 ms)
+  expression helpers
+    ✓ getStaticStringValue converts statically known values (2 ms)
+    ✓ getStaticPropertyName returns the name for a.b (1 ms)
+    ✓ getStaticPropertyName returns the name for a["b"]
+    ✓ getStaticPropertyName returns the name for a[100]
+    ✓ getStaticPropertyName returns the name for a[`b`] (1 ms)
+    ✓ getStaticPropertyName returns the name for a[b]
+    ✓ getStaticPropertyName returns the name for a["a" + "b"] (1 ms)
+    ✓ getStaticPropertyName returns the name for a?.b
+    ✓ getStaticPropertyName returns the name for ({ b: 1 })
+    ✓ getStaticPropertyName returns the name for ({ ["b"]: 1 }) (1 ms)
+    ✓ getStaticPropertyName returns the name for ({ [`b`]: 1 })
+    ✓ getStaticPropertyName returns the name for ({ [100]: 1 }) (1 ms)
+    ✓ getStaticPropertyName returns the name for ({ [b]: 1 })
+    ✓ getStaticPropertyName returns the name for ({ b() {} })
+    ✓ getStaticPropertyName returns the name for class A { get b() {} } (1 ms)
+    ✓ getStaticPropertyName returns the name for class A { b = 1; }
+    ✓ skipChainExpression unwraps ChainExpression nodes only (1 ms)
+    ✓ isSpecificId checks names and patterns
+    ✓ isSpecificMemberAccess handles foo.bar (1 ms)
+    ✓ isSpecificMemberAccess handles foo["bar"]
+    ✓ isSpecificMemberAccess handles foo?.bar (1 ms)
+    ✓ isSpecificMemberAccess handles foo[bar]
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo.bar (1 ms)
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo.bar
+    ✓ isSpecificMemberAccess handles foo() (1 ms)
+    ✓ isArrayFromMethod recognizes Array and typed array from methods (1 ms)
+    ✓ isArrayFromAsyncMethod recognizes only Array.fromAsync (1 ms)
+    ✓ equalLiteralValue compares literal values (3 ms)
+    ✓ isSameReference compares a and a
+    ✓ isSameReference compares a and b (1 ms)
+    ✓ isSameReference compares a.b and a["b"]
+    ✓ isSameReference compares a.b and a["c"] (1 ms)
+    ✓ isSameReference compares a[b] and a[b]
+    ✓ isSameReference compares a[b] and a[c] (1 ms)
+    ✓ isSameReference compares a?.b and a.b
+    ✓ isSameReference compares this and this (1 ms)
+    ✓ isSameReference compares 1 and 1
+    ✓ isSameReference compares 1 and 2
+    ✓ isSameReference compares /a/g and /a/g (1 ms)
+    ✓ isSameReference compares 'a' and "a"
+  logical expression helpers
+    ✓ isLogicalExpression recognizes && and || only (2 ms)
+    ✓ isCoalesceExpression recognizes ?? only
+    ✓ isMixedLogicalAndCoalesceExpressions detects mixed pairs
+    ✓ isLogicalAssignmentOperator recognizes logical assignments
+    ✓ getSwitchCaseColonToken returns the colon of each case (1 ms)
+    ✓ getModuleExportName handles identifiers and string literals
+  couldBeError
+    ✓ returns foo for true
+    ✓ returns foo() for true (1 ms)
+    ✓ returns new Foo() for true
+    ✓ returns foo.bar for true
+    ✓ returns tag`x` for true (1 ms)
+    ✓ returns a?.b for true
+    ✓ returns 1 for false (1 ms)
+    ✓ returns "text" for false
+    ✓ returns ({}) for false
+    ✓ returns [] for false (1 ms)
+    ✓ returns x = foo() for true
+    ✓ returns x = 1 for false
+    ✓ returns x += foo() for false (1 ms)
+    ✓ returns x -= foo() for false
+    ✓ returns x &&= foo() for true
+    ✓ returns x &&= 1 for false
+    ✓ returns x ||= 1 for true
+    ✓ returns x ??= foo() for true (1 ms)
+    ✓ returns (foo(), 1) for false
+    ✓ returns (1, foo()) for true (1 ms)
+    ✓ returns foo && bar for true
+    ✓ returns foo && 1 for false
+    ✓ returns 1 || foo for true
+    ✓ returns 1 || 2 for false
+    ✓ returns a ? foo() : 1 for true
+    ✓ returns a ? 1 : 2 for false
+    ✓ recognizes await and yield expressions (1 ms)
+    ✓ returns false for empty sequence expressions
+  canTokensBeAdjacent
+    ✓ canTokensBeAdjacent("+", "+") is false (1 ms)
+    ✓ canTokensBeAdjacent("+", "++") is false
+    ✓ canTokensBeAdjacent("-", "--") is false (1 ms)
+    ✓ canTokensBeAdjacent("-", "+") is true
+    ✓ canTokensBeAdjacent("/", "/* block */") is false
+    ✓ canTokensBeAdjacent("/", "// line\n") is false
+    ✓ canTokensBeAdjacent("a", "b") is false (1 ms)
+    ✓ canTokensBeAdjacent("a", "/* block */") is true
+    ✓ canTokensBeAdjacent("a", "// line\n") is true
+    ✓ canTokensBeAdjacent("\"a\"", "\"b\"") is true
+    ✓ canTokensBeAdjacent("`a`", "b") is true (1 ms)
+    ✓ canTokensBeAdjacent("a", "#b") is true
+    ✓ canTokensBeAdjacent("1", ".5") is false
+    ✓ canTokensBeAdjacent("a", ".5") is true
+    ✓ canTokensBeAdjacent("#!/usr/bin/env node", "foo") is false (1 ms)
+    ✓ canTokensBeAdjacent("a", "1") is false
+    ✓ canTokensBeAdjacent("\"", "a") is false
+    ✓ canTokensBeAdjacent("a", "\"") is false
+    ✓ accepts token objects and rejects shebang tokens (1 ms)
+  hasOctalOrNonOctalDecimalEscapeSequence
+    ✓ checks raw string "\\1"
+    ✓ checks raw string "\\0"
+    ✓ checks raw string "\\00"
+    ✓ checks raw string "\\01"
+    ✓ checks raw string "\\08"
+    ✓ checks raw string "\\8"
+    ✓ checks raw string "\\9"
+    ✓ checks raw string "\\x41"
+    ✓ checks raw string "abc"
+    ✓ checks raw string "\\0abc"
+    ✓ checks raw string "\\1abc"
+    ✓ checks raw string "abc\\1"
+    ✓ checks raw string "\\a\\1"
+    ✓ checks raw string "\\\\1"
+  isStaticTemplateLiteral
+    ✓ recognizes templates without expressions (1 ms)
+  areBracesNecessary
+    ✓ reports brace necessity for if (a) { let x; } (1 ms)
+    ✓ reports brace necessity for if (a) { const x = 1; }
+    ✓ reports brace necessity for if (a) { function f() {} }
+    ✓ reports brace necessity for if (a) { class B {} }
+    ✓ reports brace necessity for if (a) { var x; } (1 ms)
+    ✓ reports brace necessity for if (a) { if (b) foo(); } else bar();
+    ✓ reports brace necessity for if (a) { if (b) foo(); } (1 ms)
+    ✓ reports brace necessity for if (a) { if (b) foo(); else baz(); } else bar();
+    ✓ reports brace necessity for if (a) { while (b) if (c) foo(); } else bar(); (1 ms)
+    ✓ reports brace necessity for if (a) { foo(); } else bar();
+    ✓ reports brace necessity for if (a) { function f() {} } else bar(); (1 ms)
+    ✓ reports brace necessity for if (a) { class B {} } else bar();
+    ✓ reports brace necessity for if (a) { { if (b) foo(); } } else bar();
+    ✓ reports brace necessity for if (a) { if (b) foo(); else if (c) bar(); } else baz(); (1 ms)
+  top-level expression and statement helpers
+    ✓ isTopLevelExpressionStatement for foo();
+    ✓ isTopLevelExpressionStatement for function f() { foo(); } (1 ms)
+    ✓ isTopLevelExpressionStatement for () => { foo(); }
+    ✓ isTopLevelExpressionStatement for if (a) { foo(); } (1 ms)
+    ✓ isTopLevelExpressionStatement for function f() { if (a) { foo(); } }
+    ✓ isTopLevelExpressionStatement for class A { m() { foo(); } } (1 ms)
+    ✓ isTopLevelExpressionStatement rejects non-expression statements
+    ✓ isStartOfExpressionStatement checks the start of ancestor statements (2 ms)
+    ✓ canContinueExpressionInClassBody recognizes continuation tokens (1 ms)
+    ✓ getTrailingStatement returns the trailing statement of block statements (1 ms)
+  needsPrecedingSemicolon
+    ✓ returns the right answer for "foo;\nbar();" (1 ms)
+    ✓ returns the right answer for "foo\nbar();" (1 ms)
+    ✓ returns the right answer for "var x\nfoo();" (1 ms)
+    ✓ returns the right answer for "var x = 1\nfoo();" (1 ms)
+    ✓ returns the right answer for "(function () {})\nfoo();" (1 ms)
+    ✓ returns the right answer for "const f = function () {}\nfoo();" (1 ms)
+    ✓ returns the right answer for "class C {}\nfoo();"
+    ✓ returns the right answer for "if (a) {}\nfoo();"
+    ✓ returns the right answer for "do foo(); while (a)\nbar();" (1 ms)
+    ✓ returns the right answer for "import x from \"x\"\nfoo();" (1 ms)
+    ✓ returns the right answer for "const o = {}\nfoo();" (1 ms)
+    ✓ returns the right answer for "const C = class {}\nfoo();" (1 ms)
+    ✓ handles class members after initializers (1 ms)
+  isImportAttributeKey
+    ✓ recognizes static import attribute keys (1 ms)
+    ✓ recognizes dynamic import attribute keys
+    ✓ recognizes nested dynamic import attribute keys
+    ✓ rejects keys outside of import attributes
+  getOpeningParenOfParams
+    ✓ finds the opening parenthesis for function declarations and methods (1 ms)
+    ✓ finds the opening parenthesis for parenthesized arrows (1 ms)
+    ✓ returns the parameter token for an unparenthesized arrow (1 ms)
+  isParenthesised and equalTokens
+    ✓ isParenthesised checks for immediate surrounding parentheses (1 ms)
+    ✓ isParenthesised rejects parentheses around a larger expression (1 ms)
+    ✓ equalTokens compares token types and values (1 ms)
+    ✓ equalTokens rejects nodes with different token counts
+
+Test Suites: 1 passed, 1 total
+Tests:       343 passed, 343 total
+Snapshots:   0 total
+Time:        1.651 s, estimated 2 s
+Ran all test suites within paths "test/lib/rules/utils/ast-utils.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

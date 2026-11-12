@@ -1,0 +1,63 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/GraphQL/loaders/parseClassTypes.test.js (15.374 s)
+  extractKeysAndInclude
+    ✓ returns no key selection when there are no selected fields (3 ms)
+    ✓ removes __typename, converts ids, and de-duplicates selected fields (1 ms)
+    ✓ does not use the keys optimization when authData is selected (1 ms)
+  load
+    ✓ creates the complete set of GraphQL types for a Parse class (13 ms)
+    ✓ builds create, update, pointer, relation, constraint and output fields by default (4 ms)
+    ✓ creates default sort values and query arguments including relay and read options (2 ms)
+    ✓ honors configured create/update/output/constraint/sort fields and skips unsupported types (1 ms)
+    ✓ treats empty allow-lists as selecting no custom fields and supplies an id sort fallback
+    ✓ omits create-and-link relation helpers when create mutations are disabled
+    ✓ handles _User specially by hiding password and registering a Viewer type (1 ms)
+    ✓ warns and preserves the built-in logical operators when custom constraint fields collide (1 ms)
+    ✓ falls back to generic GraphQL types when generated type names collide (1 ms)
+    ✓ resolves polygon fields from coordinate pairs and returns null without coordinates (1 ms)
+    ✓ resolves array fields by preserving Parse objects and wrapping scalar values (1 ms)
+    ✓ resolves relation fields through objectsQueries with related-to filters and selected keys (1 ms)
+    ✓ routes synchronous relation resolver failures through the schema error handler (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
+Snapshots:   0 total
+Time:        16.173 s
+Ran all test suites within paths "test/GraphQL/loaders/parseClassTypes.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/GraphQL/loaders/parseClassTypes.test.js
+  extractKeysAndInclude
+    ✓ returns no key selection when there are no selected fields (2 ms)
+    ✓ removes __typename, converts ids, and de-duplicates selected fields (1 ms)
+    ✓ does not use the keys optimization when authData is selected
+  load
+    ✓ creates the complete set of GraphQL types for a Parse class (5 ms)
+    ✓ builds create, update, pointer, relation, constraint and output fields by default (4 ms)
+    ✓ creates default sort values and query arguments including relay and read options (2 ms)
+    ✓ honors configured create/update/output/constraint/sort fields and skips unsupported types (2 ms)
+    ✓ treats empty allow-lists as selecting no custom fields and supplies an id sort fallback (1 ms)
+    ✓ omits create-and-link relation helpers when create mutations are disabled (1 ms)
+    ✓ handles _User specially by hiding password and registering a Viewer type (2 ms)
+    ✓ warns and preserves the built-in logical operators when custom constraint fields collide (2 ms)
+    ✓ falls back to generic GraphQL types when generated type names collide (1 ms)
+    ✓ resolves polygon fields from coordinate pairs and returns null without coordinates (1 ms)
+    ✓ resolves array fields by preserving Parse objects and wrapping scalar values (1 ms)
+    ✓ resolves relation fields through objectsQueries with related-to filters and selected keys (2 ms)
+    ✓ routes synchronous relation resolver failures through the schema error handler (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
+Snapshots:   0 total
+Time:        2.751 s, estimated 16 s
+Ran all test suites within paths "test/GraphQL/loaders/parseClassTypes.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

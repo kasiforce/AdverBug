@@ -1,0 +1,153 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/particle-system/particle-emitter.test.js
+  ParticleEmitter
+    construction
+      ✓ applies documented defaults (26 ms)
+      ✓ honours option overrides (7 ms)
+      ✓ clamps numParticles to the device texture size limit and warns (5 ms)
+      ✓ supports the deprecated noFog option while preferring explicit useFog (8 ms)
+      ✓ creates the particle material and mesh instance attached to the node (5 ms)
+      ✓ creates and caches a default parameter texture per device (10 ms)
+    resource allocation and rebuild
+      ✓ allocates GPU textures, render targets and shaders (5 ms)
+      ✓ forces the CPU path when sorting is enabled and allocates CPU storage (5 ms)
+      ✓ forces the CPU path when the device requests it (3 ms)
+      ✓ falls back to integer particle textures when float textures are not renderable (4 ms)
+      ✓ allocates quad vertex and index buffers with the expected counts (4 ms)
+      ✓ allocates mesh-based particles by copying mesh vertex data and indices (5 ms)
+      ✓ rebuilds buffers when numParticles changes and preserves visibility (6 ms)
+      ✓ restores the default color map when it is missing (4 ms)
+      ✓ sets spawnBounds from the emitter shape (6 ms)
+    getVertexInfo
+      ✓ describes quad particles on the GPU (3 ms)
+      ✓ adds a UV element for mesh particles on the GPU (4 ms)
+      ✓ describes quad particles on the CPU (4 ms)
+      ✓ uses a four component UV attribute for CPU mesh particles (4 ms)
+    graphs
+      ✓ quantizes and converts graph data during rebuild (6 ms)
+      ✓ detects animation only when tiles and a custom texture are present (6 ms)
+    bounds
+      ✓ computes default local bounds (4 ms)
+      ✓ includes box extents in local bounds (11 ms)
+      ✓ includes sphere radius in local bounds and records it (3 ms)
+      ✓ uses the magnitude of the scale graph for local bounds (4 ms)
+      ✓ includes local velocity motion in local bounds (4 ms)
+      ✓ includes radial speed in every axis of local bounds (4 ms)
+      ✓ recomputes local bounds when box extents change in place (4 ms)
+      ✓ recomputes local bounds when the sphere radius changes (4 ms)
+      ✓ transforms world bounds into world space (4 ms)
+      ✓ keeps local-space bounds at the origin while transforming the mesh aabb (4 ms)
+      ✓ unions the trail bounds across frames until the lifetime elapses (4 ms)
+      ✓ does nothing when there is no node (4 ms)
+      ✓ resets world bounds and simulation time (4 ms)
+    material parameters
+      ✓ sets the core material parameters during resetMaterial (5 ms)
+      ✓ omits wrap bounds when wrapping is disabled (4 ms)
+      ✓ sets animated texture parameters for animated emitters (4 ms)
+      ✓ sets the normal map only when lighting is enabled (4 ms)
+      ✓ computes world-space face tangents and binormals (4 ms)
+      ✓ uses the emitter rotation for emitter-space particle normals (5 ms)
+    time and simulation
+      ✓ advances simulation time and applies node transforms (4 ms)
+      ✓ caches the active camera from the scene (4 ms)
+      ✓ swaps particle textures on the GPU (4 ms)
+      ✓ advances CPU particles through the simulation (4 ms)
+      ✓ finishes a non-looping emitter once its spawn duration has elapsed (4 ms)
+      ✓ does not finish looping emitters (4 ms)
+      ✓ resets the seed, simulation time and spawn duration (4 ms)
+      ✓ computes resetTime from the simulation clock (3 ms)
+      ✓ prewarms in fixed precision steps, capped at the precision (5 ms)
+      ✓ uploads CPU vertex data in finishFrame but not GPU data (5 ms)
+    destroy
+      ✓ releases emitter-owned resources but keeps shared shaders (4 ms)
+      ✓ keeps the CPU particle start data and can be destroyed twice (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        2.225 s
+Ran all test suites within paths "test/scene/particle-system/particle-emitter.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/particle-system/particle-emitter.test.js
+  ParticleEmitter
+    construction
+      ✓ applies documented defaults (24 ms)
+      ✓ honours option overrides (6 ms)
+      ✓ clamps numParticles to the device texture size limit and warns (5 ms)
+      ✓ supports the deprecated noFog option while preferring explicit useFog (8 ms)
+      ✓ creates the particle material and mesh instance attached to the node (17 ms)
+      ✓ creates and caches a default parameter texture per device (9 ms)
+    resource allocation and rebuild
+      ✓ allocates GPU textures, render targets and shaders (4 ms)
+      ✓ forces the CPU path when sorting is enabled and allocates CPU storage (5 ms)
+      ✓ forces the CPU path when the device requests it (4 ms)
+      ✓ falls back to integer particle textures when float textures are not renderable (6 ms)
+      ✓ allocates quad vertex and index buffers with the expected counts (3 ms)
+      ✓ allocates mesh-based particles by copying mesh vertex data and indices (5 ms)
+      ✓ rebuilds buffers when numParticles changes and preserves visibility (5 ms)
+      ✓ restores the default color map when it is missing (5 ms)
+      ✓ sets spawnBounds from the emitter shape (5 ms)
+    getVertexInfo
+      ✓ describes quad particles on the GPU (3 ms)
+      ✓ adds a UV element for mesh particles on the GPU (3 ms)
+      ✓ describes quad particles on the CPU (3 ms)
+      ✓ uses a four component UV attribute for CPU mesh particles (3 ms)
+    graphs
+      ✓ quantizes and converts graph data during rebuild (6 ms)
+      ✓ detects animation only when tiles and a custom texture are present (5 ms)
+    bounds
+      ✓ computes default local bounds (3 ms)
+      ✓ includes box extents in local bounds (4 ms)
+      ✓ includes sphere radius in local bounds and records it (3 ms)
+      ✓ uses the magnitude of the scale graph for local bounds (3 ms)
+      ✓ includes local velocity motion in local bounds (3 ms)
+      ✓ includes radial speed in every axis of local bounds (3 ms)
+      ✓ recomputes local bounds when box extents change in place (4 ms)
+      ✓ recomputes local bounds when the sphere radius changes (3 ms)
+      ✓ transforms world bounds into world space (9 ms)
+      ✓ keeps local-space bounds at the origin while transforming the mesh aabb (4 ms)
+      ✓ unions the trail bounds across frames until the lifetime elapses (3 ms)
+      ✓ does nothing when there is no node (3 ms)
+      ✓ resets world bounds and simulation time (4 ms)
+    material parameters
+      ✓ sets the core material parameters during resetMaterial (5 ms)
+      ✓ omits wrap bounds when wrapping is disabled (3 ms)
+      ✓ sets animated texture parameters for animated emitters (4 ms)
+      ✓ sets the normal map only when lighting is enabled (3 ms)
+      ✓ computes world-space face tangents and binormals (4 ms)
+      ✓ uses the emitter rotation for emitter-space particle normals (4 ms)
+    time and simulation
+      ✓ advances simulation time and applies node transforms (3 ms)
+      ✓ caches the active camera from the scene (3 ms)
+      ✓ swaps particle textures on the GPU (4 ms)
+      ✓ advances CPU particles through the simulation (3 ms)
+      ✓ finishes a non-looping emitter once its spawn duration has elapsed (4 ms)
+      ✓ does not finish looping emitters (3 ms)
+      ✓ resets the seed, simulation time and spawn duration (3 ms)
+      ✓ computes resetTime from the simulation clock (3 ms)
+      ✓ prewarms in fixed precision steps, capped at the precision (4 ms)
+      ✓ uploads CPU vertex data in finishFrame but not GPU data (4 ms)
+    destroy
+      ✓ releases emitter-owned resources but keeps shared shaders (4 ms)
+      ✓ keeps the CPU particle start data and can be destroyed twice (4 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        2.571 s, estimated 3 s
+Ran all test suites within paths "test/scene/particle-system/particle-emitter.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

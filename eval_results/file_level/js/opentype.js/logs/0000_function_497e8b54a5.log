@@ -1,0 +1,121 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/opentype.test.js
+  module surface
+    ✓ exposes the documented public API (4 ms)
+    ✓ re-exports the low-level byte parsing helpers as _parse (1 ms)
+    ✓ re-exports the Font, Glyph, Path and BoundingBox classes used by parse results (49 ms)
+    ✓ can construct a Font directly through the re-exported class (2 ms)
+  parsing TrueType fonts
+    ✓ parses the sfnt header and core metrics tables (20 ms)
+    ✓ parses the name table and exposes it both as tables.name and names (18 ms)
+    ✓ parses cmap, glyph names and TrueType outlines (23 ms)
+    ✓ parses hinting tables into the font tables collection (18 ms)
+    ✓ initializes GPOS based positioning and layout tables (15 ms)
+    ✓ defaults to an empty kerning pair map when no kern table is present (13 ms)
+    ✓ always attaches a palette manager to the parsed font (10 ms)
+  parsing CFF based fonts
+    ✓ parses an OTTO font with CFF outlines (27 ms)
+    ✓ parses GDEF, GPOS and GSUB tables with their scripts (50 ms)
+    ✓ parses a CFF2 font together with its variation tables (4 ms)
+  sfnt signature handling
+    ✓ accepts the 0x00010000 TrueType signature (9 ms)
+    ✓ accepts the 'true' TrueType signature (49 ms)
+    ✓ accepts the 'typ1' TrueType signature (8 ms)
+  parsing WOFF fonts
+    ✓ decompresses a WOFF font and exposes its glyphs and kerning pairs (53 ms)
+    ✓ decompresses a CFF flavored WOFF font (12 ms)
+    ✓ rejects a WOFF file with an unsupported outline flavor (18 ms)
+  input buffer types
+    ✓ accepts Node Buffers, Uint8Arrays and ArrayBuffers equivalently (27 ms)
+    ✓ copies a Uint8Array view that is offset inside a larger buffer (9 ms)
+  invalid input
+    ✓ rejects an unknown sfnt signature
+    ✓ rejects WOFF2 data with an actionable message (1 ms)
+    ✓ rejects fonts without TrueType, CFF or CFF2 outlines (2 ms)
+    ✓ throws instead of returning a font for truncated data (2 ms)
+  parse options
+    ✓ honors the lowMemory option by loading glyphs lazily (18 ms)
+    ✓ parses without an options argument (10 ms)
+  variable font tables
+    ✓ parses fvar, avar, gvar, STAT and HVAR tables of a variable TrueType font (15 ms)
+    ✓ parses an avar table mapping normalized coordinates (2 ms)
+    ✓ parses a cvar table together with the cvt table it varies (2 ms)
+  color font tables
+    ✓ parses COLR and CPAL and exposes palettes through the palette manager (105 ms)
+  deprecated loading helpers
+    ✓ load() reports the deprecation through console.error and returns nothing (1 ms)
+    ✓ loadSync() reports the deprecation through console.error and returns nothing
+
+Test Suites: 1 passed, 1 total
+Tests:       34 passed, 34 total
+Snapshots:   0 total
+Time:        4.292 s
+Ran all test suites within paths "test/opentype.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/opentype.test.js
+  module surface
+    ✓ exposes the documented public API (3 ms)
+    ✓ re-exports the low-level byte parsing helpers as _parse (1 ms)
+    ✓ re-exports the Font, Glyph, Path and BoundingBox classes used by parse results (17 ms)
+    ✓ can construct a Font directly through the re-exported class
+  parsing TrueType fonts
+    ✓ parses the sfnt header and core metrics tables (9 ms)
+    ✓ parses the name table and exposes it both as tables.name and names (9 ms)
+    ✓ parses cmap, glyph names and TrueType outlines (10 ms)
+    ✓ parses hinting tables into the font tables collection (8 ms)
+    ✓ initializes GPOS based positioning and layout tables (8 ms)
+    ✓ defaults to an empty kerning pair map when no kern table is present (28 ms)
+    ✓ always attaches a palette manager to the parsed font (10 ms)
+  parsing CFF based fonts
+    ✓ parses an OTTO font with CFF outlines (10 ms)
+    ✓ parses GDEF, GPOS and GSUB tables with their scripts (12 ms)
+    ✓ parses a CFF2 font together with its variation tables (3 ms)
+  sfnt signature handling
+    ✓ accepts the 0x00010000 TrueType signature (10 ms)
+    ✓ accepts the 'true' TrueType signature (3 ms)
+    ✓ accepts the 'typ1' TrueType signature (9 ms)
+  parsing WOFF fonts
+    ✓ decompresses a WOFF font and exposes its glyphs and kerning pairs (19 ms)
+    ✓ decompresses a CFF flavored WOFF font (12 ms)
+    ✓ rejects a WOFF file with an unsupported outline flavor (24 ms)
+  input buffer types
+    ✓ accepts Node Buffers, Uint8Arrays and ArrayBuffers equivalently (31 ms)
+    ✓ copies a Uint8Array view that is offset inside a larger buffer (10 ms)
+  invalid input
+    ✓ rejects an unknown sfnt signature (1 ms)
+    ✓ rejects WOFF2 data with an actionable message (1 ms)
+    ✓ rejects fonts without TrueType, CFF or CFF2 outlines (3 ms)
+    ✓ throws instead of returning a font for truncated data (1 ms)
+  parse options
+    ✓ honors the lowMemory option by loading glyphs lazily (20 ms)
+    ✓ parses without an options argument (27 ms)
+  variable font tables
+    ✓ parses fvar, avar, gvar, STAT and HVAR tables of a variable TrueType font (30 ms)
+    ✓ parses an avar table mapping normalized coordinates (1 ms)
+    ✓ parses a cvar table together with the cvt table it varies (2 ms)
+  color font tables
+    ✓ parses COLR and CPAL and exposes palettes through the palette manager (63 ms)
+  deprecated loading helpers
+    ✓ load() reports the deprecation through console.error and returns nothing (2 ms)
+    ✓ loadSync() reports the deprecation through console.error and returns nothing
+
+Test Suites: 1 passed, 1 total
+Tests:       34 passed, 34 total
+Snapshots:   0 total
+Time:        1.092 s, estimated 4 s
+Ran all test suites within paths "test/opentype.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,177 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/middlewares.test.js (5.764 s)
+  checkIp
+    ✓ matches IPv4 addresses and subnets (4 ms)
+    ✓ matches IPv6 subnets (1 ms)
+    ✓ supports catch-all entries separately for IPv4 and IPv6 (1 ms)
+    ✓ caches an exact IP match in the supplied store (1 ms)
+  handleParseHeaders
+    ✓ resolves an app from headers and creates master auth (3 ms)
+    ✓ rejects malformed context headers (1 ms)
+    ✓ rejects a request without an app id or body (1 ms)
+    ✓ resolves an app and request metadata from a JSON body (2 ms)
+    ✓ rejects a non-string cloud context supplied in the body (1 ms)
+    ✓ rejects invalid typed body metadata (1 ms)
+    ✓ parses a JSON file upload from a buffer and restores file data (1 ms)
+    ✓ rejects a binary body that is not JSON (1 ms)
+    ✓ validates configured client keys when supplied (1 ms)
+    ✓ drops the inbound session token on the login route (1 ms)
+    ✓ uses a JWT user and bypasses session auth (1 ms)
+    ✓ returns HTTP 429 when a matching rate limiter fails (3 ms)
+  handleParseSession
+    ✓ passes through when auth already exists (1 ms)
+    ✓ allows GET /sessions/me without a session (1 ms)
+    ✓ resolves a normal session and assigns request auth
+    ✓ uses legacy session lookup for non-revocable upgrade requests
+    ✓ forwards Parse errors unchanged (1 ms)
+    ✓ sanitizes unexpected session lookup errors and logs the cause
+  allowCrossDomain
+    ✓ sets default CORS headers and continues non-OPTIONS requests (1 ms)
+    ✓ reflects an allowed origin and appends configured headers
+    ✓ answers OPTIONS preflight without calling next (1 ms)
+  allowMethodOverride
+    ✓ overrides a POST method and records the original method (1 ms)
+    ✓ removes a non-string override without changing the method (1 ms)
+    ✓ leaves non-POST requests untouched
+  handleParseAuth
+    ✓ passes through if no config exists for the app (1 ms)
+    ✓ resolves master, maintenance, and read-only keys (2 ms)
+    ✓ rejects a master key from a disallowed IP (1 ms)
+    ✓ does not assign auth for an invalid key (1 ms)
+  handleParseHealth
+    ✓ reports ok with HTTP 200
+    ✓ reports starting with HTTP 503 and Retry-After (1 ms)
+    ✓ reports another non-ok state with HTTP 503 (5 ms)
+  matchesExactRoute
+    ✓ matches case-insensitively and tolerates a trailing slash
+    ✓ does not match longer paths or non-string input (1 ms)
+  route allow list
+    ✓ is inactive when no list is configured, and always allows master or maintenance auth
+    ✓ normalizes mount, query string, leading slash, and trailing slash (1 ms)
+    ✓ calls next for an allowed route (1 ms)
+    ✓ throws a sanitized forbidden error for a disallowed route (38 ms)
+  handleParseErrors
+    ✓ maps Parse errors to HTTP statuses and logs them
+    ✓ forwards errors when enableExpressErrorHandler is set (1 ms)
+    ✓ honors silent username-taken logging
+    ✓ uses the configured username-taken logger level
+    ✓ returns status-bearing errors and only invokes next outside testing (1 ms)
+    ✓ returns an internal server error for unknown errors (1 ms)
+  master key enforcement
+    ✓ allows master auth
+    ✓ rejects non-master auth with a sanitized HTTP 403 response (1 ms)
+    ✓ resolves for master auth and rejects for non-master auth (1 ms)
+  addRateLimit
+    ✓ compiles and stores a rate limit with defaults (3 ms)
+    ✓ rejects unknown rate limit options (1 ms)
+    ✓ enforces the configured request threshold (3 ms)
+  promiseEnsureIdempotency
+    ✓ does nothing for unsupported adapters (1 ms)
+    ✓ does nothing when the request has no request id
+    ✓ does nothing when the path is not configured for idempotency (1 ms)
+    ✓ stores an idempotency record for a matching request with a deterministic expiry (3 ms)
+    ✓ translates a duplicate record into a duplicate request error (1 ms)
+    ✓ propagates other storage errors
+  allowDoubleForwardSlash
+    ✓ strips a single leading slash from a double-slash URL
+    ✓ leaves a normal URL unchanged
+
+Test Suites: 1 passed, 1 total
+Tests:       61 passed, 61 total
+Snapshots:   0 total
+Time:        5.831 s
+Ran all test suites within paths "test/middlewares.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/middlewares.test.js
+  checkIp
+    ✓ matches IPv4 addresses and subnets (6 ms)
+    ✓ matches IPv6 subnets (1 ms)
+    ✓ supports catch-all entries separately for IPv4 and IPv6 (1 ms)
+    ✓ caches an exact IP match in the supplied store (1 ms)
+  handleParseHeaders
+    ✓ resolves an app from headers and creates master auth (5 ms)
+    ✓ rejects malformed context headers (1 ms)
+    ✓ rejects a request without an app id or body (1 ms)
+    ✓ resolves an app and request metadata from a JSON body (2 ms)
+    ✓ rejects a non-string cloud context supplied in the body (1 ms)
+    ✓ rejects invalid typed body metadata (1 ms)
+    ✓ parses a JSON file upload from a buffer and restores file data (2 ms)
+    ✓ rejects a binary body that is not JSON (1 ms)
+    ✓ validates configured client keys when supplied (1 ms)
+    ✓ drops the inbound session token on the login route (4 ms)
+    ✓ uses a JWT user and bypasses session auth
+    ✓ returns HTTP 429 when a matching rate limiter fails (4 ms)
+  handleParseSession
+    ✓ passes through when auth already exists (1 ms)
+    ✓ allows GET /sessions/me without a session (1 ms)
+    ✓ resolves a normal session and assigns request auth (1 ms)
+    ✓ uses legacy session lookup for non-revocable upgrade requests
+    ✓ forwards Parse errors unchanged (1 ms)
+    ✓ sanitizes unexpected session lookup errors and logs the cause (1 ms)
+  allowCrossDomain
+    ✓ sets default CORS headers and continues non-OPTIONS requests (2 ms)
+    ✓ reflects an allowed origin and appends configured headers
+    ✓ answers OPTIONS preflight without calling next
+  allowMethodOverride
+    ✓ overrides a POST method and records the original method
+    ✓ removes a non-string override without changing the method
+    ✓ leaves non-POST requests untouched (1 ms)
+  handleParseAuth
+    ✓ passes through if no config exists for the app
+    ✓ resolves master, maintenance, and read-only keys (1 ms)
+    ✓ rejects a master key from a disallowed IP (1 ms)
+    ✓ does not assign auth for an invalid key
+  handleParseHealth
+    ✓ reports ok with HTTP 200
+    ✓ reports starting with HTTP 503 and Retry-After (1 ms)
+    ✓ reports another non-ok state with HTTP 503
+  matchesExactRoute
+    ✓ matches case-insensitively and tolerates a trailing slash
+    ✓ does not match longer paths or non-string input
+  route allow list
+    ✓ is inactive when no list is configured, and always allows master or maintenance auth (1 ms)
+    ✓ normalizes mount, query string, leading slash, and trailing slash (1 ms)
+    ✓ calls next for an allowed route
+    ✓ throws a sanitized forbidden error for a disallowed route (107 ms)
+  handleParseErrors
+    ✓ maps Parse errors to HTTP statuses and logs them (1 ms)
+    ✓ forwards errors when enableExpressErrorHandler is set (1 ms)
+    ✓ honors silent username-taken logging (1 ms)
+    ✓ uses the configured username-taken logger level
+    ✓ returns status-bearing errors and only invokes next outside testing (1 ms)
+    ✓ returns an internal server error for unknown errors (1 ms)
+  master key enforcement
+    ✓ allows master auth (1 ms)
+    ✓ rejects non-master auth with a sanitized HTTP 403 response
+    ✓ resolves for master auth and rejects for non-master auth (1 ms)
+  addRateLimit
+    ✓ compiles and stores a rate limit with defaults (4 ms)
+    ✓ rejects unknown rate limit options
+    ✓ enforces the configured request threshold (3 ms)
+  promiseEnsureIdempotency
+    ✓ does nothing for unsupported adapters (1 ms)
+    ✓ does nothing when the request has no request id
+    ✓ does nothing when the path is not configured for idempotency (1 ms)
+    ✓ stores an idempotency record for a matching request with a deterministic expiry (3 ms)
+    ✓ translates a duplicate record into a duplicate request error (1 ms)
+    ✓ propagates other storage errors
+  allowDoubleForwardSlash
+    ✓ strips a single leading slash from a double-slash URL
+    ✓ leaves a normal URL unchanged
+
+Test Suites: 1 passed, 1 total
+Tests:       61 passed, 61 total
+Snapshots:   0 total
+Time:        3.847 s, estimated 6 s
+Ran all test suites within paths "test/middlewares.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

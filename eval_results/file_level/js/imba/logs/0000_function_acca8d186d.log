@@ -1,0 +1,140 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+PASS test/packages/imba/polyfills/zlib/zlib-lib/inflate.test.js
+  inflate module public surface
+    ✓ exports the inflate API and identifying metadata (4 ms)
+  initialization and reset
+    ✓ initializes a default zlib stream and exposes the expected initial state (2 ms)
+    ✓ maps windowBits to raw, zlib, gzip, and automatic wrapper modes (1 ms)
+    ✓ rejects invalid streams and invalid window sizes (1 ms)
+    ✓ inflateResetKeep clears counters, checksum state, and decoding tables (2 ms)
+    ✓ inflateReset clears sliding-window counters while retaining the allocation (1 ms)
+    ✓ frees the window when inflateReset2 changes the window size (1 ms)
+    ✓ rejects reset calls without a stream state
+  inflate state machine and output paths
+    ✓ inflates a complete zlib stream and reports counters/checksum (1 ms)
+    ✓ inflates a raw deflate stream (1 ms)
+    ✓ inflates a gzip stream and validates its checksums (1 ms)
+    ✓ auto-detects a zlib stream with windowBits=47
+    ✓ auto-detects a gzip stream with windowBits=47 (1 ms)
+    ✓ decodes a fixed-Huffman block (1 ms)
+    ✓ decodes a dynamic-Huffman block built by the dynamic table path (2 ms)
+    ✓ decodes a stored block
+    ✓ handles an empty zlib stream (1 ms)
+    ✓ infers the zlib window size when windowBits is zero (11 ms)
+    ✓ can be reset and reused for a second independent stream (1 ms)
+    ✓ handles output larger than the 32 KiB sliding window (7 ms)
+    ✓ consumes a stream fed one input byte at a time (2 ms)
+    ✓ produces the same output through a very small output buffer (1 ms)
+    ✓ leaves bytes following the end of the compressed stream untouched (1 ms)
+    ✓ resumes successfully after a truncated trailer causes no progress (1 ms)
+    ✓ supports Z_BLOCK flush boundaries
+    ✓ supports Z_TREES flush boundaries
+    ✓ returns Z_BUF_ERROR when a call can make no progress
+  invalid streams and compressed data
+    ✓ rejects malformed stream objects
+    ✓ reports bad zlib header check as a data error
+    ✓ reports unknown compression method as a data error (1 ms)
+    ✓ reports window larger than requested as a data error
+    ✓ reports invalid block type as a data error
+    ✓ reports invalid stored block lengths as a data error
+    ✓ detects a bad zlib Adler-32 trailer (1 ms)
+    ✓ detects a bad gzip CRC-32 trailer
+    ✓ detects a bad gzip uncompressed-length trailer
+  gzip header handling
+    ✓ reports basic gzip header metadata and completion (1 ms)
+    ✓ parses optional gzip extra, name, comment, and text fields (1 ms)
+    ✓ validates and reports a gzip header CRC (1 ms)
+    ✓ reports unknown gzip compression method
+    ✓ reports reserved gzip flags
+    ✓ rejects header requests for non-gzip or invalid streams
+  dictionary handling
+    ✓ requests a dictionary, rejects the wrong one, and accepts the right one (1 ms)
+    ✓ accepts a preset dictionary for a raw deflate stream (1 ms)
+    ✓ rejects dictionary calls at the wrong time or without a state
+  ending an inflate stream
+    ✓ releases the state and sliding window (1 ms)
+    ✓ rejects invalid streams
+
+Test Suites: 1 passed, 1 total
+Tests:       47 passed, 47 total
+Snapshots:   0 total
+Time:        3.279 s
+Ran all test suites within paths "test/packages/imba/polyfills/zlib/zlib-lib/inflate.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/packages/imba/polyfills/zlib/zlib-lib/inflate.test.js
+  inflate module public surface
+    ✓ exports the inflate API and identifying metadata (3 ms)
+  initialization and reset
+    ✓ initializes a default zlib stream and exposes the expected initial state (2 ms)
+    ✓ maps windowBits to raw, zlib, gzip, and automatic wrapper modes (6 ms)
+    ✓ rejects invalid streams and invalid window sizes (1 ms)
+    ✓ inflateResetKeep clears counters, checksum state, and decoding tables (3 ms)
+    ✓ inflateReset clears sliding-window counters while retaining the allocation (1 ms)
+    ✓ frees the window when inflateReset2 changes the window size (1 ms)
+    ✓ rejects reset calls without a stream state
+  inflate state machine and output paths
+    ✓ inflates a complete zlib stream and reports counters/checksum (1 ms)
+    ✓ inflates a raw deflate stream (1 ms)
+    ✓ inflates a gzip stream and validates its checksums (1 ms)
+    ✓ auto-detects a zlib stream with windowBits=47
+    ✓ auto-detects a gzip stream with windowBits=47 (1 ms)
+    ✓ decodes a fixed-Huffman block
+    ✓ decodes a dynamic-Huffman block built by the dynamic table path (1 ms)
+    ✓ decodes a stored block
+    ✓ handles an empty zlib stream
+    ✓ infers the zlib window size when windowBits is zero (1 ms)
+    ✓ can be reset and reused for a second independent stream
+    ✓ handles output larger than the 32 KiB sliding window (8 ms)
+    ✓ consumes a stream fed one input byte at a time (1 ms)
+    ✓ produces the same output through a very small output buffer (1 ms)
+    ✓ leaves bytes following the end of the compressed stream untouched (1 ms)
+    ✓ resumes successfully after a truncated trailer causes no progress (1 ms)
+    ✓ supports Z_BLOCK flush boundaries
+    ✓ supports Z_TREES flush boundaries (1 ms)
+    ✓ returns Z_BUF_ERROR when a call can make no progress
+  invalid streams and compressed data
+    ✓ rejects malformed stream objects (1 ms)
+    ✓ reports bad zlib header check as a data error
+    ✓ reports unknown compression method as a data error
+    ✓ reports window larger than requested as a data error
+    ✓ reports invalid block type as a data error
+    ✓ reports invalid stored block lengths as a data error
+    ✓ detects a bad zlib Adler-32 trailer
+    ✓ detects a bad gzip CRC-32 trailer (1 ms)
+    ✓ detects a bad gzip uncompressed-length trailer
+  gzip header handling
+    ✓ reports basic gzip header metadata and completion (1 ms)
+    ✓ parses optional gzip extra, name, comment, and text fields (1 ms)
+    ✓ validates and reports a gzip header CRC (1 ms)
+    ✓ reports unknown gzip compression method
+    ✓ reports reserved gzip flags
+    ✓ rejects header requests for non-gzip or invalid streams (1 ms)
+  dictionary handling
+    ✓ requests a dictionary, rejects the wrong one, and accepts the right one (1 ms)
+    ✓ accepts a preset dictionary for a raw deflate stream (1 ms)
+    ✓ rejects dictionary calls at the wrong time or without a state
+  ending an inflate stream
+    ✓ releases the state and sliding window
+    ✓ rejects invalid streams
+
+Test Suites: 1 passed, 1 total
+Tests:       47 passed, 47 total
+Snapshots:   0 total
+Time:        1.425 s, estimated 3 s
+Ran all test suites within paths "test/packages/imba/polyfills/zlib/zlib-lib/inflate.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

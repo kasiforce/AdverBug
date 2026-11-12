@@ -1,0 +1,183 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/Adapters/Storage/Mongo/MongoTransform.test.js (13.283 s)
+  MongoTransform
+    transformKey
+      ✓ maps built-in REST key objectId to _id (3 ms)
+      ✓ maps built-in REST key createdAt to _created_at
+      ✓ maps built-in REST key updatedAt to _updated_at (1 ms)
+      ✓ maps built-in REST key sessionToken to _session_token
+      ✓ maps built-in REST key lastUsed to _last_used (1 ms)
+      ✓ maps built-in REST key timesUsed to times_used
+      ✓ prefixes fields represented as pointers in either schema notation (1 ms)
+    parseObjectToMongoObjectForCreate
+      ✓ maps built-in fields and omits undefined values (1 ms)
+      ✓ converts top-level Date, Bytes, GeoPoint, Polygon, File and Pointer values (1 ms)
+      ✓ recursively transforms arrays and nested objects while preserving nested pointer JSON (1 ms)
+      ✓ uses _p_ prefixes for schema pointers and for unknown pointer-valued fields
+      ✓ converts createdAt, updatedAt, and auth expiration fields to Date objects (1 ms)
+      ✓ rejects a Polygon with fewer than three distinct vertices (1 ms)
+      ✓ passes through auth-data fields that were transformed before storage
+      ✓ drops Relation fields but keeps regular fields
+      ✓ synthesizes the legacy _acl representation from _rperm and _wperm (1 ms)
+      ✓ passes already-transformed auth data through and rejects nested authData ids (1 ms)
+      ✓ rejects nested keys containing $ or . and unsupported function values
+    transformUpdate
+      ✓ maps built-in, pointer, dotted, scalar, and array update values into $set (1 ms)
+      ✓ maps internal auth timestamp and permission fields during updates (1 ms)
+      ✓ coerces numeric objectIds for global configuration classes
+      ✓ lifts update operators to their corresponding Mongo operators (1 ms)
+      ✓ preserves operator-shaped objects embedded inside ordinary nested values
+      ✓ produces ACL $set entries from legacy permissions and explicitly supplied ACL
+      ✓ skips Relation fields and returns an empty update when nothing remains
+      ✓ rejects invalid operator arguments and unsupported operators (1 ms)
+    transformWhere
+      ✓ maps built-in, pointer, nested, and plain fields to Mongo query keys (2 ms)
+      ✓ maps internal auth token, expiry, and permission query fields
+      ✓ parses objectId for global configuration classes
+      ✓ recursively transforms $or, $and, and $nor subqueries
+      ✓ maps user authData queries to provider-specific Mongo keys (1 ms)
+      ✓ wraps a scalar equality query for an Array field with $all
+      ✓ special-cases $text and $containedBy query results
+      ✓ transforms geo queries for count mode and normal mode
+      ✓ rejects unsupported constraints and invalid query objects (1 ms)
+    transformConstraint
+      ✓ returns the CannotTransform sentinel for non-object constraints
+      ✓ transforms comparison operators and Parse values (1 ms)
+      ✓ converts a scalar comparison against a Pointer field into a pointer string
+      ✓ rejects atoms that cannot be transformed and converts JSON regex atoms
+      ✓ uses interior transformations for array and nested-key constraints
+      ✓ transforms and flattens $in and $nin arrays (1 ms)
+      ✓ rejects malformed $in and $nin values
+      ✓ transforms $all and enforces consistent starts-with regex values (1 ms)
+      ✓ passes through $regex and $options and validates regex type (1 ms)
+      ✓ converts $containedBy into $elemMatch/$nin and validates its array
+      ✓ builds $text constraints and validates every option (5 ms)
+      ✓ transforms nearSphere and distance variants, including count mode (1 ms)
+      ✓ transforms $within boxes and rejects malformed boxes (1 ms)
+      ✓ transforms $geoWithin polygons and center spheres (1 ms)
+      ✓ accepts a Polygon object for $geoWithin
+      ✓ transforms $geoIntersects to a GeoJSON point and validates the point (1 ms)
+      ✓ rejects unsupported selection constraints and unknown $ operators (1 ms)
+      ✓ returns the CannotTransform sentinel for unknown non-operator constraint keys
+      ✓ supports $relativeTime for Date fields and rejects invalid usages (3 ms)
+    mongoObjectToParseObject
+      ✓ returns primitive, null, array, and Date values in REST form (63 ms)
+      ✓ converts Mongo ids, timestamps, sessions, counters, and private auth fields (1 ms)
+      ✓ omits _acl and translates legacy permissions
+      ✓ synthesizes authData for users from provider-specific keys
+      ✓ preserves authData for non-user classes and drops unknown reserved keys
+      ✓ converts schema-declared pointer fields and drops invalid pointer columns (1 ms)
+      ✓ throws when a stored pointer targets a different class than the schema
+      ✓ converts schema-declared File, GeoPoint, Polygon, and Bytes values (1 ms)
+      ✓ converts top-level Mongo Long, Double, and Binary values
+      ✓ recursively converts nested Long, Double, Date, Binary, and object values (1 ms)
+      ✓ handles nested nulls, encoded Date markers, and invalid nested values
+      ✓ rejects unsupported top-level JavaScript types
+      ✓ synthesizes every schema Relation field on the REST object (1 ms)
+      ✓ rejects unsupported JavaScript values
+    transformPointerString
+      ✓ converts a class$id pointer string using the schema target class
+      ✓ rejects a pointer whose class differs from the schema target class
+
+Test Suites: 1 passed, 1 total
+Tests:       70 passed, 70 total
+Snapshots:   0 total
+Time:        14.083 s
+Ran all test suites within paths "test/Adapters/Storage/Mongo/MongoTransform.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/Adapters/Storage/Mongo/MongoTransform.test.js
+  MongoTransform
+    transformKey
+      ✓ maps built-in REST key objectId to _id (2 ms)
+      ✓ maps built-in REST key createdAt to _created_at
+      ✓ maps built-in REST key updatedAt to _updated_at (1 ms)
+      ✓ maps built-in REST key sessionToken to _session_token
+      ✓ maps built-in REST key lastUsed to _last_used
+      ✓ maps built-in REST key timesUsed to times_used
+      ✓ prefixes fields represented as pointers in either schema notation (1 ms)
+    parseObjectToMongoObjectForCreate
+      ✓ maps built-in fields and omits undefined values (2 ms)
+      ✓ converts top-level Date, Bytes, GeoPoint, Polygon, File and Pointer values (2 ms)
+      ✓ recursively transforms arrays and nested objects while preserving nested pointer JSON (1 ms)
+      ✓ uses _p_ prefixes for schema pointers and for unknown pointer-valued fields
+      ✓ converts createdAt, updatedAt, and auth expiration fields to Date objects (1 ms)
+      ✓ rejects a Polygon with fewer than three distinct vertices (1 ms)
+      ✓ passes through auth-data fields that were transformed before storage
+      ✓ drops Relation fields but keeps regular fields (1 ms)
+      ✓ synthesizes the legacy _acl representation from _rperm and _wperm (5 ms)
+      ✓ passes already-transformed auth data through and rejects nested authData ids
+      ✓ rejects nested keys containing $ or . and unsupported function values (1 ms)
+    transformUpdate
+      ✓ maps built-in, pointer, dotted, scalar, and array update values into $set (2 ms)
+      ✓ maps internal auth timestamp and permission fields during updates (1 ms)
+      ✓ coerces numeric objectIds for global configuration classes
+      ✓ lifts update operators to their corresponding Mongo operators
+      ✓ preserves operator-shaped objects embedded inside ordinary nested values (1 ms)
+      ✓ produces ACL $set entries from legacy permissions and explicitly supplied ACL
+      ✓ skips Relation fields and returns an empty update when nothing remains
+      ✓ rejects invalid operator arguments and unsupported operators
+    transformWhere
+      ✓ maps built-in, pointer, nested, and plain fields to Mongo query keys (1 ms)
+      ✓ maps internal auth token, expiry, and permission query fields (1 ms)
+      ✓ parses objectId for global configuration classes
+      ✓ recursively transforms $or, $and, and $nor subqueries (1 ms)
+      ✓ maps user authData queries to provider-specific Mongo keys
+      ✓ wraps a scalar equality query for an Array field with $all
+      ✓ special-cases $text and $containedBy query results (1 ms)
+      ✓ transforms geo queries for count mode and normal mode (1 ms)
+      ✓ rejects unsupported constraints and invalid query objects (1 ms)
+    transformConstraint
+      ✓ returns the CannotTransform sentinel for non-object constraints
+      ✓ transforms comparison operators and Parse values
+      ✓ converts a scalar comparison against a Pointer field into a pointer string (1 ms)
+      ✓ rejects atoms that cannot be transformed and converts JSON regex atoms
+      ✓ uses interior transformations for array and nested-key constraints (1 ms)
+      ✓ transforms and flattens $in and $nin arrays
+      ✓ rejects malformed $in and $nin values (1 ms)
+      ✓ transforms $all and enforces consistent starts-with regex values (1 ms)
+      ✓ passes through $regex and $options and validates regex type (1 ms)
+      ✓ converts $containedBy into $elemMatch/$nin and validates its array
+      ✓ builds $text constraints and validates every option (2 ms)
+      ✓ transforms nearSphere and distance variants, including count mode
+      ✓ transforms $within boxes and rejects malformed boxes
+      ✓ transforms $geoWithin polygons and center spheres (1 ms)
+      ✓ accepts a Polygon object for $geoWithin (1 ms)
+      ✓ transforms $geoIntersects to a GeoJSON point and validates the point
+      ✓ rejects unsupported selection constraints and unknown $ operators (1 ms)
+      ✓ returns the CannotTransform sentinel for unknown non-operator constraint keys
+      ✓ supports $relativeTime for Date fields and rejects invalid usages (4 ms)
+    mongoObjectToParseObject
+      ✓ returns primitive, null, array, and Date values in REST form (2 ms)
+      ✓ converts Mongo ids, timestamps, sessions, counters, and private auth fields (2 ms)
+      ✓ omits _acl and translates legacy permissions
+      ✓ synthesizes authData for users from provider-specific keys
+      ✓ preserves authData for non-user classes and drops unknown reserved keys (1 ms)
+      ✓ converts schema-declared pointer fields and drops invalid pointer columns
+      ✓ throws when a stored pointer targets a different class than the schema
+      ✓ converts schema-declared File, GeoPoint, Polygon, and Bytes values (1 ms)
+      ✓ converts top-level Mongo Long, Double, and Binary values
+      ✓ recursively converts nested Long, Double, Date, Binary, and object values (1 ms)
+      ✓ handles nested nulls, encoded Date markers, and invalid nested values (1 ms)
+      ✓ rejects unsupported top-level JavaScript types (4 ms)
+      ✓ synthesizes every schema Relation field on the REST object
+      ✓ rejects unsupported JavaScript values (1 ms)
+    transformPointerString
+      ✓ converts a class$id pointer string using the schema target class
+      ✓ rejects a pointer whose class differs from the schema target class
+
+Test Suites: 1 passed, 1 total
+Tests:       70 passed, 70 total
+Snapshots:   0 total
+Time:        1.988 s, estimated 14 s
+Ran all test suites within paths "test/Adapters/Storage/Mongo/MongoTransform.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

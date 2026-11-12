@@ -1,0 +1,180 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+jest-haste-map: Haste module naming collision: imba-project
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/packages/create-imba/templates/cli/package.json
+    * <rootDir>/packages/create-imba/templates/default/package.json
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/selparse.test.js
+  parse - basic selector rewriting
+    ✓ returns null for empty or whitespace-only selectors (3 ms)
+    ✓ rewrites a class selector and initializes rule-set metadata (3 ms)
+    ✓ preserves combinators and adds specificity only to the last compound (1 ms)
+    ✓ rewrites selector lists recursively into one rule set (1 ms)
+    ✓ does not add class specificity for an id selector (1 ms)
+    ✓ treats a missing right-hand side after > as a wildcard
+    ✓ propagates parser errors for invalid selector input (16 ms)
+  parse - modifier and pseudo rewrites
+    ✓ turns shimmed @focus into an :is() with a class fallback
+    ✓ keeps native :hover and adds the shim class fallback (1 ms)
+    ✓ maps @odd to :nth-child(odd)
+    ✓ maps @even to :nth-child(even) (1 ms)
+    ✓ maps @not-first to a :not(:first-child) pseudo
+    ✓ leaves unknown @modifiers as CSS class selectors (1 ms)
+    ✓ @important raises the added specificity level
+    ✓ @force raises the added specificity level
+    ✓ @in marks transition state on the compiled rule (1 ms)
+    ✓ @out marks transition state on the compiled rule
+    ✓ @off marks transition state on the compiled rule (1 ms)
+    ✓ @local marks scoped styles and injects the namespace option
+  parse - media queries and containers
+    ✓ div@md compiles to the expected media query (1 ms)
+    ✓ div@!md compiles to the expected media query
+    ✓ div@300 compiles to the expected media query
+    ✓ div@!300h compiles to the expected media query (1 ms)
+    ✓ div@print compiles to the expected media query
+    ✓ div@dark compiles to the expected media query
+    ✓ div@!dark compiles to the expected media query (1 ms)
+    ✓ div@media(min-width: 100px) compiles to the expected media query
+    ✓ combines multiple media modifiers in source order
+    ✓ compiles container modifiers and nests them inside media queries (1 ms)
+  parse - scoping options
+    ✓ adds the scope class to every scoped compound selector (2 ms)
+    ✓ scopes descendant selectors on both sides
+    ✓ leading universal selector acts as the scope anchor (1 ms)
+    ✓ inner universal selector collapses into a deep descendant boundary
+    ✓ deep combinators keep only the local (left) part scoped (1 ms)
+    ✓ global option disables implicit scoping classes
+    ✓ id option creates an outer scope and uses the namespace for inner parts
+    ✓ self and universal selectors use the cssid scope (1 ms)
+    ✓ html and body roots are not scoped, but their descendants are
+    ✓ component and scoped rule types add one specificity marker (1 ms)
+    ✓ scoped rule type adds two specificity markers when the last part is self
+    ✓ inline option adds three specificity markers
+    ✓ respecify:false suppresses added specificity
+    ✓ @scoped emits an @scope rule using cssid as the upper boundary
+    ✓ @scope-to emits an @scope rule with an explicit upper boundary
+  rewrite
+    ✓ returns any non-rule-set node untouched
+    ✓ recursively rewrites selector-list children and returns the same list (1 ms)
+    ✓ respecify:false zeroes the specificity previously added to the last part
+    ✓ inline option sets the final specificity to three (1 ms)
+    ✓ records transition bookkeeping on a supplied context object
+  layerize and render
+    ✓ groups unscoped selectors into one layer and records rendered strings (1 ms)
+    ✓ merges selectors sharing the same media query
+    ✓ keeps different media queries in separate layers
+    ✓ nests container layers inside media layers and records both on the rule (1 ms)
+    ✓ resets the recorded rule list each time layerize runs
+    ✓ renders content into a single compiled rule (1 ms)
+    ✓ joins separate layers with newlines
+    ✓ passes the stack indent through to the rendered content
+    ✓ renders nothing for an empty selector list (1 ms)
+  unwrap
+    ✓ joins a parent selector with a descendant selector
+    ✓ substitutes ampersands with each parent selector
+    ✓ produces the cartesian product in sub-selector then parent order (1 ms)
+    ✓ replaces only the first ampersand in a sub-selector
+  test helper
+    ✓ renders with the default namespace and logs the result (1 ms)
+    ✓ dumps the parsed selector tree when logging is requested (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       64 passed, 64 total
+Snapshots:   0 total
+Time:        3.293 s
+Ran all test suites within paths "test/packages/imba/src/compiler/selparse.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/packages/imba/src/compiler/selparse.test.js
+  parse - basic selector rewriting
+    ✓ returns null for empty or whitespace-only selectors (3 ms)
+    ✓ rewrites a class selector and initializes rule-set metadata (5 ms)
+    ✓ preserves combinators and adds specificity only to the last compound (1 ms)
+    ✓ rewrites selector lists recursively into one rule set (1 ms)
+    ✓ does not add class specificity for an id selector (1 ms)
+    ✓ treats a missing right-hand side after > as a wildcard
+    ✓ propagates parser errors for invalid selector input (32 ms)
+  parse - modifier and pseudo rewrites
+    ✓ turns shimmed @focus into an :is() with a class fallback (1 ms)
+    ✓ keeps native :hover and adds the shim class fallback
+    ✓ maps @odd to :nth-child(odd)
+    ✓ maps @even to :nth-child(even) (1 ms)
+    ✓ maps @not-first to a :not(:first-child) pseudo
+    ✓ leaves unknown @modifiers as CSS class selectors (1 ms)
+    ✓ @important raises the added specificity level
+    ✓ @force raises the added specificity level (1 ms)
+    ✓ @in marks transition state on the compiled rule
+    ✓ @out marks transition state on the compiled rule (1 ms)
+    ✓ @off marks transition state on the compiled rule
+    ✓ @local marks scoped styles and injects the namespace option (1 ms)
+  parse - media queries and containers
+    ✓ div@md compiles to the expected media query
+    ✓ div@!md compiles to the expected media query (1 ms)
+    ✓ div@300 compiles to the expected media query
+    ✓ div@!300h compiles to the expected media query
+    ✓ div@print compiles to the expected media query
+    ✓ div@dark compiles to the expected media query
+    ✓ div@!dark compiles to the expected media query (1 ms)
+    ✓ div@media(min-width: 100px) compiles to the expected media query
+    ✓ combines multiple media modifiers in source order
+    ✓ compiles container modifiers and nests them inside media queries (1 ms)
+  parse - scoping options
+    ✓ adds the scope class to every scoped compound selector (2 ms)
+    ✓ scopes descendant selectors on both sides (1 ms)
+    ✓ leading universal selector acts as the scope anchor
+    ✓ inner universal selector collapses into a deep descendant boundary
+    ✓ deep combinators keep only the local (left) part scoped (9 ms)
+    ✓ global option disables implicit scoping classes (1 ms)
+    ✓ id option creates an outer scope and uses the namespace for inner parts (1 ms)
+    ✓ self and universal selectors use the cssid scope (1 ms)
+    ✓ html and body roots are not scoped, but their descendants are (1 ms)
+    ✓ component and scoped rule types add one specificity marker (1 ms)
+    ✓ scoped rule type adds two specificity markers when the last part is self
+    ✓ inline option adds three specificity markers (1 ms)
+    ✓ respecify:false suppresses added specificity (1 ms)
+    ✓ @scoped emits an @scope rule using cssid as the upper boundary (1 ms)
+    ✓ @scope-to emits an @scope rule with an explicit upper boundary
+  rewrite
+    ✓ returns any non-rule-set node untouched
+    ✓ recursively rewrites selector-list children and returns the same list (1 ms)
+    ✓ respecify:false zeroes the specificity previously added to the last part
+    ✓ inline option sets the final specificity to three
+    ✓ records transition bookkeeping on a supplied context object (1 ms)
+  layerize and render
+    ✓ groups unscoped selectors into one layer and records rendered strings
+    ✓ merges selectors sharing the same media query (1 ms)
+    ✓ keeps different media queries in separate layers (1 ms)
+    ✓ nests container layers inside media layers and records both on the rule
+    ✓ resets the recorded rule list each time layerize runs (1 ms)
+    ✓ renders content into a single compiled rule
+    ✓ joins separate layers with newlines (1 ms)
+    ✓ passes the stack indent through to the rendered content
+    ✓ renders nothing for an empty selector list (1 ms)
+  unwrap
+    ✓ joins a parent selector with a descendant selector
+    ✓ substitutes ampersands with each parent selector
+    ✓ produces the cartesian product in sub-selector then parent order
+    ✓ replaces only the first ampersand in a sub-selector
+  test helper
+    ✓ renders with the default namespace and logs the result (2 ms)
+    ✓ dumps the parsed selector tree when logging is requested
+
+Test Suites: 1 passed, 1 total
+Tests:       64 passed, 64 total
+Snapshots:   0 total
+Time:        1.327 s, estimated 3 s
+Ran all test suites within paths "test/packages/imba/src/compiler/selparse.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,93 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/particle-system/component.test.js
+  ParticleSystemComponent defaults and public properties
+    ✓ exposes documented default values (8 ms)
+    ✓ simple setters update the backing value and the active emitter material (3 ms)
+    ✓ complex setters rebuild and reset the active emitter (1 ms)
+    ✓ graph setters rebuild graphs and refresh bounds without resetting particles (1 ms)
+    ✓ loop setter configures and resets the emitter time (2 ms)
+    ✓ blend type setter updates emitter and material then rebuilds
+    ✓ draw order is stored and propagated to the emitter
+  ParticleSystemComponent depth and layer integration
+    ✓ depth softening acquires and releases the depth layer once (1 ms)
+    ✓ layers setter moves the emitter mesh instance between layers when enabled (1 ms)
+    ✓ layer event handlers react only to assigned layer ids (1 ms)
+    ✓ layer list helpers add and remove the emitter mesh instance (1 ms)
+  ParticleSystemComponent asset and mesh handling
+    ✓ color map asset binds, loads, unloads, and replaces resources (1 ms)
+    ✓ unloaded enabled assets are requested from the asset registry (1 ms)
+    ✓ assets added later are bound through the registry event (1 ms)
+    ✓ mesh asset loads a mesh and unload clears it (1 ms)
+    ✓ mesh setter accepts direct meshes, models, and asset ids (1 ms)
+    ✓ render asset follows the first mesh and rebinds on set:meshes (1 ms)
+    ✓ normal map asset binds and responds to unload
+  ParticleSystemComponent lifecycle and playback
+    ✓ onEnable constructs an emitter from current values and wires scene events (2 ms)
+    ✓ onEnable does nothing on devices that disable particle systems (1 ms)
+    ✓ onDisable removes mesh instances, unsubscribes, and clears the emitter camera (1 ms)
+    ✓ onBeforeRemove disables, destroys, clears assets, and removes listeners (1 ms)
+    ✓ reset and stop delegate to the emitter with stop semantics
+    ✓ pause, unpause, and play control visibility and emitter time (1 ms)
+    ✓ isPlaying reflects pause, emitter presence, loop, and lifetime state
+    ✓ rebuild toggles enabled state and rebuilds emitter data
+    ✓ setInTools rebuilds only the first time (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        1.01 s
+Ran all test suites within paths "test/framework/components/particle-system/component.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/particle-system/component.test.js
+  ParticleSystemComponent defaults and public properties
+    ✓ exposes documented default values (8 ms)
+    ✓ simple setters update the backing value and the active emitter material (3 ms)
+    ✓ complex setters rebuild and reset the active emitter (1 ms)
+    ✓ graph setters rebuild graphs and refresh bounds without resetting particles (1 ms)
+    ✓ loop setter configures and resets the emitter time (1 ms)
+    ✓ blend type setter updates emitter and material then rebuilds (1 ms)
+    ✓ draw order is stored and propagated to the emitter (1 ms)
+  ParticleSystemComponent depth and layer integration
+    ✓ depth softening acquires and releases the depth layer once (1 ms)
+    ✓ layers setter moves the emitter mesh instance between layers when enabled (2 ms)
+    ✓ layer event handlers react only to assigned layer ids (1 ms)
+    ✓ layer list helpers add and remove the emitter mesh instance (1 ms)
+  ParticleSystemComponent asset and mesh handling
+    ✓ color map asset binds, loads, unloads, and replaces resources (1 ms)
+    ✓ unloaded enabled assets are requested from the asset registry (1 ms)
+    ✓ assets added later are bound through the registry event (1 ms)
+    ✓ mesh asset loads a mesh and unload clears it (1 ms)
+    ✓ mesh setter accepts direct meshes, models, and asset ids (1 ms)
+    ✓ render asset follows the first mesh and rebinds on set:meshes (1 ms)
+    ✓ normal map asset binds and responds to unload (1 ms)
+  ParticleSystemComponent lifecycle and playback
+    ✓ onEnable constructs an emitter from current values and wires scene events (2 ms)
+    ✓ onEnable does nothing on devices that disable particle systems
+    ✓ onDisable removes mesh instances, unsubscribes, and clears the emitter camera (1 ms)
+    ✓ onBeforeRemove disables, destroys, clears assets, and removes listeners (1 ms)
+    ✓ reset and stop delegate to the emitter with stop semantics (1 ms)
+    ✓ pause, unpause, and play control visibility and emitter time (1 ms)
+    ✓ isPlaying reflects pause, emitter presence, loop, and lifetime state
+    ✓ rebuild toggles enabled state and rebuilds emitter data (1 ms)
+    ✓ setInTools rebuilds only the first time (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        1.353 s
+Ran all test suites within paths "test/framework/components/particle-system/component.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

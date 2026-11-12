@@ -1,0 +1,113 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:22) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/cff.test.js
+  cff.make
+    ✓ returns a CFF table record with the expected structure and header (6 ms)
+    ✓ encodes one charstring per glyph, including .notdef (1 ms)
+    ✓ writes glyph names (minus .notdef) into a custom charset (3 ms)
+    ✓ stores non-standard names in the String INDEX and PostScript name in the Name INDEX (1 ms)
+    ✓ preserves font metadata and scales the font matrix by unitsPerEm (2 ms)
+    ✓ applies CFF dictionary defaults for omitted metadata (2 ms)
+    ✓ writes paintType and strokeWidth from topDict options (1 ms)
+    ✓ does not write stroke styling when paintType is not set (1 ms)
+    ✓ converts quadratic curves to cubic curves when building charstrings (2 ms)
+    ✓ round-trips an empty .notdef-only font (1 ms)
+  cff.parse
+    ✓ populates the font with CFF metadata, subroutines and a glyph set (1 ms)
+    ✓ uses the CFF encoding when the font has no cmap encoding yet (1 ms)
+    ✓ does not overwrite an existing font encoding (1 ms)
+    ✓ decodes moveTo/lineTo/curveTo paths and advance widths (1 ms)
+    ✓ closes every contour of a multi-contour glyph (1 ms)
+    ✓ parses a table that starts at a non-zero offset (1 ms)
+    ✓ supports low-memory parsing and loads glyphs on demand (2 ms)
+  cff.parse error handling
+    ✓ rejects unsupported CFF versions (23 ms)
+    ✓ rejects a CFF2 table with no FDArray (1 ms)
+    ✓ rejects a FontSet containing more than one font (1 ms)
+    ✓ rejects an unknown charset format (2 ms)
+  applyPaintType
+    ✓ returns 0 and leaves the path untouched without CFF data (1 ms)
+    ✓ returns 0 when the top dict has no paintType entry
+    ✓ returns a non-stroking paintType without styling the path (1 ms)
+    ✓ styles the path as a stroke for paintType 2
+    ✓ defaults the stroke width to 0 when it is missing
+    ✓ ignores CFF2 tables when looking for paintType (1 ms)
+    ✓ strokes glyph paths produced by parse for a paintType 2 font (1 ms)
+    ✓ fills and closes contours for a paintType 0 font (1 ms)
+  cff.parse with real font fixtures
+    ✓ parses a standard CFF1 font with global and local subroutines (11 ms)
+    ✓ parses a CID-keyed CFF1 font with FDArray and FDSelect (23 ms)
+    ✓ parses a CFF2 font, including its FDArray, subroutines and variation store (2 ms)
+    ✓ does not warn when the CFF2 glyph count matches maxp (2 ms)
+    ✓ warns when the CFF2 glyph count disagrees with maxp (2 ms)
+    ✓ applies stroke styling from a real paintType 2 font (1 ms)
+    ✓ limits recursive subroutine calls instead of hanging (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        0.485 s
+Ran all test suites within paths "test/tables/cff.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/cff.test.js
+  cff.make
+    ✓ returns a CFF table record with the expected structure and header (7 ms)
+    ✓ encodes one charstring per glyph, including .notdef (1 ms)
+    ✓ writes glyph names (minus .notdef) into a custom charset (4 ms)
+    ✓ stores non-standard names in the String INDEX and PostScript name in the Name INDEX (1 ms)
+    ✓ preserves font metadata and scales the font matrix by unitsPerEm (2 ms)
+    ✓ applies CFF dictionary defaults for omitted metadata (2 ms)
+    ✓ writes paintType and strokeWidth from topDict options (2 ms)
+    ✓ does not write stroke styling when paintType is not set (1 ms)
+    ✓ converts quadratic curves to cubic curves when building charstrings (4 ms)
+    ✓ round-trips an empty .notdef-only font (1 ms)
+  cff.parse
+    ✓ populates the font with CFF metadata, subroutines and a glyph set (2 ms)
+    ✓ uses the CFF encoding when the font has no cmap encoding yet (1 ms)
+    ✓ does not overwrite an existing font encoding (1 ms)
+    ✓ decodes moveTo/lineTo/curveTo paths and advance widths (2 ms)
+    ✓ closes every contour of a multi-contour glyph (1 ms)
+    ✓ parses a table that starts at a non-zero offset (2 ms)
+    ✓ supports low-memory parsing and loads glyphs on demand (2 ms)
+  cff.parse error handling
+    ✓ rejects unsupported CFF versions (63 ms)
+    ✓ rejects a CFF2 table with no FDArray (1 ms)
+    ✓ rejects a FontSet containing more than one font (1 ms)
+    ✓ rejects an unknown charset format (2 ms)
+  applyPaintType
+    ✓ returns 0 and leaves the path untouched without CFF data
+    ✓ returns 0 when the top dict has no paintType entry
+    ✓ returns a non-stroking paintType without styling the path
+    ✓ styles the path as a stroke for paintType 2 (1 ms)
+    ✓ defaults the stroke width to 0 when it is missing
+    ✓ ignores CFF2 tables when looking for paintType (1 ms)
+    ✓ strokes glyph paths produced by parse for a paintType 2 font (1 ms)
+    ✓ fills and closes contours for a paintType 0 font (1 ms)
+  cff.parse with real font fixtures
+    ✓ parses a standard CFF1 font with global and local subroutines (11 ms)
+    ✓ parses a CID-keyed CFF1 font with FDArray and FDSelect (17 ms)
+    ✓ parses a CFF2 font, including its FDArray, subroutines and variation store (3 ms)
+    ✓ does not warn when the CFF2 glyph count matches maxp (2 ms)
+    ✓ warns when the CFF2 glyph count disagrees with maxp (2 ms)
+    ✓ applies stroke styling from a real paintType 2 font (1 ms)
+    ✓ limits recursive subroutine calls instead of hanging (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        1.217 s
+Ran all test suites within paths "test/tables/cff.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

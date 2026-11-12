@@ -1,0 +1,205 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/variationprocessor.test.js
+  VariationProcessor table accessors
+    ✓ returns tables from the font (3 ms)
+    ✓ returns undefined for missing optional tables
+  normalizeCoordTags
+    ✓ pads short tags with spaces in place (1 ms)
+    ✓ does not overwrite an already padded tag (1 ms)
+    ✓ leaves four-character tags untouched
+  getNormalizedCoords
+    ✓ maps coordinates below and above the default to -1..1 (1 ms)
+    ✓ returns zero for default, -1 at min and 1 at max (1 ms)
+    ✓ uses axis defaults when a coordinate is missing
+    ✓ normalizes short tags before looking up axes (1 ms)
+    ✓ falls back to font.variation.get() when no coordinates are passed
+    ✓ applies avar segment interpolation
+    ✓ does not apply avar mapping when the value equals a map endpoint
+  deltaShift
+    ✓ shifts every point in the range except the reference point
+    ✓ does nothing when the reference delta is zero (1 ms)
+  deltaInterpolate
+    ✓ interpolates deltas between two reference points (1 ms)
+    ✓ returns without touching points when the range is empty
+    ✓ correctly interpolates when reference points are supplied in reverse order (1 ms)
+    ✓ scales the deltas in each axis independently
+  interpolatePoints
+    ✓ returns early for an empty point list (1 ms)
+    ✓ leaves a contour untouched when it has no deltas
+    ✓ shifts a contour when only one point has a delta (1 ms)
+    ✓ interpolates a point between two deltas in a contour
+    ✓ interpolates across multiple contours independently (1 ms)
+  applyTupleVariationStore (gvar)
+    ✓ defaults to the font variation coordinates (1 ms)
+    ✓ applies deltas to every point when no point subset is specified
+    ✓ uses shared tuple records when the header has no embedded peak tuple
+    ✓ ignores axes whose peak coordinate is zero
+    ✓ skips a tuple when normalized coordinates are zero
+    ✓ skips a tuple when coordinates fall outside the tuple range
+    ✓ supports intermediate start and end tuples (1 ms)
+    ✓ interpolates private point deltas and rounds the result
+    ✓ uses shared points when private points are absent
+    ✓ ignores point indices beyond the available points
+    ✓ applies multiple tuple headers cumulatively (1 ms)
+    ✓ delegates composite glyphs to component transformation (1 ms)
+  applyTupleVariationStore (cvar)
+    ✓ applies deltas to all cvt values
+    ✓ only changes private cvt point indices
+    ✓ does not modify the supplied cvt array
+  getCvarTransform
+    ✓ returns undefined when no cvt or cvar table exists (1 ms)
+    ✓ returns the original cvt when either table is empty or has no headers
+    ✓ returns the original cvt when no cvar table exists
+    ✓ applies cvar deltas via the tuple variation store
+  getBlendVector
+    ✓ returns one scalar per region (1 ms)
+    ✓ treats invalid axis ranges as fully selected
+    ✓ ignores regions spanning zero when the peak is non-zero (1 ms)
+    ✓ ignores regions with a zero peak
+    ✓ returns zero outside the region range
+    ✓ returns one at the peak coordinate
+    ✓ scales linearly below and above the peak
+    ✓ multiplies scalars across multiple axes (1 ms)
+    ✓ falls back to the font variation coordinates
+  getDelta
+    ✓ returns zero for an unknown outer index
+    ✓ returns zero for an unknown inner index (1 ms)
+    ✓ sums delta values weighted by the blend vector
+  transformComponents
+    ✓ applies deltas to matching component offsets and transforms points (1 ms)
+    ✓ uses the component index to select its delta
+  getVariableAdjustment
+    ✓ throws when the requested table is missing (27 ms)
+    ✓ throws when the table has no item variation store
+    ✓ uses the glyph id as the inner index when no map exists
+    ✓ uses the delta set index map for the requested glyph
+    ✓ clamps glyph ids beyond the end of the map (1 ms)
+    ✓ falls back to font variation coordinates
+  getTransform
+    ✓ resolves an integer glyph id through the glyph set
+    ✓ returns the same glyph when there is no variation data (1 ms)
+    ✓ returns a transformed Glyph instance with gvar point deltas (1 ms)
+    ✓ uses font variation coordinates when coords are omitted (1 ms)
+    ✓ uses getBlendPath for CFF2 glyphs without points (1 ms)
+    ✓ adjusts hvar advance width and left side bearing (1 ms)
+    ✓ keeps the original base metrics when hvar is applied repeatedly (1 ms)
+  integration with real variable font fixtures
+    ✓ gvar transformation changes glyph outlines at a non-default axis value (13 ms)
+    ✓ hvar adjusts the advance width and side bearing of a real variable glyph (24 ms)
+    ✓ cvar transform leaves the default CVT unchanged and applies deltas at a non-default axis value (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       72 passed, 72 total
+Snapshots:   0 total
+Time:        0.625 s
+Ran all test suites within paths "test/variationprocessor.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/variationprocessor.test.js
+  VariationProcessor table accessors
+    ✓ returns tables from the font (4 ms)
+    ✓ returns undefined for missing optional tables (1 ms)
+  normalizeCoordTags
+    ✓ pads short tags with spaces in place (2 ms)
+    ✓ does not overwrite an already padded tag (1 ms)
+    ✓ leaves four-character tags untouched
+  getNormalizedCoords
+    ✓ maps coordinates below and above the default to -1..1 (1 ms)
+    ✓ returns zero for default, -1 at min and 1 at max
+    ✓ uses axis defaults when a coordinate is missing
+    ✓ normalizes short tags before looking up axes (1 ms)
+    ✓ falls back to font.variation.get() when no coordinates are passed
+    ✓ applies avar segment interpolation (1 ms)
+    ✓ does not apply avar mapping when the value equals a map endpoint
+  deltaShift
+    ✓ shifts every point in the range except the reference point (1 ms)
+    ✓ does nothing when the reference delta is zero (1 ms)
+  deltaInterpolate
+    ✓ interpolates deltas between two reference points (1 ms)
+    ✓ returns without touching points when the range is empty
+    ✓ correctly interpolates when reference points are supplied in reverse order
+    ✓ scales the deltas in each axis independently
+  interpolatePoints
+    ✓ returns early for an empty point list (1 ms)
+    ✓ leaves a contour untouched when it has no deltas
+    ✓ shifts a contour when only one point has a delta (1 ms)
+    ✓ interpolates a point between two deltas in a contour
+    ✓ interpolates across multiple contours independently (1 ms)
+  applyTupleVariationStore (gvar)
+    ✓ defaults to the font variation coordinates (1 ms)
+    ✓ applies deltas to every point when no point subset is specified (1 ms)
+    ✓ uses shared tuple records when the header has no embedded peak tuple
+    ✓ ignores axes whose peak coordinate is zero (1 ms)
+    ✓ skips a tuple when normalized coordinates are zero
+    ✓ skips a tuple when coordinates fall outside the tuple range (1 ms)
+    ✓ supports intermediate start and end tuples (12 ms)
+    ✓ interpolates private point deltas and rounds the result
+    ✓ uses shared points when private points are absent
+    ✓ ignores point indices beyond the available points (1 ms)
+    ✓ applies multiple tuple headers cumulatively
+    ✓ delegates composite glyphs to component transformation (2 ms)
+  applyTupleVariationStore (cvar)
+    ✓ applies deltas to all cvt values
+    ✓ only changes private cvt point indices
+    ✓ does not modify the supplied cvt array
+  getCvarTransform
+    ✓ returns undefined when no cvt or cvar table exists
+    ✓ returns the original cvt when either table is empty or has no headers (1 ms)
+    ✓ returns the original cvt when no cvar table exists
+    ✓ applies cvar deltas via the tuple variation store (1 ms)
+  getBlendVector
+    ✓ returns one scalar per region (1 ms)
+    ✓ treats invalid axis ranges as fully selected
+    ✓ ignores regions spanning zero when the peak is non-zero (1 ms)
+    ✓ ignores regions with a zero peak
+    ✓ returns zero outside the region range (1 ms)
+    ✓ returns one at the peak coordinate
+    ✓ scales linearly below and above the peak (1 ms)
+    ✓ multiplies scalars across multiple axes
+    ✓ falls back to the font variation coordinates
+  getDelta
+    ✓ returns zero for an unknown outer index
+    ✓ returns zero for an unknown inner index
+    ✓ sums delta values weighted by the blend vector (1 ms)
+  transformComponents
+    ✓ applies deltas to matching component offsets and transforms points (1 ms)
+    ✓ uses the component index to select its delta
+  getVariableAdjustment
+    ✓ throws when the requested table is missing (40 ms)
+    ✓ throws when the table has no item variation store (1 ms)
+    ✓ uses the glyph id as the inner index when no map exists
+    ✓ uses the delta set index map for the requested glyph
+    ✓ clamps glyph ids beyond the end of the map
+    ✓ falls back to font variation coordinates
+  getTransform
+    ✓ resolves an integer glyph id through the glyph set (1 ms)
+    ✓ returns the same glyph when there is no variation data
+    ✓ returns a transformed Glyph instance with gvar point deltas (1 ms)
+    ✓ uses font variation coordinates when coords are omitted (1 ms)
+    ✓ uses getBlendPath for CFF2 glyphs without points (2 ms)
+    ✓ adjusts hvar advance width and left side bearing (1 ms)
+    ✓ keeps the original base metrics when hvar is applied repeatedly (1 ms)
+  integration with real variable font fixtures
+    ✓ gvar transformation changes glyph outlines at a non-default axis value (10 ms)
+    ✓ hvar adjusts the advance width and side bearing of a real variable glyph (20 ms)
+    ✓ cvar transform leaves the default CVT unchanged and applies deltas at a non-default axis value (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       72 passed, 72 total
+Snapshots:   0 total
+Time:        0.869 s, estimated 1 s
+Ran all test suites within paths "test/variationprocessor.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

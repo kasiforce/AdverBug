@@ -1,0 +1,107 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/sfnt.test.js
+  computeCheckSum
+    ✓ pads [] to a multiple of four bytes and returns an unsigned integer (1 ms)
+    ✓ pads [1] to a multiple of four bytes and returns an unsigned integer
+    ✓ pads [1,2,3] to a multiple of four bytes and returns an unsigned integer
+    ✓ pads [1,2,3,4] to a multiple of four bytes and returns an unsigned integer
+    ✓ pads [1,2,3,4,5] to a multiple of four bytes and returns an unsigned integer (1 ms)
+    ✓ pads [18,52,86] to a multiple of four bytes and returns an unsigned integer
+    ✓ masks values above one byte so the result matches the bytes written to a Uint8Array
+    ✓ accepts Uint8Array input (1 ms)
+    ✓ wraps around to 32 bits instead of returning a negative or oversized number (1 ms)
+  make
+    ✓ calculates the binary-search header fields for 1 tables (2 ms)
+    ✓ calculates the binary-search header fields for 2 tables
+    ✓ calculates the binary-search header fields for 3 tables (1 ms)
+    ✓ calculates the binary-search header fields for 4 tables (1 ms)
+    ✓ calculates the binary-search header fields for 5 tables (1 ms)
+    ✓ calculates the binary-search header fields for 8 tables (1 ms)
+    ✓ calculates the binary-search header fields for 9 tables (1 ms)
+    ✓ sorts table records by tag while assigning offsets in table data order (2 ms)
+    ✓ writes a consistent sfnt header, table directory, padding, and table data (2 ms)
+    ✓ rejects table tag "abc" because it is not exactly four characters (23 ms)
+    ✓ rejects table tag "abcde" because it is not exactly four characters (1 ms)
+    ✓ rejects table tag "" because it is not exactly four characters (1 ms)
+  fontToTable
+    ✓ wraps the generated font tables in a valid, checksummed OTTO sfnt container (19 ms)
+    ✓ derives head, hhea, maxp, and hmtx values from the glyph set (6 ms)
+    ✓ reflects character coverage and glyph metrics in the OS/2 table (2 ms)
+    ✓ uses fallback OS/2 metrics and no default character when preferred glyphs are absent (2 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"weightClass":700}) (2 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"italicAngle":-15}) (2 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"weightClass":600,"italicAngle":-0.5}) (2 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"weightClass":599,"italicAngle":0}) (2 ms)
+    ✓ lets font.tables.os2 values override computed OS/2 defaults (2 ms)
+    ✓ includes optional font tables and font metadata when they are present (5 ms)
+    ✓ builds Windows name records from the font names and derived identifiers (2 ms)
+    ✓ falls back to a family-style postScriptName when the font does not provide one (2 ms)
+    ✓ maps glyphs from several Unicode ranges into the four OS/2 range bitfields (1 ms)
+    ✓ throws a descriptive error when a glyph advance width is not numeric (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        3.719 s
+Ran all test suites within paths "test/tables/sfnt.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/tables/sfnt.test.js
+  computeCheckSum
+    ✓ pads [] to a multiple of four bytes and returns an unsigned integer (2 ms)
+    ✓ pads [1] to a multiple of four bytes and returns an unsigned integer (1 ms)
+    ✓ pads [1,2,3] to a multiple of four bytes and returns an unsigned integer
+    ✓ pads [1,2,3,4] to a multiple of four bytes and returns an unsigned integer (1 ms)
+    ✓ pads [1,2,3,4,5] to a multiple of four bytes and returns an unsigned integer
+    ✓ pads [18,52,86] to a multiple of four bytes and returns an unsigned integer (1 ms)
+    ✓ masks values above one byte so the result matches the bytes written to a Uint8Array
+    ✓ accepts Uint8Array input
+    ✓ wraps around to 32 bits instead of returning a negative or oversized number (1 ms)
+  make
+    ✓ calculates the binary-search header fields for 1 tables (2 ms)
+    ✓ calculates the binary-search header fields for 2 tables (1 ms)
+    ✓ calculates the binary-search header fields for 3 tables (1 ms)
+    ✓ calculates the binary-search header fields for 4 tables (1 ms)
+    ✓ calculates the binary-search header fields for 5 tables
+    ✓ calculates the binary-search header fields for 8 tables
+    ✓ calculates the binary-search header fields for 9 tables (1 ms)
+    ✓ sorts table records by tag while assigning offsets in table data order (2 ms)
+    ✓ writes a consistent sfnt header, table directory, padding, and table data (1 ms)
+    ✓ rejects table tag "abc" because it is not exactly four characters (25 ms)
+    ✓ rejects table tag "abcde" because it is not exactly four characters (1 ms)
+    ✓ rejects table tag "" because it is not exactly four characters
+  fontToTable
+    ✓ wraps the generated font tables in a valid, checksummed OTTO sfnt container (18 ms)
+    ✓ derives head, hhea, maxp, and hmtx values from the glyph set (11 ms)
+    ✓ reflects character coverage and glyph metrics in the OS/2 table (5 ms)
+    ✓ uses fallback OS/2 metrics and no default character when preferred glyphs are absent (4 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"weightClass":700}) (3 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"italicAngle":-15}) (2 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"weightClass":600,"italicAngle":-0.5}) (3 ms)
+    ✓ sets head.macStyle from font weight and italic angle ({"weightClass":599,"italicAngle":0}) (2 ms)
+    ✓ lets font.tables.os2 values override computed OS/2 defaults (3 ms)
+    ✓ includes optional font tables and font metadata when they are present (4 ms)
+    ✓ builds Windows name records from the font names and derived identifiers (3 ms)
+    ✓ falls back to a family-style postScriptName when the font does not provide one (2 ms)
+    ✓ maps glyphs from several Unicode ranges into the four OS/2 range bitfields (2 ms)
+    ✓ throws a descriptive error when a glyph advance width is not numeric (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        1.322 s, estimated 3 s
+Ran all test suites within paths "test/tables/sfnt.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,125 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/platform/graphics/webgl/webgl-render-target.test.js
+  WebglRenderTarget
+    initialization (single-sampled)
+      ✓ starts uninitialized and reports initialized state after init (5 ms)
+      ✓ creates multiple color attachments and uploads/clamps textures that have no GL texture yet (2 ms)
+      ✓ attaches array/volume textures as layers and cubemaps as positive-X faces using the target layer and mip (1 ms)
+      ✓ creates a depth renderbuffer without stencil (1 ms)
+      ✓ creates a depth renderbuffer with stencil
+      ✓ attaches a supplied depth texture, uploading and clamping it when necessary (1 ms)
+      ✓ creates a depth-only render target when there are no color buffers (1 ms)
+      ✓ skips null color buffer slots but keeps their attachment indices (1 ms)
+      ✓ does not allocate depth resources when depth is disabled (1 ms)
+      ✓ uses a supplied color framebuffer without creating or validating one (1 ms)
+      ✓ warns for invalid render target dimensions
+      ✓ reports an assertion when initialized more than once
+    initialization (MSAA)
+      ✓ creates a multisampled color/depth framebuffer and a separate resolve framebuffer (3 ms)
+      ✓ creates a matching multisampled color renderbuffer for a supplied framebuffer (RGBA8 back buffer) (1 ms)
+      ✓ creates a matching multisampled color renderbuffer for a supplied framebuffer (RGB8 back buffer) (1 ms)
+      ✓ creates one framebuffer pair per MRT color buffer and restores the main framebuffer (7 ms)
+      ✓ shares and reference-counts the multisampled depth buffer for the same supplied depth texture (1 ms)
+    destroy
+      ✓ deletes owned framebuffers and renderbuffers and resets state (1 ms)
+      ✓ does not delete a supplied framebuffer
+      ✓ deletes the owned MSAA framebuffer but not a supplied resolve framebuffer
+      ✓ resets multisampled depth state on destroy when no depth buffer is cached (1 ms)
+      ✓ destroys MRT framebuffer pairs and clears the MRT and MSAA lists (2 ms)
+    loseContext
+      ✓ drops all resource references without issuing GL deletes (1 ms)
+    resolve
+      ✓ blits color and depth into the resolve framebuffer and rebinds the MSAA framebuffer (2 ms)
+      ✓ blits only the requested buffer for color only
+      ✓ blits only the requested buffer for depth only (1 ms)
+      ✓ does not blit when neither buffer is requested but still rebinds the MSAA framebuffer (1 ms)
+      ✓ resolves each MRT color attachment separately and then resolves depth (1 ms)
+      ✓ resolves only depth for MRT when color is not requested (1 ms)
+      ✓ resolves MRT color attachments without a depth pass when depth is not requested (1 ms)
+      ✓ reports an assertion when resolving a framebuffer into itself (1 ms)
+      ✓ uses the visionOS quad path for XR color resolves (1 ms)
+      ✓ uses the visionOS quad path for color and still blits depth for XR resolves (1 ms)
+      ✓ uses the normal blit path for a non-visionOS XR framebuffer
+    framebuffer validation
+      ✓ validates a framebuffer configuration once per device and caches the result
+      ✓ re-validates framebuffer configurations after context loss (1 ms)
+      ✓ logs an assertion for FRAMEBUFFER_INCOMPLETE_ATTACHMENT status (1 ms)
+      ✓ logs an assertion for FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT status (1 ms)
+      ✓ logs an assertion for FRAMEBUFFER_INCOMPLETE_DIMENSIONS status
+      ✓ logs an assertion for FRAMEBUFFER_UNSUPPORTED status (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        0.543 s
+Ran all test suites within paths "test/platform/graphics/webgl/webgl-render-target.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/platform/graphics/webgl/webgl-render-target.test.js
+  WebglRenderTarget
+    initialization (single-sampled)
+      ✓ starts uninitialized and reports initialized state after init (7 ms)
+      ✓ creates multiple color attachments and uploads/clamps textures that have no GL texture yet (2 ms)
+      ✓ attaches array/volume textures as layers and cubemaps as positive-X faces using the target layer and mip (1 ms)
+      ✓ creates a depth renderbuffer without stencil (1 ms)
+      ✓ creates a depth renderbuffer with stencil (2 ms)
+      ✓ attaches a supplied depth texture, uploading and clamping it when necessary (1 ms)
+      ✓ creates a depth-only render target when there are no color buffers (1 ms)
+      ✓ skips null color buffer slots but keeps their attachment indices
+      ✓ does not allocate depth resources when depth is disabled (1 ms)
+      ✓ uses a supplied color framebuffer without creating or validating one (1 ms)
+      ✓ warns for invalid render target dimensions (1 ms)
+      ✓ reports an assertion when initialized more than once (1 ms)
+    initialization (MSAA)
+      ✓ creates a multisampled color/depth framebuffer and a separate resolve framebuffer (2 ms)
+      ✓ creates a matching multisampled color renderbuffer for a supplied framebuffer (RGBA8 back buffer) (1 ms)
+      ✓ creates a matching multisampled color renderbuffer for a supplied framebuffer (RGB8 back buffer) (1 ms)
+      ✓ creates one framebuffer pair per MRT color buffer and restores the main framebuffer (2 ms)
+      ✓ shares and reference-counts the multisampled depth buffer for the same supplied depth texture (1 ms)
+    destroy
+      ✓ deletes owned framebuffers and renderbuffers and resets state (2 ms)
+      ✓ does not delete a supplied framebuffer
+      ✓ deletes the owned MSAA framebuffer but not a supplied resolve framebuffer
+      ✓ resets multisampled depth state on destroy when no depth buffer is cached
+      ✓ destroys MRT framebuffer pairs and clears the MRT and MSAA lists (1 ms)
+    loseContext
+      ✓ drops all resource references without issuing GL deletes (2 ms)
+    resolve
+      ✓ blits color and depth into the resolve framebuffer and rebinds the MSAA framebuffer (1 ms)
+      ✓ blits only the requested buffer for color only
+      ✓ blits only the requested buffer for depth only
+      ✓ does not blit when neither buffer is requested but still rebinds the MSAA framebuffer (1 ms)
+      ✓ resolves each MRT color attachment separately and then resolves depth (2 ms)
+      ✓ resolves only depth for MRT when color is not requested
+      ✓ resolves MRT color attachments without a depth pass when depth is not requested (1 ms)
+      ✓ reports an assertion when resolving a framebuffer into itself
+      ✓ uses the visionOS quad path for XR color resolves (2 ms)
+      ✓ uses the visionOS quad path for color and still blits depth for XR resolves (1 ms)
+      ✓ uses the normal blit path for a non-visionOS XR framebuffer
+    framebuffer validation
+      ✓ validates a framebuffer configuration once per device and caches the result
+      ✓ re-validates framebuffer configurations after context loss (1 ms)
+      ✓ logs an assertion for FRAMEBUFFER_INCOMPLETE_ATTACHMENT status (1 ms)
+      ✓ logs an assertion for FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT status
+      ✓ logs an assertion for FRAMEBUFFER_INCOMPLETE_DIMENSIONS status (1 ms)
+      ✓ logs an assertion for FRAMEBUFFER_UNSUPPORTED status (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        0.784 s, estimated 1 s
+Ran all test suites within paths "test/platform/graphics/webgl/webgl-render-target.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

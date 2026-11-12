@@ -1,0 +1,175 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/batching/batch-manager.test.js
+  BatchManager
+    construction and destruction
+      ✓ stores references and starts with empty state (5 ms)
+      ✓ destroy clears all references and collections (2 ms)
+    addGroup
+      ✓ creates a group with default properties and generated incremental ids (1 ms)
+      ✓ uses a supplied id and custom layers without advancing the counter
+      ✓ reports an error and returns undefined for a duplicate id (2 ms)
+    group lookup
+      ✓ getGroupByName returns the matching group or null (1 ms)
+      ✓ getGroupById returns the group, including id 0, or null
+      ✓ getBatches filters the batch list by group id (1 ms)
+    markGroupDirty and updateAll
+      ✓ marks groups dirty once and preserves order (1 ms)
+      ✓ updateAll regenerates dirty groups and updates only dynamic batch bounds (1 ms)
+      ✓ updateAll does not regenerate when no group is dirty (1 ms)
+    insert and remove
+      ✓ insert adds once to the requested component list and marks the group dirty
+      ✓ insert supports every component list type (1 ms)
+      ✓ insert reports an assertion for an unknown group and does not throw (1 ms)
+      ✓ remove deletes the node and marks the group dirty
+      ✓ remove ignores nodes which are not present (1 ms)
+      ✓ remove reports an assertion for an unknown group
+    removeGroup
+      ✓ reports an error and leaves state untouched for an unknown group (1 ms)
+      ✓ destroys only batches of the removed group and deletes the group (1 ms)
+      ✓ clears the group id from matching components across the scene hierarchy
+      ✓ does not descend into disabled nodes (1 ms)
+    collectBatchedMeshData
+      ✓ accumulates vertices and indices and takes streams and material from the first visible instance (1 ms)
+      ✓ skips invisible instances completely (1 ms)
+      ✓ adds a blend indices stream for dynamic batches (1 ms)
+      ✓ converts four-vertex non-indexed fans and strips into six indices
+      ✓ returns empty data when every instance is invisible (1 ms)
+    prepare
+      ✓ returns no lists for an empty input (1 ms)
+      ✓ groups compatible instances into a single list (1 ms)
+      ✓ splits on material, layer, batching hash, indexing and shader defines (2 ms)
+      ✓ splits instances whose combined AABB exceeds maxAabbSize (1 ms)
+      ✓ splits on stencil mask differences when the first instance has stencil state (1 ms)
+      ✓ does not inspect stencil state when the first instance has none
+      ✓ splits on negative scale sign (1 ms)
+      ✓ splits on shadow casting and cascade mask differences (1 ms)
+      ✓ compares parameters by content and splits when they differ or are missing (1 ms)
+      ✓ caps dynamic lists at 1024 instances (15 ms)
+      ✓ does not cap static lists at 1024 instances (9 ms)
+      ✓ sorts translucent instances by draw order (2 ms)
+      ✓ avoids putting differently ordered translucent instances into the same list when bounds overlap (2 ms)
+    create
+      ✓ builds a batch mesh and registers the batch (7 ms)
+      ✓ offsets indices of later source instances by the vertices already merged (1 ms)
+      ✓ transforms positions into world space for static batches (1 ms)
+      ✓ copies render properties and parameters from the first source instance (2 ms)
+      ✓ disables culling for UI batch groups (2 ms)
+      ✓ returns null and registers nothing when all instances are invisible (1 ms)
+      ✓ clones the material and creates a skin batch instance for dynamic batches (3 ms)
+      ✓ writes blend indices per source instance for dynamic batches (1 ms)
+      ✓ converts a four-vertex non-indexed triangle fan into triangles (1 ms)
+      ✓ converts a four-vertex non-indexed triangle strip into triangles (1 ms)
+    generate
+      ✓ destroys and rebuilds batches for all groups when no ids are supplied (1 ms)
+      ✓ only destroys batches in the requested groups and clears matching dirty ids (1 ms)
+      ✓ empties the dirty list when it is passed by reference (18 ms)
+      ✓ creates a batch from model instances and adds it to the group layers (2 ms)
+      ✓ collects model instances, removes them from layers and prepares them for batching (1 ms)
+      ✓ excludes entities containing unsupported mesh instances and restores their layers (2 ms)
+      ✓ collects simple sprites only for dynamic groups or simple render mode (1 ms)
+      ✓ collects text elements as UI batches and disables their culling (2 ms)
+      ✓ collects image and unmask elements and dirties their mask when stencil state is missing (1 ms)
+    destroyBatch and clone
+      ✓ destroyBatch delegates to Batch#destroy with the scene and group layers
+      ✓ clone reports the removed API and returns undefined
+
+Test Suites: 1 passed, 1 total
+Tests:       60 passed, 60 total
+Snapshots:   0 total
+Time:        1.369 s
+Ran all test suites within paths "test/scene/batching/batch-manager.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/batching/batch-manager.test.js
+  BatchManager
+    construction and destruction
+      ✓ stores references and starts with empty state (4 ms)
+      ✓ destroy clears all references and collections (1 ms)
+    addGroup
+      ✓ creates a group with default properties and generated incremental ids (1 ms)
+      ✓ uses a supplied id and custom layers without advancing the counter (1 ms)
+      ✓ reports an error and returns undefined for a duplicate id (1 ms)
+    group lookup
+      ✓ getGroupByName returns the matching group or null (1 ms)
+      ✓ getGroupById returns the group, including id 0, or null (1 ms)
+      ✓ getBatches filters the batch list by group id
+    markGroupDirty and updateAll
+      ✓ marks groups dirty once and preserves order
+      ✓ updateAll regenerates dirty groups and updates only dynamic batch bounds (1 ms)
+      ✓ updateAll does not regenerate when no group is dirty (1 ms)
+    insert and remove
+      ✓ insert adds once to the requested component list and marks the group dirty
+      ✓ insert supports every component list type (1 ms)
+      ✓ insert reports an assertion for an unknown group and does not throw (1 ms)
+      ✓ remove deletes the node and marks the group dirty
+      ✓ remove ignores nodes which are not present (1 ms)
+      ✓ remove reports an assertion for an unknown group
+    removeGroup
+      ✓ reports an error and leaves state untouched for an unknown group (1 ms)
+      ✓ destroys only batches of the removed group and deletes the group (1 ms)
+      ✓ clears the group id from matching components across the scene hierarchy
+      ✓ does not descend into disabled nodes (1 ms)
+    collectBatchedMeshData
+      ✓ accumulates vertices and indices and takes streams and material from the first visible instance (1 ms)
+      ✓ skips invisible instances completely (1 ms)
+      ✓ adds a blend indices stream for dynamic batches (1 ms)
+      ✓ converts four-vertex non-indexed fans and strips into six indices
+      ✓ returns empty data when every instance is invisible (1 ms)
+    prepare
+      ✓ returns no lists for an empty input (1 ms)
+      ✓ groups compatible instances into a single list (1 ms)
+      ✓ splits on material, layer, batching hash, indexing and shader defines (1 ms)
+      ✓ splits instances whose combined AABB exceeds maxAabbSize
+      ✓ splits on stencil mask differences when the first instance has stencil state (1 ms)
+      ✓ does not inspect stencil state when the first instance has none (1 ms)
+      ✓ splits on negative scale sign
+      ✓ splits on shadow casting and cascade mask differences (1 ms)
+      ✓ compares parameters by content and splits when they differ or are missing (1 ms)
+      ✓ caps dynamic lists at 1024 instances (10 ms)
+      ✓ does not cap static lists at 1024 instances (7 ms)
+      ✓ sorts translucent instances by draw order (1 ms)
+      ✓ avoids putting differently ordered translucent instances into the same list when bounds overlap (1 ms)
+    create
+      ✓ builds a batch mesh and registers the batch (5 ms)
+      ✓ offsets indices of later source instances by the vertices already merged (1 ms)
+      ✓ transforms positions into world space for static batches (1 ms)
+      ✓ copies render properties and parameters from the first source instance (2 ms)
+      ✓ disables culling for UI batch groups (1 ms)
+      ✓ returns null and registers nothing when all instances are invisible
+      ✓ clones the material and creates a skin batch instance for dynamic batches (2 ms)
+      ✓ writes blend indices per source instance for dynamic batches (1 ms)
+      ✓ converts a four-vertex non-indexed triangle fan into triangles (1 ms)
+      ✓ converts a four-vertex non-indexed triangle strip into triangles (1 ms)
+    generate
+      ✓ destroys and rebuilds batches for all groups when no ids are supplied (1 ms)
+      ✓ only destroys batches in the requested groups and clears matching dirty ids (1 ms)
+      ✓ empties the dirty list when it is passed by reference
+      ✓ creates a batch from model instances and adds it to the group layers (1 ms)
+      ✓ collects model instances, removes them from layers and prepares them for batching
+      ✓ excludes entities containing unsupported mesh instances and restores their layers (1 ms)
+      ✓ collects simple sprites only for dynamic groups or simple render mode (1 ms)
+      ✓ collects text elements as UI batches and disables their culling (1 ms)
+      ✓ collects image and unmask elements and dirties their mask when stencil state is missing
+    destroyBatch and clone
+      ✓ destroyBatch delegates to Batch#destroy with the scene and group layers
+      ✓ clone reports the removed API and returns undefined
+
+Test Suites: 1 passed, 1 total
+Tests:       60 passed, 60 total
+Snapshots:   0 total
+Time:        1.472 s, estimated 2 s
+Ran all test suites within paths "test/scene/batching/batch-manager.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,289 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/platform/graphics/webgl/webgl-texture.test.js
+  WebglTexture
+    constructor and propertyChanged
+      ✓ stores the texture and starts with no dirty parameter flags (3 ms)
+      ✓ accumulates changed property flags with bitwise OR (1 ms)
+    initialize
+      ✓ creates a GL texture and marks it as not yet created (3 ms)
+      ✓ selects the 2D target (1 ms)
+      ✓ selects the cubemap target (1 ms)
+      ✓ selects the volume target
+      ✓ selects the array target (1 ms)
+      ✓ selects the cubemap wins over volume and array target (1 ms)
+      ✓ selects the volume wins over array target (1 ms)
+      ✓ maps the A8 pixel format to GL enums
+      ✓ maps the L8 pixel format to GL enums
+      ✓ maps the LA8 pixel format to GL enums (1 ms)
+      ✓ maps the R8 pixel format to GL enums (1 ms)
+      ✓ maps the RG8 pixel format to GL enums
+      ✓ maps the RGB565 pixel format to GL enums (1 ms)
+      ✓ maps the RGBA5551 pixel format to GL enums (1 ms)
+      ✓ maps the RGBA4 pixel format to GL enums
+      ✓ maps the RGB8 pixel format to GL enums (1 ms)
+      ✓ maps the RGBA8 pixel format to GL enums
+      ✓ maps the RGB9E5 pixel format to GL enums (1 ms)
+      ✓ maps the RG8S pixel format to GL enums (1 ms)
+      ✓ maps the RGBA8S pixel format to GL enums
+      ✓ maps the RGB10A2 pixel format to GL enums (1 ms)
+      ✓ maps the RGB10A2U pixel format to GL enums
+      ✓ maps the R16F pixel format to GL enums (1 ms)
+      ✓ maps the RG16F pixel format to GL enums (1 ms)
+      ✓ maps the RGB16F pixel format to GL enums
+      ✓ maps the RGBA16F pixel format to GL enums (1 ms)
+      ✓ maps the RGBA32F pixel format to GL enums
+      ✓ maps the RGB32F pixel format to GL enums (1 ms)
+      ✓ maps the R32F pixel format to GL enums
+      ✓ maps the RG32F pixel format to GL enums (1 ms)
+      ✓ maps the DEPTH pixel format to GL enums
+      ✓ maps the DEPTH16 pixel format to GL enums (1 ms)
+      ✓ maps the DEPTHSTENCIL pixel format to GL enums (1 ms)
+      ✓ maps the 111110F pixel format to GL enums
+      ✓ maps the SRGB8 pixel format to GL enums (1 ms)
+      ✓ maps the SRGBA8 pixel format to GL enums (1 ms)
+      ✓ maps the R8I pixel format to GL enums
+      ✓ maps the R8U pixel format to GL enums (1 ms)
+      ✓ maps the R16I pixel format to GL enums
+      ✓ maps the R16U pixel format to GL enums (1 ms)
+      ✓ maps the R32U pixel format to GL enums
+      ✓ maps the R32I pixel format to GL enums (1 ms)
+      ✓ maps the RG8I pixel format to GL enums
+      ✓ maps the RG8U pixel format to GL enums (1 ms)
+      ✓ maps the RG16I pixel format to GL enums
+      ✓ maps the RG16U pixel format to GL enums (1 ms)
+      ✓ maps the RG32I pixel format to GL enums (1 ms)
+      ✓ maps the RG32U pixel format to GL enums
+      ✓ maps the RGBA8I pixel format to GL enums (1 ms)
+      ✓ maps the RGBA8U pixel format to GL enums
+      ✓ maps the RGBA16I pixel format to GL enums (1 ms)
+      ✓ maps the RGBA16U pixel format to GL enums
+      ✓ maps the RGBA32I pixel format to GL enums
+      ✓ maps the RGBA32U pixel format to GL enums (1 ms)
+      ✓ maps the compressed DXT1 format through the device extension
+      ✓ maps the compressed DXT3 format through the device extension
+      ✓ maps the compressed DXT5 format through the device extension (1 ms)
+      ✓ maps the compressed ETC1 format through the device extension
+      ✓ maps the compressed PVRTC 2bpp RGB format through the device extension (10 ms)
+      ✓ maps the compressed PVRTC 2bpp RGBA format through the device extension (1 ms)
+      ✓ maps the compressed PVRTC 4bpp RGB format through the device extension (1 ms)
+      ✓ maps the compressed PVRTC 4bpp RGBA format through the device extension
+      ✓ maps the compressed ETC2 RGB format through the device extension (1 ms)
+      ✓ maps the compressed ETC2 RGBA format through the device extension
+      ✓ maps the compressed ASTC 4x4 format through the device extension
+      ✓ maps the compressed ATC RGB format through the device extension
+      ✓ maps the compressed ATC RGBA format through the device extension
+      ✓ maps the compressed BC6F format through the device extension (1 ms)
+      ✓ maps the compressed BC6UF format through the device extension
+      ✓ maps the compressed BC7 format through the device extension
+      ✓ maps the compressed DXT1 sRGB format through the device extension (1 ms)
+      ✓ maps the compressed DXT3 sRGBA format through the device extension
+      ✓ maps the compressed DXT5 sRGBA format through the device extension (1 ms)
+      ✓ maps the compressed ETC2 sRGB format through the device extension
+      ✓ maps the compressed ETC2 sRGBA format through the device extension
+      ✓ maps the compressed ASTC 4x4 sRGB format through the device extension (1 ms)
+      ✓ maps the compressed BC7 sRGBA format through the device extension
+      ✓ reports an error for unsupported BGRA8 textures (1 ms)
+      ✓ reports an error for unsupported SBGRA8 textures
+    destroy and loseContext
+      ✓ deletes the GL texture and clears it from every texture unit slot (1 ms)
+      ✓ does nothing when there is no GL texture (1 ms)
+      ✓ loseContext drops the GL texture reference without deleting or unbinding it
+    uploadImmediate
+      ✓ does not bind the texture when it has nothing pending
+      ✓ uploads pending textures and clears both pending flags (1 ms)
+      ✓ uploads when only mipmaps are pending
+      ✓ keeps the upload pending when the context is lost (1 ms)
+    read, write and copy
+      ✓ read delegates to the device texture read operation
+      ✓ write binds the texture before delegating to the write operation (1 ms)
+      ✓ copy delegates to the device texture copy operation
+    upload
+      ✓ returns early when no upload or mipmap work remains (2 ms)
+      ✓ reports an error when uploading a texture that has been destroyed (1 ms)
+      ✓ uploads 2D byte data with texImage2D and tracks VRAM (1 ms)
+      ✓ uses texSubImage2D for subsequent uploads and keeps VRAM tracking correct (1 ms)
+      ✓ generates mipmaps after uploading a single level
+      ✓ uploads every supplied mip level and does not regenerate the chain
+      ✓ regenerates a complete chain before applying custom partial mip levels (1 ms)
+      ✓ regenerates mipmaps without re-uploading the base level (1 ms)
+      ✓ does not auto-generate mipmaps for integer textures (1 ms)
+      ✓ uploads uncompressed cubemap byte data and uses texSubImage2D later (1 ms)
+      ✓ uses texSubImage2D for same-size cubemap image updates (1 ms)
+      ✓ does not upload extra mip levels when mipmaps are disabled (1 ms)
+      ✓ uploads compressed 2D data and uses compressedTexSubImage2D later (1 ms)
+      ✓ uploads cubemap faces from browser image sources (2 ms)
+      ✓ skips cubemap faces that have not changed
+      ✓ skips unchanged cubemap byte faces
+      ✓ uploads cubemap byte data and uses compressed sub uploads later (1 ms)
+      ✓ uploads 3D volume data with texImage3D (1 ms)
+      ✓ uploads compressed 3D volume data with compressedTexImage3D (1 ms)
+      ✓ allocates 2D array storage then uploads each layer (1 ms)
+      ✓ reserves the complete array mip chain in texStorage3D
+      ✓ skips array upload when the layer count does not match (1 ms)
+      ✓ uploads compressed array layers with compressedTexSubImage3D
+      ✓ uploads an image, adopts its dimensions and uses texSubImage2D for same-size updates (1 ms)
+      ✓ re-uploads with texImage2D and adopts dimensions when an image changes size (1 ms)
+      ✓ always uses texImage2D for video sources (1 ms)
+      ✓ uploads HTML elements through texElementImage2D and adopts layout size (1 ms)
+      ✓ downsamples oversized images to maxTextureSize and uploads the canvas (2 ms)
+      ✓ does not downsample images within maxTextureSize (1 ms)
+      ✓ downsamples oversized cubemap faces to maxCubeMapSize (1 ms)
+      ✓ releases image sources after upload when requested (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       122 passed, 122 total
+Snapshots:   0 total
+Time:        0.776 s
+Ran all test suites within paths "test/platform/graphics/webgl/webgl-texture.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/platform/graphics/webgl/webgl-texture.test.js
+  WebglTexture
+    constructor and propertyChanged
+      ✓ stores the texture and starts with no dirty parameter flags (3 ms)
+      ✓ accumulates changed property flags with bitwise OR
+    initialize
+      ✓ creates a GL texture and marks it as not yet created (3 ms)
+      ✓ selects the 2D target (1 ms)
+      ✓ selects the cubemap target (1 ms)
+      ✓ selects the volume target
+      ✓ selects the array target
+      ✓ selects the cubemap wins over volume and array target (1 ms)
+      ✓ selects the volume wins over array target
+      ✓ maps the A8 pixel format to GL enums (1 ms)
+      ✓ maps the L8 pixel format to GL enums (1 ms)
+      ✓ maps the LA8 pixel format to GL enums (1 ms)
+      ✓ maps the R8 pixel format to GL enums
+      ✓ maps the RG8 pixel format to GL enums (1 ms)
+      ✓ maps the RGB565 pixel format to GL enums (1 ms)
+      ✓ maps the RGBA5551 pixel format to GL enums
+      ✓ maps the RGBA4 pixel format to GL enums (1 ms)
+      ✓ maps the RGB8 pixel format to GL enums (15 ms)
+      ✓ maps the RGBA8 pixel format to GL enums
+      ✓ maps the RGB9E5 pixel format to GL enums (1 ms)
+      ✓ maps the RG8S pixel format to GL enums (1 ms)
+      ✓ maps the RGBA8S pixel format to GL enums (1 ms)
+      ✓ maps the RGB10A2 pixel format to GL enums (1 ms)
+      ✓ maps the RGB10A2U pixel format to GL enums (1 ms)
+      ✓ maps the R16F pixel format to GL enums (1 ms)
+      ✓ maps the RG16F pixel format to GL enums (1 ms)
+      ✓ maps the RGB16F pixel format to GL enums
+      ✓ maps the RGBA16F pixel format to GL enums
+      ✓ maps the RGBA32F pixel format to GL enums (1 ms)
+      ✓ maps the RGB32F pixel format to GL enums (1 ms)
+      ✓ maps the R32F pixel format to GL enums
+      ✓ maps the RG32F pixel format to GL enums (1 ms)
+      ✓ maps the DEPTH pixel format to GL enums
+      ✓ maps the DEPTH16 pixel format to GL enums (1 ms)
+      ✓ maps the DEPTHSTENCIL pixel format to GL enums (1 ms)
+      ✓ maps the 111110F pixel format to GL enums (1 ms)
+      ✓ maps the SRGB8 pixel format to GL enums
+      ✓ maps the SRGBA8 pixel format to GL enums (1 ms)
+      ✓ maps the R8I pixel format to GL enums (1 ms)
+      ✓ maps the R8U pixel format to GL enums
+      ✓ maps the R16I pixel format to GL enums (1 ms)
+      ✓ maps the R16U pixel format to GL enums
+      ✓ maps the R32U pixel format to GL enums (1 ms)
+      ✓ maps the R32I pixel format to GL enums
+      ✓ maps the RG8I pixel format to GL enums (1 ms)
+      ✓ maps the RG8U pixel format to GL enums
+      ✓ maps the RG16I pixel format to GL enums (1 ms)
+      ✓ maps the RG16U pixel format to GL enums
+      ✓ maps the RG32I pixel format to GL enums (1 ms)
+      ✓ maps the RG32U pixel format to GL enums
+      ✓ maps the RGBA8I pixel format to GL enums (1 ms)
+      ✓ maps the RGBA8U pixel format to GL enums
+      ✓ maps the RGBA16I pixel format to GL enums (1 ms)
+      ✓ maps the RGBA16U pixel format to GL enums
+      ✓ maps the RGBA32I pixel format to GL enums (1 ms)
+      ✓ maps the RGBA32U pixel format to GL enums
+      ✓ maps the compressed DXT1 format through the device extension (1 ms)
+      ✓ maps the compressed DXT3 format through the device extension (1 ms)
+      ✓ maps the compressed DXT5 format through the device extension
+      ✓ maps the compressed ETC1 format through the device extension (1 ms)
+      ✓ maps the compressed PVRTC 2bpp RGB format through the device extension
+      ✓ maps the compressed PVRTC 2bpp RGBA format through the device extension (1 ms)
+      ✓ maps the compressed PVRTC 4bpp RGB format through the device extension
+      ✓ maps the compressed PVRTC 4bpp RGBA format through the device extension (1 ms)
+      ✓ maps the compressed ETC2 RGB format through the device extension
+      ✓ maps the compressed ETC2 RGBA format through the device extension (1 ms)
+      ✓ maps the compressed ASTC 4x4 format through the device extension
+      ✓ maps the compressed ATC RGB format through the device extension (1 ms)
+      ✓ maps the compressed ATC RGBA format through the device extension
+      ✓ maps the compressed BC6F format through the device extension (1 ms)
+      ✓ maps the compressed BC6UF format through the device extension
+      ✓ maps the compressed BC7 format through the device extension (1 ms)
+      ✓ maps the compressed DXT1 sRGB format through the device extension
+      ✓ maps the compressed DXT3 sRGBA format through the device extension (1 ms)
+      ✓ maps the compressed DXT5 sRGBA format through the device extension
+      ✓ maps the compressed ETC2 sRGB format through the device extension (1 ms)
+      ✓ maps the compressed ETC2 sRGBA format through the device extension
+      ✓ maps the compressed ASTC 4x4 sRGB format through the device extension (1 ms)
+      ✓ maps the compressed BC7 sRGBA format through the device extension
+      ✓ reports an error for unsupported BGRA8 textures (2 ms)
+      ✓ reports an error for unsupported SBGRA8 textures
+    destroy and loseContext
+      ✓ deletes the GL texture and clears it from every texture unit slot (1 ms)
+      ✓ does nothing when there is no GL texture (1 ms)
+      ✓ loseContext drops the GL texture reference without deleting or unbinding it
+    uploadImmediate
+      ✓ does not bind the texture when it has nothing pending
+      ✓ uploads pending textures and clears both pending flags (1 ms)
+      ✓ uploads when only mipmaps are pending
+      ✓ keeps the upload pending when the context is lost
+    read, write and copy
+      ✓ read delegates to the device texture read operation (1 ms)
+      ✓ write binds the texture before delegating to the write operation (1 ms)
+      ✓ copy delegates to the device texture copy operation
+    upload
+      ✓ returns early when no upload or mipmap work remains (3 ms)
+      ✓ reports an error when uploading a texture that has been destroyed (1 ms)
+      ✓ uploads 2D byte data with texImage2D and tracks VRAM (2 ms)
+      ✓ uses texSubImage2D for subsequent uploads and keeps VRAM tracking correct (1 ms)
+      ✓ generates mipmaps after uploading a single level (1 ms)
+      ✓ uploads every supplied mip level and does not regenerate the chain (1 ms)
+      ✓ regenerates a complete chain before applying custom partial mip levels (1 ms)
+      ✓ regenerates mipmaps without re-uploading the base level (1 ms)
+      ✓ does not auto-generate mipmaps for integer textures (1 ms)
+      ✓ uploads uncompressed cubemap byte data and uses texSubImage2D later (2 ms)
+      ✓ uses texSubImage2D for same-size cubemap image updates (1 ms)
+      ✓ does not upload extra mip levels when mipmaps are disabled (1 ms)
+      ✓ uploads compressed 2D data and uses compressedTexSubImage2D later (1 ms)
+      ✓ uploads cubemap faces from browser image sources (3 ms)
+      ✓ skips cubemap faces that have not changed (1 ms)
+      ✓ skips unchanged cubemap byte faces (1 ms)
+      ✓ uploads cubemap byte data and uses compressed sub uploads later (1 ms)
+      ✓ uploads 3D volume data with texImage3D
+      ✓ uploads compressed 3D volume data with compressedTexImage3D (1 ms)
+      ✓ allocates 2D array storage then uploads each layer (1 ms)
+      ✓ reserves the complete array mip chain in texStorage3D
+      ✓ skips array upload when the layer count does not match (1 ms)
+      ✓ uploads compressed array layers with compressedTexSubImage3D
+      ✓ uploads an image, adopts its dimensions and uses texSubImage2D for same-size updates (1 ms)
+      ✓ re-uploads with texImage2D and adopts dimensions when an image changes size
+      ✓ always uses texImage2D for video sources
+      ✓ uploads HTML elements through texElementImage2D and adopts layout size (1 ms)
+      ✓ downsamples oversized images to maxTextureSize and uploads the canvas (2 ms)
+      ✓ does not downsample images within maxTextureSize (1 ms)
+      ✓ downsamples oversized cubemap faces to maxCubeMapSize (2 ms)
+      ✓ releases image sources after upload when requested (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       122 passed, 122 total
+Snapshots:   0 total
+Time:        0.964 s, estimated 1 s
+Ran all test suites within paths "test/platform/graphics/webgl/webgl-texture.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

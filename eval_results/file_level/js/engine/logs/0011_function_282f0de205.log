@@ -1,0 +1,209 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/renderer/shadow-renderer.test.js
+  needsShadowRendering
+    ✓ is true when all conditions hold (3 ms)
+    ✓ is false when disabled
+    ✓ is false when not casting shadows (1 ms)
+    ✓ is false when shadow update none
+    ✓ is false when not visible this frame
+    ✓ accepts realtime and this-frame update modes
+    ✓ does not consume one-shot updates
+    ✓ is exposed on the renderer instance and delegates to the predicate (1 ms)
+  ShadowRenderer constructor
+    ✓ resolves the shader scope ids and initializes state (2 ms)
+    ✓ creates a blend state that writes no color and one that does (2 ms)
+  ShadowRenderer.createShadowCamera
+    ✓ creates a depth-map camera for PCF shadows (2 ms)
+    ✓ creates a color-map camera with a transparent clear color for VSM shadows
+    ✓ clears the color buffer for shadow types that are neither PCF nor VSM
+    ✓ sets an orthographic projection for directional lights (1 ms)
+    ✓ sets a 90 degree perspective projection for each omni face (3 ms)
+  cullShadowCasters
+    ✓ culls only casters that cast, are visible, and pass the frustum test (2 ms)
+    ✓ uses the supplied casters instead of the layer composition (1 ms)
+    ✓ collects each layer once even when the layer is listed twice (1 ms)
+    ✓ ignores layers the light is not part of and fires pre/post cull around sorting (2 ms)
+    ✓ works without a scene (1 ms)
+  cullShadowCastersOmni
+    ✓ places a caster at the light position in every face (3 ms)
+    ✓ culls a caster into only the face it lies in (1 ms)
+    ✓ keeps a caster touching the far plane but rejects one beyond it (2 ms)
+    ✓ rejects a caster outside the bounds of all six faces (1 ms)
+    ✓ skips casters that do not cast or are not visible (1 ms)
+    ✓ keeps casters with culling disabled in every face (2 ms)
+    ✓ evaluates a custom visibility function with each face camera (2 ms)
+    ✓ clears the per-face visible lists before culling (1 ms)
+    ✓ uses supplied casters instead of the layer composition (1 ms)
+  setupRenderState
+    ✓ clustered pcf selects the true blend state (1 ms)
+    ✓ clustered non-pcf selects the true blend state (1 ms)
+    ✓ non-clustered pcf spot selects the false blend state (1 ms)
+    ✓ non-clustered pcf directional selects the false blend state
+    ✓ non-clustered pcf omni selects the false blend state (1 ms)
+    ✓ non-clustered non-pcf selects the false blend state
+  dispatchUniforms
+    ✓ dispatches local light position, range and view-projection matrix (2 ms)
+    ✓ copies the cascade matrix into the shadow palette at the face offset (1 ms)
+    ✓ does not write a palette for local lights (1 ms)
+  getShadowPass
+    ✓ allocates and caches a shadow pass per light type and shadow type (2 ms)
+    ✓ allocates a distinct pass for each light and shadow type (14 ms)
+  submitCasters
+    ✓ draws a caster and updates the draw counters (3 ms)
+    ✓ flips the front face when the shadow map is flipped (1 ms)
+    ✓ skips zero-instance casters without indirect draw commands (1 ms)
+    ✓ draws zero-instance casters when indirect draw commands exist (1 ms)
+    ✓ does not bind an instancing buffer when not instanced (1 ms)
+    ✓ prepares a material once and restores overrides when it repeats (1 ms)
+    ✓ prepares each material when the material changes between casters (1 ms)
+    ✓ sets up override bind groups when required (1 ms)
+    ✓ uses the mesh instance storage slot for shaders that need it (1 ms)
+    ✓ skips casters whose shadow shader failed and restores their parameters (1 ms)
+    ✓ restores replaced parameters after a successful draw (1 ms)
+    ✓ warns once about a shader reading the normal matrix in the shadow pass (1 ms)
+    ✓ does not increment the instanced counter for non-instanced draws (1 ms)
+  light render data and faces
+    ✓ getLightRenderData uses the camera for directional lights only (1 ms)
+    ✓ setupRenderPass configures a depth-buffer pass (1 ms)
+    ✓ setupRenderPass configures a color-buffer pass (1 ms)
+    ✓ prepareFace assigns the render target for the face and returns the shadow camera (1 ms)
+    ✓ prepareFace always uses the first render target for directional lights (1 ms)
+    ✓ renderFace dispatches uniforms, clears, renders state and submits casters (1 ms)
+    ✓ renderFace skips the clear when not requested and accumulates the shadow map time
+  getVsmBlurShader
+    ✓ creates and caches a shader per blur mode and filter size (1 ms)
+    ✓ omits the gaussian define for box blur and caches separately (1 ms)
+    ✓ computes normalized, symmetric gaussian weights for the blur size (1 ms)
+  renderVsm
+    ✓ does nothing for non-VSM lights or a filter size of one (1 ms)
+    ✓ blurs a non-clustered VSM light with the default cascade mask
+    ✓ blurs a local VSM light with its single face mask (1 ms)
+    ✓ passes through an explicit cascade mask (1 ms)
+    ✓ in clustered mode only directional lights are blurred
+  applyVsmBlur
+    ✓ blurs horizontally to scratch storage and vertically to the shadow map (2 ms)
+    ✓ blurs only the cascades in the mask when some are cached (1 ms)
+    ✓ does not set gaussian weights for box blur
+    ✓ does a single vertical blur for local lights regardless of mask (1 ms)
+  view uniform format
+    ✓ initViewUniformFormat declares the shadow face uniforms in one buffer (2 ms)
+    ✓ initViewUniformFormat reuses an already created format
+    ✓ frameUpdate creates the view uniform format (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       75 passed, 75 total
+Snapshots:   0 total
+Time:        1.502 s
+Ran all test suites within paths "test/scene/renderer/shadow-renderer.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/renderer/shadow-renderer.test.js
+  needsShadowRendering
+    ✓ is true when all conditions hold (2 ms)
+    ✓ is false when disabled (1 ms)
+    ✓ is false when not casting shadows
+    ✓ is false when shadow update none (1 ms)
+    ✓ is false when not visible this frame
+    ✓ accepts realtime and this-frame update modes (1 ms)
+    ✓ does not consume one-shot updates
+    ✓ is exposed on the renderer instance and delegates to the predicate (1 ms)
+  ShadowRenderer constructor
+    ✓ resolves the shader scope ids and initializes state (2 ms)
+    ✓ creates a blend state that writes no color and one that does (2 ms)
+  ShadowRenderer.createShadowCamera
+    ✓ creates a depth-map camera for PCF shadows (2 ms)
+    ✓ creates a color-map camera with a transparent clear color for VSM shadows
+    ✓ clears the color buffer for shadow types that are neither PCF nor VSM (1 ms)
+    ✓ sets an orthographic projection for directional lights (1 ms)
+    ✓ sets a 90 degree perspective projection for each omni face (3 ms)
+  cullShadowCasters
+    ✓ culls only casters that cast, are visible, and pass the frustum test (2 ms)
+    ✓ uses the supplied casters instead of the layer composition (1 ms)
+    ✓ collects each layer once even when the layer is listed twice (1 ms)
+    ✓ ignores layers the light is not part of and fires pre/post cull around sorting (2 ms)
+    ✓ works without a scene (1 ms)
+  cullShadowCastersOmni
+    ✓ places a caster at the light position in every face (3 ms)
+    ✓ culls a caster into only the face it lies in (2 ms)
+    ✓ keeps a caster touching the far plane but rejects one beyond it (1 ms)
+    ✓ rejects a caster outside the bounds of all six faces (1 ms)
+    ✓ skips casters that do not cast or are not visible (1 ms)
+    ✓ keeps casters with culling disabled in every face (1 ms)
+    ✓ evaluates a custom visibility function with each face camera (14 ms)
+    ✓ clears the per-face visible lists before culling (2 ms)
+    ✓ uses supplied casters instead of the layer composition (1 ms)
+  setupRenderState
+    ✓ clustered pcf selects the true blend state (1 ms)
+    ✓ clustered non-pcf selects the true blend state (1 ms)
+    ✓ non-clustered pcf spot selects the false blend state
+    ✓ non-clustered pcf directional selects the false blend state (1 ms)
+    ✓ non-clustered pcf omni selects the false blend state (1 ms)
+    ✓ non-clustered non-pcf selects the false blend state
+  dispatchUniforms
+    ✓ dispatches local light position, range and view-projection matrix (3 ms)
+    ✓ copies the cascade matrix into the shadow palette at the face offset (1 ms)
+    ✓ does not write a palette for local lights (1 ms)
+  getShadowPass
+    ✓ allocates and caches a shadow pass per light type and shadow type (2 ms)
+    ✓ allocates a distinct pass for each light and shadow type (1 ms)
+  submitCasters
+    ✓ draws a caster and updates the draw counters (3 ms)
+    ✓ flips the front face when the shadow map is flipped (1 ms)
+    ✓ skips zero-instance casters without indirect draw commands (1 ms)
+    ✓ draws zero-instance casters when indirect draw commands exist (1 ms)
+    ✓ does not bind an instancing buffer when not instanced (1 ms)
+    ✓ prepares a material once and restores overrides when it repeats (1 ms)
+    ✓ prepares each material when the material changes between casters (1 ms)
+    ✓ sets up override bind groups when required (1 ms)
+    ✓ uses the mesh instance storage slot for shaders that need it
+    ✓ skips casters whose shadow shader failed and restores their parameters
+    ✓ restores replaced parameters after a successful draw (1 ms)
+    ✓ warns once about a shader reading the normal matrix in the shadow pass (1 ms)
+    ✓ does not increment the instanced counter for non-instanced draws (1 ms)
+  light render data and faces
+    ✓ getLightRenderData uses the camera for directional lights only (1 ms)
+    ✓ setupRenderPass configures a depth-buffer pass (1 ms)
+    ✓ setupRenderPass configures a color-buffer pass (1 ms)
+    ✓ prepareFace assigns the render target for the face and returns the shadow camera (1 ms)
+    ✓ prepareFace always uses the first render target for directional lights
+    ✓ renderFace dispatches uniforms, clears, renders state and submits casters (1 ms)
+    ✓ renderFace skips the clear when not requested and accumulates the shadow map time (1 ms)
+  getVsmBlurShader
+    ✓ creates and caches a shader per blur mode and filter size (2 ms)
+    ✓ omits the gaussian define for box blur and caches separately (1 ms)
+    ✓ computes normalized, symmetric gaussian weights for the blur size (1 ms)
+  renderVsm
+    ✓ does nothing for non-VSM lights or a filter size of one (1 ms)
+    ✓ blurs a non-clustered VSM light with the default cascade mask
+    ✓ blurs a local VSM light with its single face mask
+    ✓ passes through an explicit cascade mask (1 ms)
+    ✓ in clustered mode only directional lights are blurred
+  applyVsmBlur
+    ✓ blurs horizontally to scratch storage and vertically to the shadow map (2 ms)
+    ✓ blurs only the cascades in the mask when some are cached (1 ms)
+    ✓ does not set gaussian weights for box blur (1 ms)
+    ✓ does a single vertical blur for local lights regardless of mask (1 ms)
+  view uniform format
+    ✓ initViewUniformFormat declares the shadow face uniforms in one buffer (1 ms)
+    ✓ initViewUniformFormat reuses an already created format (1 ms)
+    ✓ frameUpdate creates the view uniform format
+
+Test Suites: 1 passed, 1 total
+Tests:       75 passed, 75 total
+Snapshots:   0 total
+Time:        1.701 s, estimated 2 s
+Ran all test suites within paths "test/scene/renderer/shadow-renderer.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

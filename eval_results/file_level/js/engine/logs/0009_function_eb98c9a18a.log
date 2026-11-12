@@ -1,0 +1,101 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/gsplat-unified/gsplat-projector.test.js
+  GSplatProjector construction
+    ✓ creates the shared buffers, uniform formats and indirect-args compute (10 ms)
+    ✓ reports an assertion when the device does not support compute (3 ms)
+  GSplatProjector#writeIndirectArgs
+    ✓ uploads indirect draw/dispatch inputs and the constant index count (3 ms)
+  GSplatProjector#dispatch
+    ✓ allocates projection buffers and supplies camera, viewport and culling uniforms (10 ms)
+    ✓ reuses allocated buffers for the same or a smaller capacity (4 ms)
+    ✓ computes camera-relative bin weights for the active sort mode and bit budget (5 ms)
+    ✓ forwards explicit foveation settings to the projector uniforms (3 ms)
+    ✓ handles orthographic projection and a degenerate depth range (3 ms)
+    ✓ sets GSPLAT_COLOR_FLOAT only for non-RGBA16U color streams (4 ms)
+  GSplatProjector variant selection
+    ✓ selects radial variant and matching shader defines (3 ms)
+    ✓ selects linear variant and matching shader defines (3 ms)
+    ✓ selects radial pick variant and matching shader defines (3 ms)
+    ✓ selects radial anti-aliased variant and matching shader defines (3 ms)
+    ✓ selects pick mode folds away anti-aliasing variant and matching shader defines (3 ms)
+    ✓ selects stochastic folds away radial sort variant and matching shader defines (2 ms)
+    ✓ caches compute instances per variant and rebuilds them when the work-buffer format version changes (6 ms)
+    ✓ skips bin-weight computation and upload when generating stochastic keys (3 ms)
+    ✓ asserts that stochastic and pick modes are mutually exclusive (11 ms)
+  GSplatProjector fisheye mode
+    ✓ selects the fisheye variant and supplies fisheye projection uniforms (4 ms)
+  GSplatProjector stereo mode
+    ✓ selects the stereo variant, refreshes XR view transforms and supplies both eye matrices (3 ms)
+    ✓ does not take the stereo path when picking or fisheye is active (4 ms)
+  GSplatProjector render-stage customization
+    ✓ uses the default modify chunk and empty user varying chunks without a material (2 ms)
+    ✓ injects user WGSL chunks and filters projector-internal defines (3 ms)
+    ✓ forwards material parameters but lets projector parameters win on collisions (2 ms)
+    ✓ rebuilds variants when the material chunks or defines change (3 ms)
+    ✓ expands the projection-cache stride by the user varying word count (4 ms)
+  GSplatProjector#destroy
+    ✓ releases buffers, compiled variants and indirect-args resources, and is idempotent (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        1.447 s
+Ran all test suites within paths "test/scene/gsplat-unified/gsplat-projector.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/gsplat-unified/gsplat-projector.test.js
+  GSplatProjector construction
+    ✓ creates the shared buffers, uniform formats and indirect-args compute (11 ms)
+    ✓ reports an assertion when the device does not support compute (3 ms)
+  GSplatProjector#writeIndirectArgs
+    ✓ uploads indirect draw/dispatch inputs and the constant index count (3 ms)
+  GSplatProjector#dispatch
+    ✓ allocates projection buffers and supplies camera, viewport and culling uniforms (10 ms)
+    ✓ reuses allocated buffers for the same or a smaller capacity (4 ms)
+    ✓ computes camera-relative bin weights for the active sort mode and bit budget (5 ms)
+    ✓ forwards explicit foveation settings to the projector uniforms (3 ms)
+    ✓ handles orthographic projection and a degenerate depth range (3 ms)
+    ✓ sets GSPLAT_COLOR_FLOAT only for non-RGBA16U color streams (4 ms)
+  GSplatProjector variant selection
+    ✓ selects radial variant and matching shader defines (3 ms)
+    ✓ selects linear variant and matching shader defines (2 ms)
+    ✓ selects radial pick variant and matching shader defines (13 ms)
+    ✓ selects radial anti-aliased variant and matching shader defines (3 ms)
+    ✓ selects pick mode folds away anti-aliasing variant and matching shader defines (2 ms)
+    ✓ selects stochastic folds away radial sort variant and matching shader defines (2 ms)
+    ✓ caches compute instances per variant and rebuilds them when the work-buffer format version changes (5 ms)
+    ✓ skips bin-weight computation and upload when generating stochastic keys (2 ms)
+    ✓ asserts that stochastic and pick modes are mutually exclusive (2 ms)
+  GSplatProjector fisheye mode
+    ✓ selects the fisheye variant and supplies fisheye projection uniforms (4 ms)
+  GSplatProjector stereo mode
+    ✓ selects the stereo variant, refreshes XR view transforms and supplies both eye matrices (3 ms)
+    ✓ does not take the stereo path when picking or fisheye is active (3 ms)
+  GSplatProjector render-stage customization
+    ✓ uses the default modify chunk and empty user varying chunks without a material (2 ms)
+    ✓ injects user WGSL chunks and filters projector-internal defines (3 ms)
+    ✓ forwards material parameters but lets projector parameters win on collisions (3 ms)
+    ✓ rebuilds variants when the material chunks or defines change (3 ms)
+    ✓ expands the projection-cache stride by the user varying word count (4 ms)
+  GSplatProjector#destroy
+    ✓ releases buffers, compiled variants and indirect-args resources, and is idempotent (4 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        1.614 s, estimated 2 s
+Ran all test suites within paths "test/scene/gsplat-unified/gsplat-projector.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,127 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/lib/eslint/eslint.test.js (8.415 s)
+  ESLint module entry points
+    ✓ reports that flat config is used (3 ms)
+    ✓ exposes static version and flat-config metadata (1 ms)
+    ✓ locates a discovered config file and reports its base path (59 ms)
+    ✓ locates an explicitly supplied config file (2 ms)
+    ✓ throws when no config file can be found (27 ms)
+  ESLint static helpers
+    ✓ writes only absolute-path results that contain output strings (3 ms)
+    ✓ rejects invalid outputFixes arguments (3 ms)
+    ✓ filters results to error messages and preserves result metadata (1 ms)
+    ✓ loads constructor options from a module URL (1482 ms)
+    ✓ requires fromOptionsModule to receive a URL object
+    ✓ rejects uncloneable options when concurrency is enabled (258 ms)
+    ✓ allows uncloneable options supplied through an options module (4 ms)
+  ESLint constructor and configuration APIs
+    ✓ validates unknown constructor options (10 ms)
+    ✓ warns when a legacy .eslintignore file exists (3 ms)
+    ✓ calculates config for a file and identifies ignored paths (3 ms)
+    ✓ validates calculateConfigForFile input (1 ms)
+    ✓ finds the config file used by the instance (16 ms)
+    ✓ reports enabled feature flags (1 ms)
+  ESLint#lintText
+    ✓ validates its arguments and options (2 ms)
+    ✓ lints text using a virtual <text> path (42 ms)
+    ✓ lints text using an absolute file path and applies fixes (4 ms)
+    ✓ warns for ignored file paths according to warnIgnored (2 ms)
+    ✓ reports deprecated rules used by the calculated config (3 ms)
+  ESLint#getRulesMetaForResults
+    ✓ returns an empty object for empty results
+    ✓ returns metadata for rules that produced messages (3 ms)
+    ✓ ignores unknown rule IDs from results with a known file (1 ms)
+    ✓ throws for results that do not belong to the instance (3 ms)
+  ESLint#lintFiles
+    ✓ lints files matching a string pattern and returns sorted results (111 ms)
+    ✓ validates patterns and supports passOnNoPatterns (1 ms)
+    ✓ uses the cwd when an empty array of patterns is supplied (5 ms)
+    ✓ reports unmatched patterns by default (1 ms)
+    ✓ can lint files through worker threads (349 ms)
+  ESLint#loadFormatter
+    ✓ loads a custom formatter, sorts results, and exposes formatter context (41 ms)
+    ✓ loads the default built-in formatter (13 ms)
+    ✓ validates formatter names and loading failures (13 ms)
+    ✓ rejects formatter modules that do not export a function (3 ms)
+  calculateWorkerCount
+    ✓ uses zero workers when concurrency is off or resolves to one worker
+    ✓ caps numeric concurrency at the number of files
+    ✓ calculates auto concurrency from processable files and available CPUs (8 ms)
+    ✓ does not count ignored files when calculating auto concurrency (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        8.465 s
+Ran all test suites within paths "test/lib/eslint/eslint.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:37) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/lib/eslint/eslint.test.js
+  ESLint module entry points
+    ✓ reports that flat config is used (3 ms)
+    ✓ exposes static version and flat-config metadata (1 ms)
+    ✓ locates a discovered config file and reports its base path (18 ms)
+    ✓ locates an explicitly supplied config file (1 ms)
+    ✓ throws when no config file can be found (49 ms)
+  ESLint static helpers
+    ✓ writes only absolute-path results that contain output strings (35 ms)
+    ✓ rejects invalid outputFixes arguments (2 ms)
+    ✓ filters results to error messages and preserves result metadata (2 ms)
+    ✓ loads constructor options from a module URL (129 ms)
+    ✓ requires fromOptionsModule to receive a URL object (1 ms)
+    ✓ rejects uncloneable options when concurrency is enabled (16 ms)
+    ✓ allows uncloneable options supplied through an options module (5 ms)
+  ESLint constructor and configuration APIs
+    ✓ validates unknown constructor options (7 ms)
+    ✓ warns when a legacy .eslintignore file exists (3 ms)
+    ✓ calculates config for a file and identifies ignored paths (3 ms)
+    ✓ validates calculateConfigForFile input (1 ms)
+    ✓ finds the config file used by the instance (2 ms)
+    ✓ reports enabled feature flags (1 ms)
+  ESLint#lintText
+    ✓ validates its arguments and options (1 ms)
+    ✓ lints text using a virtual <text> path (46 ms)
+    ✓ lints text using an absolute file path and applies fixes (4 ms)
+    ✓ warns for ignored file paths according to warnIgnored (2 ms)
+    ✓ reports deprecated rules used by the calculated config (5 ms)
+  ESLint#getRulesMetaForResults
+    ✓ returns an empty object for empty results (1 ms)
+    ✓ returns metadata for rules that produced messages (4 ms)
+    ✓ ignores unknown rule IDs from results with a known file (2 ms)
+    ✓ throws for results that do not belong to the instance (3 ms)
+  ESLint#lintFiles
+    ✓ lints files matching a string pattern and returns sorted results (20 ms)
+    ✓ validates patterns and supports passOnNoPatterns (1 ms)
+    ✓ uses the cwd when an empty array of patterns is supplied (5 ms)
+    ✓ reports unmatched patterns by default (2 ms)
+    ✓ can lint files through worker threads (190 ms)
+  ESLint#loadFormatter
+    ✓ loads a custom formatter, sorts results, and exposes formatter context (8 ms)
+    ✓ loads the default built-in formatter (16 ms)
+    ✓ validates formatter names and loading failures (28 ms)
+    ✓ rejects formatter modules that do not export a function (4 ms)
+  calculateWorkerCount
+    ✓ uses zero workers when concurrency is off or resolves to one worker
+    ✓ caps numeric concurrency at the number of files (1 ms)
+    ✓ calculates auto concurrency from processable files and available CPUs (7 ms)
+    ✓ does not count ignored files when calculating auto concurrency (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        1.957 s, estimated 9 s
+Ran all test suites within paths "test/lib/eslint/eslint.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

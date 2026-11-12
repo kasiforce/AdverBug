@@ -1,0 +1,75 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/graphics/reproject-texture.test.js
+  reprojectTexture early exit
+    ✓ returns false without touching the graphics device when target-based seam padding leaves no pixels (5 ms)
+    ✓ returns false without rendering when the rect leaves no inner width (1 ms)
+    ✓ returns false without rendering when the rect leaves no inner height (1 ms)
+    ✓ accepts a single-pixel inner area as the minimum valid size (3 ms)
+  reprojectTexture standard resampling
+    ✓ creates and renders a standard equirect-to-equirect pass (3 ms)
+    ✓ maps texture encodings and octahedral source projection into shader defines (2 ms)
+    ✓ samples a cubemap source through sourceCube and declares CUBEMAP_SOURCE (1 ms)
+  reprojectTexture cubemap targets
+    ✓ renders all six faces of a cubemap target (4 ms)
+    ✓ renders only cubemap face zero when explicitly requested (1 ms)
+  reprojectTexture convolution distributions
+    ✓ creates and binds reusable sample data for phong (default for specularPower other than one) (3 ms)
+    ✓ creates and binds reusable sample data for lambert (2 ms)
+    ✓ creates and binds reusable sample data for GGX (2 ms)
+    ✓ does not generate sample data when distribution is explicitly none (1 ms)
+    ✓ falls back to plain reprojection for an unknown distribution (1 ms)
+  reprojectTexture viewport handling
+    ✓ passes the rect through and computes seam-aware UV scaling (1 ms)
+  reprojectTexture caching
+    ✓ reuses the shader and sample texture for repeated calls on the same device (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
+Snapshots:   0 total
+Time:        1.024 s
+Ran all test suites within paths "test/scene/graphics/reproject-texture.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:34) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/scene/graphics/reproject-texture.test.js
+  reprojectTexture early exit
+    ✓ returns false without touching the graphics device when target-based seam padding leaves no pixels (5 ms)
+    ✓ returns false without rendering when the rect leaves no inner width (1 ms)
+    ✓ returns false without rendering when the rect leaves no inner height (1 ms)
+    ✓ accepts a single-pixel inner area as the minimum valid size (3 ms)
+  reprojectTexture standard resampling
+    ✓ creates and renders a standard equirect-to-equirect pass (3 ms)
+    ✓ maps texture encodings and octahedral source projection into shader defines (2 ms)
+    ✓ samples a cubemap source through sourceCube and declares CUBEMAP_SOURCE (1 ms)
+  reprojectTexture cubemap targets
+    ✓ renders all six faces of a cubemap target (4 ms)
+    ✓ renders only cubemap face zero when explicitly requested (1 ms)
+  reprojectTexture convolution distributions
+    ✓ creates and binds reusable sample data for phong (default for specularPower other than one) (3 ms)
+    ✓ creates and binds reusable sample data for lambert (2 ms)
+    ✓ creates and binds reusable sample data for GGX (2 ms)
+    ✓ does not generate sample data when distribution is explicitly none (1 ms)
+    ✓ falls back to plain reprojection for an unknown distribution (1 ms)
+  reprojectTexture viewport handling
+    ✓ passes the rect through and computes seam-aware UV scaling (1 ms)
+  reprojectTexture caching
+    ✓ reuses the shader and sample texture for repeated calls on the same device (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
+Snapshots:   0 total
+Time:        1.179 s
+Ran all test suites within paths "test/scene/graphics/reproject-texture.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

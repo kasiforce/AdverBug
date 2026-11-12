@@ -1,0 +1,131 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/element/system.test.js
+  construction
+    ✓ exposes the element system identity and starts with empty material caches (9 ms)
+    ✓ creates a one pixel white default texture used by the generated materials (5 ms)
+  unicode converter and rtl reorder registration
+    ✓ returns null until functions are registered and returns the registered functions (1 ms)
+    ✓ replaces previously registered functions
+  getTextElementMaterial
+    ✓ creates and caches a bitmap text material (2 ms)
+    ✓ creates a screen-space bitmap text material with depth testing disabled (2 ms)
+    ✓ creates msdf text materials and keys the cache on the text attribute flag (2 ms)
+  getImageElementMaterial
+    ✓ creates, configures and caches a material for every flag combination (18 ms)
+  initializeComponentData layout
+    ✓ derives point-anchor margins from the entity local position (3 ms)
+    ✓ applies width and height while recomputing margins around the pivot (2 ms)
+    ✓ accepts Vec4 margins and Vec2 pivots without reusing the supplied instances (1 ms)
+    ✓ applies left, bottom, right and top edge values for split anchors (2 ms)
+    ✓ sizes split anchors from the parent and ignores explicit width and height (2 ms)
+    ✓ accepts Vec4 anchors and copies them
+  initializeComponentData options
+    ✓ applies enabled, useInput, fitMode, batchGroupId and copies layers (1 ms)
+    ✓ defaults batchGroupId to -1 when it is absent or null (1 ms)
+    ✓ enables the component by default and calls onEnable (2 ms)
+  initializeComponentData image elements
+    ✓ applies image properties and converts array colors (6 ms)
+    ✓ accepts a Color instance and copies its value (2 ms)
+    ✓ applies a texture and a custom material (3 ms)
+  initializeComponentData text elements
+    ✓ applies text-specific properties and derives lineHeight from fontSize (5 ms)
+    ✓ uses the registered unicode converter only when the option is enabled (2 ms)
+    ✓ warns and keeps the text when a converter is requested but none is registered (1 ms)
+    ✓ prefers text data over key data (1 ms)
+    ✓ honors an empty text value instead of falling back to the key (1 ms)
+    ✓ resolves key data through i18n when no text is supplied (2 ms)
+    ✓ accepts an explicit lineHeight that overrides the fontSize default (1 ms)
+  initializeComponentData group elements
+    ✓ ignores image and text specific data for group elements (1 ms)
+  screen binding
+    ✓ detects a screen ancestor, binds to it and sizes split anchors from its resolution (2 ms)
+    ✓ updates an image element to use a screen-space material after screen binding (2 ms)
+  component lifecycle events
+    ✓ fires the system add event and the entity element:add event (1 ms)
+    ✓ cleans up the component and removes it from the entity on removeComponent (1 ms)
+    ✓ unbinds an element from its screen when it is removed (1 ms)
+  cloneComponent
+    ✓ creates an independent copy of an image element (4 ms)
+    ✓ clones text elements by key when the source has a key (2 ms)
+    ✓ clones text elements by text when the source has no key (1 ms)
+  destroy
+    ✓ destroys the default texture and stops handling component events (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       37 passed, 37 total
+Snapshots:   0 total
+Time:        2.233 s
+Ran all test suites within paths "test/framework/components/element/system.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/components/element/system.test.js
+  construction
+    ✓ exposes the element system identity and starts with empty material caches (8 ms)
+    ✓ creates a one pixel white default texture used by the generated materials (4 ms)
+  unicode converter and rtl reorder registration
+    ✓ returns null until functions are registered and returns the registered functions (1 ms)
+    ✓ replaces previously registered functions (1 ms)
+  getTextElementMaterial
+    ✓ creates and caches a bitmap text material (3 ms)
+    ✓ creates a screen-space bitmap text material with depth testing disabled (1 ms)
+    ✓ creates msdf text materials and keys the cache on the text attribute flag (2 ms)
+  getImageElementMaterial
+    ✓ creates, configures and caches a material for every flag combination (30 ms)
+  initializeComponentData layout
+    ✓ derives point-anchor margins from the entity local position (3 ms)
+    ✓ applies width and height while recomputing margins around the pivot (2 ms)
+    ✓ accepts Vec4 margins and Vec2 pivots without reusing the supplied instances (1 ms)
+    ✓ applies left, bottom, right and top edge values for split anchors (2 ms)
+    ✓ sizes split anchors from the parent and ignores explicit width and height (1 ms)
+    ✓ accepts Vec4 anchors and copies them (1 ms)
+  initializeComponentData options
+    ✓ applies enabled, useInput, fitMode, batchGroupId and copies layers (1 ms)
+    ✓ defaults batchGroupId to -1 when it is absent or null (1 ms)
+    ✓ enables the component by default and calls onEnable (2 ms)
+  initializeComponentData image elements
+    ✓ applies image properties and converts array colors (5 ms)
+    ✓ accepts a Color instance and copies its value (1 ms)
+    ✓ applies a texture and a custom material (3 ms)
+  initializeComponentData text elements
+    ✓ applies text-specific properties and derives lineHeight from fontSize (4 ms)
+    ✓ uses the registered unicode converter only when the option is enabled (2 ms)
+    ✓ warns and keeps the text when a converter is requested but none is registered (1 ms)
+    ✓ prefers text data over key data (1 ms)
+    ✓ honors an empty text value instead of falling back to the key (1 ms)
+    ✓ resolves key data through i18n when no text is supplied (1 ms)
+    ✓ accepts an explicit lineHeight that overrides the fontSize default (1 ms)
+  initializeComponentData group elements
+    ✓ ignores image and text specific data for group elements (1 ms)
+  screen binding
+    ✓ detects a screen ancestor, binds to it and sizes split anchors from its resolution (2 ms)
+    ✓ updates an image element to use a screen-space material after screen binding (2 ms)
+  component lifecycle events
+    ✓ fires the system add event and the entity element:add event (1 ms)
+    ✓ cleans up the component and removes it from the entity on removeComponent (1 ms)
+    ✓ unbinds an element from its screen when it is removed (1 ms)
+  cloneComponent
+    ✓ creates an independent copy of an image element (3 ms)
+    ✓ clones text elements by key when the source has a key (2 ms)
+    ✓ clones text elements by text when the source has no key (1 ms)
+  destroy
+    ✓ destroys the default texture and stops handling component events (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       37 passed, 37 total
+Snapshots:   0 total
+Time:        2.535 s, estimated 3 s
+Ran all test suites within paths "test/framework/components/element/system.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

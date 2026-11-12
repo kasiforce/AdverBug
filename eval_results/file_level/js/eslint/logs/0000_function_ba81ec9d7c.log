@@ -1,0 +1,151 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+PASS test/lib/cli.test.js (7.794 s)
+  cli.execute informational options
+    ✓ prints help and exits with 0 without linting (12 ms)
+    ✓ prints the package version and exits with 0 (2 ms)
+    ✓ prints environment information and exits with 0 (1 ms)
+    ✓ reports an environment information failure and exits with 2 (1 ms)
+  cli.execute option validation
+    ✓ reports an unknown option and exits with 2 (2 ms)
+    ✓ rejects invalid --concurrency value 0 with exit code 2 (1 ms)
+    ✓ rejects invalid --concurrency value 1.5 with exit code 2 (1 ms)
+    ✓ rejects invalid --concurrency value not-a-number with exit code 2 (1 ms)
+    ✓ rejects using --fix and --fix-dry-run together (1 ms)
+    ✓ rejects --fix with piped-in code (1 ms)
+    ✓ rejects --fix-type without --fix or --fix-dry-run (1 ms)
+    ✓ rejects conflicting unused-disable-directive options (9 ms)
+    ✓ rejects an empty --ext value (1 ms)
+    ✓ reports the index of an empty string in --ext (1 ms)
+    ✓ rejects conflicting suppression options 0 (1 ms)
+    ✓ rejects conflicting suppression options 1 (1 ms)
+    ✓ rejects conflicting suppression options 2 (1 ms)
+    ✓ rejects suppression option --suppress-all with piped-in code (1 ms)
+    ✓ rejects suppression option --suppress-rule with piped-in code (1 ms)
+    ✓ rejects suppression option --prune-suppressions with piped-in code
+  cli.execute --print-config
+    ✓ rejects --print-config with additional file arguments
+    ✓ rejects --print-config with piped-in code (1 ms)
+    ✓ prints the calculated config for the requested file (2 ms)
+  cli.execute --inspect-config
+    ✓ starts the config inspector with the located config flags (1 ms)
+    ✓ logs the error and exits with 2 when the inspector cannot start (1 ms)
+    ✓ calculateInspectConfigFlags maps the located config to CLI flags (1 ms)
+    ✓ calculateInspectConfigFlags discovers a config file in the working directory (47 ms)
+  cli.execute linting behavior
+    ✓ lints positional files, prints the formatter output, and exits 0 (2 ms)
+    ✓ returns 1 when lint results contain errors (1 ms)
+    ✓ returns 0 when warnings do not exceed --max-warnings (1 ms)
+    ✓ returns 1 and mentions the maximum when warnings exceed --max-warnings (1 ms)
+    ✓ does not log the too-many-warnings message when errors are also present (1 ms)
+    ✓ filters warnings from formatter output in quiet mode (1 ms)
+    ✓ applies fixes when --fix is used (1 ms)
+    ✓ does not write fixes when --fix-dry-run is used (1 ms)
+    ✓ writes formatter output to --output-file including parent directories (3 ms)
+    ✓ returns 2 when --output-file points to a directory (1 ms)
+    ✓ returns 2 when the output file cannot be written (2 ms)
+    ✓ returns 2 when the formatter cannot be loaded (1 ms)
+    ✓ does not log anything when the formatter produces empty output (1 ms)
+    ✓ passes color=--color through to the formatter (1 ms)
+    ✓ passes color=--no-color through to the formatter (1 ms)
+    ✓ omits the color setting when neither color flag is given (1 ms)
+    ✓ returns 2 for fatal errors when --exit-on-fatal-error is set (1 ms)
+    ✓ returns 1 for fatal errors without --exit-on-fatal-error (1 ms)
+    ✓ lints piped-in text with --stdin-filename (2 ms)
+    ✓ constructs the engine with translated options when concurrency is off (2 ms)
+    ✓ builds the engine from an options module when concurrency is enabled (2 ms)
+    ✓ supports --concurrency auto (1 ms)
+    ✓ passes an undefined filePath to lintText when stdin filename is omitted (1 ms)
+  cli.execute suppressions
+    ✓ returns 2 when an explicitly requested suppressions file is missing (1 ms)
+    ✓ --suppress-all creates a suppressions file and suppresses all errors (4 ms)
+    ✓ --suppress-rule suppresses only the named rule and returns 1 for remaining errors (2 ms)
+    ✓ --prune-suppressions removes suppressions that no longer occur (3 ms)
+    ✓ returns 2 when existing suppressions are no longer used (1 ms)
+    ✓ ignores unused suppressions with --pass-on-unpruned-suppressions (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        9.521 s
+Ran all test suites within paths "test/lib/cli.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+PASS test/lib/cli.test.js
+  cli.execute informational options
+    ✓ prints help and exits with 0 without linting (9 ms)
+    ✓ prints the package version and exits with 0 (1 ms)
+    ✓ prints environment information and exits with 0 (2 ms)
+    ✓ reports an environment information failure and exits with 2 (1 ms)
+  cli.execute option validation
+    ✓ reports an unknown option and exits with 2 (2 ms)
+    ✓ rejects invalid --concurrency value 0 with exit code 2 (2 ms)
+    ✓ rejects invalid --concurrency value 1.5 with exit code 2 (1 ms)
+    ✓ rejects invalid --concurrency value not-a-number with exit code 2 (1 ms)
+    ✓ rejects using --fix and --fix-dry-run together (1 ms)
+    ✓ rejects --fix with piped-in code (1 ms)
+    ✓ rejects --fix-type without --fix or --fix-dry-run (1 ms)
+    ✓ rejects conflicting unused-disable-directive options (1 ms)
+    ✓ rejects an empty --ext value (1 ms)
+    ✓ reports the index of an empty string in --ext (1 ms)
+    ✓ rejects conflicting suppression options 0 (1 ms)
+    ✓ rejects conflicting suppression options 1 (1 ms)
+    ✓ rejects conflicting suppression options 2 (1 ms)
+    ✓ rejects suppression option --suppress-all with piped-in code (1 ms)
+    ✓ rejects suppression option --suppress-rule with piped-in code (1 ms)
+    ✓ rejects suppression option --prune-suppressions with piped-in code (1 ms)
+  cli.execute --print-config
+    ✓ rejects --print-config with additional file arguments (1 ms)
+    ✓ rejects --print-config with piped-in code (1 ms)
+    ✓ prints the calculated config for the requested file (1 ms)
+  cli.execute --inspect-config
+    ✓ starts the config inspector with the located config flags (2 ms)
+    ✓ logs the error and exits with 2 when the inspector cannot start (1 ms)
+    ✓ calculateInspectConfigFlags maps the located config to CLI flags
+    ✓ calculateInspectConfigFlags discovers a config file in the working directory (58 ms)
+  cli.execute linting behavior
+    ✓ lints positional files, prints the formatter output, and exits 0 (2 ms)
+    ✓ returns 1 when lint results contain errors (1 ms)
+    ✓ returns 0 when warnings do not exceed --max-warnings (1 ms)
+    ✓ returns 1 and mentions the maximum when warnings exceed --max-warnings (1 ms)
+    ✓ does not log the too-many-warnings message when errors are also present (1 ms)
+    ✓ filters warnings from formatter output in quiet mode (1 ms)
+    ✓ applies fixes when --fix is used
+    ✓ does not write fixes when --fix-dry-run is used
+    ✓ writes formatter output to --output-file including parent directories (3 ms)
+    ✓ returns 2 when --output-file points to a directory (2 ms)
+    ✓ returns 2 when the output file cannot be written (1 ms)
+    ✓ returns 2 when the formatter cannot be loaded (1 ms)
+    ✓ does not log anything when the formatter produces empty output (1 ms)
+    ✓ passes color=--color through to the formatter (1 ms)
+    ✓ passes color=--no-color through to the formatter (1 ms)
+    ✓ omits the color setting when neither color flag is given (1 ms)
+    ✓ returns 2 for fatal errors when --exit-on-fatal-error is set (1 ms)
+    ✓ returns 1 for fatal errors without --exit-on-fatal-error (1 ms)
+    ✓ lints piped-in text with --stdin-filename
+    ✓ constructs the engine with translated options when concurrency is off (1 ms)
+    ✓ builds the engine from an options module when concurrency is enabled (1 ms)
+    ✓ supports --concurrency auto (1 ms)
+    ✓ passes an undefined filePath to lintText when stdin filename is omitted (1 ms)
+  cli.execute suppressions
+    ✓ returns 2 when an explicitly requested suppressions file is missing (1 ms)
+    ✓ --suppress-all creates a suppressions file and suppresses all errors (4 ms)
+    ✓ --suppress-rule suppresses only the named rule and returns 1 for remaining errors (2 ms)
+    ✓ --prune-suppressions removes suppressions that no longer occur (32 ms)
+    ✓ returns 2 when existing suppressions are no longer used (2 ms)
+    ✓ ignores unused suppressions with --pass-on-unpruned-suppressions (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        2.789 s, estimated 8 s
+Ran all test suites within paths "test/lib/cli.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

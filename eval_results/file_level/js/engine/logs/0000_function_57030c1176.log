@@ -1,0 +1,185 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+  console.warn
+    LensFlareEffect: no shape library is set, so the flares are not drawn. Set LensFlareEffect#shapes to the textures their elements reference.
+
+      131 |         if (!Debug._loggedMessages.has(message)) {
+      132 |             Debug._loggedMessages.add(message);
+    > 133 |             console.warn(message, ...args);
+          |                     ^
+      134 |         }
+      135 |     }
+      136 |
+
+      at Debug.warn [as warnOnce] (src/core/debug.js:133:21)
+      at warnOnce (src/extras/effects/lens-flare/lens-flare-effect.js:252:23)
+      at Debug.func (src/core/debug.js:90:9)
+      at LensFlareEffect.call [as update] (src/extras/effects/lens-flare/lens-flare-effect.js:250:15)
+      at Object.update (test/extras/effects/lens-flare/lens-flare-effect.test.js:315:20)
+
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/extras/effects/lens-flare/lens-flare-effect.test.js
+  LensFlareEffect
+    construction and properties
+      ✓ initialises the documented defaults and identity (8 ms)
+      ✓ is active only when enabled, positive and holding flares (1 ms)
+    add and remove
+      ✓ registers flares in order and removes them (2 ms)
+      ✓ reports an assertion when adding a non-LensFlare value (2 ms)
+      ✓ reports an assertion when adding the same flare twice (1 ms)
+    shapes
+      ✓ stores the library and builds it at the next update (2 ms)
+      ✓ only rebuilds the shapes when they are marked dirty (2 ms)
+      ✓ has no elements when no shape library is set (35 ms)
+    passes
+      ✓ creates a pass from the camera frame and resources (1 ms)
+      ✓ destroys the pass and can be called repeatedly (2 ms)
+      ✓ releases owned resources and detaches on destroy (1 ms)
+    update
+      ✓ sets the clamped scale, element data and uniforms on the pass (1 ms)
+      ✓ clamps the scale 2 to 1 (1 ms)
+      ✓ clamps the scale 1 to 1 (1 ms)
+      ✓ clamps the scale 0.25 to 0.25
+      ✓ clamps the scale 0 to 0.1 (1 ms)
+      ✓ clamps the scale -3 to 0.1
+      ✓ passes the current intensity as the lens flare intensity uniform (1 ms)
+      ✓ rebuilds elements only when the shapes or flare looks change (1 ms)
+    element building
+      ✓ writes element properties, copies, colours and shape layers (2 ms)
+      ✓ skips unknown shapes and uses the flare index and array colours (1 ms)
+      ✓ clamps and floors copy counts (1 ms)
+      ✓ creates an empty element texture when there is nothing to draw (1 ms)
+      ✓ recreates the element texture when its size changes (1 ms)
+      ✓ limits the elements to the first 32 flares (1 ms)
+    frameUpdate
+      ✓ writes the source position, fade, scale and colour of a positional flare (2 ms)
+      ✓ uses a node position when there is no light (1 ms)
+      ✓ uses a direction as the source when no light or node is given (1 ms)
+      ✓ fades a source behind the camera (1 ms)
+      ✓ fades a disabled flare and one without a source
+      ✓ computes NDC x 1 to 0.5 with edge fade 1 and on-screen 1
+      ✓ computes NDC x 2 to 1 with edge fade 0.5 and on-screen 1 (1 ms)
+      ✓ computes NDC x 2.4 to 1.2 with edge fade 0 and on-screen 0
+      ✓ fades fully at the screen edge when off-screen drawing is disabled
+      ✓ treats an edge fade of zero as a hard screen edge (1 ms)
+      ✓ fades positional sources between fadeStart and fadeEnd
+      ✓ does not fade by distance when fadeEnd does not exceed fadeStart (1 ms)
+      ✓ multiplies the edge and distance fades (1 ms)
+      ✓ uses a directional light direction and the far clip depth (1 ms)
+      ✓ does not scale by the light when the flags are disabled
+      ✓ tints by the linear light colour when enabled (1 ms)
+      ✓ scales by light luminance in physical units (1 ms)
+      ✓ fades a flare out when its light or light entity is disabled
+      ✓ keeps a spot light flare inside its cone (1 ms)
+      ✓ fades a spot light flare outside its cone (1 ms)
+      ✓ smoothly fades a spot light flare between the cone angles (1 ms)
+      ✓ gives a hard cone edge when the spot inner and outer angles match
+      ✓ places an orthographic directional source far along its direction (1 ms)
+      ✓ fades an orthographic directional source pointing behind the camera (1 ms)
+      ✓ blends the occlusion fade over the time between frames (1 ms)
+      ✓ follows occlusion immediately when occlusionFade is zero
+      ✓ applies the occlusion offset to the tested depth (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        5.915 s
+Ran all test suites within paths "test/extras/effects/lens-flare/lens-flare-effect.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+  console.warn
+    LensFlareEffect: no shape library is set, so the flares are not drawn. Set LensFlareEffect#shapes to the textures their elements reference.
+
+      131 |         if (!Debug._loggedMessages.has(message)) {
+      132 |             Debug._loggedMessages.add(message);
+    > 133 |             console.warn(message, ...args);
+          |                     ^
+      134 |         }
+      135 |     }
+      136 |
+
+      at Debug.warn [as warnOnce] (src/core/debug.js:133:21)
+      at warnOnce (src/extras/effects/lens-flare/lens-flare-effect.js:252:23)
+      at Debug.func (src/core/debug.js:90:9)
+      at LensFlareEffect.call [as update] (src/extras/effects/lens-flare/lens-flare-effect.js:250:15)
+      at Object.update (test/extras/effects/lens-flare/lens-flare-effect.test.js:315:20)
+
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/extras/effects/lens-flare/lens-flare-effect.test.js
+  LensFlareEffect
+    construction and properties
+      ✓ initialises the documented defaults and identity (9 ms)
+      ✓ is active only when enabled, positive and holding flares (1 ms)
+    add and remove
+      ✓ registers flares in order and removes them (1 ms)
+      ✓ reports an assertion when adding a non-LensFlare value (2 ms)
+      ✓ reports an assertion when adding the same flare twice (1 ms)
+    shapes
+      ✓ stores the library and builds it at the next update (2 ms)
+      ✓ only rebuilds the shapes when they are marked dirty (2 ms)
+      ✓ has no elements when no shape library is set (28 ms)
+    passes
+      ✓ creates a pass from the camera frame and resources (1 ms)
+      ✓ destroys the pass and can be called repeatedly (1 ms)
+      ✓ releases owned resources and detaches on destroy (2 ms)
+    update
+      ✓ sets the clamped scale, element data and uniforms on the pass (2 ms)
+      ✓ clamps the scale 2 to 1
+      ✓ clamps the scale 1 to 1
+      ✓ clamps the scale 0.25 to 0.25 (1 ms)
+      ✓ clamps the scale 0 to 0.1 (1 ms)
+      ✓ clamps the scale -3 to 0.1
+      ✓ passes the current intensity as the lens flare intensity uniform (1 ms)
+      ✓ rebuilds elements only when the shapes or flare looks change (1 ms)
+    element building
+      ✓ writes element properties, copies, colours and shape layers (2 ms)
+      ✓ skips unknown shapes and uses the flare index and array colours (1 ms)
+      ✓ clamps and floors copy counts (1 ms)
+      ✓ creates an empty element texture when there is nothing to draw (1 ms)
+      ✓ recreates the element texture when its size changes (2 ms)
+      ✓ limits the elements to the first 32 flares (1 ms)
+    frameUpdate
+      ✓ writes the source position, fade, scale and colour of a positional flare (2 ms)
+      ✓ uses a node position when there is no light (1 ms)
+      ✓ uses a direction as the source when no light or node is given (1 ms)
+      ✓ fades a source behind the camera
+      ✓ fades a disabled flare and one without a source
+      ✓ computes NDC x 1 to 0.5 with edge fade 1 and on-screen 1
+      ✓ computes NDC x 2 to 1 with edge fade 0.5 and on-screen 1 (1 ms)
+      ✓ computes NDC x 2.4 to 1.2 with edge fade 0 and on-screen 0 (1 ms)
+      ✓ fades fully at the screen edge when off-screen drawing is disabled
+      ✓ treats an edge fade of zero as a hard screen edge (1 ms)
+      ✓ fades positional sources between fadeStart and fadeEnd (1 ms)
+      ✓ does not fade by distance when fadeEnd does not exceed fadeStart
+      ✓ multiplies the edge and distance fades (1 ms)
+      ✓ uses a directional light direction and the far clip depth (1 ms)
+      ✓ does not scale by the light when the flags are disabled (1 ms)
+      ✓ tints by the linear light colour when enabled
+      ✓ scales by light luminance in physical units
+      ✓ fades a flare out when its light or light entity is disabled (1 ms)
+      ✓ keeps a spot light flare inside its cone (1 ms)
+      ✓ fades a spot light flare outside its cone (1 ms)
+      ✓ smoothly fades a spot light flare between the cone angles (1 ms)
+      ✓ gives a hard cone edge when the spot inner and outer angles match (1 ms)
+      ✓ places an orthographic directional source far along its direction (1 ms)
+      ✓ fades an orthographic directional source pointing behind the camera
+      ✓ blends the occlusion fade over the time between frames
+      ✓ follows occlusion immediately when occlusionFade is zero (1 ms)
+      ✓ applies the occlusion offset to the tested depth (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        3.511 s, estimated 5 s
+Ran all test suites within paths "test/extras/effects/lens-flare/lens-flare-effect.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

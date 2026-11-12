@@ -1,0 +1,215 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/lightmapper/lightmapper.test.js
+  Lightmapper
+    #constructor
+      ✓ stores its dependencies and initializes state (5 ms)
+    #destroy()
+      ✓ releases the black texture, destroys the camera and clears references (2 ms)
+    #initBake()
+      ✓ creates reusable baking resources and configures the bake camera (4 ms)
+      ✓ uses HDR baking for non-RGBA8 lightmaps (1 ms)
+      ✓ sets up clustered lighting resources from scene settings (2 ms)
+    #finishBake()
+      ✓ releases render targets and destroys clustered resources (1 ms)
+      ✓ works without a clustered light setup (1 ms)
+    #createMaterialForPass()
+      ✓ creates a color pass material without ambient (4 ms)
+      ✓ creates an ambient color pass material (1 ms)
+      ✓ creates a dominant direction pass material (1 ms)
+    #createMaterials()
+      ✓ creates pass materials plus the ambient AO material and reuses them (2 ms)
+    #createTexture()
+      ✓ creates an RGBM lightmap texture for LDR baking (1 ms)
+      ✓ creates an HDR lightmap texture for HDR baking
+    #collectModels()
+      ✓ collects a lightmapped render node as one bake node and one all node (1 ms)
+      ✓ splits shared meshes into separate bake nodes (1 ms)
+      ✓ excludes nodes containing meshes without uv1 and logs a warning (2 ms)
+      ✓ skips disabled nodes and does not recurse into them
+      ✓ collects non-lightmapped render nodes only in allNodes
+      ✓ collects model component meshes and recurses into children (1 ms)
+      ✓ clears its temporary mesh set between calls (1 ms)
+    #prepareShadowCasters()
+      ✓ enables lightmap shadow casting and collects visible casters (1 ms)
+    #updateTransforms()
+      ✓ updates every mesh instance node world transform (1 ms)
+    #calculateLightmapSize()
+      ✓ computes a power-of-two size from bounds and the scene multiplier
+      ✓ applies component area and uv scale
+      ✓ uses the component lightmap size multiplier (1 ms)
+      ✓ falls back to a multiplier of 16 and applies the scene maximum resolution
+      ✓ snaps very small geometry to a size of one (1 ms)
+      ✓ reads model asset area data through the asset registry
+      ✓ reads model _area data when no asset is set (1 ms)
+      ✓ ignores render component _area for asset renders
+    #setLightmapping()
+      ✓ disables lightmapping without touching masks or render targets
+      ✓ enables lightmapping, shader defs, mask and per-pass textures (1 ms)
+      ✓ does not alter shader defs when no shader defs are supplied
+    #allocateTextures()
+      ✓ allocates per-node render targets and one shared temporary target per size (1 ms)
+      ✓ allocates separate temporary targets for different lightmap sizes (1 ms)
+    #prepareLightsToBake()
+      ✓ wraps every light, selects enabled bake lights and patches their state (2 ms)
+    #restoreLights()
+      ✓ restores every wrapped light
+    #setupScene() and #restoreScene()
+      ✓ backs up ambient light, blacks it out, and restores it (1 ms)
+      ✓ does not black out ambient light when ambient baking is enabled (1 ms)
+    #computeNodeBounds() and #computeBounds()
+      ✓ combines mesh instance bounds (1 ms)
+      ✓ returns a default box for empty input (1 ms)
+      ✓ assigns computed bounds to every node
+    #backupMaterials() and #restoreMaterials()
+      ✓ stores and restores materials by index (1 ms)
+    #lightCameraPrepare()
+      ✓ configures a perspective camera for spot lights (1 ms)
+      ✓ returns undefined and does not prepare a camera for non-spot lights (1 ms)
+    #lightCameraPrepareAndCull()
+      ✓ fits the orthographic camera to directional light caster bounds (1 ms)
+      ✓ rejects non-directional lights outside the node bounds (1 ms)
+      ✓ accepts omni lights that intersect without per-mesh culling (1 ms)
+      ✓ rejects spot lights when no mesh instance is visible to the shadow camera
+      ✓ accepts a spot light when a later mesh instance is visible (1 ms)
+    #setupLightList()
+      ✓ builds a single-light list and marks the light visible (1 ms)
+    #renderShadowMap()
+      ✓ does nothing when the shadow map was already rendered (1 ms)
+      ✓ does nothing when the light does not cast shadows
+      ✓ renders a directional shadow map and allocates it from the cache (1 ms)
+      ✓ renders one pass per shadow face for non-clustered local lights (1 ms)
+      ✓ does not render VSM for non-spot local lights (1 ms)
+      ✓ uses the clustered local shadow pass when clustered lighting is enabled (1 ms)
+      ✓ does not render when clustered shadows are disabled (1 ms)
+    #postprocessTextures()
+      ✓ denoises and dilates each lightmap pass (1 ms)
+      ✓ skips denoise when the scene filter is disabled (1 ms)
+      ✓ processes every pass of every node (1 ms)
+    #bake()
+      ✓ bakes all scene nodes in color+direction mode and applies the resulting lightmaps (2 ms)
+      ✓ uses a single pass for color-only baking and marks ambient lightmaps (1 ms)
+      ✓ defaults to color+direction baking
+      ✓ collects from the supplied nodes for baking and from the root for all nodes (1 ms)
+      ✓ does not bake when the scene contains no bakeable nodes (1 ms)
+      ✓ treats an empty node array as a request not to bake scene nodes
+
+Test Suites: 1 passed, 1 total
+Tests:       67 passed, 67 total
+Snapshots:   0 total
+Time:        1.867 s
+Ran all test suites within paths "test/framework/lightmapper/lightmapper.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/framework/lightmapper/lightmapper.test.js
+  Lightmapper
+    #constructor
+      ✓ stores its dependencies and initializes state (4 ms)
+    #destroy()
+      ✓ releases the black texture, destroys the camera and clears references (2 ms)
+    #initBake()
+      ✓ creates reusable baking resources and configures the bake camera (3 ms)
+      ✓ uses HDR baking for non-RGBA8 lightmaps
+      ✓ sets up clustered lighting resources from scene settings (2 ms)
+    #finishBake()
+      ✓ releases render targets and destroys clustered resources (2 ms)
+      ✓ works without a clustered light setup
+    #createMaterialForPass()
+      ✓ creates a color pass material without ambient (3 ms)
+      ✓ creates an ambient color pass material (1 ms)
+      ✓ creates a dominant direction pass material (1 ms)
+    #createMaterials()
+      ✓ creates pass materials plus the ambient AO material and reuses them (2 ms)
+    #createTexture()
+      ✓ creates an RGBM lightmap texture for LDR baking (1 ms)
+      ✓ creates an HDR lightmap texture for HDR baking
+    #collectModels()
+      ✓ collects a lightmapped render node as one bake node and one all node (1 ms)
+      ✓ splits shared meshes into separate bake nodes
+      ✓ excludes nodes containing meshes without uv1 and logs a warning (1 ms)
+      ✓ skips disabled nodes and does not recurse into them
+      ✓ collects non-lightmapped render nodes only in allNodes (1 ms)
+      ✓ collects model component meshes and recurses into children
+      ✓ clears its temporary mesh set between calls (1 ms)
+    #prepareShadowCasters()
+      ✓ enables lightmap shadow casting and collects visible casters (1 ms)
+    #updateTransforms()
+      ✓ updates every mesh instance node world transform (1 ms)
+    #calculateLightmapSize()
+      ✓ computes a power-of-two size from bounds and the scene multiplier
+      ✓ applies component area and uv scale (1 ms)
+      ✓ uses the component lightmap size multiplier
+      ✓ falls back to a multiplier of 16 and applies the scene maximum resolution (1 ms)
+      ✓ snaps very small geometry to a size of one
+      ✓ reads model asset area data through the asset registry (1 ms)
+      ✓ reads model _area data when no asset is set
+      ✓ ignores render component _area for asset renders (1 ms)
+    #setLightmapping()
+      ✓ disables lightmapping without touching masks or render targets
+      ✓ enables lightmapping, shader defs, mask and per-pass textures (1 ms)
+      ✓ does not alter shader defs when no shader defs are supplied
+    #allocateTextures()
+      ✓ allocates per-node render targets and one shared temporary target per size (1 ms)
+      ✓ allocates separate temporary targets for different lightmap sizes
+    #prepareLightsToBake()
+      ✓ wraps every light, selects enabled bake lights and patches their state (1 ms)
+    #restoreLights()
+      ✓ restores every wrapped light (1 ms)
+    #setupScene() and #restoreScene()
+      ✓ backs up ambient light, blacks it out, and restores it (1 ms)
+      ✓ does not black out ambient light when ambient baking is enabled
+    #computeNodeBounds() and #computeBounds()
+      ✓ combines mesh instance bounds (1 ms)
+      ✓ returns a default box for empty input (1 ms)
+      ✓ assigns computed bounds to every node (12 ms)
+    #backupMaterials() and #restoreMaterials()
+      ✓ stores and restores materials by index (1 ms)
+    #lightCameraPrepare()
+      ✓ configures a perspective camera for spot lights (1 ms)
+      ✓ returns undefined and does not prepare a camera for non-spot lights
+    #lightCameraPrepareAndCull()
+      ✓ fits the orthographic camera to directional light caster bounds
+      ✓ rejects non-directional lights outside the node bounds (1 ms)
+      ✓ accepts omni lights that intersect without per-mesh culling (1 ms)
+      ✓ rejects spot lights when no mesh instance is visible to the shadow camera
+      ✓ accepts a spot light when a later mesh instance is visible (1 ms)
+    #setupLightList()
+      ✓ builds a single-light list and marks the light visible
+    #renderShadowMap()
+      ✓ does nothing when the shadow map was already rendered (1 ms)
+      ✓ does nothing when the light does not cast shadows (1 ms)
+      ✓ renders a directional shadow map and allocates it from the cache
+      ✓ renders one pass per shadow face for non-clustered local lights (1 ms)
+      ✓ does not render VSM for non-spot local lights
+      ✓ uses the clustered local shadow pass when clustered lighting is enabled
+      ✓ does not render when clustered shadows are disabled (1 ms)
+    #postprocessTextures()
+      ✓ denoises and dilates each lightmap pass (1 ms)
+      ✓ skips denoise when the scene filter is disabled (1 ms)
+      ✓ processes every pass of every node
+    #bake()
+      ✓ bakes all scene nodes in color+direction mode and applies the resulting lightmaps (2 ms)
+      ✓ uses a single pass for color-only baking and marks ambient lightmaps
+      ✓ defaults to color+direction baking (1 ms)
+      ✓ collects from the supplied nodes for baking and from the root for all nodes (1 ms)
+      ✓ does not bake when the scene contains no bakeable nodes
+      ✓ treats an empty node array as a request not to bake scene nodes
+
+Test Suites: 1 passed, 1 total
+Tests:       67 passed, 67 total
+Snapshots:   0 total
+Time:        2.245 s
+Ran all test suites within paths "test/framework/lightmapper/lightmapper.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

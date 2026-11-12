@@ -1,0 +1,115 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/extras/exporters/gltf-exporter.test.js
+  GltfExporter.collectResources
+    ✓ collects only enabled render/model instances and deduplicates shared resources (5 ms)
+    ✓ returns empty collections for an entity with no components (1 ms)
+  GltfExporter.writeBufferView
+    ✓ writes one aligned buffer view per element of a non-interleaved vertex buffer (1 ms)
+    ✓ writes a single strided view for an interleaved vertex buffer
+    ✓ writes index buffers and pads subsequent raw buffers to four-byte alignment (1 ms)
+  GltfExporter.writeCameras
+    ✓ serializes perspective and orthographic cameras (1 ms)
+    ✓ leaves JSON unchanged when there are no cameras (1 ms)
+  GltfExporter texture and extension helpers
+    ✓ attaches a texture with UV set and KHR_texture_transform data without duplicate extension entries (1 ms)
+    ✓ omits default texture transform and texCoord fields
+    ✓ warns and uses index -1 when a referenced texture was not collected (2 ms)
+    ✓ adds extensions to material output and records each extension once (1 ms)
+  GltfExporter material serialization
+    ✓ serializes generic material alpha, double-sided, normal, occlusion and emissive textures (1 ms)
+    ✓ serializes alpha mask mode for a non-blended material with alpha testing (1 ms)
+    ✓ uses the standard-material path for StandardMaterial instances (2 ms)
+    ✓ serializes PBR factors and material extensions (3 ms)
+    ✓ serializes unlit material using emissive as base color and without an emissive factor (2 ms)
+  GltfExporter.writeNodes
+    ✓ serializes transforms, cameras, meshes, skins and child indices (1 ms)
+    ✓ leaves JSON unchanged when there are no entities
+  GltfExporter mesh and skin serialization
+    ✓ writeMeshes groups instances by node and carries material indices into primitives (2 ms)
+    ✓ maps index format 0 to component type 0
+    ✓ maps index format 1 to component type 1
+    ✓ maps index format 2 to component type 2
+    ✓ strips unused attributes while preserving attributes referenced by materials and skins (1 ms)
+    ✓ does not strip attributes when stripUnusedAttributes is false
+    ✓ writeSkins packs inverse bind matrices and resolves joint node indices (1 ms)
+  GltfExporter texture encoding helpers
+    ✓ writeTextures picks JPEG only for collected opaque canvases and emits image, sampler and texture data (3 ms)
+    ✓ convertTextures forwards maxTextureSize and preserves source order (1 ms)
+    ✓ getBlob uses canvas.toBlob when available
+    ✓ getBlob falls back to convertToBlob for image/png with quality 1
+    ✓ getBlob falls back to convertToBlob for image/jpeg with quality 0.92
+    ✓ getPaddedArrayBuffer returns aligned buffers unchanged and pads others without mutating the source
+  GltfExporter.buildJson and build
+    ✓ buildJson produces the base glTF document and removes empty texture collections (1 ms)
+    ✓ build emits a valid GLB header, JSON chunk and binary chunk (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       33 passed, 33 total
+Snapshots:   0 total
+Time:        6.06 s
+Ran all test suites within paths "test/extras/exporters/gltf-exporter.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/extras/exporters/gltf-exporter.test.js
+  GltfExporter.collectResources
+    ✓ collects only enabled render/model instances and deduplicates shared resources (6 ms)
+    ✓ returns empty collections for an entity with no components (1 ms)
+  GltfExporter.writeBufferView
+    ✓ writes one aligned buffer view per element of a non-interleaved vertex buffer (2 ms)
+    ✓ writes a single strided view for an interleaved vertex buffer (1 ms)
+    ✓ writes index buffers and pads subsequent raw buffers to four-byte alignment (1 ms)
+  GltfExporter.writeCameras
+    ✓ serializes perspective and orthographic cameras (2 ms)
+    ✓ leaves JSON unchanged when there are no cameras
+  GltfExporter texture and extension helpers
+    ✓ attaches a texture with UV set and KHR_texture_transform data without duplicate extension entries (1 ms)
+    ✓ omits default texture transform and texCoord fields
+    ✓ warns and uses index -1 when a referenced texture was not collected (2 ms)
+    ✓ adds extensions to material output and records each extension once (1 ms)
+  GltfExporter material serialization
+    ✓ serializes generic material alpha, double-sided, normal, occlusion and emissive textures (1 ms)
+    ✓ serializes alpha mask mode for a non-blended material with alpha testing (1 ms)
+    ✓ uses the standard-material path for StandardMaterial instances (3 ms)
+    ✓ serializes PBR factors and material extensions (3 ms)
+    ✓ serializes unlit material using emissive as base color and without an emissive factor (2 ms)
+  GltfExporter.writeNodes
+    ✓ serializes transforms, cameras, meshes, skins and child indices (1 ms)
+    ✓ leaves JSON unchanged when there are no entities (1 ms)
+  GltfExporter mesh and skin serialization
+    ✓ writeMeshes groups instances by node and carries material indices into primitives (2 ms)
+    ✓ maps index format 0 to component type 0
+    ✓ maps index format 1 to component type 1
+    ✓ maps index format 2 to component type 2
+    ✓ strips unused attributes while preserving attributes referenced by materials and skins (1 ms)
+    ✓ does not strip attributes when stripUnusedAttributes is false
+    ✓ writeSkins packs inverse bind matrices and resolves joint node indices (1 ms)
+  GltfExporter texture encoding helpers
+    ✓ writeTextures picks JPEG only for collected opaque canvases and emits image, sampler and texture data (2 ms)
+    ✓ convertTextures forwards maxTextureSize and preserves source order (1 ms)
+    ✓ getBlob uses canvas.toBlob when available (1 ms)
+    ✓ getBlob falls back to convertToBlob for image/png with quality 1 (1 ms)
+    ✓ getBlob falls back to convertToBlob for image/jpeg with quality 0.92
+    ✓ getPaddedArrayBuffer returns aligned buffers unchanged and pads others without mutating the source (1 ms)
+  GltfExporter.buildJson and build
+    ✓ buildJson produces the base glTF document and removes empty texture collections
+    ✓ build emits a valid GLB header, JSON chunk and binary chunk (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       33 passed, 33 total
+Snapshots:   0 total
+Time:        3.511 s, estimated 5 s
+Ran all test suites within paths "test/extras/exporters/gltf-exporter.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

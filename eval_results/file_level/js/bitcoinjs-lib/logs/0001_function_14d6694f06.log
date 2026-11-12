@@ -1,0 +1,179 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:22) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/cjs/transaction.test.js
+  Transaction constants
+    ✓ exposes the documented static values (4 ms)
+  construction and input/output management
+    ✓ initializes an empty transaction with default version and locktime (2 ms)
+    ✓ addInput returns an index and applies defaults (2 ms)
+    ✓ addInput honors an explicit sequence and scriptSig (1 ms)
+    ✓ addOutput returns an index and stores script and value (1 ms)
+    ✓ setInputScript replaces the input script
+    ✓ setWitness stores a witness stack
+  serialization and parsing
+    ✓ serializes an empty-script transaction to the expected bytes (2 ms)
+    ✓ round-trips through hex, preserving transaction fields (1 ms)
+    ✓ fromBuffer accepts the same bytes as fromHex (1 ms)
+    ✓ toBuffer writes at an initial offset and returns only the written slice (1 ms)
+    ✓ strict parsing rejects unexpected trailing data (17 ms)
+    ✓ fromBuffer with _NO_STRICT ignores trailing data (1 ms)
+    ✓ parses a real signed transaction with its known id (2 ms)
+  witness handling and size accounting
+    ✓ serializes the segwit marker, flag, and witness stack (1 ms)
+    ✓ stripWitnesses removes witness data and returns to legacy serialization (1 ms)
+    ✓ byteLength, weight, and virtualSize reflect witness data (1 ms)
+    ✓ reports standard weight and virtual size for a legacy transaction (1 ms)
+    ✓ rejects a transaction that marks witness data but has none (1 ms)
+  coinbase behavior and transaction hashes
+    ✓ isCoinbaseHash recognizes the all-zero hash and rejects others (1 ms)
+    ✓ isCoinbaseHash validates that the hash is 32 bytes (2 ms)
+    ✓ isCoinbase requires exactly one input with the null hash
+    ✓ parses the genesis coinbase transaction and reports its known id (1 ms)
+    ✓ getHash returns the internal hash whose reverse is the txid (1 ms)
+    ✓ getHash for coinbase witness data is always 32 zero bytes (1 ms)
+    ✓ getHash(forWitness) changes when witness data is present (1 ms)
+  clone
+    ✓ copies values and arrays without mutating the original (1 ms)
+  input and output validation
+    ✓ rejects a 31-byte input hash (1 ms)
+    ✓ rejects a negative input index
+    ✓ rejects an input index above uint32
+    ✓ rejects a negative sequence (1 ms)
+    ✓ rejects a non-byte scriptSig (1 ms)
+    ✓ rejects a non-byte output script (1 ms)
+    ✓ rejects a negative output value
+    ✓ rejects an output value above int64 max (1 ms)
+    ✓ setInputScript and setWitness validate their arguments (2 ms)
+  hashForSignature
+    ✓ matches the known legacy sighash vector (1 ms)
+    ✓ strips OP_CODESEPARATOR before hashing the previous output script (1 ms)
+    ✓ does not strip opcodes other than OP_CODESEPARATOR
+    ✓ returns the ONE sentinel for an out-of-range input index (1 ms)
+    ✓ returns the ONE sentinel for SIGHASH_SINGLE without a matching output (1 ms)
+    ✓ produces distinct 32-byte hashes for different hash types (1 ms)
+    ✓ SIGHASH_ANYONECANPAY ignores additional inputs (1 ms)
+    ✓ validates the input index and previous output script (6 ms)
+  hashForWitnessV0
+    ✓ matches the known BIP143 vector for hash type 1 (1 ms)
+    ✓ matches the known BIP143 vector for hash type 2
+    ✓ matches the known BIP143 vector for hash type 3
+    ✓ matches the known BIP143 vector for hash type 129
+    ✓ matches the known BIP143 vector for hash type 130 (1 ms)
+    ✓ matches the known BIP143 vector for hash type 131
+    ✓ matches the known native P2WPKH vector (1 ms)
+    ✓ validates value and hash type arguments (1 ms)
+  hashForWitnessV1
+    ✓ matches the known BIP341 key-path vector for input 0 (type 3) (1 ms)
+    ✓ matches the known BIP341 key-path vector for input 1 (type 131) (1 ms)
+    ✓ matches the known BIP341 key-path vector for input 3 (type 1)
+    ✓ matches the known BIP341 key-path vector for input 4 (type 0)
+    ✓ matches the known BIP341 key-path vector for input 6 (type 2) (1 ms)
+    ✓ matches the known BIP341 key-path vector for input 7 (type 130)
+    ✓ matches the known BIP341 key-path vector for input 8 (type 129)
+    ✓ is deterministic (1 ms)
+    ✓ annex and leaf hash extensions alter the 32-byte signature hash (2 ms)
+    ✓ requires a previous output script and value for every input (1 ms)
+    ✓ requires outputs when the hash type commits to outputs (1 ms)
+    ✓ validates the input index and hash type (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       64 passed, 64 total
+Snapshots:   0 total
+Time:        5.762 s
+Ran all test suites within paths "test/cjs/transaction.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:35) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/cjs/transaction.test.js
+  Transaction constants
+    ✓ exposes the documented static values (5 ms)
+  construction and input/output management
+    ✓ initializes an empty transaction with default version and locktime (2 ms)
+    ✓ addInput returns an index and applies defaults (2 ms)
+    ✓ addInput honors an explicit sequence and scriptSig
+    ✓ addOutput returns an index and stores script and value (1 ms)
+    ✓ setInputScript replaces the input script
+    ✓ setWitness stores a witness stack (1 ms)
+  serialization and parsing
+    ✓ serializes an empty-script transaction to the expected bytes (2 ms)
+    ✓ round-trips through hex, preserving transaction fields (1 ms)
+    ✓ fromBuffer accepts the same bytes as fromHex
+    ✓ toBuffer writes at an initial offset and returns only the written slice (1 ms)
+    ✓ strict parsing rejects unexpected trailing data (55 ms)
+    ✓ fromBuffer with _NO_STRICT ignores trailing data
+    ✓ parses a real signed transaction with its known id (2 ms)
+  witness handling and size accounting
+    ✓ serializes the segwit marker, flag, and witness stack (1 ms)
+    ✓ stripWitnesses removes witness data and returns to legacy serialization (1 ms)
+    ✓ byteLength, weight, and virtualSize reflect witness data (1 ms)
+    ✓ reports standard weight and virtual size for a legacy transaction (1 ms)
+    ✓ rejects a transaction that marks witness data but has none (1 ms)
+  coinbase behavior and transaction hashes
+    ✓ isCoinbaseHash recognizes the all-zero hash and rejects others
+    ✓ isCoinbaseHash validates that the hash is 32 bytes (3 ms)
+    ✓ isCoinbase requires exactly one input with the null hash
+    ✓ parses the genesis coinbase transaction and reports its known id
+    ✓ getHash returns the internal hash whose reverse is the txid (1 ms)
+    ✓ getHash for coinbase witness data is always 32 zero bytes
+    ✓ getHash(forWitness) changes when witness data is present (1 ms)
+  clone
+    ✓ copies values and arrays without mutating the original (1 ms)
+  input and output validation
+    ✓ rejects a 31-byte input hash (1 ms)
+    ✓ rejects a negative input index (1 ms)
+    ✓ rejects an input index above uint32 (1 ms)
+    ✓ rejects a negative sequence
+    ✓ rejects a non-byte scriptSig (1 ms)
+    ✓ rejects a non-byte output script (1 ms)
+    ✓ rejects a negative output value (1 ms)
+    ✓ rejects an output value above int64 max
+    ✓ setInputScript and setWitness validate their arguments (2 ms)
+  hashForSignature
+    ✓ matches the known legacy sighash vector (1 ms)
+    ✓ strips OP_CODESEPARATOR before hashing the previous output script (1 ms)
+    ✓ does not strip opcodes other than OP_CODESEPARATOR (1 ms)
+    ✓ returns the ONE sentinel for an out-of-range input index
+    ✓ returns the ONE sentinel for SIGHASH_SINGLE without a matching output (1 ms)
+    ✓ produces distinct 32-byte hashes for different hash types (2 ms)
+    ✓ SIGHASH_ANYONECANPAY ignores additional inputs (1 ms)
+    ✓ validates the input index and previous output script (1 ms)
+  hashForWitnessV0
+    ✓ matches the known BIP143 vector for hash type 1 (1 ms)
+    ✓ matches the known BIP143 vector for hash type 2
+    ✓ matches the known BIP143 vector for hash type 3
+    ✓ matches the known BIP143 vector for hash type 129
+    ✓ matches the known BIP143 vector for hash type 130
+    ✓ matches the known BIP143 vector for hash type 131 (1 ms)
+    ✓ matches the known native P2WPKH vector
+    ✓ validates value and hash type arguments (1 ms)
+  hashForWitnessV1
+    ✓ matches the known BIP341 key-path vector for input 0 (type 3) (2 ms)
+    ✓ matches the known BIP341 key-path vector for input 1 (type 131)
+    ✓ matches the known BIP341 key-path vector for input 3 (type 1) (1 ms)
+    ✓ matches the known BIP341 key-path vector for input 4 (type 0) (1 ms)
+    ✓ matches the known BIP341 key-path vector for input 6 (type 2)
+    ✓ matches the known BIP341 key-path vector for input 7 (type 130)
+    ✓ matches the known BIP341 key-path vector for input 8 (type 129)
+    ✓ is deterministic (2 ms)
+    ✓ annex and leaf hash extensions alter the 32-byte signature hash (2 ms)
+    ✓ requires a previous output script and value for every input (1 ms)
+    ✓ requires outputs when the hash type commits to outputs (1 ms)
+    ✓ validates the input index and hash type (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       64 passed, 64 total
+Snapshots:   0 total
+Time:        1.675 s, estimated 5 s
+Ran all test suites within paths "test/cjs/transaction.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
