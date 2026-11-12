@@ -1,0 +1,95 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:25) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/fx/Fx/flameBurst.test.js
+  Fx.flameBurst
+    guards and fractional budget
+      ✓ does nothing when the additive pool has not been built (6 ms)
+      ✓ does nothing while disabled even when both pools exist (1 ms)
+      ✓ accumulates fractional emissions until a whole particle is available (4 ms)
+      ✓ returns without emitting for a zero strength and preserves the fraction (1 ms)
+      ✓ does not emit for a negative strength (1 ms)
+    family counts and shared emission data
+      ✓ emits the core, jet, embers, smoke, and a muzzle ring for a full burst (3 ms)
+      ✓ honours strength=1 and budget=0.5 when producing 19 core particles (1 ms)
+      ✓ honours strength=2 and budget=1 when producing 76 core particles (8 ms)
+    core cone
+      ✓ spawns cool-to-hot billboards with bounded lifetimes and physical motion (49 ms)
+    pressurised jet
+      ✓ emits fast, short-lived streaks from the mouth with the hottest colours (12 ms)
+    embers and smoke
+      ✓ emits long-lived embers with ground-seeking motion and varied sprites (16 ms)
+      ✓ emits biome-tinted smoke into the alpha pool (12 ms)
+    ring and ground scorch cadence
+      ✓ emits a ring when its accumulator expires and implements its reset cadence (3 ms)
+      ✓ spawns three flat ground flames when the flame tip licks the floor (5 ms)
+      ✓ uses the strict ground-contact window at tipY=1.39 (2 ms)
+      ✓ uses the strict ground-contact window at tipY=1.4 (2 ms)
+      ✓ uses the strict ground-contact window at tipY=-2.49 (2 ms)
+      ✓ uses the strict ground-contact window at tipY=-2.5 (2 ms)
+      ✓ throttles floor flames using the scorch accumulator (1 ms)
+    direction selection, grounding, and light
+      ✓ uses the stored facing direction when dir is omitted (6 ms)
+      ✓ normalises a zero direction to a usable forward axis (5 ms)
+      ✓ falls back below the origin when the world has no ground sampler (4 ms)
+      ✓ raises the dominant flame light and positions the point light down the cone (2 ms)
+      ✓ does not reduce an existing brighter flame light (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        0.915 s
+Ran all test suites within paths "test/fx/Fx/flameBurst.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:38) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/fx/Fx/flameBurst.test.js
+  Fx.flameBurst
+    guards and fractional budget
+      ✓ does nothing when the additive pool has not been built (4 ms)
+      ✓ does nothing while disabled even when both pools exist (1 ms)
+      ✓ accumulates fractional emissions until a whole particle is available (3 ms)
+      ✓ returns without emitting for a zero strength and preserves the fraction (1 ms)
+      ✓ does not emit for a negative strength (1 ms)
+    family counts and shared emission data
+      ✓ emits the core, jet, embers, smoke, and a muzzle ring for a full burst (4 ms)
+      ✓ honours strength=1 and budget=0.5 when producing 19 core particles (2 ms)
+      ✓ honours strength=2 and budget=1 when producing 76 core particles (4 ms)
+    core cone
+      ✓ spawns cool-to-hot billboards with bounded lifetimes and physical motion (45 ms)
+    pressurised jet
+      ✓ emits fast, short-lived streaks from the mouth with the hottest colours (10 ms)
+    embers and smoke
+      ✓ emits long-lived embers with ground-seeking motion and varied sprites (12 ms)
+      ✓ emits biome-tinted smoke into the alpha pool (10 ms)
+    ring and ground scorch cadence
+      ✓ emits a ring when its accumulator expires and implements its reset cadence (1 ms)
+      ✓ spawns three flat ground flames when the flame tip licks the floor (4 ms)
+      ✓ uses the strict ground-contact window at tipY=1.39 (2 ms)
+      ✓ uses the strict ground-contact window at tipY=1.4 (1 ms)
+      ✓ uses the strict ground-contact window at tipY=-2.49 (1 ms)
+      ✓ uses the strict ground-contact window at tipY=-2.5 (2 ms)
+      ✓ throttles floor flames using the scorch accumulator (1 ms)
+    direction selection, grounding, and light
+      ✓ uses the stored facing direction when dir is omitted (5 ms)
+      ✓ normalises a zero direction to a usable forward axis (3 ms)
+      ✓ falls back below the origin when the world has no ground sampler (3 ms)
+      ✓ raises the dominant flame light and positions the point light down the cone (2 ms)
+      ✓ does not reduce an existing brighter flame light (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        1.257 s
+Ran all test suites within paths "test/fx/Fx/flameBurst.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

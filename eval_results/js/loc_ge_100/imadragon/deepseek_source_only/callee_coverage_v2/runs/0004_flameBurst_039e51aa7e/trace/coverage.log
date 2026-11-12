@@ -1,0 +1,43 @@
+(node:38) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/fx/Fx/flameBurst.test.js
+  Fx.flameBurst
+    guards and fractional budget
+      ✓ does nothing when the additive pool has not been built (5 ms)
+      ✓ does nothing while disabled even when both pools exist (2 ms)
+      ✓ accumulates fractional emissions until a whole particle is available (3 ms)
+      ✓ returns without emitting for a zero strength and preserves the fraction
+      ✓ does not emit for a negative strength (1 ms)
+    family counts and shared emission data
+      ✓ emits the core, jet, embers, smoke, and a muzzle ring for a full burst (5 ms)
+      ✓ honours strength=1 and budget=0.5 when producing 19 core particles (2 ms)
+      ✓ honours strength=2 and budget=1 when producing 76 core particles (5 ms)
+    core cone
+      ✓ spawns cool-to-hot billboards with bounded lifetimes and physical motion (51 ms)
+    pressurised jet
+      ✓ emits fast, short-lived streaks from the mouth with the hottest colours (12 ms)
+    embers and smoke
+      ✓ emits long-lived embers with ground-seeking motion and varied sprites (12 ms)
+      ✓ emits biome-tinted smoke into the alpha pool (10 ms)
+    ring and ground scorch cadence
+      ✓ emits a ring when its accumulator expires and implements its reset cadence (1 ms)
+      ✓ spawns three flat ground flames when the flame tip licks the floor (4 ms)
+      ✓ uses the strict ground-contact window at tipY=1.39 (1 ms)
+      ✓ uses the strict ground-contact window at tipY=1.4 (1 ms)
+      ✓ uses the strict ground-contact window at tipY=-2.49 (2 ms)
+      ✓ uses the strict ground-contact window at tipY=-2.5 (2 ms)
+      ✓ throttles floor flames using the scorch accumulator (1 ms)
+    direction selection, grounding, and light
+      ✓ uses the stored facing direction when dir is omitted (5 ms)
+      ✓ normalises a zero direction to a usable forward axis (4 ms)
+      ✓ falls back below the origin when the world has no ground sampler (3 ms)
+      ✓ raises the dominant flame light and positions the point light down the cone (1 ms)
+      ✓ does not reduce an existing brighter flame light (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        1.367 s
+Ran all test suites within paths "test/fx/Fx/flameBurst.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

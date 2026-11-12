@@ -1,0 +1,87 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:25) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/enemies/Flyer/buildFlyer.test.js
+  buildFlyer() bundle
+    ✓ returns a rig, a geometry, the animation clips and metadata (43 ms)
+    ✓ reports the flyer archetype metadata (19 ms)
+    ✓ two calls produce independent but byte-identical results (126 ms)
+  buildFlyer() rig
+    ✓ creates the complete 17-bone flyer hierarchy (16 ms)
+    ✓ accumulates bind-pose positions down the hierarchy (14 ms)
+    ✓ hands out independent instances without disturbing the template (14 ms)
+  buildFlyer() geometry
+    ✓ publishes a complete skinned geometry (13 ms)
+    ✓ has only valid triangle indices and finite vertex data (542 ms)
+    ✓ normalises all vertex normals and keeps colours in the lit range (145 ms)
+    ✓ builds a wing-wide, shallow flyer silhouette with a computed bounding sphere (11 ms)
+    ✓ assigns vertices to the intended palette slots (9 ms)
+    ✓ uses literal dark and bone colours only for the unlit features (45 ms)
+    ✓ places the two glowing eyes on the face and the stinger at the tail (25 ms)
+  buildFlyer() skinning
+    ✓ normalises every vertex to at most two valid bone influences (539 ms)
+    ✓ every rig bone actually deforms some geometry (9 ms)
+    ✓ rigidly binds face, tail and claw details to their owning bones (25 ms)
+    ✓ rigidly weights the jaw and blends the abdomen along the tail chain (13 ms)
+  buildFlyer() clips
+    ✓ provides the full flyer animation set with aliases and durations (8 ms)
+    ✓ marks looping wingbeats and one-shot reaction clips (9 ms)
+    ✓ all tracks target real bones, are finite, and keep ordered keyframes (213 ms)
+    ✓ flap clips contain seven evenly spaced keys and a vertical body bob (13 ms)
+    ✓ reaction clips author three or four poses and animate jaw and body (11 ms)
+    ✓ clips can be played through a THREE.AnimationMixer on an instance (13 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       23 passed, 23 total
+Snapshots:   0 total
+Time:        2.539 s
+Ran all test suites within paths "test/actors/enemies/Flyer/buildFlyer.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:38) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/enemies/Flyer/buildFlyer.test.js
+  buildFlyer() bundle
+    ✓ returns a rig, a geometry, the animation clips and metadata (32 ms)
+    ✓ reports the flyer archetype metadata (21 ms)
+    ✓ two calls produce independent but byte-identical results (126 ms)
+  buildFlyer() rig
+    ✓ creates the complete 17-bone flyer hierarchy (16 ms)
+    ✓ accumulates bind-pose positions down the hierarchy (14 ms)
+    ✓ hands out independent instances without disturbing the template (14 ms)
+  buildFlyer() geometry
+    ✓ publishes a complete skinned geometry (13 ms)
+    ✓ has only valid triangle indices and finite vertex data (553 ms)
+    ✓ normalises all vertex normals and keeps colours in the lit range (171 ms)
+    ✓ builds a wing-wide, shallow flyer silhouette with a computed bounding sphere (13 ms)
+    ✓ assigns vertices to the intended palette slots (11 ms)
+    ✓ uses literal dark and bone colours only for the unlit features (54 ms)
+    ✓ places the two glowing eyes on the face and the stinger at the tail (29 ms)
+  buildFlyer() skinning
+    ✓ normalises every vertex to at most two valid bone influences (531 ms)
+    ✓ every rig bone actually deforms some geometry (8 ms)
+    ✓ rigidly binds face, tail and claw details to their owning bones (23 ms)
+    ✓ rigidly weights the jaw and blends the abdomen along the tail chain (14 ms)
+  buildFlyer() clips
+    ✓ provides the full flyer animation set with aliases and durations (9 ms)
+    ✓ marks looping wingbeats and one-shot reaction clips (8 ms)
+    ✓ all tracks target real bones, are finite, and keep ordered keyframes (199 ms)
+    ✓ flap clips contain seven evenly spaced keys and a vertical body bob (13 ms)
+    ✓ reaction clips author three or four poses and animate jaw and body (11 ms)
+    ✓ clips can be played through a THREE.AnimationMixer on an instance (13 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       23 passed, 23 total
+Snapshots:   0 total
+Time:        3.988 s
+Ran all test suites within paths "test/actors/enemies/Flyer/buildFlyer.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

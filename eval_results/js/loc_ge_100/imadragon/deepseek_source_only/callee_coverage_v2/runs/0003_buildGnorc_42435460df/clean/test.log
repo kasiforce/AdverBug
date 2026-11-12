@@ -1,0 +1,30 @@
+(node:24) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/enemies/Gnorc/buildGnorc.test.js
+  buildGnorc
+    ✓ returns the complete Gnorc asset bundle (54 ms)
+    ✓ exposes the gameplay metadata used by the enemy system (27 ms)
+    ✓ builds a non-empty indexed geometry with a consistent skinning layout (574 ms)
+    ✓ stands on the ground and fills the intended short, wide silhouette (27 ms)
+    ✓ computes a finite bounding sphere that encloses every vertex (23 ms)
+    ✓ emits finite positions and unit-length face normals (215 ms)
+    ✓ normalizes every vertex to at most four valid rig bones (658 ms)
+    ✓ tags the geometry with all palette slots used by the enemy renderer (14 ms)
+    ✓ stores shaded vertex colours in range with visible value variation (308 ms)
+    ✓ binds the head, jaw, feet, hands and club to their expected bones (15 ms)
+    ✓ builds the expected bone hierarchy and bind pose (16 ms)
+    ✓ authors all eight clips with the expected durations and loop modes (14 ms)
+    ✓ keeps every clip track on a real bone and inside the clip timeline (155 ms)
+    ✓ closes the locomotion loops seamlessly (18 ms)
+    ✓ animates vertical root motion for idle sway and reaction poses (12 ms)
+    ✓ adds squash-and-stretch keys to the reaction clips (18 ms)
+    ✓ swings the club through a full attack arc (12 ms)
+    ✓ is deterministic while returning fresh mutable assets per build (136 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        2.98 s
+Ran all test suites within paths "test/actors/enemies/Gnorc/buildGnorc.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

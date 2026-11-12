@@ -1,0 +1,77 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:25) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/voxel-rpg/src/world/terrain/createTerrain.test.js (5.907 s)
+  createTerrain
+    scene graph and returned metadata
+      ✓ adds a named terrain group to the supplied parent and returns world metadata (72 ms)
+      ✓ returns a size x size height map of integer heights inside the configured range (353 ms)
+      ✓ derives terrain deterministically from the supplied rng (143 ms)
+      ✓ produces terrain with a smoothly stepped height map (224 ms)
+    world-to-grid query helpers
+      ✓ maps points inside each cell to the expected grid coordinates (38 ms)
+      ✓ returns null for points outside the terrain footprint (37 ms)
+      ✓ returns cell heights in world units and falls back to minimum terrain height outside the map (37 ms)
+      ✓ returns grid-node heights and bilinearly interpolates between them (37 ms)
+      ✓ returns the minimum terrain height when sampling outside the height map (37 ms)
+      ✓ measures flatness as the max-min height difference over a square radius (39 ms)
+    randomSurfacePoint
+      ✓ returns a surface point for the cell selected by the rng (39 ms)
+      ✓ skips cells whose flatness exceeds the requested maximum (37 ms)
+      ✓ falls back to the centre cell after 24 unacceptable attempts (38 ms)
+      ✓ keeps random points within the requested margin by default (40 ms)
+    instanced collision meshes
+      ✓ creates top, fill and stone instanced meshes sharing the box geometry (38 ms)
+      ✓ places one top instance at every cell and tints them with the terrain rng (39 ms)
+      ✓ places two stone layers in every column at the expected heights and colours (55 ms)
+      ✓ populates fill instances for every block above the two stone layers (487 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        6.892 s
+Ran all test suites within paths "test/voxel-rpg/src/world/terrain/createTerrain.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:39) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/voxel-rpg/src/world/terrain/createTerrain.test.js
+  createTerrain
+    scene graph and returned metadata
+      ✓ adds a named terrain group to the supplied parent and returns world metadata (124 ms)
+      ✓ returns a size x size height map of integer heights inside the configured range (393 ms)
+      ✓ derives terrain deterministically from the supplied rng (212 ms)
+      ✓ produces terrain with a smoothly stepped height map (203 ms)
+    world-to-grid query helpers
+      ✓ maps points inside each cell to the expected grid coordinates (35 ms)
+      ✓ returns null for points outside the terrain footprint (35 ms)
+      ✓ returns cell heights in world units and falls back to minimum terrain height outside the map (34 ms)
+      ✓ returns grid-node heights and bilinearly interpolates between them (36 ms)
+      ✓ returns the minimum terrain height when sampling outside the height map (35 ms)
+      ✓ measures flatness as the max-min height difference over a square radius (36 ms)
+    randomSurfacePoint
+      ✓ returns a surface point for the cell selected by the rng (36 ms)
+      ✓ skips cells whose flatness exceeds the requested maximum (35 ms)
+      ✓ falls back to the centre cell after 24 unacceptable attempts (35 ms)
+      ✓ keeps random points within the requested margin by default (37 ms)
+    instanced collision meshes
+      ✓ creates top, fill and stone instanced meshes sharing the box geometry (35 ms)
+      ✓ places one top instance at every cell and tints them with the terrain rng (37 ms)
+      ✓ places two stone layers in every column at the expected heights and colours (44 ms)
+      ✓ populates fill instances for every block above the two stone layers (461 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        3.585 s, estimated 6 s
+Ran all test suites within paths "test/voxel-rpg/src/world/terrain/createTerrain.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

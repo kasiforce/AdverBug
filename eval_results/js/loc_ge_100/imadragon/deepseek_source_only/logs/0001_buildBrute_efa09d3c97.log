@@ -1,0 +1,101 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:25) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/enemies/Brute/buildBrute.test.js (5.784 s)
+  buildBrute
+    returned payload
+      ✓ returns a rig, a buffer geometry, animation clips and archetype meta (38 ms)
+      ✓ reports the documented brute archetype metadata (20 ms)
+      ✓ describes a full biped skeleton with the expected parent chain (23 ms)
+    geometry structure
+      ✓ exposes every skinning attribute with consistent vertex counts (17 ms)
+      ✓ uses only valid triangle indices (16 ms)
+      ✓ emits finite positions enclosed by a computed bounding box and sphere (23 ms)
+      ✓ carries unit-length normals for every vertex (15 ms)
+      ✓ writes bounded, non-uniform vertex colours (145 ms)
+      ✓ tags vertices with the palette slots expected of an armoured, glowing brute (53 ms)
+    skinning
+      ✓ binds every vertex to valid bones with normalised, non-negative weights (15 ms)
+      ✓ weights every deform bone and leaves the root as a non-deforming anchor (12 ms)
+      ✓ rigidly attaches the slab feet to the foot bones in mirrored positions (19 ms)
+      ✓ attaches pauldron spikes and the gauntlet fists to their own bones (13 ms)
+      ✓ keeps the tiny helmet and crest weighted to the head bone (12 ms)
+    silhouette
+      ✓ stands on the ground, with the crest below the archetype height (14 ms)
+      ✓ gives the brute a broad pauldron span and a much narrower helmet (14 ms)
+      ✓ extends the feet forward beyond the body (11 ms)
+    determinism and isolation
+      ✓ produces byte-identical geometry for repeated builds (114 ms)
+      ✓ hands back independent geometry and rig objects per build (22 ms)
+    animation clips
+      ✓ provides the full combat animation set (13 ms)
+      ✓ reuses the alert clip as the taunt, while every other clip is distinct (11 ms)
+      ✓ sets looping semantics: locomotion repeats and combat actions play once (12 ms)
+      ✓ binds every track to an existing bone and valid keyframe times (180 ms)
+      ✓ emits normalised quaternions for all rotational tracks (38 ms)
+      ✓ anchors root motion at the rest position on the first keyframe (12 ms)
+      ✓ makes repeating clips seamlessly loop start-to-end (19 ms)
+      ✓ gives the walk and run cycles a planted vertical bob (11 ms)
+      ✓ animates the exhaust stacks only in the idle breathing loop (12 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       28 passed, 28 total
+Snapshots:   0 total
+Time:        6.506 s
+Ran all test suites within paths "test/actors/enemies/Brute/buildBrute.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:39) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/enemies/Brute/buildBrute.test.js
+  buildBrute
+    returned payload
+      ✓ returns a rig, a buffer geometry, animation clips and archetype meta (37 ms)
+      ✓ reports the documented brute archetype metadata (20 ms)
+      ✓ describes a full biped skeleton with the expected parent chain (22 ms)
+    geometry structure
+      ✓ exposes every skinning attribute with consistent vertex counts (17 ms)
+      ✓ uses only valid triangle indices (16 ms)
+      ✓ emits finite positions enclosed by a computed bounding box and sphere (24 ms)
+      ✓ carries unit-length normals for every vertex (15 ms)
+      ✓ writes bounded, non-uniform vertex colours (146 ms)
+      ✓ tags vertices with the palette slots expected of an armoured, glowing brute (54 ms)
+    skinning
+      ✓ binds every vertex to valid bones with normalised, non-negative weights (16 ms)
+      ✓ weights every deform bone and leaves the root as a non-deforming anchor (13 ms)
+      ✓ rigidly attaches the slab feet to the foot bones in mirrored positions (20 ms)
+      ✓ attaches pauldron spikes and the gauntlet fists to their own bones (14 ms)
+      ✓ keeps the tiny helmet and crest weighted to the head bone (12 ms)
+    silhouette
+      ✓ stands on the ground, with the crest below the archetype height (14 ms)
+      ✓ gives the brute a broad pauldron span and a much narrower helmet (14 ms)
+      ✓ extends the feet forward beyond the body (12 ms)
+    determinism and isolation
+      ✓ produces byte-identical geometry for repeated builds (120 ms)
+      ✓ hands back independent geometry and rig objects per build (24 ms)
+    animation clips
+      ✓ provides the full combat animation set (14 ms)
+      ✓ reuses the alert clip as the taunt, while every other clip is distinct (12 ms)
+      ✓ sets looping semantics: locomotion repeats and combat actions play once (13 ms)
+      ✓ binds every track to an existing bone and valid keyframe times (180 ms)
+      ✓ emits normalised quaternions for all rotational tracks (39 ms)
+      ✓ anchors root motion at the rest position on the first keyframe (13 ms)
+      ✓ makes repeating clips seamlessly loop start-to-end (20 ms)
+      ✓ gives the walk and run cycles a planted vertical bob (12 ms)
+      ✓ animates the exhaust stacks only in the idle breathing loop (12 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       28 passed, 28 total
+Snapshots:   0 total
+Time:        3.115 s, estimated 6 s
+Ran all test suites within paths "test/actors/enemies/Brute/buildBrute.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

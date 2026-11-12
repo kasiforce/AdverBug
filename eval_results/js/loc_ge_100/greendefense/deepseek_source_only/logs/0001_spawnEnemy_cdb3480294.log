@@ -1,0 +1,155 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:25) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/game/spawnEnemy.test.js
+  Game.spawnEnemy normal wave spawning
+    ✓ wave 1 spawns a neutral simple enemy at a valid top entry point (8 ms)
+    ✓ waves 1-3 choose the last valid entry point at the random upper bound (1 ms)
+    ✓ wave 2 can spawn an elephant and applies a random element (1 ms)
+    ✓ wave 2 stays neutral when the element roll fails (1 ms)
+    ✓ wave 3 maps type roll 0.29 with element roll 0.5 to simple
+    ✓ wave 3 maps type roll 0.3 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 3 maps type roll 0.69 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 3 maps type roll 0.7 with element roll 0.5 to pirate (1 ms)
+    ✓ wave 3 prefixes the enemy type when an element is selected (1 ms)
+    ✓ wave 4 maps type roll 0.19 with element roll 0.5 to simple (1 ms)
+    ✓ wave 4 maps type roll 0.2 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 4 maps type roll 0.59 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 4 maps type roll 0.6 with element roll 0.5 to pirate (1 ms)
+    ✓ wave 5 can promote an elemental enemy to a golem (1 ms)
+    ✓ wave 5 does not roll for a golem when the elemental check fails (1 ms)
+    ✓ wave 6 maps type roll 0.09 with element roll 0.9 to elephant
+    ✓ wave 6 maps type roll 0.1 with element roll 0.9 to pirate
+    ✓ wave 6 maps type roll 0.59 with element roll 0.9 to pirate
+    ✓ wave 6 maps type roll 0.6 with element roll 0.9 to golem (1 ms)
+    ✓ wave 6 applies an element when its 90% roll succeeds and not at the boundary (1 ms)
+    ✓ skips the wave gold multiplier when the wave has no waveSettings entry
+  Game.spawnEnemy card debug mode
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 0
+    ✓ cycles types/elements using enemies.length 1 + enemiesSpawned 0
+    ✓ cycles types/elements using enemies.length 2 + enemiesSpawned 0 (1 ms)
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 4 (1 ms)
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 6 (1 ms)
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 8
+    ✓ leaves the debug-mode golem neutral when the element cycle applies none (1 ms)
+  Game.spawnEnemy boss behavior
+    ✓ a wave 1 boss becomes an elemental golem with boss stats (2 ms)
+    ✓ a boss keeps an element already selected by the wave logic (1 ms)
+    ✓ late boss on wave 4 after 0 spawns receives health 900, reward 60 and scale 1.8 (1 ms)
+    ✓ late boss on wave 5 after 0 spawns receives health 1200, reward 80 and scale 2.1 (1 ms)
+    ✓ late boss on wave 6 after 0 spawns receives health 1500, reward 96 and scale 2.4 (1 ms)
+    ✓ does not fail or rescale when the instance manager is unavailable
+  Game.spawnEnemy stat variation and rewards
+    ✓ applies deterministic random health and speed variation to non-bosses (1 ms)
+    ✓ does not vary stats when randomFactorMultiplier is zero
+    ✓ applies the wave and difficulty gold multipliers to rewards (5 ms)
+    ✓ uses waveInfo for wave association and counters without touching game counters (1 ms)
+  Game.spawnEnemy late-wave entry-point patterns
+    ✓ wave 4 spawned index 0 (randoms []) chooses entry x=2 (1 ms)
+    ✓ wave 4 spawned index 1 (randoms []) chooses entry x=7
+    ✓ wave 4 spawned index 2 (randoms [0.5,0.4]) chooses entry x=1
+    ✓ wave 4 spawned index 3 (randoms [0.5,0.6]) chooses entry x=9 (1 ms)
+    ✓ wave 4 spawned index 4 (randoms [0.7,0.5]) chooses entry x=5
+    ✓ wave 5 starts group at spawned index 0 with entry x=2 (1 ms)
+    ✓ wave 5 starts group at spawned index 4 with entry x=8
+    ✓ wave 5 starts group at spawned index 8 with entry x=5 (1 ms)
+    ✓ wave 5 reuses the current group spawn point for members after the first
+    ✓ wave 6 spawned index 0 (randoms [0.4]) chooses entry x=1 (1 ms)
+    ✓ wave 6 spawned index 10 (randoms [0.6]) chooses entry x=8
+    ✓ wave 6 spawned index 30 (randoms [0.1,0.5]) chooses entry x=1
+    ✓ wave 6 spawned index 40 (randoms [0.4,0.5]) chooses entry x=8 (1 ms)
+    ✓ wave 6 spawned index 50 (randoms [0.6,0.5]) chooses entry x=5
+    ✓ wave 6 spawned index 70 (randoms [0.4]) chooses entry x=4
+    ✓ wave 6 reuses the current group spawn point within an adaptive group (1 ms)
+  Game.spawnEnemy visual instance fallback
+    ✓ recreates a missing visual instance and logs a warning (1 ms)
+    ✓ logs an error when visual recreation also fails
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        2.049 s
+Ran all test suites within paths "test/game/spawnEnemy.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:39) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/game/spawnEnemy.test.js
+  Game.spawnEnemy normal wave spawning
+    ✓ wave 1 spawns a neutral simple enemy at a valid top entry point (6 ms)
+    ✓ waves 1-3 choose the last valid entry point at the random upper bound (1 ms)
+    ✓ wave 2 can spawn an elephant and applies a random element (1 ms)
+    ✓ wave 2 stays neutral when the element roll fails (1 ms)
+    ✓ wave 3 maps type roll 0.29 with element roll 0.5 to simple (1 ms)
+    ✓ wave 3 maps type roll 0.3 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 3 maps type roll 0.69 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 3 maps type roll 0.7 with element roll 0.5 to pirate (1 ms)
+    ✓ wave 3 prefixes the enemy type when an element is selected (1 ms)
+    ✓ wave 4 maps type roll 0.19 with element roll 0.5 to simple
+    ✓ wave 4 maps type roll 0.2 with element roll 0.5 to elephant
+    ✓ wave 4 maps type roll 0.59 with element roll 0.5 to elephant (1 ms)
+    ✓ wave 4 maps type roll 0.6 with element roll 0.5 to pirate
+    ✓ wave 5 can promote an elemental enemy to a golem
+    ✓ wave 5 does not roll for a golem when the elemental check fails (1 ms)
+    ✓ wave 6 maps type roll 0.09 with element roll 0.9 to elephant (1 ms)
+    ✓ wave 6 maps type roll 0.1 with element roll 0.9 to pirate
+    ✓ wave 6 maps type roll 0.59 with element roll 0.9 to pirate (1 ms)
+    ✓ wave 6 maps type roll 0.6 with element roll 0.9 to golem
+    ✓ wave 6 applies an element when its 90% roll succeeds and not at the boundary (1 ms)
+    ✓ skips the wave gold multiplier when the wave has no waveSettings entry (1 ms)
+  Game.spawnEnemy card debug mode
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 0 (1 ms)
+    ✓ cycles types/elements using enemies.length 1 + enemiesSpawned 0 (1 ms)
+    ✓ cycles types/elements using enemies.length 2 + enemiesSpawned 0
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 4
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 6 (1 ms)
+    ✓ cycles types/elements using enemies.length 0 + enemiesSpawned 8
+    ✓ leaves the debug-mode golem neutral when the element cycle applies none
+  Game.spawnEnemy boss behavior
+    ✓ a wave 1 boss becomes an elemental golem with boss stats (1 ms)
+    ✓ a boss keeps an element already selected by the wave logic (5 ms)
+    ✓ late boss on wave 4 after 0 spawns receives health 900, reward 60 and scale 1.8 (1 ms)
+    ✓ late boss on wave 5 after 0 spawns receives health 1200, reward 80 and scale 2.1 (1 ms)
+    ✓ late boss on wave 6 after 0 spawns receives health 1500, reward 96 and scale 2.4 (1 ms)
+    ✓ does not fail or rescale when the instance manager is unavailable
+  Game.spawnEnemy stat variation and rewards
+    ✓ applies deterministic random health and speed variation to non-bosses (1 ms)
+    ✓ does not vary stats when randomFactorMultiplier is zero
+    ✓ applies the wave and difficulty gold multipliers to rewards (1 ms)
+    ✓ uses waveInfo for wave association and counters without touching game counters (1 ms)
+  Game.spawnEnemy late-wave entry-point patterns
+    ✓ wave 4 spawned index 0 (randoms []) chooses entry x=2
+    ✓ wave 4 spawned index 1 (randoms []) chooses entry x=7 (1 ms)
+    ✓ wave 4 spawned index 2 (randoms [0.5,0.4]) chooses entry x=1
+    ✓ wave 4 spawned index 3 (randoms [0.5,0.6]) chooses entry x=9
+    ✓ wave 4 spawned index 4 (randoms [0.7,0.5]) chooses entry x=5 (1 ms)
+    ✓ wave 5 starts group at spawned index 0 with entry x=2
+    ✓ wave 5 starts group at spawned index 4 with entry x=8 (1 ms)
+    ✓ wave 5 starts group at spawned index 8 with entry x=5
+    ✓ wave 5 reuses the current group spawn point for members after the first (1 ms)
+    ✓ wave 6 spawned index 0 (randoms [0.4]) chooses entry x=1
+    ✓ wave 6 spawned index 10 (randoms [0.6]) chooses entry x=8 (1 ms)
+    ✓ wave 6 spawned index 30 (randoms [0.1,0.5]) chooses entry x=1
+    ✓ wave 6 spawned index 40 (randoms [0.4,0.5]) chooses entry x=8 (1 ms)
+    ✓ wave 6 spawned index 50 (randoms [0.6,0.5]) chooses entry x=5
+    ✓ wave 6 spawned index 70 (randoms [0.4]) chooses entry x=4
+    ✓ wave 6 reuses the current group spawn point within an adaptive group (1 ms)
+  Game.spawnEnemy visual instance fallback
+    ✓ recreates a missing visual instance and logs a warning (1 ms)
+    ✓ logs an error when visual recreation also fails
+
+Test Suites: 1 passed, 1 total
+Tests:       56 passed, 56 total
+Snapshots:   0 total
+Time:        1.85 s, estimated 2 s
+Ran all test suites within paths "test/game/spawnEnemy.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

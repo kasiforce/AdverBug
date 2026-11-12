@@ -1,0 +1,51 @@
+(node:24) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/sisyphus/src/player/updatePlayer.test.js
+  updatePlayer
+    horizontal movement
+      ✓ maps forward input to a walking velocity at yaw zero (137 ms)
+      ✓ maps back input to a walking velocity at yaw zero (53 ms)
+      ✓ maps left input to a walking velocity at yaw zero (54 ms)
+      ✓ maps right input to a walking velocity at yaw zero (49 ms)
+      ✓ normalizes diagonal input so it does not move faster than a cardinal direction (50 ms)
+      ✓ rotates movement direction by the camera yaw (60 ms)
+      ✓ turns to face the movement direction over time (39 ms)
+      ✓ treats opposing direction keys as no movement input (37 ms)
+      ✓ decelerates while preserving the decelerated movement for this frame (38 ms)
+    speed selection and state
+      ✓ uses sprint speed and sprint state when stamina allows sprinting (38 ms)
+      ✓ falls back to walking when stamina forbids sprinting (41 ms)
+      ✓ uses push speed and push state while pushing (38 ms)
+      ✓ uses push-sprint speed and state while sprinting with the boulder (37 ms)
+      ✓ reports exhausted state when a pushing player has no stamina left (38 ms)
+      ✓ reports idle when stationary (38 ms)
+    jumping and gravity
+      ✓ applies the jump impulse, gravity, and an airborne state (42 ms)
+      ✓ continues applying gravity while airborne (38 ms)
+      ✓ does not reapply the jump impulse before landing (37 ms)
+      ✓ lands on the terrain and clears vertical velocity (38 ms)
+      ✓ ignores jump input while pushing (41 ms)
+      ✓ airborne state takes precedence over pushing and exhaustion (39 ms)
+    ground following and boundaries
+      ✓ snaps smoothly to a nearby lower ground height without becoming airborne (37 ms)
+      ✓ becomes airborne when walking off a ledge taller than the snap distance (38 ms)
+      ✓ snaps upward onto rising terrain and clears vertical velocity (38 ms)
+      ✓ clamps rightward movement to the path boundary (41 ms)
+      ✓ clamps leftward movement to the path boundary (38 ms)
+    boulder collision
+      ✓ pushes the player horizontally out of an overlapping boulder (41 ms)
+      ✓ does not move the player when the boulder is outside the collision radius (37 ms)
+      ✓ does not produce NaN when player and boulder centers coincide (63 ms)
+      ✓ skips boulder collision while pushing (37 ms)
+    visual model synchronization
+      ✓ copies position and facing to the visual model (37 ms)
+    dependency interaction
+      ✓ reads stamina, camera yaw, and boulder state once per update (39 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        1.881 s
+Ran all test suites within paths "test/sisyphus/src/player/updatePlayer.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

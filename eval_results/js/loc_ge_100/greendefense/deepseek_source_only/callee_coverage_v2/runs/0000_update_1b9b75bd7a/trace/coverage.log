@@ -1,0 +1,49 @@
+(node:38) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/game/update.test.js
+  Game.update - loop gating and normal frame
+    ✓ reschedules the loop without doing work when game has not started (7 ms)
+    ✓ reschedules the loop without doing work when game is over (2 ms)
+    ✓ updates timing, invokes all entity systems, restores quality defaults, and renders (3 ms)
+    ✓ computes sub-second deltas from the previous frame timestamp (1 ms)
+  Game.update - periodic debug logging
+    ✓ logs entity counts and counts visible meshes when crossing a 3 second boundary (2 ms)
+    ✓ logs entity counts but does not traverse the scene when there are no entities (1 ms)
+    ✓ does not log when no 3 second boundary is crossed (2 ms)
+  Game.update - card debug mode
+    ✓ grants infinite gold and updates the gold display in card debug mode (1 ms)
+    ✓ refills mana and refreshes its display when infinite mana is enabled (1 ms)
+    ✓ leaves resources untouched when card debug mode is disabled (1 ms)
+    ✓ does not throw when infinite mana is checked but TCG integration is absent (2 ms)
+    ✓ does not modify mana when the infinite mana checkbox is unchecked (1 ms)
+  Game.update - enemy spawning
+    ✓ spawns from an active wave once its adjusted interval has elapsed (1 ms)
+    ✓ does not spawn before the interval has elapsed (1 ms)
+    ✓ does not spawn at exactly the adjusted interval because the comparison is strict (1 ms)
+    ✓ spawns the final enemy of a boss wave as a boss after the dramatic pause
+    ✓ uses fast spawning within a batch and a long pause between batches (1 ms)
+    ✓ uses the enhanced batch cadence for later waves (1 ms)
+    ✓ can trigger a surprise burst with no delay between enhanced batches (1 ms)
+    ✓ adds extra delay to waves after the first active wave (1 ms)
+    ✓ skips already completed waves (1 ms)
+    ✓ ignores active waves whose settings no longer exist (1 ms)
+    ✓ warns and resets the global spawn timer when spawning appears stalled (4 ms)
+    ✓ does not warn about stalled spawning when enough enemies are present (1 ms)
+  Game.update - wave completion and victory
+    ✓ finishes the game and triggers victory when all waves complete on the final wave (1 ms)
+    ✓ clears wave-in-progress without victory when earlier waves finish (1 ms)
+    ✓ keeps the wave in progress while an enemy in an active wave is still alive (1 ms)
+    ✓ does not clear the in-progress flag based on counts alone when waves are not marked complete (1 ms)
+  Game.update - TCG mana regeneration
+    ✓ regenerates mana, refreshes the display, and records the regeneration time (1 ms)
+    ✓ caps regenerated mana at the maximum (1 ms)
+    ✓ does not regenerate while the interval has not elapsed
+    ✓ resets the regeneration timer at full mana without refreshing the display
+
+Test Suites: 1 passed, 1 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        1.266 s
+Ran all test suites within paths "test/game/update.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

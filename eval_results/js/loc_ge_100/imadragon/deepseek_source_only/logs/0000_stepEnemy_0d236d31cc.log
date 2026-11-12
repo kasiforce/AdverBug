@@ -1,0 +1,155 @@
+=== docker stdout ===
+
+=== docker stderr ===
+
+=== syntax.log ===
+
+=== test.log ===
+(node:25) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/EnemyAI/stepEnemy.test.js
+  stepEnemy — dead enemies
+    ✓ advances deadTime, sinks toward the ground and hides/despawns after 1.1s (6 ms)
+    ✓ does not set despawned when the group was already hidden (1 ms)
+    ✓ sinks flying corpses more slowly than grounded ones (1 ms)
+  stepEnemy — hurt
+    ✓ rides out knockback, decays it, and returns before cooldown ticks (3 ms)
+    ✓ does not move for negligible knockback (1 ms)
+    ✓ refuses knocked-back movement onto invalid ground but still decays the knock (1 ms)
+    ✓ returns to hurt until strictly after 0.45s, then chases a visible player (2 ms)
+    ✓ returns to patrol when the player is out of sight (1 ms)
+  stepEnemy — patrol
+    ✓ picks a wander target, faces it and walks there (3 ms)
+    ✓ keeps walking toward an existing target without repicking (1 ms)
+    ✓ stops when the wander target is within 0.6 units
+    ✓ repicks immediately when the step is blocked by the world (1 ms)
+    ✓ never wanders or repicks when stationary (1 ms)
+    ✓ alerts on a visible player even while stationary (1 ms)
+    ✓ does not alert when the player is out of sight (1 ms)
+    ✓ judges sight from horizontal distance only
+    ✓ keeps a thief patrolling while the player is visible but outside flee range
+  stepEnemy — alert
+    ✓ faces the player, stops, and posts a mark above its head every frame (1 ms)
+    ✓ stays alert at exactly 0.5s and promotes to chase afterwards (1 ms)
+    ✓ promotes a thief to flee
+    ✓ tolerates a missing enemy-fx service
+  stepEnemy — flee
+    ✓ runs directly away from the player at chase speed (1 ms)
+    ✓ curves back toward home once beyond 1.6 patrol radii (1 ms)
+    ✓ dodges sideways when the direct escape route is blocked (1 ms)
+    ✓ stays put when both escape directions are blocked (1 ms)
+    ✓ returns to patrol once the player is more than 1.4x sight away (1 ms)
+  stepEnemy — chase
+    ✓ closes distance at chase speed and turns toward the player (1 ms)
+    ✓ holds at the edge and slows when the step is blocked (1 ms)
+    ✓ stops advancing inside 0.85 attack range while on cooldown
+    ✓ enters windup when in range with a ready attack (1 ms)
+    ✓ does not enter windup while the cooldown is still running (1 ms)
+    ✓ gives up and patrols beyond 1.5x sight
+    ✓ does not advance when stationary (1 ms)
+    ✓ lets flying enemies cross steep ground that stops walkers (1 ms)
+    ✓ refuses to walk another island
+    ✓ refuses to walk past the island rim
+  stepEnemy — windup
+    ✓ faces the player and settles locomotion while winding up (1 ms)
+    ✓ strikes once the windup duration is reached (1 ms)
+  stepEnemy — strike
+    ✓ lands a melee hit exactly once when the player is in reach (1 ms)
+    ✓ misses when the player is beyond attackRange + 0.7 (1 ms)
+    ✓ fires a projectile instead of hurting directly for ranged enemies (1 ms)
+    ✓ commits a flying dive and drops toward the player (1 ms)
+    ✓ transitions to recover after the strike duration (1 ms)
+    ✓ tolerates missing controller and projectile services (1 ms)
+  stepEnemy — recover
+    ✓ sets the post-attack cooldown and chases a visible player
+    ✓ return to patrol when the player is no longer visible
+    ✓ holds recovery until the full duration has elapsed (1 ms)
+  stepEnemy — cooldown and altitude
+    ✓ ticks the cooldown every active frame and floors it at zero
+    ✓ uses sampled ground height plus the archetype ground offset (1 ms)
+    ✓ keeps its last ground height when the ground query returns null
+    ✓ hovers around hoverHeight with a phase/time-driven bob
+    ✓ dives toward the player while diveTime is active and spends the timer (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        5.6 s
+Ran all test suites within paths "test/actors/EnemyAI/stepEnemy.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+
+=== coverage.log ===
+(node:39) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/actors/EnemyAI/stepEnemy.test.js
+  stepEnemy — dead enemies
+    ✓ advances deadTime, sinks toward the ground and hides/despawns after 1.1s (7 ms)
+    ✓ does not set despawned when the group was already hidden (1 ms)
+    ✓ sinks flying corpses more slowly than grounded ones (1 ms)
+  stepEnemy — hurt
+    ✓ rides out knockback, decays it, and returns before cooldown ticks (3 ms)
+    ✓ does not move for negligible knockback (1 ms)
+    ✓ refuses knocked-back movement onto invalid ground but still decays the knock (1 ms)
+    ✓ returns to hurt until strictly after 0.45s, then chases a visible player (1 ms)
+    ✓ returns to patrol when the player is out of sight (1 ms)
+  stepEnemy — patrol
+    ✓ picks a wander target, faces it and walks there (3 ms)
+    ✓ keeps walking toward an existing target without repicking (1 ms)
+    ✓ stops when the wander target is within 0.6 units
+    ✓ repicks immediately when the step is blocked by the world
+    ✓ never wanders or repicks when stationary
+    ✓ alerts on a visible player even while stationary
+    ✓ does not alert when the player is out of sight (1 ms)
+    ✓ judges sight from horizontal distance only (1 ms)
+    ✓ keeps a thief patrolling while the player is visible but outside flee range
+  stepEnemy — alert
+    ✓ faces the player, stops, and posts a mark above its head every frame (1 ms)
+    ✓ stays alert at exactly 0.5s and promotes to chase afterwards
+    ✓ promotes a thief to flee
+    ✓ tolerates a missing enemy-fx service (1 ms)
+  stepEnemy — flee
+    ✓ runs directly away from the player at chase speed (1 ms)
+    ✓ curves back toward home once beyond 1.6 patrol radii (1 ms)
+    ✓ dodges sideways when the direct escape route is blocked (1 ms)
+    ✓ stays put when both escape directions are blocked (1 ms)
+    ✓ returns to patrol once the player is more than 1.4x sight away
+  stepEnemy — chase
+    ✓ closes distance at chase speed and turns toward the player (1 ms)
+    ✓ holds at the edge and slows when the step is blocked
+    ✓ stops advancing inside 0.85 attack range while on cooldown (4 ms)
+    ✓ enters windup when in range with a ready attack (1 ms)
+    ✓ does not enter windup while the cooldown is still running (1 ms)
+    ✓ gives up and patrols beyond 1.5x sight
+    ✓ does not advance when stationary (1 ms)
+    ✓ lets flying enemies cross steep ground that stops walkers (1 ms)
+    ✓ refuses to walk another island
+    ✓ refuses to walk past the island rim
+  stepEnemy — windup
+    ✓ faces the player and settles locomotion while winding up (1 ms)
+    ✓ strikes once the windup duration is reached (1 ms)
+  stepEnemy — strike
+    ✓ lands a melee hit exactly once when the player is in reach (1 ms)
+    ✓ misses when the player is beyond attackRange + 0.7 (1 ms)
+    ✓ fires a projectile instead of hurting directly for ranged enemies (1 ms)
+    ✓ commits a flying dive and drops toward the player
+    ✓ transitions to recover after the strike duration
+    ✓ tolerates missing controller and projectile services (1 ms)
+  stepEnemy — recover
+    ✓ sets the post-attack cooldown and chases a visible player
+    ✓ return to patrol when the player is no longer visible (1 ms)
+    ✓ holds recovery until the full duration has elapsed
+  stepEnemy — cooldown and altitude
+    ✓ ticks the cooldown every active frame and floors it at zero (1 ms)
+    ✓ uses sampled ground height plus the archetype ground offset
+    ✓ keeps its last ground height when the ground query returns null (1 ms)
+    ✓ hovers around hoverHeight with a phase/time-driven bob (1 ms)
+    ✓ dives toward the player while diveTime is active and spends the timer
+
+Test Suites: 1 passed, 1 total
+Tests:       52 passed, 52 total
+Snapshots:   0 total
+Time:        2.8 s, estimated 5 s
+Ran all test suites within paths "test/actors/EnemyAI/stepEnemy.test.js".
+Test results written to: ../results/coverage-report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,85 @@
+(node:24) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/play/Controller/update.test.js
+  ✓ pressing jump in the air before any jump does nothing (1 ms)
+  Controller.update — timers
+    ✓ decrements invulnerability, coyote time and jump buffer by dt (5 ms)
+    ✓ clamps timers at zero instead of going negative (1 ms)
+    ✓ a jump press fills the jump buffer even when the jump is blocked (6 ms)
+    ✓ does not fill the jump buffer when jump is not pressed (1 ms)
+  Controller.update — dead state
+    ✓ applies gravity, advances deadTime and ignores input while dead (2 ms)
+    ✓ the dead body settles on the ground instead of falling through it (1 ms)
+    ✓ respawns with full health once the death timer passes 2.2s and lives remain (2 ms)
+    ✓ does not respawn at or below exactly 2.2s of dead time (1 ms)
+    ✓ emits mission:failed and restores three lives when the last life is lost (1 ms)
+  Controller.update — jumping
+    ✓ a buffered press jumps from the ground and lifts the player (2 ms)
+    ✓ a jump inside the coyote window still works after leaving the ledge (1 ms)
+    ✓ refuses to jump while hurt (1 ms)
+    ✓ a second press in the air converts the jump into a glide (2 ms)
+    ✓ does not glide once the double jump has already been used (1 ms)
+    ✓ does not glide while still rising quickly (1 ms)
+  Controller.update — gliding
+    ✓ a glide sinks toward the fixed glide fall rate and tracks glide time (1 ms)
+    ✓ a buffered jump during a glide triggers a single hover (1 ms)
+    ✓ hover is only available once per glide (1 ms)
+    ✓ hovering pushes the player up while the hover window lasts (1 ms)
+    ✓ a glide leans into the stick with damped, committed turning (1 ms)
+    ✓ pulling the stick back slows a glide to 72% of glide speed (3 ms)
+    ✓ holding charge dives out of a glide (1 ms)
+  Controller.update — charging
+    ✓ starts a charge from the ground when charge is held with a direction (1 ms)
+    ✓ does not start a charge in mid-air (1 ms)
+    ✓ does not start a charge without directional input (1 ms)
+    ✓ charge steers toward the stick direction
+    ✓ a charge times out after 4 seconds and reports it stopped
+    ✓ releasing charge ends the charge (1 ms)
+    ✓ charge settles at the dedicated charge speed, faster than a run (2 ms)
+  Controller.update — flame breath
+    ✓ starts a flame and reports the mouth origin when no dragon model exists (5 ms)
+    ✓ uses the dragon mouth position when a dragon collaborator is present (1 ms)
+    ✓ the flame expires and the player returns to the ground state (1 ms)
+    ✓ cannot start a flame while hurt
+    ✓ cannot start a flame while gliding (1 ms)
+  Controller.update — hurt state
+    ✓ hurt state bleeds off horizontal speed (1 ms)
+    ✓ hurt state recovers to ground when the hurt timer runs out on the ground (1 ms)
+    ✓ hurt state recovers to air when the hurt timer runs out in mid-air (1 ms)
+  Controller.update — horizontal movement
+    ✓ accelerates up to run speed along the camera-relative stick direction (2 ms)
+    ✓ uses the camera basis rather than world axes for direction (1 ms)
+    ✓ partial stick deflection yields a proportionally slower run (2 ms)
+    ✓ holding charge in the air sprints at sprint speed (1 ms)
+    ✓ a standing player with no input coasts to a stop (1 ms)
+  Controller.update — updrafts
+    ✓ lifts an airborne player inside the shaft (1 ms)
+    ✓ caps the lift at 17 m/s
+    ✓ a glide gets a stronger lift than an ordinary fall (1 ms)
+    ✓ ignores shafts the player is outside of
+    ✓ ignores shafts the player has risen above (1 ms)
+  Controller.update — ground contact
+    ✓ lands, snaps to the surface and reports the impact (1 ms)
+    ✓ does not re-announce the island when the biome is unchanged (1 ms)
+    ✓ does not snap to the ground while moving upwards (1 ms)
+    ✓ does not re-announce landing on every grounded frame
+    ✓ stays airborne when there is no ground under the player
+    ✓ landing out of a glide cancels the glide and resets the jump chain (1 ms)
+    ✓ slides off ground that is too steep (1 ms)
+    ✓ keeps the player on ground that is within the slope limit
+  Controller.update — obstacle collision
+    ✓ pushes the player out of a blocking cylinder (1 ms)
+    ✓ ignores blockers the player is passing over or under
+    ✓ charging into a blocker bounces the player off and ends the charge (1 ms)
+  Controller.update — falling out of the world
+    ✓ falling below the kill plane damages the player and respawns them (1 ms)
+    ✓ a lethal fall leaves the player dead instead of respawning immediately
+    ✓ invulnerability frames prevent fall damage but still recover the player (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       62 passed, 62 total
+Snapshots:   0 total
+Time:        0.712 s
+Ran all test suites within paths "test/play/Controller/update.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,34 @@
+(node:24) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS test/voxel-rpg/src/world/terrain/createTerrain.test.js
+  createTerrain
+    scene graph and returned metadata
+      ✓ adds a named terrain group to the supplied parent and returns world metadata (71 ms)
+      ✓ returns a size x size height map of integer heights inside the configured range (380 ms)
+      ✓ derives terrain deterministically from the supplied rng (140 ms)
+      ✓ produces terrain with a smoothly stepped height map (185 ms)
+    world-to-grid query helpers
+      ✓ maps points inside each cell to the expected grid coordinates (33 ms)
+      ✓ returns null for points outside the terrain footprint (33 ms)
+      ✓ returns cell heights in world units and falls back to minimum terrain height outside the map (33 ms)
+      ✓ returns grid-node heights and bilinearly interpolates between them (32 ms)
+      ✓ returns the minimum terrain height when sampling outside the height map (32 ms)
+      ✓ measures flatness as the max-min height difference over a square radius (34 ms)
+    randomSurfacePoint
+      ✓ returns a surface point for the cell selected by the rng (34 ms)
+      ✓ skips cells whose flatness exceeds the requested maximum (32 ms)
+      ✓ falls back to the centre cell after 24 unacceptable attempts (33 ms)
+      ✓ keeps random points within the requested margin by default (35 ms)
+    instanced collision meshes
+      ✓ creates top, fill and stone instanced meshes sharing the box geometry (33 ms)
+      ✓ places one top instance at every cell and tints them with the terrain rng (35 ms)
+      ✓ places two stone layers in every column at the expected heights and colours (47 ms)
+      ✓ populates fill instances for every block above the two stone layers (409 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        2.207 s
+Ran all test suites within paths "test/voxel-rpg/src/world/terrain/createTerrain.test.js".
+Test results written to: ../results/report.json
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
