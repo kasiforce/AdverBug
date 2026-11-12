@@ -30,7 +30,7 @@ applied buggy method to /testbed/parquet-generator/src/main/java/org/apache/parq
 [INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
 [WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
 Exception while executing SCM command.
-[INFO] Storing buildNumber: unknown at timestamp: 1793772677370
+[INFO] Storing buildNumber: unknown at timestamp: 1794399169152
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
 To add an exception for this directory, call:
@@ -67,8 +67,8 @@ Exception while executing SCM command.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.654 s
-[INFO] Finished at: 2026-11-04T06:11:18Z
+[INFO] Total time:  10.190 s
+[INFO] Finished at: 2026-11-11T12:12:50Z
 [INFO] ------------------------------------------------------------------------
 
 === test.log ===
@@ -96,7 +96,7 @@ Exception while executing SCM command.
 [INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
 [WARNING] Cannot get the revision information from the scm repository, proceeding with revision of unknown : 
 Exception while executing SCM command.
-[INFO] Storing buildNumber: unknown at timestamp: 1793772685835
+[INFO] Storing buildNumber: unknown at timestamp: 1794399177853
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: detected dubious ownership in repository at '/testbed'
 To add an exception for this directory, call:
@@ -136,22 +136,67 @@ Exception while executing SCM command.
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests
-[INFO] Tests run: 35, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.519 s -- in org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests
+[ERROR] Tests run: 35, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.456 s <<< FAILURE! -- in org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests
+[ERROR] org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests.runWritesNullSafeEqualityLogicForIntegerColumns -- Time elapsed: 0.034 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+generated source is missing:
+if (clazz.equals(Integer.class)) {
+      if (pred.getValue() == null) {
+        valueInspector = new ValueInspector() {
+          @Override
+          public void updateNull() {
+            setResult(true);
+          }
+
+          @Override
+          public void update(int value) {
+            setResult(false);
+          }
+        };
+      } else { ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:199)
+	at org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests.assertContains(IncrementallyUpdatedFilterPredicateGeneratorRunTests.java:99)
+	at org.apache.parquet.filter2.IncrementallyUpdatedFilterPredicateGeneratorRunTests.runWritesNullSafeEqualityLogicForIntegerColumns(IncrementallyUpdatedFilterPredicateGeneratorRunTests.java:218)
+
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 35, Failures: 0, Errors: 0, Skipped: 0
+[ERROR] Failures: 
+[ERROR]   IncrementallyUpdatedFilterPredicateGeneratorRunTests.runWritesNullSafeEqualityLogicForIntegerColumns:218->assertContains:99 generated source is missing:
+if (clazz.equals(Integer.class)) {
+      if (pred.getValue() == null) {
+        valueInspector = new ValueInspector() {
+          @Override
+          public void updateNull() {
+            setResult(true);
+          }
+
+          @Override
+          public void update(int value) {
+            setResult(false);
+          }
+        };
+      } else { ==> expected: <true> but was: <false>
 [INFO] 
+[ERROR] Tests run: 35, Failures: 1, Errors: 0, Skipped: 0
 [INFO] 
-[INFO] --- apache-rat:0.18:check (default) @ parquet-generator ---
-[WARNING]  Parameter 'excludes' is deprecated: Deprecated for removal since 0.17: Use <inputExclude> instead.
-[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
+[ERROR] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.165 s
-[INFO] Finished at: 2026-11-04T06:11:30Z
+[INFO] Total time:  8.298 s
+[INFO] Finished at: 2026-11-11T12:13:00Z
 [INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.6.0:test (default-test) on project parquet-generator: There are test failures.
+[ERROR] 
+[ERROR] See /testbed/parquet-generator/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
 
 === coverage.log ===
 [INFO] Scanning for projects...
@@ -168,6 +213,6 @@ Exception while executing SCM command.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.780 s
-[INFO] Finished at: 2026-11-04T06:11:33Z
+[INFO] Total time:  1.820 s
+[INFO] Finished at: 2026-11-11T12:13:03Z
 [INFO] ------------------------------------------------------------------------

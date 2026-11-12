@@ -1,30 +1,22 @@
 {
   "input": "/data/home/cjy/Adver_bug/results/loc_ge_100/java/parquet_deepseek_testgen.json",
   "code_variant": "buggy",
-  "bug_input": "/data/home/cjy/Adver_bug/test_results/java/parquet-java/adver_100/final_results.json",
+  "bug_input": "/data/home/cjy/Adver_bug/test_results/java/parquet-java/parquet_specification_restricted_gpt_20261102/final_results.json",
   "image": "adver-parquet:test",
   "source_target_count": 3,
   "skipped_generation_count": 0,
-  "target_count": 2,
-  "evaluated_count": 2,
-  "compile_pass_count": 2,
+  "target_count": 3,
+  "evaluated_count": 3,
+  "compile_pass_count": 3,
   "test_pass_count": 2,
-  "exec_count": 2,
+  "exec_count": 3,
   "bug_matching": {
-    "matched_count": 2,
-    "unmatched_count": 1,
-    "unmatched_targets": [
-      {
-        "instance_id": "parquet-java__getFileEncryptionProperties__84__1",
-        "name": "getFileEncryptionProperties",
-        "method_key": "getFileEncryptionProperties(\n      Configuration fileHadoopConfig, Path tempFilePath, WriteContext fileWriteContext)",
-        "src_file": "parquet-hadoop/src/main/java/org/apache/parquet/crypto/keytools/PropertiesDrivenCryptoFactory.java",
-        "reason": "no_matching_bug"
-      }
-    ]
+    "matched_count": 3,
+    "unmatched_count": 0,
+    "unmatched_targets": []
   },
   "mutation_outcomes": {
-    "killed": 0,
+    "killed": 1,
     "survived": 2,
     "compile_failed": 0,
     "patch_failed": 0,
@@ -33,11 +25,11 @@
   "syntax": {
     "parser": "tree-sitter-java",
     "parser_available": true,
-    "total": 2,
-    "correct": 2,
+    "total": 3,
+    "correct": 3,
     "incorrect": 0,
     "correct_rate": 1.0
   },
   "merge": {},
-  "merge_disabled_for_buggy_code": false
+  "merge_disabled_for_buggy_code": true
 }
